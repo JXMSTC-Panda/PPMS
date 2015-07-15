@@ -14,15 +14,16 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"  
         destroy-method="close">  
         <property name="driverClass">  
-            <value>com.mysql.jdbc.Driver</value>  
+            <value>oracle.jdbc.driver.OracleDriver</value>  
         </property>  
         <property name="jdbcUrl">  
-            <value>jdbc:mysql://localhost:3306/test</value>  
+            <value>jdbc:oracle:thin:@192.168.50.76:1521:ppms</value>  
         </property>  
         <property name="user">  
-            <value>root</value>  
+            <value>ppmsuser</value>  
         </property>  
-        <property name="password">  
+        <property name="password">
+        	<value>panda123</value>  
         </property>  
         <property name="maxPoolSize">  
             <value>80</value>  
@@ -96,7 +97,6 @@
             expression="execution(* ppms.serviceimpl.*.*(..))" />  
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />  
     </aop:config>  
-
     <bean id="userDao" class="ppms.daoimpl.UserDaoImp">  
         <property name="sessionFactory">  
             <ref bean="sessionFactory" />  

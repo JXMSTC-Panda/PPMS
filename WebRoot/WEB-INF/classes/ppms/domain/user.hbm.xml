@@ -4,7 +4,7 @@
                             "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >  
  <!-- 表和bean的映射配置 --> 
 <hibernate-mapping package="ppms.domain">  
-    <class name="User" table="user">  
+    <class name="User" table="student">  
         <id name="userId" column="userId" >  
             <generator class="assigned"></generator>  
         </id>  
