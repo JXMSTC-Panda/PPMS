@@ -22,7 +22,8 @@
         <property name="user">  
             <value>root</value>  
         </property>  
-        <property name="password">  
+        <property name="password">
+        	<value>root</value>  
         </property>  
         <property name="maxPoolSize">  
             <value>80</value>  
