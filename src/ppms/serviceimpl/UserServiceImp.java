@@ -1,4 +1,4 @@
-package ppms.serviceImpl;
+package ppms.serviceimpl;
 
 import org.springframework.beans.BeanUtils;
 

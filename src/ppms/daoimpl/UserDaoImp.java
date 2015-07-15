@@ -1,4 +1,4 @@
-package ppms.daoImpl;
+package ppms.daoimpl;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
