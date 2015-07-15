@@ -17,7 +17,7 @@
             <value>com.mysql.jdbc.Driver</value>  
         </property>  
         <property name="jdbcUrl">  
-            <value>jdbc:mysql://localhost:3306/test</value>  
+            <value>jdbc:mysql://192.168.56.1:3306/test</value>  
         </property>  
         <property name="user">  
             <value>root</value>  
