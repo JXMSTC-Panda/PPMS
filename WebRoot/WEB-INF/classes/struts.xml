@@ -15,8 +15,8 @@
 		</action>
        
        <action name="register" class="registerAction" method="register">
-       		<result name="success">/WEB-INF/content/page/Demo.jsp</result>
-       		<result name="error">/WEB-INF/content/page/login.jsp</result>
+       		<result name="success">/WEB-INF/content/Demo.jsp</result>
+       		<result name="error">/WEB-INF/content/login.jsp</result>
        </action>
      
     </package>
