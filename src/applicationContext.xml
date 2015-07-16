@@ -17,13 +17,21 @@
             <value>oracle.jdbc.driver.OracleDriver</value>  
         </property>  
         <property name="jdbcUrl">  
+<<<<<<< HEAD
             <value>jdbc:oracle:thin:@192.168.50.76:1521:ppms</value>  
+=======
+            <value>jdbc:mysql://192.168.56.1:3306/test</value>  
+>>>>>>> 3d1ce21285ccc426c8bfc954661631e68ebf0b4c
         </property>  
         <property name="user">  
             <value>ppmsuser</value>  
         </property>  
         <property name="password">
+<<<<<<< HEAD
         	<value>panda123</value>  
+=======
+        	<value>root</value>  
+>>>>>>> 3d1ce21285ccc426c8bfc954661631e68ebf0b4c
         </property>  
         <property name="maxPoolSize">  
             <value>80</value>  

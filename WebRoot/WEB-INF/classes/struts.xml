@@ -15,7 +15,7 @@
 		</action>
        
        <action name="register" class="registerAction" method="register">
-       		<result name="success">/WEB-INF/pages/success.jsp</result>
+       		<result name="success">/WEB-INF/pages/Demo.jsp</result>
        		<result name="error">/WEB-INF/pages/error.jsp</result>
        </action>
      
