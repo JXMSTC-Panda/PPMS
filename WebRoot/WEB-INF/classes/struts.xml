@@ -19,6 +19,10 @@
        		<result name="error">/WEB-INF/pages/error.jsp</result>
        </action>
      
+     <action name="*uploadExcel" class="ppms.action.FileAction" method="upload">
+     	<result name="success">/WEB-INF/pages/Demo.jsp</result>
+     	<result name="error">/WEB-INF/pages/error.jsp</result>
+     </action>
     </package>
 
  

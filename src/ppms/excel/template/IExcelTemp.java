@@ -1,6 +1,10 @@
 package ppms.excel.template;
 
+import java.io.File;
+import java.util.List;
+
 import ppms.dao.BaseDao;
+import ppms.exception.ExcelParserException;
 
 /**
  * excel模板标准接口
@@ -20,6 +24,14 @@ public interface IExcelTemp {
 	 * 当前对象转换成excel表的记录
 	 * @return
 	 */
-	public IExcelTemp toExcel();
+	public IExcelTemp toExcel(File file);
+	
+	/**
+	 * 
+	 * @param myFile 上传的文件流
+	 * @return 封装好excel对应类的实例集合
+	 * @throws ExcelParserException excel转换异常
+	 */
+	public List<IExcelTemp> toObjs(File myFile) throws ExcelParserException;
 	
 }
