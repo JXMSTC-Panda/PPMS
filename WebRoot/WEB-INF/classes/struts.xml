@@ -11,12 +11,12 @@
 	<!-- 默认 -->
     <package name="PPMSPackage" namespace="/" extends="struts-default">
 		<action name="input">
-			<result>/WEB-INF/pages/input.jsp</result>
+			<result>/WEB-INF/content/page/input.jsp</result>
 		</action>
        
        <action name="register" class="registerAction" method="register">
-       		<result name="success">/WEB-INF/pages/Demo.jsp</result>
-       		<result name="error">/WEB-INF/pages/error.jsp</result>
+       		<result name="success">/WEB-INF/content/page/Demo.jsp</result>
+       		<result name="error">/WEB-INF/content/page/login.jsp</result>
        </action>
      
     </package>
