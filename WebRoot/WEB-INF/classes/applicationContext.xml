@@ -102,7 +102,6 @@
             <ref bean="sessionFactory" />  
         </property>  
     </bean>  
-  
     <!--用户注册业务逻辑类 -->  
     <bean id="userService" class="ppms.serviceimpl.UserServiceImp">  
         <property name="dao">  
@@ -116,7 +115,6 @@
             <ref bean="userService" />  
         </property>  
     </bean>  
-    
     <!-- more bean definitions go here -->  
   
 </beans>  

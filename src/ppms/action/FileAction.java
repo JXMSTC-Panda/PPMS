@@ -2,10 +2,10 @@ package ppms.action;
 
 import java.io.File;
 
-import ppms.excel.ExcelConfig;
 import ppms.excel.template.IExcelTemp;
 import ppms.exception.ExcelParserException;
 
+import com.excel.toObj.ExcelConfig;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 

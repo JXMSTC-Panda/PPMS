@@ -21,10 +21,12 @@ public interface IExcelTemp {
 	public IExcelTemp toSave(BaseDao dao); 
 	
 	/**
-	 * 当前对象转换成excel表的记录
+	 * 将excel对应类的实例集合生成excel的记录
+	 * @param objs excel对应类的实例集合
+	 * @param templateFilePath 导出模板的的存储路径
 	 * @return
 	 */
-	public IExcelTemp toExcel(File file);
+	public IExcelTemp toExcel(List<IExcelTemp> objs,String templateFilePath);
 	
 	/**
 	 * 

@@ -2,6 +2,7 @@ package ppms.excel.template;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -20,6 +21,11 @@ import ppms.exception.ExcelParserException;
 
 public class BaseExcelObject implements IExcelTemp {
 
+	protected HSSFWorkbook wb;
+	protected HSSFSheet sh;
+	protected POIFSFileSystem ts;
+	protected FileInputStream file;
+
 	@Override
 	public IExcelTemp toSave(BaseDao dao) {
 		// TODO Auto-generated method stub
@@ -27,58 +33,31 @@ public class BaseExcelObject implements IExcelTemp {
 	}
 
 	@Override
-	public IExcelTemp toExcel(File path) {
+	public IExcelTemp toExcel(List<IExcelTemp> objs, String templateFilePath) {
+
+		try {
+			FileInputStream fis = new FileInputStream(templateFilePath);
+			this.setFile(fis);
+			int i=0;
+			int j=0;
+			HSSFRow ro=null;
+			HSSFCell cell=null;
+			while((ro=sh.getRow(i)) != null){
+				j=0;
+				i++;
+				while((cell=ro.getCell(j)) != null){
+					j++;
+				}
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return this;
 	}
 
-	/**
-	 * 根据单元格中的数据类型获取数据
-	 * 
-	 * @param cell
-	 * @return
-	 */
-	private String changeCellToString(HSSFCell cell) {
-
-		String returnValue = "";
-		if (null != cell) {
-			switch (cell.getCellType()) {
-			case HSSFCell.CELL_TYPE_NUMERIC: // 数字
-				Double doubleValue = cell.getNumericCellValue();
-				String str = doubleValue.toString();
-				if (str.contains(".0")) {
-					str = str.replace(".0", "");
-				}
-				Integer intValue = Integer.parseInt(str);
-				returnValue = intValue.toString();
-				break;
-			case HSSFCell.CELL_TYPE_STRING: // 字符串
-
-				returnValue = cell.getStringCellValue();
-				break;
-			case HSSFCell.CELL_TYPE_BOOLEAN: // 布尔
-				Boolean booleanValue = cell.getBooleanCellValue();
-				returnValue = booleanValue.toString();
-				break;
-			case HSSFCell.CELL_TYPE_BLANK: // 空值
-				returnValue = "";
-				break;
-			case HSSFCell.CELL_TYPE_FORMULA: // 公式
-
-				returnValue = cell.getCellFormula();
-				break;
-			case HSSFCell.CELL_TYPE_ERROR: // 故障
-				returnValue = "";
-				break;
-			default:
-				System.out.println("未知类型");
-				break;
-			}
-		}
-		return returnValue;
-	}
-
-	
 	@Override
 	public List<IExcelTemp> toObjs(File myFile) throws ExcelParserException {
 
@@ -89,19 +68,15 @@ public class BaseExcelObject implements IExcelTemp {
 			// 模板对应excel对应类的实例集合
 			List<IExcelTemp> objs = null;
 
-			FileInputStream file = null;
-			POIFSFileSystem ts;
+			file = null;
 			try {
 
 				File name = myFile.getAbsoluteFile();
 				System.out.println(name.getName());
 				// 读取文件
 				file = new FileInputStream(myFile);
+				this.setFile(file);
 
-				// 获取指向该excel的POIFSFileSystem实例
-				ts = new POIFSFileSystem(file);
-				HSSFWorkbook wb = new HSSFWorkbook(ts);
-				HSSFSheet sh = wb.getSheetAt(0);
 				HSSFRow ro = null;
 
 				// 获取模板excel对应类的字节码
@@ -148,7 +123,7 @@ public class BaseExcelObject implements IExcelTemp {
 						// 成员变量类型为int时
 						case "int":
 							// 获取单元格中的数据，转为String
-							value = (String) (String) changeCellToString(cell);
+							value = (String)changeCellToString(cell);
 							// 转为Integer
 							value = (Integer) Integer.valueOf(value.toString());
 						default:
@@ -175,6 +150,70 @@ public class BaseExcelObject implements IExcelTemp {
 			}
 			return objs;
 		}
+
+	}
+
+	/**
+	 * 设置模板excel文件,给HSSFWorkbook赋值
+	 * @param templateFilePath
+	 */
+	private void setFile(FileInputStream file) {
 		
+		// 获取指向该excel的POIFSFileSystem实例
+		try {
+			ts = new POIFSFileSystem(file);
+			wb = new HSSFWorkbook(ts);
+			sh = wb.getSheetAt(0);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	/**
+	 * 根据单元格中的数据类型获取数据
+	 * 
+	 * @param cell
+	 * @return
+	 */
+	private String changeCellToString(HSSFCell cell) {
+
+		String returnValue = "";
+		if (null != cell) {
+			switch (cell.getCellType()) {
+			case HSSFCell.CELL_TYPE_NUMERIC: // 数字
+				Double doubleValue = cell.getNumericCellValue();
+				String str = doubleValue.toString();
+				if (str.contains(".0")) {
+					str = str.replace(".0", "");
+				}
+				Integer intValue = Integer.parseInt(str);
+				returnValue = intValue.toString();
+				break;
+			case HSSFCell.CELL_TYPE_STRING: // 字符串
+
+				returnValue = cell.getStringCellValue();
+				break;
+			case HSSFCell.CELL_TYPE_BOOLEAN: // 布尔
+				Boolean booleanValue = cell.getBooleanCellValue();
+				returnValue = booleanValue.toString();
+				break;
+			case HSSFCell.CELL_TYPE_BLANK: // 空值
+				returnValue = "";
+				break;
+			case HSSFCell.CELL_TYPE_FORMULA: // 公式
+
+				returnValue = cell.getCellFormula();
+				break;
+			case HSSFCell.CELL_TYPE_ERROR: // 故障
+				returnValue = "";
+				break;
+			default:
+				System.out.println("未知类型");
+				break;
+			}
+		}
+		return returnValue;
 	}
 }

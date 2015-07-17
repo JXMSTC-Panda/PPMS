@@ -14,5 +14,5 @@
             not-null="true" length="16" />  
         <property name="type" column="type" type="java.lang.String"  
             not-null="true" length="16" />  
-    </class>  
+    </class> 
 </hibernate-mapping>  
