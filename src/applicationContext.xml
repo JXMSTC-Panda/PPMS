@@ -17,13 +17,13 @@
             <value>oracle.jdbc.driver.OracleDriver</value>  
         </property>  
         <property name="jdbcUrl">  
-            <value>jdbc:oracle:thin:@192.168.50.76:1521:ppms</value>  
+            <value>jdbc:oracle:thin:@192.168.50.76:1521/panda</value>  
         </property>  
         <property name="user">  
-            <value>ppmsuser</value>  
+            <value>pandauser</value>  
         </property>  
         <property name="password">
-        	<value>panda123</value>  
+        	<value>panda</value>  
         </property>  
         <property name="maxPoolSize">  
             <value>80</value>  

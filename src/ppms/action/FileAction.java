@@ -19,7 +19,7 @@ public class FileAction extends ActionSupport {
 	private String myFileFileName;
 
 	private File myFile;
-
+	
 	public String getMyFileContentType() {
 		return myFileContentType;
 	}

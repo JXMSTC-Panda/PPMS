@@ -4,17 +4,10 @@ import ppms.excel.template.BaseExcelObject;
 
 public class StandardGrade extends BaseExcelObject{
 
-	private String id;
 	private String hallId;
 	private String hallName;
 	private int grade1;
 	private int grade2;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getHallId() {
 		return hallId;
 	}
@@ -41,7 +34,7 @@ public class StandardGrade extends BaseExcelObject{
 	}
 	@Override
 	public String toString() {
-		return "StandardGrade [id=" + id + ", hallId=" + hallId + ", hallName="
+		return "StandardGrade [hallId=" + hallId + ", hallName="
 				+ hallName + ", grade1=" + grade1 + ", grade2=" + grade2 + "]";
 	}
 }
