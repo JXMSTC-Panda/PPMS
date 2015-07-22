@@ -2,7 +2,9 @@ package ppms.excel;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -35,29 +37,130 @@ public class CommonExcelParser {
 	// pio文件流对象
 	private POIFSFileSystem ts;
 
-	public IExcelTemp toExcel(List<IExcelTemp> objs, String templateFilePath) {
+	/**
+	 * 将数据库 查询的数据生成excel文件流
+	 * @param excelRecords 数据对象集合
+	 * @param templateFilePath 模板excel文件路径
+	 * @return
+	 */
+	public OutputStream toExcel(List<IExcelTemp> excelRecords,
+			String templateFilePath) {
 
+		FileOutputStream fis1 = null;
+		FileInputStream fis = null;
 		try {
-			FileInputStream fis = new FileInputStream(templateFilePath);
-			this.setFile(fis);
-			int i = 0;
-			int j = 0;
-			HSSFRow ro = null;
-			HSSFCell cell = null;
-			while ((ro = sh.getRow(i)) != null) {
-				j = 0;
-				i++;
-				while ((cell = ro.getCell(j)) != null) {
-					j++;
-				}
-			}
 
+			//指向模板文件的文件对象
+			File file = new File(templateFilePath);
+			//判断模板文件是否存在，存在继续操作，不存在抛异常
+			if (file.exists()) {
+				
+				//获取模板的文件输出流
+				fis = new FileInputStream(templateFilePath);
+				//设置好excel文本对象
+				this.setFile(fis);
+				
+				HSSFRow ro = null;
+				HSSFCell cell = null;
+				
+				//获取模板excel数据写入的行
+				int i = 0;
+				while ((sh.getRow(i)) != null) {
+					i++;
+				}
+
+				//获取封装数据对象的字节码
+				Class<IExcelTemp> clazz = (Class<IExcelTemp>) excelRecords.get(
+						0).getClass();
+
+				//获取成员变量
+				Field[] fields = fields = clazz.getDeclaredFields();
+				Method method = null;
+				//遍历封装对象集合
+				for (int j = i; j < excelRecords.size() + i; j++) {
+					
+					//创建第j行
+					ro = sh.createRow(j);
+					//获取封装对象集合里的第一个对象实例
+					IExcelTemp it = excelRecords.get(j - i);
+					int cursor = 0;
+					
+					//d迭代封装数据类的成员变量，成员变量值和单元格一一对应
+					for (Field field : fields) {
+
+						//获取成员变量名
+						String fieldName = field.getName();
+						//将首字母转大写
+						fieldName = fieldName.replace(
+								fieldName.substring(0, 1),
+								fieldName.substring(0, 1).toUpperCase());
+						//获取成员变量对应的get方法
+						method = clazz.getMethod("get" + fieldName);
+						//动态调用封装对象的方法
+						Object value = method.invoke(it);
+						//获取成员变量的类型名称
+						String type_name = field.getType().getName();
+						//如果当前为j行的第0个单元格
+						if (cursor == 0) {
+							//创建单元格
+							cell = ro.createCell(cursor);
+							//设置单元格的值，这个值为数据行的第几行
+							cell.setCellType(cursor + i);
+							cursor++;
+						}
+						//创建单元格
+						cell = ro.createCell(cursor);
+						//根据成员变量的类型进行类型转换，并调用对应的cell的重载方法
+						switch (type_name) {
+						case "int":
+							cell.setCellValue((int) value);
+							break;
+						case "java.lang.String":
+							cell.setCellValue((String) value);
+							break;
+						case "duoble":
+
+							break;
+						case "Java.util.Date":
+
+							// 将java.sql的日期转为Java.util的日期
+							cell.setCellValue((Date) value);
+							break;
+						default:
+							System.out.println("无效类型");
+							break;
+						}
+						cursor++;
+					}
+				}
+				
+				//写入文件
+				File file2 = new File("D:/test.xls");
+				fis1 = new FileOutputStream(file);
+				wb.write(fis1);
+			} else {
+				new ExcelParserException("下载的模板已不存在");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {//关闭流
+			try {
+				fis.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				fis = null;
+			}
+			try {
+				fis1.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				fis1 = null;
+			}
 		}
-
-		return (IExcelTemp) this;
+		return null;
 	}
 
 	/**
@@ -73,7 +176,6 @@ public class CommonExcelParser {
 	public List<IExcelTemp> toObjs(File myFile, String myFileFileName)
 			throws ExcelParserException {
 
-		int t=0;
 		List<IExcelTemp> objs = null;
 		FileInputStream file = null;
 		if (myFile == null) {
@@ -314,5 +416,4 @@ public class CommonExcelParser {
 		}
 		return returnValue;
 	}
-
 }

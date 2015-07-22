@@ -19,7 +19,7 @@ public class FileAction extends ActionSupport {
 	private String myFileFileName;
 
 	private File myFile;
-
+	
 	public String getMyFileContentType() {
 		return myFileContentType;
 	}
@@ -54,10 +54,6 @@ public class FileAction extends ActionSupport {
 				throw new ExcelParserException("文件导入失败，文件名" + myFileFileName
 						+ "不符合，请导入.xls格式文件");
 			} else {
-//				String clazzName = ExcelConfig.getObjectFromConfig(myFileFileName);
-//				IExcelTemp forName = (IExcelTemp) Class.forName(clazzName)
-//						.newInstance();
-//				forName.toObjs(myFile);
 				List<IExcelTemp> objs = new CommonExcelParser().toObjs(myFile,myFileFileName);
 				
 				for (IExcelTemp iExcelTemp : objs) {

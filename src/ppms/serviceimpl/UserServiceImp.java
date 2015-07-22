@@ -1,52 +1,32 @@
 package ppms.serviceimpl;
 
-import org.springframework.beans.BeanUtils;
+import java.util.List;
 
-import ppms.dao.BaseDao;
-import ppms.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ppms.domain.TbRoleDAO;
 import ppms.forms.UserForm;
 import ppms.service.UserService;
-
 public class UserServiceImp implements UserService {
 
-	private BaseDao dao;
-	//提供set方法，spring注入实例化service对象（applicationContext.xml配置体现即可）
+	@Autowired
+	public TbRoleDAO dao;
 
-	public void setDao(BaseDao dao){
-		this.dao=dao;
+	public void test(){
+		List findAll = dao.findAll();
+		
+		int i=0;
 	}
 
 	@Override
 	public boolean isExit(UserForm user) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean insert_register(UserForm userForm) {
-
-//		session = HibernateSessionFactory.currentSession();
-//		dao.setSession(session);
-//		// 鑾峰彇浜嬪姟
-//		Transaction ts = session.beginTransaction();
-//		// 鏋勯�User瀵硅薄
-//		User user = new User();
-//		user.setUserId("123");
-//		user.setUserName(userForm.getUsername());
-//		user.setPassword(userForm.getPwd());
-//		user.setType(userForm.getType());
-//		// 淇濆瓨User瀵硅薄
-//		dao.saveObject(user);
-//		// 鎻愪氦浜嬪姟
-//		ts.commit();
-//		// 鍏抽棴Session
-//		HibernateSessionFactory.closeSession();
-		
-	    User user = new User();  
-	    BeanUtils.copyProperties(userForm, user); 
-	    user.setUserId("1323");
-
-	    dao.saveObject(user);  
-		return true;
+	public boolean insert_register(UserForm user) {
+		// TODO Auto-generated method stub
+		return false;
 	}
-
 }
