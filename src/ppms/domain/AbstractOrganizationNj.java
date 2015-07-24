@@ -14,7 +14,11 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 
 	// Fields
 
+<<<<<<< HEAD
 	private Integer orgid;
+=======
+	private Integer orgId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	private String orgName;
 	private String address;
 	private Date expireTime;
@@ -26,6 +30,7 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 	private Byte type;
 	private Integer regionId;
 	private String channelType;
+<<<<<<< HEAD
 	private Set tbChangeorghistoriesForOutorgid = new HashSet(0);
 	private Set tbChangeorghistoriesForInorgid = new HashSet(0);
 	private Set tbBecomeemployeeexams = new HashSet(0);
@@ -49,6 +54,31 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 	private Set tbEmployeepraisecriticisms = new HashSet(0);
 	private Set tbInnovationsForEmployeeorgid = new HashSet(0);
 	private Set tbPromotiontrainings = new HashSet(0);
+=======
+	private Set tbMonthPerformanceOpens = new HashSet(0);
+	private Set tbBecomeEmployeeExams = new HashSet(0);
+	private Set tbSubAreaOrgRelations = new HashSet(0);
+	private Set tbStandardChecks = new HashSet(0);
+	private Set tbChangeOrgHistoriesForOutOrgId = new HashSet(0);
+	private Set tbInnovationsForEmployeeOrgId = new HashSet(0);
+	private Set tbOperationChecks = new HashSet(0);
+	private Set tbEmployeePraiseCriticisms = new HashSet(0);
+	private Set tbOperationTrainings = new HashSet(0);
+	private Set tbAreaOrgRelations = new HashSet(0);
+	private Set tbMonthExams = new HashSet(0);
+	private Set tbFreshEmployeeExams = new HashSet(0);
+	private Set tbMonitorChecks = new HashSet(0);
+	private Set tbMountGuardExams = new HashSet(0);
+	private Set tbPerformances = new HashSet(0);
+	private Set tbVisitChecks = new HashSet(0);
+	private Set tbOrgPraiseCriticisms = new HashSet(0);
+	private Set tbChangeOrgHistoriesForInOrgId = new HashSet(0);
+	private Set tbInnovationsForOrgId = new HashSet(0);
+	private Set COrganizationNjs = new HashSet(0);
+	private Set CUserInfos = new HashSet(0);
+	private Set tbEmployees = new HashSet(0);
+	private Set tbPromotionTrainings = new HashSet(0);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	private Set operatorNjs = new HashSet(0);
 
 	// Constructors
@@ -58,6 +88,7 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
+<<<<<<< HEAD
 	public AbstractOrganizationNj(Integer orgid) {
 		this.orgid = orgid;
 	}
@@ -79,6 +110,29 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 			Set tbEmployeepraisecriticisms, Set tbInnovationsForEmployeeorgid,
 			Set tbPromotiontrainings, Set operatorNjs) {
 		this.orgid = orgid;
+=======
+	public AbstractOrganizationNj(Integer orgId) {
+		this.orgId = orgId;
+	}
+
+	/** full constructor */
+	public AbstractOrganizationNj(Integer orgId, String orgName,
+			String address, Date expireTime, Integer superiorId,
+			Boolean status, String contactName, String contactTel,
+			BigDecimal userCounty, Byte type, Integer regionId,
+			String channelType, Set tbMonthPerformanceOpens,
+			Set tbBecomeEmployeeExams, Set tbSubAreaOrgRelations,
+			Set tbStandardChecks, Set tbChangeOrgHistoriesForOutOrgId,
+			Set tbInnovationsForEmployeeOrgId, Set tbOperationChecks,
+			Set tbEmployeePraiseCriticisms, Set tbOperationTrainings,
+			Set tbAreaOrgRelations, Set tbMonthExams, Set tbFreshEmployeeExams,
+			Set tbMonitorChecks, Set tbMountGuardExams, Set tbPerformances,
+			Set tbVisitChecks, Set tbOrgPraiseCriticisms,
+			Set tbChangeOrgHistoriesForInOrgId, Set tbInnovationsForOrgId,
+			Set COrganizationNjs, Set CUserInfos, Set tbEmployees,
+			Set tbPromotionTrainings, Set operatorNjs) {
+		this.orgId = orgId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		this.orgName = orgName;
 		this.address = address;
 		this.expireTime = expireTime;
@@ -90,6 +144,7 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 		this.type = type;
 		this.regionId = regionId;
 		this.channelType = channelType;
+<<<<<<< HEAD
 		this.tbChangeorghistoriesForOutorgid = tbChangeorghistoriesForOutorgid;
 		this.tbChangeorghistoriesForInorgid = tbChangeorghistoriesForInorgid;
 		this.tbBecomeemployeeexams = tbBecomeemployeeexams;
@@ -113,17 +168,51 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 		this.tbEmployeepraisecriticisms = tbEmployeepraisecriticisms;
 		this.tbInnovationsForEmployeeorgid = tbInnovationsForEmployeeorgid;
 		this.tbPromotiontrainings = tbPromotiontrainings;
+=======
+		this.tbMonthPerformanceOpens = tbMonthPerformanceOpens;
+		this.tbBecomeEmployeeExams = tbBecomeEmployeeExams;
+		this.tbSubAreaOrgRelations = tbSubAreaOrgRelations;
+		this.tbStandardChecks = tbStandardChecks;
+		this.tbChangeOrgHistoriesForOutOrgId = tbChangeOrgHistoriesForOutOrgId;
+		this.tbInnovationsForEmployeeOrgId = tbInnovationsForEmployeeOrgId;
+		this.tbOperationChecks = tbOperationChecks;
+		this.tbEmployeePraiseCriticisms = tbEmployeePraiseCriticisms;
+		this.tbOperationTrainings = tbOperationTrainings;
+		this.tbAreaOrgRelations = tbAreaOrgRelations;
+		this.tbMonthExams = tbMonthExams;
+		this.tbFreshEmployeeExams = tbFreshEmployeeExams;
+		this.tbMonitorChecks = tbMonitorChecks;
+		this.tbMountGuardExams = tbMountGuardExams;
+		this.tbPerformances = tbPerformances;
+		this.tbVisitChecks = tbVisitChecks;
+		this.tbOrgPraiseCriticisms = tbOrgPraiseCriticisms;
+		this.tbChangeOrgHistoriesForInOrgId = tbChangeOrgHistoriesForInOrgId;
+		this.tbInnovationsForOrgId = tbInnovationsForOrgId;
+		this.COrganizationNjs = COrganizationNjs;
+		this.CUserInfos = CUserInfos;
+		this.tbEmployees = tbEmployees;
+		this.tbPromotionTrainings = tbPromotionTrainings;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		this.operatorNjs = operatorNjs;
 	}
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public Integer getOrgid() {
 		return this.orgid;
 	}
 
 	public void setOrgid(Integer orgid) {
 		this.orgid = orgid;
+=======
+	public Integer getOrgId() {
+		return this.orgId;
+	}
+
+	public void setOrgId(Integer orgId) {
+		this.orgId = orgId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public String getOrgName() {
@@ -214,6 +303,7 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 		this.channelType = channelType;
 	}
 
+<<<<<<< HEAD
 	public Set getTbChangeorghistoriesForOutorgid() {
 		return this.tbChangeorghistoriesForOutorgid;
 	}
@@ -310,6 +400,120 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 
 	public void setTbMountguardexams(Set tbMountguardexams) {
 		this.tbMountguardexams = tbMountguardexams;
+=======
+	public Set getTbMonthPerformanceOpens() {
+		return this.tbMonthPerformanceOpens;
+	}
+
+	public void setTbMonthPerformanceOpens(Set tbMonthPerformanceOpens) {
+		this.tbMonthPerformanceOpens = tbMonthPerformanceOpens;
+	}
+
+	public Set getTbBecomeEmployeeExams() {
+		return this.tbBecomeEmployeeExams;
+	}
+
+	public void setTbBecomeEmployeeExams(Set tbBecomeEmployeeExams) {
+		this.tbBecomeEmployeeExams = tbBecomeEmployeeExams;
+	}
+
+	public Set getTbSubAreaOrgRelations() {
+		return this.tbSubAreaOrgRelations;
+	}
+
+	public void setTbSubAreaOrgRelations(Set tbSubAreaOrgRelations) {
+		this.tbSubAreaOrgRelations = tbSubAreaOrgRelations;
+	}
+
+	public Set getTbStandardChecks() {
+		return this.tbStandardChecks;
+	}
+
+	public void setTbStandardChecks(Set tbStandardChecks) {
+		this.tbStandardChecks = tbStandardChecks;
+	}
+
+	public Set getTbChangeOrgHistoriesForOutOrgId() {
+		return this.tbChangeOrgHistoriesForOutOrgId;
+	}
+
+	public void setTbChangeOrgHistoriesForOutOrgId(
+			Set tbChangeOrgHistoriesForOutOrgId) {
+		this.tbChangeOrgHistoriesForOutOrgId = tbChangeOrgHistoriesForOutOrgId;
+	}
+
+	public Set getTbInnovationsForEmployeeOrgId() {
+		return this.tbInnovationsForEmployeeOrgId;
+	}
+
+	public void setTbInnovationsForEmployeeOrgId(
+			Set tbInnovationsForEmployeeOrgId) {
+		this.tbInnovationsForEmployeeOrgId = tbInnovationsForEmployeeOrgId;
+	}
+
+	public Set getTbOperationChecks() {
+		return this.tbOperationChecks;
+	}
+
+	public void setTbOperationChecks(Set tbOperationChecks) {
+		this.tbOperationChecks = tbOperationChecks;
+	}
+
+	public Set getTbEmployeePraiseCriticisms() {
+		return this.tbEmployeePraiseCriticisms;
+	}
+
+	public void setTbEmployeePraiseCriticisms(Set tbEmployeePraiseCriticisms) {
+		this.tbEmployeePraiseCriticisms = tbEmployeePraiseCriticisms;
+	}
+
+	public Set getTbOperationTrainings() {
+		return this.tbOperationTrainings;
+	}
+
+	public void setTbOperationTrainings(Set tbOperationTrainings) {
+		this.tbOperationTrainings = tbOperationTrainings;
+	}
+
+	public Set getTbAreaOrgRelations() {
+		return this.tbAreaOrgRelations;
+	}
+
+	public void setTbAreaOrgRelations(Set tbAreaOrgRelations) {
+		this.tbAreaOrgRelations = tbAreaOrgRelations;
+	}
+
+	public Set getTbMonthExams() {
+		return this.tbMonthExams;
+	}
+
+	public void setTbMonthExams(Set tbMonthExams) {
+		this.tbMonthExams = tbMonthExams;
+	}
+
+	public Set getTbFreshEmployeeExams() {
+		return this.tbFreshEmployeeExams;
+	}
+
+	public void setTbFreshEmployeeExams(Set tbFreshEmployeeExams) {
+		this.tbFreshEmployeeExams = tbFreshEmployeeExams;
+	}
+
+	public Set getTbMonitorChecks() {
+		return this.tbMonitorChecks;
+	}
+
+	public void setTbMonitorChecks(Set tbMonitorChecks) {
+		this.tbMonitorChecks = tbMonitorChecks;
+	}
+
+	public Set getTbMountGuardExams() {
+		return this.tbMountGuardExams;
+	}
+
+	public void setTbMountGuardExams(Set tbMountGuardExams) {
+		this.tbMountGuardExams = tbMountGuardExams;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Set getTbPerformances() {
@@ -320,6 +524,7 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 		this.tbPerformances = tbPerformances;
 	}
 
+<<<<<<< HEAD
 	public Set getTbVisitchecks() {
 		return this.tbVisitchecks;
 	}
@@ -350,6 +555,39 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 
 	public void setTbMonthperformanceopens(Set tbMonthperformanceopens) {
 		this.tbMonthperformanceopens = tbMonthperformanceopens;
+=======
+	public Set getTbVisitChecks() {
+		return this.tbVisitChecks;
+	}
+
+	public void setTbVisitChecks(Set tbVisitChecks) {
+		this.tbVisitChecks = tbVisitChecks;
+	}
+
+	public Set getTbOrgPraiseCriticisms() {
+		return this.tbOrgPraiseCriticisms;
+	}
+
+	public void setTbOrgPraiseCriticisms(Set tbOrgPraiseCriticisms) {
+		this.tbOrgPraiseCriticisms = tbOrgPraiseCriticisms;
+	}
+
+	public Set getTbChangeOrgHistoriesForInOrgId() {
+		return this.tbChangeOrgHistoriesForInOrgId;
+	}
+
+	public void setTbChangeOrgHistoriesForInOrgId(
+			Set tbChangeOrgHistoriesForInOrgId) {
+		this.tbChangeOrgHistoriesForInOrgId = tbChangeOrgHistoriesForInOrgId;
+	}
+
+	public Set getTbInnovationsForOrgId() {
+		return this.tbInnovationsForOrgId;
+	}
+
+	public void setTbInnovationsForOrgId(Set tbInnovationsForOrgId) {
+		this.tbInnovationsForOrgId = tbInnovationsForOrgId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Set getCOrganizationNjs() {
@@ -360,6 +598,7 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 		this.COrganizationNjs = COrganizationNjs;
 	}
 
+<<<<<<< HEAD
 	public Set getTbEmployees() {
 		return this.tbEmployees;
 	}
@@ -368,6 +607,8 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 		this.tbEmployees = tbEmployees;
 	}
 
+=======
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	public Set getCUserInfos() {
 		return this.CUserInfos;
 	}
@@ -376,6 +617,7 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 		this.CUserInfos = CUserInfos;
 	}
 
+<<<<<<< HEAD
 	public Set getTbEmployeepraisecriticisms() {
 		return this.tbEmployeepraisecriticisms;
 	}
@@ -399,6 +641,22 @@ public abstract class AbstractOrganizationNj implements java.io.Serializable {
 
 	public void setTbPromotiontrainings(Set tbPromotiontrainings) {
 		this.tbPromotiontrainings = tbPromotiontrainings;
+=======
+	public Set getTbEmployees() {
+		return this.tbEmployees;
+	}
+
+	public void setTbEmployees(Set tbEmployees) {
+		this.tbEmployees = tbEmployees;
+	}
+
+	public Set getTbPromotionTrainings() {
+		return this.tbPromotionTrainings;
+	}
+
+	public void setTbPromotionTrainings(Set tbPromotionTrainings) {
+		this.tbPromotionTrainings = tbPromotionTrainings;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Set getOperatorNjs() {

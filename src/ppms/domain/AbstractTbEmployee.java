@@ -13,11 +13,16 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 
 	// Fields
 
+<<<<<<< HEAD
 	private String employeeid;
+=======
+	private String employeeId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	private OrganizationNj organizationNj;
 	private TbJob tbJob;
 	private TbRole tbRole;
 	private TbPost tbPost;
+<<<<<<< HEAD
 	private String employeename;
 	private String employeecode;
 	private String idnumber;
@@ -69,6 +74,59 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 	private Set tbInnovations = new HashSet(0);
 	private Set tbOperationtrainings = new HashSet(0);
 	private Set tbPromotiontrainings = new HashSet(0);
+=======
+	private String employeeName;
+	private String employeeCode;
+	private String idNumber;
+	private String idPassword;
+	private String orgType;
+	private Boolean sex;
+	private Date birthday;
+	private String bankName;
+	private String bankNumber;
+	private Boolean status;
+	private String academicDegree;
+	private String addressArea;
+	private String address;
+	private String mobileNumber;
+	private String shortMobileNumber;
+	private String schoolName;
+	private String specialization;
+	private String tel;
+	private Date enterTime;
+	private Boolean frontBackFlag;
+	private String backJobComment;
+	private Boolean telecomLevel;
+	private Boolean mobileLevel;
+	private String employeeType;
+	private String qualification;
+	private Date jobStartDate;
+	private Date operatorPassDate;
+	private Short operatorExpire;
+	private Boolean operatorValidFlag;
+	private Date auditPassDate;
+	private Short auditExpire;
+	private Boolean auditValidFlag;
+	private String remark;
+	private Date lastLoginTime;
+	private String createdBy;
+	private Date createdTime;
+	private String modifiedBy;
+	private Date modifiedTime;
+	private Set tbOperationTrainings = new HashSet(0);
+	private Set tbBecomeEmployeeExams = new HashSet(0);
+	private Set tbFreshEmployeeExams = new HashSet(0);
+	private Set tbOperationChecks = new HashSet(0);
+	private Set tbPerformances = new HashSet(0);
+	private Set tbChangeJobHistories = new HashSet(0);
+	private Set tbPoints = new HashSet(0);
+	private Set tbEmployeePraiseCriticisms = new HashSet(0);
+	private Set tbMountGuardExams = new HashSet(0);
+	private Set tbMonthExams = new HashSet(0);
+	private Set tbChangeOrgHistories = new HashSet(0);
+	private Set tbInnovations = new HashSet(0);
+	private Set tbPromotionTrainings = new HashSet(0);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	// Constructors
 
@@ -77,6 +135,7 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
+<<<<<<< HEAD
 	public AbstractTbEmployee(String employeeid) {
 		this.employeeid = employeeid;
 	}
@@ -103,10 +162,40 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 			Set tbMountguardexams, Set tbMonthexams, Set tbInnovations,
 			Set tbOperationtrainings, Set tbPromotiontrainings) {
 		this.employeeid = employeeid;
+=======
+	public AbstractTbEmployee(String employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	/** full constructor */
+	public AbstractTbEmployee(String employeeId, OrganizationNj organizationNj,
+			TbJob tbJob, TbRole tbRole, TbPost tbPost, String employeeName,
+			String employeeCode, String idNumber, String idPassword,
+			String orgType, Boolean sex, Date birthday, String bankName,
+			String bankNumber, Boolean status, String academicDegree,
+			String addressArea, String address, String mobileNumber,
+			String shortMobileNumber, String schoolName, String specialization,
+			String tel, Date enterTime, Boolean frontBackFlag,
+			String backJobComment, Boolean telecomLevel, Boolean mobileLevel,
+			String employeeType, String qualification, Date jobStartDate,
+			Date operatorPassDate, Short operatorExpire,
+			Boolean operatorValidFlag, Date auditPassDate, Short auditExpire,
+			Boolean auditValidFlag, String remark, Date lastLoginTime,
+			String createdBy, Date createdTime, String modifiedBy,
+			Date modifiedTime, Set tbOperationTrainings,
+			Set tbBecomeEmployeeExams, Set tbFreshEmployeeExams,
+			Set tbOperationChecks, Set tbPerformances,
+			Set tbChangeJobHistories, Set tbPoints,
+			Set tbEmployeePraiseCriticisms, Set tbMountGuardExams,
+			Set tbMonthExams, Set tbChangeOrgHistories, Set tbInnovations,
+			Set tbPromotionTrainings) {
+		this.employeeId = employeeId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		this.organizationNj = organizationNj;
 		this.tbJob = tbJob;
 		this.tbRole = tbRole;
 		this.tbPost = tbPost;
+<<<<<<< HEAD
 		this.employeename = employeename;
 		this.employeecode = employeecode;
 		this.idnumber = idnumber;
@@ -158,16 +247,78 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 		this.tbInnovations = tbInnovations;
 		this.tbOperationtrainings = tbOperationtrainings;
 		this.tbPromotiontrainings = tbPromotiontrainings;
+=======
+		this.employeeName = employeeName;
+		this.employeeCode = employeeCode;
+		this.idNumber = idNumber;
+		this.idPassword = idPassword;
+		this.orgType = orgType;
+		this.sex = sex;
+		this.birthday = birthday;
+		this.bankName = bankName;
+		this.bankNumber = bankNumber;
+		this.status = status;
+		this.academicDegree = academicDegree;
+		this.addressArea = addressArea;
+		this.address = address;
+		this.mobileNumber = mobileNumber;
+		this.shortMobileNumber = shortMobileNumber;
+		this.schoolName = schoolName;
+		this.specialization = specialization;
+		this.tel = tel;
+		this.enterTime = enterTime;
+		this.frontBackFlag = frontBackFlag;
+		this.backJobComment = backJobComment;
+		this.telecomLevel = telecomLevel;
+		this.mobileLevel = mobileLevel;
+		this.employeeType = employeeType;
+		this.qualification = qualification;
+		this.jobStartDate = jobStartDate;
+		this.operatorPassDate = operatorPassDate;
+		this.operatorExpire = operatorExpire;
+		this.operatorValidFlag = operatorValidFlag;
+		this.auditPassDate = auditPassDate;
+		this.auditExpire = auditExpire;
+		this.auditValidFlag = auditValidFlag;
+		this.remark = remark;
+		this.lastLoginTime = lastLoginTime;
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+		this.modifiedBy = modifiedBy;
+		this.modifiedTime = modifiedTime;
+		this.tbOperationTrainings = tbOperationTrainings;
+		this.tbBecomeEmployeeExams = tbBecomeEmployeeExams;
+		this.tbFreshEmployeeExams = tbFreshEmployeeExams;
+		this.tbOperationChecks = tbOperationChecks;
+		this.tbPerformances = tbPerformances;
+		this.tbChangeJobHistories = tbChangeJobHistories;
+		this.tbPoints = tbPoints;
+		this.tbEmployeePraiseCriticisms = tbEmployeePraiseCriticisms;
+		this.tbMountGuardExams = tbMountGuardExams;
+		this.tbMonthExams = tbMonthExams;
+		this.tbChangeOrgHistories = tbChangeOrgHistories;
+		this.tbInnovations = tbInnovations;
+		this.tbPromotionTrainings = tbPromotionTrainings;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public String getEmployeeid() {
 		return this.employeeid;
 	}
 
 	public void setEmployeeid(String employeeid) {
 		this.employeeid = employeeid;
+=======
+	public String getEmployeeId() {
+		return this.employeeId;
+	}
+
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public OrganizationNj getOrganizationNj() {
@@ -202,6 +353,7 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 		this.tbPost = tbPost;
 	}
 
+<<<<<<< HEAD
 	public String getEmployeename() {
 		return this.employeename;
 	}
@@ -240,6 +392,46 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 
 	public void setOrgtype(String orgtype) {
 		this.orgtype = orgtype;
+=======
+	public String getEmployeeName() {
+		return this.employeeName;
+	}
+
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+
+	public String getEmployeeCode() {
+		return this.employeeCode;
+	}
+
+	public void setEmployeeCode(String employeeCode) {
+		this.employeeCode = employeeCode;
+	}
+
+	public String getIdNumber() {
+		return this.idNumber;
+	}
+
+	public void setIdNumber(String idNumber) {
+		this.idNumber = idNumber;
+	}
+
+	public String getIdPassword() {
+		return this.idPassword;
+	}
+
+	public void setIdPassword(String idPassword) {
+		this.idPassword = idPassword;
+	}
+
+	public String getOrgType() {
+		return this.orgType;
+	}
+
+	public void setOrgType(String orgType) {
+		this.orgType = orgType;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Boolean getSex() {
@@ -258,6 +450,7 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 		this.birthday = birthday;
 	}
 
+<<<<<<< HEAD
 	public String getBankname() {
 		return this.bankname;
 	}
@@ -272,6 +465,22 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 
 	public void setBanknumber(String banknumber) {
 		this.banknumber = banknumber;
+=======
+	public String getBankName() {
+		return this.bankName;
+	}
+
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+
+	public String getBankNumber() {
+		return this.bankNumber;
+	}
+
+	public void setBankNumber(String bankNumber) {
+		this.bankNumber = bankNumber;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Boolean getStatus() {
@@ -282,6 +491,7 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 		this.status = status;
 	}
 
+<<<<<<< HEAD
 	public String getAcademicdegree() {
 		return this.academicdegree;
 	}
@@ -296,6 +506,22 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 
 	public void setAddressarea(String addressarea) {
 		this.addressarea = addressarea;
+=======
+	public String getAcademicDegree() {
+		return this.academicDegree;
+	}
+
+	public void setAcademicDegree(String academicDegree) {
+		this.academicDegree = academicDegree;
+	}
+
+	public String getAddressArea() {
+		return this.addressArea;
+	}
+
+	public void setAddressArea(String addressArea) {
+		this.addressArea = addressArea;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public String getAddress() {
@@ -306,6 +532,7 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 		this.address = address;
 	}
 
+<<<<<<< HEAD
 	public String getMobilenumber() {
 		return this.mobilenumber;
 	}
@@ -328,6 +555,30 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 
 	public void setSchoolname(String schoolname) {
 		this.schoolname = schoolname;
+=======
+	public String getMobileNumber() {
+		return this.mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+	public String getShortMobileNumber() {
+		return this.shortMobileNumber;
+	}
+
+	public void setShortMobileNumber(String shortMobileNumber) {
+		this.shortMobileNumber = shortMobileNumber;
+	}
+
+	public String getSchoolName() {
+		return this.schoolName;
+	}
+
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public String getSpecialization() {
@@ -346,6 +597,7 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 		this.tel = tel;
 	}
 
+<<<<<<< HEAD
 	public Date getEntertime() {
 		return this.entertime;
 	}
@@ -392,6 +644,54 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 
 	public void setEmployeetype(String employeetype) {
 		this.employeetype = employeetype;
+=======
+	public Date getEnterTime() {
+		return this.enterTime;
+	}
+
+	public void setEnterTime(Date enterTime) {
+		this.enterTime = enterTime;
+	}
+
+	public Boolean getFrontBackFlag() {
+		return this.frontBackFlag;
+	}
+
+	public void setFrontBackFlag(Boolean frontBackFlag) {
+		this.frontBackFlag = frontBackFlag;
+	}
+
+	public String getBackJobComment() {
+		return this.backJobComment;
+	}
+
+	public void setBackJobComment(String backJobComment) {
+		this.backJobComment = backJobComment;
+	}
+
+	public Boolean getTelecomLevel() {
+		return this.telecomLevel;
+	}
+
+	public void setTelecomLevel(Boolean telecomLevel) {
+		this.telecomLevel = telecomLevel;
+	}
+
+	public Boolean getMobileLevel() {
+		return this.mobileLevel;
+	}
+
+	public void setMobileLevel(Boolean mobileLevel) {
+		this.mobileLevel = mobileLevel;
+	}
+
+	public String getEmployeeType() {
+		return this.employeeType;
+	}
+
+	public void setEmployeeType(String employeeType) {
+		this.employeeType = employeeType;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public String getQualification() {
@@ -402,6 +702,7 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 		this.qualification = qualification;
 	}
 
+<<<<<<< HEAD
 	public Date getJobstartdate() {
 		return this.jobstartdate;
 	}
@@ -456,6 +757,62 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 
 	public void setAuditvalidflag(Boolean auditvalidflag) {
 		this.auditvalidflag = auditvalidflag;
+=======
+	public Date getJobStartDate() {
+		return this.jobStartDate;
+	}
+
+	public void setJobStartDate(Date jobStartDate) {
+		this.jobStartDate = jobStartDate;
+	}
+
+	public Date getOperatorPassDate() {
+		return this.operatorPassDate;
+	}
+
+	public void setOperatorPassDate(Date operatorPassDate) {
+		this.operatorPassDate = operatorPassDate;
+	}
+
+	public Short getOperatorExpire() {
+		return this.operatorExpire;
+	}
+
+	public void setOperatorExpire(Short operatorExpire) {
+		this.operatorExpire = operatorExpire;
+	}
+
+	public Boolean getOperatorValidFlag() {
+		return this.operatorValidFlag;
+	}
+
+	public void setOperatorValidFlag(Boolean operatorValidFlag) {
+		this.operatorValidFlag = operatorValidFlag;
+	}
+
+	public Date getAuditPassDate() {
+		return this.auditPassDate;
+	}
+
+	public void setAuditPassDate(Date auditPassDate) {
+		this.auditPassDate = auditPassDate;
+	}
+
+	public Short getAuditExpire() {
+		return this.auditExpire;
+	}
+
+	public void setAuditExpire(Short auditExpire) {
+		this.auditExpire = auditExpire;
+	}
+
+	public Boolean getAuditValidFlag() {
+		return this.auditValidFlag;
+	}
+
+	public void setAuditValidFlag(Boolean auditValidFlag) {
+		this.auditValidFlag = auditValidFlag;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public String getRemark() {
@@ -466,6 +823,7 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 		this.remark = remark;
 	}
 
+<<<<<<< HEAD
 	public Date getLastlogintime() {
 		return this.lastlogintime;
 	}
@@ -536,6 +894,78 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 
 	public void setTbFreshemployeeexams(Set tbFreshemployeeexams) {
 		this.tbFreshemployeeexams = tbFreshemployeeexams;
+=======
+	public Date getLastLoginTime() {
+		return this.lastLoginTime;
+	}
+
+	public void setLastLoginTime(Date lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
+
+	public String getCreatedBy() {
+		return this.createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public String getModifiedBy() {
+		return this.modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public Date getModifiedTime() {
+		return this.modifiedTime;
+	}
+
+	public void setModifiedTime(Date modifiedTime) {
+		this.modifiedTime = modifiedTime;
+	}
+
+	public Set getTbOperationTrainings() {
+		return this.tbOperationTrainings;
+	}
+
+	public void setTbOperationTrainings(Set tbOperationTrainings) {
+		this.tbOperationTrainings = tbOperationTrainings;
+	}
+
+	public Set getTbBecomeEmployeeExams() {
+		return this.tbBecomeEmployeeExams;
+	}
+
+	public void setTbBecomeEmployeeExams(Set tbBecomeEmployeeExams) {
+		this.tbBecomeEmployeeExams = tbBecomeEmployeeExams;
+	}
+
+	public Set getTbFreshEmployeeExams() {
+		return this.tbFreshEmployeeExams;
+	}
+
+	public void setTbFreshEmployeeExams(Set tbFreshEmployeeExams) {
+		this.tbFreshEmployeeExams = tbFreshEmployeeExams;
+	}
+
+	public Set getTbOperationChecks() {
+		return this.tbOperationChecks;
+	}
+
+	public void setTbOperationChecks(Set tbOperationChecks) {
+		this.tbOperationChecks = tbOperationChecks;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Set getTbPerformances() {
@@ -546,6 +976,17 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 		this.tbPerformances = tbPerformances;
 	}
 
+<<<<<<< HEAD
+=======
+	public Set getTbChangeJobHistories() {
+		return this.tbChangeJobHistories;
+	}
+
+	public void setTbChangeJobHistories(Set tbChangeJobHistories) {
+		this.tbChangeJobHistories = tbChangeJobHistories;
+	}
+
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	public Set getTbPoints() {
 		return this.tbPoints;
 	}
@@ -554,6 +995,7 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 		this.tbPoints = tbPoints;
 	}
 
+<<<<<<< HEAD
 	public Set getTbChangeorghistories() {
 		return this.tbChangeorghistories;
 	}
@@ -584,6 +1026,38 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 
 	public void setTbMonthexams(Set tbMonthexams) {
 		this.tbMonthexams = tbMonthexams;
+=======
+	public Set getTbEmployeePraiseCriticisms() {
+		return this.tbEmployeePraiseCriticisms;
+	}
+
+	public void setTbEmployeePraiseCriticisms(Set tbEmployeePraiseCriticisms) {
+		this.tbEmployeePraiseCriticisms = tbEmployeePraiseCriticisms;
+	}
+
+	public Set getTbMountGuardExams() {
+		return this.tbMountGuardExams;
+	}
+
+	public void setTbMountGuardExams(Set tbMountGuardExams) {
+		this.tbMountGuardExams = tbMountGuardExams;
+	}
+
+	public Set getTbMonthExams() {
+		return this.tbMonthExams;
+	}
+
+	public void setTbMonthExams(Set tbMonthExams) {
+		this.tbMonthExams = tbMonthExams;
+	}
+
+	public Set getTbChangeOrgHistories() {
+		return this.tbChangeOrgHistories;
+	}
+
+	public void setTbChangeOrgHistories(Set tbChangeOrgHistories) {
+		this.tbChangeOrgHistories = tbChangeOrgHistories;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Set getTbInnovations() {
@@ -594,6 +1068,7 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 		this.tbInnovations = tbInnovations;
 	}
 
+<<<<<<< HEAD
 	public Set getTbOperationtrainings() {
 		return this.tbOperationtrainings;
 	}
@@ -608,6 +1083,14 @@ public abstract class AbstractTbEmployee implements java.io.Serializable {
 
 	public void setTbPromotiontrainings(Set tbPromotiontrainings) {
 		this.tbPromotiontrainings = tbPromotiontrainings;
+=======
+	public Set getTbPromotionTrainings() {
+		return this.tbPromotionTrainings;
+	}
+
+	public void setTbPromotionTrainings(Set tbPromotionTrainings) {
+		this.tbPromotionTrainings = tbPromotionTrainings;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

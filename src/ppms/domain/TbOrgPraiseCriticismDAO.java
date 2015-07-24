@@ -10,12 +10,17 @@ import org.slf4j.LoggerFactory;
 
 /**
  * A data access object (DAO) providing persistence and search support for
+<<<<<<< HEAD
  * TbOrgpraisecriticism entities. Transaction control of the save(), update()
+=======
+ * TbOrgPraiseCriticism entities. Transaction control of the save(), update()
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
  * and delete() operations can directly support Spring container-managed
  * transactions or they can be augmented to handle user-managed Spring
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
+<<<<<<< HEAD
  * @see ppms.domain.TbOrgpraisecriticism
  * @author MyEclipse Persistence Tools
  */
@@ -31,6 +36,23 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 
 	public void save(TbOrgpraisecriticism transientInstance) {
 		log.debug("saving TbOrgpraisecriticism instance");
+=======
+ * @see ppms.domain.TbOrgPraiseCriticism
+ * @author MyEclipse Persistence Tools
+ */
+public class TbOrgPraiseCriticismDAO extends BaseHibernateDAO {
+	private static final Logger log = LoggerFactory
+			.getLogger(TbOrgPraiseCriticismDAO.class);
+	// property constants
+	public static final String PRAISE_CRITICISM_TYPE = "praiseCriticismType";
+	public static final String CAUSE = "cause";
+	public static final String PRAISE_CRITICISM_LEVEL = "praiseCriticismLevel";
+	public static final String CREATED_BY = "createdBy";
+	public static final String MODIFIED_BY = "modifiedBy";
+
+	public void save(TbOrgPraiseCriticism transientInstance) {
+		log.debug("saving TbOrgPraiseCriticism instance");
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
@@ -40,8 +62,13 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public void delete(TbOrgpraisecriticism persistentInstance) {
 		log.debug("deleting TbOrgpraisecriticism instance");
+=======
+	public void delete(TbOrgPraiseCriticism persistentInstance) {
+		log.debug("deleting TbOrgPraiseCriticism instance");
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -51,11 +78,19 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public TbOrgpraisecriticism findById(java.lang.String id) {
 		log.debug("getting TbOrgpraisecriticism instance with id: " + id);
 		try {
 			TbOrgpraisecriticism instance = (TbOrgpraisecriticism) getSession()
 					.get("ppms.domain.TbOrgpraisecriticism", id);
+=======
+	public TbOrgPraiseCriticism findById(java.lang.String id) {
+		log.debug("getting TbOrgPraiseCriticism instance with id: " + id);
+		try {
+			TbOrgPraiseCriticism instance = (TbOrgPraiseCriticism) getSession()
+					.get("ppms.domain.TbOrgPraiseCriticism", id);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -63,11 +98,19 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByExample(TbOrgpraisecriticism instance) {
 		log.debug("finding TbOrgpraisecriticism instance by example");
 		try {
 			List results = getSession()
 					.createCriteria("ppms.domain.TbOrgpraisecriticism")
+=======
+	public List findByExample(TbOrgPraiseCriticism instance) {
+		log.debug("finding TbOrgPraiseCriticism instance by example");
+		try {
+			List results = getSession()
+					.createCriteria("ppms.domain.TbOrgPraiseCriticism")
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -79,10 +122,17 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
+<<<<<<< HEAD
 		log.debug("finding TbOrgpraisecriticism instance with property: "
 				+ propertyName + ", value: " + value);
 		try {
 			String queryString = "from TbOrgpraisecriticism as model where model."
+=======
+		log.debug("finding TbOrgPraiseCriticism instance with property: "
+				+ propertyName + ", value: " + value);
+		try {
+			String queryString = "from TbOrgPraiseCriticism as model where model."
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -93,14 +143,20 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByPraisecriticismtype(Object praisecriticismtype) {
 		return findByProperty(PRAISECRITICISMTYPE, praisecriticismtype);
+=======
+	public List findByPraiseCriticismType(Object praiseCriticismType) {
+		return findByProperty(PRAISE_CRITICISM_TYPE, praiseCriticismType);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findByCause(Object cause) {
 		return findByProperty(CAUSE, cause);
 	}
 
+<<<<<<< HEAD
 	public List findByPraisecriticismlevel(Object praisecriticismlevel) {
 		return findByProperty(PRAISECRITICISMLEVEL, praisecriticismlevel);
 	}
@@ -117,6 +173,24 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 		log.debug("finding all TbOrgpraisecriticism instances");
 		try {
 			String queryString = "from TbOrgpraisecriticism";
+=======
+	public List findByPraiseCriticismLevel(Object praiseCriticismLevel) {
+		return findByProperty(PRAISE_CRITICISM_LEVEL, praiseCriticismLevel);
+	}
+
+	public List findByCreatedBy(Object createdBy) {
+		return findByProperty(CREATED_BY, createdBy);
+	}
+
+	public List findByModifiedBy(Object modifiedBy) {
+		return findByProperty(MODIFIED_BY, modifiedBy);
+	}
+
+	public List findAll() {
+		log.debug("finding all TbOrgPraiseCriticism instances");
+		try {
+			String queryString = "from TbOrgPraiseCriticism";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -125,10 +199,17 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public TbOrgpraisecriticism merge(TbOrgpraisecriticism detachedInstance) {
 		log.debug("merging TbOrgpraisecriticism instance");
 		try {
 			TbOrgpraisecriticism result = (TbOrgpraisecriticism) getSession()
+=======
+	public TbOrgPraiseCriticism merge(TbOrgPraiseCriticism detachedInstance) {
+		log.debug("merging TbOrgPraiseCriticism instance");
+		try {
+			TbOrgPraiseCriticism result = (TbOrgPraiseCriticism) getSession()
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -138,8 +219,13 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public void attachDirty(TbOrgpraisecriticism instance) {
 		log.debug("attaching dirty TbOrgpraisecriticism instance");
+=======
+	public void attachDirty(TbOrgPraiseCriticism instance) {
+		log.debug("attaching dirty TbOrgPraiseCriticism instance");
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		try {
 			getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -149,8 +235,13 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public void attachClean(TbOrgpraisecriticism instance) {
 		log.debug("attaching clean TbOrgpraisecriticism instance");
+=======
+	public void attachClean(TbOrgPraiseCriticism instance) {
+		log.debug("attaching clean TbOrgPraiseCriticism instance");
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		try {
 			getSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");

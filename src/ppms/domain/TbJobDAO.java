@@ -23,12 +23,21 @@ import org.slf4j.LoggerFactory;
 public class TbJobDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory.getLogger(TbJobDAO.class);
 	// property constants
+<<<<<<< HEAD
 	public static final String JOBNAME = "jobname";
 	public static final String JOBCOMMENT = "jobcomment";
 	public static final String JOBTYPE = "jobtype";
 	public static final String SEQ = "seq";
 	public static final String CREATEDBY = "createdby";
 	public static final String MODIFIEDBY = "modifiedby";
+=======
+	public static final String JOB_NAME = "jobName";
+	public static final String JOB_COMMENT = "jobComment";
+	public static final String JOB_TYPE = "jobType";
+	public static final String SEQ = "seq";
+	public static final String CREATED_BY = "createdBy";
+	public static final String MODIFIED_BY = "modifiedBy";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	public void save(TbJob transientInstance) {
 		log.debug("saving TbJob instance");
@@ -92,6 +101,7 @@ public class TbJobDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByJobname(Object jobname) {
 		return findByProperty(JOBNAME, jobname);
 	}
@@ -102,18 +112,39 @@ public class TbJobDAO extends BaseHibernateDAO {
 
 	public List findByJobtype(Object jobtype) {
 		return findByProperty(JOBTYPE, jobtype);
+=======
+	public List findByJobName(Object jobName) {
+		return findByProperty(JOB_NAME, jobName);
+	}
+
+	public List findByJobComment(Object jobComment) {
+		return findByProperty(JOB_COMMENT, jobComment);
+	}
+
+	public List findByJobType(Object jobType) {
+		return findByProperty(JOB_TYPE, jobType);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findBySeq(Object seq) {
 		return findByProperty(SEQ, seq);
 	}
 
+<<<<<<< HEAD
 	public List findByCreatedby(Object createdby) {
 		return findByProperty(CREATEDBY, createdby);
 	}
 
 	public List findByModifiedby(Object modifiedby) {
 		return findByProperty(MODIFIEDBY, modifiedby);
+=======
+	public List findByCreatedBy(Object createdBy) {
+		return findByProperty(CREATED_BY, createdBy);
+	}
+
+	public List findByModifiedBy(Object modifiedBy) {
+		return findByProperty(MODIFIED_BY, modifiedBy);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findAll() {

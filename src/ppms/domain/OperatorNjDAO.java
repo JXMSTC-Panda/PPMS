@@ -1,7 +1,12 @@
 package ppms.domain;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+import java.util.Date;
+import java.util.List;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
@@ -28,10 +33,17 @@ public class OperatorNjDAO extends BaseHibernateDAO {
 	public static final String ADDR = "addr";
 	public static final String TELEPHONE = "telephone";
 	public static final String OFFICE = "office";
+<<<<<<< HEAD
 	public static final String STATUSID = "statusid";
 	public static final String MAXLOGINTIMES = "maxlogintimes";
 	public static final String CURRLOGINTIMES = "currlogintimes";
 	public static final String EMPNO = "empno";
+=======
+	public static final String STATUS_ID = "statusId";
+	public static final String MAX_LOGIN_TIMES = "maxLoginTimes";
+	public static final String CURR_LOGIN_TIMES = "currLoginTimes";
+	public static final String EMP_NO = "empNo";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	public static final String TYPE = "type";
 	public static final String MOBILE = "mobile";
 
@@ -119,6 +131,7 @@ public class OperatorNjDAO extends BaseHibernateDAO {
 		return findByProperty(OFFICE, office);
 	}
 
+<<<<<<< HEAD
 	public List findByStatusid(Object statusid) {
 		return findByProperty(STATUSID, statusid);
 	}
@@ -133,6 +146,22 @@ public class OperatorNjDAO extends BaseHibernateDAO {
 
 	public List findByEmpno(Object empno) {
 		return findByProperty(EMPNO, empno);
+=======
+	public List findByStatusId(Object statusId) {
+		return findByProperty(STATUS_ID, statusId);
+	}
+
+	public List findByMaxLoginTimes(Object maxLoginTimes) {
+		return findByProperty(MAX_LOGIN_TIMES, maxLoginTimes);
+	}
+
+	public List findByCurrLoginTimes(Object currLoginTimes) {
+		return findByProperty(CURR_LOGIN_TIMES, currLoginTimes);
+	}
+
+	public List findByEmpNo(Object empNo) {
+		return findByProperty(EMP_NO, empNo);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findByType(Object type) {

@@ -23,6 +23,7 @@ public class TbPerformanceDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(TbPerformanceDAO.class);
 	// property constants
+<<<<<<< HEAD
 	public static final String PERFORMANCETYPE = "performancetype";
 	public static final String PERFORMANCESCORE = "performancescore";
 	public static final String REMARK = "remark";
@@ -30,6 +31,15 @@ public class TbPerformanceDAO extends BaseHibernateDAO {
 	public static final String GRADESTANDARDFILENAME = "gradestandardfilename";
 	public static final String CREATEDBY = "createdby";
 	public static final String MODIFIEDBY = "modifiedby";
+=======
+	public static final String PERFORMANCE_TYPE = "performanceType";
+	public static final String PERFORMANCE_SCORE = "performanceScore";
+	public static final String REMARK = "remark";
+	public static final String GRADE_STANDARD_ORG_FILE_NAME = "gradeStandardOrgFileName";
+	public static final String GRADE_STANDARD_FILE_NAME = "gradeStandardFileName";
+	public static final String CREATED_BY = "createdBy";
+	public static final String MODIFIED_BY = "modifiedBy";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	public void save(TbPerformance transientInstance) {
 		log.debug("saving TbPerformance instance");
@@ -95,18 +105,28 @@ public class TbPerformanceDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByPerformancetype(Object performancetype) {
 		return findByProperty(PERFORMANCETYPE, performancetype);
 	}
 
 	public List findByPerformancescore(Object performancescore) {
 		return findByProperty(PERFORMANCESCORE, performancescore);
+=======
+	public List findByPerformanceType(Object performanceType) {
+		return findByProperty(PERFORMANCE_TYPE, performanceType);
+	}
+
+	public List findByPerformanceScore(Object performanceScore) {
+		return findByProperty(PERFORMANCE_SCORE, performanceScore);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findByRemark(Object remark) {
 		return findByProperty(REMARK, remark);
 	}
 
+<<<<<<< HEAD
 	public List findByGradestandardorgfilename(Object gradestandardorgfilename) {
 		return findByProperty(GRADESTANDARDORGFILENAME,
 				gradestandardorgfilename);
@@ -122,6 +142,23 @@ public class TbPerformanceDAO extends BaseHibernateDAO {
 
 	public List findByModifiedby(Object modifiedby) {
 		return findByProperty(MODIFIEDBY, modifiedby);
+=======
+	public List findByGradeStandardOrgFileName(Object gradeStandardOrgFileName) {
+		return findByProperty(GRADE_STANDARD_ORG_FILE_NAME,
+				gradeStandardOrgFileName);
+	}
+
+	public List findByGradeStandardFileName(Object gradeStandardFileName) {
+		return findByProperty(GRADE_STANDARD_FILE_NAME, gradeStandardFileName);
+	}
+
+	public List findByCreatedBy(Object createdBy) {
+		return findByProperty(CREATED_BY, createdBy);
+	}
+
+	public List findByModifiedBy(Object modifiedBy) {
+		return findByProperty(MODIFIED_BY, modifiedBy);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findAll() {

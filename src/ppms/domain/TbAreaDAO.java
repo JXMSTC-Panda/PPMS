@@ -23,10 +23,17 @@ import org.slf4j.LoggerFactory;
 public class TbAreaDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory.getLogger(TbAreaDAO.class);
 	// property constants
+<<<<<<< HEAD
 	public static final String AREADESC = "areadesc";
 	public static final String STATUS = "status";
 	public static final String CREATEDBY = "createdby";
 	public static final String MODIFIEDBY = "modifiedby";
+=======
+	public static final String AREA_DESC = "areaDesc";
+	public static final String STATUS = "status";
+	public static final String CREATED_BY = "createdBy";
+	public static final String MODIFIED_BY = "modifiedBy";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	public void save(TbArea transientInstance) {
 		log.debug("saving TbArea instance");
@@ -91,20 +98,34 @@ public class TbAreaDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByAreadesc(Object areadesc) {
 		return findByProperty(AREADESC, areadesc);
+=======
+	public List findByAreaDesc(Object areaDesc) {
+		return findByProperty(AREA_DESC, areaDesc);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findByStatus(Object status) {
 		return findByProperty(STATUS, status);
 	}
 
+<<<<<<< HEAD
 	public List findByCreatedby(Object createdby) {
 		return findByProperty(CREATEDBY, createdby);
 	}
 
 	public List findByModifiedby(Object modifiedby) {
 		return findByProperty(MODIFIEDBY, modifiedby);
+=======
+	public List findByCreatedBy(Object createdBy) {
+		return findByProperty(CREATED_BY, createdBy);
+	}
+
+	public List findByModifiedBy(Object modifiedBy) {
+		return findByProperty(MODIFIED_BY, modifiedBy);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findAll() {

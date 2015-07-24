@@ -3,6 +3,7 @@ package ppms.domain;
 import java.util.Date;
 
 /**
+<<<<<<< HEAD
  * AbstractTbAreaorgrelation entity provides the base persistence definition of
  * the TbAreaorgrelation entity. @author MyEclipse Persistence Tools
  */
@@ -18,10 +19,28 @@ public abstract class AbstractTbAreaorgrelation implements java.io.Serializable 
 	private Date createdtime;
 	private String modifiedby;
 	private Date modifiedtime;
+=======
+ * AbstractTbAreaOrgRelation entity provides the base persistence definition of
+ * the TbAreaOrgRelation entity. @author MyEclipse Persistence Tools
+ */
+
+public abstract class AbstractTbAreaOrgRelation implements java.io.Serializable {
+
+	// Fields
+
+	private Integer areaOrgId;
+	private OrganizationNj organizationNj;
+	private TbArea tbArea;
+	private String createdBy;
+	private Date createdTime;
+	private String modifiedBy;
+	private Date modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	// Constructors
 
 	/** default constructor */
+<<<<<<< HEAD
 	public AbstractTbAreaorgrelation() {
 	}
 
@@ -41,16 +60,46 @@ public abstract class AbstractTbAreaorgrelation implements java.io.Serializable 
 		this.createdtime = createdtime;
 		this.modifiedby = modifiedby;
 		this.modifiedtime = modifiedtime;
+=======
+	public AbstractTbAreaOrgRelation() {
+	}
+
+	/** minimal constructor */
+	public AbstractTbAreaOrgRelation(Integer areaOrgId) {
+		this.areaOrgId = areaOrgId;
+	}
+
+	/** full constructor */
+	public AbstractTbAreaOrgRelation(Integer areaOrgId,
+			OrganizationNj organizationNj, TbArea tbArea, String createdBy,
+			Date createdTime, String modifiedBy, Date modifiedTime) {
+		this.areaOrgId = areaOrgId;
+		this.organizationNj = organizationNj;
+		this.tbArea = tbArea;
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+		this.modifiedBy = modifiedBy;
+		this.modifiedTime = modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public Integer getAreaorgid() {
 		return this.areaorgid;
 	}
 
 	public void setAreaorgid(Integer areaorgid) {
 		this.areaorgid = areaorgid;
+=======
+	public Integer getAreaOrgId() {
+		return this.areaOrgId;
+	}
+
+	public void setAreaOrgId(Integer areaOrgId) {
+		this.areaOrgId = areaOrgId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public OrganizationNj getOrganizationNj() {
@@ -69,6 +118,7 @@ public abstract class AbstractTbAreaorgrelation implements java.io.Serializable 
 		this.tbArea = tbArea;
 	}
 
+<<<<<<< HEAD
 	public String getCreatedby() {
 		return this.createdby;
 	}
@@ -99,6 +149,38 @@ public abstract class AbstractTbAreaorgrelation implements java.io.Serializable 
 
 	public void setModifiedtime(Date modifiedtime) {
 		this.modifiedtime = modifiedtime;
+=======
+	public String getCreatedBy() {
+		return this.createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public String getModifiedBy() {
+		return this.modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public Date getModifiedTime() {
+		return this.modifiedTime;
+	}
+
+	public void setModifiedTime(Date modifiedTime) {
+		this.modifiedTime = modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

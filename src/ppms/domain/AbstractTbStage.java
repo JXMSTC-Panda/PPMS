@@ -13,6 +13,7 @@ public abstract class AbstractTbStage implements java.io.Serializable {
 
 	// Fields
 
+<<<<<<< HEAD
 	private String stageid;
 	private String stagename;
 	private String stagecomment;
@@ -22,6 +23,17 @@ public abstract class AbstractTbStage implements java.io.Serializable {
 	private String modifiedby;
 	private Date modifiedtime;
 	private Date deletedtime;
+=======
+	private String stageId;
+	private String stageName;
+	private String stageComment;
+	private String seq;
+	private String createdBy;
+	private Date createdTime;
+	private String modifiedBy;
+	private Date modifiedTime;
+	private Date deletedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	private Set tbJobs = new HashSet(0);
 
 	// Constructors
@@ -31,6 +43,7 @@ public abstract class AbstractTbStage implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
+<<<<<<< HEAD
 	public AbstractTbStage(String stageid) {
 		this.stageid = stageid;
 	}
@@ -49,11 +62,32 @@ public abstract class AbstractTbStage implements java.io.Serializable {
 		this.modifiedby = modifiedby;
 		this.modifiedtime = modifiedtime;
 		this.deletedtime = deletedtime;
+=======
+	public AbstractTbStage(String stageId) {
+		this.stageId = stageId;
+	}
+
+	/** full constructor */
+	public AbstractTbStage(String stageId, String stageName,
+			String stageComment, String seq, String createdBy,
+			Date createdTime, String modifiedBy, Date modifiedTime,
+			Date deletedTime, Set tbJobs) {
+		this.stageId = stageId;
+		this.stageName = stageName;
+		this.stageComment = stageComment;
+		this.seq = seq;
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+		this.modifiedBy = modifiedBy;
+		this.modifiedTime = modifiedTime;
+		this.deletedTime = deletedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		this.tbJobs = tbJobs;
 	}
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public String getStageid() {
 		return this.stageid;
 	}
@@ -76,6 +110,30 @@ public abstract class AbstractTbStage implements java.io.Serializable {
 
 	public void setStagecomment(String stagecomment) {
 		this.stagecomment = stagecomment;
+=======
+	public String getStageId() {
+		return this.stageId;
+	}
+
+	public void setStageId(String stageId) {
+		this.stageId = stageId;
+	}
+
+	public String getStageName() {
+		return this.stageName;
+	}
+
+	public void setStageName(String stageName) {
+		this.stageName = stageName;
+	}
+
+	public String getStageComment() {
+		return this.stageComment;
+	}
+
+	public void setStageComment(String stageComment) {
+		this.stageComment = stageComment;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public String getSeq() {
@@ -86,6 +144,7 @@ public abstract class AbstractTbStage implements java.io.Serializable {
 		this.seq = seq;
 	}
 
+<<<<<<< HEAD
 	public String getCreatedby() {
 		return this.createdby;
 	}
@@ -124,6 +183,46 @@ public abstract class AbstractTbStage implements java.io.Serializable {
 
 	public void setDeletedtime(Date deletedtime) {
 		this.deletedtime = deletedtime;
+=======
+	public String getCreatedBy() {
+		return this.createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public String getModifiedBy() {
+		return this.modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public Date getModifiedTime() {
+		return this.modifiedTime;
+	}
+
+	public void setModifiedTime(Date modifiedTime) {
+		this.modifiedTime = modifiedTime;
+	}
+
+	public Date getDeletedTime() {
+		return this.deletedTime;
+	}
+
+	public void setDeletedTime(Date deletedTime) {
+		this.deletedTime = deletedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Set getTbJobs() {

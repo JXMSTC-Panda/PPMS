@@ -24,10 +24,17 @@ public class CUserInfoDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(CUserInfoDAO.class);
 	// property constants
+<<<<<<< HEAD
 	public static final String OPERNAME = "opername";
 	public static final String OPERPASS = "operpass";
 	public static final String ROLEID = "roleid";
 	public static final String ZWID = "zwid";
+=======
+	public static final String OPER_NAME = "operName";
+	public static final String OPER_PASS = "operPass";
+	public static final String ROLE_ID = "roleId";
+	public static final String ZW_ID = "zwId";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	public void save(CUserInfo transientInstance) {
 		log.debug("saving CUserInfo instance");
@@ -92,6 +99,7 @@ public class CUserInfoDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByOpername(Object opername) {
 		return findByProperty(OPERNAME, opername);
 	}
@@ -106,6 +114,22 @@ public class CUserInfoDAO extends BaseHibernateDAO {
 
 	public List findByZwid(Object zwid) {
 		return findByProperty(ZWID, zwid);
+=======
+	public List findByOperName(Object operName) {
+		return findByProperty(OPER_NAME, operName);
+	}
+
+	public List findByOperPass(Object operPass) {
+		return findByProperty(OPER_PASS, operPass);
+	}
+
+	public List findByRoleId(Object roleId) {
+		return findByProperty(ROLE_ID, roleId);
+	}
+
+	public List findByZwId(Object zwId) {
+		return findByProperty(ZW_ID, zwId);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findAll() {

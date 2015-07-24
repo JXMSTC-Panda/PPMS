@@ -3,6 +3,7 @@ package ppms.domain;
 import java.util.Date;
 
 /**
+<<<<<<< HEAD
  * AbstractTbPointdetail entity provides the base persistence definition of the
  * TbPointdetail entity. @author MyEclipse Persistence Tools
  */
@@ -20,20 +21,49 @@ public abstract class AbstractTbPointdetail implements java.io.Serializable {
 	private Date createdtime;
 	private String modifiedby;
 	private Date modifiedtime;
+=======
+ * AbstractTbPointDetail entity provides the base persistence definition of the
+ * TbPointDetail entity. @author MyEclipse Persistence Tools
+ */
+
+public abstract class AbstractTbPointDetail implements java.io.Serializable {
+
+	// Fields
+
+	private String pointId;
+	private TbPoint tbPoint;
+	private String operationName;
+	private Double operationScore;
+	private String seq;
+	private String createdBy;
+	private Date createdTime;
+	private String modifiedBy;
+	private Date modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	// Constructors
 
 	/** default constructor */
+<<<<<<< HEAD
 	public AbstractTbPointdetail() {
 	}
 
 	/** minimal constructor */
 	public AbstractTbPointdetail(String pointid, TbPoint tbPoint) {
 		this.pointid = pointid;
+=======
+	public AbstractTbPointDetail() {
+	}
+
+	/** minimal constructor */
+	public AbstractTbPointDetail(String pointId, TbPoint tbPoint) {
+		this.pointId = pointId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		this.tbPoint = tbPoint;
 	}
 
 	/** full constructor */
+<<<<<<< HEAD
 	public AbstractTbPointdetail(String pointid, TbPoint tbPoint,
 			String operationname, Double operationscore, String seq,
 			String createdby, Date createdtime, String modifiedby,
@@ -47,16 +77,40 @@ public abstract class AbstractTbPointdetail implements java.io.Serializable {
 		this.createdtime = createdtime;
 		this.modifiedby = modifiedby;
 		this.modifiedtime = modifiedtime;
+=======
+	public AbstractTbPointDetail(String pointId, TbPoint tbPoint,
+			String operationName, Double operationScore, String seq,
+			String createdBy, Date createdTime, String modifiedBy,
+			Date modifiedTime) {
+		this.pointId = pointId;
+		this.tbPoint = tbPoint;
+		this.operationName = operationName;
+		this.operationScore = operationScore;
+		this.seq = seq;
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+		this.modifiedBy = modifiedBy;
+		this.modifiedTime = modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public String getPointid() {
 		return this.pointid;
 	}
 
 	public void setPointid(String pointid) {
 		this.pointid = pointid;
+=======
+	public String getPointId() {
+		return this.pointId;
+	}
+
+	public void setPointId(String pointId) {
+		this.pointId = pointId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public TbPoint getTbPoint() {
@@ -67,6 +121,7 @@ public abstract class AbstractTbPointdetail implements java.io.Serializable {
 		this.tbPoint = tbPoint;
 	}
 
+<<<<<<< HEAD
 	public String getOperationname() {
 		return this.operationname;
 	}
@@ -81,6 +136,22 @@ public abstract class AbstractTbPointdetail implements java.io.Serializable {
 
 	public void setOperationscore(Double operationscore) {
 		this.operationscore = operationscore;
+=======
+	public String getOperationName() {
+		return this.operationName;
+	}
+
+	public void setOperationName(String operationName) {
+		this.operationName = operationName;
+	}
+
+	public Double getOperationScore() {
+		return this.operationScore;
+	}
+
+	public void setOperationScore(Double operationScore) {
+		this.operationScore = operationScore;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public String getSeq() {
@@ -91,6 +162,7 @@ public abstract class AbstractTbPointdetail implements java.io.Serializable {
 		this.seq = seq;
 	}
 
+<<<<<<< HEAD
 	public String getCreatedby() {
 		return this.createdby;
 	}
@@ -121,6 +193,38 @@ public abstract class AbstractTbPointdetail implements java.io.Serializable {
 
 	public void setModifiedtime(Date modifiedtime) {
 		this.modifiedtime = modifiedtime;
+=======
+	public String getCreatedBy() {
+		return this.createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public String getModifiedBy() {
+		return this.modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public Date getModifiedTime() {
+		return this.modifiedTime;
+	}
+
+	public void setModifiedTime(Date modifiedTime) {
+		this.modifiedTime = modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

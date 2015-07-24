@@ -24,6 +24,7 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(TbEmployeeDAO.class);
 	// property constants
+<<<<<<< HEAD
 	public static final String EMPLOYEENAME = "employeename";
 	public static final String EMPLOYEECODE = "employeecode";
 	public static final String IDNUMBER = "idnumber";
@@ -54,6 +55,38 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 	public static final String REMARK = "remark";
 	public static final String CREATEDBY = "createdby";
 	public static final String MODIFIEDBY = "modifiedby";
+=======
+	public static final String EMPLOYEE_NAME = "employeeName";
+	public static final String EMPLOYEE_CODE = "employeeCode";
+	public static final String ID_NUMBER = "idNumber";
+	public static final String ID_PASSWORD = "idPassword";
+	public static final String ORG_TYPE = "orgType";
+	public static final String SEX = "sex";
+	public static final String BANK_NAME = "bankName";
+	public static final String BANK_NUMBER = "bankNumber";
+	public static final String STATUS = "status";
+	public static final String ACADEMIC_DEGREE = "academicDegree";
+	public static final String ADDRESS_AREA = "addressArea";
+	public static final String ADDRESS = "address";
+	public static final String MOBILE_NUMBER = "mobileNumber";
+	public static final String SHORT_MOBILE_NUMBER = "shortMobileNumber";
+	public static final String SCHOOL_NAME = "schoolName";
+	public static final String SPECIALIZATION = "specialization";
+	public static final String TEL = "tel";
+	public static final String FRONT_BACK_FLAG = "frontBackFlag";
+	public static final String BACK_JOB_COMMENT = "backJobComment";
+	public static final String TELECOM_LEVEL = "telecomLevel";
+	public static final String MOBILE_LEVEL = "mobileLevel";
+	public static final String EMPLOYEE_TYPE = "employeeType";
+	public static final String QUALIFICATION = "qualification";
+	public static final String OPERATOR_EXPIRE = "operatorExpire";
+	public static final String OPERATOR_VALID_FLAG = "operatorValidFlag";
+	public static final String AUDIT_EXPIRE = "auditExpire";
+	public static final String AUDIT_VALID_FLAG = "auditValidFlag";
+	public static final String REMARK = "remark";
+	public static final String CREATED_BY = "createdBy";
+	public static final String MODIFIED_BY = "modifiedBy";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	public void save(TbEmployee transientInstance) {
 		log.debug("saving TbEmployee instance");
@@ -119,6 +152,7 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByEmployeename(Object employeename) {
 		return findByProperty(EMPLOYEENAME, employeename);
 	}
@@ -137,36 +171,75 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 
 	public List findByOrgtype(Object orgtype) {
 		return findByProperty(ORGTYPE, orgtype);
+=======
+	public List findByEmployeeName(Object employeeName) {
+		return findByProperty(EMPLOYEE_NAME, employeeName);
+	}
+
+	public List findByEmployeeCode(Object employeeCode) {
+		return findByProperty(EMPLOYEE_CODE, employeeCode);
+	}
+
+	public List findByIdNumber(Object idNumber) {
+		return findByProperty(ID_NUMBER, idNumber);
+	}
+
+	public List findByIdPassword(Object idPassword) {
+		return findByProperty(ID_PASSWORD, idPassword);
+	}
+
+	public List findByOrgType(Object orgType) {
+		return findByProperty(ORG_TYPE, orgType);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findBySex(Object sex) {
 		return findByProperty(SEX, sex);
 	}
 
+<<<<<<< HEAD
 	public List findByBankname(Object bankname) {
 		return findByProperty(BANKNAME, bankname);
 	}
 
 	public List findByBanknumber(Object banknumber) {
 		return findByProperty(BANKNUMBER, banknumber);
+=======
+	public List findByBankName(Object bankName) {
+		return findByProperty(BANK_NAME, bankName);
+	}
+
+	public List findByBankNumber(Object bankNumber) {
+		return findByProperty(BANK_NUMBER, bankNumber);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findByStatus(Object status) {
 		return findByProperty(STATUS, status);
 	}
 
+<<<<<<< HEAD
 	public List findByAcademicdegree(Object academicdegree) {
 		return findByProperty(ACADEMICDEGREE, academicdegree);
 	}
 
 	public List findByAddressarea(Object addressarea) {
 		return findByProperty(ADDRESSAREA, addressarea);
+=======
+	public List findByAcademicDegree(Object academicDegree) {
+		return findByProperty(ACADEMIC_DEGREE, academicDegree);
+	}
+
+	public List findByAddressArea(Object addressArea) {
+		return findByProperty(ADDRESS_AREA, addressArea);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findByAddress(Object address) {
 		return findByProperty(ADDRESS, address);
 	}
 
+<<<<<<< HEAD
 	public List findByMobilenumber(Object mobilenumber) {
 		return findByProperty(MOBILENUMBER, mobilenumber);
 	}
@@ -177,6 +250,18 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 
 	public List findBySchoolname(Object schoolname) {
 		return findByProperty(SCHOOLNAME, schoolname);
+=======
+	public List findByMobileNumber(Object mobileNumber) {
+		return findByProperty(MOBILE_NUMBER, mobileNumber);
+	}
+
+	public List findByShortMobileNumber(Object shortMobileNumber) {
+		return findByProperty(SHORT_MOBILE_NUMBER, shortMobileNumber);
+	}
+
+	public List findBySchoolName(Object schoolName) {
+		return findByProperty(SCHOOL_NAME, schoolName);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findBySpecialization(Object specialization) {
@@ -187,6 +272,7 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 		return findByProperty(TEL, tel);
 	}
 
+<<<<<<< HEAD
 	public List findByFrontbackflag(Object frontbackflag) {
 		return findByProperty(FRONTBACKFLAG, frontbackflag);
 	}
@@ -205,12 +291,33 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 
 	public List findByEmployeetype(Object employeetype) {
 		return findByProperty(EMPLOYEETYPE, employeetype);
+=======
+	public List findByFrontBackFlag(Object frontBackFlag) {
+		return findByProperty(FRONT_BACK_FLAG, frontBackFlag);
+	}
+
+	public List findByBackJobComment(Object backJobComment) {
+		return findByProperty(BACK_JOB_COMMENT, backJobComment);
+	}
+
+	public List findByTelecomLevel(Object telecomLevel) {
+		return findByProperty(TELECOM_LEVEL, telecomLevel);
+	}
+
+	public List findByMobileLevel(Object mobileLevel) {
+		return findByProperty(MOBILE_LEVEL, mobileLevel);
+	}
+
+	public List findByEmployeeType(Object employeeType) {
+		return findByProperty(EMPLOYEE_TYPE, employeeType);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findByQualification(Object qualification) {
 		return findByProperty(QUALIFICATION, qualification);
 	}
 
+<<<<<<< HEAD
 	public List findByOperatorexpire(Object operatorexpire) {
 		return findByProperty(OPERATOREXPIRE, operatorexpire);
 	}
@@ -225,18 +332,43 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 
 	public List findByAuditvalidflag(Object auditvalidflag) {
 		return findByProperty(AUDITVALIDFLAG, auditvalidflag);
+=======
+	public List findByOperatorExpire(Object operatorExpire) {
+		return findByProperty(OPERATOR_EXPIRE, operatorExpire);
+	}
+
+	public List findByOperatorValidFlag(Object operatorValidFlag) {
+		return findByProperty(OPERATOR_VALID_FLAG, operatorValidFlag);
+	}
+
+	public List findByAuditExpire(Object auditExpire) {
+		return findByProperty(AUDIT_EXPIRE, auditExpire);
+	}
+
+	public List findByAuditValidFlag(Object auditValidFlag) {
+		return findByProperty(AUDIT_VALID_FLAG, auditValidFlag);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findByRemark(Object remark) {
 		return findByProperty(REMARK, remark);
 	}
 
+<<<<<<< HEAD
 	public List findByCreatedby(Object createdby) {
 		return findByProperty(CREATEDBY, createdby);
 	}
 
 	public List findByModifiedby(Object modifiedby) {
 		return findByProperty(MODIFIEDBY, modifiedby);
+=======
+	public List findByCreatedBy(Object createdBy) {
+		return findByProperty(CREATED_BY, createdBy);
+	}
+
+	public List findByModifiedBy(Object modifiedBy) {
+		return findByProperty(MODIFIED_BY, modifiedBy);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findAll() {

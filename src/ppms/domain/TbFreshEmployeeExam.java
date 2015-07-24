@@ -3,14 +3,21 @@ package ppms.domain;
 import java.util.Date;
 
 /**
+<<<<<<< HEAD
  * TbFreshemployeeexam entity. @author MyEclipse Persistence Tools
  */
 public class TbFreshemployeeexam extends AbstractTbFreshemployeeexam implements
+=======
+ * TbFreshEmployeeExam entity. @author MyEclipse Persistence Tools
+ */
+public class TbFreshEmployeeExam extends AbstractTbFreshEmployeeExam implements
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		java.io.Serializable {
 
 	// Constructors
 
 	/** default constructor */
+<<<<<<< HEAD
 	public TbFreshemployeeexam() {
 	}
 
@@ -26,6 +33,23 @@ public class TbFreshemployeeexam extends AbstractTbFreshemployeeexam implements
 			String modifiedby, Date modifiedtime) {
 		super(examid, organizationNj, tbEmployee, examdate, examstage, week,
 				examscore, createdby, createdtime, modifiedby, modifiedtime);
+=======
+	public TbFreshEmployeeExam() {
+	}
+
+	/** minimal constructor */
+	public TbFreshEmployeeExam(String examId) {
+		super(examId);
+	}
+
+	/** full constructor */
+	public TbFreshEmployeeExam(String examId, OrganizationNj organizationNj,
+			TbEmployee tbEmployee, Date examDate, String examStage, Byte week,
+			Double examScore, String createdBy, Date createdTime,
+			String modifiedBy, Date modifiedTime) {
+		super(examId, organizationNj, tbEmployee, examDate, examStage, week,
+				examScore, createdBy, createdTime, modifiedBy, modifiedTime);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

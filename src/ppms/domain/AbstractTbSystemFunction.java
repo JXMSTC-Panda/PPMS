@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+<<<<<<< HEAD
  * AbstractTbSystemfunction entity provides the base persistence definition of
  * the TbSystemfunction entity. @author MyEclipse Persistence Tools
  */
@@ -22,10 +23,30 @@ public abstract class AbstractTbSystemfunction implements java.io.Serializable {
 	private String seq;
 	private Date createdtime;
 	private Set tbRolefunctions = new HashSet(0);
+=======
+ * AbstractTbSystemFunction entity provides the base persistence definition of
+ * the TbSystemFunction entity. @author MyEclipse Persistence Tools
+ */
+
+public abstract class AbstractTbSystemFunction implements java.io.Serializable {
+
+	// Fields
+
+	private String functionId;
+	private String functionName;
+	private Boolean functionType;
+	private String functionUrl;
+	private String parentFunctionId;
+	private Boolean scope;
+	private String seq;
+	private Date createdTime;
+	private Set tbRoleFunctions = new HashSet(0);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	// Constructors
 
 	/** default constructor */
+<<<<<<< HEAD
 	public AbstractTbSystemfunction() {
 	}
 
@@ -47,10 +68,34 @@ public abstract class AbstractTbSystemfunction implements java.io.Serializable {
 		this.seq = seq;
 		this.createdtime = createdtime;
 		this.tbRolefunctions = tbRolefunctions;
+=======
+	public AbstractTbSystemFunction() {
+	}
+
+	/** minimal constructor */
+	public AbstractTbSystemFunction(String functionId) {
+		this.functionId = functionId;
+	}
+
+	/** full constructor */
+	public AbstractTbSystemFunction(String functionId, String functionName,
+			Boolean functionType, String functionUrl, String parentFunctionId,
+			Boolean scope, String seq, Date createdTime, Set tbRoleFunctions) {
+		this.functionId = functionId;
+		this.functionName = functionName;
+		this.functionType = functionType;
+		this.functionUrl = functionUrl;
+		this.parentFunctionId = parentFunctionId;
+		this.scope = scope;
+		this.seq = seq;
+		this.createdTime = createdTime;
+		this.tbRoleFunctions = tbRoleFunctions;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public String getFunctionid() {
 		return this.functionid;
 	}
@@ -89,6 +134,46 @@ public abstract class AbstractTbSystemfunction implements java.io.Serializable {
 
 	public void setParentfunctionid(String parentfunctionid) {
 		this.parentfunctionid = parentfunctionid;
+=======
+	public String getFunctionId() {
+		return this.functionId;
+	}
+
+	public void setFunctionId(String functionId) {
+		this.functionId = functionId;
+	}
+
+	public String getFunctionName() {
+		return this.functionName;
+	}
+
+	public void setFunctionName(String functionName) {
+		this.functionName = functionName;
+	}
+
+	public Boolean getFunctionType() {
+		return this.functionType;
+	}
+
+	public void setFunctionType(Boolean functionType) {
+		this.functionType = functionType;
+	}
+
+	public String getFunctionUrl() {
+		return this.functionUrl;
+	}
+
+	public void setFunctionUrl(String functionUrl) {
+		this.functionUrl = functionUrl;
+	}
+
+	public String getParentFunctionId() {
+		return this.parentFunctionId;
+	}
+
+	public void setParentFunctionId(String parentFunctionId) {
+		this.parentFunctionId = parentFunctionId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Boolean getScope() {
@@ -107,6 +192,7 @@ public abstract class AbstractTbSystemfunction implements java.io.Serializable {
 		this.seq = seq;
 	}
 
+<<<<<<< HEAD
 	public Date getCreatedtime() {
 		return this.createdtime;
 	}
@@ -121,6 +207,22 @@ public abstract class AbstractTbSystemfunction implements java.io.Serializable {
 
 	public void setTbRolefunctions(Set tbRolefunctions) {
 		this.tbRolefunctions = tbRolefunctions;
+=======
+	public Date getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public Set getTbRoleFunctions() {
+		return this.tbRoleFunctions;
+	}
+
+	public void setTbRoleFunctions(Set tbRoleFunctions) {
+		this.tbRoleFunctions = tbRoleFunctions;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

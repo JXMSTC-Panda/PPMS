@@ -15,6 +15,7 @@ public class TbJob extends AbstractTbJob implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
+<<<<<<< HEAD
 	public TbJob(String jobid) {
 		super(jobid);
 	}
@@ -30,6 +31,22 @@ public class TbJob extends AbstractTbJob implements java.io.Serializable {
 				createdby, createdtime, modifiedby, modifiedtime, deletedtime,
 				tbEmployees, tbChangejobhistoriesForInjobid, tbPoints,
 				tbChangejobhistoriesForOutjobid);
+=======
+	public TbJob(String jobId) {
+		super(jobId);
+	}
+
+	/** full constructor */
+	public TbJob(String jobId, TbStage tbStage, TbPost tbPost, String jobName,
+			String jobComment, Boolean jobType, String seq, String createdBy,
+			Date createdTime, String modifiedBy, Date modifiedTime,
+			Date deletedTime, Set tbChangeJobHistoriesForInJobId,
+			Set tbChangeJobHistoriesForOutJobId, Set tbEmployees, Set tbPoints) {
+		super(jobId, tbStage, tbPost, jobName, jobComment, jobType, seq,
+				createdBy, createdTime, modifiedBy, modifiedTime, deletedTime,
+				tbChangeJobHistoriesForInJobId,
+				tbChangeJobHistoriesForOutJobId, tbEmployees, tbPoints);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

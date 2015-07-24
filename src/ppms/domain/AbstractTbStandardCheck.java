@@ -3,6 +3,7 @@ package ppms.domain;
 import java.util.Date;
 
 /**
+<<<<<<< HEAD
  * AbstractTbStandardcheck entity provides the base persistence definition of
  * the TbStandardcheck entity. @author MyEclipse Persistence Tools
  */
@@ -19,10 +20,29 @@ public abstract class AbstractTbStandardcheck implements java.io.Serializable {
 	private Date createdtime;
 	private String modifiedby;
 	private Date modifiedtime;
+=======
+ * AbstractTbStandardCheck entity provides the base persistence definition of
+ * the TbStandardCheck entity. @author MyEclipse Persistence Tools
+ */
+
+public abstract class AbstractTbStandardCheck implements java.io.Serializable {
+
+	// Fields
+
+	private String standardCheckId;
+	private OrganizationNj organizationNj;
+	private Date checkDate;
+	private Double checkScore;
+	private String createdBy;
+	private Date createdTime;
+	private String modifiedBy;
+	private Date modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	// Constructors
 
 	/** default constructor */
+<<<<<<< HEAD
 	public AbstractTbStandardcheck() {
 	}
 
@@ -44,16 +64,48 @@ public abstract class AbstractTbStandardcheck implements java.io.Serializable {
 		this.createdtime = createdtime;
 		this.modifiedby = modifiedby;
 		this.modifiedtime = modifiedtime;
+=======
+	public AbstractTbStandardCheck() {
+	}
+
+	/** minimal constructor */
+	public AbstractTbStandardCheck(String standardCheckId) {
+		this.standardCheckId = standardCheckId;
+	}
+
+	/** full constructor */
+	public AbstractTbStandardCheck(String standardCheckId,
+			OrganizationNj organizationNj, Date checkDate, Double checkScore,
+			String createdBy, Date createdTime, String modifiedBy,
+			Date modifiedTime) {
+		this.standardCheckId = standardCheckId;
+		this.organizationNj = organizationNj;
+		this.checkDate = checkDate;
+		this.checkScore = checkScore;
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+		this.modifiedBy = modifiedBy;
+		this.modifiedTime = modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public String getStandardcheckid() {
 		return this.standardcheckid;
 	}
 
 	public void setStandardcheckid(String standardcheckid) {
 		this.standardcheckid = standardcheckid;
+=======
+	public String getStandardCheckId() {
+		return this.standardCheckId;
+	}
+
+	public void setStandardCheckId(String standardCheckId) {
+		this.standardCheckId = standardCheckId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public OrganizationNj getOrganizationNj() {
@@ -64,6 +116,7 @@ public abstract class AbstractTbStandardcheck implements java.io.Serializable {
 		this.organizationNj = organizationNj;
 	}
 
+<<<<<<< HEAD
 	public Date getCheckdate() {
 		return this.checkdate;
 	}
@@ -110,6 +163,54 @@ public abstract class AbstractTbStandardcheck implements java.io.Serializable {
 
 	public void setModifiedtime(Date modifiedtime) {
 		this.modifiedtime = modifiedtime;
+=======
+	public Date getCheckDate() {
+		return this.checkDate;
+	}
+
+	public void setCheckDate(Date checkDate) {
+		this.checkDate = checkDate;
+	}
+
+	public Double getCheckScore() {
+		return this.checkScore;
+	}
+
+	public void setCheckScore(Double checkScore) {
+		this.checkScore = checkScore;
+	}
+
+	public String getCreatedBy() {
+		return this.createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public String getModifiedBy() {
+		return this.modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public Date getModifiedTime() {
+		return this.modifiedTime;
+	}
+
+	public void setModifiedTime(Date modifiedTime) {
+		this.modifiedTime = modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

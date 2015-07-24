@@ -3,15 +3,24 @@ package ppms.domain;
 import java.util.Date;
 
 /**
+<<<<<<< HEAD
  * AbstractTbPromotiontraining entity provides the base persistence definition
  * of the TbPromotiontraining entity. @author MyEclipse Persistence Tools
  */
 
 public abstract class AbstractTbPromotiontraining implements
+=======
+ * AbstractTbPromotionTraining entity provides the base persistence definition
+ * of the TbPromotionTraining entity. @author MyEclipse Persistence Tools
+ */
+
+public abstract class AbstractTbPromotionTraining implements
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		java.io.Serializable {
 
 	// Fields
 
+<<<<<<< HEAD
 	private String promotiontrainingid;
 	private OrganizationNj organizationNj;
 	private TbEmployee tbEmployee;
@@ -22,10 +31,23 @@ public abstract class AbstractTbPromotiontraining implements
 	private Date createdtime;
 	private String modifiedby;
 	private Date modifiedtime;
+=======
+	private String promotionTrainingId;
+	private OrganizationNj organizationNj;
+	private TbEmployee tbEmployee;
+	private Date promotionTrainingDate;
+	private String promotionContent;
+	private Double promotionScore;
+	private String createdBy;
+	private Date createdTime;
+	private String modifiedBy;
+	private Date modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	// Constructors
 
 	/** default constructor */
+<<<<<<< HEAD
 	public AbstractTbPromotiontraining() {
 	}
 
@@ -50,16 +72,51 @@ public abstract class AbstractTbPromotiontraining implements
 		this.createdtime = createdtime;
 		this.modifiedby = modifiedby;
 		this.modifiedtime = modifiedtime;
+=======
+	public AbstractTbPromotionTraining() {
+	}
+
+	/** minimal constructor */
+	public AbstractTbPromotionTraining(String promotionTrainingId) {
+		this.promotionTrainingId = promotionTrainingId;
+	}
+
+	/** full constructor */
+	public AbstractTbPromotionTraining(String promotionTrainingId,
+			OrganizationNj organizationNj, TbEmployee tbEmployee,
+			Date promotionTrainingDate, String promotionContent,
+			Double promotionScore, String createdBy, Date createdTime,
+			String modifiedBy, Date modifiedTime) {
+		this.promotionTrainingId = promotionTrainingId;
+		this.organizationNj = organizationNj;
+		this.tbEmployee = tbEmployee;
+		this.promotionTrainingDate = promotionTrainingDate;
+		this.promotionContent = promotionContent;
+		this.promotionScore = promotionScore;
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+		this.modifiedBy = modifiedBy;
+		this.modifiedTime = modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public String getPromotiontrainingid() {
 		return this.promotiontrainingid;
 	}
 
 	public void setPromotiontrainingid(String promotiontrainingid) {
 		this.promotiontrainingid = promotiontrainingid;
+=======
+	public String getPromotionTrainingId() {
+		return this.promotionTrainingId;
+	}
+
+	public void setPromotionTrainingId(String promotionTrainingId) {
+		this.promotionTrainingId = promotionTrainingId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public OrganizationNj getOrganizationNj() {
@@ -78,6 +135,7 @@ public abstract class AbstractTbPromotiontraining implements
 		this.tbEmployee = tbEmployee;
 	}
 
+<<<<<<< HEAD
 	public Date getPromotiontrainingdate() {
 		return this.promotiontrainingdate;
 	}
@@ -132,6 +190,62 @@ public abstract class AbstractTbPromotiontraining implements
 
 	public void setModifiedtime(Date modifiedtime) {
 		this.modifiedtime = modifiedtime;
+=======
+	public Date getPromotionTrainingDate() {
+		return this.promotionTrainingDate;
+	}
+
+	public void setPromotionTrainingDate(Date promotionTrainingDate) {
+		this.promotionTrainingDate = promotionTrainingDate;
+	}
+
+	public String getPromotionContent() {
+		return this.promotionContent;
+	}
+
+	public void setPromotionContent(String promotionContent) {
+		this.promotionContent = promotionContent;
+	}
+
+	public Double getPromotionScore() {
+		return this.promotionScore;
+	}
+
+	public void setPromotionScore(Double promotionScore) {
+		this.promotionScore = promotionScore;
+	}
+
+	public String getCreatedBy() {
+		return this.createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public String getModifiedBy() {
+		return this.modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public Date getModifiedTime() {
+		return this.modifiedTime;
+	}
+
+	public void setModifiedTime(Date modifiedTime) {
+		this.modifiedTime = modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

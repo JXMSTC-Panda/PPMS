@@ -23,11 +23,19 @@ import org.slf4j.LoggerFactory;
 public class TbStageDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory.getLogger(TbStageDAO.class);
 	// property constants
+<<<<<<< HEAD
 	public static final String STAGENAME = "stagename";
 	public static final String STAGECOMMENT = "stagecomment";
 	public static final String SEQ = "seq";
 	public static final String CREATEDBY = "createdby";
 	public static final String MODIFIEDBY = "modifiedby";
+=======
+	public static final String STAGE_NAME = "stageName";
+	public static final String STAGE_COMMENT = "stageComment";
+	public static final String SEQ = "seq";
+	public static final String CREATED_BY = "createdBy";
+	public static final String MODIFIED_BY = "modifiedBy";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	public void save(TbStage transientInstance) {
 		log.debug("saving TbStage instance");
@@ -92,24 +100,42 @@ public class TbStageDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByStagename(Object stagename) {
 		return findByProperty(STAGENAME, stagename);
 	}
 
 	public List findByStagecomment(Object stagecomment) {
 		return findByProperty(STAGECOMMENT, stagecomment);
+=======
+	public List findByStageName(Object stageName) {
+		return findByProperty(STAGE_NAME, stageName);
+	}
+
+	public List findByStageComment(Object stageComment) {
+		return findByProperty(STAGE_COMMENT, stageComment);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findBySeq(Object seq) {
 		return findByProperty(SEQ, seq);
 	}
 
+<<<<<<< HEAD
 	public List findByCreatedby(Object createdby) {
 		return findByProperty(CREATEDBY, createdby);
 	}
 
 	public List findByModifiedby(Object modifiedby) {
 		return findByProperty(MODIFIEDBY, modifiedby);
+=======
+	public List findByCreatedBy(Object createdBy) {
+		return findByProperty(CREATED_BY, createdBy);
+	}
+
+	public List findByModifiedBy(Object modifiedBy) {
+		return findByProperty(MODIFIED_BY, modifiedBy);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findAll() {

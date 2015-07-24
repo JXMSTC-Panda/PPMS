@@ -196,29 +196,28 @@
 												<span>10:09 am</span> </span> </span> </a></li>
 							</ul></li>
 
-						<li class="dropdown-footer"><a href="inbox.html">See all
-								messages <i class="ace-icon fa fa-arrow-right"></i> </a></li>
+						<li class="dropdown-footer"><a href="inbox.html">查看所有消息<i class="ace-icon fa fa-arrow-right"></i> </a></li>
 					</ul></li>
 
 				<!-- #section:basics/navbar.user_menu -->
 				<li class="light-blue"><a data-toggle="dropdown" href="#"
 					class="dropdown-toggle"> <img class="nav-user-photo"
 						src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-						class="user-info"> <small>Welcome,</small> Jason </span> <i
+						class="user-info"> <small>你好，</small> Jason </span> <i
 						class="ace-icon fa fa-caret-down"></i> </a>
 
 					<ul
 						class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 						<li><a href="#"> <i class="ace-icon fa fa-cog"></i>
-								Settings </a></li>
+								设置</a></li>
 
 						<li><a href="profile.html"> <i
-								class="ace-icon fa fa-user"></i> Profile </a></li>
+								class="ace-icon fa fa-user"></i>个人信息</a></li>
 
 						<li class="divider"></li>
 
 						<li><a href="#"> <i class="ace-icon fa fa-power-off"></i>
-								Logout </a></li>
+								登出</a></li>
 					</ul></li>
 
 				<!-- /section:basics/navbar.user_menu -->

@@ -12,7 +12,11 @@ public abstract class AbstractCOrganizationNj implements java.io.Serializable {
 
 	// Fields
 
+<<<<<<< HEAD
 	private BigDecimal orgareaid;
+=======
+	private BigDecimal orgAreaId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	private OrganizationNj organizationNj;
 	private TbArea tbArea;
 	private String orgName;
@@ -50,12 +54,21 @@ public abstract class AbstractCOrganizationNj implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
+<<<<<<< HEAD
 	public AbstractCOrganizationNj(BigDecimal orgareaid) {
 		this.orgareaid = orgareaid;
 	}
 
 	/** full constructor */
 	public AbstractCOrganizationNj(BigDecimal orgareaid,
+=======
+	public AbstractCOrganizationNj(BigDecimal orgAreaId) {
+		this.orgAreaId = orgAreaId;
+	}
+
+	/** full constructor */
+	public AbstractCOrganizationNj(BigDecimal orgAreaId,
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 			OrganizationNj organizationNj, TbArea tbArea, String orgName,
 			BigDecimal orgTypeId, BigDecimal regionId, String idDesc,
 			BigDecimal type, Date operatingDate, BigDecimal operatingId,
@@ -65,7 +78,11 @@ public abstract class AbstractCOrganizationNj implements java.io.Serializable {
 			Boolean dyId, Boolean hzlxId, Byte qdlxId, Boolean fsxzId,
 			Boolean zdxsId, Short dzsxId, String channelId1, String dy,
 			String qdlx, BigDecimal status) {
+<<<<<<< HEAD
 		this.orgareaid = orgareaid;
+=======
+		this.orgAreaId = orgAreaId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		this.organizationNj = organizationNj;
 		this.tbArea = tbArea;
 		this.orgName = orgName;
@@ -99,12 +116,21 @@ public abstract class AbstractCOrganizationNj implements java.io.Serializable {
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public BigDecimal getOrgareaid() {
 		return this.orgareaid;
 	}
 
 	public void setOrgareaid(BigDecimal orgareaid) {
 		this.orgareaid = orgareaid;
+=======
+	public BigDecimal getOrgAreaId() {
+		return this.orgAreaId;
+	}
+
+	public void setOrgAreaId(BigDecimal orgAreaId) {
+		this.orgAreaId = orgAreaId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public OrganizationNj getOrganizationNj() {

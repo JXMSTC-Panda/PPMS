@@ -23,11 +23,19 @@ import org.slf4j.LoggerFactory;
 public class TbPostDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory.getLogger(TbPostDAO.class);
 	// property constants
+<<<<<<< HEAD
 	public static final String POSTNAME = "postname";
 	public static final String POSTCOMMENT = "postcomment";
 	public static final String SEQ = "seq";
 	public static final String CREATEDBY = "createdby";
 	public static final String MODIFIEDBY = "modifiedby";
+=======
+	public static final String POST_NAME = "postName";
+	public static final String POST_COMMENT = "postComment";
+	public static final String SEQ = "seq";
+	public static final String CREATED_BY = "createdBy";
+	public static final String MODIFIED_BY = "modifiedBy";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	public void save(TbPost transientInstance) {
 		log.debug("saving TbPost instance");
@@ -92,24 +100,42 @@ public class TbPostDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByPostname(Object postname) {
 		return findByProperty(POSTNAME, postname);
 	}
 
 	public List findByPostcomment(Object postcomment) {
 		return findByProperty(POSTCOMMENT, postcomment);
+=======
+	public List findByPostName(Object postName) {
+		return findByProperty(POST_NAME, postName);
+	}
+
+	public List findByPostComment(Object postComment) {
+		return findByProperty(POST_COMMENT, postComment);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findBySeq(Object seq) {
 		return findByProperty(SEQ, seq);
 	}
 
+<<<<<<< HEAD
 	public List findByCreatedby(Object createdby) {
 		return findByProperty(CREATEDBY, createdby);
 	}
 
 	public List findByModifiedby(Object modifiedby) {
 		return findByProperty(MODIFIEDBY, modifiedby);
+=======
+	public List findByCreatedBy(Object createdBy) {
+		return findByProperty(CREATED_BY, createdBy);
+	}
+
+	public List findByModifiedBy(Object modifiedBy) {
+		return findByProperty(MODIFIED_BY, modifiedBy);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findAll() {

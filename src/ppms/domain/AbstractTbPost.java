@@ -13,6 +13,7 @@ public abstract class AbstractTbPost implements java.io.Serializable {
 
 	// Fields
 
+<<<<<<< HEAD
 	private String postid;
 	private String postname;
 	private String postcomment;
@@ -22,6 +23,17 @@ public abstract class AbstractTbPost implements java.io.Serializable {
 	private String modifiedby;
 	private Date modifiedtime;
 	private Date deletedtime;
+=======
+	private String postId;
+	private String postName;
+	private String postComment;
+	private String seq;
+	private String createdBy;
+	private Date createdTime;
+	private String modifiedBy;
+	private Date modifiedTime;
+	private Date deletedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	private Set tbEmployees = new HashSet(0);
 	private Set tbJobs = new HashSet(0);
 
@@ -32,6 +44,7 @@ public abstract class AbstractTbPost implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
+<<<<<<< HEAD
 	public AbstractTbPost(String postid) {
 		this.postid = postid;
 	}
@@ -49,12 +62,32 @@ public abstract class AbstractTbPost implements java.io.Serializable {
 		this.modifiedby = modifiedby;
 		this.modifiedtime = modifiedtime;
 		this.deletedtime = deletedtime;
+=======
+	public AbstractTbPost(String postId) {
+		this.postId = postId;
+	}
+
+	/** full constructor */
+	public AbstractTbPost(String postId, String postName, String postComment,
+			String seq, String createdBy, Date createdTime, String modifiedBy,
+			Date modifiedTime, Date deletedTime, Set tbEmployees, Set tbJobs) {
+		this.postId = postId;
+		this.postName = postName;
+		this.postComment = postComment;
+		this.seq = seq;
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+		this.modifiedBy = modifiedBy;
+		this.modifiedTime = modifiedTime;
+		this.deletedTime = deletedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		this.tbEmployees = tbEmployees;
 		this.tbJobs = tbJobs;
 	}
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public String getPostid() {
 		return this.postid;
 	}
@@ -77,6 +110,30 @@ public abstract class AbstractTbPost implements java.io.Serializable {
 
 	public void setPostcomment(String postcomment) {
 		this.postcomment = postcomment;
+=======
+	public String getPostId() {
+		return this.postId;
+	}
+
+	public void setPostId(String postId) {
+		this.postId = postId;
+	}
+
+	public String getPostName() {
+		return this.postName;
+	}
+
+	public void setPostName(String postName) {
+		this.postName = postName;
+	}
+
+	public String getPostComment() {
+		return this.postComment;
+	}
+
+	public void setPostComment(String postComment) {
+		this.postComment = postComment;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public String getSeq() {
@@ -87,6 +144,7 @@ public abstract class AbstractTbPost implements java.io.Serializable {
 		this.seq = seq;
 	}
 
+<<<<<<< HEAD
 	public String getCreatedby() {
 		return this.createdby;
 	}
@@ -125,6 +183,46 @@ public abstract class AbstractTbPost implements java.io.Serializable {
 
 	public void setDeletedtime(Date deletedtime) {
 		this.deletedtime = deletedtime;
+=======
+	public String getCreatedBy() {
+		return this.createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public String getModifiedBy() {
+		return this.modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public Date getModifiedTime() {
+		return this.modifiedTime;
+	}
+
+	public void setModifiedTime(Date modifiedTime) {
+		this.modifiedTime = modifiedTime;
+	}
+
+	public Date getDeletedTime() {
+		return this.deletedTime;
+	}
+
+	public void setDeletedTime(Date deletedTime) {
+		this.deletedTime = deletedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Set getTbEmployees() {

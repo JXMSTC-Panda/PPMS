@@ -16,6 +16,7 @@ public class CUserInfo extends AbstractCUserInfo implements
 	}
 
 	/** minimal constructor */
+<<<<<<< HEAD
 	public CUserInfo(BigDecimal operid) {
 		super(operid);
 	}
@@ -29,6 +30,21 @@ public class CUserInfo extends AbstractCUserInfo implements
 		super(operid, organizationNj, opername, operpass, roleid, departid,
 				centerid, zwid, usercountry, isvalid, shortnum, mobilenum,
 				operatingid, operatingdate);
+=======
+	public CUserInfo(BigDecimal operId) {
+		super(operId);
+	}
+
+	/** full constructor */
+	public CUserInfo(BigDecimal operId, OrganizationNj organizationNj,
+			String operName, String operPass, String roleId,
+			BigDecimal departId, BigDecimal centerId, String zwId,
+			BigDecimal userCountry, BigDecimal isValid, BigDecimal shortNum,
+			BigDecimal mobileNum, BigDecimal operatingId, Date operatingDate) {
+		super(operId, organizationNj, operName, operPass, roleId, departId,
+				centerId, zwId, userCountry, isValid, shortNum, mobileNum,
+				operatingId, operatingDate);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

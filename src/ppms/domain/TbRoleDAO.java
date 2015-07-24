@@ -23,11 +23,19 @@ import org.slf4j.LoggerFactory;
 public class TbRoleDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory.getLogger(TbRoleDAO.class);
 	// property constants
+<<<<<<< HEAD
 	public static final String ROLENAME = "rolename";
 	public static final String ADMINISTRATORFLAG = "administratorflag";
 	public static final String SEQ = "seq";
 	public static final String CREATEDBY = "createdby";
 	public static final String MODIFIEDBY = "modifiedby";
+=======
+	public static final String ROLE_NAME = "roleName";
+	public static final String ADMINISTRATOR_FLAG = "administratorFlag";
+	public static final String SEQ = "seq";
+	public static final String CREATED_BY = "createdBy";
+	public static final String MODIFIED_BY = "modifiedBy";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	public void save(TbRole transientInstance) {
 		log.debug("saving TbRole instance");
@@ -92,24 +100,42 @@ public class TbRoleDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByRolename(Object rolename) {
 		return findByProperty(ROLENAME, rolename);
 	}
 
 	public List findByAdministratorflag(Object administratorflag) {
 		return findByProperty(ADMINISTRATORFLAG, administratorflag);
+=======
+	public List findByRoleName(Object roleName) {
+		return findByProperty(ROLE_NAME, roleName);
+	}
+
+	public List findByAdministratorFlag(Object administratorFlag) {
+		return findByProperty(ADMINISTRATOR_FLAG, administratorFlag);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findBySeq(Object seq) {
 		return findByProperty(SEQ, seq);
 	}
 
+<<<<<<< HEAD
 	public List findByCreatedby(Object createdby) {
 		return findByProperty(CREATEDBY, createdby);
 	}
 
 	public List findByModifiedby(Object modifiedby) {
 		return findByProperty(MODIFIEDBY, modifiedby);
+=======
+	public List findByCreatedBy(Object createdBy) {
+		return findByProperty(CREATED_BY, createdBy);
+	}
+
+	public List findByModifiedBy(Object modifiedBy) {
+		return findByProperty(MODIFIED_BY, modifiedBy);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findAll() {

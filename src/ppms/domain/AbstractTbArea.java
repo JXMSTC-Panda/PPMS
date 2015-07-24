@@ -14,6 +14,7 @@ public abstract class AbstractTbArea implements java.io.Serializable {
 
 	// Fields
 
+<<<<<<< HEAD
 	private BigDecimal areaid;
 	private TbSubarea tbSubarea;
 	private String areadesc;
@@ -23,6 +24,17 @@ public abstract class AbstractTbArea implements java.io.Serializable {
 	private String modifiedby;
 	private Date modifiedtime;
 	private Set tbAreaorgrelations = new HashSet(0);
+=======
+	private BigDecimal areaId;
+	private TbSubArea tbSubArea;
+	private String areaDesc;
+	private Boolean status;
+	private String createdBy;
+	private Date createdTime;
+	private String modifiedBy;
+	private Date modifiedTime;
+	private Set tbAreaOrgRelations = new HashSet(0);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	private Set COrganizationNjs = new HashSet(0);
 
 	// Constructors
@@ -32,6 +44,7 @@ public abstract class AbstractTbArea implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
+<<<<<<< HEAD
 	public AbstractTbArea(BigDecimal areaid) {
 		this.areaid = areaid;
 	}
@@ -50,11 +63,32 @@ public abstract class AbstractTbArea implements java.io.Serializable {
 		this.modifiedby = modifiedby;
 		this.modifiedtime = modifiedtime;
 		this.tbAreaorgrelations = tbAreaorgrelations;
+=======
+	public AbstractTbArea(BigDecimal areaId) {
+		this.areaId = areaId;
+	}
+
+	/** full constructor */
+	public AbstractTbArea(BigDecimal areaId, TbSubArea tbSubArea,
+			String areaDesc, Boolean status, String createdBy,
+			Date createdTime, String modifiedBy, Date modifiedTime,
+			Set tbAreaOrgRelations, Set COrganizationNjs) {
+		this.areaId = areaId;
+		this.tbSubArea = tbSubArea;
+		this.areaDesc = areaDesc;
+		this.status = status;
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+		this.modifiedBy = modifiedBy;
+		this.modifiedTime = modifiedTime;
+		this.tbAreaOrgRelations = tbAreaOrgRelations;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 		this.COrganizationNjs = COrganizationNjs;
 	}
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public BigDecimal getAreaid() {
 		return this.areaid;
 	}
@@ -77,6 +111,30 @@ public abstract class AbstractTbArea implements java.io.Serializable {
 
 	public void setAreadesc(String areadesc) {
 		this.areadesc = areadesc;
+=======
+	public BigDecimal getAreaId() {
+		return this.areaId;
+	}
+
+	public void setAreaId(BigDecimal areaId) {
+		this.areaId = areaId;
+	}
+
+	public TbSubArea getTbSubArea() {
+		return this.tbSubArea;
+	}
+
+	public void setTbSubArea(TbSubArea tbSubArea) {
+		this.tbSubArea = tbSubArea;
+	}
+
+	public String getAreaDesc() {
+		return this.areaDesc;
+	}
+
+	public void setAreaDesc(String areaDesc) {
+		this.areaDesc = areaDesc;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Boolean getStatus() {
@@ -87,6 +145,7 @@ public abstract class AbstractTbArea implements java.io.Serializable {
 		this.status = status;
 	}
 
+<<<<<<< HEAD
 	public String getCreatedby() {
 		return this.createdby;
 	}
@@ -125,6 +184,46 @@ public abstract class AbstractTbArea implements java.io.Serializable {
 
 	public void setTbAreaorgrelations(Set tbAreaorgrelations) {
 		this.tbAreaorgrelations = tbAreaorgrelations;
+=======
+	public String getCreatedBy() {
+		return this.createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public String getModifiedBy() {
+		return this.modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public Date getModifiedTime() {
+		return this.modifiedTime;
+	}
+
+	public void setModifiedTime(Date modifiedTime) {
+		this.modifiedTime = modifiedTime;
+	}
+
+	public Set getTbAreaOrgRelations() {
+		return this.tbAreaOrgRelations;
+	}
+
+	public void setTbAreaOrgRelations(Set tbAreaOrgRelations) {
+		this.tbAreaOrgRelations = tbAreaOrgRelations;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public Set getCOrganizationNjs() {

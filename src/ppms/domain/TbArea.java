@@ -16,6 +16,7 @@ public class TbArea extends AbstractTbArea implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
+<<<<<<< HEAD
 	public TbArea(BigDecimal areaid) {
 		super(areaid);
 	}
@@ -27,6 +28,19 @@ public class TbArea extends AbstractTbArea implements java.io.Serializable {
 			Set COrganizationNjs) {
 		super(areaid, tbSubarea, areadesc, status, createdby, createdtime,
 				modifiedby, modifiedtime, tbAreaorgrelations, COrganizationNjs);
+=======
+	public TbArea(BigDecimal areaId) {
+		super(areaId);
+	}
+
+	/** full constructor */
+	public TbArea(BigDecimal areaId, TbSubArea tbSubArea, String areaDesc,
+			Boolean status, String createdBy, Date createdTime,
+			String modifiedBy, Date modifiedTime, Set tbAreaOrgRelations,
+			Set COrganizationNjs) {
+		super(areaId, tbSubArea, areaDesc, status, createdBy, createdTime,
+				modifiedBy, modifiedTime, tbAreaOrgRelations, COrganizationNjs);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

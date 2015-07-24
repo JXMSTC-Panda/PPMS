@@ -15,6 +15,7 @@ public class TbStage extends AbstractTbStage implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
+<<<<<<< HEAD
 	public TbStage(String stageid) {
 		super(stageid);
 	}
@@ -25,6 +26,18 @@ public class TbStage extends AbstractTbStage implements java.io.Serializable {
 			Date modifiedtime, Date deletedtime, Set tbJobs) {
 		super(stageid, stagename, stagecomment, seq, createdby, createdtime,
 				modifiedby, modifiedtime, deletedtime, tbJobs);
+=======
+	public TbStage(String stageId) {
+		super(stageId);
+	}
+
+	/** full constructor */
+	public TbStage(String stageId, String stageName, String stageComment,
+			String seq, String createdBy, Date createdTime, String modifiedBy,
+			Date modifiedTime, Date deletedTime, Set tbJobs) {
+		super(stageId, stageName, stageComment, seq, createdBy, createdTime,
+				modifiedBy, modifiedTime, deletedTime, tbJobs);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

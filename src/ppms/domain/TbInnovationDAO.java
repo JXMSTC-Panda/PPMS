@@ -23,12 +23,21 @@ public class TbInnovationDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(TbInnovationDAO.class);
 	// property constants
+<<<<<<< HEAD
 	public static final String INNOVATIONCONTENT = "innovationcontent";
 	public static final String ASSESSRESULT = "assessresult";
 	public static final String ASSESSLEVEL = "assesslevel";
 	public static final String ENCOURAGEMENT = "encouragement";
 	public static final String CREATEDBY = "createdby";
 	public static final String MODIFIEDBY = "modifiedby";
+=======
+	public static final String INNOVATION_CONTENT = "innovationContent";
+	public static final String ASSESS_RESULT = "assessResult";
+	public static final String ASSESS_LEVEL = "assessLevel";
+	public static final String ENCOURAGEMENT = "encouragement";
+	public static final String CREATED_BY = "createdBy";
+	public static final String MODIFIED_BY = "modifiedBy";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	public void save(TbInnovation transientInstance) {
 		log.debug("saving TbInnovation instance");
@@ -94,6 +103,7 @@ public class TbInnovationDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByInnovationcontent(Object innovationcontent) {
 		return findByProperty(INNOVATIONCONTENT, innovationcontent);
 	}
@@ -104,18 +114,39 @@ public class TbInnovationDAO extends BaseHibernateDAO {
 
 	public List findByAssesslevel(Object assesslevel) {
 		return findByProperty(ASSESSLEVEL, assesslevel);
+=======
+	public List findByInnovationContent(Object innovationContent) {
+		return findByProperty(INNOVATION_CONTENT, innovationContent);
+	}
+
+	public List findByAssessResult(Object assessResult) {
+		return findByProperty(ASSESS_RESULT, assessResult);
+	}
+
+	public List findByAssessLevel(Object assessLevel) {
+		return findByProperty(ASSESS_LEVEL, assessLevel);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findByEncouragement(Object encouragement) {
 		return findByProperty(ENCOURAGEMENT, encouragement);
 	}
 
+<<<<<<< HEAD
 	public List findByCreatedby(Object createdby) {
 		return findByProperty(CREATEDBY, createdby);
 	}
 
 	public List findByModifiedby(Object modifiedby) {
 		return findByProperty(MODIFIEDBY, modifiedby);
+=======
+	public List findByCreatedBy(Object createdBy) {
+		return findByProperty(CREATED_BY, createdBy);
+	}
+
+	public List findByModifiedBy(Object modifiedBy) {
+		return findByProperty(MODIFIED_BY, modifiedBy);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findAll() {

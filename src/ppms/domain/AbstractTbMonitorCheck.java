@@ -3,6 +3,7 @@ package ppms.domain;
 import java.util.Date;
 
 /**
+<<<<<<< HEAD
  * AbstractTbMonitorcheck entity provides the base persistence definition of the
  * TbMonitorcheck entity. @author MyEclipse Persistence Tools
  */
@@ -20,10 +21,30 @@ public abstract class AbstractTbMonitorcheck implements java.io.Serializable {
 	private Date createdtime;
 	private String modifiedby;
 	private Date modifiedtime;
+=======
+ * AbstractTbMonitorCheck entity provides the base persistence definition of the
+ * TbMonitorCheck entity. @author MyEclipse Persistence Tools
+ */
+
+public abstract class AbstractTbMonitorCheck implements java.io.Serializable {
+
+	// Fields
+
+	private String monitorCheckId;
+	private OrganizationNj organizationNj;
+	private Date checkDate;
+	private String checkType;
+	private String detail;
+	private String createdBy;
+	private Date createdTime;
+	private String modifiedBy;
+	private Date modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	// Constructors
 
 	/** default constructor */
+<<<<<<< HEAD
 	public AbstractTbMonitorcheck() {
 	}
 
@@ -46,16 +67,49 @@ public abstract class AbstractTbMonitorcheck implements java.io.Serializable {
 		this.createdtime = createdtime;
 		this.modifiedby = modifiedby;
 		this.modifiedtime = modifiedtime;
+=======
+	public AbstractTbMonitorCheck() {
+	}
+
+	/** minimal constructor */
+	public AbstractTbMonitorCheck(String monitorCheckId) {
+		this.monitorCheckId = monitorCheckId;
+	}
+
+	/** full constructor */
+	public AbstractTbMonitorCheck(String monitorCheckId,
+			OrganizationNj organizationNj, Date checkDate, String checkType,
+			String detail, String createdBy, Date createdTime,
+			String modifiedBy, Date modifiedTime) {
+		this.monitorCheckId = monitorCheckId;
+		this.organizationNj = organizationNj;
+		this.checkDate = checkDate;
+		this.checkType = checkType;
+		this.detail = detail;
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+		this.modifiedBy = modifiedBy;
+		this.modifiedTime = modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	// Property accessors
 
+<<<<<<< HEAD
 	public String getMonitorcheckid() {
 		return this.monitorcheckid;
 	}
 
 	public void setMonitorcheckid(String monitorcheckid) {
 		this.monitorcheckid = monitorcheckid;
+=======
+	public String getMonitorCheckId() {
+		return this.monitorCheckId;
+	}
+
+	public void setMonitorCheckId(String monitorCheckId) {
+		this.monitorCheckId = monitorCheckId;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public OrganizationNj getOrganizationNj() {
@@ -66,6 +120,7 @@ public abstract class AbstractTbMonitorcheck implements java.io.Serializable {
 		this.organizationNj = organizationNj;
 	}
 
+<<<<<<< HEAD
 	public Date getCheckdate() {
 		return this.checkdate;
 	}
@@ -80,6 +135,22 @@ public abstract class AbstractTbMonitorcheck implements java.io.Serializable {
 
 	public void setChecktype(String checktype) {
 		this.checktype = checktype;
+=======
+	public Date getCheckDate() {
+		return this.checkDate;
+	}
+
+	public void setCheckDate(Date checkDate) {
+		this.checkDate = checkDate;
+	}
+
+	public String getCheckType() {
+		return this.checkType;
+	}
+
+	public void setCheckType(String checkType) {
+		this.checkType = checkType;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public String getDetail() {
@@ -90,6 +161,7 @@ public abstract class AbstractTbMonitorcheck implements java.io.Serializable {
 		this.detail = detail;
 	}
 
+<<<<<<< HEAD
 	public String getCreatedby() {
 		return this.createdby;
 	}
@@ -120,6 +192,38 @@ public abstract class AbstractTbMonitorcheck implements java.io.Serializable {
 
 	public void setModifiedtime(Date modifiedtime) {
 		this.modifiedtime = modifiedtime;
+=======
+	public String getCreatedBy() {
+		return this.createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public String getModifiedBy() {
+		return this.modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public Date getModifiedTime() {
+		return this.modifiedTime;
+	}
+
+	public void setModifiedTime(Date modifiedTime) {
+		this.modifiedTime = modifiedTime;
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 }

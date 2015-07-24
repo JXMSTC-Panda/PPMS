@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 public class TbPointDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory.getLogger(TbPointDAO.class);
 	// property constants
+<<<<<<< HEAD
 	public static final String ORGID = "orgid";
 	public static final String ORGTYPE = "orgtype";
 	public static final String EMPLOYEEPOINT = "employeepoint";
@@ -39,6 +40,24 @@ public class TbPointDAO extends BaseHibernateDAO {
 	public static final String DEDUCTTAX = "deducttax";
 	public static final String CREATEDBY = "createdby";
 	public static final String MODIFIEDBY = "modifiedby";
+=======
+	public static final String ORG_ID = "orgId";
+	public static final String ORG_TYPE = "orgType";
+	public static final String EMPLOYEE_POINT = "employeePoint";
+	public static final String EMPLOYEE_PERFORMANCE = "employeePerformance";
+	public static final String ORG_PERFORMANCE = "orgPerformance";
+	public static final String REGULATE_POINT = "regulatePoint";
+	public static final String RANK_SEQ = "rankSeq";
+	public static final String ENCOURAGEMENT_MONEY = "encouragementMoney";
+	public static final String TAX = "tax";
+	public static final String NET_INCOME = "netIncome";
+	public static final String ORG_LEVEL = "orgLevel";
+	public static final String BREACH_DEDUCT_POINT = "breachDeductPoint";
+	public static final String LAST_POINT = "lastPoint";
+	public static final String DEDUCT_TAX = "deductTax";
+	public static final String CREATED_BY = "createdBy";
+	public static final String MODIFIED_BY = "modifiedBy";
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	public void save(TbPoint transientInstance) {
 		log.debug("saving TbPoint instance");
@@ -103,6 +122,7 @@ public class TbPointDAO extends BaseHibernateDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public List findByOrgid(Object orgid) {
 		return findByProperty(ORGID, orgid);
 	}
@@ -133,12 +153,45 @@ public class TbPointDAO extends BaseHibernateDAO {
 
 	public List findByEncouragementmoney(Object encouragementmoney) {
 		return findByProperty(ENCOURAGEMENTMONEY, encouragementmoney);
+=======
+	public List findByOrgId(Object orgId) {
+		return findByProperty(ORG_ID, orgId);
+	}
+
+	public List findByOrgType(Object orgType) {
+		return findByProperty(ORG_TYPE, orgType);
+	}
+
+	public List findByEmployeePoint(Object employeePoint) {
+		return findByProperty(EMPLOYEE_POINT, employeePoint);
+	}
+
+	public List findByEmployeePerformance(Object employeePerformance) {
+		return findByProperty(EMPLOYEE_PERFORMANCE, employeePerformance);
+	}
+
+	public List findByOrgPerformance(Object orgPerformance) {
+		return findByProperty(ORG_PERFORMANCE, orgPerformance);
+	}
+
+	public List findByRegulatePoint(Object regulatePoint) {
+		return findByProperty(REGULATE_POINT, regulatePoint);
+	}
+
+	public List findByRankSeq(Object rankSeq) {
+		return findByProperty(RANK_SEQ, rankSeq);
+	}
+
+	public List findByEncouragementMoney(Object encouragementMoney) {
+		return findByProperty(ENCOURAGEMENT_MONEY, encouragementMoney);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findByTax(Object tax) {
 		return findByProperty(TAX, tax);
 	}
 
+<<<<<<< HEAD
 	public List findByNetincome(Object netincome) {
 		return findByProperty(NETINCOME, netincome);
 	}
@@ -165,6 +218,34 @@ public class TbPointDAO extends BaseHibernateDAO {
 
 	public List findByModifiedby(Object modifiedby) {
 		return findByProperty(MODIFIEDBY, modifiedby);
+=======
+	public List findByNetIncome(Object netIncome) {
+		return findByProperty(NET_INCOME, netIncome);
+	}
+
+	public List findByOrgLevel(Object orgLevel) {
+		return findByProperty(ORG_LEVEL, orgLevel);
+	}
+
+	public List findByBreachDeductPoint(Object breachDeductPoint) {
+		return findByProperty(BREACH_DEDUCT_POINT, breachDeductPoint);
+	}
+
+	public List findByLastPoint(Object lastPoint) {
+		return findByProperty(LAST_POINT, lastPoint);
+	}
+
+	public List findByDeductTax(Object deductTax) {
+		return findByProperty(DEDUCT_TAX, deductTax);
+	}
+
+	public List findByCreatedBy(Object createdBy) {
+		return findByProperty(CREATED_BY, createdBy);
+	}
+
+	public List findByModifiedBy(Object modifiedBy) {
+		return findByProperty(MODIFIED_BY, modifiedBy);
+>>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 	}
 
 	public List findAll() {
