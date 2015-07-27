@@ -8,43 +8,10 @@
                      http://www.springframework.org/schema/tx 
                      http://www.springframework.org/schema/tx/spring-tx.xsd 
                      http://www.springframework.org/schema/aop 
-<<<<<<< HEAD
                      http://www.springframework.org/schema/aop/spring-aop.xsd
                      http://www.springframework.org/schema/context 
                      http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-=======
-                     http://www.springframework.org/schema/aop/spring-aop.xsd">
     
-    <!-- 定义数据源的信息 -->  
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"  
-        destroy-method="close">  
-        <property name="driverClass">  
-            <value>oracle.jdbc.driver.OracleDriver</value>  
-        </property>  
-        <property name="jdbcUrl">  
-            <value>jdbc:oracle:thin:@192.168.50.76:1521/panda</value>  
-        </property>  
-        <property name="user">  
-            <value>pandauser</value>  
-        </property>  
-        <property name="password">
-        	<value>panda</value>  
-        </property>  
-        <property name="maxPoolSize">  
-            <value>80</value>  
-        </property>  
-        <property name="minPoolSize">  
-            <value>1</value>  
-        </property>  
-        <property name="initialPoolSize">  
-            <value>1</value>  
-        </property>  
-        <property name="maxIdleTime">  
-            <value>20</value>  
-        </property>  
-    </bean>  
-  
-  
 	 
     <!--定义Hibernate的SessionFactory -->  
     <!-- SessionFactory使用的数据源为上面的数据源 -->  
@@ -68,7 +35,6 @@
         </property>  
     </bean>  
     
->>>>>>> b0633ca887c97320693bf68c51508c4ad9c3a727
 
 	<!-- 定义数据源的信息 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
