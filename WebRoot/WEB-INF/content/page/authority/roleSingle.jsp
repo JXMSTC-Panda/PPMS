@@ -5,8 +5,9 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
-<html lang="en">
+<!-- auther:TyurinTsien -->
+<!-- date:2015-07-28 14:36:19 -->
+<html lang="zh-cn">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
@@ -75,63 +76,53 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
-						<li class="active">子功能</li>
+						<li><a href="#">权限管理</a></li>
+						<li class="active">角色添加</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
-						<div class="col-xs-12">
-							<!-- PAGE CONTENT BEGINS -->
-							<form class="form-horizontal" role="form">
+						<!-- PAGE CONTENT BEGINS -->
+						<form class="form-horizontal" role="form" action="roleSingleResult.jsp">
 
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 权限角色： </label>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									for="form-field-1">权限角色：</label>
 
-									<div class="col-sm-9">
-										<input type="text" id="form-field-1" placeholder="UserName"
-											value="default" class="col-xs-10 col-sm-5"
-											readonly="readonly" />
+								<div class="col-sm-9">
+									<input type="text" id="form-field-1" placeholder="UserName"
+										class="col-xs-10 col-sm-5" />
+								</div>
+								<label class="col-sm-3 control-label no-padding-right"
+									for="form-field-1">系统管理员：</label>
+
+								<div class="col-sm-9">
+									<div class="radio">
+										<label> <input name="form-field-radio" type="radio"
+											class="ace" /> <span class="lbl">是</span> </label> <label> <input
+											name="form-field-radio" type="radio" class="ace" /> <span
+											class="lbl">否</span> </label> <font color="red">[系统管理员可拥有所有操作权限]</font>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 系统管理员： </label>
-
-									<div class="col-sm-9">
-										<div class="radio">
-											<label> <input name="form-field-radio" type="radio"
-												class="ace" disabled="disabled" /> <span class="lbl">
-													是</span> </label> <label> <input name="form-field-radio"
-												type="radio" class="ace" disabled="disabled"
-												checked="checked" /> <span class="lbl">否</span> </label> <font
-												color="red">[系统管理员可拥有所有操作权限]</font>
-										</div>
-									</div>
-									<div class="col-lg-12" style="text-align: center;">
-										<ul id="treeDemo" class="ztree"></ul>
-									</div>
+								<div class="col-lg-4" style="text-align: center;">
+									<ul id="treeDemo" class="ztree"></ul>
 								</div>
-
-								<div class="clearfix form-actions">
-									<div class="col-md-offset-3 col-md-9">
-										<button class="btn btn-info" type="button">
-											<i class="ace-icon fa fa-check bigger-110"></i> 修改
-										</button>
-
-										&nbsp; &nbsp; &nbsp;
-										<button class="btn" type="reset">
-											<i class="ace-icon fa fa-undo bigger-110"></i> 返回
-										</button>
-									</div>
+							</div>
+							<div class="clearfix form-actions">
+								<div class="col-md-offset-3 col-md-9">
+									<button class="btn btn-info" type="submit">
+										<i class="ace-icon fa fa-check bigger-110"></i>添加
+									</button>
+									&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="reset">
+										<i class="ace-icon fa fa-undo bigger-110"></i>重置
+									</button>
 								</div>
-
-							</form>
-							<!-- PAGE CONTENT ENDS -->
-						</div>
+							</div>
+						</form>
+						<!-- PAGE CONTENT ENDS -->
 					</div>
 				</div>
 			</div>
@@ -160,8 +151,7 @@
 			id : 1,
 			pId : 0,
 			name : "权限管理",
-			open : true,
-			chkDisabled : true
+			open : true
 		}, {
 			id : 11,
 			pId : 1,
@@ -171,6 +161,7 @@
 			id : 111,
 			pId : 11,
 			name : "角色增加",
+			chkDisabled : true
 		}, {
 			id : 112,
 			pId : 11,
@@ -188,8 +179,7 @@
 			pId : 0,
 			name : "人员综合信息管理",
 			checked : true,
-			open : false,
-			chkDisabled : true
+			open : false
 		}, {
 			id : 21,
 			pId : 2,
@@ -304,8 +294,7 @@
 			pId : 0,
 			name : "员工培训/考试管理",
 			checked : true,
-			open : false,
-			chkDisabled : true
+			open : false
 		}, {
 			id : 31,
 			pId : 3,
@@ -427,8 +416,7 @@
 			pId : 0,
 			name : "标准化和暗访管理",
 			checked : true,
-			open : false,
-			chkDisabled : true
+			open : false
 		}, {
 			id : 41,
 			pId : 4,
@@ -521,8 +509,7 @@
 			id : 5,
 			pId : 0,
 			name : "积分管理",
-			open : false,
-			chkDisabled : true
+			open : false
 		}, {
 			id : 51,
 			pId : 5,
@@ -545,8 +532,7 @@
 			id : 6,
 			pId : 0,
 			name : "创新管理",
-			open : false,
-			chkDisabled : true
+			open : false
 		}, {
 			id : 61,
 			pId : 6,
@@ -577,8 +563,7 @@
 			id : 7,
 			pId : 0,
 			name : "奖惩管理",
-			open : false,
-			chkDisabled : true
+			open : false
 		}, {
 			id : 71,
 			pId : 7,
@@ -635,8 +620,7 @@
 			id : 8,
 			pId : 0,
 			name : "绩效管理",
-			open : false,
-			chkDisabled : true
+			open : false
 		}, {
 			id : 81,
 			pId : 8,
@@ -735,8 +719,7 @@
 			id : 9,
 			pId : 0,
 			name : "其它",
-			open : true,
-			chkDisabled : true
+			open : true
 		}, {
 			id : 91,
 			pId : 9,
