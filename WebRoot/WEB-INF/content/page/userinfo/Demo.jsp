@@ -51,12 +51,12 @@
 </head>
 
 <body class="no-skin">
-	<jsp:include page="WebPart/Head.jsp"></jsp:include>
+	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
 			try { ace.settings.check('main-container', 'fixed') } catch (e) { }
 		</script>
-		<jsp:include page="WebPart/Menu.jsp"></jsp:include>
+		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
 		<div class="main-content">
 			<div class="main-content-inner">
 				<div class="breadcrumbs" id="breadcrumbs">
@@ -69,10 +69,10 @@
 						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
-					<jsp:include page="WebPart/SearchBox.jsp"></jsp:include>
+					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
-					<jsp:include page="WebPart/Skin.jsp"></jsp:include>
+					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
@@ -83,9 +83,9 @@
 				</div>
 			</div>
 		</div>
-		<jsp:include page="WebPart/CopyRight.jsp"></jsp:include>
+		<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
 	</div>
-	<jsp:include page="WebPart/Script.jsp"></jsp:include>
+	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
 	
 	<!-- inline scripts related to this page -->
@@ -94,4 +94,3 @@
 	</script>
 </body>
 </html>
-<!-- http://localhost:8080/QQL1133Attend/index.jsp -->
