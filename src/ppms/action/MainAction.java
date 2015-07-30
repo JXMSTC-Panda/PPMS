@@ -32,6 +32,7 @@ public class MainAction {
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String login() {
 		
+		print(value);
 		return "success";
 
 	}
