@@ -17,38 +17,38 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="../../../assets/css/bootstrap.css" />
-<link rel="stylesheet" href="../../../assets/css/font-awesome.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-<link rel="stylesheet" href="../../../assets/css/jquery-ui.css" />
-<link rel="stylesheet" href="../../../assets/css/datepicker.css" />
-<link rel="stylesheet" href="../../../assets/css/ui.jqgrid.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/datepicker.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ui.jqgrid.css" />
 <!-- text fonts -->
-<link rel="stylesheet" href="../../../assets/css/ace-fonts.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="../../../assets/css/ace.css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
-			<link rel="stylesheet" href="../../../assets/css/ace-part2.css" class="ace-main-stylesheet" />
+			<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-part2.css" class="ace-main-stylesheet" />
 		<![endif]-->
 
 <!--[if lte IE 9]>
-		  <link rel="stylesheet" href="../../../assets/css/ace-ie.css" />
+		  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-ie.css" />
 		<![endif]-->
 
 <!-- inline styles related to this page -->
 
 <!-- ace settings handler -->
-<script src="../../../assets/js/ace-extra.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/ace-extra.js"></script>
 
 <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 <!--[if lte IE 8]>
-		<script src="../../../assets/js/html5shiv.js"></script>
-		<script src="../../../assets/js/respond.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
 </head>
 
@@ -118,9 +118,9 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../../../assets/js/date-time/bootstrap-datepicker.js"></script>
-	<script src="../../../assets/js/jqGrid/jquery.jqGrid.src.js"></script>
-	<script src="../../../assets/js/jqGrid/i18n/grid.locale-en.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datepicker.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jqGrid/jquery.jqGrid.src.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jqGrid/i18n/grid.locale-en.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		var grid_data = [ {
