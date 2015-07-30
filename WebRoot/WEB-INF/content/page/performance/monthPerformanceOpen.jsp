@@ -17,50 +17,49 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="../../../assets/css/bootstrap.css" />
-<link rel="stylesheet" href="../../../assets/css/font-awesome.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
 <link rel="stylesheet" href="../../../assets/css/bootstrap-duallistbox.css" />
 		<link rel="stylesheet" href="../../../assets/css/bootstrap-multiselect.css" />
 		<link rel="stylesheet" href="../../../assets/css/select2.css" />
 		
-
 <!-- text fonts -->
-<link rel="stylesheet" href="../../../assets/css/ace-fonts.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="../../../assets/css/ace.css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
-			<link rel="stylesheet" href="../../../assets/css/ace-part2.css" class="ace-main-stylesheet" />
+			<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-part2.css" class="ace-main-stylesheet" />
 		<![endif]-->
 
 <!--[if lte IE 9]>
-		  <link rel="stylesheet" href="../../../assets/css/ace-ie.css" />
+		  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-ie.css" />
 		<![endif]-->
 
 <!-- inline styles related to this page -->
 
 <!-- ace settings handler -->
-<script src="../../../assets/js/ace-extra.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/ace-extra.js"></script>
 
 <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 <!--[if lte IE 8]>
-		<script src="../../../assets/js/html5shiv.js"></script>
-		<script src="../../../assets/js/respond.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
 </head>
 
 <body class="no-skin">
-	<jsp:include page="WebPart/Head.jsp"></jsp:include>
+	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
 			try { ace.settings.check('main-container', 'fixed') } catch (e) { }
 		</script>
-		<jsp:include page="WebPart/Menu.jsp"></jsp:include>
+		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
 		<div class="main-content">
 			<div class="main-content-inner">
 				<div class="breadcrumbs" id="breadcrumbs">
@@ -73,14 +72,15 @@
 						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
-					<jsp:include page="WebPart/SearchBox.jsp"></jsp:include>
+					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
-					<jsp:include page="WebPart/Skin.jsp"></jsp:include>
+					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<div class="page-header center">
+									
+								<div class="page-header center">
 										<h1>
 											月度绩效上传功能开通
 										
@@ -138,43 +138,23 @@
 										</div>
 								</div>
 								
+								
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<jsp:include page="WebPart/CopyRight.jsp"></jsp:include>
+		<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
 	</div>
-	<jsp:include page="WebPart/Script.jsp"></jsp:include>
+	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
 	<script src="../../../assets/js/jquery.bootstrap-duallistbox.js"></script>
 		<script src="../../../assets/js/jquery.raty.js"></script>
 		<script src="../../../assets/js/bootstrap-multiselect.js"></script>
 		<script src="../../../assets/js/select2.js"></script>
 		<script src="../../../assets/js/typeahead.jquery.js"></script>
-		<!-- ace scripts -->
-		<script src="../../../assets/js/ace/elements.scroller.js"></script>
-		<script src="../../../assets/js/ace/elements.colorpicker.js"></script>
-		<script src="../../../assets/js/ace/elements.fileinput.js"></script>
-		<script src="../../../assets/js/ace/elements.typeahead.js"></script>
-		<script src="../../../assets/js/ace/elements.wysiwyg.js"></script>
-		<script src="../../../assets/js/ace/elements.spinner.js"></script>
-		<script src="../../../assets/js/ace/elements.treeview.js"></script>
-		<script src="../../../assets/js/ace/elements.wizard.js"></script>
-		<script src="../../../assets/js/ace/elements.aside.js"></script>
-		<script src="../../../assets/js/ace/ace.js"></script>
-		<script src="../../../assets/js/ace/ace.ajax-content.js"></script>
-		<script src="../../../assets/js/ace/ace.touch-drag.js"></script>
-		<script src="../../../assets/js/ace/ace.sidebar.js"></script>
-		<script src="../../../assets/js/ace/ace.sidebar-scroll-1.js"></script>
-		<script src="../../../assets/js/ace/ace.submenu-hover.js"></script>
-		<script src="../../../assets/js/ace/ace.widget-box.js"></script>
-		<script src="../../../assets/js/ace/ace.settings.js"></script>
-		<script src="../../../assets/js/ace/ace.settings-rtl.js"></script>
-		<script src="../../../assets/js/ace/ace.settings-skin.js"></script>
-		<script src="../../../assets/js/ace/ace.widget-on-reload.js"></script>
-		<script src="../../../assets/js/ace/ace.searchbox-autocomplete.js"></script>
+		
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 			jQuery(function($){
@@ -275,4 +255,3 @@
 
 </body>
 </html>
-<!-- http://localhost:8080/QQL1133Attend/index.jsp -->

@@ -77,6 +77,52 @@
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 							
+									<div class="page-header center">
+										<h1>
+											上月绩效未提交事项提醒
+										
+										</h1>
+									</div>
+									
+									<table class="table table-striped table-bordered">
+										<thead>
+											<tr style="text-align: center;">
+												<td>
+													2008年东区域鼓楼营业厅共<a href="">4人</a>未提交绩效
+													<br />
+													2008年南区域鼓楼营业厅共<a href="">5人</a>未提交绩效
+													<br />
+													2008年西区域鼓楼营业厅共<a href="">6人</a>未提交绩效
+													<br />
+													2008年北区域鼓楼营业厅共<a href="">7人</a>未提交绩效
+													<br />
+												</td>
+											</tr>
+										</thead>
+									</table>
+									<div class="space"></div>
+									<div class="page-header center">
+										<h1>
+											上月之前绩效未提交事项提醒
+										
+										</h1>
+									</div>
+									<table class="table table-striped table-bordered">
+										<thead>
+											<tr style="text-align: center;">
+												<td>
+													2008年东区域鼓楼营业厅共<a href="">4人</a>未提交绩效
+													<br />
+													2008年南区域鼓楼营业厅共<a href="">5人</a>未提交绩效
+													<br />
+													2008年西区域鼓楼营业厅共<a href="">6人</a>未提交绩效
+													<br />
+													2008年北区域鼓楼营业厅共<a href="">7人</a>未提交绩效
+													<br />
+												</td>
+											</tr>
+										</thead>
+									</table>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
