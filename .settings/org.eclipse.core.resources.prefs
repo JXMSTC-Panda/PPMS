@@ -2,4 +2,5 @@
 <<<<<<<=HEAD
 >>>>>>>=26d1baed399ee2a111e8f775f2857a8b903a1b08
 eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/content/page/performance/monthPerformanceBatch.jsp=UTF-8
 encoding//src/ppms/serviceImpl/UserServiceImp.java=UTF-8
