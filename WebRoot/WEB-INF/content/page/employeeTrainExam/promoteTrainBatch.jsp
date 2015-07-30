@@ -7,7 +7,7 @@
 %>
 
 <html lang="en">
-<head>  
+<head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <title>人员成长档案管理系统</title>
@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-
+<link rel="stylesheet" href="../../../assets/css/dropzone.css" />
 <!-- text fonts -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
@@ -76,7 +76,36 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							
+							<div class="page-content">
+									<!-- #section:settings.box -->
+
+									<!-- /section:settings.box -->
+									<div class="page-header">
+										<h1>
+								进阶培训管理
+								<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									进阶培训批量录入
+								</small>
+							</h1>
+									</div>
+									<!-- /.page-header -->
+
+									<div class="row">
+										<div class="col-xs-12">
+											<div>
+												<form action="../dummy.html" class="dropzone" id="dropzone">
+													<div class="fallback">
+														<input name="file" type="file" multiple="" />
+													</div>
+												</form>
+											</div>
+
+										</div>
+										<!-- /.col -->
+									</div>
+									<!-- /.row -->
+								</div>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
@@ -87,10 +116,32 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	
+	<script src="../../../assets/js/dropzone.js"></script>
 	<!-- inline scripts related to this page -->
-	<script>
-		
-	</script>
+<script type="text/javascript">
+			jQuery(function($) {
+				try {
+					Dropzone.autoDiscover = false;
+					var myDropzone = new Dropzone("#dropzone", {
+						paramName: "file", // The name that will be used to transfer the file
+						maxFilesize: 0.5, // MB
+						addRemoveLinks: true,
+						dictDefaultMessage: '<span class="bigger-150 bolder"><i class="ace-icon fa fa-caret-right red"></i> Drop files</span> to upload \
+				<span class="smaller-80 grey">(or click)</span> <br /> \
+				<i class="upload-icon ace-icon fa fa-cloud-upload blue fa-3x"></i>',
+						dictResponseError: 'Error while uploading file!',
+						//change the previewTemplate to use Bootstrap progress bars
+						previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"progress progress-small progress-striped active\"><div class=\"progress-bar progress-bar-success\" data-dz-uploadprogress></div></div>\n  <div class=\"dz-success-mark\"><span></span></div>\n  <div class=\"dz-error-mark\"><span></span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
+					});
+					$(document).one('ajaxloadstart.page', function(e) {
+						try {
+							myDropzone.destroy();
+						} catch (e) {}
+					});
+				} catch (e) {
+					alert('Dropzone.js does not support older browsers!');
+				}
+			});
+		</script>
 </body>
 </html>
