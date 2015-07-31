@@ -39,4 +39,20 @@ public class MainAction {
 		return "success";
 		
 	}
+	@Action(value ="roleSingle", results = {  
+	        @Result(name = "success", location = "/WEB-INF/content/page/authority/roleSingle.jsp"),  
+	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
+	public String roleSingle(){
+		
+		return "success";
+		
+	}
+	@Action(value ="userBaseInfoSearch", results = {  
+	        @Result(name = "success", location = "/WEB-INF/content/page/userinfo/userBaseInfoSearch.jsp"),  
+	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
+	public String login3(){
+		
+		return "success";
+		
+	}
 }
