@@ -17,46 +17,46 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="../../../assets/css/bootstrap.css" />
-<link rel="stylesheet" href="../../../assets/css/font-awesome.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
 
 <!-- text fonts -->
-<link rel="stylesheet" href="../../../assets/css/ace-fonts.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="../../../assets/css/ace.css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
-			<link rel="stylesheet" href="../../../assets/css/ace-part2.css" class="ace-main-stylesheet" />
+			<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-part2.css" class="ace-main-stylesheet" />
 		<![endif]-->
 
 <!--[if lte IE 9]>
-		  <link rel="stylesheet" href="../../../assets/css/ace-ie.css" />
+		  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-ie.css" />
 		<![endif]-->
 
 <!-- inline styles related to this page -->
 
 <!-- ace settings handler -->
-<script src="../../../assets/js/ace-extra.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/ace-extra.js"></script>
 
 <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 <!--[if lte IE 8]>
-		<script src="../../../assets/js/html5shiv.js"></script>
-		<script src="../../../assets/js/respond.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
 </head>
 
 <body class="no-skin">
-	<jsp:include page="WebPart/Head.jsp"></jsp:include>
+	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
 			try { ace.settings.check('main-container', 'fixed') } catch (e) { }
 		</script>
-		<jsp:include page="WebPart/Menu.jsp"></jsp:include>
+		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
 		<div class="main-content">
 			<div class="main-content-inner">
 				<div class="breadcrumbs" id="breadcrumbs">
@@ -69,10 +69,10 @@
 						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
-					<jsp:include page="WebPart/SearchBox.jsp"></jsp:include>
+					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
-					<jsp:include page="WebPart/Skin.jsp"></jsp:include>
+					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
@@ -83,9 +83,9 @@
 				</div>
 			</div>
 		</div>
-		<jsp:include page="WebPart/CopyRight.jsp"></jsp:include>
+		<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
 	</div>
-	<jsp:include page="WebPart/Script.jsp"></jsp:include>
+	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
 	
 	<!-- inline scripts related to this page -->
@@ -94,4 +94,3 @@
 	</script>
 </body>
 </html>
-<!-- http://localhost:8080/QQL1133Attend/index.jsp -->

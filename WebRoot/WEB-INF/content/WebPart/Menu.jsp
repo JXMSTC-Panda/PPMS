@@ -1,10 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
 
 <!-- #section:basics/sidebar -->
 <div id="sidebar" class="sidebar                  responsive">
@@ -51,10 +45,17 @@
 					权限管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b cite="arrow"></b>
 
 			<ul class="submenu">
+<<<<<<< HEAD
 				<li class="active"><a href="roleSingle">
 						<i class="menu-icon fa fa-caret-right"></i>角色增加 </a> <b class="arrow"></b>
 				</li>
 				<li class=""><a href="${pageContext.request.contextPath}/content/page/authority/roleSearch.jsp"> <i
+=======
+				<li class="active"><a href="authority.roleSingle">
+						<i class="menu-icon fa fa-caret-right"></i>角色增加 </a> <b class="arrow"></b>
+				</li>
+				<li class=""><a href="authority.roleSearch"> <i
+>>>>>>> edc78b021fe05a71086d9855ad5799a354300039
 						class="menu-icon fa fa-caret-right"></i>角色查询 </a> <b class="arrow"></b>
 				</li>
 			</ul>
