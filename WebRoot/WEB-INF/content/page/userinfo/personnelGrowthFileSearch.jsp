@@ -80,10 +80,10 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 										<h1>
-								人员调厅记录管理
+								员工成长档案管理
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									人员调厅记录查询
+									人员阶段查询
 								</small>
 							</h1>
 									</div>
