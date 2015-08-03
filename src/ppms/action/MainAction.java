@@ -31,7 +31,11 @@ public class MainAction {
 		
 	}
 	
+<<<<<<< HEAD
 	@Action(value ="login2", results = {  
+=======
+	@Action(value ="login", results = {  
+>>>>>>> 25e82ec969082da37152d0b3bb50eb1c06e8ec20
 	        @Result(name = "success", location = "/WEB-INF/content/page/userinfo/Demo.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String login(){
