@@ -88,7 +88,13 @@
 													<label class="inline"> <input type="checkbox"
 														class="ace" /> <span class="lbl">记住账户</span> </label>
 
+<<<<<<< HEAD
 													<button type="button" class="width-35 pull-right btn btn-sm btn-primary" onclick="top.window.location='login'">
+=======
+													<button type="button"
+														class="width-35 pull-right btn btn-sm btn-primary"
+														onclick="top.window.location='login2'">
+>>>>>>> 381cb37b92882f182fef60d8edfcd3ea302c1972
 														<i class="ace-icon fa fa-key"></i><span
 															class="bigger-110 white">登录</span>
 													</button>
