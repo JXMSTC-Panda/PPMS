@@ -1,7 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 
 <html lang="en">
-<head>  
+<head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <title>人员成长档案管理系统</title>
@@ -70,7 +76,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							
+							积分(主厅)明细
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>

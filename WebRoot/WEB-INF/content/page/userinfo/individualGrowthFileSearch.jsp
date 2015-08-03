@@ -1,7 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 
 <html lang="en">
-<head>  
+<head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <title>人员成长档案管理系统</title>
@@ -70,7 +76,89 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							
+								<div class="page-header">
+										<h1>
+								员工成长档案管理
+								<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									个人成长路线查询
+								</small>
+							</h1>
+									</div>
+									<table class="table table-striped table-bordered">
+										<thead>
+											<tr>
+												<td>
+													工号:
+													<label>0011</label>
+												</td>
+												<td>
+													姓名:
+													<label>李四</label>
+												</td>
+												<td>
+													身份证号:
+													<label>360423199451280011</label>
+												</td>
+												<td>
+													所属营业厅:
+													<label>汉中路营业厅</label>
+												</td>
+											</tr>
+										</thead>
+									</table>
+									<div class="space"></div>																																		
+									<table class="table table-striped table-bordered">
+															<thead>
+																<tr>
+																	<th class="center">序号</th>
+																	
+																	<th style="text-align: center;">时间</th>
+																	<th style="text-align: center;">阶段</th>			
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td class="center">1</td>													
+																	<td>
+																		2007-02-05
+																		
+																	</td>
+																	<td> 
+																		<a href="">入职期</a> 
+																	</td>																	
+																</tr>	
+																<tr>
+																	<td class="center">2</td>													
+																	<td>
+																		2007-02-05
+																		
+																	</td>
+																	<td> 
+																		<a href="">营业员</a> 
+																	</td>																												
+											<tr>
+																	<td class="center">3</td>													
+																	<td>
+																		2007-02-05
+																		
+																	</td>
+																	
+																	<td> 
+																		<a href="">熟练营业员</a> 
+																	</td>																	
+																</tr>	
+																
+															</tbody>
+														</table>														
+														<div class="clearfix form-actions">
+																<div class="col-md-offset-5 col-md-6">
+															<button class="btn btn-info" type="button">
+																<i class="ace-icon fa fa-check bigger-110"></i>
+																	导出全部查询结果
+															</button>														
+															</div>
+									</div>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
