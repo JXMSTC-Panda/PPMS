@@ -5,7 +5,6 @@ public class InvocationAction {
 	public String halls(){
 		
 		
-		
 		return null;
 	}
 	

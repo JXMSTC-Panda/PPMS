@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
 
 	<head>
@@ -1413,18 +1419,18 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<!-- PAGE CONTENT BEGINS -->
-											<form class="form-horizontal" role="form">
+											<form class="form-horizontal" role="form" action="singleUpload">
 												<!-- #section:elements.form -->
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 创新类型： </label>
 
 													<div class="col-sm-9">
 														<label>
-															<input name="form-field-radio" type="radio" class="ace" />
+															<input name="invocation_type" type="radio" class="ace" />
 															<span class="lbl">个人创新</span>
 														</label>
 														<label>
-															<input name="form-field-radio" type="radio" class="ace" />
+															<input name="invocation_type" type="radio" class="ace" />
 															<span class="lbl">团队创新</span>
 														</label>
 													</div>
@@ -1457,7 +1463,7 @@
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
 														<span class="help-inline col-xs-12 col-sm-7">
-															<button class="btn btn-info" onclick="top.window.location=''">选择营业厅</button>
+															<button class="btn btn-info">选择营业厅</button>
 														</span>
 													</div>
 												</div>
