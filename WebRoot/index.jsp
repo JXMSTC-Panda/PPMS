@@ -90,7 +90,11 @@
 
 													<button type="button"
 														class="width-35 pull-right btn btn-sm btn-primary"
+<<<<<<< HEAD
+														onclick="top.window.location='login2'">
+=======
 														onclick="top.window.location='login'">
+>>>>>>> 25e82ec969082da37152d0b3bb50eb1c06e8ec20
 														<i class="ace-icon fa fa-key"></i><span
 															class="bigger-110 white">登录</span>
 													</button>
