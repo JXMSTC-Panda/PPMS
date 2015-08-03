@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 静态资源请求转发
+ * Url请求转发处理，转换成新的请求URL跳转
  * @author shark
- * @update 2015上午10:18:38
+ * @update 2015上午11:05:36
  * @function
  *
  */
@@ -21,30 +21,44 @@ public class ServletURLDispecher extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		int i = 0;
+		
 		String url = null;
+		
+		//获取请求参数
 		StringBuffer requestURL = req.getRequestURL();
 
-		url = requestURL.toString().replace("resource/", "").replace(".", "/");
-		url = url + ".jsp";
-		Map<String, String[]> map = req.getParameterMap();
-		if (map.size() > 0) {
-			url = url + "?";
-			for (Entry<String, String[]> entry : map.entrySet()) {
+		//切割获取访问路径
+		String[] split = requestURL.toString().split("/");
+		url = split[split.length - 1];
 
-				String[] value = entry.getValue();
-				for (String string : value) {
-					url = url + entry.getKey() + "=" + string + "&";
+		//判断格式是否准确
+		if (url.contains(".")) {
+			
+			//替换格式，转出标准请求格式
+			url = url.replace(".", "/");
+			url = url + ".jsp";
+			
+			//获取请求参数，
+			Map<String, String[]> map = req.getParameterMap();
+			if (map.size() > 0) {
+				url = url + "?";
+				for (Entry<String, String[]> entry : map.entrySet()) {
+
+					String[] value = entry.getValue();
+					for (String string : value) {
+						url = url + entry.getKey() + "=" + string + "&";
+					}
 				}
-
-				System.out.println(value);
 			}
+			url = (String) url.subSequence(0, url.length() - 1);
+			//拼接根目录
+			url="content/page/"+url;
+			if (url != null)
+				req.getRequestDispatcher("/"+url).forward(req, resp);
 		}
 
-		 url = (String) url.subSequence(0, url.length() - 1);
-		if (url != null)
-			resp.sendRedirect(url);
 	}
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
