@@ -78,12 +78,14 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<div class="page-header">
+								<div class="row">
+							<div class="col-xs-12">
+								<div class="page-header">
 										<h1>
-								人员调厅记录管理
+								人员基本信息管理
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									人员调厅记录查询
+									人员基本信息查询
 								</small>
 							</h1>
 									</div>
@@ -105,8 +107,8 @@
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
 	<script src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datepicker.js"></script>
-		<script src="${pageContext.request.contextPath}/assets/js/jqGrid/jquery.jqGrid.src.js"></script>
-		<script src="${pageContext.request.contextPath}/assets/js/jqGrid/i18n/grid.locale-en.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jqGrid/jquery.jqGrid.src.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jqGrid/i18n/grid.locale-en.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 			var grid_data = 
