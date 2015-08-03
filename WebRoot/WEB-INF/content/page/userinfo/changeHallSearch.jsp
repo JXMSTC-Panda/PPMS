@@ -83,7 +83,7 @@
 								人员调厅记录管理
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									人员调厅记录查询
+									营业厅信息查询
 								</small>
 							</h1>
 									</div>

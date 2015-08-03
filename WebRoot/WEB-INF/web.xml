@@ -24,7 +24,15 @@
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 	</listener>
 
+	<servlet>
+		<servlet-name>URLDispecher</servlet-name>
+		<servlet-class>ppms.servlet.ServletURLDispecher</servlet-class>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>URLDispecher</servlet-name>
+		<url-pattern>/resource/*</url-pattern>
+	</servlet-mapping>
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
 		<url-pattern>/*</url-pattern>
