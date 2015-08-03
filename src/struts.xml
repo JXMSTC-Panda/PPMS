@@ -32,5 +32,7 @@
 	<constant name="struts.convention.action.name.separator" value="-" />
 	<!-- 搜索此配置下的所有包 -->
 	<constant name="struts.convention.package.locators.basePackage" value="ppms.action" />
+	<!--  -->
+	<constant name="struts.action.extension" value="do"/>
     
 </struts>
