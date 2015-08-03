@@ -88,9 +88,7 @@
 													<label class="inline"> <input type="checkbox"
 														class="ace" /> <span class="lbl">记住账户</span> </label>
 
-													<button type="button"
-														class="width-35 pull-right btn btn-sm btn-primary"
-														onclick="top.window.location='login'">
+													<button type="button" class="width-35 pull-right btn btn-sm btn-primary" onclick="top.window.location='login'">
 														<i class="ace-icon fa fa-key"></i><span
 															class="bigger-110 white">登录</span>
 													</button>
@@ -119,7 +117,6 @@
 													<i class="ace-icon fa fa-google-plus"></i>
 												</a>
 											</div>
-											-->
 									</div>
 									<!-- /.widget-main -->
 
