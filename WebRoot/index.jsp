@@ -462,18 +462,11 @@
 		</div>
 		<!-- /.main-container -->
 
->>>>>>> b43bd3e44acedf850fd95fa91e310147c7cce2dd
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
 		<script type="text/javascript">
-<<<<<<< HEAD
 			window.jQuery || document.write("<script src='assets/js/jquery.js'>"+"<"+"/script>");
-=======
-			window.jQuery
-					|| document.write("<script src='assets/js/jquery.js'>"
-							+ "<"+"/script>");
->>>>>>> b43bd3e44acedf850fd95fa91e310147c7cce2dd
 		</script>
 
 		<!-- <![endif]-->
@@ -484,20 +477,12 @@
 </script>
 <![endif]-->
 		<script type="text/javascript">
-<<<<<<< HEAD
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
-=======
-			if ('ontouchstart' in document.documentElement)
-				document
-						.write("<script src='assets/js/jquery.mobile.custom.js'>"
-								+ "<"+"/script>");
->>>>>>> b43bd3e44acedf850fd95fa91e310147c7cce2dd
 		</script>
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			jQuery(function($) {
-<<<<<<< HEAD
 			 $(document).on('click', '.toolbar a[data-target]', function(e) {
 				e.preventDefault();
 				var target = $(this).data('target');
