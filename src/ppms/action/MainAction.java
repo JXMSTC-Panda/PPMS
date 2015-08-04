@@ -24,24 +24,11 @@ public class MainAction {
 		} finally {
 			return "success";
 		}
-
 	}
-<<<<<<< HEAD
-	
 	@Action(value ="login", results = {  
 	        @Result(name = "success", location = "/WEB-INF/content/page/userinfo/Demo.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String login(){
-		
-=======
-
-	@Action(value = "login", results = {
-			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/Demo.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	public String login() {
-
->>>>>>> 587709422117a56a2a3a4615ac56bea1d5295f84
 		return "success";
-
 	}
 }
