@@ -429,15 +429,19 @@
 					创新管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b cite="arrow"></b>
 
 			<ul class="submenu">
+<<<<<<< HEAD
 				<li class=""><a href="${pageContext.request.contextPath}/resource/innovation.invocationSingle">
+=======
+				<li class=""><a href="${pageContext.request.contextPath}/resource/innovation.innovationSingle">
+>>>>>>> 9e393abc50c3cec26568ffcdba501e8f0c5cba88
 						<i class="menu-icon fa fa-caret-right"></i>创新提案单条录入 </a> <b
 					class="arrow"></b>
 				</li>
-				<li class=""><a href="${pageContext.request.contextPath}/resource/praiseCriticism.innovationBatch">
+				<li class=""><a href="${pageContext.request.contextPath}/resource/innovation.innovationBatch">
 						<i class="menu-icon fa fa-caret-right"></i>创新提案批量导入 </a> <b
 					class="arrow"></b>
 				</li>
-				<li class=""><a href="${pageContext.request.contextPath}/resource/praiseCriticism.innovationSearch">
+				<li class=""><a href="${pageContext.request.contextPath}/resource/innovation.innovationSearch">
 						<i class="menu-icon fa fa-caret-right"></i>创新提案查询 </a> <b
 					class="arrow"></b>
 				</li>
