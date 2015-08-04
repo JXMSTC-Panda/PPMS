@@ -429,7 +429,7 @@
 					创新管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b cite="arrow"></b>
 
 			<ul class="submenu">
-				<li class=""><a href="${pageContext.request.contextPath}/resource/praiseCriticism.innovationSingle">
+				<li class=""><a href="${pageContext.request.contextPath}/resource/innovation.invocationSingle">
 						<i class="menu-icon fa fa-caret-right"></i>创新提案单条录入 </a> <b
 					class="arrow"></b>
 				</li>

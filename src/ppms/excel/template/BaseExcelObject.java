@@ -1,11 +1,11 @@
 package ppms.excel.template;
 
-import ppms.dao.BaseDao;
+import ppms.daoimpl.BaseDaoImp;
 
 public class BaseExcelObject implements IExcelTemp {
 
 	@Override
-	public IExcelTemp toSave(BaseDao dao) {
+	public IExcelTemp toSave(BaseDaoImp dao) {
 		// TODO Auto-generated method stub
 		return null;
 	}

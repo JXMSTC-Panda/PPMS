@@ -1,6 +1,6 @@
 package ppms.excel.template;
 
-import ppms.dao.BaseDao;
+import ppms.daoimpl.BaseDaoImp;
 
 /**
  * excel模板标准接口
@@ -14,6 +14,6 @@ public interface IExcelTemp {
 	 * @param dao
 	 * @return
 	 */
-	public IExcelTemp toSave(BaseDao dao); 
+	public IExcelTemp toSave(BaseDaoImp dao); 
 	
 }

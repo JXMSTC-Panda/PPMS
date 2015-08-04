@@ -1,5 +1,6 @@
 package ppms.daoimpl;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -18,4 +19,8 @@ public class BaseDaoImp extends HibernateDaoSupport {
 		super.setSessionFactory(sessionFactory);
 	}
 
+	public void saveObject(Object obj) throws HibernateException {
+		
+		getHibernateTemplate().save(obj);
+	}
 }
