@@ -34,18 +34,9 @@ public class ServletURLDispecher extends HttpServlet {
 
 		// 判断格式是否准确
 		if (url.contains(".")) {
-<<<<<<< HEAD
-			
-			url = url + ".jsp";
-			//获取请求参数，
-=======
-
 			// 替换格式，转出标准请求格式
 			url = url.replace(".", "/");
 			url = url + ".jsp";
-
-			// 获取请求参数，
->>>>>>> 587709422117a56a2a3a4615ac56bea1d5295f84
 			Map<String, String[]> map = req.getParameterMap();
 			if (map.size() > 0) {
 				url = url + "?";
