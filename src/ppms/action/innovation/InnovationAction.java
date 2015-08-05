@@ -7,7 +7,6 @@ import java.util.Map;
 import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.ResultPath;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ppms.action.interfaces.InitPage;
@@ -30,7 +29,12 @@ public class InnovationAction extends ActionSupport implements InitPage{
 
 	@Autowired
 	private InvocationServiceImp service;
+	
+	
 
+	public void setService(InvocationServiceImp service) {
+		this.service = service;
+	}
 	/**
 	 * 处理创新管理单条录入
 	 * @return
