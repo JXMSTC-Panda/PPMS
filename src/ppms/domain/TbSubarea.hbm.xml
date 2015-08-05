@@ -8,7 +8,7 @@
     <class name="ppms.domain.TbSubarea" table="TB_SUBAREA" schema="PPMSUSER">
         <id name="subareaid" type="java.math.BigDecimal">
             <column name="SUBAREAID" precision="22" scale="0" />
-            <generator class="assigned" />
+            <generator class="uuid.string" />
         </id>
         <property name="subareadesc" type="java.lang.String">
             <column name="SUBAREADESC" length="50" />

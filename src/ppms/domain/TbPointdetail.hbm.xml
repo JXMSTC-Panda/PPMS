@@ -8,7 +8,7 @@
     <class name="ppms.domain.TbPointdetail" table="TB_POINTDETAIL" schema="PPMSUSER">
         <id name="pointid" type="java.lang.String">
             <column name="POINTID" length="10" />
-            <generator class="assigned" />
+            <generator class="uuid.string" />
         </id>
         <many-to-one name="tbPoint" class="ppms.domain.TbPoint" update="false" insert="false" fetch="select">
             <column name="POINTID" length="10" not-null="true" unique="true" />

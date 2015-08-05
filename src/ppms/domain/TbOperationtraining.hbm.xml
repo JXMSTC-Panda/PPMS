@@ -8,7 +8,7 @@
     <class name="ppms.domain.TbOperationtraining" table="TB_OPERATIONTRAINING" schema="PPMSUSER">
         <id name="trainingid" type="java.lang.String">
             <column name="TRAININGID" length="10" />
-            <generator class="assigned" />
+            <generator class="uuid.string" />
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
             <column name="ORGID" precision="8" scale="0">

@@ -8,7 +8,7 @@
     <class name="ppms.domain.TbSystemsettings" table="TB_SYSTEMSETTINGS" schema="PPMSUSER">
         <id name="settingsid" type="java.lang.String">
             <column name="SETTINGSID" length="6" />
-            <generator class="assigned" />
+            <generator class="uuid.string" />
         </id>
         <property name="mastertype1" type="java.lang.String">
             <column name="MASTERTYPE1" length="30" />

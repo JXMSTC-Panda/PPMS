@@ -8,7 +8,7 @@
     <class name="ppms.domain.TbChangejobhistory" table="TB_CHANGEJOBHISTORY" schema="PPMSUSER">
         <id name="jobhistoryid" type="java.lang.String">
             <column name="JOBHISTORYID" length="10" />
-            <generator class="assigned" />
+            <generator class="uuid.string" />
         </id>
         <many-to-one name="tbEmployee" class="ppms.domain.TbEmployee" fetch="select">
             <column name="EMPLOYEEID" length="6" />

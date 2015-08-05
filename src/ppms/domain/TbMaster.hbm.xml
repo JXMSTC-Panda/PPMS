@@ -8,7 +8,7 @@
     <class name="ppms.domain.TbMaster" table="TB_MASTER" schema="PPMSUSER">
         <id name="masterid" type="java.lang.String">
             <column name="MASTERID" length="6" />
-            <generator class="assigned" />
+            <generator class="uuid.string" />
         </id>
         <property name="type" type="java.lang.String">
             <column name="TYPE" length="50" />
