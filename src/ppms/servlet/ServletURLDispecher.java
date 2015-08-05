@@ -93,7 +93,7 @@ public class ServletURLDispecher extends HttpServlet {
 							.newInstance();
 
 					//获取查找到的数据
-					Map<String, List<T>> initPage = forName.initPage();
+					Map<String, List<T>> initPage = forName.initPage(req.getServletContext());
 
 					if (initPage != null) {
 						//遍历map存到request域

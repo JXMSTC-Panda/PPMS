@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -245,7 +246,7 @@ public class CommonExcelParser{
 	 * 
 	 */
 
-	public List<IExcelTemp> toObjs2(File myFile, String myFileFileName)
+	public List<IExcelTemp> toObjs2(InputStream file, String myFileFileName)
 			throws Exception {
 
 		// 变量定义
@@ -253,7 +254,6 @@ public class CommonExcelParser{
 		// 保存封装好Excel对应实体类的集合
 		List<IExcelTemp> objs = null;
 		// 文件输入流
-		FileInputStream file = null;
 		// Excel文件对应的实体类字节码对象
 		Class clazz = null;
 		// Excel文件类对应实体类的成员变量数组
@@ -267,12 +267,10 @@ public class CommonExcelParser{
 		// 保存Excel实体类类名和成员变量对应列名所在下标的映射
 		Map<String, List<ExcelObjStruct>> map = null;
 
-		if (myFile == null) {
+		if (file == null) {
 			throw new ExcelParserException("文件上传失败");
 		} else {
 			try {
-				// 获取文件输入流
-				file = new FileInputStream(myFile);
 				// 设置PIO初始化对象
 				setFile(file);
 				// 实例化excel对应类的实例集合
@@ -456,7 +454,7 @@ public class CommonExcelParser{
 	 * 
 	 * @param templateFilePath
 	 */
-	private void setFile(FileInputStream file) {
+	private void setFile(InputStream file) {
 
 		// 获取指向该excel的POIFSFileSystem实例
 		try {

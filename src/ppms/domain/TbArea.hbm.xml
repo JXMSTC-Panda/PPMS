@@ -8,7 +8,7 @@
     <class name="ppms.domain.TbArea" table="TB_AREA" schema="PPMSUSER">
         <id name="areaid" type="java.math.BigDecimal">
             <column name="AREAID" precision="22" scale="0" />
-            <generator class="uuid.string" />
+            <generator class="uuid" />
         </id>
         <many-to-one name="tbSubarea" class="ppms.domain.TbSubarea" fetch="select">
             <column name="SUBAREAID" precision="22" scale="0" />
