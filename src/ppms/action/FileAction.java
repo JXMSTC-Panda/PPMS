@@ -1,6 +1,5 @@
 package ppms.action;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
 
@@ -39,6 +38,7 @@ public class FileAction extends ActionSupport {
 		// 基于myFile创建一个文件输入流
 		try {
 
+			fileName=new String(fileName.getBytes("iso8859-1"), "utf-8");
 			if (!fileName.endsWith(".xls")) {
 
 				throw new ExcelParserException("文件导入失败，文件名" + fileName
