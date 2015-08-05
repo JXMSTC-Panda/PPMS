@@ -8,8 +8,10 @@ import java.util.Date;
 
 public class TbEmployeepraisecriticism implements java.io.Serializable {
 
+
 	// Fields
 
+	
 	private String praisecriticismid;
 	private OrganizationNj organizationNj;
 	private TbEmployee tbEmployee;
