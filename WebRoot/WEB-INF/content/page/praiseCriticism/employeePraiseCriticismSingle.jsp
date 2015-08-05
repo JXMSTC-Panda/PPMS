@@ -100,7 +100,7 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<!-- PAGE CONTENT BEGINS -->
-											<form class="form-horizontal" role="form">
+											<form class="form-horizontal" role="form" action="start.do">
 												<!-- #section:elements.form -->
 												
 
@@ -108,7 +108,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 区域： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbEmployeepraisecriticism.organizationNj.address" />
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 														</span>
@@ -118,7 +118,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅编码： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbEmployeepraisecriticism.organizationNj.orgid"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -128,7 +128,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅名称： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value=""  name="tbEmployeepraisecriticism.organizationNj.orgName"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 															
 														</span>
@@ -141,7 +141,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 员工姓名： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbEmployeepraisecriticism.tbEmployee.employeename"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 															<button class="btn btn-info">选择员工</button>
 														</span>
@@ -151,7 +151,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 工号： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbEmployeepraisecriticism.tbEmployee.employeeid"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -161,7 +161,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 身份证号： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbEmployeepraisecriticism.tbEmployee.idnumber"/>
 														
 													</div>
 												</div>
@@ -170,7 +170,7 @@
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right for="form-field-1">类型:</label>
 													<div class="col-sm-9">
-														<select class="col-xs-10 col-sm-5" id="form-field-select-1">
+														<select class="col-xs-10 col-sm-5" id="form-field-select-1" name="tbEmployeepraisecriticism.praisecriticismtype">
 															<option value="1">惩罚</option>
 															<option value="2">表彰</option>								
 														</select>
@@ -181,7 +181,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 奖惩原因： </label>
 
 													<div class="col-sm-9">													
-														<textarea id="form-field-11" class="col-xs-10 col-sm-5"></textarea>
+														<textarea id="form-field-11" class="col-xs-10 col-sm-5" name="tbEmployeepraisecriticism.cause"></textarea>
 														
 													</div>
 												</div>
@@ -190,7 +190,7 @@
 
 													<div class="col-sm-9">
 														<div class="input-group col-xs-10 col-sm-5">
-																	<input class="form-control date-picker " id="id-date-picker-1" type="text" data-date-format="yyyy-mm-dd" />
+																	<input class="form-control date-picker " id="id-date-picker-1" type="text" data-date-format="yyyy-mm-dd"  name="tbEmployeepraisecriticism.praisecriticismdate"/>
 																	<span class="input-group-addon">
 																		<i class="fa fa-calendar bigger-110"></i>
 																	</span>
@@ -201,10 +201,10 @@
 												
 												
 												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 级别： </label>
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1" > 级别： </label>
 
 													<div class="col-sm-9">
-														<select class="col-xs-10 col-sm-5" id="form-field-select-1">
+														<select class="col-xs-10 col-sm-5" id="form-field-select-1" name="tbEmployeepraisecriticism.praisecriticismlevel">
 															<option value="1">中心通报</option>
 															<option value="2">公司发文</option>	
 															<option value="3">区域通报</option>	
@@ -217,9 +217,10 @@
 												
 												<div class="clearfix form-actions">
 													<div class="col-md-offset-3 col-md-9">
-														<button class="btn btn-info" type="button">
+														<!-- <button class="btn btn-info" type="button" >
 															<i class="ace-icon fa fa-check bigger-110"></i> Submit
-														</button>
+														</button> -->
+														<input type="submit"  value="submit">
 
 														&nbsp; &nbsp; &nbsp;
 														<button class="btn" type="reset">
