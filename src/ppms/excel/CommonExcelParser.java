@@ -624,7 +624,7 @@ public class CommonExcelParser{
 					if (comment.contains(":")) {
 
 						// 赋值一个和comment同值得对象
-						String temp = comment
+						String temp = String
 								.copyValueOf(comment.toCharArray());
 						// 替换
 						temp = temp.replace("(月)", "").replaceAll("(年月日)", "");
