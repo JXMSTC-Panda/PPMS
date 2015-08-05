@@ -1,13 +1,16 @@
-package ppms.action.innovation;
+package ppms.action;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
 import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import ppms.action.interfaces.InitPage;
 import ppms.domain.OrganizationNj;
@@ -30,8 +33,6 @@ public class InnovationAction extends ActionSupport implements InitPage{
 	@Autowired
 	private InvocationServiceImp service;
 	
-	
-
 	public void setService(InvocationServiceImp service) {
 		this.service = service;
 	}
@@ -52,12 +53,12 @@ public class InnovationAction extends ActionSupport implements InitPage{
 		
 	}
 	@Override
-	public Map<String, List<T>> initPage() {
+	public Map<String, List<T>> initPage(ServletContext context) {
 
 		//实例化map
 		Map map=new HashMap<String, List<OrganizationNj>>();
 		
-		
+		InvocationServiceImp service = WebApplicationContextUtils.getWebApplicationContext(context).getBean(InvocationServiceImp.class);
 		//获取所有营业厅
 		List<OrganizationNj> organizations = service.getOrganizations();
 		

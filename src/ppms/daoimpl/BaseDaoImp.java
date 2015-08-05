@@ -34,15 +34,15 @@ public class BaseDaoImp extends HibernateDaoSupport {
 		if (obj != null) {
 			
 			try {
+				
 				getHibernateTemplate().save(obj);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 		} else {
 			throw new RuntimeException("插入的对象为空");
 		}
-		return false;
+		return true;
 	}
 	
 	public<T> T findAll(T obj){

@@ -21,12 +21,18 @@ public class InvocationServiceImp implements InvocationService {
 	private InvocationDaoImp dao;
 	@Override
 	public List<OrganizationNj> getOrganizations() {
+		
 		return dao.getOrganizations();
 	}
 	@Override
 	public boolean addInnovation(TbInnovation innovation) {
 		
-		dao.saveObject(innovation);
+		try {
+			dao.saveObject(innovation);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	

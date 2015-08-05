@@ -8,7 +8,7 @@
     <class name="ppms.domain.CUserInfo" table="C_USER_INFO" schema="PPMSUSER">
         <id name="operid" type="java.math.BigDecimal">
             <column name="OPERID" precision="22" scale="0" />
-            <generator class="uuid.string" />
+            <generator class="uuid" />
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
             <column name="ORGID" precision="8" scale="0" />
