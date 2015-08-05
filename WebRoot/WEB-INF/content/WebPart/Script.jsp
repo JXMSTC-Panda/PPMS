@@ -48,7 +48,6 @@
 				}
 				$("#" + page[2]).addClass("active");
 			}
-			alert(pageInfo);
 		});
 	</script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>

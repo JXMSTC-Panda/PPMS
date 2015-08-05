@@ -46,12 +46,12 @@
 	<!-- /.sidebar-shortcuts -->
 
 	<ul class="nav nav-list">
-		<li id="authority" class="active open"><a href="#" class="dropdown-toggle">
+		<li id="authority" class=""><a href="#" class="dropdown-toggle">
 				<i class="menu-icon fa fa-desktop"></i> <span class="menu-text">
 					权限管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b cite="arrow"></b>
 
 			<ul class="submenu">
-				<li id="roleSingle" class="active"><a href="${pageContext.request.contextPath}/resource/authority.null.roleSingle">
+				<li id="roleSingle" class=""><a href="${pageContext.request.contextPath}/resource/authority.null.roleSingle">
 						<i class="menu-icon fa fa-caret-right"></i>角色增加 </a> <b class="arrow"></b>
 				</li>
 				<li id="roleSearch" class=""><a href="${pageContext.request.contextPath}/resource/authority.null.roleSearch"> <i
