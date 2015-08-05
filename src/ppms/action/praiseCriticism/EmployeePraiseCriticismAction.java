@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 
 import ppms.domain.TbEmployeepraisecriticism;
 
-@Controller
+
 public class EmployeePraiseCriticismAction {
 	
-	@Autowired
+	
 	private TbEmployeepraisecriticism tbEmployeepraisecriticism;
 	
 	

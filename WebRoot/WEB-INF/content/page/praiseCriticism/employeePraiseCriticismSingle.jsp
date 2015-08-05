@@ -21,13 +21,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-		<link rel="stylesheet" href="../../../assets/css/jquery-ui.custom.css" />
-		<link rel="stylesheet" href="../../../assets/css/chosen.css" />
-		<link rel="stylesheet" href="../../../assets/css/datepicker.css" />
-		<link rel="stylesheet" href="../../../assets/css/bootstrap-timepicker.css" />
-		<link rel="stylesheet" href="../../../assets/css/daterangepicker.css" />
-		<link rel="stylesheet" href="../../../assets/css/bootstrap-datetimepicker.css" />
-		<link rel="stylesheet" href="../../../assets/css/colorpicker.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jquery-ui.custom.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/chosen.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/datepicker.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/daterangepicker.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/colorpicker.css" />
 <!-- text fonts -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
@@ -246,21 +246,21 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../../../assets/js/jquery-ui.custom.js"></script>
-		<script src="../../../assets/js/jquery.ui.touch-punch.js"></script>
-		<script src="../../../assets/js/chosen.jquery.js"></script>
-		<script src="../../../assets/js/fuelux/fuelux.spinner.js"></script>
-		<script src="../../../assets/js/date-time/bootstrap-datepicker.js"></script>
-		<script src="../../../assets/js/date-time/bootstrap-timepicker.js"></script>
-		<script src="../../../assets/js/date-time/moment.js"></script>
-		<script src="../../../assets/js/date-time/daterangepicker.js"></script>
-		<script src="../../../assets/js/date-time/bootstrap-datetimepicker.js"></script>
-		<script src="../../../assets/js/bootstrap-colorpicker.js"></script>
-		<script src="../../../assets/js/jquery.knob.js"></script>
-		<script src="../../../assets/js/jquery.autosize.js"></script>
-		<script src="../../../assets/js/jquery.inputlimiter.1.3.1.js"></script>
-		<script src="../../../assets/js/jquery.maskedinput.js"></script>
-		<script src="../../../assets/js/bootstrap-tag.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-ui.custom.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.ui.touch-punch.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/chosen.jquery.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/fuelux/fuelux.spinner.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datepicker.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-timepicker.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/date-time/moment.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/date-time/daterangepicker.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datetimepicker.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap-colorpicker.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.knob.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.autosize.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.inputlimiter.1.3.1.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.maskedinput.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap-tag.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 			jQuery(function($) {
