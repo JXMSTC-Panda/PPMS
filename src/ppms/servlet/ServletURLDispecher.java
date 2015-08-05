@@ -32,7 +32,7 @@ public class ServletURLDispecher extends HttpServlet {
 	private static Properties initConfig;
 
 	static {
-
+		
 		initConfig = new Properties();
 		try {
 			
@@ -62,6 +62,7 @@ public class ServletURLDispecher extends HttpServlet {
 		mark = url;
 		// 判断格式是否准确
 		if (url.contains(".")) {
+			url = url.split("[.]")[0] + "." + url.split("[.]")[2];
 			// 替换格式，转出标准请求格式
 			url = url.replace(".", "/");
 			url = url + ".jsp";
