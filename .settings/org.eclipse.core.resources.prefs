@@ -2,11 +2,11 @@
 <<<<<<<=HEAD
 >>>>>>>=26d1baed399ee2a111e8f775f2857a8b903a1b08
 eclipse.preferences.version=1
-encoding//WebRoot/WEB-INF/content/page/innovation/invocationBatch.jsp=UTF-8
-encoding//WebRoot/WEB-INF/content/page/innovation/invocationBatchResult.jsp=UTF-8
-encoding//WebRoot/WEB-INF/content/page/innovation/invocationSearch.jsp=UTF-8
-encoding//WebRoot/WEB-INF/content/page/innovation/invocationSingle.jsp=UTF-8
-encoding//WebRoot/WEB-INF/content/page/innovation/invocationSingleResult.jsp=UTF-8
-encoding//WebRoot/WEB-INF/content/page/innovation/invocationUpdate.jsp=UTF-8
+encoding//WebRoot/WEB-INF/content/page/innovation/innovationBatch.jsp=UTF-8
+encoding//WebRoot/WEB-INF/content/page/innovation/innovationBatchResult.jsp=UTF-8
+encoding//WebRoot/WEB-INF/content/page/innovation/innovationSearch.jsp=UTF-8
+encoding//WebRoot/WEB-INF/content/page/innovation/innovationSingle.jsp=UTF-8
+encoding//WebRoot/WEB-INF/content/page/innovation/innovationSingleResult.jsp=UTF-8
+encoding//WebRoot/WEB-INF/content/page/innovation/innovationUpdate.jsp=UTF-8
 encoding//src/ppms/excel/CommonExcelParser.java=UTF-8
 encoding//src/ppms/serviceImpl/UserServiceImp.java=UTF-8

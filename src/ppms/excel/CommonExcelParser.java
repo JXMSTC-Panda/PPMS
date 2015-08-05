@@ -9,15 +9,21 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
 import ppms.annotation.Mark;
+import ppms.excel.template.BaseExcelObject;
 import ppms.excel.template.IExcelTemp;
 import ppms.exception.ExcelParserException;
 
@@ -28,7 +34,7 @@ import ppms.exception.ExcelParserException;
  * @version 1.1(excel解析成对象完成)
  * 
  */
-public class CommonExcelParser {
+public class CommonExcelParser{
 
 	// excel对应的文本对象
 	private HSSFWorkbook wb;
@@ -39,78 +45,143 @@ public class CommonExcelParser {
 
 	/**
 	 * 将数据库 查询的数据生成excel文件流
-	 * @param excelRecords 数据对象集合
-	 * @param templateFilePath 模板excel文件路径
+	 * 
+	 * @param excelRecords
+	 *            数据对象集合
+	 * @param templateFilePath
+	 *            模板excel文件路径
 	 * @return
 	 */
-	public OutputStream toExcel(List<IExcelTemp> excelRecords,
-			String templateFilePath) {
+	public <T extends BaseExcelObject> OutputStream toExcel2(
+			List<T> excelRecords, String templateFilePath) {
 
 		FileOutputStream fis1 = null;
 		FileInputStream fis = null;
 		try {
 
-			//指向模板文件的文件对象
+			// 指向模板文件的文件对象
 			File file = new File(templateFilePath);
-			//判断模板文件是否存在，存在继续操作，不存在抛异常
+			// 判断模板文件是否存在，存在继续操作，不存在抛异常
 			if (file.exists()) {
-				
-				//获取模板的文件输出流
+
+				// 获取模板的文件输出流
 				fis = new FileInputStream(templateFilePath);
-				//设置好excel文本对象
+				// 设置好excel文本对象
 				this.setFile(fis);
-				
+
 				HSSFRow ro = null;
 				HSSFCell cell = null;
+
+				// 获取模板excel数据写入的行
+				int i = 0;
+				while ((sh.getRow(i)) != null) {
+					i++;
+				}
 				
-				//获取模板excel数据写入的行
+				Class clazz=excelRecords.get(0).getClass();
+				String fileName = clazz.getName().replace("ppms.domain.","");
+				
+			}else{
+				new ExcelParserException(templateFilePath+"下载的模板已不存在");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {// 关闭流
+			try {
+				fis.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				fis = null;
+			}
+			try {
+				fis1.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				fis1 = null;
+			}
+		}
+		return null;
+	}
+	/**
+	 * 将数据库 查询的数据生成excel文件流
+	 * 
+	 * @param excelRecords
+	 *            数据对象集合
+	 * @param templateFilePath
+	 *            模板excel文件路径
+	 * @return
+	 */
+	public <T extends BaseExcelObject> OutputStream toExcel(
+			List<T> excelRecords, String templateFilePath) {
+
+		FileOutputStream fis1 = null;
+		FileInputStream fis = null;
+		try {
+
+			// 指向模板文件的文件对象
+			File file = new File(templateFilePath);
+			// 判断模板文件是否存在，存在继续操作，不存在抛异常
+			if (file.exists()) {
+
+				// 获取模板的文件输出流
+				fis = new FileInputStream(templateFilePath);
+				// 设置好excel文本对象
+				this.setFile(fis);
+
+				HSSFRow ro = null;
+				HSSFCell cell = null;
+
+				// 获取模板excel数据写入的行
 				int i = 0;
 				while ((sh.getRow(i)) != null) {
 					i++;
 				}
 
-				//获取封装数据对象的字节码
+				// 获取封装数据对象的字节码
 				Class<IExcelTemp> clazz = (Class<IExcelTemp>) excelRecords.get(
 						0).getClass();
 
-				//获取成员变量
+				// 获取成员变量
 				Field[] fields = fields = clazz.getDeclaredFields();
 				Method method = null;
-				//遍历封装对象集合
+				// 遍历封装对象集合
 				for (int j = i; j < excelRecords.size() + i; j++) {
-					
-					//创建第j行
+
+					// 创建第j行
 					ro = sh.createRow(j);
-					//获取封装对象集合里的第一个对象实例
+					// 获取封装对象集合里的第一个对象实例
 					IExcelTemp it = excelRecords.get(j - i);
 					int cursor = 0;
-					
-					//d迭代封装数据类的成员变量，成员变量值和单元格一一对应
+
+					// d迭代封装数据类的成员变量，成员变量值和单元格一一对应
 					for (Field field : fields) {
 
-						//获取成员变量名
+						// 获取成员变量名
 						String fieldName = field.getName();
-						//将首字母转大写
+						// 将首字母转大写
 						fieldName = fieldName.replace(
 								fieldName.substring(0, 1),
 								fieldName.substring(0, 1).toUpperCase());
-						//获取成员变量对应的get方法
+						// 获取成员变量对应的get方法
 						method = clazz.getMethod("get" + fieldName);
-						//动态调用封装对象的方法
+						// 动态调用封装对象的方法
 						Object value = method.invoke(it);
-						//获取成员变量的类型名称
+						// 获取成员变量的类型名称
 						String type_name = field.getType().getName();
-						//如果当前为j行的第0个单元格
+						// 如果当前为j行的第0个单元格
 						if (cursor == 0) {
-							//创建单元格
+							// 创建单元格
 							cell = ro.createCell(cursor);
-							//设置单元格的值，这个值为数据行的第几行
+							// 设置单元格的值，这个值为数据行的第几行
 							cell.setCellType(cursor + i);
 							cursor++;
 						}
-						//创建单元格
+						// 创建单元格
 						cell = ro.createCell(cursor);
-						//根据成员变量的类型进行类型转换，并调用对应的cell的重载方法
+						// 根据成员变量的类型进行类型转换，并调用对应的cell的重载方法
 						switch (type_name) {
 						case "int":
 							cell.setCellValue((int) value);
@@ -133,8 +204,8 @@ public class CommonExcelParser {
 						cursor++;
 					}
 				}
-				
-				//写入文件
+
+				// 写入文件
 				File file2 = new File("D:/test.xls");
 				fis1 = new FileOutputStream(file);
 				wb.write(fis1);
@@ -144,7 +215,7 @@ public class CommonExcelParser {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {//关闭流
+		} finally {// 关闭流
 			try {
 				fis.close();
 			} catch (Exception e) {
@@ -173,80 +244,103 @@ public class CommonExcelParser {
 	 *             excel解析异常
 	 * 
 	 */
-	public List<IExcelTemp> toObjs(File myFile, String myFileFileName)
-			throws ExcelParserException {
 
+	public List<IExcelTemp> toObjs2(File myFile, String myFileFileName)
+			throws Exception {
+
+		// 变量定义
+		int t = 2;
+		// 保存封装好Excel对应实体类的集合
 		List<IExcelTemp> objs = null;
+		// 文件输入流
 		FileInputStream file = null;
+		// Excel文件对应的实体类字节码对象
+		Class clazz = null;
+		// Excel文件类对应实体类的成员变量数组
+		Field[] fields = null;
+		// 变量的类型
+		Class<?> type = null;
+		// 实体类Hibernate映射文件名
+		String fileName = "null";
+		// 成员变量名
+		String fieldName = "not";
+		// 保存Excel实体类类名和成员变量对应列名所在下标的映射
+		Map<String, List<ExcelObjStruct>> map = null;
+
 		if (myFile == null) {
 			throw new ExcelParserException("文件上传失败");
 		} else {
 			try {
+				// 获取文件输入流
 				file = new FileInputStream(myFile);
+				// 设置PIO初始化对象
 				setFile(file);
-				// 模板对应excel对应类的实例集合
+				// 实例化excel对应类的实例集合
 				objs = new ArrayList<IExcelTemp>();
-
 				System.out.println(myFileFileName);
 				HSSFRow ro = null;
 
-				// 获取模板excel和对应类（可能多个类）逻辑配置信息
-				List<ExcelObjStruct> configs = ExcelConfig
+				// 通过文件获取Excel文件装配成对象的配置（存有Excel文件对应的实体类类名集合）
+				List<String> config = ExcelConfig
 						.getObjectFromConfig(myFileFileName);
-				Class<?> clazz = null;
-				String clazzName = null;
-				String clomns = null;
 
-				// 遍历excel表，从第一行开始
-				for (int i = ExcelConfig.getDataBegin(myFileFileName); sh
-						.getRow(i) != null; i++) {
+				// 得到Excel文件的表头
+				ro = sh.getRow(0);
+				// 从那一列开始遍历（因为有些Excel第一列是序号，没有必要遍历）
+				int titleBegin = 0;
+				// 获取第一行第一列表头的值
+				String fistCell = changeCellToString(ro.getCell(0));
+				// 如果等于“序号”,就不要遍历第一列的数据
+				if (fistCell.equals("序号")) {
+					// 设遍历位置从第二列开始
+					titleBegin = 1;
+				}
+				HSSFCell cell;
+				List<ExcelObjStruct> list = null;
+				// 实例化
+				map = new HashMap<String, List<ExcelObjStruct>>();
+				ExcelObjStruct eos;
+				// 遍历配置对象
+				for (String clazzName : config) {
 
-					// 获取一行数据
-					ro = sh.getRow(i);
+					list = new ArrayList<ExcelObjStruct>();
+					// 根据全类名获取类的字节码
+					clazz = Class.forName(clazzName);
+					// 通过类名Hibernate映射文件名
+					fileName = clazz.getName().replace("ppms.domain.", "");
+					// 获取实体类成员变量和列下标的配置对象的集合
+					list = getFieldReflectToClomnName(fileName, ro);
+					// 添加
+					map.put(clazzName, list);
+				}
+				Object value = null;
+				IExcelTemp object = null;
+				// 从数据开始的位置开始遍历Excel文件中的数据
+				for (int j = ExcelConfig.getDataBegin(myFileFileName); (ro = sh
+						.getRow(j)) != null; j++) {
 
-					// 遍历逻辑配置对象集合
-					for (ExcelObjStruct eos : configs) {
+					List<ExcelObjStruct> clazzList = null;
+					// 遍历配置对象
+					for (String clazzName : config) {
 
-						// 获取数据对应的类的全路径
-						clazzName = eos.getClassName();
-						// 获取数据对应类的字节码
-						clazz = Class.forName(clazzName);
+						Field field;
+						Method method = null;
+						clazzList = map.get(clazzName);
+						Integer integer;
+						String type_name;
+						// 实例化一个Excel对应的对象
+						object = (IExcelTemp) clazz.newInstance();
+						// 遍历实体类成员变量和列下标的配置对象的集合
+						for (int m = clazzList.size() - 1; m >= 0; m--) {
 
-						// 获取数据对应类的成员变量
-						Field[] fields = clazz.getDeclaredFields();
-						Method method;
-						Object value = null;
-						List<Integer[]> objRefIndexs = null;
-						if (eos.getFieldIndex().equals("*")) {
-							objRefIndexs = new ArrayList<Integer[]>();
-							List<Integer> inter = new ArrayList<Integer>();
-							for (int k = 1; ro.getCell(k) != null; k++) {
-								inter.add(k);
-							}
-							Integer[] array = inter.toArray(new Integer[inter
-									.size()]);
-							objRefIndexs.add(array);
-						} else {
-
-							// 获取excel一行数据上的多个同类对象的数据行号集合
-							objRefIndexs = getIndexs(eos.getFieldIndex());
-						}
-						// 遍历单个对象所对应excel的单元格的列号
-						for (Integer[] integers : objRefIndexs) {
-
-							// 记录遍历成员变量位置的游标
-							int cursor = 0;
-							// 实例化一个和数据对应的对象实例
-							IExcelTemp object = (IExcelTemp) clazz
-									.newInstance();
-							for (Integer integer : integers) {
-
-								// 获取对象所对应行号列号上的数据
-
-								Field field = fields[cursor];
-
+							eos = clazzList.get(m);
+							if (eos.getIndexInExcel() != Integer.MAX_VALUE) {
+								// 当前实例赋对应的值
 								// 获取成员变量名
-								String fieldName = field.getName();
+								fieldName = eos.getFieldName().contains(":") ? eos
+										.getFieldName().split(":")[0] : eos
+										.getFieldName();
+								field = object.getField(fieldName);
 								// 将首字母转大写
 								fieldName = fieldName
 										.replaceFirst(
@@ -256,17 +350,17 @@ public class CommonExcelParser {
 								// 获取成员变量所对应的set方法
 								method = clazz.getMethod("set" + fieldName,
 										field.getType());
-								String type_name = field.getType().getName();
-								HSSFCell cell = null;
+								type_name = field.getType().getName();
 
 								Mark annotation = field
 										.getAnnotation(Mark.class);
 								if (annotation == null) {
-									cell = ro.getCell(integer);
+									cell = ro.getCell(eos.getIndexInExcel());
 								} else {
 									cell = sh.getRow(annotation.row()).getCell(
 											annotation.clomn());
 								}
+
 								// 根据成员变量的类型获取单元格数据
 								switch (type_name) {
 								// 成员变量为String时
@@ -283,7 +377,6 @@ public class CommonExcelParser {
 											.toString());
 									break;
 								case "java.util.Date":
-
 									value = (Date) cell.getDateCellValue();
 									// 时间格式转换
 									String result = (((Date) value).getYear() + 1900)
@@ -294,21 +387,57 @@ public class CommonExcelParser {
 											+ "日";
 									System.out.println(result);
 									break;
+								case "java.lang.Boolean":
+									value = changeCellToString(cell);
+									int key = eos.getKey(value);
+									if (key == 1) {
+										value = true;
+									}
+									if (key == 0) {
+										value = false;
+									}
+									break;
+								case "java.lang.Integer":
+									value = changeCellToString(cell);
+									value = eos.getKey(value);
+									break;
+								case "java.lang.Short":
+									value = Short
+											.valueOf(changeCellToString(cell));
+									break;
+								default:
+									value = changeCellToString(cell);
+									break;
 								}
-								// 当前实例赋对应的值
-								method.invoke(object, value);
-								cursor++;
+								if (eos.getFieldName().contains(":")) {
 
+									// 如果配置中包含“：”说明该成员变量也是个实体类
+									String childClazzName = eos.getFieldName()
+											.split(":")[1];
+									Class childClazz = Class
+											.forName(childClazzName);
+									Object childInstance = childClazz
+											.newInstance();
+
+									System.out.println(value);
+									// 根据value值查询数据库
+									value = childInstance;
+
+								}
+								method.invoke(object, value);
 							}
-							System.out.println(object.toString());
-							objs.add(object);
+
 						}
+					}
+					if (object != null) {
+						objs.add(object);
+						System.out.println(object.toString());
 					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+				System.out.println(fieldName);
 			} finally {
-
 				// 关闭流
 				try {
 					file.close();
@@ -322,7 +451,6 @@ public class CommonExcelParser {
 		}
 
 	}
-
 	/**
 	 * 设置模板excel文件,给HSSFWorkbook赋值
 	 * 
@@ -415,5 +543,139 @@ public class CommonExcelParser {
 			}
 		}
 		return returnValue;
+	}
+
+	/**
+	 * 匹配成员变量和Excel列
+	 * 
+	 * @param fileName
+	 *            文件名，类名
+	 * @param ro
+	 *            Excel文件的第一行，即表头
+	 * @return
+	 */
+	public List<ExcelObjStruct> getFieldReflectToClomnName(String fileName,
+			HSSFRow ro) {
+
+		int t = 1;
+		// 获取Hibernate映射文件的位置
+		String path = CommonExcelParser.class
+				.getClassLoader()
+				.getResource("configForObject.xml")
+				.getPath()
+				.replace("configForObject.xml",
+						"ppms/domain/" + fileName + ".hbm.xml");
+		List<ExcelObjStruct> list = null;
+		try {
+
+			// 获取指向Hibernate映射文件的文件对象
+			File file = new File(path);
+			// 获取文件输入流
+			FileInputStream fis = new FileInputStream(file);
+
+			// 实例化xml解析对象
+			SAXReader reader = new SAXReader();
+			// 获取文档对象
+			Document dom = reader.read(fis);
+			System.out.println(System.currentTimeMillis());
+			
+			// 获取根节点
+			Element root = dom.getRootElement();
+			// 获取class节点
+			Element element = root.element("class");
+
+			// 获取class节点下的所有节点
+			List<Element> elements = element.elements();
+
+			// 实例化实体类成员变量和列下标的配置对象的集合
+			list = new ArrayList<ExcelObjStruct>();
+			ExcelObjStruct eos = null;
+			String fieldName;
+
+			// 遍历class节点下的所有节点
+			for (Element element2 : elements) {
+
+				// 节点为“many-to-one”时
+				if (element2.getName().equals("many-to-one")) {
+
+					eos = new ExcelObjStruct();
+					// 获取成员变量名
+					fieldName = element2.attribute("name").getText().trim();
+					// 因为是many-to-one节点配置的是 成员变量类型是实体类，所以加“:”做标记，并存储他的全类名
+					fieldName = fieldName + ":"
+							+ element2.attribute("class").getText().trim();
+					eos.setFieldName(fieldName);
+					// 如果节点为“property”
+				} else if (element2.getName().equals("property")) {
+
+					eos = new ExcelObjStruct();
+					// 获取成员变量名
+					fieldName = element2.attribute("name").getText();
+					eos.setFieldName(fieldName);
+
+				}
+				if (element2.getName().equals("property")
+						|| element2.getName().equals("many-to-one")) {
+
+					// 获取comment节点的值，即该成员变量对应Excel文件的表头的值
+					String comment = element2.element("column")
+							.element("comment").getText();
+					// 如果comm的值包含“:”,说明对该列数据有特殊说明，一定的约束
+					if (comment.contains(":")) {
+
+						// 赋值一个和comment同值得对象
+						String temp = String
+								.copyValueOf(comment.toCharArray());
+						// 替换
+						temp = temp.replace("(月)", "").replaceAll("(年月日)", "");
+						// 切割
+						comment = comment.split("[(]")[0].trim();
+						// 切割
+						String[] split = temp.split("[(]");
+
+						String descs = split[1].substring(0,
+								split[1].length() - 1);
+						String[] split2 = descs.split(" ");
+						for (String string : split2) {
+
+							// 获取对所在列值得约束，并存储
+							int key = Integer.valueOf(string.split(":")[0]);
+							String value = string.split(":")[1];
+							eos.setDesc(key, value);
+						}
+					}
+					// 标记是否有找到该成员变量对应的列
+					boolean isNot = false;
+					// 遍历第一列表头
+					for (int i = 0; ro.getCell(i) != null; i++) {
+
+						// 获取单元格的值
+						String value = changeCellToString(ro.getCell(i));
+						// 对获取的值做处理
+						value = value.replace("(月)","").replace("(年月日)", "");
+						// 如果实体类的注释和表头相等，即找到了实体类成员变量对应Excel的列
+						if (comment.equals(value)) {
+
+							// 存储列号
+							eos.setIndexInExcel(i);
+							// 找到了,设为true
+							isNot = true;
+							// 中断遍历
+							break;
+						}
+					}
+					// 遍历完了，没找到匹配
+					if (!isNot) {
+						// 设为Integer的最大值，即表示没匹配的列
+						eos.setIndexInExcel(Integer.MAX_VALUE);
+					}
+					list.add(eos);
+				}
+				System.out.println(System.currentTimeMillis());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

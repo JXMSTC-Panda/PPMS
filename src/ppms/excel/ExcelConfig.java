@@ -23,12 +23,12 @@ import org.dom4j.io.SAXReader;
 public class ExcelConfig {
 
 	private static Properties dataBegin;
-	private static Map<String, List<ExcelObjStruct>> config;
+	private static Map<String, List<String>> config;
 	
 	static {
 		//定义解析器
 		SAXReader reader = new SAXReader();
-	    List<ExcelObjStruct> ObjectsConf = null;
+	    List<String> ObjectsConf = null;
 	    //excel和对象的映射关系对象
 	    ExcelObjStruct eos=null;
 		try {
@@ -39,14 +39,14 @@ public class ExcelConfig {
 							.getResource("configForObject.xml").getPath())));
 			//获取根节点
 			Element root = document.getRootElement();
-			config=new HashMap<String,List<ExcelObjStruct>>();
+			config=new HashMap<String,List<String>>();
 			
 			//获取excel节点
 			List<Element> element_excel = root.elements("excel");
 			
 			//遍历所有的excel节点
 			for (Element element : element_excel) {
-				ObjectsConf=new ArrayList<ExcelObjStruct>();
+				ObjectsConf=new ArrayList<String>();
 				
 				//获取excel的文件名
 				String excelFileName = element.attribute("name").getText();
@@ -55,13 +55,9 @@ public class ExcelConfig {
 				
 				//遍历所有object的对象
 				for (Element element2 : elements_obj) {
-					eos=new ExcelObjStruct();
 					//获取excel对应类的全类名
-					eos.setClassName(element2.element("class_name").getText());
-					//获取该类数据所在的列
-					eos.setFieldIndex(element2.element("clomns").getText());
-					
-					ObjectsConf.add(eos);
+					String clazz = element2.element("class_name").getText().trim();
+					ObjectsConf.add(clazz);
 				}
 				config.put(excelFileName, ObjectsConf);
 			}
@@ -84,7 +80,7 @@ public class ExcelConfig {
 	 *            文件名字（带后缀）
 	 * @return excel文件对应类的全类名
 	 */
-	public static List<ExcelObjStruct> getObjectFromConfig(String fileName) {
+	public static List<String> getObjectFromConfig(String fileName) {
 
 		return config.get(fileName);
 	}
