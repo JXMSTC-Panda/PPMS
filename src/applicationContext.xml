@@ -10,7 +10,6 @@
                      http://www.springframework.org/schema/aop/spring-aop.xsd
                      http://www.springframework.org/schema/context 
                      http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-
 	<context:component-scan base-package="ppms">
 	<context:include-filter type="regex"
 			expression="ppms/.action.*" />

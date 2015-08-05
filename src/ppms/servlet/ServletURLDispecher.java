@@ -47,7 +47,7 @@ public class ServletURLDispecher extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		int i=0;
+		int i=2;
 		String url = null;
 		String mark = null;
 
