@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="PPMS"
+  id="myeclipse.1438673043511"
+  j2ee-spec="1.6"
+  archive="PPMS.war"
+  context-root="/PPMS">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
