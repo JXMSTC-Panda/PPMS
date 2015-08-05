@@ -47,7 +47,7 @@ public class ServletURLDispecher extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		int i=2;
+		int i=1;
 		String url = null;
 		String mark = null;
 
@@ -58,10 +58,12 @@ public class ServletURLDispecher extends HttpServlet {
 		String[] split = requestURL.toString().split("/");
 		url = split[split.length - 1];
 
-		mark = url;
+		
 		// 判断格式是否准确
 		if (url.contains(".")) {
-			url = url.split("[.]")[0] + "." + url.split("[.]")[2];
+			String[] split2 = url.split("[.]"); 
+			url = split2[0]+ "." + split2[2];
+			mark = url;
 			// 替换格式，转出标准请求格式
 			url = url.replace(".", "/");
 			url = url + ".jsp";
