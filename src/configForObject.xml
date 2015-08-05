@@ -14,7 +14,6 @@
 		<object>
 			<class_name>ppms.excel.StandardGrade</class_name>
 			<clomns>*</clomns>
-		
 		</object>
 	</excel>
 	

@@ -1,4 +1,4 @@
-package ppms.action;
+package ppms.action.innovation;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,12 +16,9 @@ import ppms.domain.TbEmployee;
 import ppms.domain.TbInnovation;
 import ppms.serviceimpl.InvocationServiceImp;
 
-public class InvocationAction extends ActionSupport implements InitPage{
+public class InnovationAction extends ActionSupport implements InitPage{
 
-	@Autowired
-	private InvocationServiceImp service;
-	
-	private TbInnovation innovation;
+private TbInnovation innovation;
 	
 	public void setInnovation(TbInnovation innovation) {
 		this.innovation = innovation;
@@ -30,11 +27,19 @@ public class InvocationAction extends ActionSupport implements InitPage{
 		return innovation;
 	}
 
+	@Autowired
+	private InvocationServiceImp service;
 
+	/**
+	 * 处理创新管理单条录入
+	 * @return
+	 */
 	@Action("/singleUpload")
-	public String halls(){
+	public String singleUpload(){
 		
-		
+		if(service.addInnovation(innovation)){
+			
+		}
 		return null;
 	}
 
