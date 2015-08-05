@@ -3,9 +3,15 @@
   type="WEB"
   name="PPMS"
   id="myeclipse.1438673043511"
+<<<<<<< HEAD
   context-root="/PPMS"
   j2ee-spec="1.6"
   archive="PPMS.war">
+=======
+  j2ee-spec="1.6"
+  archive="PPMS.war"
+  context-root="/PPMS">
+>>>>>>> f5c9e22670f6cc184b2e4807db379b795c3cc98f
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>

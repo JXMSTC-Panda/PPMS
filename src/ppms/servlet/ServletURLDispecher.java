@@ -2,7 +2,6 @@ package ppms.servlet;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +47,7 @@ public class ServletURLDispecher extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		int i=0;
+		int i=2;
 		String url = null;
 		String mark = null;
 

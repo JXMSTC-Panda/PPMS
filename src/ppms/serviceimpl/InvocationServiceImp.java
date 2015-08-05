@@ -13,6 +13,10 @@ import ppms.service.InvocationService;
 @Service
 public class InvocationServiceImp implements InvocationService {
 
+	public InvocationServiceImp(){
+		
+		System.out.println("create");
+	}
 	@Autowired
 	private InvocationDaoImp dao;
 	@Override
