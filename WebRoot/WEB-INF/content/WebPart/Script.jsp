@@ -29,16 +29,23 @@
 					.write("<script src='${pageContext.request.contextPath}/assets/js/jquery.mobile.custom.js'>"
 							+ "<" + "/script>");
 		$(document).ready(function() {
+			//得到当前页面href
 			var url = window.location.href;
+			//当前页面位于page下的路径，格式：A.B.C
 			var pageInfo = url.split("/")[url.split("/").length - 1];
 			var page = pageInfo.split(".");
+			//第一次登录是进入角色添加页面，login.do
 			if (page.length == 2) {
 				$("#authority").addClass("active open");
 				$("#roleSingle").addClass("active");
 			}
-			if(page.length == 3){
+			//其他A.B.C
+			if (page.length == 3) {
 				$("#" + page[0]).addClass("active open");
-				$("#" + page[1]).addClass("active open");
+				if (page[1] == "null") {
+				} else {
+					$("#" + page[1]).addClass("active open");
+				}
 				$("#" + page[2]).addClass("active");
 			}
 			alert(pageInfo);
