@@ -19,7 +19,7 @@ request.getServerPort() + path + "/"; %>
 
 <!-- page specific plugin styles -->
 <link rel="stylesheet"
-	href="../../../plugin/zTree/css/zTreeStyle/zTreeStyle.css"
+	href="${pageContext.request.contextPath}/plugin/zTree/css/zTreeStyle/zTreeStyle.css"
 	type="text/css">
 <!-- text fonts -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
@@ -178,7 +178,7 @@ request.getServerPort() + path + "/"; %>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
 	<script type="text/javascript"
-		src="../../../plugin/zTree/js/jquery.ztree.all-3.5.min.js"></script>
+		src="${pageContext.request.contextPath}/plugin/zTree/js/jquery.ztree.all-3.5.min.js"></script>
 	<!-- inline script related to this page -->
 	<script type="text/javascript">
 			 <!--
