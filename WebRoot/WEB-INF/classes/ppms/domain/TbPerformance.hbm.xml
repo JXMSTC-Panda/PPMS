@@ -11,22 +11,34 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
-            <column name="ORGID" precision="8" scale="0" />
+            <column name="ORGID" precision="8" scale="0">
+                <comment>营业厅编码</comment>
+            </column>
         </many-to-one>
         <many-to-one name="tbEmployee" class="ppms.domain.TbEmployee" fetch="select">
-            <column name="EMPLOYEEID" length="6" />
+            <column name="EMPLOYEEID" length="6">
+                <comment>员工编码</comment>
+            </column>
         </many-to-one>
         <property name="performancetype" type="java.lang.Boolean">
-            <column name="PERFORMANCETYPE" precision="1" scale="0" />
+            <column name="PERFORMANCETYPE" precision="1" scale="0">
+                <comment>绩效类型</comment>
+            </column>
         </property>
         <property name="performancedate" type="java.util.Date">
-            <column name="PERFORMANCEDATE" length="7" />
+            <column name="PERFORMANCEDATE" length="7">
+                <comment>月份/年份</comment>
+            </column>
         </property>
         <property name="performancescore" type="java.lang.Double">
-            <column name="PERFORMANCESCORE" precision="7" />
+            <column name="PERFORMANCESCORE" precision="7">
+                <comment>考核成绩</comment>
+            </column>
         </property>
         <property name="remark" type="java.lang.String">
-            <column name="REMARK" length="200" />
+            <column name="REMARK" length="200">
+                <comment>备注</comment>
+            </column>
         </property>
         <property name="gradestandardorgfilename" type="java.lang.String">
             <column name="GRADESTANDARDORGFILENAME" length="200" />

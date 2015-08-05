@@ -33,7 +33,9 @@
         </property>
         <set name="tbEmployees" inverse="true">
             <key>
-                <column name="ROLEID" length="6" />
+                <column name="ROLEID" length="6">
+                    <comment>角色编码</comment>
+                </column>
             </key>
             <one-to-many class="ppms.domain.TbEmployee" />
         </set>

@@ -14,10 +14,14 @@
             <column name="SUBAREAID" precision="22" scale="0" />
         </many-to-one>
         <property name="areadesc" type="java.lang.String">
-            <column name="AREADESC" length="30" />
+            <column name="AREADESC" length="30">
+                <comment>区域名称</comment>
+            </column>
         </property>
         <property name="status" type="java.lang.Boolean">
-            <column name="STATUS" precision="1" scale="0" />
+            <column name="STATUS" precision="1" scale="0">
+                <comment>有效状态标识 (0:无效 1;有效)</comment>
+            </column>
         </property>
         <property name="createdby" type="java.lang.String">
             <column name="CREATEDBY" length="6" />

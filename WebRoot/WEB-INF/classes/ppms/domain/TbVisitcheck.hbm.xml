@@ -11,22 +11,34 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
-            <column name="ORGID" precision="8" scale="0" />
+            <column name="ORGID" precision="8" scale="0">
+                <comment>营业厅编码</comment>
+            </column>
         </many-to-one>
         <property name="checkdate" type="java.util.Date">
-            <column name="CHECKDATE" length="7" />
+            <column name="CHECKDATE" length="7">
+                <comment>检查时间</comment>
+            </column>
         </property>
         <property name="firstscore" type="java.lang.Double">
-            <column name="FIRSTSCORE" precision="7" />
+            <column name="FIRSTSCORE" precision="7">
+                <comment>第一次</comment>
+            </column>
         </property>
         <property name="secondscore" type="java.lang.Double">
-            <column name="SECONDSCORE" precision="7" />
+            <column name="SECONDSCORE" precision="7">
+                <comment>第二次</comment>
+            </column>
         </property>
         <property name="consistencyscore" type="java.lang.Double">
-            <column name="CONSISTENCYSCORE" precision="7" />
+            <column name="CONSISTENCYSCORE" precision="7">
+                <comment>一致性</comment>
+            </column>
         </property>
         <property name="averagescore" type="java.lang.Double">
-            <column name="AVERAGESCORE" precision="7" />
+            <column name="AVERAGESCORE" precision="7">
+                <comment>均分</comment>
+            </column>
         </property>
         <property name="createdby" type="java.lang.String">
             <column name="CREATEDBY" length="6" />

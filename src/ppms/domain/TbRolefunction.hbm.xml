@@ -7,13 +7,19 @@
 <hibernate-mapping>
     <class name="ppms.domain.TbRolefunction" table="TB_ROLEFUNCTION" schema="PPMSUSER">
         <composite-id name="id" class="ppms.domain.TbRolefunctionId">
-            <key-many-to-one name="tbRole" class="ppms.domain.TbRole">
+            <key-property name="roleid" type="java.lang.String">
                 <column name="ROLEID" length="6" />
-            </key-many-to-one>
-            <key-many-to-one name="tbSystemfunction" class="ppms.domain.TbSystemfunction">
+            </key-property>
+            <key-property name="functionid" type="java.lang.String">
                 <column name="FUNCTIONID" length="30" />
-            </key-many-to-one>
+            </key-property>
         </composite-id>
+        <many-to-one name="tbSystemfunction" class="ppms.domain.TbSystemfunction" update="false" insert="false" fetch="select">
+            <column name="FUNCTIONID" length="30" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbRole" class="ppms.domain.TbRole" update="false" insert="false" fetch="select">
+            <column name="ROLEID" length="6" not-null="true" />
+        </many-to-one>
         <property name="employeesearchscope" type="java.lang.String">
             <column name="EMPLOYEESEARCHSCOPE" length="6" />
         </property>

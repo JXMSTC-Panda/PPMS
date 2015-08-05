@@ -59,7 +59,9 @@
         </set>
         <set name="tbPoints" inverse="true">
             <key>
-                <column name="JOBID" length="6" />
+                <column name="JOBID" length="6">
+                    <comment>岗位编码</comment>
+                </column>
             </key>
             <one-to-many class="ppms.domain.TbPoint" />
         </set>

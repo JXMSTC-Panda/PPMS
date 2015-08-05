@@ -11,16 +11,24 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
-            <column name="ORGID" precision="8" scale="0" />
+            <column name="ORGID" precision="8" scale="0">
+                <comment>营业厅编码</comment>
+            </column>
         </many-to-one>
         <property name="checkdate" type="java.util.Date">
-            <column name="CHECKDATE" length="7" />
+            <column name="CHECKDATE" length="7">
+                <comment>日期（年月日）</comment>
+            </column>
         </property>
         <property name="checktype" type="java.lang.String">
-            <column name="CHECKTYPE" length="6" />
+            <column name="CHECKTYPE" length="6">
+                <comment>类别</comment>
+            </column>
         </property>
         <property name="detail" type="java.lang.String">
-            <column name="DETAIL" length="500" />
+            <column name="DETAIL" length="500">
+                <comment>明细</comment>
+            </column>
         </property>
         <property name="createdby" type="java.lang.String">
             <column name="CREATEDBY" length="6" />

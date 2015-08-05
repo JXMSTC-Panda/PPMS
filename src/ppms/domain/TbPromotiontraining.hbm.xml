@@ -11,19 +11,29 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
-            <column name="ORGID" precision="8" scale="0" />
+            <column name="ORGID" precision="8" scale="0">
+                <comment>营业厅编码</comment>
+            </column>
         </many-to-one>
         <many-to-one name="tbEmployee" class="ppms.domain.TbEmployee" fetch="select">
-            <column name="EMPLOYEEID" length="6" />
+            <column name="EMPLOYEEID" length="6">
+                <comment>员工编码</comment>
+            </column>
         </many-to-one>
         <property name="promotiontrainingdate" type="java.util.Date">
-            <column name="PROMOTIONTRAININGDATE" length="7" />
+            <column name="PROMOTIONTRAININGDATE" length="7">
+                <comment>进阶培训时间（年月日）</comment>
+            </column>
         </property>
         <property name="promotioncontent" type="java.lang.String">
-            <column name="PROMOTIONCONTENT" length="6" />
+            <column name="PROMOTIONCONTENT" length="6">
+                <comment>进阶内容</comment>
+            </column>
         </property>
         <property name="promotionscore" type="java.lang.Double">
-            <column name="PROMOTIONSCORE" precision="7" />
+            <column name="PROMOTIONSCORE" precision="7">
+                <comment>考试成绩</comment>
+            </column>
         </property>
         <property name="createdby" type="java.lang.String">
             <column name="CREATEDBY" length="6" />

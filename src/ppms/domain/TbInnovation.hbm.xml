@@ -11,28 +11,42 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="organizationNjByOrgid" class="ppms.domain.OrganizationNj" fetch="select">
-            <column name="ORGID" precision="8" scale="0" />
+            <column name="ORGID" precision="8" scale="0">
+                <comment>营业厅编码</comment>
+            </column>
         </many-to-one>
         <many-to-one name="tbEmployee" class="ppms.domain.TbEmployee" fetch="select">
             <column name="EMPLOYEEID" length="6" />
         </many-to-one>
         <many-to-one name="organizationNjByEmployeeorgid" class="ppms.domain.OrganizationNj" fetch="select">
-            <column name="EMPLOYEEORGID" precision="8" scale="0" />
+            <column name="EMPLOYEEORGID" precision="8" scale="0">
+                <comment>营业厅编码</comment>
+            </column>
         </many-to-one>
         <property name="innovationcontent" type="java.lang.String">
-            <column name="INNOVATIONCONTENT" length="200" />
+            <column name="INNOVATIONCONTENT" length="200">
+                <comment>创新方案</comment>
+            </column>
         </property>
         <property name="assessdate" type="java.util.Date">
-            <column name="ASSESSDATE" length="7" />
+            <column name="ASSESSDATE" length="7">
+                <comment>评定时间（年月日）</comment>
+            </column>
         </property>
         <property name="assessresult" type="java.lang.String">
-            <column name="ASSESSRESULT" length="50" />
+            <column name="ASSESSRESULT" length="50">
+                <comment>部门审核结果</comment>
+            </column>
         </property>
         <property name="assesslevel" type="java.lang.String">
-            <column name="ASSESSLEVEL" length="6" />
+            <column name="ASSESSLEVEL" length="6">
+                <comment>层级</comment>
+            </column>
         </property>
         <property name="encouragement" type="java.lang.String">
-            <column name="ENCOURAGEMENT" length="50" />
+            <column name="ENCOURAGEMENT" length="50">
+                <comment>奖励方式</comment>
+            </column>
         </property>
         <property name="createdby" type="java.lang.String">
             <column name="CREATEDBY" length="6" />

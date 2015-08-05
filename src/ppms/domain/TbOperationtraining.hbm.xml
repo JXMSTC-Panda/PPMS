@@ -11,22 +11,34 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
-            <column name="ORGID" precision="8" scale="0" />
+            <column name="ORGID" precision="8" scale="0">
+                <comment>营业厅编码</comment>
+            </column>
         </many-to-one>
         <many-to-one name="tbEmployee" class="ppms.domain.TbEmployee" fetch="select">
-            <column name="EMPLOYEEID" length="6" />
+            <column name="EMPLOYEEID" length="6">
+                <comment>员工编码</comment>
+            </column>
         </many-to-one>
         <property name="trainingdate" type="java.util.Date">
-            <column name="TRAININGDATE" length="7" />
+            <column name="TRAININGDATE" length="7">
+                <comment>培训时间（年月日）</comment>
+            </column>
         </property>
         <property name="traininglevel" type="java.lang.String">
-            <column name="TRAININGLEVEL" length="6" />
+            <column name="TRAININGLEVEL" length="6">
+                <comment>培训级别</comment>
+            </column>
         </property>
         <property name="trainingcontent" type="java.lang.String">
-            <column name="TRAININGCONTENT" length="200" />
+            <column name="TRAININGCONTENT" length="200">
+                <comment>培训内容</comment>
+            </column>
         </property>
         <property name="trainingscore" type="java.lang.Double">
-            <column name="TRAININGSCORE" precision="7" />
+            <column name="TRAININGSCORE" precision="7">
+                <comment>考试成绩</comment>
+            </column>
         </property>
         <property name="createdby" type="java.lang.String">
             <column name="CREATEDBY" length="6" />

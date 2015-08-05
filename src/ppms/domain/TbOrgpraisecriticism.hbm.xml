@@ -11,19 +11,29 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
-            <column name="ORGID" precision="8" scale="0" />
+            <column name="ORGID" precision="8" scale="0">
+                <comment>营业厅编码</comment>
+            </column>
         </many-to-one>
         <property name="praisecriticismtype" type="java.lang.String">
-            <column name="PRAISECRITICISMTYPE" length="6" />
+            <column name="PRAISECRITICISMTYPE" length="6">
+                <comment>类型</comment>
+            </column>
         </property>
         <property name="cause" type="java.lang.String">
-            <column name="CAUSE" length="300" />
+            <column name="CAUSE" length="300">
+                <comment>奖惩原因</comment>
+            </column>
         </property>
         <property name="praisecriticismdate" type="java.util.Date">
-            <column name="PRAISECRITICISMDATE" length="7" />
+            <column name="PRAISECRITICISMDATE" length="7">
+                <comment>时间（年月日）</comment>
+            </column>
         </property>
         <property name="praisecriticismlevel" type="java.lang.String">
-            <column name="PRAISECRITICISMLEVEL" length="6" />
+            <column name="PRAISECRITICISMLEVEL" length="6">
+                <comment>级别</comment>
+            </column>
         </property>
         <property name="createdby" type="java.lang.String">
             <column name="CREATEDBY" length="6" />
