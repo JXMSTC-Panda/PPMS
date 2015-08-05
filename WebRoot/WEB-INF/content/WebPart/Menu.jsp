@@ -46,15 +46,15 @@
 	<!-- /.sidebar-shortcuts -->
 
 	<ul class="nav nav-list">
-		<li class="active open"><a href="#" class="dropdown-toggle">
+		<li id="authority" class="active open"><a href="#" class="dropdown-toggle">
 				<i class="menu-icon fa fa-desktop"></i> <span class="menu-text">
 					权限管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b cite="arrow"></b>
 
 			<ul class="submenu">
-				<li class="active"><a href="${pageContext.request.contextPath}/resource/authority.roleSingle">
+				<li id="roleSingle" class="active"><a href="${pageContext.request.contextPath}/resource/authority.roleSingle">
 						<i class="menu-icon fa fa-caret-right"></i>角色增加 </a> <b class="arrow"></b>
 				</li>
-				<li class=""><a href="${pageContext.request.contextPath}/resource/authority.roleSearch"> <i
+				<li id="roleSearch" class=""><a href="${pageContext.request.contextPath}/resource/authority.roleSearch"> <i
 						class="menu-icon fa fa-caret-right"></i>角色查询 </a> <b class="arrow"></b>
 				</li>
 			</ul>
