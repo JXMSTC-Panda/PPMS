@@ -54,7 +54,7 @@ public class FileAction extends ActionSupport {
 				throw new ExcelParserException("文件导入失败，文件名" + myFileFileName
 						+ "不符合，请导入.xls格式文件");
 			} else {
-				List<IExcelTemp> objs = new CommonExcelParser().toObjs(myFile,myFileFileName);
+				List<IExcelTemp> objs = new CommonExcelParser().toObjs2(myFile,myFileFileName);
 				
 				for (IExcelTemp iExcelTemp : objs) {
 					System.out.println(iExcelTemp.toString());
