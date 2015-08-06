@@ -68,6 +68,28 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
+
+<script type="text/javascript">
+	function ajaxForEmployee(obj) {
+
+		alert(obj.innerHTML);
+		
+		document.getElementsByName("innovation.organizationNjByOrgid.orgid")[0].value=obj.value;
+		if (window.XMLHttpRequest) {
+			xmlhttp = new XMLHttpRequest();
+		} else {
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("form-field-select-employee").innerHTML = xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("GET", "getEmployees.do?orgid=" + obj.value, true);
+		xmlhttp.send();
+	}
+</script>
 </head>
 
 <body class="no-skin">
@@ -83,7 +105,7 @@
 		</script>
 
 		<!-- #section:basics/sidebar -->
-	<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
+		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
 
 		<!-- /section:basics/sidebar -->
 		<div class="main-content">
@@ -101,8 +123,7 @@
 						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
 						</li>
 
-						<li><a href="#">Other Pages</a>
-						</li>
+						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<!-- /.breadcrumb -->
@@ -285,7 +306,9 @@
 
 												<div class="col-sm-9">
 													<div>
-														<label for="form-field-select-3">选择营业厅</label> <br /> <select
+														<label for="form-field-select-3">选择营业厅</label> <br /> 
+														<select
+															onchange="ajaxForEmployee(this)"
 															class="chosen-select form-control"
 															id="form-field-select-3"
 															name="innovation.organizationNjByOrgid.orgName"
@@ -311,7 +334,7 @@
 												<div>
 													<label for="form-field-select-3">选择员工</label> <br /> <select
 														class="chosen-select form-control"
-														id="form-field-select-3"
+														id="form-field-select-employee"
 														name="innovation.tbEmployee.employeeid"
 														data-placeholder="Choose a State...">
 
