@@ -8,14 +8,24 @@
     <class name="ppms.domain.TbBecomeemployeeexam" table="TB_BECOMEEMPLOYEEEXAM" schema="PPMSUSER">
         <id name="examid" type="java.lang.String">
             <column name="EXAMID" length="10" />
+<<<<<<< HEAD
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
+=======
             <generator class="sequence" />
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" cascade="save-update,persist" fetch="select">
+>>>>>>> 8073c47c033c027308b8896e9a1803488c934876
             <column name="ORGID" precision="8" scale="0">
                 <comment>营业厅编码</comment>
             </column>
         </many-to-one>
+<<<<<<< HEAD
+        <many-to-one name="tbEmployee" class="ppms.domain.TbEmployee" fetch="select">
+=======
         <many-to-one name="tbEmployee" class="ppms.domain.TbEmployee" cascade="save-update,persist" fetch="select">
+>>>>>>> 8073c47c033c027308b8896e9a1803488c934876
             <column name="EMPLOYEEID" length="6">
                 <comment>员工编码</comment>
             </column>

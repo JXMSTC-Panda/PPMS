@@ -8,9 +8,13 @@
     <class name="ppms.domain.TbSystemsettings" table="TB_SYSTEMSETTINGS" schema="PPMSUSER">
         <id name="settingsid" type="java.lang.String">
             <column name="SETTINGSID" length="6" />
+<<<<<<< HEAD
+            <generator class="assigned" />
+=======
             <generator class="sequence">
 				<param name="sequence">AutoID</param>
 			</generator>
+>>>>>>> 8073c47c033c027308b8896e9a1803488c934876
         </id>
         <property name="mastertype1" type="java.lang.String">
             <column name="MASTERTYPE1" length="30" />
