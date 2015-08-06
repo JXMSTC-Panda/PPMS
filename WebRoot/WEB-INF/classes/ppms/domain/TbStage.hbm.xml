@@ -8,7 +8,7 @@
     <class name="ppms.domain.TbStage" table="TB_STAGE" schema="PPMSUSER">
         <id name="stageid" type="java.lang.String">
             <column name="STAGEID" length="6" />
-            <generator class="uuid" />
+            <generator class="assigned" />
         </id>
         <property name="stagename" type="java.lang.String">
             <column name="STAGENAME" length="30" />

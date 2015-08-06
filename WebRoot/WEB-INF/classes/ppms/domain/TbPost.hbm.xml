@@ -8,7 +8,7 @@
     <class name="ppms.domain.TbPost" table="TB_POST" schema="PPMSUSER">
         <id name="postid" type="java.lang.String">
             <column name="POSTID" length="6" />
-            <generator class="uuid" />
+            <generator class="assigned" />
         </id>
         <property name="postname" type="java.lang.String">
             <column name="POSTNAME" length="20" />

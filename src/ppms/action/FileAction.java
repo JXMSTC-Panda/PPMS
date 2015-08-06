@@ -47,7 +47,6 @@ public class FileAction extends ActionSupport {
 				
 				InputStream myFile=request.getInputStream();
 				List<IExcelTemp> objs = new CommonExcelParser().toObjs2(myFile,fileName);
-				
 				for (IExcelTemp iExcelTemp : objs) {
 					System.out.println(iExcelTemp.toString());
 				}
