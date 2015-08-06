@@ -8,9 +8,9 @@
     <class name="ppms.domain.TbInnovation" table="TB_INNOVATION" schema="PPMSUSER">
         <id name="innovationid" type="java.lang.String">
             <column name="INNOVATIONID" length="10" />
-            <generator class="assigned" />
+            <generator class="uuid" />
         </id>
-        <many-to-one name="organizationNjByOrgid" class="ppms.domain.OrganizationNj" fetch="select">
+        <many-to-one name="organizationNjByOrgid" class="ppms.domain.OrganizationNj"  cascade="save-update,persist" fetch="select">
             <column name="ORGID" precision="8" scale="0">
                 <comment>营业厅编码</comment>
             </column>
@@ -18,7 +18,7 @@
         <many-to-one name="tbEmployee" class="ppms.domain.TbEmployee" fetch="select">
             <column name="EMPLOYEEID" length="6" />
         </many-to-one>
-        <many-to-one name="organizationNjByEmployeeorgid" class="ppms.domain.OrganizationNj" fetch="select">
+        <many-to-one name="organizationNjByEmployeeorgid" class="ppms.domain.OrganizationNj"  cascade="save-update,persist" fetch="select">
             <column name="EMPLOYEEORGID" precision="8" scale="0">
                 <comment>营业厅编码</comment>
             </column>

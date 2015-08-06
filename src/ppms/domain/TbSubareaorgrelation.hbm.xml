@@ -8,7 +8,7 @@
     <class name="ppms.domain.TbSubareaorgrelation" table="TB_SUBAREAORGRELATION" schema="PPMSUSER">
         <id name="orgareaid" type="java.lang.Integer">
             <column name="ORGAREAID" precision="8" scale="0" />
-            <generator class="assigned" />
+            <generator class="uuid" />
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
             <column name="ORGID" precision="8" scale="0" />
