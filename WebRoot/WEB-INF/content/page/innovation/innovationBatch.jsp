@@ -16,35 +16,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="../../assets/css/bootstrap.css" />
-		<link rel="stylesheet" href="../../assets/css/font-awesome.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 		<!-- page specific plugin styles -->
-		<link rel="stylesheet" href="../../assets/css/dropzone.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/dropzone.css" />
 		<!-- text fonts -->
-		<link rel="stylesheet" href="../../assets/css/ace-fonts.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 		<!-- ace styles -->
-		<link rel="stylesheet" href="../../assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 
 		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="../../assets/css/ace-part2.css" class="ace-main-stylesheet" />
+			<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-part2.css" class="ace-main-stylesheet" />
 		<![endif]-->
 
 		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="../../assets/css/ace-ie.css" />
+		  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-ie.css" />
 		<![endif]-->
 
 		<!-- inline styles related to this page -->
 
 		<!-- ace settings handler -->
-		<script src="../../assets/js/ace-extra.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace-extra.js"></script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--[if lte IE 8]>
-		<script src="../../assets/js/html5shiv.js"></script>
-		<script src="../../assets/js/respond.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
 	</head>
 
@@ -245,7 +245,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<ul class="dropdown-menu dropdown-navbar">
 										<li>
 											<a href="#" class="clearfix">
-												<img src="../../assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+												<img src="${pageContext.request.contextPath}/assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Alex:</span> Ciao sociis natoque penatibus et auctor ...
@@ -261,7 +261,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="../../assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+												<img src="${pageContext.request.contextPath}/assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Susan:</span> Vestibulum id ligula porta felis euismod ...
@@ -277,7 +277,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="../../assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+												<img src="${pageContext.request.contextPath}/assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Bob:</span> Nullam quis risus eget urna mollis ornare ...
@@ -293,7 +293,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="../../assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+												<img src="${pageContext.request.contextPath}/assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Kate:</span> Ciao sociis natoque eget urna mollis ornare ...
@@ -309,7 +309,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="../../assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+												<img src="${pageContext.request.contextPath}/assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Fred:</span> Vestibulum id penatibus et auctor ...
@@ -337,7 +337,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<!-- #section:basics/navbar.user_menu -->
 						<li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="../../assets/avatars/user.jpg" alt="Jason's Photo" />
+								<img class="nav-user-photo" src="${pageContext.request.contextPath}/assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
 									Jason
@@ -387,877 +387,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</script>
 
 			<!-- #section:basics/sidebar -->
-			<div id="sidebar" class="sidebar                  responsive">
-				<script type="text/javascript">
-					try {
-						ace.settings.check('sidebar', 'fixed')
-					} catch (e) {}
-				</script>
-
-				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<button class="btn btn-success">
-							<i class="ace-icon fa fa-signal"></i>
-						</button>
-
-						<button class="btn btn-info">
-							<i class="ace-icon fa fa-pencil"></i>
-						</button>
-
-						<!-- #section:basics/sidebar.layout.shortcuts -->
-						<button class="btn btn-warning">
-							<i class="ace-icon fa fa-users"></i>
-						</button>
-
-						<button class="btn btn-danger">
-							<i class="ace-icon fa fa-cogs"></i>
-						</button>
-
-						<!-- /section:basics/sidebar.layout.shortcuts -->
-					</div>
-
-					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-						<span class="btn btn-success"></span>
-
-						<span class="btn btn-info"></span>
-
-						<span class="btn btn-warning"></span>
-
-						<span class="btn btn-danger"></span>
-					</div>
-				</div>
-				<!-- /.sidebar-shortcuts -->
-
-				<ul class="nav nav-list">
-					<li class="active open">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								权限管理
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b cite="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="top-menu.html">
-									<i class="menu-icon fa fa-caret-right"></i>角色增加
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="top-menu.html">
-									<i class="menu-icon fa fa-caret-right"></i>角色查询
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-male"></i>
-							<span class="menu-text">
-								人员综合信息管理
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>人员基本信息管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>人员基本信息单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>人员基本信息批量录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>人员基本信息批量修改
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>人员基本信息查詢
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>员工成长档案查询
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>个人成长线路查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>人员阶段查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>人员调厅记录查询
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>人员调厅记录查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>营业厅信息查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>店长测评、进阶查询
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>店长测评查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>店长进阶查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>值班经理测评、进阶查询
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>值班经理测评查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>值班经理进阶查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>合作厅上岗证查询
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>合作厅上岗证单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>合作厅上岗批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>合作厅上岗证查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								员工培训/考试管理
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>月度考核管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="monthExamSingle.html">
-											<i class="menu-icon fa fa-caret-right"></i>月度考试单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="monthExamBatch.html">
-											<i class="menu-icon fa fa-caret-right"></i>月度考试批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>月度考试查詢
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>业务培训管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>业务培训单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>业务培训批量录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>业务培训查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>进阶培训管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>进阶培训单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>进阶培训批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>进阶培训查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>新员工/转正考核
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>新员工考核成绩单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>新员工考核成绩批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>新员工考核成绩查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>转正考核成绩单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>转正考核成绩批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>转正考核成绩查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								标准化和暗访管理
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>标准化检查成绩管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>标准化检查成绩单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>标准化检查成绩批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>标准化检查成绩查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>监控检查成绩管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>监控检查成绩单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>监控检查成绩批量录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>监控检查成绩查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>暗访检查成绩管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>暗访检查成绩单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>暗访检查成绩批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>暗访检查成绩查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>业务差错检查成绩管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>业务差错检查成绩单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>业务差错检查成绩批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>业务差错检查成绩查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								积分管理
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b cite="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="top-menu.html">
-									<i class="menu-icon fa fa-caret-right"></i>积分批量导入
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="top-menu.html">
-									<i class="menu-icon fa fa-caret-right"></i>积分查询
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								创新管理
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b cite="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="top-menu.html">
-									<i class="menu-icon fa fa-caret-right"></i>创新提案单条录入
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="top-menu.html">
-									<i class="menu-icon fa fa-caret-right"></i>创新提案批量导入
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="top-menu.html">
-									<i class="menu-icon fa fa-caret-right"></i>创新提案查询
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-						</ul>
-
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								奖惩管理
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b cite="arrow"></b>
-						<ul class="submenu">
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-list-alt"></i>员工奖惩信息管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>员工奖惩信息管理单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>员工奖惩信息管理批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>员工奖惩信息管理查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-list-alt"></i>营业厅奖惩信息管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>营业厅奖惩信息单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>营业厅奖惩信息批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>营业厅奖惩信息查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								绩效管理
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b cite="arrow"></b>
-						<ul class="submenu">
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-list-alt"></i>月度绩效管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>月度绩效未提交事项提醒
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>月度绩效上传功能开通
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>月度绩效单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>月度绩效批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>月度绩效查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-list-alt"></i>年度绩效管理
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>年度绩效单条录入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>年度绩效批量导入
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>年度绩效查询
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-file-o"></i>
-							<span class="menu-text">其他</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="top-menu.html">
-									<i class="menu-icon fa fa-caret-right"></i>批量导入模板下载
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="top-menu.html">
-									<i class="menu-icon fa fa-caret-right"></i>系统设定
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-						</ul>
-
-					</li>
-
-				</ul>
-				<!-- /.nav-list -->
-
-				<!-- #section:basics/sidebar.layout.minimize -->
-				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-					<i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-				</div>
-
-				<!-- /section:basics/sidebar.layout.minimize -->
-				<script type="text/javascript">
-					try {
-						ace.settings.check('sidebar', 'collapsed')
-					} catch (e) {}
-				</script>
-			</div>
-
+			<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
 			<!-- /section:basics/sidebar -->
 			<div class="main-content">
 				<div class="main-content-inner">
@@ -1475,71 +605,72 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		<!--[if !IE]> -->
 		<script type="text/javascript">
-			window.jQuery || document.write("<script src='../../assets/js/jquery.js'>" + "<" + "/script>");
+			window.jQuery || document.write("<script src='${pageContext.request.contextPath}/assets/js/jquery.js'>" + "<" + "/script>");
 		</script>
 
 		<!-- <![endif]-->
 
 		<!--[if IE]>
 <script type="text/javascript">
- window.jQuery || document.write("<script src='../../assets/js/jquery1x.js'>"+"<"+"/script>");
+ window.jQuery || document.write("<script src='${pageContext.request.contextPath}/assets/js/jquery1x.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
 		<script type="text/javascript">
-			if ('ontouchstart' in document.documentElement) document.write("<script src='../../assets/js/jquery.mobile.custom.js'>" + "<" + "/script>");
+			if ('ontouchstart' in document.documentElement) document.write("<script src='${pageContext.request.contextPath}/assets/js/jquery.mobile.custom.js'>" + "<" + "/script>");
 		</script>
-		<script src="../../assets/js/bootstrap.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
 
 		<!-- page specific plugin scripts -->
-		<script src="../../assets/js/dropzone.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/dropzone.js"></script>
 		<!-- ace scripts -->
-		<script src="../../assets/js/ace/elements.scroller.js"></script>
-		<script src="../../assets/js/ace/elements.colorpicker.js"></script>
-		<script src="../../assets/js/ace/elements.fileinput.js"></script>
-		<script src="../../assets/js/ace/elements.typeahead.js"></script>
-		<script src="../../assets/js/ace/elements.wysiwyg.js"></script>
-		<script src="../../assets/js/ace/elements.spinner.js"></script>
-		<script src="../../assets/js/ace/elements.treeview.js"></script>
-		<script src="../../assets/js/ace/elements.wizard.js"></script>
-		<script src="../../assets/js/ace/elements.aside.js"></script>
-		<script src="../../assets/js/ace/ace.js"></script>
-		<script src="../../assets/js/ace/ace.ajax-content.js"></script>
-		<script src="../../assets/js/ace/ace.touch-drag.js"></script>
-		<script src="../../assets/js/ace/ace.sidebar.js"></script>
-		<script src="../../assets/js/ace/ace.sidebar-scroll-1.js"></script>
-		<script src="../../assets/js/ace/ace.submenu-hover.js"></script>
-		<script src="../../assets/js/ace/ace.widget-box.js"></script>
-		<script src="../../assets/js/ace/ace.settings.js"></script>
-		<script src="../../assets/js/ace/ace.settings-rtl.js"></script>
-		<script src="../../assets/js/ace/ace.settings-skin.js"></script>
-		<script src="../../assets/js/ace/ace.widget-on-reload.js"></script>
-		<script src="../../assets/js/ace/ace.searchbox-autocomplete.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/elements.scroller.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/elements.colorpicker.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/elements.fileinput.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/elements.typeahead.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/elements.wysiwyg.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/elements.spinner.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/elements.treeview.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/elements.wizard.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/elements.aside.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.ajax-content.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.touch-drag.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.sidebar.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.sidebar-scroll-1.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.submenu-hover.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.widget-box.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.settings.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.settings-rtl.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.settings-skin.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.widget-on-reload.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/ace/ace.searchbox-autocomplete.js"></script>
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
-			jQuery(function($) {
-				try {
-					Dropzone.autoDiscover = false;
-					var myDropzone = new Dropzone("#dropzone", {
-						paramName: "file", // The name that will be used to transfer the file
-						maxFilesize: 0.5, // MB
-						addRemoveLinks: true,
-						dictDefaultMessage: '<span class="bigger-150 bolder"><i class="ace-icon fa fa-caret-right red"></i> Drop files</span> to upload \
-				<span class="smaller-80 grey">(or click)</span> <br /> \
-				<i class="upload-icon ace-icon fa fa-cloud-upload blue fa-3x"></i>',
-						dictResponseError: 'Error while uploading file!',
-						//change the previewTemplate to use Bootstrap progress bars
-						previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"progress progress-small progress-striped active\"><div class=\"progress-bar progress-bar-success\" data-dz-uploadprogress></div></div>\n  <div class=\"dz-success-mark\"><span></span></div>\n  <div class=\"dz-error-mark\"><span></span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
-					});
-					$(document).one('ajaxloadstart.page', function(e) {
-						try {
-							myDropzone.destroy();
-						} catch (e) {}
-					});
-				} catch (e) {
-					alert('Dropzone.js does not support older browsers!');
-				}
-			});
-		</script>
+        jQuery(function ($) {
+
+            try {
+                $(".dropzone").dropzone({
+                    paramName: "file", // The name that will be used to transfer the file
+                    maxFilesize: 1024, // MB
+                    url: "upload.do?fileName=创新提案批量导入模板.xls",
+                    addRemoveLinks: true,
+                    dictDefaultMessage:
+                    '<span class="bigger-150 bolder"><i class="icon-caret-right red"></i> 拖拽文件</span>上传\
+				<span class="smaller-80 grey">(或点我)</span> <br /> \
+				<i class="upload-icon icon-cloud-upload blue icon-3x"></i>'
+              ,
+                    dictResponseError: '上传文件时出错!',
+	//change the previewTemplate to use Bootstrap progress bars
+                    previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"progress progress-small progress-striped active\"><div class=\"progress-bar progress-bar-success\" data-dz-uploadprogress></div></div>\n  <div class=\"dz-success-mark\"><span></span></div>\n  <div class=\"dz-error-mark\"><span></span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
+                });
+            }
+            catch (e) {
+                alert('Dropzone.js 不支持老版本的浏览器');
+            }
+
+        });
+    </script>
+
 
 </html>

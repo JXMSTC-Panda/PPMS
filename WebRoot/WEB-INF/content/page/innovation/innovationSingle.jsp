@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -19,23 +20,33 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jquery-ui.custom.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/chosen.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/datepicker.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap-timepicker.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/daterangepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/jquery-ui.custom.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/chosen.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/datepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap-timepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/daterangepicker.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/bootstrap-datetimepicker.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/colorpicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/colorpicker.css" />
 <!-- text fonts -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
@@ -57,233 +68,33 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
+
+<script type="text/javascript">
+	function ajaxForEmployee(obj) {
+
+		alert(obj.innerHTML);
+		
+		document.getElementsByName("innovation.organizationNjByOrgid.orgid")[0].value=obj.value;
+		if (window.XMLHttpRequest) {
+			xmlhttp = new XMLHttpRequest();
+		} else {
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("form-field-select-employee").innerHTML = xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("GET", "getEmployees.do?orgid=" + obj.value, true);
+		xmlhttp.send();
+	}
+</script>
 </head>
 
 <body class="no-skin">
 	<!-- #section:basics/navbar.layout -->
-	<div id="navbar" class="navbar navbar-default">
-		<script type="text/javascript">
-			try {
-				ace.settings.check('navbar', 'fixed')
-			} catch (e) {
-			}
-		</script>
-		<div class="navbar-container" id="navbar-container">
-			<!-- #section:basics/sidebar.mobile.toggle -->
-			<button type="button" class="navbar-toggle menu-toggler pull-left"
-				id="menu-toggler" data-target="#sidebar">
-				<span class="sr-only">Toggle sidebar</span> <span class="icon-bar"></span>
-
-				<span class="icon-bar"></span> <span class="icon-bar"></span>
-			</button>
-
-			<!-- /section:basics/sidebar.mobile.toggle -->
-			<div class="navbar-header pull-left">
-				<!-- #section:basics/navbar.layout.brand -->
-				<a href="#" class="navbar-brand"> <small> <i
-						class="fa fa-leaf"></i> Ace Admin </small> </a>
-
-				<!-- /section:basics/navbar.layout.brand -->
-
-				<!-- #section:basics/navbar.toggle -->
-
-				<!-- /section:basics/navbar.toggle -->
-			</div>
-
-			<!-- #section:basics/navbar.dropdown -->
-			<div class="navbar-buttons navbar-header pull-right"
-				role="navigation">
-				<ul class="nav ace-nav">
-					<li class="grey"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"> <i
-							class="ace-icon fa fa-tasks"></i> <span class="badge badge-grey">4</span>
-					</a>
-
-						<ul
-							class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-							<li class="dropdown-header"><i class="ace-icon fa fa-check"></i>
-								4 Tasks to complete</li>
-
-							<li class="dropdown-content">
-								<ul class="dropdown-menu dropdown-navbar">
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Software Update</span> <span
-													class="pull-right">65%</span>
-											</div>
-
-											<div class="progress progress-mini">
-												<div style="width:65%" class="progress-bar"></div>
-											</div> </a></li>
-
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Hardware Upgrade</span> <span
-													class="pull-right">35%</span>
-											</div>
-
-											<div class="progress progress-mini">
-												<div style="width:35%"
-													class="progress-bar progress-bar-danger"></div>
-											</div> </a></li>
-
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Unit Testing</span> <span
-													class="pull-right">15%</span>
-											</div>
-
-											<div class="progress progress-mini">
-												<div style="width:15%"
-													class="progress-bar progress-bar-warning"></div>
-											</div> </a></li>
-
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Bug Fixes</span> <span
-													class="pull-right">90%</span>
-											</div>
-
-											<div class="progress progress-mini progress-striped active">
-												<div style="width:90%"
-													class="progress-bar progress-bar-success"></div>
-											</div> </a></li>
-								</ul></li>
-
-							<li class="dropdown-footer"><a href="#"> See tasks with
-									details <i class="ace-icon fa fa-arrow-right"></i> </a></li>
-						</ul></li>
-
-					<li class="purple"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"> <i
-							class="ace-icon fa fa-bell icon-animated-bell"></i> <span
-							class="badge badge-important">8</span> </a>
-
-						<ul
-							class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-							<li class="dropdown-header"><i
-								class="ace-icon fa fa-exclamation-triangle"></i> 8 Notifications
-							</li>
-
-							<li class="dropdown-content">
-								<ul class="dropdown-menu dropdown-navbar navbar-pink">
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left"> <i
-													class="btn btn-xs no-hover btn-pink fa fa-comment"></i> New
-													Comments </span> <span class="pull-right badge badge-info">+12</span>
-											</div> </a></li>
-
-									<li><a href="#"> <i
-											class="btn btn-xs btn-primary fa fa-user"></i> Bob just
-											signed up as an editor ... </a></li>
-
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left"> <i
-													class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-													New Orders </span> <span class="pull-right badge badge-success">+8</span>
-											</div> </a></li>
-
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left"> <i
-													class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
-													Followers </span> <span class="pull-right badge badge-info">+11</span>
-											</div> </a></li>
-								</ul></li>
-
-							<li class="dropdown-footer"><a href="#"> See all
-									notifications <i class="ace-icon fa fa-arrow-right"></i> </a></li>
-						</ul></li>
-
-					<li class="green"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"> <i
-							class="ace-icon fa fa-envelope icon-animated-vertical"></i> <span
-							class="badge badge-success">5</span> </a>
-
-						<ul
-							class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-							<li class="dropdown-header"><i
-								class="ace-icon fa fa-envelope-o"></i> 5 Messages</li>
-
-							<li class="dropdown-content">
-								<ul class="dropdown-menu dropdown-navbar">
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath}/assets/avatars/avatar.png" class="msg-photo"
-											alt="Alex's Avatar" /> <span class="msg-body"> <span
-												class="msg-title"> <span class="blue">Alex:</span>
-													Ciao sociis natoque penatibus et auctor ... </span> <span
-												class="msg-time"> <i class="ace-icon fa fa-clock-o"></i>
-													<span>a moment ago</span> </span> </span> </a></li>
-
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath}/assets/avatars/avatar3.png" class="msg-photo"
-											alt="Susan's Avatar" /> <span class="msg-body"> <span
-												class="msg-title"> <span class="blue">Susan:</span>
-													Vestibulum id ligula porta felis euismod ... </span> <span
-												class="msg-time"> <i class="ace-icon fa fa-clock-o"></i>
-													<span>20 minutes ago</span> </span> </span> </a></li>
-
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath}/assets/avatars/avatar4.png" class="msg-photo"
-											alt="Bob's Avatar" /> <span class="msg-body"> <span
-												class="msg-title"> <span class="blue">Bob:</span>
-													Nullam quis risus eget urna mollis ornare ... </span> <span
-												class="msg-time"> <i class="ace-icon fa fa-clock-o"></i>
-													<span>3:15 pm</span> </span> </span> </a></li>
-
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath}/assets/avatars/avatar2.png" class="msg-photo"
-											alt="Kate's Avatar" /> <span class="msg-body"> <span
-												class="msg-title"> <span class="blue">Kate:</span>
-													Ciao sociis natoque eget urna mollis ornare ... </span> <span
-												class="msg-time"> <i class="ace-icon fa fa-clock-o"></i>
-													<span>1:33 pm</span> </span> </span> </a></li>
-
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath}/assets/avatars/avatar5.png" class="msg-photo"
-											alt="Fred's Avatar" /> <span class="msg-body"> <span
-												class="msg-title"> <span class="blue">Fred:</span>
-													Vestibulum id penatibus et auctor ... </span> <span
-												class="msg-time"> <i class="ace-icon fa fa-clock-o"></i>
-													<span>10:09 am</span> </span> </span> </a></li>
-								</ul></li>
-
-							<li class="dropdown-footer"><a href="inbox.html"> See
-									all messages <i class="ace-icon fa fa-arrow-right"></i> </a></li>
-						</ul></li>
-
-					<!-- #section:basics/navbar.user_menu -->
-					<li class="light-blue"><a data-toggle="dropdown" href="#"
-						class="dropdown-toggle"> <img class="nav-user-photo"
-							src="${pageContext.request.contextPath}/assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-							class="user-info"> <small>Welcome,</small> Jason </span> <i
-							class="ace-icon fa fa-caret-down"></i> </a>
-
-						<ul
-							class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-							<li><a href="#"> <i class="ace-icon fa fa-cog"></i>
-									Settings </a></li>
-
-							<li><a href="profile.html"> <i
-									class="ace-icon fa fa-user"></i> Profile </a></li>
-
-							<li class="divider"></li>
-
-							<li><a href="#"> <i class="ace-icon fa fa-power-off"></i>
-									Logout </a></li>
-						</ul></li>
-
-					<!-- /section:basics/navbar.user_menu -->
-				</ul>
-			</div>
-
-			<!-- /section:basics/navbar.dropdown -->
-		</div>
-		<!-- /.navbar-container -->
-	</div>
-
+	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
 	<!-- /section:basics/navbar.layout -->
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
@@ -294,449 +105,7 @@
 		</script>
 
 		<!-- #section:basics/sidebar -->
-		<div id="sidebar" class="sidebar                  responsive">
-			<script type="text/javascript">
-				try {
-					ace.settings.check('sidebar', 'fixed')
-				} catch (e) {
-				}
-			</script>
-
-			<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-				<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-					<button class="btn btn-success">
-						<i class="ace-icon fa fa-signal"></i>
-					</button>
-
-					<button class="btn btn-info">
-						<i class="ace-icon fa fa-pencil"></i>
-					</button>
-
-					<!-- #section:basics/sidebar.layout.shortcuts -->
-					<button class="btn btn-warning">
-						<i class="ace-icon fa fa-users"></i>
-					</button>
-
-					<button class="btn btn-danger">
-						<i class="ace-icon fa fa-cogs"></i>
-					</button>
-
-					<!-- /section:basics/sidebar.layout.shortcuts -->
-				</div>
-
-				<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-					<span class="btn btn-success"></span> <span class="btn btn-info"></span>
-
-					<span class="btn btn-warning"></span> <span class="btn btn-danger"></span>
-				</div>
-			</div>
-			<!-- /.sidebar-shortcuts -->
-
-			<ul class="nav nav-list">
-				<li class="active open"><a href="#" class="dropdown-toggle">
-						<i class="menu-icon fa fa-desktop"></i> <span class="menu-text">
-							权限管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b cite="arrow"></b>
-
-					<ul class="submenu">
-						<li class=""><a href="top-menu.html"> <i
-								class="menu-icon fa fa-caret-right"></i>角色增加 </a> <b class="arrow"></b>
-						</li>
-						<li class=""><a href="top-menu.html"> <i
-								class="menu-icon fa fa-caret-right"></i>角色查询 </a> <b class="arrow"></b>
-						</li>
-					</ul></li>
-
-				<li class=""><a href="#" class="dropdown-toggle"> <i
-						class="menu-icon fa fa-male"></i> <span class="menu-text">
-							人员综合信息管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b
-					class="arrow"></b>
-
-					<ul class="submenu">
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>人员基本信息管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>人员基本信息单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>人员基本信息批量录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>人员基本信息批量修改 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>人员基本信息查詢 </a> <b
-									class="arrow"></b></li>
-							</ul></li>
-
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>员工成长档案查询 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>个人成长线路查询 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>人员阶段查询 </a> <b
-									class="arrow"></b></li>
-
-							</ul></li>
-
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>人员调厅记录查询 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>人员调厅记录查询 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>营业厅信息查询 </a> <b
-									class="arrow"></b></li>
-
-							</ul></li>
-
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>店长测评、进阶查询 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>店长测评查询 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>店长进阶查询 </a> <b
-									class="arrow"></b></li>
-
-							</ul></li>
-
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>值班经理测评、进阶查询 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>值班经理测评查询 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>值班经理进阶查询 </a> <b
-									class="arrow"></b></li>
-
-							</ul></li>
-
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>合作厅上岗证查询 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>合作厅上岗证单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>合作厅上岗批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>合作厅上岗证查询 </a> <b
-									class="arrow"></b></li>
-							</ul></li>
-					</ul></li>
-
-				<li class=""><a href="#" class="dropdown-toggle"> <i
-						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
-							员工培训/考试管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b
-					class="arrow"></b>
-
-					<ul class="submenu">
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>月度考核管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="monthExamSingle.html"> <i
-										class="menu-icon fa fa-caret-right"></i>月度考试单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="monthExamBatch.html"> <i
-										class="menu-icon fa fa-caret-right"></i>月度考试批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>月度考试查詢 </a> <b
-									class="arrow"></b></li>
-							</ul></li>
-
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>业务培训管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>业务培训单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>业务培训批量录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>业务培训查询 </a> <b
-									class="arrow"></b></li>
-
-							</ul></li>
-
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>进阶培训管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>进阶培训单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>进阶培训批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>进阶培训查询 </a> <b
-									class="arrow"></b></li>
-							</ul></li>
-
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>新员工/转正考核 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>新员工考核成绩单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>新员工考核成绩批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>新员工考核成绩查询 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>转正考核成绩单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>转正考核成绩批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>转正考核成绩查询 </a> <b
-									class="arrow"></b></li>
-							</ul></li>
-					</ul></li>
-
-				<li class=""><a href="#" class="dropdown-toggle"> <i
-						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
-							标准化和暗访管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b
-					class="arrow"></b>
-
-					<ul class="submenu">
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>标准化检查成绩管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>标准化检查成绩单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>标准化检查成绩批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>标准化检查成绩查询 </a> <b
-									class="arrow"></b></li>
-							</ul></li>
-
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>监控检查成绩管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>监控检查成绩单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>监控检查成绩批量录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>监控检查成绩查询 </a> <b
-									class="arrow"></b></li>
-
-							</ul></li>
-
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>暗访检查成绩管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>暗访检查成绩单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>暗访检查成绩批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>暗访检查成绩查询 </a> <b
-									class="arrow"></b></li>
-							</ul></li>
-
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-caret-right"></i>业务差错检查成绩管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>业务差错检查成绩单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>业务差错检查成绩批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>业务差错检查成绩查询 </a> <b
-									class="arrow"></b></li>
-
-							</ul></li>
-					</ul></li>
-
-				<li class=""><a href="#" class="dropdown-toggle"> <i
-						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
-							积分管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b cite="arrow"></b>
-
-					<ul class="submenu">
-						<li class=""><a href="top-menu.html"> <i
-								class="menu-icon fa fa-caret-right"></i>积分批量导入 </a> <b class="arrow"></b>
-						</li>
-						<li class=""><a href="top-menu.html"> <i
-								class="menu-icon fa fa-caret-right"></i>积分查询 </a> <b class="arrow"></b>
-						</li>
-					</ul></li>
-
-				<li class=""><a href="#" class="dropdown-toggle"> <i
-						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
-							创新管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b cite="arrow"></b>
-
-					<ul class="submenu">
-						<li class=""><a href="top-menu.html"> <i
-								class="menu-icon fa fa-caret-right"></i>创新提案单条录入 </a> <b
-							class="arrow"></b></li>
-						<li class=""><a href="top-menu.html"> <i
-								class="menu-icon fa fa-caret-right"></i>创新提案批量导入 </a> <b
-							class="arrow"></b></li>
-						<li class=""><a href="top-menu.html"> <i
-								class="menu-icon fa fa-caret-right"></i>创新提案查询 </a> <b class="arrow"></b>
-						</li>
-					</ul></li>
-
-				<li class=""><a href="#" class="dropdown-toggle"> <i
-						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
-							奖惩管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b cite="arrow"></b>
-					<ul class="submenu">
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-list-alt"></i>员工奖惩信息管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>员工奖惩信息管理单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>员工奖惩信息管理批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>员工奖惩信息管理查询 </a> <b
-									class="arrow"></b></li>
-							</ul></li>
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-list-alt"></i>营业厅奖惩信息管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>营业厅奖惩信息单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>营业厅奖惩信息批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>营业厅奖惩信息查询 </a> <b
-									class="arrow"></b></li>
-							</ul></li>
-					</ul></li>
-
-				<li class=""><a href="#" class="dropdown-toggle"> <i
-						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
-							绩效管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b cite="arrow"></b>
-					<ul class="submenu">
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-list-alt"></i>月度绩效管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>月度绩效未提交事项提醒 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>月度绩效上传功能开通 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>月度绩效单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>月度绩效批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>月度绩效查询 </a> <b
-									class="arrow"></b></li>
-							</ul></li>
-						<li class=""><a href="#" class="dropdown-toggle"> <i
-								class="menu-icon fa fa-list-alt"></i>年度绩效管理 <b
-								class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-							<ul class="submenu">
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>年度绩效单条录入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>年度绩效批量导入 </a> <b
-									class="arrow"></b></li>
-								<li class=""><a href="top-menu.html"> <i
-										class="menu-icon fa fa-caret-right"></i>年度绩效查询 </a> <b
-									class="arrow"></b></li>
-							</ul></li>
-					</ul></li>
-
-				<li class=""><a href="#" class="dropdown-toggle"> <i
-						class="menu-icon fa fa-file-o"></i> <span class="menu-text">其他</span>
-
-						<b class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
-
-					<ul class="submenu">
-						<li class=""><a href="top-menu.html"> <i
-								class="menu-icon fa fa-caret-right"></i>批量导入模板下载 </a> <b
-							class="arrow"></b></li>
-						<li class=""><a href="top-menu.html"> <i
-								class="menu-icon fa fa-caret-right"></i>系统设定 </a> <b class="arrow"></b>
-						</li>
-					</ul></li>
-
-			</ul>
-			<!-- /.nav-list -->
-
-			<!-- #section:basics/sidebar.layout.minimize -->
-			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-				<i class="ace-icon fa fa-angle-double-left"
-					data-icon1="ace-icon fa fa-angle-double-left"
-					data-icon2="ace-icon fa fa-angle-double-right"></i>
-			</div>
-
-			<!-- /section:basics/sidebar.layout.minimize -->
-			<script type="text/javascript">
-				try {
-					ace.settings.check('sidebar', 'collapsed')
-				} catch (e) {
-				}
-			</script>
-		</div>
+		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
 
 		<!-- /section:basics/sidebar -->
 		<div class="main-content">
@@ -922,11 +291,12 @@
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly" > 营业厅编码： </label>
+													for="form-input-readonly"> 营业厅编码： </label>
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="" name="innovation.organizationNjByOrgid.orgid" /> <span
+														id="form-input-readonly" value=""
+														name="innovation.organizationNjByOrgid.orgid" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -936,14 +306,19 @@
 
 												<div class="col-sm-9">
 													<div>
-														<label for="form-field-select-3">选择营业厅</label> <br /> <select
+														<label for="form-field-select-3">选择营业厅</label> <br /> 
+														<select
+															onchange="ajaxForEmployee(this)"
 															class="chosen-select form-control"
-															id="form-field-select-3" name="innovation.organizationNjByOrgid.orgName"
+															id="form-field-select-3"
+															name="innovation.organizationNjByOrgid.orgName"
 															data-placeholder="Choose a State...">
 															<option value=""></option>
-															<option value="WV">West Virginia</option>
-															<option value="WI">Wisconsin</option>
-															<option value="WY">Wyoming</option>
+															<c:forEach items="${ requestScope.orgs}" var="org">
+																<option value="${org.orgid }">
+																	<c:out value="${org.orgName }"></c:out>
+																</option>
+															</c:forEach>
 														</select>
 													</div>
 													<!-- <input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
@@ -959,8 +334,11 @@
 												<div>
 													<label for="form-field-select-3">选择员工</label> <br /> <select
 														class="chosen-select form-control"
-														id="form-field-select-3" name="innovation.tbEmployee.employeeid"
+														id="form-field-select-employee"
+														name="innovation.tbEmployee.employeeid"
 														data-placeholder="Choose a State...">
+
+
 														<option value=""></option>
 														<option value="WV">West Virginia</option>
 														<option value="WI">Wisconsin</option>
@@ -982,7 +360,8 @@
 
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5"
-															id="form-input-readonly" value="" name="innovation.tbEmployee.employeecode"/> <span
+															id="form-input-readonly" value=""
+															name="innovation.tbEmployee.employeecode" /> <span
 															class="help-inline col-xs-12 col-sm-7"> </span>
 													</div>
 												</div>
@@ -992,7 +371,8 @@
 
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5"
-															id="form-input-readonly" value="" name="innovation.tbEmployee.idnumber"/>
+															id="form-input-readonly" value=""
+															name="innovation.tbEmployee.idnumber" />
 
 													</div>
 												</div>
@@ -1001,7 +381,8 @@
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right for="form-field-1">创新方案:</label>
 													<div class="col-sm-9">
-														<textarea id="form-field-11" class="col-xs-10 col-sm-5" name="innovation.innovationcontent"></textarea>
+														<textarea id="form-field-11" class="col-xs-10 col-sm-5"
+															name="innovation.innovationcontent"></textarea>
 													</div>
 												</div>
 
@@ -1015,7 +396,8 @@
 																id="id-date-picker-1" type="text"
 																data-date-format="yyyy-mm-dd" /> <span
 																class="input-group-addon"> <i
-																class="fa fa-calendar bigger-110" name="innovation.assessdate"></i> </span>
+																class="fa fa-calendar bigger-110"
+																name="innovation.assessdate"></i> </span>
 														</div>
 													</div>
 												</div>
@@ -1027,7 +409,8 @@
 													<div class="col-sm-9">
 														<input type="text" class="col-xs-10 col-sm-5"
 															id="form-input-readonly" value="" /> <span
-															class="help-inline col-xs-12 col-sm-7" name="innovation.assessresult"> </span>
+															class="help-inline col-xs-12 col-sm-7"
+															name="innovation.assessresult"> </span>
 													</div>
 												</div>
 
@@ -1116,8 +499,9 @@
 	<!--[if !IE]> -->
 	<script type="text/javascript">
 		window.jQuery
-				|| document.write("<script src='${pageContext.request.contextPath}/assets/js/jquery.js'>"
-						+ "<" + "/script>");
+				|| document
+						.write("<script src='${pageContext.request.contextPath}/assets/js/jquery.js'>"
+								+ "<" + "/script>");
 	</script>
 
 	<!-- <![endif]-->
@@ -1136,43 +520,78 @@
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
 
 	<!-- page specific plugin scripts -->
-	<script src="${pageContext.request.contextPath}/assets/js/jquery-ui.custom.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.ui.touch-punch.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/chosen.jquery.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/fuelux/fuelux.spinner.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datepicker.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-timepicker.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/date-time/moment.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/date-time/daterangepicker.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datetimepicker.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/bootstrap-colorpicker.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.knob.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.autosize.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.inputlimiter.1.3.1.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.maskedinput.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/bootstrap-tag.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery-ui.custom.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery.ui.touch-punch.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/chosen.jquery.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/fuelux/fuelux.spinner.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-timepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/moment.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/daterangepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datetimepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap-colorpicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery.knob.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery.autosize.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery.inputlimiter.1.3.1.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery.maskedinput.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap-tag.js"></script>
 	<!-- ace scripts -->
-	<script src="${pageContext.request.contextPath}/assets/js/ace/elements.scroller.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/elements.colorpicker.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/elements.fileinput.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/elements.typeahead.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/elements.wysiwyg.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/elements.spinner.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/elements.treeview.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/elements.wizard.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/elements.aside.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/elements.scroller.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/elements.colorpicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/elements.fileinput.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/elements.typeahead.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/elements.wysiwyg.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/elements.spinner.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/elements.treeview.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/elements.wizard.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/elements.aside.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.ajax-content.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.touch-drag.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.sidebar.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.sidebar-scroll-1.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.submenu-hover.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.widget-box.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.settings.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.settings-rtl.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.settings-skin.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.widget-on-reload.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/ace/ace.searchbox-autocomplete.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/ace.ajax-content.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/ace.touch-drag.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/ace.sidebar.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/ace.sidebar-scroll-1.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/ace.submenu-hover.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/ace.widget-box.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/ace.settings.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/ace.settings-rtl.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/ace.settings-skin.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/ace.widget-on-reload.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/ace/ace.searchbox-autocomplete.js"></script>
 
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">

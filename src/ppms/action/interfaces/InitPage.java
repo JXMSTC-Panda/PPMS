@@ -3,6 +3,8 @@ package ppms.action.interfaces;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
 import org.apache.poi.ss.formula.functions.T;
 
 /**
@@ -16,7 +18,8 @@ public interface InitPage {
 
 	/**
 	 * 查询数据库获取页面初始化所需的数据String是页面域里的别名，List是要传到页面数据
+	 * @param servletContext 
 	 * @return 
 	 */
-	public Map<String,List<T>> initPage();
+	public Map<String,List<T>> initPage(ServletContext servletContext);
 }

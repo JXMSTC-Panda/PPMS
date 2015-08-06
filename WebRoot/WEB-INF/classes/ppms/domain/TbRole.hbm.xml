@@ -8,7 +8,13 @@
     <class name="ppms.domain.TbRole" table="TB_ROLE" schema="PPMSUSER">
         <id name="roleid" type="java.lang.String">
             <column name="ROLEID" length="6" />
+<<<<<<< HEAD
             <generator class="assigned" />
+=======
+            <generator class="sequence">
+				<param name="sequence">AutoID</param>
+			</generator>
+>>>>>>> 8073c47c033c027308b8896e9a1803488c934876
         </id>
         <property name="rolename" type="java.lang.String">
             <column name="ROLENAME" length="50" />

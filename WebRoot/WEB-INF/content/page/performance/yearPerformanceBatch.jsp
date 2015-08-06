@@ -117,7 +117,7 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../../../assets/js/dropzone.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/dropzone.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 			jQuery(function($) {

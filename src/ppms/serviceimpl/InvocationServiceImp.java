@@ -13,16 +13,26 @@ import ppms.service.InvocationService;
 @Service
 public class InvocationServiceImp implements InvocationService {
 
+	public InvocationServiceImp(){
+		
+		System.out.println("create");
+	}
 	@Autowired
 	private InvocationDaoImp dao;
 	@Override
 	public List<OrganizationNj> getOrganizations() {
+		
 		return dao.getOrganizations();
 	}
 	@Override
 	public boolean addInnovation(TbInnovation innovation) {
 		
-		dao.saveObject(innovation);
+		try {
+			dao.saveObject(innovation);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	

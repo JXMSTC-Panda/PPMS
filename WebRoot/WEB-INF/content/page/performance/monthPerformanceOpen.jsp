@@ -21,9 +21,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-<link rel="stylesheet" href="../../../assets/css/bootstrap-duallistbox.css" />
-		<link rel="stylesheet" href="../../../assets/css/bootstrap-multiselect.css" />
-		<link rel="stylesheet" href="../../../assets/css/select2.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap-duallistbox.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap-multiselect.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/select2.css" />
 		
 <!-- text fonts -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
@@ -149,11 +149,11 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../../../assets/js/jquery.bootstrap-duallistbox.js"></script>
-		<script src="../../../assets/js/jquery.raty.js"></script>
-		<script src="../../../assets/js/bootstrap-multiselect.js"></script>
-		<script src="../../../assets/js/select2.js"></script>
-		<script src="../../../assets/js/typeahead.jquery.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.bootstrap-duallistbox.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.raty.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap-multiselect.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/select2.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/typeahead.jquery.js"></script>
 		
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">

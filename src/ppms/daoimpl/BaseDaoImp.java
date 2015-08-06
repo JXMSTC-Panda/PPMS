@@ -1,5 +1,7 @@
 package ppms.daoimpl;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,22 +29,39 @@ public class BaseDaoImp extends HibernateDaoSupport {
 	 * @param obj
 	 * @throws HibernateException
 	 */
-	public void saveObject(Object obj) throws HibernateException {
+	public boolean saveObject(Object obj) throws HibernateException {
 
 		if (obj != null) {
-			getHibernateTemplate().save(obj);
+			
+			try {
+				
+				getHibernateTemplate().save(obj);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else {
 			throw new RuntimeException("插入的对象为空");
 		}
+		return true;
 	}
 	
-	public<T> T findAll(T obj){
+	/**
+	 * 查找obj对应表的所有数据
+	 * @param obj
+	 * @return
+	 */
+	public<T> List<T> findAll(T obj){
 		
-		return (T) getHibernateTemplate().findByExample(obj);
+		return (List<T>) getHibernateTemplate().findByExample(obj);
 	}
-	
-	public void fff(){
+	/**
+	 * 通过查询语句操作数据库
+	 * @param HQL 查询语句
+	 * @param t 要查询数据库表对应的对象
+	 * @return
+	 */
+	public <T> List<T> findByHSQL(String HQL,T t){
 		
-		
+		 return (List<T>)getHibernateTemplate().find(HQL);
 	}
 }

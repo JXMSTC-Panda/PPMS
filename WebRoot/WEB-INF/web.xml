@@ -5,41 +5,59 @@
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name></display-name>
 
+	<!-- 应用启动初始参数配置 -->
+	<context-param>
+		<description>应用编码配置</description>
+		<param-name>encode</param-name>
+		<param-value>utf-8</param-value>
+	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext*.xml</param-value>
 	</context-param>
-	
+
+	<!-- Servlet配置 -->
 	<servlet>
 		<servlet-name>URLDispecher</servlet-name>
 		<servlet-class>ppms.servlet.ServletURLDispecher</servlet-class>
 	</servlet>
-	
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
-	<filter>
-		<filter-name>struts2</filter-name>
-		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-	</filter>
-
-	<!-- 防止spring内存溢出监听器 -->
-	<listener>
-		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-	</listener>
-
-
 
 	<servlet-mapping>
 		<servlet-name>URLDispecher</servlet-name>
 		<url-pattern>/resource/*</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 监听器配置 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 防止spring内存溢出监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+
+	<!-- 过滤器配置 -->
+	<filter>
+		<description>struts2入口</description>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter>
+		<description>编码过滤器</description>
+		<filter-name>EncodeFilter</filter-name>
+		<filter-class>ppms.filter.EncodeFilter</filter-class>
+	</filter>
+
+
+	<filter-mapping>
+		<filter-name>EncodeFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

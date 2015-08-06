@@ -28,7 +28,6 @@ public class TbInnovation implements java.io.Serializable {
 
 	/** default constructor */
 	public TbInnovation() {
-		System.out.println("create");
 	}
 
 	/** minimal constructor */

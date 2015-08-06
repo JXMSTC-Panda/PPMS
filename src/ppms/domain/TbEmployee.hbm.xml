@@ -8,7 +8,9 @@
     <class name="ppms.domain.TbEmployee" table="TB_EMPLOYEE" schema="PPMSUSER">
         <id name="employeeid" type="java.lang.String">
             <column name="EMPLOYEEID" length="6" />
-            <generator class="assigned" />
+            <generator class="sequence">
+				<param name="sequence">AutoID</param>
+			</generator>
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
             <column name="ORGID" precision="8" scale="0">

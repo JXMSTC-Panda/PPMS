@@ -10,6 +10,18 @@
                      http://www.springframework.org/schema/aop/spring-aop.xsd
                      http://www.springframework.org/schema/context 
                      http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+<<<<<<< HEAD
+=======
+	<context:component-scan base-package="ppms">
+	<context:include-filter type="regex"
+			expression="ppms/.action.*" />
+		<context:include-filter type="regex"
+			expression="ppms/.dao*" />
+		<!-- 正则表达式必须格式正确，否则无效。以下是无效的示例 -->
+		<context:exclude-filter type="regex"
+			expression="ppms/.service*" />
+	</context:component-scan>
+>>>>>>> 8073c47c033c027308b8896e9a1803488c934876
 	<!-- 定义数据源的信息 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
@@ -44,7 +56,11 @@
 	<context:component-scan base-package="ppms.serviceimp" />
 	<context:component-scan base-package="ppms.service" />
 	<context:component-scan base-package="test" />
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 8073c47c033c027308b8896e9a1803488c934876
 	<!--定义Hibernate的SessionFactory -->
 	<!-- SessionFactory使用的数据源为上面的数据源 -->
 	<!-- 指定了Hibernate的映射文件和配置信息 -->
@@ -95,7 +111,11 @@
 		</property>
 		<property name="hibernateProperties">
 			<props>
+<<<<<<< HEAD
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+=======
+				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+>>>>>>> 8073c47c033c027308b8896e9a1803488c934876
 				<prop key="show_sql">true</prop>
 				<prop key="hibernate.jdbc.batch_size">20</prop>
 				<prop key="hibernate.current_session_context_class">thread</prop>
