@@ -26,6 +26,6 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport{
 			@Result(name="success",location="/WEB-INF/content/page/userinfo/Demo.jsp"),
 			@Result(name="error",location="/WEB-INF/content/page/userinfo/Demo.jsp")})
 	public String login(){
-		return null;
+		return "success";
 	}
 }

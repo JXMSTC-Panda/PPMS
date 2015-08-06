@@ -38,10 +38,19 @@ public class EmployeePraiseCriticismAction extends ActionSupport{
 	@Action(value="employeePraiseCriticismSingleStart",results={
 			@Result(name="success",location="/WEB-INF/content/page/userinfo/Demo.jsp"),
 			@Result(name="error",location="/WEB-INF/content/page/userinfo/Demo.jsp")})
-	public String login(){
+	public String employeePraiseCriticismSingleStart(){
 		int key=Integer.parseInt(tbEmployeepraisecriticism.getPraisecriticismtype());
 		List<TbEmployeepraisecriticism> find=praiseCriticism.findLevel(key);
 		System.out.println(find);
 		return null;
+	}
+	
+	@Action(value="skipSelectSingle",results={
+			@Result(name="success",location="/WEB-INF/content/page/selectSingleEmployee.jsp"),
+		    @Result(name="error",location="/WEB-INF/content/page/selectSingleEmployee.jsp")})
+	
+	public String skipSelectSingl(){
+		System.out.println("create skipSelectSingle");
+		return "success";
 	}
 }

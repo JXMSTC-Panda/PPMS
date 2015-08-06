@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import ppms.domain.TbEmployeepraisecriticism;
 @Repository
+/*
+ * 奖惩管理的dao层*/
 public class PraiseCriticismDao extends BaseDaoImp{
 
 	/*

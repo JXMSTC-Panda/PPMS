@@ -143,7 +143,7 @@
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbEmployeepraisecriticism.tbEmployee.employeename"/>
 														<span class="help-inline col-xs-12 col-sm-7">
-															<button class="btn btn-info">选择员工</button>
+															<button class="btn btn-info" >选择员工</button> 
 														</span>
 													</div>
 												</div>
