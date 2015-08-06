@@ -8,13 +8,9 @@
     <class name="ppms.domain.TbSystemfunction" table="TB_SYSTEMFUNCTION" schema="PPMSUSER">
         <id name="functionid" type="java.lang.String">
             <column name="FUNCTIONID" length="30" />
-<<<<<<< HEAD
-            <generator class="assigned" />
-=======
             <generator class="sequence">
 				<param name="sequence">AutoID</param>
 			</generator>
->>>>>>> 8073c47c033c027308b8896e9a1803488c934876
         </id>
         <property name="functionname" type="java.lang.String">
             <column name="FUNCTIONNAME" length="256" />

@@ -8,13 +8,9 @@
     <class name="ppms.domain.TbChangejobhistory" table="TB_CHANGEJOBHISTORY" schema="PPMSUSER">
         <id name="jobhistoryid" type="java.lang.String">
             <column name="JOBHISTORYID" length="10" />
-<<<<<<< HEAD
-            <generator class="assigned" />
-=======
             <generator class="sequence">
 				<param name="sequence">AutoID</param>
 			</generator>
->>>>>>> 8073c47c033c027308b8896e9a1803488c934876
         </id>
         <many-to-one name="tbEmployee" class="ppms.domain.TbEmployee" fetch="select">
             <column name="EMPLOYEEID" length="6" />
