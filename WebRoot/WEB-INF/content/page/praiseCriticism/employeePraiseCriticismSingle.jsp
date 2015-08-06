@@ -100,7 +100,7 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<!-- PAGE CONTENT BEGINS -->
-											<form class="form-horizontal" role="form" action="start.do">
+											<form class="form-horizontal" role="form" action="employeePraiseCriticismSingleStart.do">
 												<!-- #section:elements.form -->
 												
 
