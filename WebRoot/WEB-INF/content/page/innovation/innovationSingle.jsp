@@ -73,9 +73,9 @@
 	function ajaxForEmployee(obj) {
 
 		alert(obj.innerHTML);
-<<<<<<< HEAD
 
 		document.getElementsByName("innovation.organizationNjByOrgid.orgid")[0].value = obj.value;
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 
@@ -85,6 +85,8 @@
 		document.getElementsByName("innovation.organizationNjByOrgid.orgid")[0].value=obj.value;
 >>>>>>> 934c15d0439f83993c2fb20909e8c3ec45eaeabe
 >>>>>>> 456d7081120cf8163c3ef125f9533b027118529c
+=======
+>>>>>>> 246e232211372df87477ce76190a81aa48ac1438
 		if (window.XMLHttpRequest) {
 			xmlhttp = new XMLHttpRequest();
 		} else {
@@ -316,10 +318,10 @@
 													for="form-input-readonly"> 营业厅名称： </label>
 
 												<div class="col-sm-9">
-<<<<<<< HEAD
 													<div class="col-xs-10 col-sm-5">
 														<select onchange="ajaxForEmployee(this)"
 															class="chosen-select form-control "
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 													<div class="col-xs-10 col-sm-5">
@@ -333,6 +335,8 @@
 															class="chosen-select form-control"
 >>>>>>> 934c15d0439f83993c2fb20909e8c3ec45eaeabe
 >>>>>>> 456d7081120cf8163c3ef125f9533b027118529c
+=======
+>>>>>>> 246e232211372df87477ce76190a81aa48ac1438
 															id="form-field-select-3"
 															name="innovation.organizationNjByOrgid.orgName"
 															data-placeholder="选择营业厅">
@@ -351,9 +355,12 @@
 											<!-- /section:elements.form -->
 											<div class="form-group">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> 456d7081120cf8163c3ef125f9533b027118529c
+=======
+>>>>>>> 246e232211372df87477ce76190a81aa48ac1438
 												<label class="col-sm-3 control-label no-padding-right"
 													for="form-input-readonly"> 选择员工： </label>
 												<div class="col-sm-9">
@@ -362,6 +369,7 @@
 															id="form-field-select-employee"
 															name="innovation.tbEmployee.employeeid"
 															data-placeholder="选择员工">
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -382,6 +390,8 @@
 												<!-- <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 员工姓名： </label>
 >>>>>>> 934c15d0439f83993c2fb20909e8c3ec45eaeabe
 >>>>>>> 456d7081120cf8163c3ef125f9533b027118529c
+=======
+>>>>>>> 246e232211372df87477ce76190a81aa48ac1438
 
 
 															<option value=""></option>
