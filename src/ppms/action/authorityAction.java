@@ -12,7 +12,7 @@ import org.apache.struts2.convention.annotation.Result;
 */
 public class authorityAction {
 	
-	@Action(value ="roleSingleResult", results = {  
+	@Action(value ="authority.null.roleSingle.roleSingleAdd.do", results = {  
 	        @Result(name = "success", location = "/WEB-INF/content/page/authority/roleSingleResult.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String roleSingleResult(){
