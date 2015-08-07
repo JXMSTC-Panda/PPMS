@@ -85,7 +85,7 @@
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<!-- PAGE CONTENT BEGINS -->
-						<form class="form-horizontal" role="form" action="roleSingleResult.jsp">
+						<form class="form-horizontal" role="form" action="roleSingleResult.do">
 
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right"
