@@ -100,7 +100,8 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<!-- PAGE CONTENT BEGINS -->
-											<form class="form-horizontal" role="form" action="employeePraiseCriticismSingleStart.do">
+											<!-- <form class="form-horizontal" name="form1" role="form" method="post" action="skipSelectSingle.do"> -->
+											 <form class="form-horizontal" name="form1" role="form" method="post" action="employeePraiseCriticismSingleStart.do">
 												<!-- #section:elements.form -->
 												
 
@@ -142,9 +143,15 @@
 
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbEmployeepraisecriticism.tbEmployee.employeename"/>
+														
+											
 														<span class="help-inline col-xs-12 col-sm-7">
-															<button class="btn btn-info" >选择员工</button> 
+															
+															 	 <button class="btn btn-info" type="submit" >选择员工</button>  
+															 	
+															 
 														</span>
+														
 													</div>
 												</div>
 												<div class="form-group">
@@ -217,11 +224,11 @@
 												
 												<div class="clearfix form-actions">
 													<div class="col-md-offset-3 col-md-9">
-														<!-- <button class="btn btn-info" type="button" >
+													    <button class="btn btn-info" type="submit" >
 															<i class="ace-icon fa fa-check bigger-110"></i> Submit
-														</button> -->
-														<input type="submit"  value="submit">
-
+														</button>  
+														
+														
 														&nbsp; &nbsp; &nbsp;
 														<button class="btn" type="reset">
 															<i class="ace-icon fa fa-undo bigger-110"></i> Reset
