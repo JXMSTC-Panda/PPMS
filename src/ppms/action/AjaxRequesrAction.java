@@ -38,14 +38,19 @@ public class AjaxRequesrAction extends ActionSupport{
 		try {
 			String orgid=request.getParameter("orgid");
 			
+			if(orgid.equals("")||orgid==null){
+				return null;
+			}
 			List<TbEmployee> employees = dao.findByHSQL("from TbEmployee where orgid="+orgid, new TbEmployee());
 			
 			Gson gson=new Gson();
+			
 			Map<String,List<TbEmployee>> map=new HashMap<String,List<TbEmployee>>();
 			map.put("employee", employees);
 			String json = gson.toJson(map);
 			System.out.println(json);
-			response.getWriter().write("sfasf");
+			
+			response.getWriter().write(json);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

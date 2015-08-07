@@ -73,8 +73,8 @@
 	function ajaxForEmployee(obj) {
 
 		alert(obj.innerHTML);
-		
-		document.getElementsByName("innovation.organizationNjByOrgid.orgid")[0].value=obj.value;
+
+		document.getElementsByName("innovation.organizationNjByOrgid.orgid")[0].value = obj.value;
 		if (window.XMLHttpRequest) {
 			xmlhttp = new XMLHttpRequest();
 		} else {
@@ -84,11 +84,7 @@
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				document.getElementById("form-field-select-employee").innerHTML = xmlhttp.responseText;
-				alert(xmlhttp.responseText);
-			}else{
-				alert("sdfasd");
 			}
-			
 		}
 		xmlhttp.open("GET", "getEmployees.do?orgid=" + obj.value, true);
 		xmlhttp.send();
@@ -127,7 +123,8 @@
 						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
 						</li>
 
-						<li><a href="#">Other Pages</a></li>
+						<li><a href="#">Other Pages</a>
+						</li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<!-- /.breadcrumb -->
@@ -309,14 +306,12 @@
 													for="form-input-readonly"> 营业厅名称： </label>
 
 												<div class="col-sm-9">
-													<div>
-														<label for="form-field-select-3">选择营业厅</label> <br /> 
-														<select
-															onchange="ajaxForEmployee(this)"
-															class="chosen-select form-control"
+													<div class="col-xs-10 col-sm-5">
+														<select onchange="ajaxForEmployee(this)"
+															class="chosen-select form-control "
 															id="form-field-select-3"
 															name="innovation.organizationNjByOrgid.orgName"
-															data-placeholder="Choose a State...">
+															data-placeholder="选择营业厅">
 															<option value=""></option>
 															<c:forEach items="${ requestScope.orgs}" var="org">
 																<option value="${org.orgid }">
@@ -325,136 +320,128 @@
 															</c:forEach>
 														</select>
 													</div>
-													<!-- <input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
-														<span class="help-inline col-xs-12 col-sm-7">
-															<button class="btn btn-info">选择营业厅</button>
-														</span> -->
 												</div>
 											</div>
 
 
 											<!-- /section:elements.form -->
 											<div class="form-group">
-												<div>
-													<label for="form-field-select-3">选择员工</label> <br /> <select
-														class="chosen-select form-control"
-														id="form-field-select-employee"
-														name="innovation.tbEmployee.employeeid"
-														data-placeholder="Choose a State...">
+												<label class="col-sm-3 control-label no-padding-right"
+													for="form-input-readonly"> 选择员工： </label>
+												<div class="col-sm-9">
+													<div class="col-xs-10 col-sm-5">
+														<select class="chosen-select form-control"
+															id="form-field-select-employee"
+															name="innovation.tbEmployee.employeeid"
+															data-placeholder="选择员工">
 
 
-														<option value=""></option>
-														<option value="WV">West Virginia</option>
-														<option value="WI">Wisconsin</option>
-														<option value="WY">Wyoming</option>
-													</select>
-												</div>
-												<!-- <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 员工姓名： </label>
-
-													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
-														<span class="help-inline col-xs-12 col-sm-7">
-															<button class="btn btn-info">选择员工</button>
-														</span>
-													</div>
-												</div> -->
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right"
-														for="form-input-readonly"> 工号： </label>
-
-													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5"
-															id="form-input-readonly" value=""
-															name="innovation.tbEmployee.employeecode" /> <span
-															class="help-inline col-xs-12 col-sm-7"> </span>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right"
-														for="form-input-readonly"> 身份证号： </label>
-
-													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5"
-															id="form-input-readonly" value=""
-															name="innovation.tbEmployee.idnumber" />
-
-													</div>
-												</div>
-
-
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right for="form-field-1">创新方案:</label>
-													<div class="col-sm-9">
-														<textarea id="form-field-11" class="col-xs-10 col-sm-5"
-															name="innovation.innovationcontent"></textarea>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right"
-														for="form-field-1"> 评定时间： </label>
-
-													<div class="col-sm-9">
-														<div class="input-group col-xs-10 col-sm-5">
-															<input class="form-control date-picker "
-																id="id-date-picker-1" type="text"
-																data-date-format="yyyy-mm-dd" /> <span
-																class="input-group-addon"> <i
-																class="fa fa-calendar bigger-110"
-																name="innovation.assessdate"></i> </span>
-														</div>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right"
-														for="form-input-readonly"> 部门核定结果： </label>
-
-													<div class="col-sm-9">
-														<input type="text" class="col-xs-10 col-sm-5"
-															id="form-input-readonly" value="" /> <span
-															class="help-inline col-xs-12 col-sm-7"
-															name="innovation.assessresult"> </span>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right"
-														for="form-field-1"> 层级： </label>
-
-													<div class="col-sm-9">
-														<select class="col-xs-10 col-sm-5"
-															id="form-field-select-1" name="innovation.assesslevel">
-															<option value="1">部门</option>
-															<option value="2">区域</option>
+															<option value=""></option>
+															<option value="WV">c</option>
+															<option value="WI">我</option>
+															<option value="WY">你</option>
 														</select>
-
 													</div>
 
 												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right for="form-field-1">奖励方式：</label>
-													<div class="col-sm-9">
-														<input name="innovation.encouragement" type="checkbox"
-															class="ace" /> <span class="lbl"> 个人成长档案加分</span> <br />
-														<input name="innovation.encouragement" type="checkbox"
-															class="ace" /> <span class="lbl"> 个人月度绩效</span> <br />
-														<input name="innovation.encouragement" type="checkbox"
-															class="ace" /> <span class="lbl"> 经费奖励</span>
-													</div>
-												</div>
-												<div class="clearfix form-actions">
-													<div class="col-md-offset-3 col-md-9">
-														<button class="btn btn-info" type="submit">
-															<i class="ace-icon fa fa-check bigger-110"></i> 提交
-														</button>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right"
+													for="form-input-readonly"> 工号： </label>
 
-														&nbsp; &nbsp; &nbsp;
-														<button class="btn" type="reset">
-															<i class="ace-icon fa fa-undo bigger-110"></i> Reset
-														</button>
+												<div class="col-sm-9">
+													<input readonly="" type="text" class="col-xs-10 col-sm-5"
+														id="form-input-readonly" value=""
+														name="innovation.tbEmployee.employeecode" /> <span
+														class="help-inline col-xs-12 col-sm-7"> </span>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right"
+													for="form-input-readonly"> 身份证号： </label>
+
+												<div class="col-sm-9">
+													<input readonly="" type="text" class="col-xs-10 col-sm-5"
+														id="form-input-readonly" value=""
+														name="innovation.tbEmployee.idnumber" />
+
+												</div>
+											</div>
+
+
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right for="form-field-1">创新方案:</label>
+												<div class="col-sm-9">
+													<textarea id="form-field-11" class="col-xs-10 col-sm-5"
+														name="innovation.innovationcontent"></textarea>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right"
+													for="form-field-1"> 评定时间： </label>
+
+												<div class="col-sm-9">
+													<div class="input-group col-xs-10 col-sm-5">
+														<input class="form-control date-picker "
+															id="id-date-picker-1" type="text"
+															data-date-format="yyyy-mm-dd" /> <span
+															class="input-group-addon"> <i
+															class="fa fa-calendar bigger-110"
+															name="innovation.assessdate"></i> </span>
 													</div>
 												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right"
+													for="form-input-readonly"> 部门核定结果： </label>
+
+												<div class="col-sm-9">
+													<input type="text" class="col-xs-10 col-sm-5"
+														id="form-input-readonly" value="" /> <span
+														class="help-inline col-xs-12 col-sm-7"
+														name="innovation.assessresult"> </span>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right"
+													for="form-field-1"> 层级： </label>
+
+												<div class="col-sm-9">
+													<select class="col-xs-10 col-sm-5" id="form-field-select-1"
+														name="innovation.assesslevel">
+														<option value="1">部门</option>
+														<option value="2">区域</option>
+													</select>
+
+												</div>
+
+											</div>
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right for="form-field-1">奖励方式：</label>
+												<div class="col-sm-9">
+													<input name="innovation.encouragement" type="checkbox"
+														class="ace" /> <span class="lbl"> 个人成长档案加分</span> <br />
+													<input name="innovation.encouragement" type="checkbox"
+														class="ace" /> <span class="lbl"> 个人月度绩效</span> <br /> <input
+														name="innovation.encouragement" type="checkbox"
+														class="ace" /> <span class="lbl"> 经费奖励</span>
+												</div>
+											</div>
+											<div class="clearfix form-actions">
+												<div class="col-md-offset-3 col-md-9">
+													<button class="btn btn-info" type="submit">
+														<i class="ace-icon fa fa-check bigger-110"></i> 提交
+													</button>
+
+													&nbsp; &nbsp; &nbsp;
+													<button class="btn" type="reset">
+														<i class="ace-icon fa fa-undo bigger-110"></i> 重置
+													</button>
+												</div>
+											</div>
 										</form>
 
 									</div>
