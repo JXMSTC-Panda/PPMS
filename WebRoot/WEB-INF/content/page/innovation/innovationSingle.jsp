@@ -84,7 +84,11 @@
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				document.getElementById("form-field-select-employee").innerHTML = xmlhttp.responseText;
+				alert(xmlhttp.responseText);
+			}else{
+				alert("sdfasd");
 			}
+			
 		}
 		xmlhttp.open("GET", "getEmployees.do?orgid=" + obj.value, true);
 		xmlhttp.send();

@@ -32,6 +32,7 @@ public class AjaxRequesrAction extends ActionSupport{
 	@Action("/getEmployees")
 	public String getEmployees(){
 		
+		
 		System.out.println("ajax");
 		
 		try {
@@ -43,6 +44,7 @@ public class AjaxRequesrAction extends ActionSupport{
 			Map<String,List<TbEmployee>> map=new HashMap<String,List<TbEmployee>>();
 			map.put("employee", employees);
 			String json = gson.toJson(map);
+			System.out.println(json);
 			response.getWriter().write("sfasf");
 		} catch (Exception e) {
 			e.printStackTrace();
