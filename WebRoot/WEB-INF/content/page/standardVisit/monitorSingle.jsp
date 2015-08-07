@@ -1,13 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
 
 <html lang="en">
-<head>
+<head>  
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <title>人员成长档案管理系统</title>
@@ -76,45 +70,78 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<form class="form-horizontal" role="form">
+								<form class="form-horizontal" role="form">
 												<!-- #section:elements.form -->
+
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 区域： </label>
+
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
-														<span class="help-inline col-xs-12 col-sm-7">		
+														<span class="help-inline col-xs-12 col-sm-7">
+												
 											</span>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅编码： </label>
+
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
 														<span class="help-inline col-xs-12 col-sm-7">
+												
 											</span>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅名称： </label>
+
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
 														<span class="help-inline col-xs-12 col-sm-7">
-															<input type="button" value="选择营业厅" class="btn_select_5" onclick="selectSingleBusinessHall.html"/>
+															<button class="btn btn-info">选择营业厅</button>
 														</span>
 													</div>
 												</div>
-				<!-- /section:elements.form -->								
+												
+
+												<!-- /section:elements.form -->
+												
+
+												
+
+												
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 培训时间： </label>
+
 													<div class="col-sm-9">
-														<input type="text" id="form-field-1" placeholder="培训时间" class="col-xs-10 col-sm-5" />
+														<div class="input-group col-xs-10 col-sm-5">
+																	<input class="form-control date-picker " id="id-date-picker-1" type="text" data-date-format="yyyy-mm-dd" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-calendar bigger-110"></i>
+																	</span>
+																</div>
 													</div>
-												</div>	
+												</div>
+												
+												
+												
 												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 考试分数： </label>
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 类别： </label>
+
 													<div class="col-sm-9">
-														<input type="text" id="form-field-1" placeholder="Grade" class="col-xs-10 col-sm-5" />
-														<label class=" control-label no-padding-left" for="form-field-1"> 分 </label>
+														<select class="col-xs-10 col-sm-5" id="form-field-select-1">
+															<option value="1">表扬</option>
+															<option value="2">问题指出</option>								
+														</select>
+														
+													</div>
+
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right for="form-field-1">明细</label>
+													<div class="col-sm-9">
+														<textarea id="form-field-11" class="col-xs-10 col-sm-5"></textarea>
 													</div>
 												</div>
 												<div class="clearfix form-actions">
@@ -122,19 +149,22 @@
 														<button class="btn btn-info" type="button">
 															<i class="ace-icon fa fa-check bigger-110"></i> Submit
 														</button>
+
 														&nbsp; &nbsp; &nbsp;
 														<button class="btn" type="reset">
 															<i class="ace-icon fa fa-undo bigger-110"></i> Reset
 														</button>
 													</div>
 												</div>
+
 											</form>
+
 										</div>
 										<!-- /.col -->
 									</div>
 									<!-- /.row -->
 								</div>
-								<!-- /.page-content -->			
+								<!-- /.page-content -->
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
@@ -148,6 +178,7 @@
 	
 	<!-- inline scripts related to this page -->
 	<script>
+		
 	</script>
 </body>
 </html>
