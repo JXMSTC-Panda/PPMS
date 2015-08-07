@@ -10,6 +10,9 @@
             <column name="SUBAREAID" precision="22" scale="0" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="tbArea" class="ppms.domain.TbArea" fetch="select">
+            <column name="AREAID" precision="22" scale="0" />
+        </many-to-one>
         <property name="subareadesc" type="java.lang.String">
             <column name="SUBAREADESC" length="50" />
         </property>
@@ -33,12 +36,6 @@
                 <column name="SUBAREAID" precision="22" scale="0" />
             </key>
             <one-to-many class="ppms.domain.TbSubareaorgrelation" />
-        </set>
-        <set name="tbAreas" inverse="true">
-            <key>
-                <column name="SUBAREAID" precision="22" scale="0" />
-            </key>
-            <one-to-many class="ppms.domain.TbArea" />
         </set>
     </class>
 </hibernate-mapping>

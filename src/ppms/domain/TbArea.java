@@ -14,7 +14,6 @@ public class TbArea implements java.io.Serializable {
 	// Fields
 
 	private BigDecimal areaid;
-	private TbSubarea tbSubarea;
 	private String areadesc;
 	private Boolean status;
 	private String createdby;
@@ -22,6 +21,7 @@ public class TbArea implements java.io.Serializable {
 	private String modifiedby;
 	private Date modifiedtime;
 	private Set tbAreaorgrelations = new HashSet(0);
+	private Set tbSubareas = new HashSet(0);
 	private Set COrganizationNjs = new HashSet(0);
 
 	// Constructors
@@ -36,12 +36,11 @@ public class TbArea implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TbArea(BigDecimal areaid, TbSubarea tbSubarea, String areadesc,
-			Boolean status, String createdby, Date createdtime,
-			String modifiedby, Date modifiedtime, Set tbAreaorgrelations,
+	public TbArea(BigDecimal areaid, String areadesc, Boolean status,
+			String createdby, Date createdtime, String modifiedby,
+			Date modifiedtime, Set tbAreaorgrelations, Set tbSubareas,
 			Set COrganizationNjs) {
 		this.areaid = areaid;
-		this.tbSubarea = tbSubarea;
 		this.areadesc = areadesc;
 		this.status = status;
 		this.createdby = createdby;
@@ -49,6 +48,7 @@ public class TbArea implements java.io.Serializable {
 		this.modifiedby = modifiedby;
 		this.modifiedtime = modifiedtime;
 		this.tbAreaorgrelations = tbAreaorgrelations;
+		this.tbSubareas = tbSubareas;
 		this.COrganizationNjs = COrganizationNjs;
 	}
 
@@ -60,14 +60,6 @@ public class TbArea implements java.io.Serializable {
 
 	public void setAreaid(BigDecimal areaid) {
 		this.areaid = areaid;
-	}
-
-	public TbSubarea getTbSubarea() {
-		return this.tbSubarea;
-	}
-
-	public void setTbSubarea(TbSubarea tbSubarea) {
-		this.tbSubarea = tbSubarea;
 	}
 
 	public String getAreadesc() {
@@ -124,6 +116,14 @@ public class TbArea implements java.io.Serializable {
 
 	public void setTbAreaorgrelations(Set tbAreaorgrelations) {
 		this.tbAreaorgrelations = tbAreaorgrelations;
+	}
+
+	public Set getTbSubareas() {
+		return this.tbSubareas;
+	}
+
+	public void setTbSubareas(Set tbSubareas) {
+		this.tbSubareas = tbSubareas;
 	}
 
 	public Set getCOrganizationNjs() {
