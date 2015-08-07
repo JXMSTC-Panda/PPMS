@@ -73,8 +73,13 @@
 	function ajaxForEmployee(obj) {
 
 		alert(obj.innerHTML);
+<<<<<<< HEAD
 
 		document.getElementsByName("innovation.organizationNjByOrgid.orgid")[0].value = obj.value;
+=======
+		
+		document.getElementsByName("innovation.organizationNjByOrgid.orgid")[0].value=obj.value;
+>>>>>>> 934c15d0439f83993c2fb20909e8c3ec45eaeabe
 		if (window.XMLHttpRequest) {
 			xmlhttp = new XMLHttpRequest();
 		} else {
@@ -123,8 +128,7 @@
 						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
 						</li>
 
-						<li><a href="#">Other Pages</a>
-						</li>
+						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<!-- /.breadcrumb -->
@@ -306,9 +310,17 @@
 													for="form-input-readonly"> 营业厅名称： </label>
 
 												<div class="col-sm-9">
+<<<<<<< HEAD
 													<div class="col-xs-10 col-sm-5">
 														<select onchange="ajaxForEmployee(this)"
 															class="chosen-select form-control "
+=======
+													<div>
+														<label for="form-field-select-3">选择营业厅</label> <br /> 
+														<select
+															onchange="ajaxForEmployee(this)"
+															class="chosen-select form-control"
+>>>>>>> 934c15d0439f83993c2fb20909e8c3ec45eaeabe
 															id="form-field-select-3"
 															name="innovation.organizationNjByOrgid.orgName"
 															data-placeholder="选择营业厅">
@@ -326,6 +338,7 @@
 
 											<!-- /section:elements.form -->
 											<div class="form-group">
+<<<<<<< HEAD
 												<label class="col-sm-3 control-label no-padding-right"
 													for="form-input-readonly"> 选择员工： </label>
 												<div class="col-sm-9">
@@ -334,6 +347,23 @@
 															id="form-field-select-employee"
 															name="innovation.tbEmployee.employeeid"
 															data-placeholder="选择员工">
+=======
+												<div>
+													<label for="form-field-select-3">选择员工</label> <br /> <select
+														class="chosen-select form-control"
+														id="form-field-select-employee"
+														name="innovation.tbEmployee.employeeid"
+														data-placeholder="Choose a State...">
+
+
+														<option value=""></option>
+														<option value="WV">West Virginia</option>
+														<option value="WI">Wisconsin</option>
+														<option value="WY">Wyoming</option>
+													</select>
+												</div>
+												<!-- <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 员工姓名： </label>
+>>>>>>> 934c15d0439f83993c2fb20909e8c3ec45eaeabe
 
 
 															<option value=""></option>

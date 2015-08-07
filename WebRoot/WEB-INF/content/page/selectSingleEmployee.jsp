@@ -175,6 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>营业员</td>
 						<td>熟练营业员</td>
 					</tr>	
+					
 					<tr>
 						<td><input type="radio" name="selectEmployee" value="1"></td>
 						<td>2</td>
