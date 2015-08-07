@@ -32,11 +32,30 @@ public class AjaxRequesrAction extends ActionSupport{
 	@Action("/getEmployees")
 	public String getEmployees(){
 		
+<<<<<<< HEAD
+		
+=======
+>>>>>>> 934c15d0439f83993c2fb20909e8c3ec45eaeabe
 		System.out.println("ajax");
 		
 		try {
 			String orgid=request.getParameter("orgid");
 			
+<<<<<<< HEAD
+			if(orgid.equals("")||orgid==null){
+				return null;
+			}
+			List<TbEmployee> employees = dao.findByHSQL("from TbEmployee where orgid="+orgid, new TbEmployee());
+			
+			Gson gson=new Gson();
+			
+			Map<String,List<TbEmployee>> map=new HashMap<String,List<TbEmployee>>();
+			map.put("employee", employees);
+			String json = gson.toJson(map);
+			System.out.println(json);
+			
+			response.getWriter().write(json);
+=======
 			List<TbEmployee> employees = dao.findByHSQL("from TbEmployee where orgid="+orgid, new TbEmployee());
 			
 			Gson gson=new Gson();
@@ -44,6 +63,7 @@ public class AjaxRequesrAction extends ActionSupport{
 			map.put("employee", employees);
 			String json = gson.toJson(map);
 			response.getWriter().write("sfasf");
+>>>>>>> 934c15d0439f83993c2fb20909e8c3ec45eaeabe
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
