@@ -6,6 +6,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.serviceimpl.PraiseCriticismServiceImp;
 
@@ -51,6 +52,8 @@ public class EmployeePraiseCriticismAction extends ActionSupport{
 	
 	public String skipSelectSingl(){
 		System.out.println("create skipSelectSingle");
+		List<TbEmployee> results=praiseCriticism.getEmployeeInfor();
+		
 		return "success";
 	}
 }

@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ppms.daoimpl.PraiseCriticismDao;
+import ppms.daoimpl.PraiseCriticismDaoImp;
+import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.service.PraiseCriticismService;
 
@@ -13,7 +14,7 @@ import ppms.service.PraiseCriticismService;
 public class PraiseCriticismServiceImp implements PraiseCriticismService {
 
 	@Autowired
-	private PraiseCriticismDao dao; //创建一个PraiseCriticismDao的对象dao
+	private PraiseCriticismDaoImp dao; //创建一个PraiseCriticismDao的对象dao
 	
 	/*
 	 * 动态下拉框，根据奖惩类型，动态变化奖惩级别*/
@@ -22,4 +23,12 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 		
 		return dao.findLevel(key);
 	}
+	
+	/*
+	 * 获取数据可中所有的员工信息
+	 * */
+	@Override
+	public List<TbEmployee> getEmployeeInfor(){
+		return dao.getEmployeeInfor();
+	};
 }
