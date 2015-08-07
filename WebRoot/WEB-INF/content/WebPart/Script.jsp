@@ -31,7 +31,7 @@
 		$(document).ready(function() {
 			//得到当前页面href
 			var url = window.location.href;
-			//当前页面位于page下的路径，格式：A.B.C
+			//当前页面位于page下的路径，格式：A.B.C 或者A.B.C.D.do
 			var pageInfo = url.split("/")[url.split("/").length - 1];
 			var page = pageInfo.split(".");
 			//第一次登录是进入角色添加页面，login.do
@@ -39,8 +39,8 @@
 				$("#authority").addClass("active open");
 				$("#roleSingle").addClass("active");
 			}
-			//其他A.B.C
-			if (page.length == 3) {
+			//其他A.B.C.D.do
+			else{
 				$("#" + page[0]).addClass("active open");
 				if (page[1] == "null") {
 				} else {
