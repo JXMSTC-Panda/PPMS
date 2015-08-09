@@ -4,11 +4,13 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import ppms.excel.template.BaseExcelObject;
+
 /**
  * TbSystemfunction entity. @author MyEclipse Persistence Tools
  */
 
-public class TbSystemfunction implements java.io.Serializable {
+public class TbSystemfunction extends BaseExcelObject implements java.io.Serializable {
 
 	// Fields
 

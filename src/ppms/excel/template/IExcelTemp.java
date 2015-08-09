@@ -17,6 +17,5 @@ public interface IExcelTemp {
 	 */
 	public IExcelTemp toSave();
 
-	public Field getField(String fieldName); 
 	
 }

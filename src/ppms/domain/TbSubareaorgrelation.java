@@ -2,11 +2,13 @@ package ppms.domain;
 
 import java.util.Date;
 
+import ppms.excel.template.BaseExcelObject;
+
 /**
  * TbSubareaorgrelation entity. @author MyEclipse Persistence Tools
  */
 
-public class TbSubareaorgrelation implements java.io.Serializable {
+public class TbSubareaorgrelation extends BaseExcelObject implements java.io.Serializable {
 
 	// Fields
 

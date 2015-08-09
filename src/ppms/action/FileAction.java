@@ -1,5 +1,6 @@
 package ppms.action;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.List;
 
@@ -16,42 +17,59 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class FileAction extends ActionSupport {
 
-	private String fileName;
-
-	
-	
-	public String getFileName() {
-		return fileName;
+	private File file;
+	private String fileFileName;
+	private String expect;
+ 	
+	public String getExpect() {
+		return expect;
 	}
 
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setExpect(String expect) {
+		this.expect = expect;
 	}
 
+
+	public File getFile() {
+		return file;
+	}
+
+
+	public void setFile(File file) {
+		this.file = file;
+	}
+
+
+	public String getFileFileName() {
+		return fileFileName;
+	}
+
+
+	public void setFileFileName(String fileFileName) {
+		this.fileFileName = fileFileName;
+	}
 
 
 	@org.apache.struts2.convention.annotation.Action("/upload")
 	public String upload() {
 
-		HttpServletRequest request = ServletActionContext.getRequest();
 		// 基于myFile创建一个文件输入流
 		try {
 
-			fileName=new String(fileName.getBytes("iso8859-1"), "utf-8");
-			if (!fileName.endsWith(".xls")) {
-
-				throw new ExcelParserException("文件导入失败，文件名" + fileName
+			if (!fileFileName.endsWith(".xls")) {
+				throw new ExcelParserException("文件导入失败，文件名" + fileFileName
 						+ "不符合，请导入.xls格式文件");
 			} else {
+
 				
-				InputStream myFile=request.getInputStream();
-				List<IExcelTemp> objs = new CommonExcelParser().toObjs2(myFile,fileName);
+				List<IExcelTemp> objs = new CommonExcelParser().toObjs2(file,
+						fileFileName);
 				for (IExcelTemp iExcelTemp : objs) {
 					System.out.println(iExcelTemp.toString());
 				}
-				
-				System.out.println(myFile);
+
+				System.out.println(fileFileName);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

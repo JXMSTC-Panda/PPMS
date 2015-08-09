@@ -19,7 +19,7 @@
         </many-to-one>
         <many-to-one name="tbEmployee" class="ppms.domain.TbEmployee" fetch="select">
             <column name="EMPLOYEEID" length="6">
-                <comment>员工编码</comment>
+                <comment>身份证号</comment>
             </column>
         </many-to-one>
         <property name="examtype" type="java.lang.String">
@@ -29,12 +29,12 @@
         </property>
         <property name="examdate" type="java.util.Date">
             <column name="EXAMDATE" length="7">
-                <comment>考核时间（年月日）</comment>
+                <comment>考核时间(年月日)</comment>
             </column>
         </property>
         <property name="examexpire" type="java.lang.Double">
             <column name="EXAMEXPIRE" precision="7">
-                <comment>考核有效时间（月）</comment>
+                <comment>考核有效时间(月)</comment>
             </column>
         </property>
         <property name="examscore" type="java.lang.Double">

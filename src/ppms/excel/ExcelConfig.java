@@ -87,6 +87,6 @@ public class ExcelConfig {
 	
 	public static int  getDataBegin(String fielName){
 		
-		return Integer.valueOf((String) dataBegin.get(fielName));
+		return Integer.valueOf((String) dataBegin.getProperty(fielName, "1"));
 	}
 }
