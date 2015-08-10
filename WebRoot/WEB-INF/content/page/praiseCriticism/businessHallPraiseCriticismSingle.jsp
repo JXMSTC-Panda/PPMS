@@ -130,7 +130,7 @@
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbOrgpraisecriticism.organizationNj.orgName" />
 														<span class="help-inline col-xs-12 col-sm-7">
-															<button class="btn btn-info">选择营业厅</button>
+															<button class="btn btn-info" type="button" onClick="top.window.location='skipBusinessHallSelectSingle.do'">选择营业厅</button>
 														</span>
 													</div>
 												</div>
@@ -190,10 +190,10 @@
 												
 												<div class="clearfix form-actions">
 													<div class="col-md-offset-3 col-md-9">
-														<!-- <button class="btn btn-info" type="button">
+														 <button class="btn btn-info" type="submit">
 															<i class="ace-icon fa fa-check bigger-110"></i> Submit
-														</button> -->
-														<input type="submit" value="submit">
+														</button> 
+														
 
 														&nbsp; &nbsp; &nbsp;
 														<button class="btn" type="reset">

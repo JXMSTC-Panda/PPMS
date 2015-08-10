@@ -6,8 +6,10 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
+
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
@@ -77,26 +79,10 @@
 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		xmlhttp.onreadystatechange = function() {
-
-			var select = document.getElementById("form-field-select-employee")
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-
-				var obj = JSON.parse(xmlhttp.responseText);
-				var employees = obj.employees;
-				for ( var i = 0; i < employees.length; i++) {
-
-					var objOption = document.createElement("OPTION");
-					objOption.value = employees[i].employeeid;
-					objOption.text = employees[i].employeename;
-					select.options.add(objOption);
-				}
-			} else {
-				var objOption = document.createElement("OPTION");
-				objOption.text = "无选项";
-				objOption.value = "";
+				document.getElementById("form-field-select-employee").innerHTML = xmlhttp.responseText;
 			}
 		}
-		 
 		xmlhttp.open("GET", "getEmployees.do?orgid=" + obj.value, true);
 		xmlhttp.send();
 	}
@@ -345,8 +331,12 @@
 															id="form-field-select-employee"
 															name="innovation.tbEmployee.employeeid"
 															data-placeholder="选择员工">
-															
-															<option value="9527">周星驰</option>
+
+
+															<option value=""></option>
+															<option value="WV">c</option>
+															<option value="WI">我</option>
+															<option value="WY">你</option>
 														</select>
 													</div>
 

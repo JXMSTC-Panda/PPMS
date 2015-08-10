@@ -20,9 +20,7 @@
 		</many-to-one>
 		<many-to-one name="tbEmployee" class="ppms.domain.TbEmployee"
 			fetch="select">
-			<column name="EMPLOYEEID" length="6" >
-				<comment>身份证号</comment>
-			</column>
+			<column name="EMPLOYEEID" length="6" />
 		</many-to-one>
 		<many-to-one name="organizationNjByEmployeeorgid" class="ppms.domain.OrganizationNj"
 			fetch="select">
@@ -37,12 +35,12 @@
 		</property>
 		<property name="assessdate" type="java.util.Date">
 			<column name="ASSESSDATE" length="7">
-				<comment>评定时间(年月日)</comment>
+				<comment>评定时间（年月日）</comment>
 			</column>
 		</property>
 		<property name="assessresult" type="java.lang.String">
 			<column name="ASSESSRESULT" length="50">
-				<comment>部门核定结果</comment>
+				<comment>部门审核结果</comment>
 			</column>
 		</property>
 		<property name="assesslevel" type="java.lang.String">

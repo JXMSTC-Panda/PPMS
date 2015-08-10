@@ -14,5 +14,5 @@ public interface PraiseCriticismDao {
 	/*
 	 * 获取数据可中所有的员工信息
 	 * */
-	public List<TbEmployee> getEmployeeInfor();
+	public List<TbEmployee> findAllEmployeeInfor();
 }

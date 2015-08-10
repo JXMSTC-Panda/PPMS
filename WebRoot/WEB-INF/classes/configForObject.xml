@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects>
-	<excel name="暗访检查成绩批量导入模板.xls">
+	<excel name="暗访检查成绩批量导出模板.xls">
 		<object>
-			<class_name>ppms.domain.TbVisitcheck</class_name>
+			<class_name>ppms.excel.Hall</class_name>
+			<clomns>1,2,3</clomns>
+		</object>
+		<object>
+			<class_name>ppms.excel.HallGrade</class_name>
+			<clomns>2,0,4,5,6,7:2,0,8,9,10,11</clomns>
 		</object>
 	</excel>
-	<excel name="标准化检查成绩批量导入模板.xls">
+	<excel name="标准化检查成绩批量导出模板.xls">
 		<object>
-			<class_name>ppms.domain.TbStandardcheck</class_name>
-		</object>
-	</excel>
-	<excel name="创新提案批量导入模板.xls">
-		<object>
-			<class_name>ppms.domain.TbInnovation</class_name>
-		</object>
-	</excel>
-	<excel name="合作厅上岗证批量导入模板.xls">
-		<object>
-			<class_name>ppms.domain.TbMountguardexam</class_name>
+			<class_name>ppms.excel.StandardGrade</class_name>
+			<clomns>*</clomns>
 		</object>
 	</excel>
 	

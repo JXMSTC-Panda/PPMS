@@ -1,5 +1,16 @@
 package ppms.action;
 
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import ppms.domain.TbEmployeepraisecriticism;
+
+
+
+
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -14,27 +25,42 @@ import com.opensymphony.xwork2.ActionSupport;
 
 
 public class EmployeePraiseCriticismAction extends ActionSupport{
+
 	
 	
 	private TbEmployeepraisecriticism tbEmployeepraisecriticism;
 	
+
+
 	@Autowired
 	private PraiseCriticismServiceImp praiseCriticism;
+
 	
 	public TbEmployeepraisecriticism getTbEmployeepraisecriticism() {
 		return tbEmployeepraisecriticism;
 	}
 
 
+
+
 	public EmployeePraiseCriticismAction(){
 		
 		System.out.println("create EmployeePraiseCriticismAction");
 	}
+
 	public void setTbEmployeepraisecriticism(
 			TbEmployeepraisecriticism tbEmployeepraisecriticism) {
 		this.tbEmployeepraisecriticism = tbEmployeepraisecriticism;
 	}
 
+
+
+	@Action(value="start",results={
+			@Result(name="success",location="/WEB-INF/content/page/userinfo/Demo.jsp"),
+			@Result(name="error",location="/WEB-INF/content/page/userinfo/Demo.jsp")})
+	public String login(){
+		return null;
+	}
 
 	@Action(value="employeePraiseCriticismSingleStart",results={
 			@Result(name="success",location="/WEB-INF/content/page/userinfo/Demo.jsp"),
@@ -46,14 +72,19 @@ public class EmployeePraiseCriticismAction extends ActionSupport{
 		return null;
 	}
 	
-	@Action(value="skipSelectSingle",results={
+	@Action(value="skipEmployeeSelectSingle",results={
 			@Result(name="success",location="/WEB-INF/content/page/selectSingleEmployee.jsp"),
 		    @Result(name="error",location="/WEB-INF/content/page/selectSingleEmployee.jsp")})
 	
 	public String skipSelectSingl(){
 		System.out.println("create skipSelectSingle");
-		List<TbEmployee> results=praiseCriticism.getEmployeeInfor();
+		List<TbEmployee> results=praiseCriticism.findAllEmployeeInfor();
+		for(TbEmployee tbEmployee:results){
+			
+		System.out.println(tbEmployee.getEmployeeid()+":"+tbEmployee.getEmployeename());
 		
+		}
 		return "success";
 	}
+
 }

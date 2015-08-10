@@ -24,7 +24,7 @@
         </property>
         <property name="checkscore" type="java.lang.Double">
             <column name="CHECKSCORE" precision="7">
-                <comment>标准化检查成绩</comment>
+                <comment>检查成绩</comment>
             </column>
         </property>
         <property name="createdby" type="java.lang.String">

@@ -24,17 +24,17 @@
         </property>
         <property name="firstscore" type="java.lang.Double">
             <column name="FIRSTSCORE" precision="7">
-                <comment>第一次成绩</comment>
+                <comment>第一次</comment>
             </column>
         </property>
         <property name="secondscore" type="java.lang.Double">
             <column name="SECONDSCORE" precision="7">
-                <comment>第二次成绩</comment>
+                <comment>第二次</comment>
             </column>
         </property>
         <property name="consistencyscore" type="java.lang.Double">
             <column name="CONSISTENCYSCORE" precision="7">
-                <comment>一致性成绩</comment>
+                <comment>一致性</comment>
             </column>
         </property>
         <property name="averagescore" type="java.lang.Double">

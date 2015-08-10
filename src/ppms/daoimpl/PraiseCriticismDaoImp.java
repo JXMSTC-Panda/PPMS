@@ -35,7 +35,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	/*
 	 * 获取数据可中所有的员工信息
 	 * */
-	public List<TbEmployee> getEmployeeInfor(){
+	public List<TbEmployee> findAllEmployeeInfor(){
 		List results=null;
 		try{
 			String hql="from TbEmployee"; //定义hql语句,获取TbEployee表中所有的数据
@@ -47,4 +47,6 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		
 		return results;  //返回结果
 	}
+	
+
 }
