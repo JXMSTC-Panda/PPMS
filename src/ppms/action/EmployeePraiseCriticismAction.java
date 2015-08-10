@@ -10,7 +10,7 @@ import ppms.domain.TbEmployeepraisecriticism;
 
 
 public class EmployeePraiseCriticismAction {
-=======
+
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -25,43 +25,43 @@ import com.opensymphony.xwork2.ActionSupport;
 
 
 public class EmployeePraiseCriticismAction extends ActionSupport{
->>>>>>> a98b554a236bb42daae060e3bbaaee10f1fc7dcf
+
 	
 	
 	private TbEmployeepraisecriticism tbEmployeepraisecriticism;
 	
-<<<<<<< HEAD
-=======
+
+
 	@Autowired
 	private PraiseCriticismServiceImp praiseCriticism;
->>>>>>> a98b554a236bb42daae060e3bbaaee10f1fc7dcf
+
 	
 	public TbEmployeepraisecriticism getTbEmployeepraisecriticism() {
 		return tbEmployeepraisecriticism;
 	}
 
 
-<<<<<<< HEAD
-=======
+
+
 	public EmployeePraiseCriticismAction(){
 		
 		System.out.println("create EmployeePraiseCriticismAction");
 	}
->>>>>>> a98b554a236bb42daae060e3bbaaee10f1fc7dcf
+
 	public void setTbEmployeepraisecriticism(
 			TbEmployeepraisecriticism tbEmployeepraisecriticism) {
 		this.tbEmployeepraisecriticism = tbEmployeepraisecriticism;
 	}
 
 
-<<<<<<< HEAD
+
 	@Action(value="start",results={
 			@Result(name="success",location="/WEB-INF/content/page/userinfo/Demo.jsp"),
 			@Result(name="error",location="/WEB-INF/content/page/userinfo/Demo.jsp")})
 	public String login(){
 		return null;
 	}
-=======
+
 	@Action(value="employeePraiseCriticismSingleStart",results={
 			@Result(name="success",location="/WEB-INF/content/page/userinfo/Demo.jsp"),
 			@Result(name="error",location="/WEB-INF/content/page/userinfo/Demo.jsp")})
@@ -82,5 +82,5 @@ public class EmployeePraiseCriticismAction extends ActionSupport{
 		
 		return "success";
 	}
->>>>>>> a98b554a236bb42daae060e3bbaaee10f1fc7dcf
+
 }
