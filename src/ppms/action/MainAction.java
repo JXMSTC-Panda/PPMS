@@ -33,14 +33,8 @@ public class MainAction extends ActionSupport{
 		System.out.print("Success");
 	}
 
-<<<<<<< HEAD
 	@Override
 	public Map<String, List<T>> initPage(ServletContext context,String url) {
-=======
-	/*@Override
-	public Map<String, List<T>> initPage(ServletContext context) {
->>>>>>> 336247a3a0d29dd865a1df768450eb0337bb25ef
-
 		// 实例化map
 		Map map = new HashMap<String, List<TbEmployee>>();
 
@@ -52,5 +46,5 @@ public class MainAction extends ActionSupport{
 
 		map.put("orgs", organizations);
 		return map;
-	}*/
+	}
 }
