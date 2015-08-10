@@ -8,6 +8,7 @@ public class MainAction {
 	        @Result(name = "success", location = "/WEB-INF/content/page/authority/roleSingle.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String login(){
+		int i = 9;
 		return "success";
 	}
 }

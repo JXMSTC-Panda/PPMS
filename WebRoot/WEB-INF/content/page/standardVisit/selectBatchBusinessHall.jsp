@@ -1,5 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html >
 <head>
 <meta http-equiv="Content-Language" content="en-us" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -7,6 +13,7 @@
 <base target="main" />
 <link rel="stylesheet" type="text/css" href="../css/frontmiddle.css" />
 <script language="javascript">
+
 </script>
 <script src="../js/Calendar.js" type="text/javascript"></script>
 </head>
@@ -76,7 +83,7 @@
 						<th>片区</th>
 					</tr>	
 					<tr>
-						<td align="center"><input type="radio" name="radio1" value="0" checked></td>
+						<td align="center"><input type="checkbox" name="checkbox1" value="0"></td>
 						<td>1</td>
 						<td>A001</td>
 						<td>南京新华书店沟通100服务</td>
@@ -84,7 +91,7 @@
 						<td>鼓楼区</td>
 					</tr>	
 					<tr>
-						<td align="center"><input type="radio" name="radio2" value="1"></td>
+						<td align="center"><input type="checkbox" name="checkbox2" value="1"></td>
 						<td>2</td>
 						<td>A002</td>
 						<td>国美淮海路指定专营店</td>
@@ -92,7 +99,7 @@
 						<td>白下区</td>
 					</tr>	
 					<tr>
-						<td align="center"><input type="radio" name="radio3" value="2"></td>
+						<td align="center"><input type="checkbox" name="checkbox3" value="2"></td>
 						<td>3</td>
 						<td>A003</td>
 						<td>中央商场指定专营店</td>
@@ -100,7 +107,7 @@
 						<td>下关区</td>
 					</tr>	
 					<tr>
-						<td align="center"><input type="radio" name="radio4" value="3"></td>
+						<td align="center"><input type="checkbox" name="checkbox4" value="3"></td>
 						<td>4</td>
 						<td>A004</td>
 						<td>中山北路指定专营店</td>
@@ -108,7 +115,7 @@
 						<td>下关区</td>
 					</tr>	
 					<tr>
-						<td align="center"><input type="radio" name="radio5" value="4"></td>
+						<td align="center"><input type="checkbox" name="checkbox5" value="4"></td>
 						<td>5</td>
 						<td>A005</td>
 						<td>南京新华书店沟通100服务</td>
