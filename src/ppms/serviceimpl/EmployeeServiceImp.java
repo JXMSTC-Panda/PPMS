@@ -1,8 +1,17 @@
 package ppms.serviceimpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sun.xml.internal.bind.annotation.OverrideAnnotationOf;
+
+import ppms.genericDao.TbEmployeeDAO;
+import ppms.domain.TbEmployee;
+import ppms.service.EmployeeService;
+import ppms.util.MD5Util;
 /**
 * <p>Title: EmployeeServiceImp</p>
 * <p>Description: </p>
@@ -13,7 +22,35 @@ import org.springframework.stereotype.Service;
 */
 
 @Service
-public class EmployeeServiceImp {
+public class EmployeeServiceImp implements EmployeeService{
 	
+	@Autowired
+	protected TbEmployeeDAO dao;
+	@Override
+	public List<TbEmployee> findAllEmployeeInfor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see ppms.service.EmployeeService#findEmployeeForLogin(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public int findEmployeeForLogin(String useracount, String password) {
+		// TODO Auto-generated method stub
+		MD5Util md5Util = new MD5Util();
+		//得到密码的MD5值
+		String md5Password = md5Util.getMD5String(password); 
+		// 根据用户工号得到员工List
+		List<TbEmployee> employeeByAccountList = dao.findByEmployeecode(useracount);
+		// 根据用户身份证号得到员工List
+		List<TbEmployee> employeeByIdNumList = dao.findByIdnumber(useracount);
+		
+		int sizeAccount = employeeByAccountList.size();
+		int sizeIdNum = employeeByIdNumList.size();
+		
+		return employeeByAccountList.size();
+	}
 	
 }

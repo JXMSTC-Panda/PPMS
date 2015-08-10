@@ -77,11 +77,11 @@
 											<fieldset>
 												<label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														type="text" class="form-control" name="username"
+														type="text" class="form-control" name="userAccount"
 														placeholder="身份证号/工号" /> <i class="ace-icon fa fa-user"></i>
 												</span> </label> <label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														type="password" class="form-control" name="password"
+														type="password" class="form-control" name="passWord"
 														placeholder="密码" /> <i class="ace-icon fa fa-lock"></i> </span>
 												</label>
 
@@ -312,14 +312,14 @@
 						else{
 							$.gritter.add({
 								title : '出错啦!',
-								text : '账号或密码错误，请重试！',
+								text : '账号或密码错误，请重试！' + data,
 								sticky : true,
 								//time: 1000,
 								speed : 10,
 								position : 'center',
 								class_name : 'gritter-light'
 							});
-						}					
+						}		 		
 					}
 				});
 				$("#gritter-notice-wrapper").mouseleave(function() {
