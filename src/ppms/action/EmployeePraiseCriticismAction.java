@@ -46,14 +46,18 @@ public class EmployeePraiseCriticismAction extends ActionSupport{
 		return null;
 	}
 	
-	@Action(value="skipSelectSingle",results={
+	@Action(value="skipEmployeeSelectSingle",results={
 			@Result(name="success",location="/WEB-INF/content/page/selectSingleEmployee.jsp"),
 		    @Result(name="error",location="/WEB-INF/content/page/selectSingleEmployee.jsp")})
 	
 	public String skipSelectSingl(){
 		System.out.println("create skipSelectSingle");
-		List<TbEmployee> results=praiseCriticism.getEmployeeInfor();
+		List<TbEmployee> results=praiseCriticism.findAllEmployeeInfor();
+		for(TbEmployee tbEmployee:results){
+			
+		System.out.println(tbEmployee.getEmployeeid()+":"+tbEmployee.getEmployeename());
 		
+		}
 		return "success";
 	}
 }

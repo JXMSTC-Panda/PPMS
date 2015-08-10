@@ -28,7 +28,7 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 	 * 获取数据可中所有的员工信息
 	 * */
 	@Override
-	public List<TbEmployee> getEmployeeInfor(){
-		return dao.getEmployeeInfor();
+	public List<TbEmployee> findAllEmployeeInfor(){
+		return dao.findAllEmployeeInfor();
 	};
 }
