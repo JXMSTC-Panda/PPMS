@@ -1,10 +1,8 @@
 package ppms.excel;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -256,13 +254,13 @@ public class CommonExcelParser {
 	 * 
 	 */
 
-	public List<IExcelTemp> toObjs2(File file, String myFileFileName)
+	public List<Object> toObjs2(File file, String myFileFileName)
 			throws Exception {
 
 		// 变量定义
 		int t = 3;
 		// 保存封装好Excel对应实体类的集合
-		List<IExcelTemp> objs = null;
+		List<Object> objs = null;
 		// 文件输入流
 		// Excel文件对应的实体类字节码对象
 		Class clazz = null;
@@ -284,7 +282,7 @@ public class CommonExcelParser {
 				// 设置PIO初始化对象
 				setFile(new FileInputStream(file));
 				// 实例化excel对应类的实例集合
-				objs = new ArrayList<IExcelTemp>();
+				objs = new ArrayList<Object>();
 				System.out.println(myFileFileName);
 				HSSFRow ro = null;
 
@@ -446,6 +444,7 @@ public class CommonExcelParser {
 				System.out.println(fieldName);
 			} finally {
 			}
+			
 			return objs;
 		}
 	}
