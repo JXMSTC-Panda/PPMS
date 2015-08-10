@@ -12,14 +12,14 @@ import org.apache.struts2.convention.annotation.Result;
 */
 public class authorityAction {
 	
-	@Action(value ="roleSingleResult", results = {  
+	@Action(value ="authority.null.roleSingle.roleAdd", results = {  
 	        @Result(name = "success", location = "/WEB-INF/content/page/authority/roleSingleResult.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String roleSingleResult(){
 		return "success";
 	}
 	
-	@Action(value ="roleSearch", results = {  
+	@Action(value ="authority.null.roleSearch.roleSearch", results = {  
 	        @Result(name = "success", location = "/WEB-INF/content/page/authority/roleSearch.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String roleSearch(){

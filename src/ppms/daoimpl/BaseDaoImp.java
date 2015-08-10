@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
 /**
  * dao层的基本类
@@ -15,8 +16,14 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * @function sessionFactory实例注入
  * 
  */
+@Repository
 public class BaseDaoImp extends HibernateDaoSupport {
 
+	public BaseDaoImp(){
+		
+		System.out.println("create BaseDaoImp");
+	}
+	
 	@Autowired
 	public void setMySessionFactory(SessionFactory sessionFactory) {
 

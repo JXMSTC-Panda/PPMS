@@ -2,11 +2,13 @@ package ppms.domain;
 
 import java.util.Date;
 
+import ppms.excel.template.BaseExcelObject;
+
 /**
  * TbStandardcheck entity. @author MyEclipse Persistence Tools
  */
 
-public class TbStandardcheck implements java.io.Serializable {
+public class TbStandardcheck extends BaseExcelObject implements java.io.Serializable {
 
 	// Fields
 
