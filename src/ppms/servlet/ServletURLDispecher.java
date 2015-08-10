@@ -27,15 +27,15 @@ import ppms.action.interfaces.InitPage;
  */
 public class ServletURLDispecher extends HttpServlet {
 
-	//页面初始化的配置对象
+	// 页面初始化的配置对象
 	private static Properties initConfig;
 
 	static {
-		
+
 		initConfig = new Properties();
 		try {
-			
-			//获取配置信息
+
+			// 获取配置信息
 			initConfig.load(new FileInputStream(new File(
 					ServletURLDispecher.class.getClassLoader()
 							.getResource("initPage.properties").getPath())));
@@ -47,7 +47,7 @@ public class ServletURLDispecher extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		int i=1;
+		int i = 1;
 		String url = null;
 		String mark = null;
 
@@ -58,11 +58,10 @@ public class ServletURLDispecher extends HttpServlet {
 		String[] split = requestURL.toString().split("/");
 		url = split[split.length - 1];
 
-		
 		// 判断格式是否准确
 		if (url.contains(".")) {
-			String[] split2 = url.split("[.]"); 
-			url = split2[0]+ "." + split2[2];
+			String[] split2 = url.split("[.]");
+			url = split2[0] + "." + split2[2];
 			mark = url;
 			// 替换格式，转出标准请求格式
 			url = url.replace(".", "/");
@@ -85,27 +84,32 @@ public class ServletURLDispecher extends HttpServlet {
 			url = url.trim();
 			if (url != null) {
 
-				//通过配置信息获取页面初始化实现数据获取的Action
+				// 通过配置信息获取页面初始化实现数据获取的Action
 				String actionName = (String) initConfig.get(mark);
-				try {
-					//实例化实现数据查找的Action
-					InitPage forName = (InitPage) Class.forName(actionName)
-							.newInstance();
+				if (mark != null && !mark.equals("")) {
+					try {
+						// 实例化实现数据查找的Action
+						InitPage forName = (InitPage) Class.forName(actionName)
+								.newInstance();
 
-					//获取查找到的数据
-					Map<String, List<T>> initPage = forName.initPage(req.getServletContext());
+						// 获取查找到的数据
+						Map<String, List<T>> initPage = forName.initPage(req
+								.getServletContext(),mark);
 
-					if (initPage != null) {
-						//遍历map存到request域
-						for (Entry<String, List<T>> entry : initPage.entrySet()) {
+						if (initPage != null) {
+							// 遍历map存到request域
+							for (Entry<String, List<T>> entry : initPage
+									.entrySet()) {
 
-							req.setAttribute(entry.getKey(), entry.getValue());
+								req.setAttribute(entry.getKey(),
+										entry.getValue());
+							}
 						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}finally{
-					
 				}
 				req.getRequestDispatcher("/" + url).forward(req, resp);
 			}

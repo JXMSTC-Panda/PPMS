@@ -28,7 +28,7 @@ public class MainAction extends ActionSupport implements InitPage{
 	}
 
 	@Override
-	public Map<String, List<T>> initPage(ServletContext context) {
+	public Map<String, List<T>> initPage(ServletContext context,String url) {
 
 		// 实例化map
 		Map map = new HashMap<String, List<TbEmployee>>();

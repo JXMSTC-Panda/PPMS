@@ -8,14 +8,14 @@ import ppms.excel.template.BaseExcelObject;
  * TbInnovation entity. @author MyEclipse Persistence Tools
  */
 
-public class TbInnovation extends BaseExcelObject implements java.io.Serializable {
+public class TbInnovation extends BaseExcelObject implements
+		java.io.Serializable {
 
 	// Fields
 
 	private String innovationid;
-	private OrganizationNj organizationNjByOrgid;
+	private OrganizationNj organizationNj;
 	private TbEmployee tbEmployee;
-	private OrganizationNj organizationNjByEmployeeorgid;
 	private String innovationcontent;
 	private Date assessdate;
 	private String assessresult;
@@ -45,9 +45,8 @@ public class TbInnovation extends BaseExcelObject implements java.io.Serializabl
 			String assesslevel, String encouragement, String createdby,
 			Date createdtime, String modifiedby, Date modifiedtime) {
 		this.innovationid = innovationid;
-		this.organizationNjByOrgid = organizationNjByOrgid;
+		this.organizationNj = organizationNj;
 		this.tbEmployee = tbEmployee;
-		this.organizationNjByEmployeeorgid = organizationNjByEmployeeorgid;
 		this.innovationcontent = innovationcontent;
 		this.assessdate = assessdate;
 		this.assessresult = assessresult;
@@ -69,29 +68,20 @@ public class TbInnovation extends BaseExcelObject implements java.io.Serializabl
 		this.innovationid = innovationid;
 	}
 
-	public OrganizationNj getOrganizationNjByOrgid() {
-		return this.organizationNjByOrgid;
-	}
-
-	public void setOrganizationNjByOrgid(OrganizationNj organizationNjByOrgid) {
-		this.organizationNjByOrgid = organizationNjByOrgid;
-	}
-
 	public TbEmployee getTbEmployee() {
 		return this.tbEmployee;
 	}
 
+	public OrganizationNj getOrganizationNj() {
+		return organizationNj;
+	}
+
+	public void setOrganizationNj(OrganizationNj organizationNj) {
+		this.organizationNj = organizationNj;
+	}
+
 	public void setTbEmployee(TbEmployee tbEmployee) {
 		this.tbEmployee = tbEmployee;
-	}
-
-	public OrganizationNj getOrganizationNjByEmployeeorgid() {
-		return this.organizationNjByEmployeeorgid;
-	}
-
-	public void setOrganizationNjByEmployeeorgid(
-			OrganizationNj organizationNjByEmployeeorgid) {
-		this.organizationNjByEmployeeorgid = organizationNjByEmployeeorgid;
 	}
 
 	public String getInnovationcontent() {
