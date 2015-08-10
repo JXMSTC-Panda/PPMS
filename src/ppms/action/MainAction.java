@@ -19,20 +19,11 @@ import ppms.domain.TbEmployee;
 import ppms.serviceimpl.InvocationServiceImp;
 
 public class MainAction extends ActionSupport implements InitPage{
+	
 	@Action(value = "authority.null.roleSingle.login", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/authority/roleSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String login() {
-
-<<<<<<< HEAD
-public class MainAction {
-	@Action(value ="login", results = {  
-	        @Result(name = "success", location = "/WEB-INF/content/page/authority/roleSingle.jsp"),  
-	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
-	public String login(){
-		int i = 9;
-=======
->>>>>>> a98b554a236bb42daae060e3bbaaee10f1fc7dcf
 		return "success";
 	}
 
