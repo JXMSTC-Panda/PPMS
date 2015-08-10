@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import ppms.domain.TbEmployeepraisecriticism;
 
 
-public class EmployeePraiseCriticismAction {
+
 
 import java.util.List;
 
