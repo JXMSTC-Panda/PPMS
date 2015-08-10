@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import ppms.daoimpl.InvocationDaoImp;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbInnovation;
+import ppms.genericDao.OrganizationNjDAO;
+import ppms.genericDao.TbInnovationDAO;
 import ppms.service.InvocationService;
 
 @Service
@@ -18,11 +20,13 @@ public class InvocationServiceImp implements InvocationService {
 		System.out.println("create");
 	}
 	@Autowired
-	private InvocationDaoImp dao;
+	private TbInnovationDAO dao;
+	@Autowired
+	private OrganizationNjDAO orgDao;
 	@Override
 	public List<OrganizationNj> getOrganizations() {
 		
-		return dao.getOrganizations();
+		return orgDao.findAll();
 	}
 	@Override
 	public boolean addInnovation(TbInnovation innovation) {

@@ -3,13 +3,17 @@ package ppms.excel;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ppms.daoimpl.BaseDaoImp;
 
 public class ListForParser<ExcelObjStruct> {
 
 	private List<ExcelObjStruct> list;
 	private int size;
 	
+	@Autowired
+	private BaseDaoImp dao;
 	public ListForParser(){
 		
 		list=new ArrayList<>();
@@ -18,6 +22,7 @@ public class ListForParser<ExcelObjStruct> {
 	public void add(ExcelObjStruct eos){
 		
 		list.add(eos);
+		size++;
 	}
 	
 	public ExcelObjStruct get(int index){

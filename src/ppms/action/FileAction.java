@@ -7,10 +7,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import ppms.domain.TbInnovation;
 import ppms.excel.CommonExcelParser;
 import ppms.excel.template.IExcelTemp;
 import ppms.exception.ExcelParserException;
+import ppms.serviceimpl.InvocationServiceImp;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
@@ -20,6 +23,9 @@ public class FileAction extends ActionSupport {
 	private File file;
 	private String fileFileName;
 	private String expect;
+	
+	@Autowired
+	private InvocationServiceImp service;
  	
 	public String getExpect() {
 		return expect;
@@ -63,10 +69,13 @@ public class FileAction extends ActionSupport {
 			} else {
 
 				
-				List<IExcelTemp> objs = new CommonExcelParser().toObjs2(file,
+				List<Object> objs = new CommonExcelParser().toObjs2(file,
 						fileFileName);
-				for (IExcelTemp iExcelTemp : objs) {
-					System.out.println(iExcelTemp.toString());
+				for (Object obj : objs) {
+					
+					service.addInnovation((TbInnovation) obj);
+					
+					System.out.println(obj.toString());
 				}
 
 				System.out.println(fileFileName);
