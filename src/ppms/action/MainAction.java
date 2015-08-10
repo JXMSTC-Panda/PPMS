@@ -32,19 +32,4 @@ public class MainAction extends ActionSupport{
 	public void login() {
 		System.out.print("Success");
 	}
-
-	@Override
-	public Map<String, List<T>> initPage(ServletContext context,String url) {
-		// 实例化map
-		Map map = new HashMap<String, List<TbEmployee>>();
-
-		InvocationServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(context).getBean(
-						InvocationServiceImp.class);
-		// 获取所有营业厅
-		List<TbEmployee> tbEmployee = service.get
-
-		map.put("orgs", organizations);
-		return map;
-	}
 }
