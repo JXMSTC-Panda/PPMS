@@ -2,11 +2,13 @@ package ppms.domain;
 
 import java.util.Date;
 
+import ppms.excel.template.BaseExcelObject;
+
 /**
  * TbPromotiontraining entity. @author MyEclipse Persistence Tools
  */
 
-public class TbPromotiontraining implements java.io.Serializable {
+public class TbPromotiontraining extends BaseExcelObject implements java.io.Serializable {
 
 	// Fields
 

@@ -119,12 +119,12 @@
 								<div class="clearfix form-actions">
 									<div class="col-md-offset-4 col-md-8">
 										<button class="btn btn-info" type="button"
-											onclick="top.window.location='roleSingle.jsp'">
+											onclick="top.window.location='/resource/authority.null.roleSingle'">
 											<i class="ace-icon fa fa-check bigger-110"></i>继续增加角色
 										</button>
 										&nbsp; &nbsp; &nbsp;
 										<button class="btn" type="button"
-											onclick="top.window.location='roleSearch.jsp'">
+											onclick="top.window.location='roleSearch.do'">
 											<i class="ace-icon fa fa-mail-forward bigger-110"></i> 转至查询
 										</button>
 									</div>

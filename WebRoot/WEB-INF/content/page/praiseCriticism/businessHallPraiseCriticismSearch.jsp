@@ -21,9 +21,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-		<link rel="stylesheet" href="../../../assets/css/jquery-ui.css" />
-		<link rel="stylesheet" href="../../../assets/css/datepicker.css" />
-		<link rel="stylesheet" href="../../../assets/css/ui.jqgrid.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jquery-ui.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/datepicker.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ui.jqgrid.css" />
 <!-- text fonts -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
@@ -107,9 +107,9 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-		<script src="../../../assets/js/date-time/bootstrap-datepicker.js"></script>
-		<script src="../../../assets/js/jqGrid/jquery.jqGrid.src.js"></script>
-		<script src="../../../assets/js/jqGrid/i18n/grid.locale-en.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datepicker.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jqGrid/jquery.jqGrid.src.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jqGrid/i18n/grid.locale-en.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 			var grid_data = 

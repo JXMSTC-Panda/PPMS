@@ -5,15 +5,18 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import ppms.excel.template.BaseExcelObject;
+
 /**
  * TbSubarea entity. @author MyEclipse Persistence Tools
  */
 
-public class TbSubarea implements java.io.Serializable {
+public class TbSubarea extends BaseExcelObject implements java.io.Serializable {
 
 	// Fields
 
 	private BigDecimal subareaid;
+	private TbArea tbArea;
 	private String subareadesc;
 	private Boolean status;
 	private String createdby;
@@ -21,7 +24,6 @@ public class TbSubarea implements java.io.Serializable {
 	private String modifiedby;
 	private Date modifiedtime;
 	private Set tbSubareaorgrelations = new HashSet(0);
-	private Set tbAreas = new HashSet(0);
 
 	// Constructors
 
@@ -35,10 +37,11 @@ public class TbSubarea implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TbSubarea(BigDecimal subareaid, String subareadesc, Boolean status,
-			String createdby, Date createdtime, String modifiedby,
-			Date modifiedtime, Set tbSubareaorgrelations, Set tbAreas) {
+	public TbSubarea(BigDecimal subareaid, TbArea tbArea, String subareadesc,
+			Boolean status, String createdby, Date createdtime,
+			String modifiedby, Date modifiedtime, Set tbSubareaorgrelations) {
 		this.subareaid = subareaid;
+		this.tbArea = tbArea;
 		this.subareadesc = subareadesc;
 		this.status = status;
 		this.createdby = createdby;
@@ -46,7 +49,6 @@ public class TbSubarea implements java.io.Serializable {
 		this.modifiedby = modifiedby;
 		this.modifiedtime = modifiedtime;
 		this.tbSubareaorgrelations = tbSubareaorgrelations;
-		this.tbAreas = tbAreas;
 	}
 
 	// Property accessors
@@ -57,6 +59,14 @@ public class TbSubarea implements java.io.Serializable {
 
 	public void setSubareaid(BigDecimal subareaid) {
 		this.subareaid = subareaid;
+	}
+
+	public TbArea getTbArea() {
+		return this.tbArea;
+	}
+
+	public void setTbArea(TbArea tbArea) {
+		this.tbArea = tbArea;
 	}
 
 	public String getSubareadesc() {
@@ -113,14 +123,6 @@ public class TbSubarea implements java.io.Serializable {
 
 	public void setTbSubareaorgrelations(Set tbSubareaorgrelations) {
 		this.tbSubareaorgrelations = tbSubareaorgrelations;
-	}
-
-	public Set getTbAreas() {
-		return this.tbAreas;
-	}
-
-	public void setTbAreas(Set tbAreas) {
-		this.tbAreas = tbAreas;
 	}
 
 }
