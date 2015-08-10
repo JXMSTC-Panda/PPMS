@@ -10,12 +10,6 @@ import java.lang.reflect.Field;
  */
 public interface IExcelTemp {
 
-	/**
-	 * 向数据库存入excel的数据
-	 * @param dao
-	 * @return
-	 */
-	public IExcelTemp toSave();
 
 	
 }
