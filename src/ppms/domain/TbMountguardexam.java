@@ -3,11 +3,13 @@ package ppms.domain;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import ppms.excel.template.BaseExcelObject;
+
 /**
  * TbMountguardexam entity. @author MyEclipse Persistence Tools
  */
 
-public class TbMountguardexam implements java.io.Serializable {
+public class TbMountguardexam extends BaseExcelObject implements java.io.Serializable {
 
 	// Fields
 

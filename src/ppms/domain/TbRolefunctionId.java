@@ -1,10 +1,12 @@
 package ppms.domain;
 
+import ppms.excel.template.BaseExcelObject;
+
 /**
  * TbRolefunctionId entity. @author MyEclipse Persistence Tools
  */
 
-public class TbRolefunctionId implements java.io.Serializable {
+public class TbRolefunctionId extends BaseExcelObject implements java.io.Serializable {
 
 	// Fields
 
