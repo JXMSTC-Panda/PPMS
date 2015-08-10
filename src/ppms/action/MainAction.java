@@ -25,21 +25,12 @@ import ppms.domain.OrganizationNj;
 import ppms.domain.TbEmployee;
 import ppms.serviceimpl.InvocationServiceImp;
 
-<<<<<<< HEAD
+
 public class MainAction extends ActionSupport{
 	
 	@Action(value = "authority.null.roleSingle.login")
 	public void login() {
 		System.out.print("Success");
-=======
-public class MainAction extends ActionSupport implements InitPage{
-	
-	@Action(value = "authority.null.roleSingle.login", results = {
-			@Result(name = "success", location = "/WEB-INF/content/page/authority/roleSingle.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	public String login() {
-		return "success";
->>>>>>> 5803cb977110ccbb2e1c02349dfa9871975d6708
 	}
 
 	/*@Override
