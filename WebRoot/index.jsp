@@ -95,7 +95,7 @@
 														</label>
 
 														<button type="button" class="width-35 pull-right btn btn-sm btn-primary"
-														onClick="top.window.location='login.do'">
+														onClick="top.window.location='authority.null.roleSingle.login.do'">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110">登录</span>
 														</button>
