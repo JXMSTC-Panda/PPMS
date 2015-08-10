@@ -653,7 +653,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 $(".dropzone").dropzone({
                     paramName: "file", // The name that will be used to transfer the file
                     maxFilesize: 1024, // MB
-                    url: "upload.do?expect=创新提案批量导入模板.xls",
+                    url: "upload.do?fileName=创新提案批量导入模板.xls",
                     addRemoveLinks: true,
                     dictDefaultMessage:
                     '<span class="bigger-150 bolder"><i class="icon-caret-right red"></i> 拖拽文件</span>上传\

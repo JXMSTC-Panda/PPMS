@@ -10,6 +10,9 @@
             <column name="AREAID" precision="22" scale="0" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="tbSubarea" class="ppms.domain.TbSubarea" fetch="select">
+            <column name="SUBAREAID" precision="22" scale="0" />
+        </many-to-one>
         <property name="areadesc" type="java.lang.String">
             <column name="AREADESC" length="30">
                 <comment>区域名称</comment>
@@ -37,12 +40,6 @@
                 <column name="AREAID" precision="22" scale="0" />
             </key>
             <one-to-many class="ppms.domain.TbAreaorgrelation" />
-        </set>
-        <set name="tbSubareas" inverse="true">
-            <key>
-                <column name="AREAID" precision="22" scale="0" />
-            </key>
-            <one-to-many class="ppms.domain.TbSubarea" />
         </set>
         <set name="COrganizationNjs" inverse="true">
             <key>
