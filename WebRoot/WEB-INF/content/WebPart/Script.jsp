@@ -36,8 +36,7 @@
 			var page = pageInfo.split(".");
 			//第一次登录是进入角色添加页面，login.do
 			if (page.length == 2) {
-				$("#authority").addClass("active open");
-				$("#roleSingle").addClass("active");
+				$("#tachometer").addClass("active open");
 			}
 			//其他A.B.C.D.do
 			else if(page.length == 3 || page.length == 5)
