@@ -5,19 +5,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import ppms.domain.COrganizationNj;
-import ppms.domain.OrganizationNj;
-import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
-import ppms.domain.TbJob;
-import ppms.domain.TbPost;
 @Repository
-/**
- * 奖惩管理的dao层
- * @author ccz
- *
- */
+/*
+ * 奖惩管理的dao层*/
 public class PraiseCriticismDaoImp extends BaseDaoImp{
 	/**
 	 * 单条录入员工奖惩信息
@@ -32,11 +24,8 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		
 	}
 
-	/**
-	 * 动态下拉框，根据奖惩类型，动态变化奖惩级别
-	 * @param key
-	 * @return
-	 */
+	/*
+	 *动态下拉框，根据奖惩类型，动态变化奖惩级别*/
 	public List<TbEmployeepraisecriticism> findLevel(int key){
 		List find=null;
 		String type=null;
@@ -56,14 +45,13 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		return find; //返回查询到的value
 	}
 	
-	/**
+	/*
 	 * 获取数据可中所有的员工信息
-	 * @return
-	 */
+	 * */
 	public List<TbEmployee> findAllEmployeeInfor(){
 		List results=null;
 		try{
-			String hql="from TbEmployee where employeeid !='000000'"; //定义hql语句,获取TbEployee表中所有的数据
+			String hql="from TbEmployee"; //定义hql语句,获取TbEployee表中所有的数据
 			results=getHibernateTemplate().find(hql);//执行find方法
 			
 		}catch(Exception e){
@@ -72,6 +60,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		
 		return results;  //返回结果
 	}
+<<<<<<< HEAD
 	/**
 	 * 根据员工编号获取数据可中所有的员工信息
 	 * @param employeeId
@@ -203,4 +192,8 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		}finally{}
 		return results; 
 	}
+=======
+	
+
+>>>>>>> 5b3167661c0cff3dc4643649624e47f41266728d
 }

@@ -77,11 +77,11 @@
 											<fieldset>
 												<label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														type="text" class="form-control" name="username"
+														type="text" class="form-control" name="userAccount"
 														placeholder="身份证号/工号" /> <i class="ace-icon fa fa-user"></i>
 												</span> </label> <label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														type="password" class="form-control" name="password"
+														type="password" class="form-control" name="passWord"
 														placeholder="密码" /> <i class="ace-icon fa fa-lock"></i> </span>
 												</label>
 
@@ -103,47 +103,6 @@
 										</form>
 
 										<!-- <div class="social-or-login center">
-<<<<<<< HEAD
-=======
-											<form>
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="身份证号/工号" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="密码" />
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
-													</label>
-
-													<div class="space"></div>
-
-													<div class="clearfix">
-														<label class="inline">
-															<input type="checkbox" class="ace" />
-															<span class="lbl">记住我</span>
-														</label>
-
-														<button type="button" class="width-35 pull-right btn btn-sm btn-primary"
-														onClick="top.window.location='authority.null.roleSingle.login.do'">
-															<i class="ace-icon fa fa-key"></i>
-															<span class="bigger-110">登录</span>
-														</button>
-													</div>
-
-													<div class="space-4"></div>
-												</fieldset>
-											</form>
-
-											<!-- <div class="social-or-login center">
->>>>>>> 5803cb977110ccbb2e1c02349dfa9871975d6708
-=======
->>>>>>> acc21ca61913392940ae5cdf84e0048097d7db32
 												<span class="bigger-110">Or Login Using</span>
 											</div>
 
@@ -347,20 +306,20 @@
 						});
 					},
 					success : function(data) {
-						if(data == "Success"){
+						if(data == "1"){
 							location.href = "resource/authority.null.roleSingle";
 						}
 						else{
 							$.gritter.add({
 								title : '出错啦!',
-								text : '账号或密码错误，请重试！',
+								text : '账号或密码错误，请重试！' + data,
 								sticky : true,
 								//time: 1000,
 								speed : 10,
 								position : 'center',
 								class_name : 'gritter-light'
 							});
-						}					
+						}		 		
 					}
 				});
 				$("#gritter-notice-wrapper").mouseleave(function() {

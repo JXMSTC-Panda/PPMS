@@ -16,7 +16,11 @@ public interface EmployeeService {
 
 	/**
 	 * 
-	 * @return 获取员工List
+	* @Title: findAllEmployeeInfor 
+	* @Description: TODO
+	* @return     
+	* List<TbEmployee>     
+	* @throws
 	 */
 	public List<TbEmployee> findAllEmployeeInfor();
 
@@ -24,7 +28,8 @@ public interface EmployeeService {
 	 * 
 	 * @param useracount 账号/身份证号
 	 * @param password 密码
-	 * @return 返回记录条数
+	 * @return 返回验证结果，成功为1，失败为0
  	 */
-	public int findEmployeeForLogin(String useracount,String password);
+
+	public String findEmployeeForLogin(String useracount,String password);
 }

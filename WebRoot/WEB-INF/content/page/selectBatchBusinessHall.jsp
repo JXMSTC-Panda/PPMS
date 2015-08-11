@@ -13,7 +13,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <base target="main" />
 <link rel="stylesheet" type="text/css" href="../css/frontmiddle.css" />
 <script language="javascript">
-
 </script>
 <script src="../js/Calendar.js" type="text/javascript"></script>
 </head>

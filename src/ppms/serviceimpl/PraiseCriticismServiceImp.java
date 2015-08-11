@@ -7,13 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ppms.daoimpl.PraiseCriticismDaoImp;
-import ppms.domain.COrganizationNj;
-import ppms.domain.OrganizationNj;
-import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
-import ppms.domain.TbJob;
-import ppms.domain.TbPost;
 import ppms.service.PraiseCriticismService;
 
 @Service
@@ -23,23 +18,32 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 	
 	@Autowired
 	private PraiseCriticismDaoImp dao; //创建一个PraiseCriticismDao的对象dao
+<<<<<<< HEAD
 	@Override
 	public void save(Object tbEmployeepraisecriticism){
 		
 		dao.save(tbEmployeepraisecriticism);
 	}
 	
+=======
+	
+	/*
+	 * 动态下拉框，根据奖惩类型，动态变化奖惩级别*/
+>>>>>>> 5b3167661c0cff3dc4643649624e47f41266728d
 	@Override
 	public List<TbEmployeepraisecriticism> findLevel(int key){
 		
 		return dao.findLevel(key);
 	}
 	
-	
+	/*
+	 * 获取数据可中所有的员工信息
+	 * */
 	@Override
 	public List<TbEmployee> findAllEmployeeInfor(){
 		return dao.findAllEmployeeInfor();
 	};
+<<<<<<< HEAD
 	@Override
 	public List<TbEmployee> findEmployeeInfor(String employeeId){
 		return dao.findEmployeeInfor(employeeId);
@@ -72,4 +76,6 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor(){
 		return dao.findEmployeepraisecriticismInfor();
 	}
+=======
+>>>>>>> 5b3167661c0cff3dc4643649624e47f41266728d
 }
