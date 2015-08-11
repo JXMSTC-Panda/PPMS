@@ -26,9 +26,6 @@ public class MainAction extends ActionSupport {
 		response = ServletActionContext.getResponse();
 		request = ServletActionContext.getRequest();
 	}
-<<<<<<< HEAD
-	
-=======
 	/**
 	 * 
 	* @Title: login 
@@ -37,7 +34,6 @@ public class MainAction extends ActionSupport {
 	* void     
 	* @throws
 	 */
->>>>>>> 071ca8c732ed42e10255f897a214672d466b5c15
 	@Action(value = "authority.null.roleSingle.login")
 	public void login() throws IOException {
 		
