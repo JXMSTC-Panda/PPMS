@@ -41,21 +41,26 @@ public class EmployeeServiceImp implements EmployeeService{
 		// TODO Auto-generated method stub
 		int sizeAccount = 0;
 		int sizeIdNum = 0;
-
-		MD5Util md5Util = new MD5Util();
 		//得到密码的MD5值
-		String md5Password = md5Util.getMD5String(password); 
+		String md5Password = MD5Util.getMD5String(password); 
 		// 根据用户工号得到员工List
+		@SuppressWarnings("unchecked")
 		List<TbEmployee> employeeByAccountList = dao.findByEmployeecode(useracount);
 		// 根据用户身份证号得到员工List
+		@SuppressWarnings("unchecked")
 		List<TbEmployee> employeeByIdNumList = dao.findByIdnumber(useracount);
 		
-		if(employeeByAccountList.size() == 1 && employeeByAccountList.get(0).getIdpassword() == md5Password){
+		sizeAccount = employeeByAccountList.size();
+		sizeIdNum = employeeByIdNumList.size();
+		
+		if(sizeAccount == 1){
+			
 			System.out.println(employeeByAccountList.get(0).getIdpassword() + "  " + md5Password);
 			//工号，密码匹配，返回1
 			sizeAccount = 1;
 		}
-		if(employeeByIdNumList.size() == 1 && employeeByIdNumList.get(0).getIdpassword() == md5Password){
+		if(sizeIdNum == 1){
+			
 			System.out.println(employeeByAccountList.get(0).getIdpassword() + "  " + md5Password);
 			//身份证，密码匹配，返回1
 			sizeIdNum = 1;
