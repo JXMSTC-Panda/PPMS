@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                     http://www.springframework.org/schema/beans/spring-beans.xsd 
+                     http://www.springframework.org/schema/tx 
+                     http://www.springframework.org/schema/tx/spring-tx.xsd 
+                     http://www.springframework.org/schema/aop 
+                     http://www.springframework.org/schema/aop/spring-aop.xsd
+                     http://www.springframework.org/schema/context 
+                     http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<context:component-scan base-package="ppms">
+	<context:include-filter type="regex"
+			expression="ppms/.action.*" />
+		<context:include-filter type="regex"
+			expression="ppms/.dao*" />
+		<!-- 正则表达式必须格式正确，否则无效。以下是无效的示例 -->
+		<context:exclude-filter type="regex"
+			expression="ppms/.service*" />
+	</context:component-scan>
+	<!-- 定义数据源的信息 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>jdbc:oracle:thin:@210.35.32.11:1521:orcl</value>
+		</property>
+		<property name="user">
+			<value>ppmsuser</value>
+		</property>
+		<property name="password">
+			<value>panda</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>80</value>
+		</property>
+		<property name="minPoolSize">
+			<value>1</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>1</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>20</value>
+		</property>
+	</bean>
+	<context:component-scan base-package="ppms.dao" />
+	<context:component-scan base-package="ppms.domain" />
+	<context:component-scan base-package="ppms.daoimp" />
+	<context:component-scan base-package="ppms.genericDao" />
+	<context:component-scan base-package="ppms.serviceimp" />
+	<context:component-scan base-package="ppms.service" />
+	<context:component-scan base-package="ppms.excel" />
+	<context:component-scan base-package="test" />
+
+	<!--定义Hibernate的SessionFactory -->
+	<!-- SessionFactory使用的数据源为上面的数据源 -->
+	<!-- 指定了Hibernate的映射文件和配置信息 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>ppms/domain/COrganizationNj.hbm.xml</value>
+				<value>ppms/domain/CUserInfo.hbm.xml</value>
+				<value>ppms/domain/OperatorNj.hbm.xml</value>
+				<value>ppms/domain/OrganizationNj.hbm.xml</value>
+				<value>ppms/domain/TbArea.hbm.xml</value>
+				<value>ppms/domain/TbAreaorgrelation.hbm.xml</value>
+				<value>ppms/domain/TbBecomeemployeeexam.hbm.xml</value>
+				<value>ppms/domain/TbChangejobhistory.hbm.xml</value>
+				<value>ppms/domain/TbChangeorghistory.hbm.xml</value>
+				<value>ppms/domain/TbEmployee.hbm.xml</value>
+				<value>ppms/domain/TbEmployeepraisecriticism.hbm.xml</value>
+				<value>ppms/domain/TbFreshemployeeexam.hbm.xml</value>
+				<value>ppms/domain/TbInnovation.hbm.xml</value>
+				<value>ppms/domain/TbJob.hbm.xml</value>
+				<value>ppms/domain/TbMaster.hbm.xml</value>
+				<value>ppms/domain/TbMonitorcheck.hbm.xml</value>
+				<value>ppms/domain/TbMonthexam.hbm.xml</value>
+				<value>ppms/domain/TbMonthperformanceopen.hbm.xml</value>
+				<value>ppms/domain/TbMountguardexam.hbm.xml</value>
+				<value>ppms/domain/TbOperationcheck.hbm.xml</value>
+				<value>ppms/domain/TbOperationtraining.hbm.xml</value>
+				<value>ppms/domain/TbOrgpraisecriticism.hbm.xml</value>
+				<value>ppms/domain/TbPerformance.hbm.xml</value>
+				<value>ppms/domain/TbPoint.hbm.xml</value>
+				<value>ppms/domain/TbPointdetail.hbm.xml</value>
+				<value>ppms/domain/TbPost.hbm.xml</value>
+				<value>ppms/domain/TbPromotiontraining.hbm.xml</value>
+				<value>ppms/domain/TbRole.hbm.xml</value>
+				<value>ppms/domain/TbRolefunction.hbm.xml</value>
+				<value>ppms/domain/TbStage.hbm.xml</value>
+				<value>ppms/domain/TbStandardcheck.hbm.xml</value>
+				<value>ppms/domain/TbSubarea.hbm.xml</value>
+				<value>ppms/domain/TbSubareaorgrelation.hbm.xml</value>
+				<value>ppms/domain/TbSystemfunction.hbm.xml</value>
+				<value>ppms/domain/TbSystemsettings.hbm.xml</value>
+				<value>ppms/domain/TbVisitcheck.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<prop key="show_sql">true</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+				<prop key="packagesToScan">ppms.domain</prop>
+
+			</props>
+		</property>
+	</bean>
+
+	<!--开启注解方式 -->
+	<context:annotation-config />
+	<!-- 使用注解注入配置自动装箱配置 -->
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 配置事务的方式，注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+</beans>  

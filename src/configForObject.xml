@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects>
+	<excel name="暗访检查成绩批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbVisitcheck</class_name>
+		</object>
+	</excel>
+	<excel name="标准化检查成绩批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbStandardcheck</class_name>
+		</object>
+	</excel>
+	<excel name="创新提案批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbInnovation</class_name>
+		</object>
+	</excel>
+	<excel name="合作厅上岗证批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbMountguardexam</class_name>
+		</object>
+	</excel>
+	
+</objects>
