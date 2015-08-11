@@ -12,7 +12,7 @@
 				<param name="sequence">AutoID</param>
 			</generator>
 		</id>
-		<many-to-one name="organizationNjByOrgid" class="ppms.domain.OrganizationNj"
+		<many-to-one name="organizationNj" class="ppms.domain.OrganizationNj"
 			fetch="select">
 			<column name="ORGID" precision="8" scale="0">
 				<comment>营业厅编码</comment>
@@ -22,12 +22,15 @@
 			fetch="select">
 			<column name="EMPLOYEEID" length="6" >
 				<comment>身份证号</comment>
+<<<<<<< HEAD
 			</column>
 		</many-to-one>
 		<many-to-one name="organizationNjByEmployeeorgid" class="ppms.domain.OrganizationNj"
 			fetch="select">
 			<column name="EMPLOYEEORGID" precision="8" scale="0">
 				<comment>营业厅编码</comment>
+=======
+>>>>>>> 97a483ba464362e0d10e6b4f3dcb647c405f7dcb
 			</column>
 		</many-to-one>
 		<property name="innovationcontent" type="java.lang.String">

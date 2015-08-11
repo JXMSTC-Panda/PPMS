@@ -21,7 +21,7 @@ public class BaseDaoImp extends HibernateDaoSupport {
 
 	public BaseDaoImp(){
 		
-		System.out.println("create BaseDaoImp");
+		System.out.println(this.getClass().getName());
 	}
 	
 	@Autowired
@@ -62,7 +62,7 @@ public class BaseDaoImp extends HibernateDaoSupport {
 		return (List<T>) getHibernateTemplate().findByExample(obj);
 	}
 	/**
-	 * 通过查询语句操作数据库
+	 * 通过查询语句操作数据库5
 	 * @param HQL 查询语句
 	 * @param t 要查询数据库表对应的对象
 	 * @return
@@ -71,4 +71,6 @@ public class BaseDaoImp extends HibernateDaoSupport {
 		
 		 return (List<T>)getHibernateTemplate().find(HQL);
 	}
+	
+	
 }

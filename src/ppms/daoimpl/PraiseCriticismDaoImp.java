@@ -83,8 +83,9 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	public List<TbPost> findPostName(String postId){
 		List results=null;
 		try{
-			String hql="select postname from TbPost where postid='"+postId+"'"; 
+			String hql="from TbPost where postid='"+postId+"'"; 
 			results=getHibernateTemplate().find(hql);
+	
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -100,7 +101,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	public List<TbJob> findJobName(String jobId){
 		List results=null;
 		try{
-			String hql="select jobname from TbJob where jobid='"+jobId+"'"; 
+			String hql="from TbJob where jobid='"+jobId+"'"; 
 			results=getHibernateTemplate().find(hql);
 			
 		}catch(Exception e){
