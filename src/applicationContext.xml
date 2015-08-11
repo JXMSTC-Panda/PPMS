@@ -53,7 +53,10 @@
 	<context:component-scan base-package="ppms.genericDao" />
 	<context:component-scan base-package="ppms.serviceimp" />
 	<context:component-scan base-package="ppms.service" />
+<<<<<<< HEAD
 	<context:component-scan base-package="ppms.excel" />
+=======
+>>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 	<context:component-scan base-package="test" />
 
 	<!--定义Hibernate的SessionFactory -->

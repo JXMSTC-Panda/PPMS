@@ -25,7 +25,11 @@ import ppms.util.MD5Util;
 public class EmployeeServiceImp implements EmployeeService{
 	
 	@Autowired
+<<<<<<< HEAD
 	private TbEmployeeDAO dao;
+=======
+	protected TbEmployeeDAO dao;
+>>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 	@Override
 	public List<TbEmployee> findAllEmployeeInfor() {
 		// TODO Auto-generated method stub
@@ -37,10 +41,15 @@ public class EmployeeServiceImp implements EmployeeService{
 	 * @see ppms.service.EmployeeService#findEmployeeForLogin(java.lang.String, java.lang.String)
 	 */
 	@Override
+<<<<<<< HEAD
 	public String findEmployeeForLogin(String useracount, String password) {
 		// TODO Auto-generated method stub
 		int sizeAccount = 0;
 		int sizeIdNum = 0;
+=======
+	public int findEmployeeForLogin(String useracount, String password) {
+		// TODO Auto-generated method stub
+>>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 		MD5Util md5Util = new MD5Util();
 		//得到密码的MD5值
 		String md5Password = md5Util.getMD5String(password); 
@@ -48,6 +57,7 @@ public class EmployeeServiceImp implements EmployeeService{
 		List<TbEmployee> employeeByAccountList = dao.findByEmployeecode(useracount);
 		// 根据用户身份证号得到员工List
 		List<TbEmployee> employeeByIdNumList = dao.findByIdnumber(useracount);
+<<<<<<< HEAD
 			
 		if(employeeByAccountList.size() == 1 && employeeByAccountList.get(0).getIdpassword() == md5Password){
 			System.out.println(employeeByAccountList.get(0).getIdpassword() + "  " + md5Password);
@@ -61,6 +71,13 @@ public class EmployeeServiceImp implements EmployeeService{
 		}
 		int v = sizeAccount|sizeIdNum;
 		return String.valueOf(sizeAccount|sizeIdNum);
+=======
+		
+		int sizeAccount = employeeByAccountList.size();
+		int sizeIdNum = employeeByIdNumList.size();
+		
+		return employeeByAccountList.size();
+>>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 	}
 	
 }

@@ -306,7 +306,11 @@
 						});
 					},
 					success : function(data) {
+<<<<<<< HEAD
 						if(data == "1"){
+=======
+						if(data == "Success"){
+>>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 							location.href = "resource/authority.null.roleSingle";
 						}
 						else{

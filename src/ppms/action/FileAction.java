@@ -8,9 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import ppms.daoimpl.BaseDaoImp;
+=======
+
+>>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 import ppms.domain.TbInnovation;
 import ppms.excel.CommonExcelParser;
 import ppms.excel.template.IExcelTemp;
@@ -28,9 +32,12 @@ public class FileAction extends ActionSupport {
 	
 	@Autowired
 	private InvocationServiceImp service;
+<<<<<<< HEAD
 	@Autowired
 	@Qualifier("baseDaoImp")
 	private BaseDaoImp dao;
+=======
+>>>>>>> df2843316861e49e795adae8ce3c1c795be31012
  	
 	public String getExpect() {
 		return expect;
@@ -74,7 +81,11 @@ public class FileAction extends ActionSupport {
 			} else {
 
 				
+<<<<<<< HEAD
 				List<Object> objs = new CommonExcelParser(dao).toObjs2(file,
+=======
+				List<Object> objs = new CommonExcelParser().toObjs2(file,
+>>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 						fileFileName);
 				for (Object obj : objs) {
 					
