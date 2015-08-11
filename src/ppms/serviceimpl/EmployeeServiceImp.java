@@ -56,11 +56,11 @@ public class EmployeeServiceImp implements EmployeeService{
 		
 		if(sizeAccount == 1)
 		{
-<<<<<<< HEAD
-			//tbEmployee = employeeByAccountList;
-=======
-			String[] employeeStrings = (String[])employeeByAccountList.toArray(new String[sizeAccount]);
->>>>>>> f28697d8192471077c1bb9beac756004c2afe3c5
+//<<<<<<< HEAD
+//			//tbEmployee = employeeByAccountList;
+//=======
+//			String[] employeeStrings = (String[])employeeByAccountList.toArray(new String[sizeAccount]);
+//>>>>>>> f28697d8192471077c1bb9beac756004c2afe3c5
 		}
 		String checkStateString = String.valueOf(sizeAccount|sizeIdNum);
 		
