@@ -14,17 +14,17 @@ public class OrganizationNj implements java.io.Serializable {
 	// Fields
 
 	private Integer orgid;
-	private String org_Name;
+	private String orgName;
 	private String address;
-	private Date expire_Time;
-	private Integer superior_Id;
+	private Date expireTime;
+	private Integer superiorId;
 	private Boolean status;
-	private String contact_Name;
-	private String contact_Tel;
-	private BigDecimal user_County;
+	private String contactName;
+	private String contactTel;
+	private BigDecimal userCounty;
 	private Byte type;
-	private Integer region_Id;
-	private String channel_Type;
+	private Integer regionId;
+	private String channelType;
 	private Set tbChangeorghistoriesForOutorgid = new HashSet(0);
 	private Set tbChangeorghistoriesForInorgid = new HashSet(0);
 	private Set tbBecomeemployeeexams = new HashSet(0);
@@ -78,17 +78,17 @@ public class OrganizationNj implements java.io.Serializable {
 			Set tbEmployeepraisecriticisms, Set tbInnovationsForEmployeeorgid,
 			Set tbPromotiontrainings, Set operatorNjs) {
 		this.orgid = orgid;
-		this.org_Name = orgName;
+		this.orgName = orgName;
 		this.address = address;
-		this.expire_Time = expireTime;
-		this.superior_Id = superiorId;
+		this.expireTime = expireTime;
+		this.superiorId = superiorId;
 		this.status = status;
-		this.contact_Name = contactName;
-		this.contact_Tel = contactTel;
-		this.user_County = userCounty;
+		this.contactName = contactName;
+		this.contactTel = contactTel;
+		this.userCounty = userCounty;
 		this.type = type;
-		this.region_Id = regionId;
-		this.channel_Type = channelType;
+		this.regionId = regionId;
+		this.channelType = channelType;
 		this.tbChangeorghistoriesForOutorgid = tbChangeorghistoriesForOutorgid;
 		this.tbChangeorghistoriesForInorgid = tbChangeorghistoriesForInorgid;
 		this.tbBecomeemployeeexams = tbBecomeemployeeexams;
@@ -115,104 +115,106 @@ public class OrganizationNj implements java.io.Serializable {
 		this.operatorNjs = operatorNjs;
 	}
 
+	// Property accessors
+
 	public Integer getOrgid() {
-		return orgid;
+		return this.orgid;
 	}
 
 	public void setOrgid(Integer orgid) {
 		this.orgid = orgid;
 	}
 
-	public String getOrg_Name() {
-		return org_Name;
+	public String getOrgName() {
+		return this.orgName;
 	}
 
-	public void setOrg_Name(String org_Name) {
-		this.org_Name = org_Name;
+	public void setOrgName(String orgName) {
+		this.orgName = orgName;
 	}
 
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
-	public Date getExpire_Time() {
-		return expire_Time;
+	public Date getExpireTime() {
+		return this.expireTime;
 	}
 
-	public void setExpire_Time(Date expire_Time) {
-		this.expire_Time = expire_Time;
+	public void setExpireTime(Date expireTime) {
+		this.expireTime = expireTime;
 	}
 
-	public Integer getSuperior_Id() {
-		return superior_Id;
+	public Integer getSuperiorId() {
+		return this.superiorId;
 	}
 
-	public void setSuperior_Id(Integer superiorId) {
-		this.superior_Id = superiorId;
+	public void setSuperiorId(Integer superiorId) {
+		this.superiorId = superiorId;
 	}
 
 	public Boolean getStatus() {
-		return status;
+		return this.status;
 	}
 
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 
-	public String getContact_Name() {
-		return contact_Name;
+	public String getContactName() {
+		return this.contactName;
 	}
 
-	public void setContact_Name(String contact_Name) {
-		this.contact_Name = contact_Name;
+	public void setContactName(String contactName) {
+		this.contactName = contactName;
 	}
 
-	public String getContact_Tel() {
-		return contact_Tel;
+	public String getContactTel() {
+		return this.contactTel;
 	}
 
-	public void setContact_Tel(String contact_Tel) {
-		this.contact_Tel = contact_Tel;
+	public void setContactTel(String contactTel) {
+		this.contactTel = contactTel;
 	}
 
-	public BigDecimal getUser_County() {
-		return user_County;
+	public BigDecimal getUserCounty() {
+		return this.userCounty;
 	}
 
-	public void setUser_County(BigDecimal user_County) {
-		this.user_County = user_County;
+	public void setUserCounty(BigDecimal userCounty) {
+		this.userCounty = userCounty;
 	}
 
 	public Byte getType() {
-		return type;
+		return this.type;
 	}
 
 	public void setType(Byte type) {
 		this.type = type;
 	}
 
-	public Integer getRegion_Id() {
-		return region_Id;
+	public Integer getRegionId() {
+		return this.regionId;
 	}
 
-	public void setRegion_Id(Integer region_Id) {
-		this.region_Id = region_Id;
+	public void setRegionId(Integer regionId) {
+		this.regionId = regionId;
 	}
 
-	public String getChannel_Type() {
-		return channel_Type;
+	public String getChannelType() {
+		return this.channelType;
 	}
 
-	public void setChannel_Type(String channel_Type) {
-		this.channel_Type = channel_Type;
+	public void setChannelType(String channelType) {
+		this.channelType = channelType;
 	}
 
 	public Set getTbChangeorghistoriesForOutorgid() {
-		return tbChangeorghistoriesForOutorgid;
+		return this.tbChangeorghistoriesForOutorgid;
 	}
 
 	public void setTbChangeorghistoriesForOutorgid(
@@ -221,15 +223,16 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbChangeorghistoriesForInorgid() {
-		return tbChangeorghistoriesForInorgid;
+		return this.tbChangeorghistoriesForInorgid;
 	}
 
-	public void setTbChangeorghistoriesForInorgid(Set tbChangeorghistoriesForInorgid) {
+	public void setTbChangeorghistoriesForInorgid(
+			Set tbChangeorghistoriesForInorgid) {
 		this.tbChangeorghistoriesForInorgid = tbChangeorghistoriesForInorgid;
 	}
 
 	public Set getTbBecomeemployeeexams() {
-		return tbBecomeemployeeexams;
+		return this.tbBecomeemployeeexams;
 	}
 
 	public void setTbBecomeemployeeexams(Set tbBecomeemployeeexams) {
@@ -237,7 +240,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbMonthexams() {
-		return tbMonthexams;
+		return this.tbMonthexams;
 	}
 
 	public void setTbMonthexams(Set tbMonthexams) {
@@ -245,7 +248,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbSubareaorgrelations() {
-		return tbSubareaorgrelations;
+		return this.tbSubareaorgrelations;
 	}
 
 	public void setTbSubareaorgrelations(Set tbSubareaorgrelations) {
@@ -253,7 +256,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbStandardchecks() {
-		return tbStandardchecks;
+		return this.tbStandardchecks;
 	}
 
 	public void setTbStandardchecks(Set tbStandardchecks) {
@@ -261,7 +264,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbOperationtrainings() {
-		return tbOperationtrainings;
+		return this.tbOperationtrainings;
 	}
 
 	public void setTbOperationtrainings(Set tbOperationtrainings) {
@@ -269,7 +272,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbAreaorgrelations() {
-		return tbAreaorgrelations;
+		return this.tbAreaorgrelations;
 	}
 
 	public void setTbAreaorgrelations(Set tbAreaorgrelations) {
@@ -277,7 +280,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbOperationchecks() {
-		return tbOperationchecks;
+		return this.tbOperationchecks;
 	}
 
 	public void setTbOperationchecks(Set tbOperationchecks) {
@@ -285,7 +288,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbFreshemployeeexams() {
-		return tbFreshemployeeexams;
+		return this.tbFreshemployeeexams;
 	}
 
 	public void setTbFreshemployeeexams(Set tbFreshemployeeexams) {
@@ -293,7 +296,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbMonitorchecks() {
-		return tbMonitorchecks;
+		return this.tbMonitorchecks;
 	}
 
 	public void setTbMonitorchecks(Set tbMonitorchecks) {
@@ -301,7 +304,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbMountguardexams() {
-		return tbMountguardexams;
+		return this.tbMountguardexams;
 	}
 
 	public void setTbMountguardexams(Set tbMountguardexams) {
@@ -309,7 +312,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbPerformances() {
-		return tbPerformances;
+		return this.tbPerformances;
 	}
 
 	public void setTbPerformances(Set tbPerformances) {
@@ -317,7 +320,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbVisitchecks() {
-		return tbVisitchecks;
+		return this.tbVisitchecks;
 	}
 
 	public void setTbVisitchecks(Set tbVisitchecks) {
@@ -325,7 +328,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbOrgpraisecriticisms() {
-		return tbOrgpraisecriticisms;
+		return this.tbOrgpraisecriticisms;
 	}
 
 	public void setTbOrgpraisecriticisms(Set tbOrgpraisecriticisms) {
@@ -333,7 +336,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbInnovationsForOrgid() {
-		return tbInnovationsForOrgid;
+		return this.tbInnovationsForOrgid;
 	}
 
 	public void setTbInnovationsForOrgid(Set tbInnovationsForOrgid) {
@@ -341,7 +344,7 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbMonthperformanceopens() {
-		return tbMonthperformanceopens;
+		return this.tbMonthperformanceopens;
 	}
 
 	public void setTbMonthperformanceopens(Set tbMonthperformanceopens) {
@@ -349,15 +352,15 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getCOrganizationNjs() {
-		return COrganizationNjs;
+		return this.COrganizationNjs;
 	}
 
-	public void setCOrganizationNjs(Set cOrganizationNjs) {
-		COrganizationNjs = cOrganizationNjs;
+	public void setCOrganizationNjs(Set COrganizationNjs) {
+		this.COrganizationNjs = COrganizationNjs;
 	}
 
 	public Set getTbEmployees() {
-		return tbEmployees;
+		return this.tbEmployees;
 	}
 
 	public void setTbEmployees(Set tbEmployees) {
@@ -365,15 +368,15 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getCUserInfos() {
-		return CUserInfos;
+		return this.CUserInfos;
 	}
 
-	public void setCUserInfos(Set cUserInfos) {
-		CUserInfos = cUserInfos;
+	public void setCUserInfos(Set CUserInfos) {
+		this.CUserInfos = CUserInfos;
 	}
 
 	public Set getTbEmployeepraisecriticisms() {
-		return tbEmployeepraisecriticisms;
+		return this.tbEmployeepraisecriticisms;
 	}
 
 	public void setTbEmployeepraisecriticisms(Set tbEmployeepraisecriticisms) {
@@ -381,15 +384,16 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getTbInnovationsForEmployeeorgid() {
-		return tbInnovationsForEmployeeorgid;
+		return this.tbInnovationsForEmployeeorgid;
 	}
 
-	public void setTbInnovationsForEmployeeorgid(Set tbInnovationsForEmployeeorgid) {
+	public void setTbInnovationsForEmployeeorgid(
+			Set tbInnovationsForEmployeeorgid) {
 		this.tbInnovationsForEmployeeorgid = tbInnovationsForEmployeeorgid;
 	}
 
 	public Set getTbPromotiontrainings() {
-		return tbPromotiontrainings;
+		return this.tbPromotiontrainings;
 	}
 
 	public void setTbPromotiontrainings(Set tbPromotiontrainings) {
@@ -397,14 +401,11 @@ public class OrganizationNj implements java.io.Serializable {
 	}
 
 	public Set getOperatorNjs() {
-		return operatorNjs;
+		return this.operatorNjs;
 	}
 
 	public void setOperatorNjs(Set operatorNjs) {
 		this.operatorNjs = operatorNjs;
 	}
-
-	// Property accessors
-
 
 }

@@ -26,14 +26,7 @@ public class MainAction extends ActionSupport {
 		response = ServletActionContext.getResponse();
 		request = ServletActionContext.getRequest();
 	}
-	/**
-	 * 
-	* @Title: login 
-	* @Description: ajax验证登录
-	* @throws IOException     
-	* void     
-	* @throws
-	 */
+	
 	@Action(value = "authority.null.roleSingle.login")
 	public void login() throws IOException {
 		

@@ -16,76 +16,76 @@
         <many-to-one name="tbArea" class="ppms.domain.TbArea" fetch="select">
             <column name="AREAID" precision="22" scale="0" />
         </many-to-one>
-        <property name="org_Name" type="java.lang.String">
+        <property name="orgName" type="java.lang.String">
             <column name="ORG_NAME" length="160" />
         </property>
-        <property name="org_Type_Id" type="java.math.BigDecimal">
+        <property name="orgTypeId" type="java.math.BigDecimal">
             <column name="ORG_TYPE_ID" precision="22" scale="0" />
         </property>
-        <property name="region_Id" type="java.math.BigDecimal">
+        <property name="regionId" type="java.math.BigDecimal">
             <column name="REGION_ID" precision="22" scale="0" />
         </property>
-        <property name="id_Desc" type="java.lang.String">
+        <property name="idDesc" type="java.lang.String">
             <column name="ID_DESC" length="50" />
         </property>
         <property name="type" type="java.math.BigDecimal">
             <column name="TYPE" precision="22" scale="0" />
         </property>
-        <property name="operating_Date" type="java.util.Date">
+        <property name="operatingDate" type="java.util.Date">
             <column name="OPERATING_DATE" length="7" />
         </property>
-        <property name="operating_Id" type="java.math.BigDecimal">
+        <property name="operatingId" type="java.math.BigDecimal">
             <column name="OPERATING_ID" precision="22" scale="0" />
         </property>
-        <property name="county_Desc" type="java.lang.String">
+        <property name="countyDesc" type="java.lang.String">
             <column name="COUNTY_DESC" length="30" />
         </property>
-        <property name="county_Lx" type="java.lang.String">
+        <property name="countyLx" type="java.lang.String">
             <column name="COUNTY_LX" length="30" />
         </property>
-        <property name="id_Desc2" type="java.lang.String">
+        <property name="idDesc2" type="java.lang.String">
             <column name="ID_DESC2" length="50" />
         </property>
-        <property name="is_Sq" type="java.lang.Boolean">
+        <property name="isSq" type="java.lang.Boolean">
             <column name="IS_SQ" precision="1" scale="0" />
         </property>
-        <property name="is_Sjmc" type="java.lang.Boolean">
+        <property name="isSjmc" type="java.lang.Boolean">
             <column name="IS_SJMC" precision="1" scale="0" />
         </property>
-        <property name="is_Xyd" type="java.lang.Boolean">
+        <property name="isXyd" type="java.lang.Boolean">
             <column name="IS_XYD" precision="1" scale="0" />
         </property>
-        <property name="id_Type2" type="java.math.BigDecimal">
+        <property name="idType2" type="java.math.BigDecimal">
             <column name="ID_TYPE2" precision="22" scale="0" />
         </property>
-        <property name="county_LxId" type="java.math.BigDecimal">
+        <property name="countyLxId" type="java.math.BigDecimal">
             <column name="COUNTY_LX_ID" precision="22" scale="0" />
         </property>
-        <property name="county_Id" type="java.math.BigDecimal">
+        <property name="countyId" type="java.math.BigDecimal">
             <column name="COUNTY_ID" precision="22" scale="0" />
         </property>
-        <property name="xs_Id" type="java.lang.Boolean">
+        <property name="xsId" type="java.lang.Boolean">
             <column name="XS_ID" precision="1" scale="0" />
         </property>
-        <property name="dy_Id" type="java.lang.Boolean">
+        <property name="dyId" type="java.lang.Boolean">
             <column name="DY_ID" precision="1" scale="0" />
         </property>
-        <property name="hzlx_Id" type="java.lang.Boolean">
+        <property name="hzlxId" type="java.lang.Boolean">
             <column name="HZLX_ID" precision="1" scale="0" />
         </property>
-        <property name="qdlx_Id" type="java.lang.Byte">
+        <property name="qdlxId" type="java.lang.Byte">
             <column name="QDLX_ID" precision="2" scale="0" />
         </property>
-        <property name="fsxz_Id" type="java.lang.Boolean">
+        <property name="fsxzId" type="java.lang.Boolean">
             <column name="FSXZ_ID" precision="1" scale="0" />
         </property>
-        <property name="zdxs_Id" type="java.lang.Boolean">
+        <property name="zdxsId" type="java.lang.Boolean">
             <column name="ZDXS_ID" precision="1" scale="0" />
         </property>
-        <property name="dzsx_Id" type="java.lang.Short">
+        <property name="dzsxId" type="java.lang.Short">
             <column name="DZSX_ID" precision="3" scale="0" />
         </property>
-        <property name="channel_Id1" type="java.lang.String">
+        <property name="channelId1" type="java.lang.String">
             <column name="CHANNEL_ID1" length="20" />
         </property>
         <property name="dy" type="java.lang.String">

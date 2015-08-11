@@ -37,32 +37,20 @@ public class EmployeeServiceImp implements EmployeeService{
 	 * @see ppms.service.EmployeeService#findEmployeeForLogin(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public String findEmployeeForLogin(String useracount, String password) {
+	public int findEmployeeForLogin(String useracount, String password) {
 		// TODO Auto-generated method stub
-		//获取密码的MD5
 		MD5Util md5Util = new MD5Util();
-
+		//得到密码的MD5值
+		String md5Password = md5Util.getMD5String(password); 
 		// 根据用户工号得到员工List
 		List<TbEmployee> employeeByAccountList = dao.findByEmployeecode(useracount);
 		// 根据用户身份证号得到员工List
 		List<TbEmployee> employeeByIdNumList = dao.findByIdnumber(useracount);
 		
-
 		int sizeAccount = employeeByAccountList.size();
 		int sizeIdNum = employeeByIdNumList.size();
 		
-		if(sizeAccount == 1)
-		{
-			
-		}
-
-		sizeAccount = employeeByAccountList.size();
-		sizeIdNum = employeeByIdNumList.size();
-		
-
-		String checkStateString = String.valueOf(sizeAccount|sizeIdNum);
-		
-		return checkStateString;
+		return employeeByAccountList.size();
 	}
 	
 }
