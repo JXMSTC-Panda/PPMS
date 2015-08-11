@@ -60,7 +60,6 @@
 							<h4 class="blue" id="id-company-text">&copy; java 一组</h4>
 						</div>
 
-<<<<<<< HEAD
 						<div class="space-6"></div>
 
 						<div class="position-relative">
@@ -104,6 +103,7 @@
 										</form>
 
 										<!-- <div class="social-or-login center">
+<<<<<<< HEAD
 =======
 											<form>
 												<fieldset>
@@ -142,6 +142,8 @@
 
 											<!-- <div class="social-or-login center">
 >>>>>>> 5803cb977110ccbb2e1c02349dfa9871975d6708
+=======
+>>>>>>> acc21ca61913392940ae5cdf84e0048097d7db32
 												<span class="bigger-110">Or Login Using</span>
 											</div>
 
@@ -336,7 +338,7 @@
 					error : function(request) {
 						$.gritter.add({
 							title : '出错啦!',
-							text : '账号或密码错误,请关掉我重试！',
+							text : '网络似乎有问题！',
 							sticky : true,
 							//time: 1000,
 							speed : 10,
@@ -345,7 +347,20 @@
 						});
 					},
 					success : function(data) {
-						location.href = "resource/authority.null.roleSingle";//跳转页面
+						if(data == "Success"){
+							location.href = "resource/authority.null.roleSingle";
+						}
+						else{
+							$.gritter.add({
+								title : '出错啦!',
+								text : '账号或密码错误，请重试！',
+								sticky : true,
+								//time: 1000,
+								speed : 10,
+								position : 'center',
+								class_name : 'gritter-light'
+							});
+						}					
 					}
 				});
 				$("#gritter-notice-wrapper").mouseleave(function() {

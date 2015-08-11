@@ -26,6 +26,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public abstract class AjaxRequestAction extends ActionSupport {
 
+	
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
 	protected String[] fieldNames;
