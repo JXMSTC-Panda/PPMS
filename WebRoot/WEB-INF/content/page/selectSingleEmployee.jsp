@@ -147,6 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</table>
 				</form>
 				<br />
+				<form name="form2" action="selectEmployeeSkipSingle.do" method="post" >
 				<table cellpadding="0" cellspacing="0" class="tablelist" align="center">
 					<tr>
 						<th>&nbsp;</th>
@@ -164,26 +165,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>	
 					
 					
+					
 				<c:forEach items="${requestScope.employeeInfos}" var="employeeInfo">
 				
 				
 					<tr>
-						<td><input type="radio" name="selectEmployee" value="0" checked></td>
+						<td><input type="radio" name="selectEmployee" value="${employeeInfo.employeeid}" checked></td>
 						<td>1</td>
-						<td>${employeeInfo.employeecode}</td>
+						<td >${employeeInfo.employeecode}</td>
 						<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a></td>
 						<td>${employeeInfo.idnumber}</td>
 						<td></td>
-						<td>${employeeInfo.organizationNj.orgid }</td>
-						<td>${employeeInfo.organizationNj.orgName }</td>
+						<td>${employeeInfo.organizationNj.orgid}</td>
+						<td>${employeeInfo.organizationNj.org_Name}</td>
 						<td>
-							<c:if test="${employeeInfo.sex==true } ">
-								<c:out value="女"></c:out>
-							</c:if>
-							<c:if test="${employeeInfo.sex==false } ">
+						<c:if test="${employeeInfo.sex==true}">
+							<c:out value="女"></c:out>
+						</c:if>
+						<c:if test="${employeeInfo.sex==false}">
 								<c:out value="男"></c:out>
-							</c:if>
-						
+						</c:if>
+							
 						</td>
 						<td>${employeeInfo.birthday}</td>
 						<td>${employeeInfo.tbPost.postname}</td>
@@ -207,11 +209,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<table cellpadding="0" cellspacing="0" width="95%" align="center">
 					<tr>
 						<td align="center" >
-							<input type="button" name="doSelectButton" value="确定" class="btn_2" onclick="window.close();"/>
+							<input type="submit" name="doSelectButton" value="确定" class="btn_2" />
 							<input type="button" name="doCloseButton" value="关闭" class="btn_2" onclick="window.close();"/>
 						</td>
 					</tr>
 				</table>
+				</form>
 				<br />
 			</td>
 		</tr>
