@@ -23,6 +23,7 @@ public class BaseDaoImp extends HibernateDaoSupport {
 		
 		System.out.println(this.getClass().getName());
 	}
+	
 	@Autowired
 	public void setMySessionFactory(SessionFactory sessionFactory) {
 

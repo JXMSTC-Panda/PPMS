@@ -16,23 +16,15 @@ public interface EmployeeService {
 
 	/**
 	 * 
-	* @Title: findAllEmployeeInfor 
-	* @Description: TODO
-	* @return     
-	* List<TbEmployee>     
-	* @throws
+	 * @return 获取员工List
 	 */
 	public List<TbEmployee> findAllEmployeeInfor();
 
 	/**
 	 * 
-	* @Title: findEmployeeForLogin 
-	* @Description: TODO
-	* @param useracount
-	* @param password
-	* @return     
-	* String     
-	* @throws
-	 */
-	public String findEmployeeForLogin(String useracount,String password);
+	 * @param useracount 账号/身份证号
+	 * @param password 密码
+	 * @return 返回记录条数
+ 	 */
+	public int findEmployeeForLogin(String useracount,String password);
 }

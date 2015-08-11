@@ -26,8 +26,6 @@ public class EmployeeServiceImp implements EmployeeService{
 	
 	@Autowired
 	protected TbEmployeeDAO dao;
-	@Autowired
-	protected TbEmployee tbEmployee;
 	@Override
 	public List<TbEmployee> findAllEmployeeInfor() {
 		// TODO Auto-generated method stub
@@ -39,10 +37,8 @@ public class EmployeeServiceImp implements EmployeeService{
 	 * @see ppms.service.EmployeeService#findEmployeeForLogin(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public String findEmployeeForLogin(String useracount, String password) {
+	public int findEmployeeForLogin(String useracount, String password) {
 		// TODO Auto-generated method stub
-		int sizeAccount = 0;
-		int sizeIdNum = 0;
 		MD5Util md5Util = new MD5Util();
 		//得到密码的MD5值
 		String md5Password = md5Util.getMD5String(password); 
@@ -51,6 +47,7 @@ public class EmployeeServiceImp implements EmployeeService{
 		// 根据用户身份证号得到员工List
 		List<TbEmployee> employeeByIdNumList = dao.findByIdnumber(useracount);
 		
+<<<<<<< HEAD
 		sizeAccount = employeeByAccountList.size();
 		sizeIdNum = employeeByIdNumList.size();
 		
@@ -63,8 +60,12 @@ public class EmployeeServiceImp implements EmployeeService{
 //>>>>>>> f28697d8192471077c1bb9beac756004c2afe3c5
 		}
 		String checkStateString = String.valueOf(sizeAccount|sizeIdNum);
+=======
+		int sizeAccount = employeeByAccountList.size();
+		int sizeIdNum = employeeByIdNumList.size();
+>>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 		
-		return checkStateString;
+		return employeeByAccountList.size();
 	}
 	
 }
