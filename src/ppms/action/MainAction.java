@@ -16,7 +16,7 @@ import ppms.serviceimpl.*;
 public class MainAction extends ActionSupport {
 
 	@Autowired
-	EmployeeServiceImp eImp;
+	EmployeeServiceImp employeeServiceImp;
 	
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
@@ -32,9 +32,9 @@ public class MainAction extends ActionSupport {
 		
 		String userAcount = request.getParameter("userAccount");
 		String passWord = request.getParameter("passWord");
- 		
-		ajaxState = String.valueOf(eImp.findEmployeeForLogin(userAcount, passWord));
-		response.getWriter().write(ajaxState + "1");
+
+		ajaxState = employeeServiceImp.findEmployeeForLogin(userAcount, passWord);
+		response.getWriter().write(ajaxState);
 	
 	}
 }

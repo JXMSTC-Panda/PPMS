@@ -26,5 +26,6 @@ public interface EmployeeService {
 	 * @param password 密码
 	 * @return 返回记录条数
  	 */
-	public int findEmployeeForLogin(String useracount,String password);
+
+	public String findEmployeeForLogin(String useracount,String password);
 }
