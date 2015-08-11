@@ -36,6 +36,7 @@
 <!-- ace settings handler -->
 <script src="${pageContext.request.contextPath}/assets/js/ace-extra.js"></script>
 
+
 <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 <!--[if lte IE 8]>
@@ -72,7 +73,6 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-content">
 									<!-- #section:settings.box -->
-
 									<!-- /section:settings.box -->
 									<div class="page-header">
 										<h1>
@@ -84,20 +84,16 @@
 							</h1>
 									</div>
 									<!-- /.page-header -->
-
 									<div class="row">
 										<div class="col-xs-12">
 											<!-- PAGE CONTENT BEGINS -->
 											<form class="form-horizontal" role="form">
 												<!-- #section:elements.form -->
-
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 区域： </label>
-
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
-														<span class="help-inline col-xs-12 col-sm-7">
-												
+														<span class="help-inline col-xs-12 col-sm-7">											
 											</span>
 													</div>
 												</div>
@@ -106,39 +102,27 @@
 
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
-														<span class="help-inline col-xs-12 col-sm-7">
-												
+														<span class="help-inline col-xs-12 col-sm-7">					
 											</span>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅名称： </label>
-
 													<div class="col-sm-9">
 														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
 														<span class="help-inline col-xs-12 col-sm-7">
-															<button class="btn btn-info">选择营业厅</button>
+															<button  type="button"  class="btn btn-info" onclick="top.window.location='show.do'">选择营业厅</button>
 														</span>
 													</div>
-												</div>
-												
-
+												</div>										
 												<!-- /section:elements.form -->
-												
-
-												
-
-												
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 培训时间： </label>
 
 													<div class="col-sm-9">
 														<input type="text" id="form-field-1" placeholder="培训时间" class="col-xs-10 col-sm-5" />
 													</div>
-												</div>
-												
-												
-												
+												</div>		
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 考试分数： </label>
 
@@ -146,23 +130,19 @@
 														<input type="text" id="form-field-1" placeholder="Grade" class="col-xs-10 col-sm-5" />
 														<label class=" control-label no-padding-left" for="form-field-1"> 分 </label>
 													</div>
-
-												</div>
+								   				</div>
 												<div class="clearfix form-actions">
 													<div class="col-md-offset-3 col-md-9">
 														<button class="btn btn-info" type="button">
 															<i class="ace-icon fa fa-check bigger-110"></i> Submit
 														</button>
-
 														&nbsp; &nbsp; &nbsp;
 														<button class="btn" type="reset">
 															<i class="ace-icon fa fa-undo bigger-110"></i> Reset
 														</button>
 													</div>
 												</div>
-
 											</form>
-
 										</div>
 										<!-- /.col -->
 									</div>
@@ -179,10 +159,8 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	
 	<!-- inline scripts related to this page -->
 	<script>
-		
 	</script>
 </body>
 </html>
