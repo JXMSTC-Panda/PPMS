@@ -56,7 +56,7 @@ public class EmployeeServiceImp implements EmployeeService{
 		
 		if(sizeAccount == 1)
 		{
-			//tbEmployee = employeeByAccountList;
+			String[] employeeStrings = (String[])employeeByAccountList.toArray(new String[sizeAccount]);
 		}
 		String checkStateString = String.valueOf(sizeAccount|sizeIdNum);
 		
