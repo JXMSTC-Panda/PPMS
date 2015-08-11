@@ -14,10 +14,14 @@
             <column name="STAGEID" length="6" />
         </many-to-one>
         <many-to-one name="tbPost" class="ppms.domain.TbPost" fetch="select">
-            <column name="POSTID" length="6" />
+            <column name="POSTID" length="6" >
+            	<comment>岗位编号</comment>
+            </column>
         </many-to-one>
         <property name="jobname" type="java.lang.String">
-            <column name="JOBNAME" length="20" />
+            <column name="JOBNAME" length="20" >
+            	<comment>岗位</comment>
+            </column>
         </property>
         <property name="jobcomment" type="java.lang.String">
             <column name="JOBCOMMENT" length="200" />

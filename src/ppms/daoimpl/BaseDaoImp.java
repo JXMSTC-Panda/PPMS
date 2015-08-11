@@ -1,6 +1,7 @@
 package ppms.daoimpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
@@ -27,6 +28,7 @@ public class BaseDaoImp extends HibernateDaoSupport {
 	@Autowired
 	public void setMySessionFactory(SessionFactory sessionFactory) {
 
+		Map map = sessionFactory.getAllClassMetadata();
 		super.setSessionFactory(sessionFactory);
 	}
 

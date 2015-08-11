@@ -7,7 +7,9 @@
 <hibernate-mapping>
     <class name="ppms.domain.TbArea" table="TB_AREA" schema="PPMSUSER">
         <id name="areaid" type="java.math.BigDecimal">
-            <column name="AREAID" precision="22" scale="0" />
+            <column name="AREAID" precision="22" scale="0" >
+            	<comment>区域编码</comment>
+            </column>
             <generator class="assigned" />
         </id>
         <property name="areadesc" type="java.lang.String">
