@@ -93,6 +93,131 @@
 
 									<div class="row">
 										<div class="col-xs-12">
+											<!-- PAGE CONTENT BEGINS -->
+											<form class="form-horizontal" role="form" Action="employeeTrainExam.null.promoteTrainsingle.promoteTrainAdd">
+												<!-- #section:elements.form -->
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 区域： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbPromotetiontraining.organizationNj.status"/>
+														<span class="help-inline col-xs-12 col-sm-7">
+												
+											</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅编码： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbPromotetiontraining.organizationNj.orgid"/>
+														<span class="help-inline col-xs-12 col-sm-7">
+												
+											</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅名称： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbPromotetiontraining.organizationNj.orgname"/>
+														<span class="help-inline col-xs-12 col-sm-7">
+												
+											</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 姓名： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbPromotetiontraining.tbEmployee.employeename"/>
+														<span class="help-inline col-xs-12 col-sm-7">
+												<button class="btn btn-info">选择员工</button>
+											</span>
+													</div>
+												</div>
+
+												<!-- /section:elements.form -->
+												<div class="space-4"></div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 工号： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbPromotetiontraining.tbEmployee.employeecode"/>
+														<span class="help-inline col-xs-12 col-sm-7">
+												
+											</span>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 身份证号： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbPromotetiontraining.tbEmployee.idnumber"/>
+														<span class="help-inline col-xs-12 col-sm-7">
+												
+											</span>
+													</div>
+												</div>
+
+												<div class="space-4"></div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 进阶培训时间： </label>
+
+													<div class="col-sm-9">
+														<input type="text" id="form-field-1" placeholder="考试时间" class="col-xs-10 col-sm-5" name="tbpromotetiontraining.promotiontrainingdate"/>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 进阶内容： </label>
+
+													<div class="col-sm-9">
+														<select class="col-xs-10 col-sm-5" id="form-field-select-1">
+															<option value="1">进阶熟练营业员</option>
+															<option value="2">进阶账务稽核</option>
+															<option value="3">进阶实习值班经理</option>
+															<option value="4">进阶值班经理</option>
+															<option value="5">进阶店长</option>
+															<option value="6">其他</option>
+															
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 成绩： </label>
+
+													<div class="col-sm-9">
+														<input type="text" id="form-field-1" placeholder="Grade" class="col-xs-10 col-sm-5" name="tbpromotetiontraining.promotioncontent"/>
+														<label class=" control-label no-padding-left" for="form-field-1"> 分 </label>
+													</div>
+
+												</div>
+
+												<div class="clearfix form-actions">
+													<div class="col-md-offset-3 col-md-9">
+														<button class="btn btn-info" type="button">
+															<i class="ace-icon fa fa-check bigger-110"></i> Submit
+														</button>
+
+														&nbsp; &nbsp; &nbsp;
+														<button class="btn" type="reset">
+															<i class="ace-icon fa fa-undo bigger-110"></i> Reset
+														</button>
+													</div>
+												</div>
+
+											</form>
+
+										</div>
+										<!-- /.col -->
+									</div>
+									<!-- /.row -->
+								</div>
+								<!-- /.page-content -->
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
