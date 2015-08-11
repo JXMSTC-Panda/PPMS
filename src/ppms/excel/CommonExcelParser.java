@@ -21,16 +21,8 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.hibernate.util.DTDEntityResolver;
-<<<<<<< HEAD
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import ppms.annotation.Mark;
-import ppms.daoimpl.BaseDaoImp;
-=======
-
-import ppms.annotation.Mark;
->>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 import ppms.excel.template.BaseExcelObject;
 import ppms.excel.template.IExcelTemp;
 import ppms.exception.ExcelParserException;
@@ -56,18 +48,9 @@ public class CommonExcelParser {
 
 	private ListForParser<ExcelObjStruct> list;
 
-<<<<<<< HEAD
-	private BaseDaoImp dao;
-
-	public CommonExcelParser(BaseDaoImp dao) {
-		// 实例化实体类成员变量和列下标的配置对象的集合
-		list = new ListForParser<ExcelObjStruct>();
-		this.dao = dao;
-=======
 	public CommonExcelParser() {
 		// 实例化实体类成员变量和列下标的配置对象的集合
 		list = new ListForParser<ExcelObjStruct>();
->>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 	}
 
 	/**
@@ -275,11 +258,7 @@ public class CommonExcelParser {
 			throws Exception {
 
 		// 变量定义
-<<<<<<< HEAD
-		int t = 2;
-=======
 		int t = 3;
->>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 		// 保存封装好Excel对应实体类的集合
 		List<Object> objs = null;
 		// 文件输入流
@@ -340,11 +319,7 @@ public class CommonExcelParser {
 					map.put(clazzName, list);
 				}
 				Object value = null;
-<<<<<<< HEAD
-				Object object = null;
-=======
 				IExcelTemp object = null;
->>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 				// 从数据开始的位置开始遍历Excel文件中的数据
 				for (int j = ExcelConfig.getDataBegin(myFileFileName); (ro = sh
 						.getRow(j)) != null; j++) {
@@ -359,13 +334,8 @@ public class CommonExcelParser {
 						Integer integer;
 						String type_name;
 						// 实例化一个Excel对应的对象
-<<<<<<< HEAD
-						object = clazz.newInstance();
-						Class tempClazz = clazz;
-=======
 						object = (IExcelTemp) clazz.newInstance();
 						Class tempClazz=clazz;
->>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 						// 遍历实体类成员变量和列下标的配置对象的集合
 						for (int m = clazzList.size() - 1; m >= 0; m--) {
 
@@ -374,13 +344,8 @@ public class CommonExcelParser {
 							// 获取成员变量名
 
 							if (eos.getFieldName().contains(":")) {
-<<<<<<< HEAD
-								tempClazz = Class.forName(eos.getFieldName()
-										.split(":")[0]);
-=======
 								tempClazz = Class.forName(eos.getFieldName().split(
 										":")[0]);
->>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 							}
 							fieldName = eos.getFieldName().contains(":") ? eos
 									.getFieldName().split(":")[1] : eos
@@ -456,28 +421,6 @@ public class CommonExcelParser {
 
 								// 如果配置中包含“：”说明该成员变量也是个实体类
 
-<<<<<<< HEAD
-								String[] split2 = tempClazz.getName().split(
-										"[.]");
-								String hsql = "from "
-										+ split2[split2.length - 1] + " where "
-										+ fieldName + "=";
-								if (type_name.equals("java.lang.String")) {
-									hsql = hsql + "'" + value + "'";
-								} else {
-									hsql = hsql + value;
-								}
-								System.out.println(hsql);
-								List find = dao.getHibernateTemplate().find(hsql);
-								value = find.size()>0?find.get(0):null;
-								System.out.println(value);
-								String[] split = tempClazz.getName().split(
-										"[.]");
-								clazz.getMethod(
-										"set" + split[split.length - 1],
-										tempClazz).invoke(object, value);
-
-=======
 								Object childInstance = tempClazz.newInstance();
 								method.invoke(childInstance, value);
 								System.out.println(value);
@@ -485,7 +428,6 @@ public class CommonExcelParser {
 								String[] split = tempClazz.getName().split("[.]");
 								clazz.getMethod("set"+split[split.length-1], tempClazz).invoke(object, value);
 								
->>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 							} else {
 								method.invoke(object, value);
 							}
@@ -495,22 +437,14 @@ public class CommonExcelParser {
 							System.out.println(object.toString());
 						}
 					}
-<<<<<<< HEAD
-
-=======
 					
->>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println(fieldName);
 			} finally {
 			}
-<<<<<<< HEAD
-
-=======
 			
->>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 			return objs;
 		}
 	}
@@ -621,11 +555,7 @@ public class CommonExcelParser {
 			String fileName, HSSFRow ro) {
 
 		if (parserCount < 2) {
-<<<<<<< HEAD
-			int t = 2;
-=======
 			int t = 1;
->>>>>>> df2843316861e49e795adae8ce3c1c795be31012
 			// 获取Hibernate映射文件的位置
 			String path = CommonExcelParser.class
 					.getClassLoader()
