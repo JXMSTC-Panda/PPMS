@@ -39,9 +39,8 @@ public class EmployeeServiceImp implements EmployeeService{
 	@Override
 	public int findEmployeeForLogin(String useracount, String password) {
 		// TODO Auto-generated method stub
-		MD5Util md5Util = new MD5Util();
-		//得到密码的MD5值
-		String md5Password = md5Util.getMD5String(password); 
+		//获取密码的MD5
+		String md5PasswordString = MD5Util.getMD5String(password); 
 		// 根据用户工号得到员工List
 		List<TbEmployee> employeeByAccountList = dao.findByEmployeecode(useracount);
 		// 根据用户身份证号得到员工List
@@ -50,6 +49,10 @@ public class EmployeeServiceImp implements EmployeeService{
 		int sizeAccount = employeeByAccountList.size();
 		int sizeIdNum = employeeByIdNumList.size();
 		
+		if(sizeAccount == 1)
+		{
+			
+		}
 		return employeeByAccountList.size();
 	}
 	
