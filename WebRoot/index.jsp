@@ -306,7 +306,7 @@
 						});
 					},
 					success : function(data) {
-						if(data == "Success"){
+						if(data == "1"){
 							location.href = "resource/authority.null.roleSingle";
 						}
 						else{
