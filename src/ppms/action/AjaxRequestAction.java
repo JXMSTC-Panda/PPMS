@@ -123,7 +123,6 @@ public abstract class AjaxRequestAction extends ActionSupport {
 			}
 			ts.setReverse(true);  
 			Gson gson = new GsonBuilder().setExclusionStrategies(ts).create();  
-
 			
 			String json = gson.toJson(map);
 			response.getWriter().write(json);

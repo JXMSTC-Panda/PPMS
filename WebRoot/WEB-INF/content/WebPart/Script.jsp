@@ -34,19 +34,23 @@
 			//当前页面位于page下的路径，格式：A.B.C
 			var pageInfo = url.split("/")[url.split("/").length - 1];
 			var page = pageInfo.split(".");
-			//第一次登录是进入角色添加页面，login.do
-			if (page.length == 2) {
+			//第一次登录是进入控制台，tachometer
+			if(page[2].equals("tachometer")){
 				$("#tachometer").addClass("active open");
 			}
-			//其他A.B.C
-			if (page.length == 3) {
+			//其他A.B.C/A.B.C.D.do
+			else if (page.length >= 3) {
 				$("#" + page[0]).addClass("active open");
 				if (page[1] == "null") {
 				} else {
 					$("#" + page[1]).addClass("active open");
 				}
 				$("#" + page[2]).addClass("active");
+			}else{
+				alert("注意url命名规则！");
+				window.location=${pageContext.request.contextPath};
 			}
+			
 		});
 	</script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>

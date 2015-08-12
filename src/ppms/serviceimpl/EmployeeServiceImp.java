@@ -2,11 +2,15 @@ package ppms.serviceimpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sun.xml.internal.bind.annotation.OverrideAnnotationOf;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 
 import ppms.genericDao.TbEmployeeDAO;
 import ppms.domain.TbEmployee;
@@ -35,15 +39,11 @@ public class EmployeeServiceImp implements EmployeeService {
 		return null;
 	}
 
-	/**
-	 * 员工登录验证逻辑
-	 */
 	@Override
 	public String findEmployeeForLogin(String useracount, String password) {
 		// TODO Auto-generated method stub
 		int sizeAccount = 0;
 		int sizeIdNum = 0;
-		String employeePasswordString;
 		// 得到密码的MD5值
 		String md5Password = MD5Util.getMD5String(password);
 		// 根据用户工号得到员工List
@@ -72,7 +72,18 @@ public class EmployeeServiceImp implements EmployeeService {
 			sizeIdNum = 1;
 		}
 		//返回与运算结果，返回1表示成功，返回0则失败
-		return String.valueOf(sizeAccount | sizeIdNum);
+		String loginResultString = String.valueOf(sizeAccount|sizeIdNum);
+		Gson gson = new Gson();
+		//loginResultString = gson.toJson(employeeByAccountList);
+		System.out.println(loginResultString);
+		return loginResultString;
 	}
+
+	@Override
+	public String employeeToJson(TbEmployee tbEmployee) {
+		// TODO Auto-generated method stub		
+		return null;
+	}
+	
 
 }
