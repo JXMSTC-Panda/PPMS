@@ -1,5 +1,7 @@
 package ppms.action;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,10 +14,16 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import ppms.action.interfaces.InitPage;
+import ppms.domain.OrganizationNj;
+import ppms.domain.TbRole;
+import ppms.serviceimpl.AuthoritySrviceImp;
 import ppms.serviceimpl.EmployeeServiceImp;
+import ppms.serviceimpl.InvocationServiceImp;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -25,12 +33,14 @@ import com.opensymphony.xwork2.ActionSupport;
 * @author QiuLinQian
 * @date 2015-8-7上午8:40:48
 */
-public class authorityAction extends ActionSupport implements InitPage{
+public class AuthorityAction extends ActionSupport{
 	
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
-
-	public authorityAction() {
+	@Autowired
+	private AuthoritySrviceImp authoritySrviceImp;
+	
+	public AuthorityAction() {
 		response = ServletActionContext.getResponse();
 		request = ServletActionContext.getRequest();
 	}
@@ -42,17 +52,21 @@ public class authorityAction extends ActionSupport implements InitPage{
 		return "success";
 	}
 	
-	@Action(value ="authority.null.roleSearch.roleSearch", results = {  
+	@Action(value ="authority.null.roleSearch", results = {  
 	        @Result(name = "success", location = "/WEB-INF/content/page/authority/roleSearch.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String roleSearch(){
+		
+		List<TbRole> tbRoles = new ArrayList<TbRole>();
+		tbRoles = authoritySrviceImp.findAllRole();
+		
+		//System.out.println(tbRoles.get(0).getRolename() + "1");
+		//request.setAttribute("tbRole", tbRoles);
+		ActionContext actionContext = ActionContext.getContext();
+		@SuppressWarnings("unchecked")
+		Map<String, Object> request = (Map<String, Object>)actionContext.get("request");
+		request.put("tbRole", tbRoles);
 		return "success";
 	}
 
-	@Override
-	public Map<String, List<T>> initPage(ServletContext servletContext,
-			String url) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
