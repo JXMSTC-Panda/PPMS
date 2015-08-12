@@ -3,6 +3,7 @@ package ppms.serviceimpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ppms.daoimpl.userBaseInfoDaoImp;
 import ppms.domain.OrganizationNj;
@@ -12,6 +13,7 @@ import ppms.domain.TbPost;
 import ppms.domain.TbRole;
 import ppms.service.userBaseInfoService;
 
+@Service
 public class userBaseInfoServiceImp implements userBaseInfoService{
 
 	/*
@@ -46,6 +48,6 @@ public class userBaseInfoServiceImp implements userBaseInfoService{
     @Override
     public List<TbRole> getTbRoles(){
     	return dao.getTbRoles();
-    }
+    }   
 	
 }

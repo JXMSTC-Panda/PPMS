@@ -80,7 +80,7 @@
 
 					<ul class="submenu">
 						<li id="userBaseInfoSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.userBase.userBaseInfoSingle">
+							href="${pageContext.request.contextPath}/resource/userInfo.userBase.userBaseInfoSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>人员基本信息单条录入 </a> <b
 							class="arrow"></b>
 						</li>
@@ -543,7 +543,7 @@
 							class="arrow"></b>
 						</li>
 						<li id="monthPerformanceSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceSearch">
+							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效查询 </a> <b
 							class="arrow"></b>
 						</li>

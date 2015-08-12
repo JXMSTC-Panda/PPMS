@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<td align="right">进公司时间：</td>
 									<td align="left">
 										<input type="text" name="comeInTimeBegin" onclick="getDayString(this)" readonly style="width:80px">
-										～
+										
 
 										<input type="text" name="comeInTimeEnd" onclick="getDayString(this)" readonly style="width:80px">
 									</td>								
@@ -162,15 +162,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th>出生年月</th>
 						<th>岗职</th>
 						<th>岗位</th>
-					</tr>	
-
-				
+					</tr>			
+								
 				<c:forEach items="${requestScope.employeeInfos}" var="employeeInfo">
-				
 					<tr>
 						<td><input type="radio" name="selectEmployee" value="${employeeInfo.employeeid}" checked></td>
 						<td>1</td>
-						<td >${employeeInfo.employeecode}</td>
+                        <td >${employeeInfo.employeecode}</td>
 						<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a></td>
 						<td>${employeeInfo.idnumber}</td>
 						<td></td>
@@ -188,7 +186,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>${employeeInfo.birthday}</td>
 						<td>${employeeInfo.tbPost.postname}</td>
 						<td>${employeeInfo.tbJob.jobname}</td>
+	
 					</tr>	
+					
 					</c:forEach>		
 				</table>
 				<table style="width: 95%" cellspacing="0" cellpadding="0" align="center">

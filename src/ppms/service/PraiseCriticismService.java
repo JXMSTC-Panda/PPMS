@@ -72,4 +72,5 @@ public interface PraiseCriticismService {
 	 * @return
 	 */
 	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor();
+
 }

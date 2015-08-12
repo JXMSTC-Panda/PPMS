@@ -19,19 +19,24 @@ import ppms.serviceimpl.PraiseCriticismServiceImp;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
 public class EmployeePraiseCriticismAction extends ActionSupport{
 
+
+
+
 	private TbEmployeepraisecriticism tbEmployeepraisecriticism; // 创建员工奖惩信息的对象tbEmployeepraisecriticism
-	
 	
 
 	@Autowired
 	private PraiseCriticismServiceImp praiseCriticism;// 创建Service的对象praiseCriticism
 
 
+
 	public TbEmployeepraisecriticism getTbEmployeepraisecriticism() {// tbEmployeepraisecriticism的get方法
 		return tbEmployeepraisecriticism;
 	}
+
 
 	public EmployeePraiseCriticismAction(){
 		
@@ -152,6 +157,8 @@ public class EmployeePraiseCriticismAction extends ActionSupport{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+ 
 		return "success";
 	}
 
