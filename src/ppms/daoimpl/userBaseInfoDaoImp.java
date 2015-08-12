@@ -2,6 +2,7 @@ package ppms.daoimpl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 import org.w3c.dom.ls.LSInput;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
@@ -14,6 +15,7 @@ import ppms.domain.TbPost;
 import ppms.domain.TbRole;
 import ppms.service.userBaseInfoService;
 
+@Repository
 public class userBaseInfoDaoImp extends BaseDaoImp implements userBaseInfoDao{
 
 	@Override
@@ -40,4 +42,5 @@ public class userBaseInfoDaoImp extends BaseDaoImp implements userBaseInfoDao{
 	public List<TbRole> getTbRoles(){
 		return getHibernateTemplate().findByExample(new TbRole());
 	}
+
 }

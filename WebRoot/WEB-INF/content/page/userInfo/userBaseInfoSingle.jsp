@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -174,11 +175,11 @@
 													<div class="col-sm-9">
 														<div class="radio">
 															<label>
-																<input name="form-field-radio" class="ace" type="radio">
+																<input name="form-field-radio1" class="ace" type="radio">
 																<span class="lbl"> 已分厅</span>
 															</label>
 															<label>
-																<input name="form-field-radio" class="ace" type="radio">
+																<input name="form-field-radio1" class="ace" type="radio">
 																<span class="lbl"> 未分厅</span>
 															</label>
 														</div>
@@ -189,11 +190,11 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 营业厅名称: </label>
 
 													<div class="col-sm-9">
-														<select class="form-control" id="form-field-select-1" name="tbEmployee.organizationNj.orgName">
+														<select class="form-control" id="form-field-select-1" name="tbEmployee.organizationNj.orgid">
 															<option value=""></option>	
 															<c:forEach items="${ requestScope.orgs}" var="org">
 																<option value="${org.orgid}">
-																	<c:out value="${org.org_Name }"></c:out>
+																	<c:out value="${org.orgName }"></c:out>
 																</option>
 															</c:forEach>													
 														</select>
@@ -216,7 +217,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 工号: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.employeeid">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.employeecode">
 													</div>
 												</div>
 												
@@ -239,7 +240,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 营业厅编碼: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.organizationNj.orgid">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
 													</div>
 												</div>																																
 																</div>																	
@@ -431,7 +432,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 岗职: </label>
 
 													<div class="col-sm-9">
-														<select class="form-control" id="form-field-select-1" name="tbEmployee.tbPost.postname">
+														<select class="form-control" id="form-field-select-1" name="tbEmployee.tbPost.postid">
 															<option value=""></option>
 															<c:forEach items="${requestScope.posts}" var="post">
 																<option value="${post.postid}">
@@ -446,7 +447,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 岗位: </label>
 
 													<div class="col-sm-9">
-														<select class="form-control" id="form-field-select-1" name="tbEmployee.tbJob.jobname">
+														<select class="form-control" id="form-field-select-1" name="tbEmployee.tbJob.jobid">
 															<option value=""></option>
 															<c:forEach items="${requestScope.jobs}" var="job">
 																<option value="${job.jobid}">
@@ -476,7 +477,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 角色类别: </label>
 
 													<div class="col-sm-9">
-														<select class="form-control" id="form-field-select-1" name="tbEmployee.tbRole.rolename">
+														<select class="form-control" id="form-field-select-1" name="tbEmployee.tbRole.roleid">
 															<option value=""></option>
 															<c:forEach items="${requestScope.roles}" var="role">
 																<option value="${role.roleid}">
