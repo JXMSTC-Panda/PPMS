@@ -11,7 +11,9 @@
             <generator class="assigned" />
         </id>
         <property name="postname" type="java.lang.String">
-            <column name="POSTNAME" length="20" />
+            <column name="POSTNAME" length="20">
+            	<comment>岗职</comment>
+            </column>
         </property>
         <property name="postcomment" type="java.lang.String">
             <column name="POSTCOMMENT" length="200" />

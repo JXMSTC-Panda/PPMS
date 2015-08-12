@@ -27,12 +27,22 @@ public class MainAction extends ActionSupport {
 		request = ServletActionContext.getRequest();
 	}
 	
+	/**
+	 * 
+	* @Title: login 
+	* @Description: 登录验证Ajax
+	* @throws IOException     
+	* @return void
+	* @author QiuLinQian
+	* @time 2015年8月11日16:23:57     
+	* @throws
+	 */
 	@Action(value = "authority.null.roleSingle.login")
 	public void login() throws IOException {
 		
 		String userAcount = request.getParameter("userAccount");
 		String passWord = request.getParameter("passWord");
-
+		//登录验证
 		ajaxState = employeeServiceImp.findEmployeeForLogin(userAcount, passWord);
 		response.getWriter().write(ajaxState);
 	
