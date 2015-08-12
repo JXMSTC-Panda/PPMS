@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -162,19 +163,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th>岗职</th>
 						<th>岗位</th>
 					</tr>	
-<<<<<<< HEAD
-					
-					
-					
+
+				
 				<c:forEach items="${requestScope.employeeInfos}" var="employeeInfo">
 				
-				
-=======
->>>>>>> 5b3167661c0cff3dc4643649624e47f41266728d
 					<tr>
 						<td><input type="radio" name="selectEmployee" value="${employeeInfo.employeeid}" checked></td>
 						<td>1</td>
-<<<<<<< HEAD
 						<td >${employeeInfo.employeecode}</td>
 						<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a></td>
 						<td>${employeeInfo.idnumber}</td>
@@ -193,76 +188,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>${employeeInfo.birthday}</td>
 						<td>${employeeInfo.tbPost.postname}</td>
 						<td>${employeeInfo.tbJob.jobname}</td>
-=======
-						<td>0011</td>
-						<td><a href="javascript:doOpenDetail();">张三</a></td>
-						<td>123456789012345678</td>
-						<td>东区</td>
-						<td>12345</td>
-						<td>鼓楼营业厅</td>
-						<td>男</td>
-						<td>1981年07月</td>
-						<td>营业员</td>
-						<td>熟练营业员</td>
->>>>>>> 5b3167661c0cff3dc4643649624e47f41266728d
 					</tr>	
-					
-					<tr>
-						<td><input type="radio" name="selectEmployee" value="1"></td>
-						<td>2</td>
-						<td>0011</td>
-						<td><a href="javascript:doOpenDetail();">张三</a></td>
-						<td>123456789012345678</td>
-						<td>东区</td>
-						<td>12345</td>
-						<td>鼓楼营业厅</td>
-						<td>男</td>
-						<td>1981年07月</td>
-						<td>营业员</td>
-						<td>熟练营业员</td>
-					</tr>	
-					<tr>
-						<td><input type="radio" name="selectEmployee" value="2"></td>
-						<td>3</td>
-						<td>0011</td>
-						<td><a href="javascript:doOpenDetail();">张三</a></td>
-						<td>123456789012345678</td>
-						<td>东区</td>
-						<td>12345</td>
-						<td>鼓楼营业厅</td>
-						<td>男</td>
-						<td>1981年07月</td>
-						<td>营业员</td>
-						<td>熟练营业员</td>
-					</tr>	
-					<tr>
-						<td><input type="radio" name="selectEmployee" value="3"></td>
-						<td>4</td>
-						<td>0011</td>
-						<td><a href="javascript:doOpenDetail();">张三</a></td>
-						<td>123456789012345678</td>
-						<td>东区</td>
-						<td>12345</td>
-						<td>鼓楼营业厅</td>
-						<td>男</td>
-						<td>1981年07月</td>
-						<td>营业员</td>
-						<td>熟练营业员</td>
-					</tr>	
-					<tr>
-						<td><input type="radio" name="selectEmployee" value="4"></td>
-						<td>5</td>
-						<td>0011</td>
-						<td><a href="javascript:doOpenDetail();">张三</a></td>
-						<td>123456789012345678</td>
-						<td>东区</td>
-						<td>12345</td>
-						<td>鼓楼营业厅</td>
-						<td>男</td>
-						<td>1981年07月</td>
-						<td>营业员</td>
-						<td>熟练营业员</td>
-					</tr>	
+					</c:forEach>		
 				</table>
 				<table style="width: 95%" cellspacing="0" cellpadding="0" align="center">
 					<tr>

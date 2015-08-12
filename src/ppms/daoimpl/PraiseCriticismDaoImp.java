@@ -5,8 +5,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import ppms.domain.COrganizationNj;
+import ppms.domain.OrganizationNj;
+import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
+import ppms.domain.TbJob;
+import ppms.domain.TbPost;
 @Repository
 /*
  * 奖惩管理的dao层*/
@@ -60,7 +65,6 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		
 		return results;  //返回结果
 	}
-<<<<<<< HEAD
 	/**
 	 * 根据员工编号获取数据可中所有的员工信息
 	 * @param employeeId
@@ -192,8 +196,5 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		}finally{}
 		return results; 
 	}
-=======
-	
 
->>>>>>> 5b3167661c0cff3dc4643649624e47f41266728d
 }
