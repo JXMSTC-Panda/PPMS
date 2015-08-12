@@ -286,12 +286,12 @@
 		$(document).ready(function() {
 			//登录点击
 			$('#btnlogin').click(function() {
-				$('#btnlogin').addClass('disabled');
 				$('#btnlogin span').html('登录...');
+				$('#btnlogin').addClass('disabled');
 				$.ajax({
 					cache : false,
 					type : "POST",
-					url : "authority.null.roleSingle.login.do",
+					url : "login.do",
 					data : $('#form_login').serialize(),
 					async : false,
 					error : function(request) {
@@ -299,7 +299,7 @@
 							title : '出错啦!',
 							text : '网络似乎有问题！',
 							sticky : true,
-							//time: 1000,
+							time: 1000,
 							speed : 10,
 							position : 'center',
 							class_name : 'gritter-light'
@@ -307,7 +307,7 @@
 					},
 					success : function(data) {
 						if(data == "1"){
-							location.href = "resource/authority.null.roleSingle";
+							location.href = "index.tachometer.login.do";
 						}
 						else{
 							$.gritter.add({
@@ -327,7 +327,7 @@
 					$('#btnlogin').removeClass('disabled');
 					$('gritter-notice-wrapper').remove();
 				});
-			});
+			});		
 		});
 
 		jQuery(function($) {

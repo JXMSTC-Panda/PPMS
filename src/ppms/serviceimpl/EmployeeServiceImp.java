@@ -2,11 +2,15 @@ package ppms.serviceimpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sun.xml.internal.bind.annotation.OverrideAnnotationOf;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 
 import ppms.genericDao.TbEmployeeDAO;
 import ppms.domain.TbEmployee;
@@ -35,33 +39,11 @@ public class EmployeeServiceImp implements EmployeeService {
 		return null;
 	}
 
-	/**
-	 * 员工登录验证逻辑
-	 */
 	@Override
 	public String findEmployeeForLogin(String useracount, String password) {
 		// TODO Auto-generated method stub
 		int sizeAccount = 0;
 		int sizeIdNum = 0;
-<<<<<<< HEAD
-		//得到密码的MD5值
-		String md5Password = MD5Util.getMD5String(password); 
-		// 根据用户工号得到员工List
-		@SuppressWarnings("unchecked")
-		List<TbEmployee> employeeByAccountList = dao.findByEmployeecode(useracount);
-		// 根据用户身份证号得到员工List
-		@SuppressWarnings("unchecked")
-		List<TbEmployee> employeeByIdNumList = dao.findByIdnumber(useracount);
-		
-		sizeAccount = employeeByAccountList.size();
-		sizeIdNum = employeeByIdNumList.size();
-		
-		if(sizeAccount == 1){
-			
-			System.out.println(employeeByAccountList.get(0).getIdpassword() + "  " + md5Password);
-			//工号，密码匹配，返回1
-=======
-		String employeePasswordString;
 		// 得到密码的MD5值
 		String md5Password = MD5Util.getMD5String(password);
 		// 根据用户工号得到员工List
@@ -79,31 +61,29 @@ public class EmployeeServiceImp implements EmployeeService {
 			System.out.println(employeeByAccountList.get(0).getIdpassword()
 					+ "  " + md5Password);
 			// 工号，密码匹配，返回1
->>>>>>> 67f6c9beff5f188299c9ea45fdda22c2d17f799b
 			sizeAccount = 1;
 
 		}
-<<<<<<< HEAD
-		if(sizeIdNum == 1){
-			
-			System.out.println(employeeByAccountList.get(0).getIdpassword() + "  " + md5Password);
-			//身份证，密码匹配，返回1
-=======
 		if (employeeByIdNumList.size() == 1 && employeeByIdNumList.get(0).equals(md5Password)) {
 
 			System.out.println(employeeByIdNumList.get(0).getIdpassword()
 					+ "  " + md5Password);
 			// 工号，密码匹配，返回1
->>>>>>> 67f6c9beff5f188299c9ea45fdda22c2d17f799b
 			sizeIdNum = 1;
 		}
 		//返回与运算结果，返回1表示成功，返回0则失败
-		return String.valueOf(sizeAccount | sizeIdNum);
+		String loginResultString = String.valueOf(sizeAccount|sizeIdNum);
+		Gson gson = new Gson();
+		//loginResultString = gson.toJson(employeeByAccountList);
+		System.out.println(loginResultString);
+		return loginResultString;
 	}
-<<<<<<< HEAD
+
+	@Override
+	public String employeeToJson(TbEmployee tbEmployee) {
+		// TODO Auto-generated method stub		
+		return null;
+	}
 	
-}
-=======
 
 }
->>>>>>> 67f6c9beff5f188299c9ea45fdda22c2d17f799b
