@@ -3,14 +3,24 @@ package ppms.action;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
-import com.opensymphony.xwork2.ActionSupport;
-
+import ppms.domain.TbArea;
 import ppms.domain.TbMonthexam;
+
+import com.opensymphony.xwork2.ActionSupport;
 
 
 public class MonthExamAction extends ActionSupport{
 	private TbMonthexam tbMonthexam;
+	private TbArea tbArea;
 	
+	public TbArea getTbArea() {
+		return tbArea;
+	}
+
+	public void setTbArea(TbArea tbArea) {
+		this.tbArea = tbArea;
+	}
+
 	public TbMonthexam getTbMonthexam() {
 		return tbMonthexam;
 	}
