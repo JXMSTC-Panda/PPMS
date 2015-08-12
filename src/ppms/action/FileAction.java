@@ -20,6 +20,13 @@ import ppms.serviceimpl.InvocationServiceImp;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * Excel文件批量上传Action
+ * @author shark
+ * @update 2015下午4:31:58
+ * @function
+ *
+ */
 public class FileAction extends ActionSupport {
 
 	private File file;
