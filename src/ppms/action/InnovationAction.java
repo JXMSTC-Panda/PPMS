@@ -87,6 +87,7 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 
 		String orgid = request.getParameter("orgid");
 
+		System.out.println("sfasfs");
 		setHsql("from TbEmployee where orgid=" + orgid);
 		setKey("employees");
 		setFieldToJson(null, TbEmployee.class);

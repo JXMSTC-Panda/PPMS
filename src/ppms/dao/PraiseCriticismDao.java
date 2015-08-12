@@ -9,7 +9,10 @@ import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbJob;
+import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbPost;
+import ppms.domain.TbSubarea;
+import ppms.domain.TbSubareaorgrelation;
 
 public interface PraiseCriticismDao {
 
@@ -18,6 +21,11 @@ public interface PraiseCriticismDao {
 	 * @param tbEmployeepraisecriticism
 	 */
 	public void save(Object tbEmployeepraisecriticism);
+	/**
+	 * 单条录入营业厅奖惩信息
+	 * @param tbOrgpraisecriticism
+	 */
+	public void businessHallInforSave(Object tbOrgpraisecriticism);
 	/**
 	 * 动态下拉框，根据奖惩类型，动态变化奖惩级别
 	 * @param key
@@ -68,8 +76,30 @@ public interface PraiseCriticismDao {
 	 */
 	public List<OrganizationNj> findOrganizationNjInfor(int orgId);
 	/**
+	 * 获取所有同步营业厅的信息
+	 * @return
+	 */
+	 public List<OrganizationNj> findAllOrganizationNjInfor();
+	/**
 	 * 获取所有的员工奖惩信息
 	 * @return
 	 */
 	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor();
+	/**
+	 * 获取所有的营业厅奖惩信息
+	 * @return
+	 */
+	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor();
+	/**
+	 * 根据营业厅编号查询片区与营业厅关系
+	 * @param orgId
+	 * @return
+	 */
+	public List<TbSubareaorgrelation> findSubareaorgrelationInfor(int orgId);
+	/**
+	 * 根据片区编码查询片区名称
+	 * @param subareaId
+	 * @return
+	 */
+	public List<TbSubarea> findSubareaInfor(BigDecimal subareaId);
 }
