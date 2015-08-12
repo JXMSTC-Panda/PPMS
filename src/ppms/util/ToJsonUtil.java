@@ -1,10 +1,9 @@
-package ppms.action;
+package ppms.util;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -22,19 +21,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.convention.annotation.Action;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import ppms.daoimpl.BaseDaoImp;
-import ppms.domain.TbEmployee;
 import ppms.gason.adapter.TargetStrategy;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.opensymphony.xwork2.ActionSupport;
 
-public abstract class AjaxRequestAction extends ActionSupport {
+public class ToJsonUtil {
 
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
@@ -46,15 +42,6 @@ public abstract class AjaxRequestAction extends ActionSupport {
 	@Qualifier("baseDaoImp")
 	private BaseDaoImp dao;
 
-	public AjaxRequestAction() {
-		response = ServletActionContext.getResponse();
-		request = ServletActionContext.getRequest();
-	}
-
-	/**
-	 * 初始化处理操作
-	 */
-	public abstract String initProcess();
 
 	/**
 	 * 设置 转换成json要转换的成员变量，和转换的类的字节码
@@ -62,9 +49,11 @@ public abstract class AjaxRequestAction extends ActionSupport {
 	 * @param fieldNames
 	 * @param clazz
 	 */
-	public void setFieldToJson(String[] fieldNames, Class<?> clazz) {
+	public ToJsonUtil setFieldToJson(String[] fieldNames, Class<?> clazz) {
 		this.fieldNames = fieldNames;
 		this.clazz = clazz;
+		return this;
+		
 	}
 
 	/**
@@ -72,15 +61,17 @@ public abstract class AjaxRequestAction extends ActionSupport {
 	 * 
 	 * @param hsql
 	 */
-	public void setHsql(String hsql) {
+	public ToJsonUtil setHsql(String hsql) {
 		this.hsql = hsql;
+		return this;
 	}
 
-	public void setKey(String key) {
+	public ToJsonUtil setKey(String key) {
 		this.key = key;
+		return this;
 	}
 
-	public void excute() {
+	public ToJsonUtil excute() {
 
 		int i = 1;
 		try {
@@ -147,7 +138,6 @@ public abstract class AjaxRequestAction extends ActionSupport {
 			}
 			ts.setReverse(true);
 			Gson gson = new GsonBuilder().setExclusionStrategies(ts).create();
-
 			String json = gson.toJson(map);
 			response.getWriter().write(json);
 			System.out.println(json);
@@ -155,6 +145,7 @@ public abstract class AjaxRequestAction extends ActionSupport {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return this;
 	}
 
 	/**
