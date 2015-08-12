@@ -162,19 +162,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th>岗职</th>
 						<th>岗位</th>
 					</tr>	
-<<<<<<< HEAD
+
 					
 					
 					
 				<c:forEach items="${requestScope.employeeInfos}" var="employeeInfo">
 				
 				
-=======
->>>>>>> 5b3167661c0cff3dc4643649624e47f41266728d
+
 					<tr>
 						<td><input type="radio" name="selectEmployee" value="${employeeInfo.employeeid}" checked></td>
 						<td>1</td>
-<<<<<<< HEAD
+
 						<td >${employeeInfo.employeecode}</td>
 						<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a></td>
 						<td>${employeeInfo.idnumber}</td>
@@ -193,7 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>${employeeInfo.birthday}</td>
 						<td>${employeeInfo.tbPost.postname}</td>
 						<td>${employeeInfo.tbJob.jobname}</td>
-=======
+
 						<td>0011</td>
 						<td><a href="javascript:doOpenDetail();">张三</a></td>
 						<td>123456789012345678</td>
@@ -204,7 +203,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>1981年07月</td>
 						<td>营业员</td>
 						<td>熟练营业员</td>
->>>>>>> 5b3167661c0cff3dc4643649624e47f41266728d
+
 					</tr>	
 					
 					<tr>
