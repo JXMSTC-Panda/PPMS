@@ -31,12 +31,19 @@
 		</object>
 	</excel>
 	
-	<!--  -->
-	<excel name="监控检查成绩批量导出模板.xls">
+
+	<excel name="监控检查成绩批量导入模板.xls">
 		<object>
 			<class_name>ppms.domain.TbMonitorcheck</class_name>
 		</object>
 	</excel>
+	<excel name="进阶培训管理批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbPromotiontraining</class_name>
+		</object>
+	</excel>
+	
+		<!--  -->
 	<excel name="新员工考核成绩批量导入模板.xls">
 		<object>
 			<class_name>ppms.domain.TbFreshemployeeexam</class_name>

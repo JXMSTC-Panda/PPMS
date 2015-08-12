@@ -2,6 +2,8 @@ package ppms.domain;
 
 import java.util.Date;
 
+import ppms.annotation.ValueChange;
+
 /**
  * TbMonitorcheck entity. @author MyEclipse Persistence Tools
  */
@@ -13,6 +15,7 @@ public class TbMonitorcheck implements java.io.Serializable {
 	private String monitorcheckid;
 	private OrganizationNj organizationNj;
 	private Date checkdate;
+	@ValueChange(key_type="MonitorType")
 	private String checktype;
 	private String detail;
 	private String createdby;
