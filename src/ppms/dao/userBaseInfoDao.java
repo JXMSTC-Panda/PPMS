@@ -15,21 +15,25 @@ public interface userBaseInfoDao {
 	 * @return
 	 */
 	public List<OrganizationNj> getOrganizations();
+	
 	/**
 	 * 查找岗职的信息
 	 * @return
 	 */
 	public List<TbPost> getTbPosts();
+	
 	/**
 	 * 查找岗位的信息
 	 * @return
 	 */
 	public List<TbJob> getTbJobs();
+	
 	/**
 	 * 查找人员的信息
 	 * @return
 	 */
 	public List<TbEmployee> getTbEmployees();
+	
 	/**
 	 * 查找人员的信息
 	 * @return

@@ -41,7 +41,7 @@ public class userBaseInfoAction extends ActionSupport implements InitPage {
 
 	@Autowired
 	private userBaseInfoServiceImp service;
-	private ServletContext context;
+
 
 	public userBaseInfoServiceImp getService() {
 		return service;
@@ -102,13 +102,13 @@ public class userBaseInfoAction extends ActionSupport implements InitPage {
 		Map map = new HashMap<>();
 
 		userBaseInfoServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(context).getBean(
+				.getWebApplicationContext(servletContext).getBean(
 						userBaseInfoServiceImp.class);
 		// 获取所有营业厅
 		switch (url) {
-		case "userBaseInfo.userBaseInfoSingle":
+		case "userInfo.userBaseInfoSingle":
 			List<OrganizationNj> organizations = service.getOrganizations();
-			List<TbPost> tbPosts = service.getTbPosts();
+			List<TbPost> tbPosts = service.getTbPosts();			
 			List<TbJob> tbJobs =service.getTbJobs();
 			List<TbEmployee> tbEmployees =service.getTbEmployees();
 			List<TbRole> tbRoles =service.getTbRoles();
