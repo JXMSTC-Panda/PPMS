@@ -41,5 +41,5 @@ public interface EmployeeService {
 	* String     
 	* @throws
 	 */
-	public String employeeToJson(TbEmployee tbEmployee);
+	public String employeeToJson(List<TbEmployee> tbEmployee);
 }
