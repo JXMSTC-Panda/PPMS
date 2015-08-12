@@ -75,7 +75,13 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 	}
 	@Override
 	public List<OrganizationNj> findOrganizationNjInfor(int orgId){
-		return dao.findOrganizationNjInfor(orgId);
+		List<OrganizationNj> findOrganizationNjInfor=null;
+		try {
+			findOrganizationNjInfor = dao.findOrganizationNjInfor(orgId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return findOrganizationNjInfor;
 	}
 	@Override
 	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor(){
