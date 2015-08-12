@@ -56,7 +56,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	public List<TbEmployee> findAllEmployeeInfor(){
 		List results=null;
 		try{
-			String hql="from TbEmployee"; //定义hql语句,获取TbEployee表中所有的数据
+			String hql="from TbEmployee where employeeid!='000000'"; //定义hql语句,获取TbEployee表中所有的数据
 			results=getHibernateTemplate().find(hql);//执行find方法
 			
 		}catch(Exception e){
@@ -140,7 +140,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	public List<COrganizationNj> findCOrganizationNjInfor(int orgid){
 		List results=null;
 		try{
-			String hql="from COrganizationNj where organizationNj='"+orgid+"'"; 
+			String hql="from COrganizationNj where organizationNj="+orgid+""; 
 			results=getHibernateTemplate().find(hql);
 			
 		}catch(Exception e){
@@ -157,7 +157,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	public List<TbArea> findAreaDesc(BigDecimal areaId){
 		List results=null;
 		try{
-			String hql="from TbArea where areaid='"+areaId+"'"; 
+			String hql="from TbArea where areaid="+areaId+""; 
 			results=getHibernateTemplate().find(hql);
 			
 		}catch(Exception e){
@@ -173,7 +173,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	public List<OrganizationNj> findOrganizationNjInfor(int orgId){
 		List results=null;
 		try{
-			String hql="from OrganizationNj where orgid='"+orgId+"'"; 
+			String hql="from OrganizationNj where orgid="+orgId+""; 
 			results=getHibernateTemplate().find(hql);
 			
 		}catch(Exception e){
