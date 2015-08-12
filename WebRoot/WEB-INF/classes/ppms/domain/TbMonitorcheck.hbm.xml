@@ -19,7 +19,7 @@
         </many-to-one>
         <property name="checkdate" type="java.util.Date">
             <column name="CHECKDATE" length="7">
-                <comment>日期（年月日）</comment>
+                <comment>日期(年月日)</comment>
             </column>
         </property>
         <property name="checktype" type="java.lang.String">

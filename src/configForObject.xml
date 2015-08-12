@@ -30,5 +30,10 @@
 			<class_name>ppms.domain.TbMountguardexam</class_name>
 		</object>
 	</excel>
+	<excel name="监控检查成绩批量导出模板.xls">
+		<object>
+			<class_name>ppms.domain.TbMonitorcheck</class_name>
+		</object>
+	</excel>
 	
 </objects>
