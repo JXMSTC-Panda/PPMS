@@ -1,28 +1,12 @@
 package ppms.action;
-
-
 import java.util.ArrayList;
-import java.util.Iterator;
-
-
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Result;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-
-import ppms.domain.TbEmployeepraisecriticism;
-
-
-
-
-
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-
 
 import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
@@ -31,43 +15,27 @@ import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbJob;
 import ppms.domain.TbPost;
-
-import ppms.domain.TbEmployee;
-import ppms.domain.TbEmployeepraisecriticism;
-
 import ppms.serviceimpl.PraiseCriticismServiceImp;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+public class EmployeePraiseCriticismAction extends ActionSupport{
+
 
 
 
 	private TbEmployeepraisecriticism tbEmployeepraisecriticism; // 创建员工奖惩信息的对象tbEmployeepraisecriticism
 	
-        public class EmployeePraiseCriticismAction extends ActionSupport{
-
-	
-	
-	private TbEmployeepraisecriticism tbEmployeepraisecriticism;
-	
-
-
 
 	@Autowired
 	private PraiseCriticismServiceImp praiseCriticism;// 创建Service的对象praiseCriticism
 
 
+
 	public TbEmployeepraisecriticism getTbEmployeepraisecriticism() {// tbEmployeepraisecriticism的get方法
 		return tbEmployeepraisecriticism;
 	}
-
-	public EmployeePraiseCriticismAction() {
-
-	
-	public TbEmployeepraisecriticism getTbEmployeepraisecriticism() {
-		return tbEmployeepraisecriticism;
-	}
-
-
 
 
 	public EmployeePraiseCriticismAction(){
@@ -80,7 +48,6 @@ import com.opensymphony.xwork2.ActionSupport;
 			TbEmployeepraisecriticism tbEmployeepraisecriticism) {
 		this.tbEmployeepraisecriticism = tbEmployeepraisecriticism;
 	}
-
 
 	@Action(value = "employeePraiseCriticismSingleStart", results = {// action的名称为employeePraiseCriticismSingleStart
 			@Result(name = "success", location = "/WEB-INF/content/page/userinfo/Demo.jsp"),// 返回值为success时跳转的页面路径
@@ -191,38 +158,7 @@ import com.opensymphony.xwork2.ActionSupport;
 			e.printStackTrace();
 		}
 
-
-
-	@Action(value="start",results={
-			@Result(name="success",location="/WEB-INF/content/page/userinfo/Demo.jsp"),
-			@Result(name="error",location="/WEB-INF/content/page/userinfo/Demo.jsp")})
-	public String login(){
-		return null;
-	}
-
-	@Action(value="employeePraiseCriticismSingleStart",results={
-			@Result(name="success",location="/WEB-INF/content/page/userinfo/Demo.jsp"),
-			@Result(name="error",location="/WEB-INF/content/page/userinfo/Demo.jsp")})
-	public String employeePraiseCriticismSingleStart(){
-		int key=Integer.parseInt(tbEmployeepraisecriticism.getPraisecriticismtype());
-		List<TbEmployeepraisecriticism> find=praiseCriticism.findLevel(key);
-		System.out.println(find);
-		return null;
-	}
-	
-	@Action(value="skipEmployeeSelectSingle",results={
-			@Result(name="success",location="/WEB-INF/content/page/selectSingleEmployee.jsp"),
-		    @Result(name="error",location="/WEB-INF/content/page/selectSingleEmployee.jsp")})
-	
-	public String skipSelectSingl(){
-		System.out.println("create skipSelectSingle");
-		List<TbEmployee> results=praiseCriticism.findAllEmployeeInfor();
-		for(TbEmployee tbEmployee:results){
-			
-		System.out.println(tbEmployee.getEmployeeid()+":"+tbEmployee.getEmployeename());
-		
-		}
-
+ 
 		return "success";
 	}
 
