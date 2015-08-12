@@ -13,7 +13,10 @@ import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbJob;
+import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbPost;
+import ppms.domain.TbSubarea;
+import ppms.domain.TbSubareaorgrelation;
 import ppms.service.PraiseCriticismService;
 
 @Service
@@ -29,8 +32,10 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 		
 		dao.save(tbEmployeepraisecriticism);
 	}
-	
-
+	@Override
+	public void businessHallInforSave(Object tbOrgpraisecriticism){
+		dao.businessHallInforSave(tbOrgpraisecriticism);
+	}
 	
 	/*
 	 * 动态下拉框，根据奖惩类型，动态变化奖惩级别*/
@@ -84,8 +89,23 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 		return findOrganizationNjInfor;
 	}
 	@Override
+	public List<OrganizationNj> findAllOrganizationNjInfor(){
+		return dao.findAllOrganizationNjInfor();
+	}
+	@Override
 	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor(){
 		return dao.findEmployeepraisecriticismInfor();
 	}
-
+	@Override
+	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(){
+		return dao.findOrgpraisecriticismInfor();
+	}
+	@Override
+	public List<TbSubareaorgrelation> findSubareaorgrelationInfor(int orgId){
+		return dao.findSubareaorgrelationInfor(orgId);
+	}
+	@Override
+	public List<TbSubarea> findSubareaInfor(BigDecimal subareaId){
+		return dao.findSubareaInfor(subareaId);
+	}
 }
