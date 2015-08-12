@@ -121,7 +121,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅名称： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbMonthexam.organizationNj.orgname"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbMonthexam.organizationNj.orgName"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -131,7 +131,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 姓名： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbmonthexam.tbEmployee.employeename"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbMonthexam.tbEmployee.employeename"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												<button class="btn btn-info">选择员工</button>
 											</span>
@@ -156,7 +156,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 身份证号： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbmonthexam.tbEmployee.idnumber"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbMonthexam.tbEmployee.idnumber"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -169,14 +169,14 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 考试时间： </label>
 
 													<div class="col-sm-9">
-														<input type="text" id="form-field-1" placeholder="考试时间" class="col-xs-10 col-sm-5" name="tbmonthexam.examdate"/>
+														<input type="text" id="form-field-1" placeholder="考试时间" class="col-xs-10 col-sm-5" name="tbMonthexam.examdate"/>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 考试分数： </label>
 
 													<div class="col-sm-9">
-														<input type="text" id="form-field-1" placeholder="Grade" class="col-xs-10 col-sm-5" name="tbmonthexam.examscore"/>
+														<input type="text" id="form-field-1" placeholder="Grade" class="col-xs-10 col-sm-5" name="tbMonthexam.examscore"/>
 														<label class=" control-label no-padding-left" for="form-field-1"> 分 </label>
 													</div>
 
@@ -184,7 +184,7 @@
 
 												<div class="clearfix form-actions">
 													<div class="col-md-offset-3 col-md-9">
-														<button class="btn btn-info" type="button">
+														<button class="btn btn-info" type="submit">
 															<i class="ace-icon fa fa-check bigger-110"></i> Submit
 														</button>
 

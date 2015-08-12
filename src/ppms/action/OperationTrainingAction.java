@@ -3,9 +3,12 @@ package ppms.action;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 import ppms.domain.TbOperationtraining;
 
-public class OperationTraining {
+public class OperationTrainingAction extends ActionSupport {
+	
 	private TbOperationtraining tbOperationtraining;
 	
 	
@@ -19,10 +22,11 @@ public class OperationTraining {
 	}
 
 
-	@Action(value ="employeeTrainExam.null.operationTrainSingle.operationTrainAdd", results = {  
-	        @Result(name = "success", location = "/WEB-INF/content/page/authority/operationTrainSingleResult.jsp"),  
+	@Action(value="employeeTrainExam.null.operationTrainSingle.operationTrainAdd", results = {  
+	        @Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/operationTrainSingleResult.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
-	public String roleSingleResult(){
+	public String operationTrainingSingleResult(){
+		
 		return "success";
 	}
 }

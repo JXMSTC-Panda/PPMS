@@ -3,10 +3,12 @@ package ppms.action;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 import ppms.domain.TbMonthexam;
 
 
-public class MonthExamAction {
+public class MonthExamAction extends ActionSupport{
 	private TbMonthexam tbMonthexam;
 	
 	public TbMonthexam getTbMonthexam() {
@@ -18,7 +20,7 @@ public class MonthExamAction {
 	}
 
 	@Action(value ="employeeTrainExam.null.MonthExamSingle.MonthExamAdd", results = {  
-	        @Result(name = "success", location = "/WEB-INF/content/page/authority/MonthExamSingleResult.jsp"),  
+	        @Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/monthExamSingleResult.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String MonthExamAdd(){
 		return "success";

@@ -94,7 +94,7 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<!-- PAGE CONTENT BEGINS -->
-											<form class="form-horizontal" role="form" action="employeeTrainExam.null.operationTrainSingleAdd.do" method="post">
+											<form class="form-horizontal" role="form" action="employeeTrainExam.null.operationTrainSingle.operationTrainAdd.do" method="post">
 												<!-- #section:elements.form -->
 
 												<div class="form-group">
@@ -121,7 +121,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅名称： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbOperationtraining.organizationNj.orgname"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbOperationtraining.organizationNj.orgName"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -206,7 +206,7 @@
 												</div>
 												<div class="clearfix form-actions">
 													<div class="col-md-offset-3 col-md-9">
-														<button class="btn btn-info" type="button">
+														<button class="btn btn-info" type="submit">
 															<i class="ace-icon fa fa-check bigger-110"></i> Submit
 														</button>
 

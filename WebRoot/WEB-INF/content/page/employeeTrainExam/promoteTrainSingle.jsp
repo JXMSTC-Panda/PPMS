@@ -85,7 +85,7 @@
 								月度考试
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									月度考试单条录入
+									进阶培训单条录入
 								</small>
 							</h1>
 									</div>
@@ -94,7 +94,7 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<!-- PAGE CONTENT BEGINS -->
-											<form class="form-horizontal" role="form" Action="employeeTrainExam.null.promoteTrainsingle.promoteTrainAdd">
+											<form class="form-horizontal" role="form" Action="employeeTrainExam.null.promoteTrainSingle.promoteTrainAdd.do" method="post">
 												<!-- #section:elements.form -->
 
 												<div class="form-group">
@@ -199,7 +199,7 @@
 
 												<div class="clearfix form-actions">
 													<div class="col-md-offset-3 col-md-9">
-														<button class="btn btn-info" type="button">
+														<button class="btn btn-info" type="submit">
 															<i class="ace-icon fa fa-check bigger-110"></i> Submit
 														</button>
 
