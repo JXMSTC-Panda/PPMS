@@ -115,7 +115,7 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${tbRole}" var="tbRoles"
+										<c:forEach items="${requestScope.tbRoles}" var="tbRoles"
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
