@@ -3,8 +3,13 @@ package ppms.service;
 import java.math.BigDecimal;
 import java.util.List;
 
+import ppms.domain.COrganizationNj;
+import ppms.domain.OrganizationNj;
+import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
+import ppms.domain.TbJob;
+import ppms.domain.TbPost;
 
 public interface PraiseCriticismService {
 	/**
@@ -17,10 +22,6 @@ public interface PraiseCriticismService {
 	 * @param key
 	 * @return
 	 */
-	
-	/*
-	 *动态下拉框，根据奖惩类型，动态变化奖惩级别
-	 **/
 	public List<TbEmployeepraisecriticism> findLevel(int  key);
 	
 	/*
