@@ -307,12 +307,12 @@
 														<select onchange="ajaxForEmployee(this)"
 															class="chosen-select form-control "
 															id="form-field-select-3"
-															name="innovation.organizationNjByOrgid.orgName"
+															name="innovation.organizationNjByOrgid.orgid"
 															data-placeholder="选择营业厅">
 															<option value=""></option>
 															<c:forEach items="${ requestScope.orgs}" var="org">
 																<option value="${org.orgid }">
-																	<c:out value="${org.orgName }"></c:out>
+																	<c:out value="${org.org_Name }"></c:out>
 																</option>
 															</c:forEach>
 														</select>
