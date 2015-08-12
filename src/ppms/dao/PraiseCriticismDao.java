@@ -3,11 +3,15 @@ package ppms.dao;
 import java.math.BigDecimal;
 import java.util.List;
 
+import ppms.domain.COrganizationNj;
+import ppms.domain.OrganizationNj;
+import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
+import ppms.domain.TbJob;
+import ppms.domain.TbPost;
 
 public interface PraiseCriticismDao {
-
 
 	/**
 	 * 单条录入员工奖惩信息
@@ -68,5 +72,4 @@ public interface PraiseCriticismDao {
 	 * @return
 	 */
 	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor();
-
 }
