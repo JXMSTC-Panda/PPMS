@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ppms.daoimpl.MonthPerformanceDaolmp;
+import ppms.domain.OrganizationNj;
+import ppms.domain.TbEmployee;
 import ppms.domain.TbPerformance;
 import ppms.service.PerformanceService;
 
@@ -61,9 +63,44 @@ public class MonthPerformanceServicelmp implements PerformanceService {
 	 * 
 	 */
 	@Override
-	public List<TbPerformance> getTbPerformances() {
+	public List<TbPerformance> getPerformances() {
 		// TODO Auto-generated method stub
 		return dao.getpPerformances();
+	}
+
+
+
+
+
+	/* (non-Javadoc)
+	 * @see ppms.service.PerformanceService#getOrganizationNjs()
+	 */
+	@Override
+	public List<OrganizationNj> getOrganizationNjs() {
+		// TODO Auto-generated method stub
+		return dao.getOrganizationNjs();
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see ppms.service.PerformanceService#getEmployees()
+	 */
+	@Override
+	public List<TbEmployee> getEmployees() {
+		// TODO Auto-generated method stub
+		return dao.getEmployees();
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see ppms.service.PerformanceService#addPerformance(ppms.domain.TbPerformance)
+	 */
+	@Override
+	public boolean addPerformance(TbPerformance performance) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	
