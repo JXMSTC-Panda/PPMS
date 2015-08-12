@@ -5,8 +5,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import ppms.domain.COrganizationNj;
+import ppms.domain.OrganizationNj;
+import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
+import ppms.domain.TbJob;
+import ppms.domain.TbPost;
 @Repository
 /*
  * 奖惩管理的dao层*/
@@ -192,5 +197,4 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		return results; 
 	}
 
-	
 }

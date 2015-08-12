@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ppms.daoimpl.PraiseCriticismDaoImp;
+import ppms.domain.COrganizationNj;
+import ppms.domain.OrganizationNj;
+import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
+import ppms.domain.TbJob;
+import ppms.domain.TbPost;
 import ppms.service.PraiseCriticismService;
 
 @Service

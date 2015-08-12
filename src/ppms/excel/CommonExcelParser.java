@@ -423,13 +423,17 @@ public class CommonExcelParser {
 								value = changeCellToString(cell);
 								break;
 							}
-							
-							ValueChange vc=field.getAnnotation(ValueChange.class);
-							if(vc!=null){
-								
-								String hsql="from " +vc.tb_name()+" where Type='"+vc.key_type()+"' and "+" value='"+value+"'";
-								List<TbMaster> find = dao.getHibernateTemplate().find(hsql);
-								value=find.get(0).getKey();
+
+							ValueChange vc = field
+									.getAnnotation(ValueChange.class);
+							if (vc != null) {
+
+								String hsql = "from " + vc.tb_name()
+										+ " where Type='" + vc.key_type()
+										+ "' and " + " value='" + value + "'";
+								List<TbMaster> find = dao
+										.getHibernateTemplate().find(hsql);
+								value = find.get(0).getKey();
 							}
 							if (eos.getFieldName().contains(":")) {
 
@@ -446,8 +450,9 @@ public class CommonExcelParser {
 									hsql = hsql + value;
 								}
 								System.out.println(hsql);
-								List find = dao.getHibernateTemplate().find(hsql);
-								value = find.size()>0?find.get(0):null;
+								List find = dao.getHibernateTemplate().find(
+										hsql);
+								value = find.size() > 0 ? find.get(0) : null;
 								System.out.println(value);
 								String[] split = tempClazz.getName().split(
 										"[.]");
@@ -633,7 +638,8 @@ public class CommonExcelParser {
 						// + element2.attribute("class").getText().trim();
 						// eos.setFieldName(fieldName);
 						// 如果节点为“property”
-					} else if (element2.getName().equals("property")) {
+					} else if (element2.getName().trim().equals("property")
+							|| element2.getName().trim().equals("id")) {
 
 						eos = new ExcelObjStruct();
 						// 获取成员变量名
@@ -644,8 +650,8 @@ public class CommonExcelParser {
 							fieldName = element2.attribute("name").getText();
 						}
 						eos.setFieldName(fieldName);
-
 					}
+
 					if (element2.getName().equals("property")) {
 
 						// 获取comment节点的值，即该成员变量对应Excel文件的表头的值
