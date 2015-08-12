@@ -2,6 +2,7 @@ package ppms.domain;
 
 import java.util.Date;
 
+import ppms.annotation.ValueChange;
 import ppms.excel.template.BaseExcelObject;
 
 /**
@@ -16,6 +17,7 @@ public class TbPromotiontraining extends BaseExcelObject implements java.io.Seri
 	private OrganizationNj organizationNj;
 	private TbEmployee tbEmployee;
 	private Date promotiontrainingdate;
+	@ValueChange(key_type="PromotionContent")
 	private String promotioncontent;
 	private Double promotionscore;
 	private String createdby;
