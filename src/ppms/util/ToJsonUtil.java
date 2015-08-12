@@ -13,16 +13,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import javax.transaction.Transactional;
 
 import ppms.daoimpl.BaseDaoImp;
 import ppms.gason.adapter.TargetStrategy;
@@ -32,28 +28,38 @@ import com.google.gson.GsonBuilder;
 
 public class ToJsonUtil {
 
-	protected HttpServletResponse response;
-	protected HttpServletRequest request;
-	protected String[] fieldNames;
-	protected Class<?> clazz;
-	protected String hsql;
-	protected String key;
-	@Autowired
-	@Qualifier("baseDaoImp")
-	private BaseDaoImp dao;
-
+	/**
+	 * 要转成json的成员变量名数组
+	 */
+	private String[] fieldNames;
+	/**
+	 * 装换对象的字节码
+	 */
+	private Class<?> clazz;
+	/**
+	 * 查询语句
+	 */
+	private String hsql;
+	/**
+	 * json根名
+	 */
+	private String rootName;
+	/**
+	 * 标记是否深层再赋值标记
+	 */
+	private boolean flag;
 
 	/**
-	 * 设置 转换成json要转换的成员变量，和转换的类的字节码
+	 * 设置要转换成json的成员变量数组和要转换对象的字节码
 	 * 
 	 * @param fieldNames
 	 * @param clazz
 	 */
-	public ToJsonUtil setFieldToJson(String[] fieldNames, Class<?> clazz) {
+	
+	private static Set<String> classNames;
+	public void setFieldToJson(String[] fieldNames) {
+
 		this.fieldNames = fieldNames;
-		this.clazz = clazz;
-		return this;
-		
 	}
 
 	/**
@@ -61,106 +67,239 @@ public class ToJsonUtil {
 	 * 
 	 * @param hsql
 	 */
-	public ToJsonUtil setHsql(String hsql) {
+	
+	public ToJsonUtil(){
+		String packageName = "ppms.domain";
+		classNames = getClassName(packageName, false);
+	}
+	public void setHsql(String hsql, boolean flag) {
 		this.hsql = hsql;
-		return this;
+		this.flag = flag;
 	}
 
-	public ToJsonUtil setKey(String key) {
-		this.key = key;
-		return this;
+	public void setHsql(String hsql) {
+		this.hsql = hsql;
+		this.flag = false;
 	}
 
-	public ToJsonUtil excute() {
+	public void setKey(String rootName) {
+		this.rootName = rootName;
+	}
 
-		int i = 1;
+	public void excute() {
+
+		int i = 2;
 		try {
-
-			Map<String, List<Object>> map = new HashMap<String, List<Object>>();
-
 			// 查询数据库
-			List<Object> objs = (List<Object>) dao.findByHSQL(hsql,
-					clazz.newInstance());
-
-			// 设置对TbEmployee的策略
-			TargetStrategy ts = new TargetStrategy(clazz);
-			// 表示仅转换TbEmployee中的employeename和employeeid属性
-			ts.setFields(fieldNames);
-			if (fieldNames == null) {
-
-				List<Object> newObjs = new ArrayList<>();
-
-				for (Object object : objs) {
-
-					// 获取Hibnerate实体类的成员变量
-					Field[] fields = clazz.getDeclaredFields();
-
-					for (Field field : fields) {
-
-						String fieldName = field.getName();
-						fieldName = fieldName.replaceFirst(
-								fieldName.substring(0, 1),
-								fieldName.substring(0, 1).toUpperCase());
-						Method methodGet = clazz.getMethod("get" + fieldName);
-
-						Object invoke = methodGet.invoke(object);
-
-						if (isEntityObj(invoke.getClass().getName())) {
-
-							Class<?> orgClazz = field.getType();
-							String[] split = orgClazz.getName().split("[.]");
-
-							String className = split[split.length - 1];
-							String idName = orgClazz.getDeclaredFields()[0]
-									.getName();
-							Method method2 = orgClazz
-									.getMethod("get"
-											+ orgClazz.getDeclaredFields()[0]
-													.getName());
-
-							String hsql = "from " + className + " where "
-									+ idName + method2.invoke(invoke);
-							List<?> findByHSQL = dao.findByHSQL(hsql,
-									orgClazz.newInstance());
-
-							Method methodSet = clazz.getMethod(
-									"set" + field.getName(), orgClazz);
-
-							methodSet.invoke(object, findByHSQL.get(0));
-						}
-					}
-					newObjs.add(object);
-				}
-
-				map.put(key, newObjs);
-			} else {
-				map.put(key, objs);
-			}
-			ts.setReverse(true);
-			Gson gson = new GsonBuilder().setExclusionStrategies(ts).create();
-			String json = gson.toJson(map);
-			response.getWriter().write(json);
-			System.out.println(json);
-
+//			List<Object> objs = (List<Object>) dao.findByHSQL(hsql,
+//					clazz.newInstance());
+//			toJson(objs);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return this;
+	}
+
+	/**
+	 * 将List打包成json数组
+	 * @param list
+	 * @param dao
+	 * @return
+	 */
+	@Transactional
+	public <T> String toJson(Map<String, List<T>> map ,BaseDaoImp dao) {
+
+		try {
+			List<T> list=null;
+			for (Entry<String, List<T>> entry : map.entrySet()) {
+				
+				list=entry.getValue();
+				
+				clazz=list.get(0).getClass();
+				if (fieldNames == null) {
+					List<T> newObjs = new ArrayList<T>();
+					Object newObject;
+					for (Object object : list) {
+						newObject =clazz.newInstance();
+						// 获取Hibnerate实体类的成员变量
+						Field[] fields = clazz.getDeclaredFields();
+
+						for (Field field : fields) {
+
+							String fieldName = field.getName();
+							fieldName = fieldName.replaceFirst(
+									fieldName.substring(0, 1),
+									fieldName.substring(0, 1).toUpperCase());
+							Method methodGet = clazz.getMethod("get" + fieldName);
+
+							Object invoke = methodGet.invoke(object);
+
+							String clazzName = null;
+							Method methodSet = null;
+							if (invoke != null) {
+								clazzName = invoke.getClass().getName().split("_")[0];
+								if (isEntityObj(clazzName)) {
+
+									Class<?> orgClazz = field.getType();
+									String[] split = orgClazz.getName()
+											.split("[.]");
+
+									String className = split[split.length - 1];
+									String idName = orgClazz.getDeclaredFields()[0]
+											.getName();
+
+									idName = idName.replaceFirst(idName.substring(
+											0, 1), idName.substring(0, 1)
+											.toUpperCase());
+									Method method2 = orgClazz.getMethod("get"
+											+ idName);
+
+									String hsql = "from " + className + " where "
+											+ idName;
+									if (orgClazz.getDeclaredFields()[0].getType()
+											.getName().equals("java.lang.String")) {
+										hsql = hsql + "='" + method2.invoke(invoke)
+												+ "'";
+									} else {
+										hsql = hsql + "=" + method2.invoke(invoke);
+									}
+
+									List<?> findByHSQL = dao.findByHSQL(hsql,
+											orgClazz.newInstance());
+
+									methodSet = clazz
+											.getMethod(
+													"set"
+															+ field.getName()
+																	.replaceFirst(
+																			field.getName()
+																					.substring(
+																							0,
+																							1),
+																			field.getName()
+																					.substring(
+																							0,
+																							1)
+																					.toUpperCase()),
+													orgClazz);
+
+									Object find = findByHSQL.get(0);
+
+									Object newFind = field.getType().newInstance();
+									Field[] fields2 = field.getType()
+											.getDeclaredFields();
+									for (Field field2 : fields2) {
+
+										String name = field2.getType().getName();
+
+										Object invoke2 = null;
+										if (!isEntityObj(name)) {
+
+											if (field2.getType().getName()
+													.equals("java.util.Set")) {
+												invoke2 = null;
+												System.out.println("setsdff");
+												Method method = field
+														.getType()
+														.getMethod(
+																"set"
+																		+ field2.getName()
+																				.replaceFirst(
+																						field2.getName()
+																								.substring(
+																										0,
+																										1),
+																						field2.getName()
+																								.substring(
+																										0,
+																										1)
+																								.toUpperCase()),
+																field2.getType());
+												method.invoke(newFind, invoke2);
+											} else {
+												String name2 = field2.getName();
+												name2 = name2.replaceFirst(name2
+														.substring(0, 1), name2
+														.substring(0, 1)
+														.toUpperCase());
+												Method declaredMethod = field
+														.getType()
+														.getDeclaredMethod(
+																"get" + name2);
+
+												invoke2 = declaredMethod
+														.invoke(find);
+												Method declaredMethod2 = field
+														.getType()
+														.getDeclaredMethod(
+																"set" + name2,
+																field2.getType());
+												declaredMethod2.invoke(newFind,
+														invoke2);
+											}
+
+										}
+									}
+									methodSet.invoke(newObject, newFind);
+								} else if (field.getType().getName()
+										.equals("java.util.Set")) {
+
+									Set set = (Set) invoke;
+									invoke = null;
+									System.out.println("set");
+									methodSet = clazz.getMethod("set" + fieldName,
+											field.getType());
+									methodSet.invoke(newObject, invoke);
+								} else {
+									methodSet = clazz.getMethod("set" + fieldName,
+											field.getType());
+									methodSet.invoke(newObject, invoke);
+								}
+							}
+						}
+						newObjs.add((T) newObject);
+					}
+
+					map.put(entry.getKey(), (List<T>) newObjs);
+				}
+			}
+			Gson gson;
+			if (fieldNames == null) {
+				gson = new Gson();
+			} else {
+				// 设置对TbEmployee的策略
+				TargetStrategy ts = null;
+				if (list.size() < 1) {
+					
+					System.out.println();
+				} else {
+					ts = new TargetStrategy(list.get(0).getClass());
+				}
+				ts.setReverse(true);
+				ts.setFields(fieldNames);
+				// 表示仅转换TbEmployee中的employeename和employeeid属性
+				gson = new GsonBuilder().setExclusionStrategies(ts).create();
+			}
+			String json = gson.toJson(map);
+			System.out.println(json);
+			return json;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**
 	 * 判断类是否是实体类
+	 * 
 	 * @param clazzName
 	 * @return
 	 */
 	public static boolean isEntityObj(String clazzName) {
-		
-		String packageName = "ppms.domain";
-		Set<String> classNames = getClassName(packageName, false);
+
 		if (classNames != null) {
 			for (String className : classNames) {
 				System.out.println(className);
-				if(clazzName.equals(className))
+				if (clazzName.equals(className))
 					return true;
 			}
 		}
@@ -225,7 +364,7 @@ public class ToJsonUtil {
 	 */
 	private static Set<String> getClassNameFromDir(String filePath,
 			String packageName, boolean isRecursion) {
-		
+
 		Set<String> className = new HashSet<String>();
 		File file = new File(filePath);
 		File[] files = file.listFiles();
@@ -318,5 +457,4 @@ public class ToJsonUtil {
 		}
 		return classNames;
 	}
-
 }

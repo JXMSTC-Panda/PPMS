@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import ppms.daoimpl.BaseDaoImp;
 import ppms.domain.TbEmployee;
 import ppms.gason.adapter.TargetStrategy;
+import ppms.util.ToJsonUtil;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,6 +43,7 @@ public abstract class AjaxRequestAction extends ActionSupport {
 	protected Class<?> clazz;
 	protected String hsql;
 	protected String key;
+	protected boolean flag;
 	@Autowired
 	@Qualifier("baseDaoImp")
 	private BaseDaoImp dao;
@@ -72,8 +74,14 @@ public abstract class AjaxRequestAction extends ActionSupport {
 	 * 
 	 * @param hsql
 	 */
+	public void setHsql(String hsql, boolean flag) {
+		this.hsql = hsql;
+		this.flag = flag;
+	}
+
 	public void setHsql(String hsql) {
 		this.hsql = hsql;
+		this.flag = false;
 	}
 
 	public void setKey(String key) {
@@ -90,67 +98,8 @@ public abstract class AjaxRequestAction extends ActionSupport {
 			// 查询数据库
 			List<Object> objs = (List<Object>) dao.findByHSQL(hsql,
 					clazz.newInstance());
-
-			// 设置对TbEmployee的策略
-			TargetStrategy ts = new TargetStrategy(clazz);
-			// 表示仅转换TbEmployee中的employeename和employeeid属性
-			ts.setFields(fieldNames);
-			if (fieldNames == null) {
-
-				List<Object> newObjs = new ArrayList<>();
-
-				for (Object object : objs) {
-
-					// 获取Hibnerate实体类的成员变量
-					Field[] fields = clazz.getDeclaredFields();
-
-					for (Field field : fields) {
-
-						String fieldName = field.getName();
-						fieldName = fieldName.replaceFirst(
-								fieldName.substring(0, 1),
-								fieldName.substring(0, 1).toUpperCase());
-						Method methodGet = clazz.getMethod("get" + fieldName);
-
-						Object invoke = methodGet.invoke(object);
-
-						if (isEntityObj(invoke.getClass().getName())) {
-
-							Class<?> orgClazz = field.getType();
-							String[] split = orgClazz.getName().split("[.]");
-
-							String className = split[split.length - 1];
-							String idName = orgClazz.getDeclaredFields()[0]
-									.getName();
-							Method method2 = orgClazz
-									.getMethod("get"
-											+ orgClazz.getDeclaredFields()[0]
-													.getName());
-
-							String hsql = "from " + className + " where "
-									+ idName + method2.invoke(invoke);
-							List<?> findByHSQL = dao.findByHSQL(hsql,
-									orgClazz.newInstance());
-
-							Method methodSet = clazz.getMethod(
-									"set" + field.getName(), orgClazz);
-
-							methodSet.invoke(object, findByHSQL.get(0));
-						}
-					}
-					newObjs.add(object);
-				}
-
-				map.put(key, newObjs);
-			} else {
-				map.put(key, objs);
-			}
-			ts.setReverse(true);
-			Gson gson = new GsonBuilder().setExclusionStrategies(ts).create();
-			String json = gson.toJson(map);
-			response.getWriter().write(json);
-			System.out.println(json);
-
+			map.put("employees", objs);
+			new ToJsonUtil().toJson(map,dao);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -158,17 +107,17 @@ public abstract class AjaxRequestAction extends ActionSupport {
 
 	/**
 	 * 判断类是否是实体类
+	 * 
 	 * @param clazzName
 	 * @return
 	 */
 	public static boolean isEntityObj(String clazzName) {
-		
+
 		String packageName = "ppms.domain";
 		Set<String> classNames = getClassName(packageName, false);
 		if (classNames != null) {
 			for (String className : classNames) {
-				System.out.println(className);
-				if(clazzName.equals(className))
+				if (clazzName.equals(className))
 					return true;
 			}
 		}
@@ -233,7 +182,7 @@ public abstract class AjaxRequestAction extends ActionSupport {
 	 */
 	private static Set<String> getClassNameFromDir(String filePath,
 			String packageName, boolean isRecursion) {
-		
+
 		Set<String> className = new HashSet<String>();
 		File file = new File(filePath);
 		File[] files = file.listFiles();
