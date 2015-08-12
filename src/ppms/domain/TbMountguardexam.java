@@ -3,6 +3,7 @@ package ppms.domain;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import ppms.annotation.ValueChange;
 import ppms.excel.template.BaseExcelObject;
 
 /**
@@ -16,6 +17,8 @@ public class TbMountguardexam extends BaseExcelObject implements java.io.Seriali
 	private String examid;
 	private OrganizationNj organizationNj;
 	private TbEmployee tbEmployee;
+	
+	@ValueChange(key_type="MountGuardType")
 	private String examtype;
 	private Date examdate;
 	private Double examexpire;

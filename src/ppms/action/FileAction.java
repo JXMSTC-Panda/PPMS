@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
+import ppms.daoimpl.BaseDaoImp;
 import ppms.domain.TbInnovation;
 import ppms.excel.CommonExcelParser;
 import ppms.excel.template.IExcelTemp;
@@ -26,6 +28,10 @@ public class FileAction extends ActionSupport {
 	
 	@Autowired
 	private InvocationServiceImp service;
+	
+	@Autowired
+	@Qualifier("baseDaoImp")
+	private BaseDaoImp dao;
  	
 	public String getExpect() {
 		return expect;
@@ -69,11 +75,11 @@ public class FileAction extends ActionSupport {
 			} else {
 
 				
-				List<Object> objs = new CommonExcelParser().toObjs2(file,
+				List<Object> objs = new CommonExcelParser(dao).toObjs2(file,
 						fileFileName);
 				for (Object obj : objs) {
 					
-					service.addInnovation((TbInnovation) obj);
+					dao.saveObject(obj);
 					
 					System.out.println(obj.toString());
 				}
