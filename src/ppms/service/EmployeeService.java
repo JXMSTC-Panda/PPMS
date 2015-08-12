@@ -32,4 +32,14 @@ public interface EmployeeService {
  	 */
 
 	public String findEmployeeForLogin(String useracount,String password);
+	/**
+	 * 
+	* @Title: employeeToJson 
+	* @Description: 员工对象转换为json
+	* @param tbEmployee
+	* @return     
+	* String     
+	* @throws
+	 */
+	public String employeeToJson(TbEmployee tbEmployee);
 }
