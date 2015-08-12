@@ -13,6 +13,12 @@ package ppms.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
+
+import ppms.domain.*;
 import ppms.dao.PerformanceDao;
 import ppms.domain.TbPerformance;
 
@@ -29,15 +35,24 @@ import ppms.domain.TbPerformance;
  * @version    
  *    
  */
-public class MonthPerformanceDaolmp implements PerformanceDao {
+@Repository
+public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao {
 
-	/* (non-Javadoc)
-	 * @see ppms.dao.PerformanceDao#getpPerformances()
+	/**
+	 * 月度绩效查询所有记录
 	 */
 	@Override
 	public List<TbPerformance> getpPerformances() {
-		// TODO Auto-generated method stub
-		return null;
+	
+		Session session = getSession();
+		
+		Criteria cri = session.createCriteria(TbPerformance.class);
+		//条件查询当performancetype为false是为月度绩效
+		//cri.add(Restrictions.eq("performancetype", false));
+		
+		
+		return (List<TbPerformance>) getHibernateTemplate();
+		//return cri.list();
 	}
 
 }
