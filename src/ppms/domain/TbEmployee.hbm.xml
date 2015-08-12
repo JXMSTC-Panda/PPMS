@@ -7,14 +7,16 @@
 <hibernate-mapping>
     <class name="ppms.domain.TbEmployee" table="TB_EMPLOYEE" schema="PPMSUSER">
         <id name="employeeid" type="java.lang.String">
-            <column name="EMPLOYEEID" length="6" />
+            <column name="EMPLOYEEID" length="6" >
+            	<comment>员工编码</comment>
+            </column>
             <generator class="sequence">
 				<param name="sequence">AutoID</param>
 			</generator>
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
             <column name="ORGID" precision="8" scale="0">
-                <comment>所属营业厅编码</comment>
+                <comment>营业厅编码</comment>
             </column>
         </many-to-one>
         <many-to-one name="tbJob" class="ppms.domain.TbJob" fetch="select">
@@ -54,12 +56,12 @@
         </property>
         <property name="orgtype" type="java.lang.String">
             <column name="ORGTYPE" length="6">
-                <comment>营业厅类型 tb_Master.Type=OrgType的key值</comment>
+                <comment>营业厅类型</comment>
             </column>
         </property>
         <property name="sex" type="java.lang.Boolean">
             <column name="SEX" precision="1" scale="0">
-                <comment>性别 (0:男 1:女)</comment>
+                <comment>性别(0:男 1:女)</comment>
             </column>
         </property>
         <property name="birthday" type="java.util.Date">
@@ -79,7 +81,7 @@
         </property>
         <property name="status" type="java.lang.Boolean">
             <column name="STATUS" precision="1" scale="0">
-                <comment>人员状态（0:无效 1:有效)</comment>
+                <comment>人员状态(0:无效 1:有效)</comment>
             </column>
         </property>
         <property name="academicdegree" type="java.lang.String">
@@ -124,12 +126,12 @@
         </property>
         <property name="entertime" type="java.util.Date">
             <column name="ENTERTIME" length="7">
-                <comment>进公司时间</comment>
+                <comment>进公司时间(年月日)</comment>
             </column>
         </property>
         <property name="frontbackflag" type="java.lang.Boolean">
             <column name="FRONTBACKFLAG" precision="1" scale="0">
-                <comment>前后台标识 0:前台 1:后台</comment>
+                <comment>前后台标识(0:前台 1:后台)</comment>
             </column>
         </property>
         <property name="backjobcomment" type="java.lang.String">
@@ -137,19 +139,19 @@
                 <comment>后台岗位说明</comment>
             </column>
         </property>
-        <property name="telecomlevel" type="java.lang.Boolean">
+        <property name="telecomlevel" type="java.lang.Integer">
             <column name="TELECOMLEVEL" precision="1" scale="0">
-                <comment>电信业务营销员技能鉴定水平 (-1:空白 0:初级 1:中级 2:高级)</comment>
+                <comment>电信业务营销员技能鉴定水平(-1:空白 0:初级 1:中级 2:高级)</comment>
             </column>
         </property>
-        <property name="mobilelevel" type="java.lang.Boolean">
+        <property name="mobilelevel" type="java.lang.Integer">
             <column name="MOBILELEVEL" precision="1" scale="0">
-                <comment>移动营业技能鉴定水平 (-1:空白 0:初级 1:中级 2:高级)</comment>
+                <comment>移动营业技能鉴定水平(-1:空白 0:初级 1:中级 2:高级)</comment>
             </column>
         </property>
         <property name="employeetype" type="java.lang.String">
             <column name="EMPLOYEETYPE" length="6">
-                <comment>人员类别</comment>
+                <comment>人员类别(-1:普通员工 0:炼金生 1:储备店长 2:客服代表)</comment>
             </column>
         </property>
         <property name="qualification" type="java.lang.String">

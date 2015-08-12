@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import ppms.annotation.ValueChange;
+
 /**
  * TbEmployee entity. @author MyEclipse Persistence Tools
  */
@@ -38,8 +40,9 @@ public class TbEmployee implements java.io.Serializable {
 	private Date entertime;
 	private Boolean frontbackflag;
 	private String backjobcomment;
-	private Boolean telecomlevel;
-	private Boolean mobilelevel;
+	private Integer telecomlevel;
+	private Integer mobilelevel;
+	@ValueChange(key_type="EmployeeType")
 	private String employeetype;
 	private String qualification;
 	private Date jobstartdate;
@@ -89,7 +92,7 @@ public class TbEmployee implements java.io.Serializable {
 			String addressarea, String address, String mobilenumber,
 			String shortmobilenumber, String schoolname, String specialization,
 			String tel, Date entertime, Boolean frontbackflag,
-			String backjobcomment, Boolean telecomlevel, Boolean mobilelevel,
+			String backjobcomment, Integer telecomlevel, Integer mobilelevel,
 			String employeetype, String qualification, Date jobstartdate,
 			Date operatorpassdate, Short operatorexpire,
 			Boolean operatorvalidflag, Date auditpassdate, Short auditexpire,
@@ -369,19 +372,19 @@ public class TbEmployee implements java.io.Serializable {
 		this.backjobcomment = backjobcomment;
 	}
 
-	public Boolean getTelecomlevel() {
+	public Integer getTelecomlevel() {
 		return this.telecomlevel;
 	}
 
-	public void setTelecomlevel(Boolean telecomlevel) {
+	public void setTelecomlevel(Integer telecomlevel) {
 		this.telecomlevel = telecomlevel;
 	}
 
-	public Boolean getMobilelevel() {
+	public Integer getMobilelevel() {
 		return this.mobilelevel;
 	}
 
-	public void setMobilelevel(Boolean mobilelevel) {
+	public void setMobilelevel(Integer mobilelevel) {
 		this.mobilelevel = mobilelevel;
 	}
 
