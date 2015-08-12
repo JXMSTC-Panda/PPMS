@@ -101,7 +101,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 区域： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbMonthexam.organizationNj.status"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbArea.areadesc"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
