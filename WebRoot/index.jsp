@@ -307,7 +307,7 @@
 					},
 					success : function(data) {
 						if(data == "1"){
-							location.href = "index.tachometer.login.do";
+							location.href = "index.tachometer.do";
 						}
 						else{
 							$.gritter.add({

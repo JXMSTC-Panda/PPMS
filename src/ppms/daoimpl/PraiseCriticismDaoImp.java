@@ -11,7 +11,10 @@ import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbJob;
+import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbPost;
+import ppms.domain.TbSubarea;
+import ppms.domain.TbSubareaorgrelation;
 @Repository
 /*
  * 奖惩管理的dao层*/
@@ -27,6 +30,13 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 			e.printStackTrace();
 		}
 		
+	}
+	/**
+	 * 单条录入营业厅奖惩信息
+	 * @param tbOrgpraisecriticism
+	 */
+	public void businessHallInforSave(Object tbOrgpraisecriticism){
+		getHibernateTemplate().save(tbOrgpraisecriticism);
 	}
 
 	/*
@@ -182,6 +192,21 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		return results;  
 	}
 	/**
+	 * 获取所有同步营业厅的信息
+	 * @return
+	 */
+	 public List<OrganizationNj> findAllOrganizationNjInfor(){
+		 List results=null;
+			try{
+				String hql="from OrganizationNj"; 
+				results=getHibernateTemplate().find(hql);
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{}
+			return results;  
+	 }
+	/**
 	 * 获取所有的员工奖惩信息
 	 * @return
 	 */
@@ -196,5 +221,52 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		}finally{}
 		return results; 
 	}
+	/**
+	 * 获取所有的营业厅奖惩信息
+	 * @return
+	 */
+	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(){
+		List results=null;
+		try{
+			String hql="from TbOrgpraisecriticism"; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		return results; 
+	}
+	/**
+	 * 根据营业厅编号查询片区与营业厅关系
+	 * @param orgId
+	 * @return
+	 */
+	public List<TbSubareaorgrelation> findSubareaorgrelationInfor(int orgId){
+		List results=null;
+		try{
+			String hql="from TbSubareaorgrelation where organizationNj="+orgId+""; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		return results; 
+	}
 
+	/**
+	 * 根据片区编码查询片区名称
+	 * @param subareaId
+	 * @return
+	 */
+	public List<TbSubarea> findSubareaInfor(BigDecimal subareaId){
+		List results=null;
+		try{
+			String hql="from TbSubarea where subareaid="+subareaId+""; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		return results;
+	}
 }

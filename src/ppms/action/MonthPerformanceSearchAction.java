@@ -91,7 +91,7 @@ public class MonthPerformanceSearchAction extends ActionSupport {
 		List<TbPerformance> performances=null;
 		try{
 		
-			performances=service.getTbPerformances();
+			performances=service.getPerformances();
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

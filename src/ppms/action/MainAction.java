@@ -63,7 +63,7 @@ public class MainAction extends ActionSupport {
 	* @time 2015年8月11日19:59:35   
 	* @throws
 	 */
-	@Action(value = "index.tachometer.login", results = {  
+	@Action(value = "index.tachometer", results = {  
 		    @Result(name = "success", location = "/WEB-INF/content/page/tachometer.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String login(){

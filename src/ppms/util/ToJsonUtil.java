@@ -26,6 +26,13 @@ import ppms.gason.adapter.TargetStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * json转换类
+ * @author shark
+ * @update 2015下午6:29:38
+ * @function
+ *
+ */
 public class ToJsonUtil {
 
 	/**
