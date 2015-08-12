@@ -7,7 +7,6 @@ import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 
 public interface PraiseCriticismService {
-<<<<<<< HEAD
 	/**
 	 * 单条录入员工奖惩信息
 	 * @param tbEmployeepraisecriticism
@@ -18,19 +17,16 @@ public interface PraiseCriticismService {
 	 * @param key
 	 * @return
 	 */
-=======
 	
 	/*
 	 *动态下拉框，根据奖惩类型，动态变化奖惩级别
 	 **/
->>>>>>> 5b3167661c0cff3dc4643649624e47f41266728d
 	public List<TbEmployeepraisecriticism> findLevel(int  key);
 	
 	/*
 	 * 获取数据可中所有的员工信息
 	 * */
 	public List<TbEmployee> findAllEmployeeInfor();
-<<<<<<< HEAD
 	/**
 	 * 根据员工编号获取数据可中所有的员工信息
 	 * @param employeeId
@@ -75,6 +71,5 @@ public interface PraiseCriticismService {
 	 * @return
 	 */
 	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor();
-=======
->>>>>>> 5b3167661c0cff3dc4643649624e47f41266728d
+
 }
