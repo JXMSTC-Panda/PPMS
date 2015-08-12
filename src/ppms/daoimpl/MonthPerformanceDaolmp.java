@@ -18,6 +18,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import ppms.domain.*;
 import ppms.dao.PerformanceDao;
 import ppms.domain.TbPerformance;
@@ -51,8 +53,27 @@ public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao
 		//cri.add(Restrictions.eq("performancetype", false));
 		
 		
-		return (List<TbPerformance>) getHibernateTemplate();
+		return getHibernateTemplate().findByExample(new TbPerformance());
 		//return cri.list();
+	}
+
+	/* (non-Javadoc)
+	 * @see ppms.dao.PerformanceDao#getOrganizationNjs()
+	 */
+	@Override
+	public List<OrganizationNj> getOrganizationNjs() {
+		// TODO Auto-generated method stub
+		return getHibernateTemplate().findByExample(new OrganizationNj());
+	}
+
+	/* (non-Javadoc)
+	 * @see ppms.dao.PerformanceDao#getEmployees()
+	 */
+	@Override
+	public List<TbEmployee> getEmployees() {
+		// TODO Auto-generated method stub
+		return getHibernateTemplate().findByExample(new TbEmployee());
+		
 	}
 
 }
