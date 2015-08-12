@@ -11,7 +11,10 @@ import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbJob;
+import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbPost;
+import ppms.domain.TbSubarea;
+import ppms.domain.TbSubareaorgrelation;
 @Repository
 /*
  * 奖惩管理的dao层*/
@@ -27,6 +30,13 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 			e.printStackTrace();
 		}
 		
+	}
+	/**
+	 * 单条录入营业厅奖惩信息
+	 * @param tbOrgpraisecriticism
+	 */
+	public void businessHallInforSave(Object tbOrgpraisecriticism){
+		getHibernateTemplate().save(tbOrgpraisecriticism);
 	}
 
 	/*
@@ -56,7 +66,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	public List<TbEmployee> findAllEmployeeInfor(){
 		List results=null;
 		try{
-			String hql="from TbEmployee"; //定义hql语句,获取TbEployee表中所有的数据
+			String hql="from TbEmployee where employeeid!='000000'"; //定义hql语句,获取TbEployee表中所有的数据
 			results=getHibernateTemplate().find(hql);//执行find方法
 			
 		}catch(Exception e){
@@ -140,7 +150,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	public List<COrganizationNj> findCOrganizationNjInfor(int orgid){
 		List results=null;
 		try{
-			String hql="from COrganizationNj where organizationNj='"+orgid+"'"; 
+			String hql="from COrganizationNj where organizationNj="+orgid+""; 
 			results=getHibernateTemplate().find(hql);
 			
 		}catch(Exception e){
@@ -157,7 +167,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	public List<TbArea> findAreaDesc(BigDecimal areaId){
 		List results=null;
 		try{
-			String hql="from TbArea where areaid='"+areaId+"'"; 
+			String hql="from TbArea where areaid="+areaId+""; 
 			results=getHibernateTemplate().find(hql);
 			
 		}catch(Exception e){
@@ -173,7 +183,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	public List<OrganizationNj> findOrganizationNjInfor(int orgId){
 		List results=null;
 		try{
-			String hql="from OrganizationNj where orgid='"+orgId+"'"; 
+			String hql="from OrganizationNj where orgid="+orgId+""; 
 			results=getHibernateTemplate().find(hql);
 			
 		}catch(Exception e){
@@ -181,6 +191,21 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		}finally{}
 		return results;  
 	}
+	/**
+	 * 获取所有同步营业厅的信息
+	 * @return
+	 */
+	 public List<OrganizationNj> findAllOrganizationNjInfor(){
+		 List results=null;
+			try{
+				String hql="from OrganizationNj"; 
+				results=getHibernateTemplate().find(hql);
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{}
+			return results;  
+	 }
 	/**
 	 * 获取所有的员工奖惩信息
 	 * @return
@@ -196,5 +221,52 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		}finally{}
 		return results; 
 	}
+	/**
+	 * 获取所有的营业厅奖惩信息
+	 * @return
+	 */
+	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(){
+		List results=null;
+		try{
+			String hql="from TbOrgpraisecriticism"; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		return results; 
+	}
+	/**
+	 * 根据营业厅编号查询片区与营业厅关系
+	 * @param orgId
+	 * @return
+	 */
+	public List<TbSubareaorgrelation> findSubareaorgrelationInfor(int orgId){
+		List results=null;
+		try{
+			String hql="from TbSubareaorgrelation where organizationNj="+orgId+""; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		return results; 
+	}
 
+	/**
+	 * 根据片区编码查询片区名称
+	 * @param subareaId
+	 * @return
+	 */
+	public List<TbSubarea> findSubareaInfor(BigDecimal subareaId){
+		List results=null;
+		try{
+			String hql="from TbSubarea where subareaid="+subareaId+""; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		return results;
+	}
 }

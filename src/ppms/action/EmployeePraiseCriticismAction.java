@@ -1,4 +1,5 @@
 package ppms.action;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -20,26 +21,18 @@ import ppms.serviceimpl.PraiseCriticismServiceImp;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class EmployeePraiseCriticismAction extends ActionSupport{
-
-
-
+public class EmployeePraiseCriticismAction extends ActionSupport {
 
 	private TbEmployeepraisecriticism tbEmployeepraisecriticism; // 创建员工奖惩信息的对象tbEmployeepraisecriticism
-	
 
 	@Autowired
 	private PraiseCriticismServiceImp praiseCriticism;// 创建Service的对象praiseCriticism
-
-
 
 	public TbEmployeepraisecriticism getTbEmployeepraisecriticism() {// tbEmployeepraisecriticism的get方法
 		return tbEmployeepraisecriticism;
 	}
 
-
-	public EmployeePraiseCriticismAction(){
-		
+	public EmployeePraiseCriticismAction() {
 
 		System.out.println("create EmployeePraiseCriticismAction");
 	}
@@ -81,17 +74,23 @@ public class EmployeePraiseCriticismAction extends ActionSupport{
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleEmployee.jsp") })
 	// 返回值为error时跳转的页面路径
 	public String skipSelectSingle() {
+		System.out.println("ccz");
 		ActionContext actionContext = ActionContext.getContext();// 创建ActionContext的对象并调用getContext()方法
 		Map<String, Object> request = (Map) actionContext.get("request");// 获取出request对象
 		try {
+			
 			System.out.println("create skipSelectSingle");
+			// 执行findAllEmployeeInfor方法，查询所有员工信息
 			List<TbEmployee> employeeResults = praiseCriticism
-					.findAllEmployeeInfor();// 执行findAllEmployeeInfor方法，查询所有员工信息
-			List<TbEmployee> emploeesInfo = new ArrayList<TbEmployee>();// 新建一个TbEmployee类型的空的list，名称为emploeesInfo
+					.findAllEmployeeInfor();
+			// 新建一个TbEmployee类型的空的list，名称为emploeesInfo
+			List<TbEmployee> emploeesInfo = new ArrayList<TbEmployee>();
+			
 			for (TbEmployee tbEmployee : employeeResults) {// 遍历
+				OrganizationNj organizationNj = tbEmployee.getOrganizationNj();
+				Integer orgid = organizationNj.getOrgid();
 				List<OrganizationNj> organizationNjResults = praiseCriticism
-						.findOrganizationNjInfor(tbEmployee.getOrganizationNj()
-								.getOrgid());// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
+						.findOrganizationNjInfor(orgid);// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
 				tbEmployee.setOrganizationNj(organizationNjResults.get(0));// 将同步营业厅信息set进对象organizationNj中
 				List<TbPost> posts = praiseCriticism.findPostName(tbEmployee
 						.getTbPost().getPostid());// 执行findPostName方法，根据岗职编号获取岗职信息
@@ -106,7 +105,9 @@ public class EmployeePraiseCriticismAction extends ActionSupport{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("success");
 		return "success";
+
 	}
 
 	@Action(value = "selectEmployeeSkipSingle", results = {// action的名称为selectEmployeeSkipSingle
@@ -129,20 +130,20 @@ public class EmployeePraiseCriticismAction extends ActionSupport{
 			for (TbEmployee tbEmployee : employeeInfor) { // 遍历
 				List<COrganizationNj> cOrganizationNjInfor = praiseCriticism
 						.findCOrganizationNjInfor(tbEmployee
-								.getOrganizationNj().getOrgid());//执行findCOrganizationNjInfor，根据营业厅编号获取营业厅区域关系表中的信息
-				for (COrganizationNj cOrganizationNj : cOrganizationNjInfor) {//遍历
-					System.out.println(cOrganizationNj.getTbArea().getAreaid());//打印区域的编号
+								.getOrganizationNj().getOrgid());// 执行findCOrganizationNjInfor，根据营业厅编号获取营业厅区域关系表中的信息
+				for (COrganizationNj cOrganizationNj : cOrganizationNjInfor) {// 遍历
+					System.out.println(cOrganizationNj.getTbArea().getAreaid());// 打印区域的编号
 					List<TbArea> areaInfor = praiseCriticism
 							.findAreaDesc(cOrganizationNj.getTbArea()
-									.getAreaid());//执行findAreaDesc方法，根据区域编号获取区域名称
+									.getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
 					String areadesc = areaInfor.get(0).getAreadesc();
-					System.out.println(areadesc);//打印区域名称
-					request.put("areadesc", areadesc);//将区域名称使用put方法存放
+					System.out.println(areadesc);// 打印区域名称
+					request.put("areadesc", areadesc);// 将区域名称使用put方法存放
 				}
 				List<OrganizationNj> organizationNjResults = praiseCriticism
 						.findOrganizationNjInfor(tbEmployee.getOrganizationNj()
-								.getOrgid());//执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
-				tbEmployee.setOrganizationNj(organizationNjResults.get(0));//将同步营业厅信息set进对象organizationNj中
+								.getOrgid());// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
+				tbEmployee.setOrganizationNj(organizationNjResults.get(0));// 将同步营业厅信息set进对象organizationNj中
 				List<TbPost> posts = praiseCriticism.findPostName(tbEmployee
 						.getTbPost().getPostid()); // 调用findPostName()方法
 				TbPost tbPost = posts.get(0); // 获取岗职集合中的第一个也是唯一一个值
@@ -158,7 +159,6 @@ public class EmployeePraiseCriticismAction extends ActionSupport{
 			e.printStackTrace();
 		}
 
- 
 		return "success";
 	}
 
