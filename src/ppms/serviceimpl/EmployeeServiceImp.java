@@ -73,17 +73,21 @@ public class EmployeeServiceImp implements EmployeeService {
 		}
 		//返回与运算结果，返回1表示成功，返回0则失败
 		String loginResultString = String.valueOf(sizeAccount|sizeIdNum);
-		Gson gson = new Gson();
-		//loginResultString = gson.toJson(employeeByAccountList);
+		//准备返回用户json信息
+		employeeToJson(employeeByAccountList);
 		System.out.println(loginResultString);
 		return loginResultString;
 	}
 
 	@Override
-	public String employeeToJson(TbEmployee tbEmployee) {
+	public String employeeToJson(List<TbEmployee> tbEmployee) {
 		// TODO Auto-generated method stub		
+		Gson gson = new Gson();
+		List<TbEmployee> tbEmployeeList = new ArrayList<TbEmployee>();
+		for(TbEmployee tbEmployees : tbEmployee){
+			tbEmployeeList.add(tbEmployees);
+			System.out.println(gson.toJson(tbEmployeeList));
+		}
 		return null;
 	}
-	
-
 }

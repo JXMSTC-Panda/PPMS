@@ -48,7 +48,7 @@
         </property>
         <property name="type" type="java.lang.Byte">
             <column name="TYPE" precision="2" scale="0">
-                <comment>类别</comment>
+                <comment>营业厅类型</comment>
             </column>
         </property>
         <property name="region_Id" type="java.lang.Integer">

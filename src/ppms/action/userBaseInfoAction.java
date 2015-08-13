@@ -118,7 +118,9 @@ public class userBaseInfoAction extends ActionSupport implements InitPage {
 			map.put("jobs", tbJobs);
 			map.put("employees", tbEmployees);
 			break;
-		
+		case "userInfo.userBaseInfoSearch":
+			List<TbEmployee> employees =service.getTbEmployees();
+			map.put("employees", employees);
 		default:
 			break;
 		}	
