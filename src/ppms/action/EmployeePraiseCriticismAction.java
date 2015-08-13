@@ -1,14 +1,20 @@
 package ppms.action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
+import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import ppms.action.interfaces.InitPage;
 import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
@@ -16,12 +22,14 @@ import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbJob;
 import ppms.domain.TbPost;
+import ppms.domain.TbRole;
 import ppms.serviceimpl.PraiseCriticismServiceImp;
+import ppms.serviceimpl.userBaseInfoServiceImp;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class EmployeePraiseCriticismAction extends ActionSupport {
+public class EmployeePraiseCriticismAction extends ActionSupport implements InitPage{
 
 	private TbEmployeepraisecriticism tbEmployeepraisecriticism; // 创建员工奖惩信息的对象tbEmployeepraisecriticism
 
@@ -78,14 +86,14 @@ public class EmployeePraiseCriticismAction extends ActionSupport {
 		ActionContext actionContext = ActionContext.getContext();// 创建ActionContext的对象并调用getContext()方法
 		Map<String, Object> request = (Map) actionContext.get("request");// 获取出request对象
 		try {
-			
+
 			System.out.println("create skipSelectSingle");
 			// 执行findAllEmployeeInfor方法，查询所有员工信息
 			List<TbEmployee> employeeResults = praiseCriticism
 					.findAllEmployeeInfor();
 			// 新建一个TbEmployee类型的空的list，名称为emploeesInfo
 			List<TbEmployee> emploeesInfo = new ArrayList<TbEmployee>();
-			
+
 			for (TbEmployee tbEmployee : employeeResults) {// 遍历
 				OrganizationNj organizationNj = tbEmployee.getOrganizationNj();
 				Integer orgid = organizationNj.getOrgid();
@@ -110,7 +118,7 @@ public class EmployeePraiseCriticismAction extends ActionSupport {
 
 	}
 
-	@Action(value = "selectEmployeeSkipSingle", results = {// action的名称为selectEmployeeSkipSingle
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSingle", results = {// action的名称为selectEmployeeSkipSingle
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismSingle.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	public String selectEmployeeSkipSingle() {
@@ -160,6 +168,33 @@ public class EmployeePraiseCriticismAction extends ActionSupport {
 		}
 
 		return "success";
+	}
+
+	public Map<String, List<T>> initPage(ServletContext servletContext,String url) {
+		// 实例化map
+		Map map = new HashMap();
+
+		PraiseCriticismServiceImp service = WebApplicationContextUtils
+				.getWebApplicationContext(servletContext).getBean(
+						PraiseCriticismServiceImp.class);
+
+		url= "praiseCriticism.employeePraiseCriticismSearch";
+			List<TbEmployeepraisecriticism> employeepraisecriticismInfor=service.findEmployeepraisecriticismInfor();
+			List<TbEmployeepraisecriticism> employeepraisecriticismsInfor=new ArrayList<TbEmployeepraisecriticism>();
+			for (TbEmployeepraisecriticism tbEmployeepraisecriticism : employeepraisecriticismInfor) {
+				List<OrganizationNj> organizationNjResults = service
+						.findOrganizationNjInfor(tbEmployeepraisecriticism.getOrganizationNj()
+								.getOrgid());// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
+				tbEmployeepraisecriticism.setOrganizationNj(organizationNjResults.get(0));// 将同步营业厅信息set进对象organizationNj中
+				
+				List<TbEmployee> tbEmployeeResults = service.findEmployeeInfor(tbEmployeepraisecriticism.getTbEmployee().getEmployeeid());
+				tbEmployeepraisecriticism.setTbEmployee(tbEmployeeResults.get(0));
+				employeepraisecriticismsInfor.add(tbEmployeepraisecriticism);
+			}
+			System.out.println(employeepraisecriticismInfor);
+			map.put("employeepraisecriticismsInfor",employeepraisecriticismsInfor);
+			
+		return map;
 	}
 
 }
