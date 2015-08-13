@@ -30,8 +30,6 @@ public class AuthorityAction extends ActionSupport{
 	/** 
 	* @Fields serialVersionUID : 1.3.0
 	*/ 
-	
-	private static final long serialVersionUID = 1L;
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
 	@Autowired
@@ -57,19 +55,21 @@ public class AuthorityAction extends ActionSupport{
 		// 创建ActionContext的对象并调用getContext()方法
 		ActionContext actionContext = ActionContext.getContext();
 		// 获取出request对象
-		Map<String, Object> request = (Map) actionContext.get("request");
+		Map<String, Object> map = (Map) actionContext.get("request");
 		try {
 			
 			System.out.println("create skipSelectSingle");
 			List<TbRole> tbRoles = new ArrayList<TbRole>();
 			tbRoles = authoritySrviceImp.findAllRole();
-			request.put("tbRoles", tbRoles);
-			
+			map.put("tbRoleslist",tbRoles);
+			return "success";
 		} catch (Exception e) {
-			e.printStackTrace();
+			
+			//e.printStackTrace();
+			System.out.println("faild");
+			return "faild";
 		}
-		System.out.println("success");
-		return "success";
+		
 	}
 
 }
