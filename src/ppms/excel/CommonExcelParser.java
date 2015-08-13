@@ -339,6 +339,7 @@ public class CommonExcelParser {
 						clazzList = map.get(clazzName);
 						Integer integer;
 						String type_name;
+						Boolean performanceType;
 						// 实例化一个Excel对应的对象
 						object = clazz.newInstance();
 						Class tempClazz = clazz;
@@ -349,6 +350,15 @@ public class CommonExcelParser {
 							// 当前实例赋对应的值
 							// 获取成员变量名
 
+							//判断有无“?”来判断是否是月度和年度的区别
+							if(eos.getFieldName().contains("?")){
+								
+								String[] split = eos.getFieldName().split("[?]");
+								performanceType= Boolean.parseBoolean(split[split.length-1]);
+								eos.setFieldName(split[0]);
+								
+								tempClazz.getMethod("setPerformancetype",Boolean.class).invoke(object, performanceType);
+							}
 							if (eos.getFieldName().contains(":")) {
 								tempClazz = Class.forName(eos.getFieldName()
 										.split(":")[0]);
@@ -583,7 +593,7 @@ public class CommonExcelParser {
 			String fileName, HSSFRow ro) {
 
 		if (parserCount < 2) {
-			int t = 2;
+			int t = 1;
 			// 获取Hibernate映射文件的位置
 			String path = CommonExcelParser.class
 					.getClassLoader()
@@ -688,8 +698,20 @@ public class CommonExcelParser {
 							// 遍历第一列表头
 							for (int i = 0; ro.getCell(i) != null; i++) {
 
+								
 								// 获取单元格的值
 								String value = changeCellToString(ro.getCell(i));
+								
+								if(commentText.equals("月份/年份")&&value.equals("年份")){
+									
+									value=commentText;
+									eos.setFieldName(eos.getFieldName()+"?1");
+								}
+								if(commentText.equals("月份/年份")&&value.equals("月份")){
+								
+									value=commentText;
+									eos.setFieldName(eos.getFieldName()+"?0");
+								}
 								// 如果实体类的注释和表头相等，即找到了实体类成员变量对应Excel的列
 								if (commentText.equals(value)) {
 
@@ -700,6 +722,7 @@ public class CommonExcelParser {
 									// 中断遍历
 									break;
 								}
+								
 							}
 							// 遍历完了，没找到匹配
 							if (isNot) {
