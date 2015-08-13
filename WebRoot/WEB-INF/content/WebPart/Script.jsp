@@ -35,22 +35,22 @@
 			var pageInfo = url.split("/")[url.split("/").length - 1];
 			var page = pageInfo.split(".");
 			//第一次登录是进入控制台，tachometer
-			if(page[2].equals("tachometer")){
-				$("#tachometer").addClass("active open");
+			if (page[1] == "tachometer") {
+				$("#tachometer").addClass("active");
 			}
 			//其他A.B.C/A.B.C.D.do
-			else if (page.length >= 3) {
+			else if (page.length >= 3 && page[2] != "tachmeter") {
 				$("#" + page[0]).addClass("active open");
 				if (page[1] == "null") {
 				} else {
 					$("#" + page[1]).addClass("active open");
 				}
 				$("#" + page[2]).addClass("active");
-			}else{
+			} else {
 				alert("注意url命名规则！");
-				window.location=${pageContext.request.contextPath};
+				window.location = "http://localhost:8080/PPMS";
 			}
-			
+
 		});
 	</script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>

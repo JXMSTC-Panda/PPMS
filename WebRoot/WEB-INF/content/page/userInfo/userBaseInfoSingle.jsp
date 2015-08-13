@@ -194,7 +194,7 @@
 															<option value=""></option>	
 															<c:forEach items="${ requestScope.orgs}" var="org">
 																<option value="${org.orgid}">
-																	<c:out value="${org.orgName }"></c:out>
+																	<c:out value="${org.org_Name }"></c:out>
 																</option>
 															</c:forEach>													
 														</select>
@@ -347,7 +347,6 @@
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 毕业学校: </label>
 
-													<div class="col-sm-9">
 														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.schoolname">
 													</div>
 												</div>

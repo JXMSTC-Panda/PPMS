@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+ <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -88,14 +89,49 @@
 									人员基本信息查询
 								</small>
 							</h1>
-									</div>
-								<table id="grid-table"></table>
+								</div>
+								<div class="col-xs-12">
+										<table id="simple-table" class="table table-striped table-bordered table-hover">
+										<thead>
+												<tr>
+													<th class="center">
+														<label class="pos-rel">
+															<input class="ace" type="checkbox">
+															<span class="lbl"></span>
+														</label>
+													</th>
+													<th style="text-align: center;">序号</th>
+													<th style="text-align: center;">身份证号</th>
+													<th class="hidden-480" style="text-align: center;">姓名</th>
 
-								<div id="grid-pager"></div>
+													<th style="text-align: center;">
+														性别
+													</th>
+													<th class="hidden-480" style="text-align: center;">出生年月</th>
 
-								<script type="text/javascript">
-									var $path_base = "..";//in Ace demo this will be used for editurl parameter
-								</script>
+													<th style="text-align: center;">操作</th>
+												</tr>
+											</thead>
+											<tbody>
+											<c:forEach items="${requestScope.employees}" var="employee">
+											<tr>
+													<td>1</td>
+													<td>${employee.employeecode}</td>
+
+													<td>${employee.idnumber}</td>
+													<td>${employee.employeename}</td>
+													<td>${employee.sex}</td>
+													<td>${employee.birthday}</td>
+
+													<td>操作</td>
+
+													
+												</tr>
+											</c:forEach>
+											</tbody>
+										
+										
+										</table>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>

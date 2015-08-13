@@ -44,6 +44,52 @@ public interface PerformanceService {
 	* @throws 
 	
 	*/ 
-	public List<TbPerformance> getTbPerformances();
+
+	public List<TbPerformance>  getPerformances();
 	
+	/** 
+	
+	* @方法名: getOrganizationNjs 
+	
+	* @描述: 在绩效表中查找营业厅表 service
+	
+	* @param @return    设定文件
+	
+	* @return List<OrganizationNj>    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public List<OrganizationNj> getOrganizationNjs();
+	
+	/** 
+	
+	* @方法名: getEmployees 
+	
+	* @描述: 绩效表中员工表 service
+	
+	* @param @return    设定文件
+	
+	* @return List<TbEmployee>    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public List<TbEmployee> getEmployees();
+	
+	/** 
+	
+	* @方法名: addPerformance 
+	
+	* @描述: 添加Performance绩效记录，成功返回true否则返回false
+	
+	* @param @param tbPerformance
+	* @param @return    设定文件
+	
+	* @return boolean    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public boolean addPerformance(TbPerformance performance);
 }
