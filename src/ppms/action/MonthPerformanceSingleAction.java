@@ -137,12 +137,15 @@ public class MonthPerformanceSingleAction extends ActionSupport implements
 		return map;
 	}
 
-	@Action(value = "performacesEmployeeSelect", results = {// action的名称为skipEmployeeSelectSingle
+	
+
+	@Action(value = "performacesEmployeeSelect", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/selectSingleEmployee.jsp"),// 返回值为success时跳转的页面路径
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleEmployee.jsp") })
+	
 	// 返回值为error时跳转的页面路径
 	public String performacesEmployeeSelect() {
-		System.out.println("ccz");
+		System.out.println("------>>>>>>ccz");
 		ActionContext actionContext = ActionContext.getContext();// 创建ActionContext的对象并调用getContext()方法
 		Map<String, Object> request = (Map) actionContext.get("request");// 获取出request对象
 		try {

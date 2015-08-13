@@ -72,26 +72,35 @@ public class EmployeePraiseCriticismAction extends ActionSupport {
 	@Action(value = "skipEmployeeSelectSingle", results = {// action的名称为skipEmployeeSelectSingle
 			@Result(name = "success", location = "/WEB-INF/content/page/selectSingleEmployee.jsp"),// 返回值为success时跳转的页面路径
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleEmployee.jsp") })
+	
 	// 返回值为error时跳转的页面路径
 	public String skipSelectSingle() {
 		System.out.println("ccz");
+		
 		ActionContext actionContext = ActionContext.getContext();// 创建ActionContext的对象并调用getContext()方法
 		Map<String, Object> request = (Map) actionContext.get("request");// 获取出request对象
 		try {
-			
+
 			System.out.println("create skipSelectSingle");
+			
 			// 执行findAllEmployeeInfor方法，查询所有员工信息
 			List<TbEmployee> employeeResults = praiseCriticism
 					.findAllEmployeeInfor();
+			
 			// 新建一个TbEmployee类型的空的list，名称为emploeesInfo
 			List<TbEmployee> emploeesInfo = new ArrayList<TbEmployee>();
-			
+
 			for (TbEmployee tbEmployee : employeeResults) {// 遍历
+				
 				OrganizationNj organizationNj = tbEmployee.getOrganizationNj();
+				
 				Integer orgid = organizationNj.getOrgid();
+				
 				List<OrganizationNj> organizationNjResults = praiseCriticism
 						.findOrganizationNjInfor(orgid);// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
+				
 				tbEmployee.setOrganizationNj(organizationNjResults.get(0));// 将同步营业厅信息set进对象organizationNj中
+				
 				List<TbPost> posts = praiseCriticism.findPostName(tbEmployee
 						.getTbPost().getPostid());// 执行findPostName方法，根据岗职编号获取岗职信息
 				TbPost tbPost = posts.get(0);
