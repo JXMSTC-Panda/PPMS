@@ -28,6 +28,7 @@ import ppms.daoimpl.BaseDaoImp;
 import ppms.domain.TbMaster;
 import ppms.excel.template.BaseExcelObject;
 import ppms.excel.template.IExcelTemp;
+import ppms.exception.ErrorInfo;
 import ppms.exception.ExcelParserException;
 
 /**
@@ -56,12 +57,15 @@ public class CommonExcelParser {
 	private List<Object> cache;
 
 	private boolean remarkFlag;
+	
+	private ExcelParserException exception;
 
-	public CommonExcelParser(BaseDaoImp dao) {
+	public CommonExcelParser(BaseDaoImp dao,ExcelParserException exception) {
 		// 实例化实体类成员变量和列下标的配置对象的集合
 		list = new ListForParser<ExcelObjStruct>();
 		cache = new ArrayList<Object>();
 		this.dao = dao;
+		this.exception=exception;
 	}
 
 	/**
@@ -103,7 +107,7 @@ public class CommonExcelParser {
 				String fileName = clazz.getName().replace("ppms.domain.", "");
 
 			} else {
-				new ExcelParserException(templateFilePath + "下载的模板已不存在");
+				exception.addErrorInfo(new ErrorInfo(1,templateFilePath+"不存在了"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -287,7 +291,8 @@ public class CommonExcelParser {
 		Map<String, ListForParser<ExcelObjStruct>> map = null;
 
 		if (file == null) {
-			throw new ExcelParserException("文件上传失败");
+			exception.addErrorInfo(new ErrorInfo("文件对象为空"));
+			throw new ExcelParserException("文件对象为空");
 		} else {
 			try {
 				// 设置PIO初始化对象
@@ -485,6 +490,7 @@ public class CommonExcelParser {
 											.invoke(inCache);
 									if (!inCacheValue.equals(value)) {
 										System.out.println("信息不一致");
+										exception.addErrorInfo(new ErrorInfo(j,"行"+value+"和对应的数据不一致，不存在，请仔细检查"));
 									}
 								} else {
 									String[] split2 = tempClazz.getName()
@@ -506,6 +512,8 @@ public class CommonExcelParser {
 											: null;
 
 									if (value == null) {
+										
+										exception.addErrorInfo(new ErrorInfo(j,"行"+valueTemp+"不存在，请仔细检查"));
 										System.out.println(valueTemp+" 不存在，请检查");
 									}
 									System.out.println(value);
@@ -805,6 +813,11 @@ public class CommonExcelParser {
 		return list;
 	}
 
+	/**
+	 * 建议是否要用该值去查数据库
+	 * @param clazz
+	 * @return
+	 */
 	private Object isInCache(Class clazz) {
 
 		int i = 0;
