@@ -194,7 +194,7 @@
 															<option value=""></option>	
 															<c:forEach items="${ requestScope.orgs}" var="org">
 																<option value="${org.orgid}">
-																	<c:out value="${org.orgName }"></c:out>
+																	<c:out value="${org.org_Name }"></c:out>
 																</option>
 															</c:forEach>													
 														</select>

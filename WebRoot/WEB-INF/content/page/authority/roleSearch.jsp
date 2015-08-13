@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -115,26 +116,26 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${tbRole}" var="tbRoles"
+										<c:forEach items="${requestScope.tbRoleslist}" var="trl"
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
 														type="checkbox" class="ace" /> <span class="lbl"></span>
 												</label></td>
 
-												<td><a href="#">${tbRoles.roleid}</a></td>
-												<td>${tbRoles.rolename}</td>
-												<td class="hidden-480">${tbRoles.administratorflag}</td>
-												<td>${tbRoles.rolecreatetime()}</td>
+												<td><a href="#">${trl.roleid}</a></td>
+												<td>${trl.rolename}</td>
+												<td class="hidden-480">${tbRolesList.administratorflag}</td>
+												<td>${trl.createdtime}</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
 														<a class="blue" href="javascript:void(0)"
-															name="${tbRoles.roleid}" onclick="GetDetail(this)">
+															name="${trl.getRoleid()}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
 															class="green" href="javascript:void(0)"
-															name="${tbRoles.roleid}" onclick="Modify(this)"> <i
+															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId=${tbRoles.roleid}"> <i
+															href="ClassDelete?classId=${trl.getRoleid()}"> <i
 															class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
@@ -148,21 +149,21 @@
 															<ul
 																class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 																<li><a href="javascript:void(0)"
-																	name="${tbRoles.roleid}" onclick="GetDetail(this)"
+																	name="${trl.getRoleid()}" onclick="GetDetail(this)"
 																	class="tooltip-info" data-rel="tooltip" title="View">
 																		<span class="blue"> <i
 																			class="ace-icon fa fa-search-plus bigger-120"></i> </span> </a>
 																</li>
 
 																<li><a href="javascript:void(0)"
-																	name="${tbRoles.roleid}" onclick="Modify(this)"
+																	name="${trl.getRoleid()}" onclick="Modify(this)"
 																	class="tooltip-success" data-rel="tooltip" title="Edit">
 																		<span class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																	</span> </a></li>
 
 																<li><a
-																	href="ClassDelete?classId=${tbRoles.roleid}"
+																	href="ClassDelete?classId=${trl.getRoleid()}"
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
 																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
@@ -185,12 +186,12 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="../assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
-		src="../assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
-		src="../assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		jQuery(function($) {
@@ -232,7 +233,7 @@
 			var tableTools_obj = new $.fn.dataTable.TableTools(
 					oTable1,
 					{
-						"sSwfPath" : "../assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
+						"sSwfPath" : "${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
 
 						"sRowSelector" : "td:not(:last-child)",
 						"sRowSelect" : "multi",

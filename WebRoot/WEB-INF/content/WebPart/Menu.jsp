@@ -80,7 +80,7 @@
 
 					<ul class="submenu">
 						<li id="userBaseInfoSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.userBase.userBaseInfoSingle.do">
+							href="${pageContext.request.contextPath}/resource/userInfo.userBase.userBaseInfoSingle">
 								<i class="menu-icon fa fa-caret-right"></i>人员基本信息单条录入 </a> <b
 							class="arrow"></b>
 						</li>

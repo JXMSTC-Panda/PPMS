@@ -1,27 +1,19 @@
 package ppms.action;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import ppms.action.interfaces.InitPage;
-import ppms.domain.OrganizationNj;
 import ppms.domain.TbRole;
 import ppms.serviceimpl.AuthoritySrviceImp;
-import ppms.serviceimpl.EmployeeServiceImp;
-import ppms.serviceimpl.InvocationServiceImp;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -35,6 +27,9 @@ import com.opensymphony.xwork2.ActionSupport;
 */
 public class AuthorityAction extends ActionSupport{
 	
+	/** 
+	* @Fields serialVersionUID : 1.3.0
+	*/ 
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
 	@Autowired
@@ -57,16 +52,24 @@ public class AuthorityAction extends ActionSupport{
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String roleSearch(){
 		
-		List<TbRole> tbRoles = new ArrayList<TbRole>();
-		tbRoles = authoritySrviceImp.findAllRole();
-		
-		//System.out.println(tbRoles.get(0).getRolename() + "1");
-		//request.setAttribute("tbRole", tbRoles);
+		// 创建ActionContext的对象并调用getContext()方法
 		ActionContext actionContext = ActionContext.getContext();
-		@SuppressWarnings("unchecked")
-		Map<String, Object> request = (Map<String, Object>)actionContext.get("request");
-		request.put("tbRole", tbRoles);
-		return "success";
+		// 获取出request对象
+		Map<String, Object> map = (Map) actionContext.get("request");
+		try {
+			
+			System.out.println("create skipSelectSingle");
+			List<TbRole> tbRoles = new ArrayList<TbRole>();
+			tbRoles = authoritySrviceImp.findAllRole();
+			map.put("tbRoleslist",tbRoles);
+			return "success";
+		} catch (Exception e) {
+			
+			//e.printStackTrace();
+			System.out.println("faild");
+			return "faild";
+		}
+		
 	}
 
 }
