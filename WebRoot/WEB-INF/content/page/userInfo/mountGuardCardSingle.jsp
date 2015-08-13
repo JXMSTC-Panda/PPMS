@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -17,45 +18,148 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="../../../../assets/css/bootstrap.css" />
-<link rel="stylesheet" href="../../../../assets/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-<link rel="stylesheet" href="../../../../assets/css/jquery-ui.custom.css" />
-<link rel="stylesheet" href="../../../../assets/css/chosen.css" />
-<link rel="stylesheet" href="../../../../assets/css/datepicker.css" />
 <link rel="stylesheet"
-	href="../../../../assets/css/bootstrap-timepicker.css" />
-<link rel="stylesheet" href="../../../../assets/css/daterangepicker.css" />
+	href="${pageContext.request.contextPath}/assets/css/jquery-ui.custom.css" />
 <link rel="stylesheet"
-	href="../../../../assets/css/bootstrap-datetimepicker.css" />
-<link rel="stylesheet" href="../../../../assets/css/colorpicker.css" />
+	href="${pageContext.request.contextPath}/assets/css/chosen.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/datepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap-timepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/daterangepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap-datetimepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/colorpicker.css" />
 <!-- text fonts -->
-<link rel="stylesheet" href="../../../../assets/css/ace-fonts.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="../../../../assets/css/ace.css"
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
-			<link rel="stylesheet" href="../../../../assets/css/ace-part2.css" class="ace-main-stylesheet" />
+			<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-part2.css" class="ace-main-stylesheet" />
 		<![endif]-->
 
 <!--[if lte IE 9]>
-		  <link rel="stylesheet" href="../../../../assets/css/ace-ie.css" />
+		  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-ie.css" />
 		<![endif]-->
 
-<!-- inline styles related to this page --> 
+<!-- inline styles related to this page -->
 
 <!-- ace settings handler -->
-<script src="../../../../assets/js/ace-extra.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/ace-extra.js"></script>
 
 <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 <!--[if lte IE 8]>
-		<script src="../../../../assets/js/html5shiv.js"></script>
-		<script src="../../../../assets/js/respond.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
+
+<!-- <script type="text/javascript">
+	function ajaxForEmployee(obj) {
+		//alert(obj.innerHTML);
+		//document.getElementsByName("innovation.organizationNjByOrgid.orgid")[0].value = obj.value;
+		if (window.XMLHttpRequest) {
+			xmlhttp = new XMLHttpRequest();
+		} else {
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+
+			var select = document.getElementById("form-field-select-employee")
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				alert("aa");
+				//				var obj = JSON.parse(xmlhttp.responseText);
+				//				var employees = obj.employees;
+				//				for ( var i = 0; i < employees.length; i++) {
+				//
+				//				var objOption = document.createElement("OPTION");
+				//			objOption.value = employees[i].employeeid;
+				//		objOption.text = employees[i].employeename;
+				//	select.options.add(objOption);
+				//}
+			}
+			// else {
+			//	var objOption = document.createElement("OPTION");
+			//	objOption.text = "无选项";
+			//	objOption.value = "";
+			//}
+		}
+
+		xmlhttp.open("GET", "userInfo.mountGuardCard.mountGuardCardSingle.ajaxSearchOrg.do?orgid=" + obj.value, true);
+		xmlhttp.send();
+	}
+</script> -->
+
+
+<script src="${pageContext.request.contextPath}/assets/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#OrgNameLabel").mouseover(function(){
+			alert("aa");
+		});
+	});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#OrgName").change(function() {
+			alert("change");
+			
+			$.ajax({
+					cache : false,
+					type : "GET",
+					url : "userInfo.mountGuardCard.mountGuardCardSingle.ajaxSearchOrg.do",
+					data :  $('#form_Insert').serialize(),
+					async : false,
+					error : function(request) {
+						
+						alert("error");
+					},
+					success : function(data) {
+						alert(data);					
+					}
+			});
+		});
+	});
+</script>
+<script type="text/javascript">
+	function show(){
+	var AreaName =document.getElementById("AreaName").value;
+	var OrgId=document.getElementById("OrgId").value;
+	var OrgName =document.getElementById("OrgName").value;
+	var EmployeeName =document.getElementById("EmployeeName").value;
+	var EmployeeId =document.getElementById("EmployeeId").value;
+	var Id =document.getElementById("Id").value;
+	var TrainTime = document.getElementById("TrainTime").value;
+	var SelectedDetail =document.getElementById("SelectedDetail").value;
+	var VaildTime =document.getElementById("VaildTime").value;
+	var ExamGrade = document.getElementById("ExamGrade").value;
+	alert(
+		AreaName+"\n"+
+		OrgId+"\n"+
+		OrgName+"\n"+
+		EmployeeName+"\n"+
+		EmployeeId+"\n"+
+		Id+"\n"+
+		TrainTime+"\n"+
+		SelectedDetail+"\n"+
+		VaildTime+"\n"+
+		ExamGrade
+	);
+	}
+</script>
 </head>
 
 <body class="no-skin">
@@ -106,16 +210,18 @@
 								<div class="row">
 									<div class="col-xs-12">
 										<!-- PAGE CONTENT BEGINS -->
-										<form class="form-horizontal" role="form">
+										<form class="form-horizontal" role="form"
+											action="userInfo.mountGuardCard.mountGuardCardSingle.mgcs.do" id="form_Insert">
 											<!-- #section:elements.form -->
 
+										
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"
 													for="form-input-readonly"> 区域： </label>
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="" /> <span
+														id="AreaName" value="" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -125,29 +231,43 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="" /> <span
+														id="OrgId" value="" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 营业厅名称： </label>
+													for="form-input-readonly" id="OrgNameLabel"> 营业厅名称： </label>
 
 												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="" /> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
+													<div class="col-xs-10 col-sm-5">
+														<select onchange="ajaxForEmployee(this)" name="OrgName"
+															class="chosen-select form-control " id="OrgName"
+															data-placeholder="选择营业厅">
+															<option value="0"></option>
+															<option value="aa">aa</option>
+															<option value="bb">bb</option>
+															<c:forEach items="${ requestScope.orgs}" var="org">
+																<option value="${org.orgid }">
+																	<c:out value="${org.orgName }"></c:out>
+																</option>
+															</c:forEach>
+														</select>
+													</div>
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 姓名： </label>
-
+													for="form-input-readonly"> 选择员工： </label>
 												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="" /> <span
-														class="help-inline col-xs-12 col-sm-7">
-														<button class="btn btn-info">选择员工</button> </span>
+													<div class="col-xs-10 col-sm-5">
+														<select class="chosen-select form-control"
+															id="EmployeeName" data-placeholder="选择员工">
+
+															<option value="9527">周星驰</option>
+														</select>
+													</div>
+
 												</div>
 											</div>
 
@@ -160,7 +280,7 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="" /> <span
+														id="EmployeeId" value="" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -171,7 +291,7 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="" /> <span
+														id="Id" value="" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -184,9 +304,8 @@
 
 												<div class="col-sm-9">
 													<div class="input-group col-xs-10 col-sm-5">
-														<input class="form-control date-picker "
-															id="id-date-picker-1" type="text"
-															data-date-format="yyyy-mm-dd" /> <span
+														<input class="form-control date-picker " id="TrainTime"
+															type="text" data-date-format="yyyy-mm-dd" /> <span
 															class="input-group-addon"> <i
 															class="fa fa-calendar bigger-110"></i> </span>
 													</div>
@@ -198,7 +317,7 @@
 													for="form-field-1"> 进阶内容： </label>
 
 												<div class="col-sm-9">
-													<select class="col-xs-10 col-sm-5" id="form-field-select-1">
+													<select class="col-xs-10 col-sm-5" id="SelectedDetail">
 
 														<option value="1">进阶熟练营业员</option>
 														<option value="2">进阶账务稽核</option>
@@ -215,7 +334,7 @@
 													for="form-field-1"> 考核有效时间： </label>
 
 												<div class="col-sm-9">
-													<input type="text" id="form-field-1" placeholder="Grade"
+													<input type="text" id="VaildTime" placeholder="Grade"
 														class="col-xs-10 col-sm-5" /> <label
 														class=" control-label no-padding-left" for="form-field-1">
 														个月 </label>
@@ -228,19 +347,18 @@
 													for="form-field-1"> 考试分数： </label>
 
 												<div class="col-sm-9">
-													<input type="text" id="form-field-1" placeholder="Grade"
+													<input type="text" id="ExamGrade" placeholder="Grade"
 														class="col-xs-10 col-sm-5" /> <label
 														class=" control-label no-padding-left" for="form-field-1">
 														分 </label>
 												</div>
+												<label onclick="show()"> 取数据测试 </label>
 
 											</div>
 											<div class="clearfix form-actions">
 												<div class="col-md-offset-3 col-md-9">
-													<button class="btn btn-info" type="button">
-														<i class="ace-icon fa fa-check bigger-110"></i> Submit
-													</button>
 
+													<input class="btn btn-info" type="submit" value="Submit">
 													&nbsp; &nbsp; &nbsp;
 													<button class="btn" type="reset">
 														<i class="ace-icon fa fa-undo bigger-110"></i> Reset
@@ -266,21 +384,36 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../../../../assets/js/jquery-ui.custom.js"></script>
-	<script src="../../../../assets/js/jquery.ui.touch-punch.js"></script>
-	<script src="../../../../assets/js/chosen.jquery.js"></script>
-	<script src="../../../../assets/js/fuelux/fuelux.spinner.js"></script>
-	<script src="../../../../assets/js/date-time/bootstrap-datepicker.js"></script>
-	<script src="../../../../assets/js/date-time/bootstrap-timepicker.js"></script>
-	<script src="../../../../assets/js/date-time/moment.js"></script>
-	<script src="../../../../assets/js/date-time/daterangepicker.js"></script>
-	<script src="../../../../assets/js/date-time/bootstrap-datetimepicker.js"></script>
-	<script src="../../../../assets/js/bootstrap-colorpicker.js"></script>
-	<script src="../../../../assets/js/jquery.knob.js"></script>
-	<script src="../../../../assets/js/jquery.autosize.js"></script>
-	<script src="../../../../assets/js/jquery.inputlimiter.1.3.1.js"></script>
-	<script src="../../../../assets/js/jquery.maskedinput.js"></script>
-	<script src="../../../../assets/js/bootstrap-tag.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery-ui.custom.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery.ui.touch-punch.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/chosen.jquery.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/fuelux/fuelux.spinner.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-timepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/moment.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/daterangepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datetimepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap-colorpicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery.knob.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery.autosize.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery.inputlimiter.1.3.1.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery.maskedinput.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap-tag.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		jQuery(function($) {
