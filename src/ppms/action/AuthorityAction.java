@@ -33,56 +33,79 @@ public class AuthorityAction extends ActionSupport{
 	*/ 
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
-	public String userAccountString;
-	public String userPasswordString;
-	public HttpSession session;
+	protected String tbEmployeeID;
+	protected HttpSession sessionAuthority;
 	
 	@Autowired
 	private AuthoritySrviceImp authoritySrviceImp;
 	
+	/**
+	 * AuthorityAction构造函数
+	 */
 	public AuthorityAction() {
+		
 		response = ServletActionContext.getResponse();
 		request = ServletActionContext.getRequest();
-		session = request.getSession(true);
-		userAccountString = (String) session.getAttribute("userAccount");
-		userPasswordString = (String) session.getAttribute("passWord");
+		
+		sessionAuthority = request.getSession(true);
+		tbEmployeeID = (String) sessionAuthority.getAttribute("tbEmployeeIDSession");
+		request.setAttribute("tbEmployeeIDSession", tbEmployeeID);
 	}
 	
+	/** 
+	* @Title: roleSingleResult 
+	* @Description: 角色添加
+	* @return     
+	* String     
+	* @throws 
+	*/
 	@Action(value ="authority.null.roleSingle.roleAdd", results = {  
 	        @Result(name = "success", location = "/WEB-INF/content/page/authority/roleSingleResult.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String roleSingleResult(){
-		return "success";
+		if(tbEmployeeID != null)
+			return "success";
+		else {
+			return "faild";
+		}
 	}
 	
+	/** 
+	* @Title: roleSearch 
+	* @Description: roleSearch页面初始化
+	* @return     
+	* String     
+	* @throws 
+	*/
 	@Action(value ="authority.null.roleSearch", results = {  
 	        @Result(name = "success", location = "/WEB-INF/content/page/authority/roleSearch.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String roleSearch(){
 		
-		// 创建ActionContext的对象并调用getContext()方法
-		ActionContext actionContext = ActionContext.getContext();
-		// 获取出request对象
-		Map<String, Object> map = (Map) actionContext.get("request");
-		try {
+		try {	
 			
-			System.out.println("create skipSelectSingle");
 			List<TbRole> tbRoles = new ArrayList<TbRole>();
+			//查询所有角色
 			tbRoles = authoritySrviceImp.findAllRole();
-			map.put("tbRoleslist",tbRoles);
-			return "success";
+			request.setAttribute("tbRoleslist", tbRoles);
+			if(tbEmployeeID != null)
+				return "success";
+			else {
+				return "faild";
+			}
+			
 		} catch (Exception e) {
 			
-			//e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("faild");
-			return "faild";
+			return "faild";			
 		}
 		
 	}
 	/**
 	 * 
 	* @Title: login 
-	* @Description: 登录验证成功后跳转到控制台
+	* @Description: 登录验证成功后跳转到控制台页面
 	* @return String    
 	* @author QiuLinQian
 	* @time 2015年8月11日19:59:35   
@@ -92,8 +115,11 @@ public class AuthorityAction extends ActionSupport{
 		    @Result(name = "success", location = "/WEB-INF/content/page/tachometer.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String login(){
-		System.out.println(userAccountString);
-		return "success";
+		if(tbEmployeeID != null)
+			return "success";
+		else {
+			return "faild";
+		}
 	}
 
 }

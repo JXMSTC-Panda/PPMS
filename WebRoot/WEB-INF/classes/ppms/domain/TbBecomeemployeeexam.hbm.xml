@@ -8,7 +8,9 @@
     <class name="ppms.domain.TbBecomeemployeeexam" table="TB_BECOMEEMPLOYEEEXAM" schema="PPMSUSER">
         <id name="examid" type="java.lang.String">
             <column name="EXAMID" length="10" />
-            <generator class="sequence" />
+             <generator class="sequence">
+				<param name="sequence">AutoID</param>
+			</generator>
         </id>
         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" cascade="save-update,persist" fetch="select">
             <column name="ORGID" precision="8" scale="0">
@@ -22,7 +24,7 @@
         </many-to-one>
         <property name="examdate" type="java.util.Date">
             <column name="EXAMDATE" length="7">
-                <comment>日期（年月）</comment>
+                <comment>日期(年月)</comment>
             </column>
         </property>
         <property name="examscore" type="java.lang.Double">
@@ -32,12 +34,12 @@
         </property>
         <property name="chineseprintcount" type="java.lang.Short">
             <column name="CHINESEPRINTCOUNT" precision="3" scale="0">
-                <comment>汉字</comment>
+                <comment>汉字(个/分钟)</comment>
             </column>
         </property>
         <property name="numberprintcount" type="java.lang.Short">
             <column name="NUMBERPRINTCOUNT" precision="3" scale="0">
-                <comment>数字</comment>
+                <comment>数字(个/分钟)</comment>
             </column>
         </property>
         <property name="remark" type="java.lang.String">
