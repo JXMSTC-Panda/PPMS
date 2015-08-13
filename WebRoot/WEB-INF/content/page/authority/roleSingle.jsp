@@ -91,7 +91,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<form class="from_authority" role="form"
+							<form class="form-horizontal" role="form"
 								action="roleSingleResult.do">
 
 								<div class="form-group">
@@ -99,7 +99,7 @@
 										for="form-field-1">权限角色：</label>
 
 									<div class="col-sm-9">
-										<input id="authRolename" type="text" id="form-field-1" placeholder="UserName"
+										<input type="text" id="form-field-1" placeholder="UserName"
 											class="col-xs-10 col-sm-5" />
 									</div>
 									<label class="col-sm-3 control-label no-padding-right"
@@ -158,7 +158,7 @@
 				}
 			}
 		};
-		var zNodes = [ {
+		/* var zNodes = [ {
 			id : 1,
 			pId : 0,
 			name : "权限管理",
@@ -745,7 +745,7 @@
 			id : 912,
 			pId : 91,
 			name : "系统设定"
-		}, ];
+		}, ]; */
 
 		function disabledNode(e) {
 			var zTree = $.fn.zTree.getZTreeObj("treeDemo"), disabled = e.data.disabled, nodes = zTree
@@ -766,31 +766,28 @@
 			}
 		}
 
-		$(document).ready(function() {
-			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
-			$("#disabledTrue").bind("click", {disabled : true}, disabledNode);
-			$("#disabledFalse").bind("click", {disabled : false}, disabledNode);
-			$("#btnTest").click(function() {
-				var treeObj = $.fn.zTree.getZTreeObj("treeDemo"),
-				nodes = treeObj.getCheckedNodes(true);
-				$.ajax({
-					cache : false,
-					type : "POST",
-					url : "authority.null.roleSingle.init.do",
-					data : $('#form_login').serialize(),
-					async : false,
-					error : function(request) {
-						alert(request + "0")
-					},
-					success : function(data) {
-						alert(data + "1");
-					}
-				});
-				alert(JSON.stringify(nodes));
+		$(document).ready(function(){
+			$.ajax({
+				cache : false,
+				type : "POST",
+				url : "authority.null.roleSingle.init.do",
+				data : $('#form_login').serialize(),
+				async : false,
+				error : function(request) {
+					alert(request + "0");
+				},
+				success : function(zNodes) {
+					alert(JSON.stringify(zNodes) + "1");
+					$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+					$("#disabledTrue").bind("click", {disabled : true}, disabledNode);
+					$("#disabledFalse").bind("click", {disabled : false}, disabledNode);
+					//var treeObj = $.fn.zTree.getZTreeObj("treeDemo"),
+					//nodes = treeObj.getCheckedNodes(true);
+					alert(JSON.stringify(zNodes));
+				}
 			});
 		});
 	//-->
 	</script>
 </body>
 </html>
-<!-- http://localhost:8080/QQL1133Attend/index.jsp -->

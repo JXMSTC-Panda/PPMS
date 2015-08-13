@@ -24,7 +24,7 @@
         </many-to-one>
         <property name="examdate" type="java.util.Date">
             <column name="EXAMDATE" length="7">
-                <comment>考核时间(年月日)</comment>
+                <comment>考试时间(年月日)</comment>
             </column>
         </property>
         <property name="examscore" type="java.lang.Double">

@@ -28,11 +28,21 @@ public interface AuthorityService {
 	
 	/** 
 	* @Title: findSystemFunctionJson 
-	* @Description: TODO
-	* @param tbRoles
+	* @Description: 查询系统功能json
+	* @param column(列名数组)
 	* @return     
 	* String     
 	* @throws 
 	*/
-	public String findSystemFunctionJson(List<TbSystemfunction> tbSystemfunctions);
+
+	public String findSystemFunctionJson(String[] column);
+	
+	/** 
+	* @Title: findAllSystemfunctions 
+	* @Description: 查询系统功能list
+	* @return     
+	* List<TbSystemfunction>     
+	* @throws 
+	*/
+	public List<TbSystemfunction> findAllSystemfunctions();
 }

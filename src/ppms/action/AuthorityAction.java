@@ -2,7 +2,6 @@ package ppms.action;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,28 +15,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ppms.domain.TbRole;
 import ppms.serviceimpl.AuthoritySrviceImp;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
-* <p>Title: authorityAction</p>
+* <p>Title: AuthorityAction</p>
 * <p>Description: </p>
-* <p>Company: </p> 
-* @author QiuLinQian
+* <p>Company:（c）版权所有 2015 NCHU.QQL</p> 
+* <p>Version:</p>
+* @author TyurinTsien
 * @date 2015-8-7上午8:40:48
 */
 public class AuthorityAction extends ActionSupport{
 	
 	/** 
-	* @Fields serialVersionUID : 1.3.0
+	* @Fields serialVersionUID : 2.1.0
+	* @date 2015年8月13日19:21:44
+	* @author QiuLinQian
 	*/ 
+	
+	@Autowired
+	AuthoritySrviceImp authoritySrviceImp;
+	
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
 	protected String tbEmployeeID;
 	protected HttpSession sessionAuthority;
-	
-	@Autowired
-	private AuthoritySrviceImp authoritySrviceImp;
 	
 	/**
 	 * AuthorityAction构造函数
@@ -52,6 +54,20 @@ public class AuthorityAction extends ActionSupport{
 		request.setAttribute("tbEmployeeIDSession", tbEmployeeID);
 	}
 	
+	/** 
+	* @Title: roleSingleInit 
+	* @Description: 角色添加页面初始化ztree(ajax)
+	* @return     
+	* String     
+	* @throws 
+	*/
+	@Action(value="authority.null.roleSingle.init")
+	public String roleSingleInit(){
+		//String systemFunctionString = authoritySrviceImp.findSystemFunctionJson(null);
+		//System.out.println(systemFunctionString);
+		//return systemFunctionString;
+		return null;
+	}
 	/** 
 	* @Title: roleSingleResult 
 	* @Description: 角色添加
