@@ -88,7 +88,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<p>
 								<span>这是控制台，作为登录后的首页！</span>
-								<span>${sessionScope.userAccount}</span>
+								<span>${sessionScope.tbEmployeeIDSession}</span>
 							</p>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
