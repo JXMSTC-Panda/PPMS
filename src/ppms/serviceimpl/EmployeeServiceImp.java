@@ -85,8 +85,9 @@ public class EmployeeServiceImp implements EmployeeService {
 		Gson gson = new Gson();
 		List<TbEmployee> tbEmployeeList = new ArrayList<TbEmployee>();
 		for(TbEmployee tbEmployees : tbEmployee){
+			tbEmployees.setEmployeeid(tbEmployee.get(0).getEmployeeid());
 			tbEmployeeList.add(tbEmployees);
-			System.out.println(gson.toJson(tbEmployeeList));
+			//System.out.println(gson.toJson(tbEmployeeList));
 		}
 		return null;
 	}
