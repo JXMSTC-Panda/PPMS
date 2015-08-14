@@ -20,4 +20,6 @@ public interface InvocationService {
 	 * @return
 	 */
 	public boolean addInnovation(TbInnovation innovation);
+	
+	public List<TbInnovation> findAllInnovations();
 }
