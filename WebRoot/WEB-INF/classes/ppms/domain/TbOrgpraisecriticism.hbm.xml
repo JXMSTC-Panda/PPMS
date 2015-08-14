@@ -19,7 +19,7 @@
         </many-to-one>
         <property name="praisecriticismtype" type="java.lang.String">
             <column name="PRAISECRITICISMTYPE" length="6">
-                <comment>类型</comment>
+                <comment>奖惩类型</comment>
             </column>
         </property>
         <property name="cause" type="java.lang.String">
@@ -29,7 +29,7 @@
         </property>
         <property name="praisecriticismdate" type="java.util.Date">
             <column name="PRAISECRITICISMDATE" length="7">
-                <comment>时间（年月日）</comment>
+                <comment>时间(年月日)</comment>
             </column>
         </property>
         <property name="praisecriticismlevel" type="java.lang.String">

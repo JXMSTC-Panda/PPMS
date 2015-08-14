@@ -3,6 +3,7 @@ package ppms.service;
 import java.util.List;
 
 import ppms.domain.TbRole;
+import ppms.domain.TbSystemfunction;
 
 /**
 * <p>Title: AuthorityService</p>
@@ -23,4 +24,25 @@ public interface AuthorityService {
 	* @throws 
 	*/
 	public List<TbRole> findAllRole();
+	
+	
+	/** 
+	* @Title: findSystemFunctionJson 
+	* @Description: 查询系统功能json
+	* @param column(列名数组)
+	* @return     
+	* String     
+	* @throws 
+	*/
+
+	public String findSystemFunctionJson(String[] column);
+	
+	/** 
+	* @Title: findAllSystemfunctions 
+	* @Description: 查询系统功能list
+	* @return     
+	* List<TbSystemfunction>     
+	* @throws 
+	*/
+	public List<TbSystemfunction> findAllSystemfunctions();
 }
