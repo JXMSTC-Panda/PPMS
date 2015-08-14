@@ -91,7 +91,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<form class="form-horizontal" role="form"
+							<form class="from_authority" role="form"
 								action="roleSingleResult.do">
 
 								<div class="form-group">
@@ -99,7 +99,7 @@
 										for="form-field-1">权限角色：</label>
 
 									<div class="col-sm-9">
-										<input type="text" id="form-field-1" placeholder="UserName"
+										<input id="authRolename" type="text" id="form-field-1" placeholder="UserName"
 											class="col-xs-10 col-sm-5" />
 									</div>
 									<label class="col-sm-3 control-label no-padding-right"
@@ -773,13 +773,19 @@
 			$("#btnTest").click(function() {
 				var treeObj = $.fn.zTree.getZTreeObj("treeDemo"),
 				nodes = treeObj.getCheckedNodes(true);
-				/* v = "";
-				alert(nodes);
-				for ( var i = 0; i < nodes.length; i++) {
-					v += nodes[i].name + ",";
-					alert(nodes[i].id); //获取选中节点的值
-				}
-				alert(v); */
+				$.ajax({
+					cache : false,
+					type : "POST",
+					url : "authority.null.roleSingle.init.do",
+					data : $('#form_login').serialize(),
+					async : false,
+					error : function(request) {
+						alert(request + "0")
+					},
+					success : function(data) {
+						alert(data + "1");
+					}
+				});
 				alert(JSON.stringify(nodes));
 			});
 		});

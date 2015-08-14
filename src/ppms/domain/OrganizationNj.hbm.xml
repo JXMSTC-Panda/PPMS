@@ -7,7 +7,9 @@
 <hibernate-mapping>
     <class name="ppms.domain.OrganizationNj" table="ORGANIZATION_NJ" schema="PPMSUSER">
         <id name="orgid" type="java.lang.Integer">
-            <column name="ORGID" precision="8" scale="0" />
+            <column name="ORGID" precision="8" scale="0" >
+            	<comment>营业厅编码</comment>
+            </column>
             <generator class="assigned" />
         </id>
         <property name="org_Name" type="java.lang.String">
@@ -40,7 +42,7 @@
         </property>
         <property name="contact_Tel" type="java.lang.String">
             <column name="CONTACT_TEL" length="40">
-                <comment>联系电话</comment>
+                <comment>营业厅联系电话</comment>
             </column>
         </property>
         <property name="user_County" type="java.math.BigDecimal">
