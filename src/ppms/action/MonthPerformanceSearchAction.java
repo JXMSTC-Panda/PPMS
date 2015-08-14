@@ -80,7 +80,7 @@ public class MonthPerformanceSearchAction extends ActionSupport {
 	/**
 	 * 点击菜单页面“月度绩效查询”处理初始化数据
 	 * 
-	 * @return
+	 * @return                                             
 	 * @throws IOException 
 	 */
 	@Action(value = "/resource/performance.month.monthPerformanceSearch", results = {
