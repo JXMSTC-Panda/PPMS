@@ -99,7 +99,9 @@ public class MonthPerformanceServicelmp implements PerformanceService {
 	 */
 	@Override
 	public boolean addPerformance(TbPerformance performance) {
-		// TODO Auto-generated method stub
+		if(dao.saveObject(performance)){
+			return true;
+		}
 		return false;
 	}
 

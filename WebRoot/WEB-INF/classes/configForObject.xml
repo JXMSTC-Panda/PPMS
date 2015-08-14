@@ -43,6 +43,23 @@
 		</object>
 	</excel>
 	
+		<excel name="月度绩效批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbPerformance</class_name>
+		</object>
+	</excel>
+	<excel name="年度绩效批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbPerformance</class_name>
+		</object>
+	</excel>
+	
+	<excel name="员工奖惩信息批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbEmployeepraisecriticism</class_name>
+		</object>
+	</excel>
+	
 		<!--  -->
 	<excel name="新员工考核成绩批量导入模板.xls">
 		<object>
@@ -60,21 +77,7 @@
 			<class_name>ppms.domain.TbOrgpraisecriticism</class_name>
 		</object>
 	</excel>
-	<excel name="员工奖惩信息批量导入模板.xls">
-		<object>
-			<class_name>ppms.domain.TbEmployeepraisecriticism</class_name>
-		</object>
-	</excel>
-	<excel name="月度绩效批量导入模板.xls">
-		<object>
-			<class_name>ppms.domain.TbPerformance</class_name>
-		</object>
-	</excel>
-	<excel name="年度绩效批量导入模板.xls">
-		<object>
-			<class_name>ppms.domain.TbPerformance</class_name>
-		</object>
-	</excel>
+	
 	
 	<excel name="月度考试批量导入模板.xls">
 		<object>
