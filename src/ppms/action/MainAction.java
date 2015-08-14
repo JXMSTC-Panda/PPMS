@@ -18,7 +18,15 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import ppms.serviceimpl.*;
 
-public class MainAction extends ActionSupport {
+/**
+* <p>Title: MainAction</p>
+* <p>Description: 主要实现登录验证</p>
+* <p>Company:（c）版权所有 2015 NCHU.QQL</p> 
+* <p>Version:</p>
+* @author TyurinTsien
+* @date 2015-8-13下午2:49:34
+*/
+public class MainAction extends ActionSupport{
 
 	@Autowired
 	EmployeeServiceImp employeeServiceImp;
@@ -29,9 +37,11 @@ public class MainAction extends ActionSupport {
 	public String userPasswordString;
 	private String ajaxState;
 
-	public MainAction() {
+	/**
+	 * MainAction构造函数
+	 */
+	public MainAction(){
 
-		System.out.println("loginMainAction");
 		response = ServletActionContext.getResponse();
 		request = ServletActionContext.getRequest();
 		userAccountString = request.getParameter("userAccount");
@@ -41,27 +51,29 @@ public class MainAction extends ActionSupport {
 
 	/**
 	 * 
-	 * @Title: login
+	 * @Title: loginCheck
 	 * @Description: 登录验证Ajax
 	 * @throws IOException
 	 * @return void
 	 * @author QiuLinQian
 	 * @time 2015年8月11日16:23:57
 	 * @throws
-	 */
+	 */ 
 	@Action(value = "login")
 	public void loginCheck() throws IOException {
 
 		// 登录验证
-		ajaxState = employeeServiceImp.findEmployeeForLogin(userAccountString,
+		ajaxState = employeeServiceImp.loginCheck(userAccountString,
 				userPasswordString);
 		if (ajaxState.equals("1")) {
-
+			//验证通过记录session
 			HttpSession session = request.getSession(true);
-			session.setAttribute("userAccount", userAccountString);
-			session.setAttribute("userPassword", userPasswordString);
-			response.getWriter().write(ajaxState);
+			//session记录员工ID
+			session.setAttribute("tbEmployeeIDSession", 
+					employeeServiceImp.findEmployeeID(userAccountString, userPasswordString));
 		}
+		System.out.println(request.getRequestURI());
+		response.getWriter().write(ajaxState);
 	}
 
 }

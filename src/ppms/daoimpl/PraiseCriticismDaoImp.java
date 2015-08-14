@@ -11,6 +11,7 @@ import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbJob;
+import ppms.domain.TbMaster;
 import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbPost;
 import ppms.domain.TbSubarea;
@@ -38,9 +39,11 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	public void businessHallInforSave(Object tbOrgpraisecriticism){
 		getHibernateTemplate().save(tbOrgpraisecriticism);
 	}
-
-	/*
-	 *动态下拉框，根据奖惩类型，动态变化奖惩级别*/
+	/**
+	 * 动态下拉框，根据奖惩类型，动态变化奖惩级别
+	 * @param key
+	 * @return
+	 */
 	public List<TbEmployeepraisecriticism> findLevel(int key){
 		List find=null;
 		String type=null;
@@ -59,10 +62,95 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		}finally{}
 		return find; //返回查询到的value
 	}
-	
-	/*
-	 * 获取数据可中所有的员工信息
-	 * */
+	/**
+	 * 根据key值查询营业厅奖惩类型
+	 * @param key
+	 * @return
+	 */
+	public List<TbMaster> findOrgPraiseCriticismType(String key){
+		
+		List results=null;
+		try{
+			String hql="from TbMaster tbmaster where tbmaster.type='OrgPraiseCriticismType' and  tbmaster.key='"+key+"'" ; //定义hql语句,获取TbEployee表中所有的数据
+			results=getHibernateTemplate().find(hql);//执行find方法
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		
+		return results;  //返回结果
+	}
+	/**
+	 * 根据奖惩类型typeKey值和奖惩级别levelKey查询营业厅奖惩级别
+	 * @param typeKey
+	 * @param levelKey
+	 * @return
+	 */
+	public List<TbMaster> findOrgPraiseCriticismLevel(String typeKey,String levelKey){
+		List find=null;
+		String type=null;
+		int key=Integer.parseInt(typeKey);
+		if(key==0001)
+			type="OrgPraiseLevel"; //表彰级别的type
+		else 
+			if(key==0002)
+			type="OrgCriticismLevel";//惩罚级别的type
+		try{
+			String hql="from TbMaster tbmaster where tbmaster.type='"+type+"' and  tbmaster.key='"+levelKey+"'";  
+			//hql语句，根据type查询value
+			find=getHibernateTemplate().find(hql);
+			//执行find方法
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		return find; //返回查询到的value
+	}
+	/**
+	 * 根据key值查询员工奖惩类型
+	 * @param key
+	 * @return
+	 */
+	public List<TbMaster> findEmployeePraiseCriticismType(String key){
+		
+		List results=null;
+		try{
+			String hql="from TbMaster where type='EmployeePraiseCriticismType' and value='"+key+"'" ; 
+			results=getHibernateTemplate().find(hql);//执行find方法
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		
+		return results;  //返回结果
+	}
+	/**
+	 * 根据奖惩类型typeKey值和奖惩级别levelKey查询员工奖惩级别
+	 * @param typeKey
+	 * @param levelKey
+	 * @return
+	 */
+	public List<TbMaster> findEmployeePraiseCriticismLevel(String typeKey,String levelKey){
+		List find=null;
+		String type=null;
+		int key=Integer.parseInt(typeKey);
+		if(key==1)
+			type="EmployeePraiseLevel"; //表彰级别的type
+		else if(key==2)
+			type="EmployeeCriticismLevel";//惩罚级别的type
+		try{
+			String hql="from TbMaster where type='"+type+"'and key='"+levelKey+"'";  
+			//hql语句，根据type查询value
+			find=getHibernateTemplate().find(hql);
+			//执行find方法
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		return find; //返回查询到的value
+	}
+	/**
+	 *  获取数据可中所有的员工信息
+	 * @return
+	 */
 	public List<TbEmployee> findAllEmployeeInfor(){
 		List results=null;
 		try{

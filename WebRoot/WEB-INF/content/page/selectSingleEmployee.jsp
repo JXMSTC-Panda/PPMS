@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</table>
 				</form>
 				<br />
-				<form name="form2" action="selectEmployeeSkipSingle.do" method="post" >
+				<form name="form2" action="praiseCriticism.employee.employeePraiseCriticismSingle.do" method="post" >
 				<table cellpadding="0" cellspacing="0" class="tablelist" align="center">
 					<tr>
 						<th>&nbsp;</th>

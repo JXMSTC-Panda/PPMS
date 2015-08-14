@@ -1,17 +1,26 @@
 package ppms.action;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
+import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import ppms.action.interfaces.InitPage;
 import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
+import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
+import ppms.domain.TbMaster;
 import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbSubarea;
 import ppms.domain.TbSubareaorgrelation;
@@ -20,7 +29,7 @@ import ppms.serviceimpl.PraiseCriticismServiceImp;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BusinessHallPraiseCriticismAction extends ActionSupport {
+public class BusinessHallPraiseCriticismAction extends ActionSupport implements InitPage{
 
 	@Autowired
 	private PraiseCriticismServiceImp praiseCriticism;
@@ -95,7 +104,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport {
 		return "success";
 	}
 
-	@Action(value = "businessHallSelectSkipSingle", results = {
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismSingle.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
 	public String selectSinglSkip() {
@@ -130,5 +139,47 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport {
 		}
 		request.put("organizationNjInfor", organizationNjInfor);
 		return "success";
+	}
+	
+	public Map<String, List<T>> initPage(ServletContext servletContext,String url) {
+		// 实例化map
+		Map map = new HashMap();
+
+		PraiseCriticismServiceImp service = WebApplicationContextUtils
+				.getWebApplicationContext(servletContext).getBean(
+						PraiseCriticismServiceImp.class);
+
+		url= "praiseCriticism.businessHallPraiseCriticismSearch";
+			List<TbOrgpraisecriticism> orgpraisecriticismInfor=service.findOrgpraisecriticismInfor();
+			List<TbOrgpraisecriticism> orgpraisecriticismsInfor=new ArrayList<TbOrgpraisecriticism>();
+			
+			
+			for (TbOrgpraisecriticism tbOrgpraisecriticism : orgpraisecriticismInfor) {
+				
+				String a=tbOrgpraisecriticism.getPraisecriticismtype();
+				
+				List<TbMaster> type=service.findOrgPraiseCriticismType(a);
+				
+				String orgType= type.get(0).getValue();
+				
+				tbOrgpraisecriticism.setPraisecriticismtype(orgType);
+				String b=tbOrgpraisecriticism.getPraisecriticismlevel();
+				
+				List<TbMaster> level=service.findOrgPraiseCriticismLevel(a, b);
+				
+				String orgLevel=level.get(0).getValue();
+				
+				tbOrgpraisecriticism.setPraisecriticismlevel(orgLevel);
+				
+				
+				
+				List<OrganizationNj> organizationNjInfor=service.findOrganizationNjInfor(tbOrgpraisecriticism.getOrganizationNj().getOrgid());
+				
+				tbOrgpraisecriticism.setOrganizationNj(organizationNjInfor.get(0));
+				orgpraisecriticismsInfor.add(tbOrgpraisecriticism);
+			}
+			System.out.println();
+			map.put("orgpraisecriticismsInfor",orgpraisecriticismsInfor);		
+		return map;
 	}
 }
