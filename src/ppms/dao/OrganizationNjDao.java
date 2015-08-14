@@ -29,5 +29,9 @@ import ppms.domain.OrganizationNj;
  */
 public interface OrganizationNjDao {
 	public List<OrganizationNj> getOrganizationNjs();
+	
+	
 
 }
+
+
