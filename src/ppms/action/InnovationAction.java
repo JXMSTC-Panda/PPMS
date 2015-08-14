@@ -61,20 +61,29 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 	public Map<String, List<T>> initPage(ServletContext context, String url) {
 
 		// 实例化map
-		Map map = new HashMap<String, List<OrganizationNj>>();
+		Map map = new HashMap<String, List<Object>>();
 
-		InvocationServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(context).getBean(
-						InvocationServiceImp.class);
 
 		// 根据不同请求的url实现不同页面的页面初始化
 		switch (url) {
 		case "innovation.innovationSingle":
-			// 获取所有营业厅
-			List<OrganizationNj> organizations = service.getOrganizations();
-			map.put("orgs", organizations);
-			break;
 
+			// 获取所有营业厅
+			List<OrganizationNj> organizationNjs = getOrganizationNjs(context);
+			if(organizationNjs!=null&&organizationNjs.size()>0){
+				map.put("orgs", organizationNjs);
+			}
+		
+			break;
+		case "innovation.innovationSearch":
+			// 获取提案信息
+			
+			List<TbInnovation> innovations = getInnovations(context);
+			
+			if(innovations!=null&&innovations.size()>0){
+				map.put("innovations", innovations);
+			}
+			break;
 		default:
 			break;
 		}
@@ -121,6 +130,29 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 		// } catch (Exception e) {
 		// e.printStackTrace();
 		// }
+	}
+	
+	/**
+	 * 获取所有营业厅的信息
+	 * @param context
+	 * @return
+	 */
+	private List<OrganizationNj> getOrganizationNjs(ServletContext context){
+		
+
+		InvocationServiceImp service = WebApplicationContextUtils
+				.getWebApplicationContext(context).getBean(
+						InvocationServiceImp.class);
+		return service.getOrganizations();
+	}
+	
+	private List<TbInnovation> getInnovations(ServletContext context){
+		
+		InvocationServiceImp service = WebApplicationContextUtils
+				.getWebApplicationContext(context).getBean(
+						InvocationServiceImp.class);
+		
+		return service.findAllInnovations();
 	}
 
 }
