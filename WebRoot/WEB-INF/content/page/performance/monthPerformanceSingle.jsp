@@ -91,8 +91,7 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a>
-						</li>
+						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -140,7 +139,8 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" name="performance.organizationNj.orgid" /> <span
+														id="form-input-readonly"
+														name="performance.organizationNj.orgid" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -150,7 +150,8 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" name="performance.organizationNj.org_Name" />
+														id="form-input-readonly"
+														name="performance.organizationNj.org_Name" />
 
 												</div>
 											</div>
@@ -178,8 +179,7 @@
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
 														id="form-input-readonly"
-														name="performance.tbEmployee.employeeid" 
-														value=""/> <span
+														name="performance.tbEmployee.employeeid" value="" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>

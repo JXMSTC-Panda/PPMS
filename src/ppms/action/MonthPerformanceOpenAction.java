@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+
+
 import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -16,6 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import ppms.action.interfaces.InitPage;
 import ppms.domain.OrganizationNj;
+import ppms.domain.TbPerformance;
+import ppms.genericDao.TbMonthperformanceopenDAO;
+import ppms.serviceimpl.MonthperformanceopenServiceImp;
 import ppms.serviceimpl.OrganizationNjServiceImp;
 
 
@@ -32,7 +37,9 @@ public class MonthPerformanceOpenAction  extends ActionSupport implements InitPa
 	private OrganizationNj orgs;
 	
 	@Autowired
-	private OrganizationNjServiceImp service;
+	private OrganizationNjServiceImp orgService;
+	@Autowired
+	private MonthperformanceopenServiceImp mPerService;
 	
 
 	/** 
@@ -65,9 +72,9 @@ public class MonthPerformanceOpenAction  extends ActionSupport implements InitPa
 		this.orgs = organizationNj;
 	}
 
-//	/**
-//	 * 营业厅 “月度绩效上传功能开通 ”页面数据初始化
-//	 */
+	/**
+	 * 营业厅 “月度绩效上传功能开通 ”页面数据初始化
+	 */
 //	@Override
 //	public Map<String, List<T>> initPage(ServletContext servletContext,String url) {
 //		// 实例化map
@@ -99,13 +106,27 @@ public class MonthPerformanceOpenAction  extends ActionSupport implements InitPa
 //		return map;
 //	}
 	
+	
+	/** 
+	
+	* @方法名: monthPerformanceOpen 
+	
+	* @描述:营业厅月度开通绩效上传功能 数据初始化 
+	
+	* @param @return    设定文件
+	
+	* @return String    返回类型
+	
+	* @throws 
+	
+	*/ 
 	@Action(value = "performance.month.monthPerformanceOpen", results = {  
 		    @Result(name = "success", location = "/WEB-INF/content/page/performance/monthPerformanceOpen.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String monthPerformanceOpen(){
 		
 		try {
-			List<OrganizationNj> orgs=service.getOrganizationNjs();
+			List<OrganizationNj> orgs=orgService.getOrganizationNjs();
 			request.setAttribute("orgs", orgs);
 		} catch (Exception e) {
 			System.out.println("<<<<-------------->>>>>");
@@ -116,6 +137,43 @@ public class MonthPerformanceOpenAction  extends ActionSupport implements InitPa
 		return "success";
 	}
 
+
+
+/** 
+	
+	* @方法名: monthPerformanceOpen 
+	
+	* @描述: 处理营业厅月度开通绩效上传功能 
+	
+	* @param @return    设定文件
+	
+	* @return String    返回类型
+	
+	* @throws 
+	
+	*/ 
+	@Action(value = "performance.month.monthPerformanceOpen.add", results = {
+			
+			//****************************************---------->>>>跳转待修改
+			@Result(name = "success", location = "/WEB-INF/content/page/performance/monthPerformanceSingleResult.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	public String addMonthPerformanceOpen() {
+
+		try {
+			
+			
+			System.out.println("------------------>>>>>."+orgs.getOrgid());
+			mPerService.addMonthperformanceopen(null);
+			
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "faild";
+	}
+	
+	
 	/* (non-Javadoc)
 	 * @see ppms.action.interfaces.InitPage#initPage(javax.servlet.ServletContext, java.lang.String)
 	 */
@@ -125,5 +183,7 @@ public class MonthPerformanceOpenAction  extends ActionSupport implements InitPa
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }
