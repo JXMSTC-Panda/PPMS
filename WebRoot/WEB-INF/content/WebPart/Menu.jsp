@@ -47,7 +47,7 @@
 
 	<ul class="nav nav-list">
 		<li id="tachometer" class="">
-			<a href="#" class="">
+			<a href="index.tachometer.do" class="">
 				<i class="menu-icon fa fa-tachometer"></i>
 				<span class="menu-text">控制台</span>
 				<b class="arrow"></b>
@@ -64,7 +64,7 @@
 						<i class="menu-icon fa fa-caret-right"></i>角色增加 </a> <b class="arrow"></b>
 				</li>
 				<li id="roleSearch" class=""><a
-					href="${pageContext.request.contextPath}/resource/authority.null.roleSearch">
+					href="authority.null.roleSearch.do">
 						<i class="menu-icon fa fa-caret-right"></i>角色查询 </a> <b class="arrow"></b>
 				</li>
 			</ul></li>
@@ -528,7 +528,7 @@
 							class="arrow"></b>
 						</li>
 						<li id="monthPerformanceOpen" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceOpen">
+							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceOpen.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效上传功能开通 </a> <b
 							class="arrow"></b>
 						</li>
@@ -543,7 +543,7 @@
 							class="arrow"></b>
 						</li>
 						<li id="monthPerformanceSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceSearch">
+							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效查询 </a> <b
 							class="arrow"></b>
 						</li>

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -85,7 +86,7 @@
 										</small>
 										</h1>
 									</div>
-								<form class="form-horizontal" role="form">
+								<form class="form-horizontal" role="form" method="post" action="userInfo.userBase.userBaseInfoSingle.result.do">
 								
 								<div class="widget-box">
 										<div class="widget-header">
@@ -101,7 +102,7 @@
 																		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 姓名: </label>
 
 																		<div class="col-sm-9">
-																			<input id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" type="text">
+																			<input id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.employeename">
 																		</div>
 																	</div>
 
@@ -109,7 +110,7 @@
 																		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 身份证号: </label>
 
 																		<div class="col-sm-9">
-																			<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+																			<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.idnumber">
 																		</div>
 																	</div>
 																</div>	
@@ -120,11 +121,11 @@
 																	<div class="col-sm-9">
 																		<div class="radio">
 																			<label>
-																				<input name="form-field-radio" class="ace" type="radio">
+																				<input name="form-field-radio" class="ace" type="radio" name="tbEmployee.sex">
 																				<span class="lbl"> 男</span>
 																			</label>
 																			<label>
-																				<input name="form-field-radio" class="ace" type="radio">
+																				<input name="form-field-radio" class="ace" type="radio" name="tbEmployee.sex">
 																				<span class="lbl"> 女</span>
 																			</label>
 																		</div>
@@ -134,7 +135,7 @@
 																	<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 出生年月: </label>
 
 																	<div class="col-sm-9">
-																		<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+																		<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.birthday">
 																	</div>
 																</div>
 															</div>
@@ -174,11 +175,11 @@
 													<div class="col-sm-9">
 														<div class="radio">
 															<label>
-																<input name="form-field-radio" class="ace" type="radio">
+																<input name="form-field-radio1" class="ace" type="radio">
 																<span class="lbl"> 已分厅</span>
 															</label>
 															<label>
-																<input name="form-field-radio" class="ace" type="radio">
+																<input name="form-field-radio1" class="ace" type="radio">
 																<span class="lbl"> 未分厅</span>
 															</label>
 														</div>
@@ -189,7 +190,14 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 营业厅名称: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<select class="form-control" id="form-field-select-1" name="tbEmployee.organizationNj.orgid">
+															<option value=""></option>	
+															<c:forEach items="${ requestScope.orgs}" var="org">
+																<option value="${org.orgid}">
+																	<c:out value="${org.org_Name }"></c:out>
+																</option>
+															</c:forEach>													
+														</select>
 													</div>
 												</div>
 												
@@ -209,7 +217,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 工号: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.employeecode">
 													</div>
 												</div>
 												
@@ -217,11 +225,13 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 营业厅类型: </label>
 
 													<div class="col-sm-9">
-														<select class="form-control" id="form-field-select-1">
+														<select class="form-control" id="form-field-select-1" name="tbEmployee.orgtype">
 															<option value=""></option>
-															<option value="AL">主厅</option>
-															<option value="AK">合作厅</option>
-															<option value="AZ">置换厅</option>
+															<c:forEach items="${requestScope.orgs}" var="org">
+																<option value="${org.orgid}">
+																	<c:out value="${org.type }"></c:out>
+																</option>
+															</c:forEach>
 														</select>
 													</div>
 												</div>
@@ -266,7 +276,7 @@
 																		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 银行卡号: </label>
 
 																		<div class="col-sm-9">
-																		    <input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+																		    <input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.banknumber">
 																	    </div>
 																	</div>
 																	
@@ -274,7 +284,7 @@
 																		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 银行卡所属银行: </label>
 
 																		<div class="col-sm-9">
-																			<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+																			<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.bankname">
 																		</div>
 																	</div>
 																	
@@ -283,11 +293,11 @@
 													<div class="col-sm-9">
 														<div class="radio">
 															<label>
-																<input name="form-field-radio" class="ace" type="radio">
+																<input name="form-field-radio" class="ace" type="radio" name="tbEmployee.status">
 																<span class="lbl"> 有效</span>
 															</label>
 															<label>
-																<input name="form-field-radio" class="ace" type="radio">
+																<input name="form-field-radio" class="ace" type="radio" name="tbEmployee.status">
 																<span class="lbl"> 无效</span>
 															</label>
 														</div>
@@ -298,7 +308,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 居住所属区域: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.addressarea">
 													</div>
 												</div>
 												
@@ -306,7 +316,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 现居住地址: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.address">
 													</div>
 												</div>
 												
@@ -314,7 +324,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 学历: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.academicdegree"> 
 													</div>
 												</div>
 													
@@ -322,7 +332,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 长号: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.mobilenumber">
 													</div>
 												</div>
 												
@@ -330,7 +340,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 短号: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.shortmobilenumber">
 													</div>
 												</div>
 												
@@ -338,7 +348,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 毕业学校: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.schoolname">
 													</div>
 												</div>
 												
@@ -346,7 +356,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 专业: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.specialization">
 													</div>
 												</div>
 												
@@ -354,7 +364,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 移动营业技能鉴定水平: </label>
 
 													<div class="col-sm-9">
-														<select class="form-control" id="form-field-select-1">
+														<select class="form-control" id="form-field-select-1" name="">
 															<option value=""></option>
 															<option value="AL">初级</option>
 															<option value="AK">中级</option>
@@ -371,7 +381,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 联系电话: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.tel">
 													</div>
 												</div>
 												
@@ -379,7 +389,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 进公司时间: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.entertime">
 													</div>
 												</div>
 
@@ -387,7 +397,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 后台岗位说明: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="tbEmployee.frontbackflag">
 													</div>
 												</div>
 
@@ -422,11 +432,13 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 岗职: </label>
 
 													<div class="col-sm-9">
-														<select class="form-control" id="form-field-select-1">
+														<select class="form-control" id="form-field-select-1" name="tbEmployee.tbPost.postid">
 															<option value=""></option>
-															<option value="AL">店长</option>
-															<option value="AK">值班经理</option>
-															<option value="AK">实习值班经理</option>
+															<c:forEach items="${requestScope.posts}" var="post">
+																<option value="${post.postid}">
+																	<c:out value="${post.postname }"></c:out>
+																</option>
+															</c:forEach>
 														</select>
 													</div>
 												</div>
@@ -435,11 +447,13 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 岗位: </label>
 
 													<div class="col-sm-9">
-														<select class="form-control" id="form-field-select-1">
+														<select class="form-control" id="form-field-select-1" name="tbEmployee.tbJob.jobid">
 															<option value=""></option>
-															<option value="AL">店长</option>
-															<option value="AK">值班经理</option>
-															<option value="AK">实习值班经理</option>
+															<c:forEach items="${requestScope.jobs}" var="job">
+																<option value="${job.jobid}">
+																	<c:out value="${job.jobname }"></c:out>
+																</option>
+															</c:forEach>
 														</select>
 													</div>
 												</div>
@@ -448,12 +462,13 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 人员类别: </label>
 
 													<div class="col-sm-9">
-														<select class="form-control" id="form-field-select-1">
+														<select class="form-control" id="form-field-select-1" name="tbEmployee.employeetype">
 															<option value=""></option>
-															<option value="AL">普通员工</option>
-															<option value="AK">炼金生</option>
-															<option value="AK">储备店长</option>
-															<option value="AK">客服代表</option>
+															<c:forEach items="${requestScope.employees}" var="employee">
+																<option value="${employee.employeeid}">
+																	<c:out value="${employee.employeetype}"></c:out>
+																</option>
+															</c:forEach>
 														</select>
 													</div>
 												</div>
@@ -462,11 +477,13 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 角色类别: </label>
 
 													<div class="col-sm-9">
-														<select class="form-control" id="form-field-select-1">
+														<select class="form-control" id="form-field-select-1" name="tbEmployee.tbRole.roleid">
 															<option value=""></option>
-															<option value="AL">店长</option>
-															<option value="AK">值班经理</option>
-															<option value="AK">实习值班经理</option>
+															<c:forEach items="${requestScope.roles}" var="role">
+																<option value="${role.roleid}">
+																	<c:out value="${role.rolename}"></c:out>
+																</option>
+															</c:forEach>
 														</select>
 													</div>
 												</div>
@@ -475,7 +492,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 备注: </label>
 
 													<div class="col-sm-9">
-														<textarea class="form-control" id="form-field-8" placeholder="Default Text"></textarea>
+														<textarea class="form-control" id="form-field-8" placeholder="Default Text" name="tbEmployee.remark"></textarea>
 													</div>
 												</div>
 																</div>
@@ -484,16 +501,9 @@
 														</div>
 										<div class="clearfix form-actions">
 										<div class="col-md-offset-5 col-md-6">
-											<button class="btn btn-info" type="button">
-												<i class="ace-icon fa fa-check bigger-110"></i>
-												确定
-											</button>
-
+											<input class="btn btn-info" type="submit" value="确定">
 											&nbsp; &nbsp; &nbsp;
-											<button class="btn" type="reset">
-												<i class="ace-icon fa fa-undo bigger-110"></i>
-												重置
-											</button>
+											<input class="btn" type="reset" value="重置">											
 										</div>
 									</div>
 													</div>

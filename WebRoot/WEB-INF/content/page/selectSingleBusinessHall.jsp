@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -71,6 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</tr>
 					</table>
 				</form>
+				<form name="form1" action="praiseCriticism.businessHall.businessHallPraiseCriticismSingle.do" method="post">
 				<br />
 				<table cellpadding="0" cellspacing="0" class="tablelist" align="center">
 					<tr>
@@ -81,46 +83,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th>区域</th>
 						<th>片区</th>
 					</tr>	
+				<c:forEach items="${requestScope.organizationNjInfor}" var="organizationNj">
 					<tr>
-						<td align="center"><input type="radio" name="radio1" value="0" checked></td>
-						<td>1</td>
-						<td>A001</td>
-						<td>南京新华书店沟通100服务</td>
-						<td>城西</td>
-						<td>鼓楼区</td>
+							<td><input type="radio" name="selectBusinessHall" value="${organizationNj.orgid}" checked></td>
+							<td>1</td>
+                        	<td>${organizationNj.orgid}</td>
+							<td>${organizationNj.org_Name}</td>
+							<td>${requestScope.areadesc}</td>
+							<td>${requestScope.subareaDesc}</td>
 					</tr>	
-					<tr>
-						<td align="center"><input type="radio" name="radio2" value="1"></td>
-						<td>2</td>
-						<td>A002</td>
-						<td>国美淮海路指定专营店</td>
-						<td>城南</td>
-						<td>白下区</td>
-					</tr>	
-					<tr>
-						<td align="center"><input type="radio" name="radio3" value="2"></td>
-						<td>3</td>
-						<td>A003</td>
-						<td>中央商场指定专营店</td>
-						<td>城南</td>
-						<td>下关区</td>
-					</tr>	
-					<tr>
-						<td align="center"><input type="radio" name="radio4" value="3"></td>
-						<td>4</td>
-						<td>A004</td>
-						<td>中山北路指定专营店</td>
-						<td>城北</td>
-						<td>下关区</td>
-					</tr>	
-					<tr>
-						<td align="center"><input type="radio" name="radio5" value="4"></td>
-						<td>5</td>
-						<td>A005</td>
-						<td>南京新华书店沟通100服务</td>
-						<td>城东</td>
-						<td>鼓楼区</td>
-					</tr>	
+				</c:forEach>
 				</table>
 				<table style="width: 95%" cellspacing="0" cellpadding="0" align="center">
 					<tr>
@@ -137,12 +109,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<table cellpadding="0" cellspacing="0" width="95%" align="center">
 					<tr>
 						<td align="center" >
-							<input type="button" name="doSelectButton" value="确定" class="btn_2" onclick="window.close();"/>
+							<input type="submit" name="doSelectButton" value="确定" class="btn_2" />
 							<input type="button" name="doCloseButton" value="关闭" class="btn_2" onclick="window.close();"/>
 						</td>
 					</tr>
 				</table>
 				<br />
+				</form>
 			</td>
 		</tr>
 	</table>

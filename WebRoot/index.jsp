@@ -77,11 +77,11 @@
 											<fieldset>
 												<label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														type="text" class="form-control" name="username"
+														type="text" class="form-control" name="userAccount"
 														placeholder="身份证号/工号" /> <i class="ace-icon fa fa-user"></i>
 												</span> </label> <label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														type="password" class="form-control" name="password"
+														type="password" class="form-control" name="passWord"
 														placeholder="密码" /> <i class="ace-icon fa fa-lock"></i> </span>
 												</label>
 
@@ -286,12 +286,12 @@
 		$(document).ready(function() {
 			//登录点击
 			$('#btnlogin').click(function() {
-				$('#btnlogin').addClass('disabled');
 				$('#btnlogin span').html('登录...');
+				$('#btnlogin').addClass('disabled');
 				$.ajax({
 					cache : false,
 					type : "POST",
-					url : "authority.null.roleSingle.login.do",
+					url : "login.do",
 					data : $('#form_login').serialize(),
 					async : false,
 					error : function(request) {
@@ -299,27 +299,26 @@
 							title : '出错啦!',
 							text : '网络似乎有问题！',
 							sticky : true,
-							//time: 1000,
+							time : 1000,
 							speed : 10,
 							position : 'center',
 							class_name : 'gritter-light'
 						});
 					},
 					success : function(data) {
-						if(data == "Success"){
-							location.href = "resource/authority.null.roleSingle";
-						}
-						else{
+						if (data == "1") {
+							location.href = "index.tachometer.do";
+						} else {
 							$.gritter.add({
 								title : '出错啦!',
-								text : '账号或密码错误，请重试！',
+								text : '账号或密码错误，请重试！' + data,
 								sticky : true,
 								//time: 1000,
 								speed : 10,
 								position : 'center',
 								class_name : 'gritter-light'
 							});
-						}					
+						}
 					}
 				});
 				$("#gritter-notice-wrapper").mouseleave(function() {
@@ -327,6 +326,9 @@
 					$('#btnlogin').removeClass('disabled');
 					$('gritter-notice-wrapper').remove();
 				});
+			});
+			$('#btnlogin span').change(function(){
+				alert("123");
 			});
 		});
 

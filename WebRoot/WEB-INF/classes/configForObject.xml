@@ -20,5 +20,76 @@
 			<class_name>ppms.domain.TbMountguardexam</class_name>
 		</object>
 	</excel>
+	<excel name="人员基本信息批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbEmployee</class_name>
+		</object>
+	</excel>
+	<excel name="合作厅上岗证批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbMountguardexam</class_name>
+		</object>
+	</excel>
+	
+
+	<excel name="监控检查成绩批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbMonitorcheck</class_name>
+		</object>
+	</excel>
+	<excel name="进阶培训管理批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbPromotiontraining</class_name>
+		</object>
+	</excel>
+	
+		<excel name="月度绩效批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbPerformance</class_name>
+		</object>
+	</excel>
+	<excel name="年度绩效批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbPerformance</class_name>
+		</object>
+	</excel>
+	
+	<excel name="员工奖惩信息批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbEmployeepraisecriticism</class_name>
+		</object>
+	</excel>
+	
+		<!--  -->
+	<excel name="新员工考核成绩批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbFreshemployeeexam</class_name>
+		</object>
+	</excel>
+	
+	<excel name="业务差错检查成绩批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbOperationcheck</class_name>
+		</object>
+	</excel>
+	<excel name="营业厅奖惩信息批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbOrgpraisecriticism</class_name>
+		</object>
+	</excel>
+	
+	
+	<excel name="月度考试批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbMonthexam</class_name>
+		</object>
+	</excel>
+	
+	<excel name="转正考核成绩批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbBecomeemployeeexam</class_name>
+		</object>
+	</excel>
+	
 	
 </objects>
