@@ -39,5 +39,11 @@ public class InvocationServiceImp implements InvocationService {
 		
 		return false;
 	}
+	@Override
+	public List<TbInnovation> findAllInnovations() {
+		
+		String hsql="from TbInnovation inn,TbEmployee emp,OrganizationNj org where inn.employeeid=emp.employeeid and inn.orgid=org.orgid";
+		return dao.findbyHsql(hsql);
+	}
 	
 }

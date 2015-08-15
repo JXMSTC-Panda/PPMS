@@ -76,7 +76,9 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							人员基本信息单条录入结果
+							
+							
+							
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
