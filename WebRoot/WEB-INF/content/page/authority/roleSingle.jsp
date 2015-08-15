@@ -142,6 +142,8 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-2.0.3.min.js"></script>
+	
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/plugin/zTree/js/jquery.ztree.all-3.5.min.js"></script>
 	<!-- inline scripts related to this page -->
@@ -767,7 +769,25 @@
 		}
 
 		$(document).ready(function(){
-			$.ajax({
+		$("#btnTest").click(function(){		
+			$.get("authority.null.roleSingle.init.do", function (data) {
+				if (data.substr(0, 3) == "{\"p") {
+					var obj = JSON.parse(data);
+                    var sysfunctions= obj.ppms.TbSystemfunctions;
+                    /*for (var i = 0; i < sysfunctions.length; i++) {
+                    	var sysfunction = sysfunctions[i];
+                    }*/
+                    var zNodes = sysfunctions;
+                    $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+					$("#disabledTrue").bind("click", {disabled : true}, disabledNode);
+					$("#disabledFalse").bind("click", {disabled : false}, disabledNode);
+					alert(JSON.stringify(zNodes));
+                } else {
+                    alert("error");
+                }
+            });
+		});
+			/* $.ajax({
 				cache : false,
 				type : "POST",
 				url : "authority.null.roleSingle.init.do",
@@ -785,7 +805,7 @@
 					//nodes = treeObj.getCheckedNodes(true);
 					alert(JSON.stringify(zNodes));
 				}
-			});
+			}); */
 		});
 	//-->
 	</script>

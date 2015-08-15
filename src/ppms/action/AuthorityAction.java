@@ -1,5 +1,6 @@
 package ppms.action;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,12 +11,14 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
+import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ppms.domain.TbRole;
 import ppms.serviceimpl.AuthoritySrviceImp;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 
 /**
 * <p>Title: AuthorityAction</p>
@@ -54,7 +57,8 @@ public class AuthorityAction extends ActionSupport{
 		request.setAttribute("tbEmployeeIDSession", tbEmployeeID);
 	}
 	
-	/** 
+	/**
+	 * @throws IOException  
 	* @Title: roleSingleInit 
 	* @Description: 角色添加页面初始化ztree(ajax)
 	* @return     
@@ -62,11 +66,15 @@ public class AuthorityAction extends ActionSupport{
 	* @throws 
 	*/
 	@Action(value="authority.null.roleSingle.init")
-	public String roleSingleInit(){
-		//String systemFunctionString = authoritySrviceImp.findSystemFunctionJson(null);
-		//System.out.println(systemFunctionString);
-		//return systemFunctionString;
-		return null;
+	public void roleSingleInit() throws IOException{
+
+		String[] fieldNames = new String[]{"functionid","parentfunctionid","functionname"};
+		String systemFunctionString = authoritySrviceImp.findSystemFunctionJson(fieldNames)
+				.replace("functionid", "id")
+				.replace("parentid", "pId")
+				.replace("functionname", "name");
+		System.out.println(systemFunctionString);
+		response.getWriter().write(systemFunctionString);
 	}
 	/** 
 	* @Title: roleSingleResult 

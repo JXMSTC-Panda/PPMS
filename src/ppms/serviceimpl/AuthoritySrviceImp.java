@@ -33,7 +33,7 @@ public class AuthoritySrviceImp implements AuthorityService{
 	private TbRoleDAO roleDAO;
 	//系统功能dao
 	@Autowired
-	//private TbSystemfunction systemfunctionDAO;
+	private TbSystemfunctionDAO systemfunctionDAO;
 	
 	@Override
 	public List<TbRole> findAllRole() {
@@ -49,14 +49,15 @@ public class AuthoritySrviceImp implements AuthorityService{
 		Map<String, List<TbSystemfunction>> map = new HashMap<String, List<TbSystemfunction>>();
 		map.put("TbSystemfunctions", this.findAllSystemfunctions());
 		toJsonUtil.setFieldToJson(column);
-		return toJsonUtil.toJson(map, roleDAO);
+		String resultString = "{\"ppms\":" + toJsonUtil.toJson(map, roleDAO) + "}";
+		return resultString;
 	}
 
 	@Override
 	public List<TbSystemfunction> findAllSystemfunctions() {
 		// 查询系统功能list
 		List<TbSystemfunction> tbSystemfunctions = new ArrayList<TbSystemfunction>();
-		//tbSystemfunctions = (List<TbSystemfunction>) systemfunctionDAO.getTbRolefunctions();
+		tbSystemfunctions = systemfunctionDAO.findAll();
 		return tbSystemfunctions;
 	}
 
