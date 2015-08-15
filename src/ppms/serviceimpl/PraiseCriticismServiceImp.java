@@ -13,6 +13,7 @@ import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbJob;
+import ppms.domain.TbMaster;
 import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbPost;
 import ppms.domain.TbSubarea;
@@ -45,7 +46,44 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 		
 		return dao.findLevel(key);
 	}
-	
+	/**
+	 * 根据key值查询营业厅奖惩类型
+	 * @param key
+	 * @return
+	 */
+	@Override
+	public List<TbMaster> findOrgPraiseCriticismType(String key){
+		return dao.findOrgPraiseCriticismType(key);
+	}
+	/**
+	 * 根据奖惩类型typeKey值和奖惩级别levelKey查询营业厅奖惩级别
+	 * @param typeKey
+	 * @param levelKey
+	 * @return
+	 */
+	@Override
+	public List<TbMaster> findOrgPraiseCriticismLevel(String typeKey,String levelKey){
+		return dao.findOrgPraiseCriticismLevel(typeKey, levelKey);
+	}
+	/**
+	 * 根据key值查询员工奖惩类型
+	 * @param key
+	 * @return
+	 */
+	@Override
+	public List<TbMaster> findEmployeePraiseCriticismType(String key){
+		return dao.findEmployeePraiseCriticismType(key);
+	}
+	/**
+	 * 根据奖惩类型typeKey值和奖惩级别levelKey查询员工奖惩级别
+	 * @param typeKey
+	 * @param levelKey
+	 * @return
+	 */
+	@Override
+	public List<TbMaster> findEmployeePraiseCriticismLevel(String typeKey,String levelKey){
+		return dao.findEmployeePraiseCriticismLevel(typeKey, levelKey);
+	}
 	/*
 	 * 获取数据可中所有的员工信息
 	 * */

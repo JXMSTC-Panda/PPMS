@@ -15,6 +15,9 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class DownloadAction extends ActionSupport {
 
+	/**
+	 * 下载文件文件名
+	 */
 	private String fileName;
 
 	public String getFileName() {

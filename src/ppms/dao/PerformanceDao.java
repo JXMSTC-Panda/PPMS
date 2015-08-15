@@ -62,6 +62,8 @@ public interface PerformanceDao {
 	*/ 
 	public List<OrganizationNj> getOrganizationNjs();
 	
+	
+	
 	/** 
 	
 	* @方法名: getEmployees 
@@ -76,4 +78,6 @@ public interface PerformanceDao {
 	
 	*/ 
 	public List<TbEmployee> getEmployees();
+	
+
 }

@@ -33,6 +33,12 @@ public class TbInnovationDAO extends BaseHibernateDAO {
 	public static final String CREATEDBY = "createdby";
 	public static final String MODIFIEDBY = "modifiedby";
 
+	
+	public List<TbInnovation> findbyHsql(String hsql){
+		
+		log.debug("Hsql:"+hsql);
+		return getHibernateTemplate().find(hsql);
+	}
 	public void save(TbInnovation transientInstance) {
 		log.debug("saving TbInnovation instance");
 		try {
