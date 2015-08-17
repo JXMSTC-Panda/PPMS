@@ -13,6 +13,11 @@ package ppms.serviceimpl;
 
 
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ppms.domain.TbMonthperformanceopen;
@@ -32,13 +37,16 @@ import ppms.service.MonthperformanceopenService;
  * @version    
  *    
  */
+
 @Service
 public class MonthperformanceopenServiceImp implements
 		MonthperformanceopenService {
 
+	@Autowired
 	private TbMonthperformanceopenDAO dao;
-	/* (non-Javadoc)
-	 * @see ppms.service.MonthperformanceopenService#addMonthperformanceopen()
+	
+	/**
+	 * 添加"营业厅月度绩效开通功能表数据"
 	 */
 	@Override
 	public boolean addMonthperformanceopen(TbMonthperformanceopen monthPerformanceopen) {
@@ -48,12 +56,16 @@ public class MonthperformanceopenServiceImp implements
 		}
 		return false;
 	}
-	/* (non-Javadoc)
-	 * @see ppms.service.MonthperformanceopenService#addMonthperformanceopen()
+	
+	
+	/**
+	 * 获取所有的"营业厅月度绩效开通功能表数据"
 	 */
-	/* (non-Javadoc)
-	 * @see ppms.service.MonthperformanceopenService#addMonthperformanceopen()
-	 */
+	@Override
+	public List<TbMonthperformanceopen> getMonthperformanceopens() {
+		// TODO Auto-generated method stub
+		return dao.findAll();
+	}
 	
 	
 

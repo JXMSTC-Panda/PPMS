@@ -94,7 +94,7 @@
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 
-							<table id="grid-table"></table>
+							<table id="grid-table" name=""></table>
 
 							<div id="grid-pager"></div>
 
@@ -206,10 +206,11 @@
 								},
 
 								data : grid_data,
-
+								
+								//url:
 								//从服务器端返回的数据类型，默认xml。
 								//可选类型：xml，local，json，jsonnp，script，xmlstring，jsonstring，clientside
-								datatype : "local",
+								datatype : "json",
 
 								height : 250,
 

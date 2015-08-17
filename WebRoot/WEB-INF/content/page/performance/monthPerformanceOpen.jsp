@@ -113,7 +113,7 @@
 												<div class="col-xs-3"></div>
 												<div class="col-xs-6">
 													<!-- #section:plugins/input.duallist -->
-													<select multiple="multiple" size="10" name="orgs.orgid"
+													<select multiple="multiple" size="10" name="organizationNjs"
 														id="duallist">
 
 														<c:forEach items="${ requestScope.orgs}" var="org">
@@ -135,7 +135,7 @@
 
 										<div class="clearfix form-actions">
 											<div class="col-md-offset-5 col-md-6">
-												<button class="btn btn-info" type="submit">
+												<button class="btn btn-info" type="submit"  >
 													<i class="ace-icon fa fa-check bigger-110"></i> 开通
 												</button>
 
@@ -172,14 +172,10 @@
 		src="${pageContext.request.contextPath}/assets/js/typeahead.jquery.js"></script>
 
 	<!-- inline scripts related to this page -->
-	<script type="text/javascript">
-	
-	
-	var myTest=$("#duallist option:selected");
-	</script>
+
 	<script type="text/javascript">
 		jQuery(function($) {
-			var demo1 = $('select[name="orgs.orgid"]')
+			var demo1 = $('select[name="organizationNjs"]')
 					.bootstrapDualListbox(
 							{
 								infoTextFiltered : '<span class="label label-purple label-lg">Filtered123</span>'
@@ -227,7 +223,26 @@
 			///////////////////
 
 		});
+	
 	</script>
-
+	
+	<!-- 获取select的选项 -->
+	<script type="text/javascript">
+	function t(){
+	
+	var select = document.getElementById("duallist");
+	//获取select标签
+   var index = select.selectedIndex;
+   var text = select.options[index].text;
+   var value = select.options[index].value;
+	//提交form表单
+   //document.formkk.submit();
+	}
+	
+	
+	
+	</script>
+	
+	
 </body>
 </html>

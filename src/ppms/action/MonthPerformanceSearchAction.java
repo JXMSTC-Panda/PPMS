@@ -83,7 +83,7 @@ public class MonthPerformanceSearchAction extends ActionSupport {
 	 * @return                                             
 	 * @throws IOException 
 	 */
-	@Action(value = "/resource/performance.month.monthPerformanceSearch", results = {
+	@Action(value = "performance.month.monthPerformanceSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/performance/monthPerformanceSearch.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
 	public String monthPerformanceSearch() throws IOException {
