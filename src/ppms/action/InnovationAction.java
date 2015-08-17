@@ -146,6 +146,11 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 		return service.getOrganizations();
 	}
 	
+	/**
+	 * 获取所有的创新提案
+	 * @param context
+	 * @return
+	 */
 	private List<TbInnovation> getInnovations(ServletContext context){
 		
 		InvocationServiceImp service = WebApplicationContextUtils
