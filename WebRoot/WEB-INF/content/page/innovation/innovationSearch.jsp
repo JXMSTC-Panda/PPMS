@@ -373,8 +373,8 @@
 								</td>
 
 								<td><c:out value="${innovation.tbEmployee.employeecode}"></c:out></td>
-								<td>${employee.idnumber}</td>
-								<td>${employee.employeename}</td>
+								<td><c:out value="${innovation.tbEmployee.employeename}"></c:out></td>
+								<td><c:out value="${employee.idnumber}"></c:out></td>
 								<td><c:if test="${employee.sex==true}">
 										<c:out value="男"></c:out>
 									</c:if> <c:if test="${employee.sex==false}">
