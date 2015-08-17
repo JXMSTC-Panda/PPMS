@@ -57,7 +57,15 @@ public class EmployeePraiseCriticismAction extends ActionSupport implements Init
 	public String employeePraiseCriticismSingleStart() {
 		System.out.println("save infor");
 		try {
+			String type=tbEmployeepraisecriticism.getPraisecriticismtype();
+			String praisecriticismtype="000"+type;
+			tbEmployeepraisecriticism.setPraisecriticismtype(praisecriticismtype);
+			String level=tbEmployeepraisecriticism.getPraisecriticismlevel();
+			String praisecriticismlevel="000"+level;
+			tbEmployeepraisecriticism.setPraisecriticismlevel(praisecriticismlevel);
+			System.out.println(tbEmployeepraisecriticism.getTbEmployee().getEmployeeid());
 			praiseCriticism.save(tbEmployeepraisecriticism);// 执行save方法，实现员工奖惩信息的单条录入
+			
 
 			List<TbEmployeepraisecriticism> employeepraisecriticismInfor = praiseCriticism
 					.findEmployeepraisecriticismInfor();// 执行findEmployeepraisecriticismInfor方法，查询员工奖惩信息表中的所有数据
@@ -128,14 +136,14 @@ public class EmployeePraiseCriticismAction extends ActionSupport implements Init
 				"selectEmployee"); // 通过getParameter方法获取页面上name为selectEmployee的标签的value值
 		System.out.println(employeeId); // 打印从前一个页面传过来的员工编号employeeId
 
+		
 		// get HttpServletRequest
 		try {
 			System.out.println("create skipSelectSingle");
 			List<TbEmployee> employeeInfor = praiseCriticism
 					.findEmployeeInfor(employeeId); // 调用findEmployeeInfor()方法
 			List<TbEmployee> emploeesInfo = new ArrayList<TbEmployee>(); // 创建一个空的集合emploeesInfo
-
-			for (TbEmployee tbEmployee : employeeInfor) { // 遍历
+			for (TbEmployee tbEmployee : employeeInfor) { // 遍历ss
 				List<COrganizationNj> cOrganizationNjInfor = praiseCriticism
 						.findCOrganizationNjInfor(tbEmployee
 								.getOrganizationNj().getOrgid());// 执行findCOrganizationNjInfor，根据营业厅编号获取营业厅区域关系表中的信息

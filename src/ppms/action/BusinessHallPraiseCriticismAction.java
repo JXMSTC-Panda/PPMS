@@ -48,6 +48,13 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismSingleResult.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	public String businessHallPraiseCriticismSingleStart() {
+		
+		String type=tbOrgpraisecriticism.getPraisecriticismtype();
+		String praisecriticismtype="000"+type;
+		tbOrgpraisecriticism.setPraisecriticismtype(praisecriticismtype);
+		String level=tbOrgpraisecriticism.getPraisecriticismlevel();
+		String praisecriticismlevel="000"+level;
+		tbOrgpraisecriticism.setPraisecriticismlevel(praisecriticismlevel);
 		praiseCriticism.businessHallInforSave(tbOrgpraisecriticism);
 
 		List<TbOrgpraisecriticism> orgpraisecriticismInfor = praiseCriticism.findOrgpraisecriticismInfor();// 执行findEmployeepraisecriticismInfor方法，查询员工奖惩信息表中的所有数据
