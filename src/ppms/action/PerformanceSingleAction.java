@@ -132,7 +132,7 @@ public class PerformanceSingleAction extends ActionSupport {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "faild";
+		return "success";
 	}
 	
 	/*
@@ -143,7 +143,7 @@ public class PerformanceSingleAction extends ActionSupport {
 	@Action(value = "performance.year.yearPerformance.add", results = {
 			
 			//****************************************---------->>>>>>跳转待修改
-			@Result(name = "success", location = "/WEB-INF/content/page/performance/monthPerformanceSingleResult.jsp"),
+			@Result(name = "success", location = "/WEB-INF/content/page/performance/yearPerformanceSingleResult.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String addYearPerformance() {
 
@@ -176,7 +176,7 @@ public class PerformanceSingleAction extends ActionSupport {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "faild";
+		return "success";
 	}
 
 

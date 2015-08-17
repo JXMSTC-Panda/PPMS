@@ -118,7 +118,8 @@
 										<!-- PAGE CONTENT BEGINS -->
 										<!-- <form class="form-horizontal" name="form1" role="form" method="post" action="skipSelectSingle.do"> -->
 										<form class="form-horizontal" name="form1" role="form"
-											method="post" action="employeePraiseCriticismSingleStart.do">
+											method="post" action="employeePraiseCriticismSingleStart.do?tbEmployeepraisecriticism.tbEmployee.employeeid=<c:forEach items="${requestScope.employeeInfos}"
+												var="employeeInfo">${employeeInfo.employeeid}</c:forEach>">
 											<!-- #section:elements.form -->
 											
 												<div class="form-group">
@@ -188,7 +189,7 @@
 														<input readonly="" type="text" class="col-xs-10 col-sm-5"
 															id="form-input-readonly" value="<c:forEach items="${requestScope.employeeInfos}"
 												var="employeeInfo">${employeeInfo.employeecode}</c:forEach>"
-															name="tbEmployeepraisecriticism.tbEmployee.employeeid" />
+															name="tbEmployeepraisecriticism.tbEmployee.employeecode" />
 														<span class="help-inline col-xs-12 col-sm-7"> </span>
 													</div>
 												</div>

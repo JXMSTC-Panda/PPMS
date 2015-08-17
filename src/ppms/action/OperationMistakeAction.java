@@ -1,13 +1,18 @@
 package ppms.action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
+import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
@@ -165,5 +170,32 @@ public class OperationMistakeAction extends ActionSupport {
 		}
 
 		return "success";
+	}
+	
+	public Map<String, List<T>> initPage(ServletContext servletContext,String url) {
+		// 实例化map
+		Map map = new HashMap();
+
+		PraiseCriticismServiceImp service = WebApplicationContextUtils
+				.getWebApplicationContext(servletContext).getBean(
+						PraiseCriticismServiceImp.class);
+
+		url= "standardVisit.operationMistakeSearch";
+			List<TbEmployeepraisecriticism> employeepraisecriticismInfor=service.findEmployeepraisecriticismInfor();
+			List<TbEmployeepraisecriticism> employeepraisecriticismsInfor=new ArrayList<TbEmployeepraisecriticism>();
+			for (TbEmployeepraisecriticism tbEmployeepraisecriticism : employeepraisecriticismInfor) {
+				List<OrganizationNj> organizationNjResults = service
+						.findOrganizationNjInfor(tbEmployeepraisecriticism.getOrganizationNj()
+								.getOrgid());// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
+				tbEmployeepraisecriticism.setOrganizationNj(organizationNjResults.get(0));// 将同步营业厅信息set进对象organizationNj中
+				
+				List<TbEmployee> tbEmployeeResults = service.findEmployeeInfor(tbEmployeepraisecriticism.getTbEmployee().getEmployeeid());
+				tbEmployeepraisecriticism.setTbEmployee(tbEmployeeResults.get(0));
+				employeepraisecriticismsInfor.add(tbEmployeepraisecriticism);
+			}
+			System.out.println(employeepraisecriticismInfor);
+			map.put("employeepraisecriticismsInfor",employeepraisecriticismsInfor);
+			
+		return map;
 	}
 }
