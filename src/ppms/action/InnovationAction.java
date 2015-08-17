@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.transaction.Transactional;
 
 import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.convention.annotation.Action;
@@ -16,6 +17,8 @@ import ppms.action.interfaces.InitPage;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbInnovation;
+import ppms.domain.TbMaster;
+import ppms.genericDao.TbMasterDAO;
 import ppms.serviceimpl.InvocationServiceImp;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -57,6 +60,7 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 
 	}
 
+	@Transactional
 	@Override
 	public Map<String, List<T>> initPage(ServletContext context, String url) {
 
@@ -78,11 +82,18 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 		case "innovation.innovationSearch":
 			// 获取提案信息
 			
+			long beg=System.currentTimeMillis();
 			List<TbInnovation> innovations = getInnovations(context);
-			
+			TbMasterDAO masterDAO = WebApplicationContextUtils
+					.getWebApplicationContext(context).getBean(
+							TbMasterDAO.class);
+			List<TbMaster> masters=masterDAO.findByType("InnovationLevel");
 			if(innovations!=null&&innovations.size()>0){
 				map.put("innovations", innovations);
+				map.put("masters", masters);
 			}
+			
+			System.out.println(System.currentTimeMillis()-beg);
 			break;
 		default:
 			break;
