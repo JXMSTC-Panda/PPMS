@@ -528,7 +528,7 @@
 							class="arrow"></b>
 						</li>
 						<li id="monthPerformanceOpen" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceOpen">
+							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceOpen.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效上传功能开通 </a> <b
 							class="arrow"></b>
 						</li>
