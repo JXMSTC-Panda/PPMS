@@ -2,6 +2,7 @@ package ppms.domain;
 
 import java.util.Date;
 
+import ppms.annotation.ValueChange;
 import ppms.excel.template.BaseExcelObject;
 
 /**
@@ -19,6 +20,7 @@ public class TbInnovation extends BaseExcelObject implements
 	private String innovationcontent;
 	private Date assessdate;
 	private String assessresult;
+	@ValueChange(key_type="InnovationLevel")
 	private String assesslevel;
 	private String encouragement;
 	private String createdby;
