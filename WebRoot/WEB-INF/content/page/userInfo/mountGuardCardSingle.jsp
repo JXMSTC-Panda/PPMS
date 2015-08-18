@@ -128,7 +128,54 @@
 						alert("error");
 					},
 					success : function(data) {
-						alert(data);					
+						
+						eval("json = " +data);
+						alert(data);
+						//把区域名写入把文本框
+						document.getElementById("AreaName").value=json.AreaName;
+						//把营业厅编码写入文本框
+						document.getElementById("OrgId").value=document.getElementById("OrgName").value;
+						
+						//取员工name下拉框对象
+						var selectDemo = document.getElementById("EmployeeNameSelect");
+						
+						for(var i =0 ;i < json.Employees.length; i++){
+							//var id = json.Employees[i].id;
+							var name = json.Employees[i].name;
+							//select.appendChild(option);
+							//$("#EmployeeNameSelect").append("<option value=\"15\">Select</option>");
+							alert(name);
+							
+							
+   							
+						}
+						
+					}
+			});
+		});
+		$("#EmployeeNameSelect").change(function() {
+			alert("change");
+			
+			$.ajax({
+					cache : false,
+					type : "GET",
+					url : "userInfo.mountGuardCard.mountGuardCardSingle.ajaxSearchEmployee.do",
+					data :  $('#form_Insert').serialize(),
+					async : false,
+					error : function(request) {
+						
+						alert("error");
+					},
+					success : function(data) {
+						
+						
+						eval("json = " +data);
+						//alert(json.AreaName);					
+						alert(data);
+						//把工号名写入把文本框
+						document.getElementById("EmployeeId").value=json.employeecode;
+						//把身份证号写入文本框
+						document.getElementById("Id").value=json.idnumber;
 					}
 			});
 		});
@@ -139,7 +186,7 @@
 	var AreaName =document.getElementById("AreaName").value;
 	var OrgId=document.getElementById("OrgId").value;
 	var OrgName =document.getElementById("OrgName").value;
-	var EmployeeName =document.getElementById("EmployeeName").value;
+	var EmployeeName =document.getElementById("EmployeeNameSelect").value;
 	var EmployeeId =document.getElementById("EmployeeId").value;
 	var Id =document.getElementById("Id").value;
 	var TrainTime = document.getElementById("TrainTime").value;
@@ -245,11 +292,9 @@
 															class="chosen-select form-control " id="OrgName"
 															data-placeholder="选择营业厅">
 															<option value="0"></option>
-															<option value="aa">aa</option>
-															<option value="bb">bb</option>
 															<c:forEach items="${ requestScope.orgs}" var="org">
 																<option value="${org.orgid }">
-																	<c:out value="${org.orgName }"></c:out>
+																	<c:out value="${org.org_Name }"></c:out>
 																</option>
 															</c:forEach>
 														</select>
@@ -261,10 +306,14 @@
 													for="form-input-readonly"> 选择员工： </label>
 												<div class="col-sm-9">
 													<div class="col-xs-10 col-sm-5">
-														<select class="chosen-select form-control"
-															id="EmployeeName" data-placeholder="选择员工">
-
-															<option value="9527">周星驰</option>
+														<select class="chosen-select form-control" name="EmployeeNameSelect"
+															id="EmployeeNameSelect" data-placeholder="选择员工">
+															<option value="0"></option>
+															<c:forEach items="${ requestScope.employees}" var="employees">
+																<option value="${employees.employeeid}">
+																	<c:out value="${employees.employeename}"></c:out>
+																</option>
+															</c:forEach>
 														</select>
 													</div>
 
