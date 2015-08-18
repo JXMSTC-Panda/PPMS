@@ -1,6 +1,7 @@
 package ppms.action;
 
 import java.awt.geom.Area;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,8 @@ import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbAreaorgrelation;
 import ppms.domain.TbStandardcheck;
+import ppms.domain.TbSubarea;
+import ppms.domain.TbSubareaorgrelation;
 import ppms.serviceimpl.StandardCheckServiceImp;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -46,9 +49,7 @@ public class  StandardVistDzhAction  extends ActionSupport{
 	public void setTbStandardcheck(TbStandardcheck tbStandardcheck) {
 		this.tbStandardcheck = tbStandardcheck;
 	}
-	public StandardVistDzhAction(){
-		System.out.println("adasdas");
-	}
+
 	
 	//功能：跳转到单条录入界面
 	@Action(value ="show",results = {  
@@ -91,40 +92,38 @@ public class  StandardVistDzhAction  extends ActionSupport{
 		Map<String,Object> request = (Map) actionContext.get("request");// 获取出request对象
 		try {
 			System.out.println("进入skip");
-			//查询标准化表的信息
-			List<TbStandardcheck> tbStandardchecksResult = service.findStandardCheckInfo();
-			
-			for(TbStandardcheck tbStandardcheck : tbStandardchecksResult ){
-				//System.out.println(tbStandardcheck.getCheckscore()+":"+tbStandardcheck.getCheckdate());打印值，测试
-				/**
-				 * 营业厅编码和名称
-				 * */
-				//OrganizationNj organizationNj = new OrganizationNj();为什么不行？？
+			//查询营业厅的信息		
+				List<OrganizationNj> organizationNjResultds = service.findOrganizationInfo();
+				Integer orgId = organizationNjResultds.get(0).getOrgid();
+				/*//OrganizationNj organizationNj = new OrganizationNj();为什么不行？？
 				OrganizationNj organizationNj = tbStandardcheck.getOrganizationNj();  //取区域关系对象
 				Integer orgId = organizationNj.getOrgid();
 				List<OrganizationNj> organizationNjResult = service.findOrganizationNjInfor(orgId);//通过营业厅编号来查询营业厅信息
 				tbStandardcheck.setOrganizationNj(organizationNjResult.get(0));//将封装好的营业厅信息对象赋给organizationNj,get(0)为取第一条数据
-				List<TbAreaorgrelation> tbAreaorgrelationResults = service.findAreaorgrelation(orgId);
-				tbAreaorgrelationResults.get(0).getTbArea().getAreaid();
-				//List<Area> areaResults = service.find
-				
-				System.out.println(organizationNj.getOrg_Name()+""+organizationNj.getOrgid()+"");
-				
-				/***
-				 * 
-				 *区域编码和名称 
+				*/
+				/**
+				 * 区域的名称
 				 * */
-				
-				
-				
-				
-			}
-			
-		} catch (Exception e) {
+				List<TbAreaorgrelation> tbAreaorgrelationResults = service.findAreaorgrelation(orgId);//通过区域编号来获取区域表信息
+				BigDecimal areId =  tbAreaorgrelationResults.get(0).getTbArea().getAreaid();//取区域营业厅关系表的AreaId
+				List<TbArea> areaResults = service.findAreaId(areId);//通过AreaId来获取Area表的信息
+				//String areaDesc = areaResults.get(0).getAreadesc();//返回相应Id的名称
+				/**
+				 * 片区名称
+				 * */
+				List<TbSubareaorgrelation> tbSubareaorgrelationResults = service.findSubAreaId(orgId);
+				BigDecimal subareaid = tbSubareaorgrelationResults.get(0).getTbSubarea().getSubareaid();
+				List<TbSubarea> subAreaResults = service.findSubareaDesc(subareaid);
+				subAreaResults.size();
+				//String subAreaDesc = subAreaResults.get(0).getSubareadesc();
+				//System.out.println(organizationNj.getOrg_Name()+""+organizationNj.getOrgid()+""+areaDesc+""+subAreaDesc);
+				request.put("organizationNj", organizationNjResultds);
+				request.put("areaResults", areaResults);
+				request.put("subAreaResults", subAreaResults);
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 		return "success";
 	}
 	
