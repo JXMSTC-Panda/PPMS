@@ -59,9 +59,11 @@ public class ToJsonUtil {
 	 * @param clazz
 	 */
 	
-	public void setFieldToJson(String[] fieldNames) {
+	public ToJsonUtil setFieldToJson(String[] fieldNames) {
 
 		this.fieldNames = fieldNames;
+		
+		return this;
 	}
 
 	/**
@@ -70,12 +72,6 @@ public class ToJsonUtil {
 	 * @param hsql
 	 */
 	
-	public ToJsonUtil(){
-		String packageName = "ppms.domain";
-	}
-	public void setKey(String rootName) {
-		this.rootName = rootName;
-	}
 
 	/**
 	 * 将List打包成json数组

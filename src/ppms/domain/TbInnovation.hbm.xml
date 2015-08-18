@@ -21,7 +21,7 @@
 		<many-to-one name="tbEmployee" class="ppms.domain.TbEmployee"
 			fetch="select">
 			<column name="EMPLOYEEID" length="6" >
-				<comment>身份证号</comment>
+				<comment>员工编码</comment>
 			</column>
 		</many-to-one>
 		<property name="innovationcontent" type="java.lang.String">

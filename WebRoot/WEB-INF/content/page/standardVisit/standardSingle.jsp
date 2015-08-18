@@ -70,42 +70,22 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<div class="page-content">
-									<!-- #section:settings.box -->
-
-									<!-- /section:settings.box -->
-									<div class="page-header">
-										<h1>
-								标准化和暗访管理
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									成绩单单条录入
-								</small>
-							</h1>
-									</div>
-									<!-- /.page-header -->
-
-									<div class="row">
-										<div class="col-xs-12">
-											<!-- PAGE CONTENT BEGINS -->
-											<form class="form-horizontal" role="form">
+							<form class="form-horizontal"  name ="form1" method="post" action="insert.do">
 												<!-- #section:elements.form -->
 
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 区域： </label>
-
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbArea.areadesc" />
 														<span class="help-inline col-xs-12 col-sm-7">
-												
 											</span>
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅编码： </label>
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly" > 营业厅编码： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value=""  name="tbStandardcheck.organizationNj.orgid"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -115,54 +95,38 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅名称： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<input readonly=" " type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbStandardcheck.organizationNj.orgName"/>
 														<span class="help-inline col-xs-12 col-sm-7">
-															<button class="btn btn-info">选择营业厅</button>
+															<button type="button" onClick="top.window.location='skipStandardCheckSingle.do'" class="btn btn-info">选择营业厅</button>        
 														</span>
 													</div>
 												</div>
-												
-
-												<!-- /section:elements.form -->
-												
-
-												
-
-												
+												<!-- /section:elements.form -->	
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 培训时间： </label>
-
 													<div class="col-sm-9">
-														<input type="text" id="form-field-1" placeholder="培训时间" class="col-xs-10 col-sm-5" />
+														<input type="text" id="form-field-1" placeholder="培训时间" class="col-xs-10 col-sm-5"  name ="tbStandardcheck.checkdate"/>
 													</div>
 												</div>
-												
-												
-												
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 考试分数： </label>
-
 													<div class="col-sm-9">
-														<input type="text" id="form-field-1" placeholder="Grade" class="col-xs-10 col-sm-5" />
+														<input  type="text" id="form-field-1" placeholder="Grade" class="col-xs-10 col-sm-5"  name="tbStandardcheck.checkscore" />
 														<label class=" control-label no-padding-left" for="form-field-1"> 分 </label>
 													</div>
-
 												</div>
 												<div class="clearfix form-actions">
 													<div class="col-md-offset-3 col-md-9">
-														<button class="btn btn-info" type="button">
+														<button class="btn btn-info" type="submit">
 															<i class="ace-icon fa fa-check bigger-110"></i> Submit
 														</button>
-
 														&nbsp; &nbsp; &nbsp;
 														<button class="btn" type="reset">
 															<i class="ace-icon fa fa-undo bigger-110"></i> Reset
 														</button>
 													</div>
-												</div>
-
+											</div>
 											</form>
-
 										</div>
 										<!-- /.col -->
 									</div>

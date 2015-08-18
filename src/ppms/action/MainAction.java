@@ -18,60 +18,62 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import ppms.serviceimpl.*;
 
-public class MainAction extends ActionSupport {
+/**
+* <p>Title: MainAction</p>
+* <p>Description: 主要实现登录验证</p>
+* <p>Company:（c）版权所有 2015 NCHU.QQL</p> 
+* <p>Version:</p>
+* @author TyurinTsien
+* @date 2015-8-13下午2:49:34
+*/
+public class MainAction extends ActionSupport{
 
 	@Autowired
 	EmployeeServiceImp employeeServiceImp;
-	
+
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
 	public String userAccountString;
 	public String userPasswordString;
 	private String ajaxState;
 
-	public MainAction() {
+	/**
+	 * MainAction构造函数
+	 */
+	public MainAction(){
+
 		response = ServletActionContext.getResponse();
 		request = ServletActionContext.getRequest();
-		ajaxState = "0";
-	}
-	
-	/**
-	 * 
-	* @Title: login 
-	* @Description: 登录验证Ajax
-	* @throws IOException     
-	* @return void
-	* @author QiuLinQian
-	* @time 2015年8月11日16:23:57     
-	* @throws
-	 */
-	@Action(value = "login")
-	public void loginCheck() throws IOException {
-		
 		userAccountString = request.getParameter("userAccount");
 		userPasswordString = request.getParameter("passWord");
-		//登录验证
-		ajaxState = employeeServiceImp.findEmployeeForLogin(userAccountString, userPasswordString);
-		response.getWriter().write(ajaxState);
+		ajaxState = "0";
 	}
+
 	/**
 	 * 
-	* @Title: login 
-	* @Description: 登录验证成功后跳转到控制台
-	* @return String    
-	* @author QiuLinQian
-	* @time 2015年8月11日19:59:35   
-	* @throws
-	 */
-	@Action(value = "index.tachometer", results = {  
-		    @Result(name = "success", location = "/WEB-INF/content/page/tachometer.jsp"),  
-	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
-	public String login(){
-		//记录Session
-		HttpSession session = request.getSession(true);
-		session.setAttribute("userAccount", userAccountString);
-		session.setAttribute("userPassword", userPasswordString);
-		return "success";
+	 * @Title: loginCheck
+	 * @Description: 登录验证Ajax
+	 * @throws IOException
+	 * @return void
+	 * @author QiuLinQian
+	 * @time 2015年8月11日16:23:57
+	 * @throws
+	 */ 
+	@Action(value = "login")
+	public void loginCheck() throws IOException {
+
+		// 登录验证
+		ajaxState = employeeServiceImp.loginCheck(userAccountString,
+				userPasswordString);
+		if (ajaxState.equals("1")) {
+			//验证通过记录session
+			HttpSession session = request.getSession(true);
+			//session记录员工ID
+			session.setAttribute("tbEmployeeIDSession", 
+					employeeServiceImp.findEmployeeID(userAccountString, userPasswordString));
+		}
+		System.out.println(request.getRequestURI());
+		response.getWriter().write(ajaxState);
 	}
-	
+
 }

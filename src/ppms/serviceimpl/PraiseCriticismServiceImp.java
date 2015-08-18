@@ -13,6 +13,7 @@ import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbJob;
+import ppms.domain.TbMaster;
 import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbPost;
 import ppms.domain.TbSubarea;
@@ -36,7 +37,22 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 	public void businessHallInforSave(Object tbOrgpraisecriticism){
 		dao.businessHallInforSave(tbOrgpraisecriticism);
 	}
-	
+	/**
+	 * 更新数据
+	 * @param object
+	 */
+	@Override
+	public void update(Object object){
+		dao.update(object);
+	}
+	/**
+	 * 数据库完全删除数据
+	 * @param object
+	 */
+	@Override
+	public void delete(Object object){
+		dao.delete(object);
+	}
 	/*
 	 * 动态下拉框，根据奖惩类型，动态变化奖惩级别*/
 
@@ -45,7 +61,44 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 		
 		return dao.findLevel(key);
 	}
-	
+	/**
+	 * 根据key值查询营业厅奖惩类型
+	 * @param key
+	 * @return
+	 */
+	@Override
+	public List<TbMaster> findOrgPraiseCriticismType(String key){
+		return dao.findOrgPraiseCriticismType(key);
+	}
+	/**
+	 * 根据奖惩类型typeKey值和奖惩级别levelKey查询营业厅奖惩级别
+	 * @param typeKey
+	 * @param levelKey
+	 * @return
+	 */
+	@Override
+	public List<TbMaster> findOrgPraiseCriticismLevel(String typeKey,String levelKey){
+		return dao.findOrgPraiseCriticismLevel(typeKey, levelKey);
+	}
+	/**
+	 * 根据key值查询员工奖惩类型
+	 * @param key
+	 * @return
+	 */
+	@Override
+	public List<TbMaster> findEmployeePraiseCriticismType(String key){
+		return dao.findEmployeePraiseCriticismType(key);
+	}
+	/**
+	 * 根据奖惩类型typeKey值和奖惩级别levelKey查询员工奖惩级别
+	 * @param typeKey
+	 * @param levelKey
+	 * @return
+	 */
+	@Override
+	public List<TbMaster> findEmployeePraiseCriticismLevel(String typeKey,String levelKey){
+		return dao.findEmployeePraiseCriticismLevel(typeKey, levelKey);
+	}
 	/*
 	 * 获取数据可中所有的员工信息
 	 * */
@@ -93,8 +146,17 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 		return dao.findAllOrganizationNjInfor();
 	}
 	@Override
-	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor(){
-		return dao.findEmployeepraisecriticismInfor();
+	public List<TbEmployeepraisecriticism> findAllEmployeepraisecriticismInfor(){
+		return dao.findAllEmployeepraisecriticismInfor();
+	}
+	/**
+	 * 根据员工奖惩信息编号查询员工奖惩信息
+	 * @param praisecriticismid
+	 * @return
+	 */
+	@Override
+	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor(String praisecriticismid){
+		return dao.findEmployeepraisecriticismInfor(praisecriticismid);
 	}
 	@Override
 	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(){

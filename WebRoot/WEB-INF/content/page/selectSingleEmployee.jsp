@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</table>
 				</form>
 				<br />
-				<form name="form2" action="selectEmployeeSkipSingle.do" method="post" >
+				<form name="form2" action="praiseCriticism.employee.employeePraiseCriticismSingle.do" method="post" >
 				<table cellpadding="0" cellspacing="0" class="tablelist" align="center">
 					<tr>
 						<th>&nbsp;</th>
@@ -171,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <td >${employeeInfo.employeecode}</td>
 						<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a></td>
 						<td>${employeeInfo.idnumber}</td>
-						<td></td>
+						<td>${employeeInfo.organizationNj.areadesc}</td>
 						<td>${employeeInfo.organizationNj.orgid}</td>
 						<td>${employeeInfo.organizationNj.org_Name}</td>
 						<td>

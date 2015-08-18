@@ -83,8 +83,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
-						<li class="active">子功能</li>
+						<li><a href="#">权限管理</a></li>
+						<li class="active">角色添加</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -116,7 +116,7 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${requestScope.tbRoleslist}" var="trl"
+										<c:forEach items="${tbRoleslist}" var="trl"
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input

@@ -70,10 +70,26 @@ public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao
 	 * @see ppms.dao.PerformanceDao#getEmployees()
 	 */
 	@Override
-	public List<TbEmployee> getEmployees() {
-		// TODO Auto-generated method stub
-		return getHibernateTemplate().findByExample(new TbEmployee());
+	public List<TbEmployee> getEmployees(String employeeid) {
+		List results=null;
+		try{
+			String hql="from TbEmployee where orgid='"+employeeid+"'"; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
 		
-	}
+		return results;  
+    }
 
+	
+		
 }
+
+	
+		
+	
+
+
+
