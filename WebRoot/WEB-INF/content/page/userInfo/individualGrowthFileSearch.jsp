@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%> 
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -85,24 +86,25 @@
 								</small>
 							</h1>
 									</div>
+									<form class="form-horizontal" role="form" method="post" action="userInfo.growthFile.individualGrowthFileSearch.do">
 									<table class="table table-striped table-bordered">
 										<thead>
 											<tr>
 												<td>
 													工号:
-													<label>0011</label>
+													<input name="tbChangejobhistory.tbEmployee.employeeid" value="${requestScope.tbChangejob.get(0).tbEmployee.employeeid}"></input>
 												</td>
 												<td>
 													姓名:
-													<label>李四</label>
+										            <input readonly="readonly" value="${requestScope.tbChangejob.get(0).tbEmployee.employeename}" />
 												</td>
 												<td>
 													身份证号:
-													<label>360423199451280011</label>
+													<input readonly="readonly" value="${requestScope.tbChangejob.get(0).tbEmployee.idnumber}" />
 												</td>
 												<td>
 													所属营业厅:
-													<label>汉中路营业厅</label>
+													<input readonly="readonly" value="${requestScope.tbChangejob.get(0).tbEmployee.organizationNj.org_Name}" />
 												</td>
 											</tr>
 										</thead>
@@ -117,38 +119,15 @@
 																	<th style="text-align: center;">阶段</th>			
 																</tr>
 															</thead>
-															<tbody>
+															<tbody align="center">
+															<c:forEach items="${requestScope.tbChangejob}" var="tbChange"
+											                 varStatus="status">
 																<tr>
-																	<td class="center">1</td>													
-																	<td>
-																		2007-02-05
-																		
-																	</td>
-																	<td> 
-																		<a href="">入职期</a> 
-																	</td>																	
+																	<td>${tbChange.jobhistoryid}</td>
+                                               						<td>${tbChange.changedate}</td>
+                                               						<td>${tbChange.tbJobByOutjobid.jobname}</td>																	
 																</tr>	
-																<tr>
-																	<td class="center">2</td>													
-																	<td>
-																		2007-02-05
-																		
-																	</td>
-																	<td> 
-																		<a href="">营业员</a> 
-																	</td>																												
-											<tr>
-																	<td class="center">3</td>													
-																	<td>
-																		2007-02-05
-																		
-																	</td>
-																	
-																	<td> 
-																		<a href="">熟练营业员</a> 
-																	</td>																	
-																</tr>	
-																
+															</c:forEach>													
 															</tbody>
 														</table>														
 														<div class="clearfix form-actions">
@@ -156,9 +135,14 @@
 															<button class="btn btn-info" type="button">
 																<i class="ace-icon fa fa-check bigger-110"></i>
 																	导出全部查询结果
-															</button>														
+															</button>
+															<button class="btn btn-info" type="submit">
+											                     <i class="ace-icon fa fa-check bigger-110"></i>
+											                     	查询   
+										                    </button>														
 															</div>
-									</div>
+														</div>
+														</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
