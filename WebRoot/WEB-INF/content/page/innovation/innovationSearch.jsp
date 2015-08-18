@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -7,13 +8,11 @@
 			+ path + "/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
-
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
-<title>Blank Page - Ace Admin</title>
+<title>人员成长档案管理系统</title>
 
 <meta name="description" content="" />
 <meta name="viewport"
@@ -60,383 +59,315 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
+
+<script type="text/javascript">
+	function getXlsFromTbl(inTblId, inWindow) {
+		try {
+			var allStr = "";
+			var curStr = "";
+			//alert("getXlsFromTbl");
+			if (inTblId != null && inTblId != "" && inTblId != "null") {
+				curStr = getTblData(inTblId, inWindow);
+			}
+			if (curStr != null) {
+				allStr += curStr;
+			} else {
+				alert("你要导出的表不存在！");
+				return;
+			}
+			var fileName = getExcelFileName();
+			doFileExport(fileName, allStr);
+		} catch (e) {
+			alert("导出发生异常:" + e.name + "->" + e.description + "!");
+		}
+	}
+	function getTblData(inTbl, inWindow) {
+		var rows = 0;
+		//alert("getTblData is " + inWindow);
+		var tblDocument = document;
+		if (!!inWindow && inWindow != "") {
+			if (!document.all(inWindow)) {
+				return null;
+			} else {
+				tblDocument = eval(inWindow).document;
+			}
+		}
+		var curTbl = tblDocument.getElementById(inTbl);
+		var outStr = "";
+		if (curTbl != null) {
+			for ( var j = 0; j < curTbl.rows.length; j++) {
+				for ( var i = 0; i < curTbl.rows[j].cells.length; i++) {
+					if (i == 0 && rows > 0) {
+						outStr += " \t";
+						rows -= 1;
+					}
+					outStr += curTbl.rows[j].cells[i].innerText + "\t";
+					if (curTbl.rows[j].cells[i].colSpan > 1) {
+						for ( var k = 0; k < curTbl.rows[j].cells[i].colSpan - 1; k++) {
+							outStr += " \t";
+						}
+					}
+					if (i == 0) {
+						if (rows == 0 && curTbl.rows[j].cells[i].rowSpan > 1) {
+							rows = curTbl.rows[j].cells[i].rowSpan - 1;
+						}
+					}
+				}
+				outStr += "\r\n";
+			}
+		} else {
+			outStr = null;
+			alert(inTbl + "不存在!");
+		}
+		return outStr;
+	}
+	function getExcelFileName() {
+		var d = new Date();
+		var curYear = d.getYear();
+		var curMonth = "" + (d.getMonth() + 1);
+		var curDate = "" + d.getDate();
+		var curHour = "" + d.getHours();
+		var curMinute = "" + d.getMinutes();
+		var curSecond = "" + d.getSeconds();
+		if (curMonth.length == 1) {
+			curMonth = "0" + curMonth;
+		}
+		if (curDate.length == 1) {
+			curDate = "0" + curDate;
+		}
+		if (curHour.length == 1) {
+			curHour = "0" + curHour;
+		}
+		if (curMinute.length == 1) {
+			curMinute = "0" + curMinute;
+		}
+		if (curSecond.length == 1) {
+			curSecond = "0" + curSecond;
+		}
+		var fileName = "91zaojia" + "_" + curYear + curMonth + curDate + "_"
+				+ curHour + curMinute + curSecond + ".xls";
+		return fileName;
+	}
+	function doFileExport(inName, inStr) {
+		var xlsWin = null;
+		if (!!document.all("glbHideFrm")) {
+			xlsWin = glbHideFrm;
+		} else {
+			var width = 6;
+			var height = 4;
+			var openPara = "left=" + (window.screen.width / 2 - width / 2)
+					+ ",top=" + (window.screen.height / 2 - height / 2)
+					+ ",scrollbars=no,width=" + width + ",height=" + height;
+			xlsWin = window.open("", "_blank", openPara);
+		}
+		xlsWin.document.write(inStr);
+		xlsWin.document.close();
+		xlsWin.document.execCommand('Saveas', true, inName);
+		xlsWin.close();
+	}
+</script>
 </head>
 
 <body class="no-skin">
-	<!-- #section:basics/navbar.layout -->
-	<div id="navbar" class="navbar navbar-default">
+	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
+	<div class="main-container" id="main-container">
 		<script type="text/javascript">
 			try {
-				ace.settings.check('navbar', 'fixed')
+				ace.settings.check('main-container', 'fixed')
 			} catch (e) {
 			}
 		</script>
-		<div class="navbar-container" id="navbar-container">
-			<!-- #section:basics/sidebar.mobile.toggle -->
-			<button type="button" class="navbar-toggle menu-toggler pull-left"
-				id="menu-toggler" data-target="#sidebar">
-				<span class="sr-only">Toggle sidebar</span> <span class="icon-bar"></span>
-
-				<span class="icon-bar"></span> <span class="icon-bar"></span>
-			</button>
-
-			<!-- /section:basics/sidebar.mobile.toggle -->
-			<div class="navbar-header pull-left">
-				<!-- #section:basics/navbar.layout.brand -->
-				<a href="#" class="navbar-brand"> <small> <i
-						class="fa fa-leaf"></i> Ace Admin </small> </a>
-
-				<!-- /section:basics/navbar.layout.brand -->
-
-				<!-- #section:basics/navbar.toggle -->
-
-				<!-- /section:basics/navbar.toggle -->
-			</div>
-
-			<!-- #section:basics/navbar.dropdown -->
-			<div class="navbar-buttons navbar-header pull-right"
-				role="navigation">
-				<ul class="nav ace-nav">
-					<li class="grey"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"> <i
-							class="ace-icon fa fa-tasks"></i> <span class="badge badge-grey">4</span>
-					</a>
-
-						<ul
-							class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-							<li class="dropdown-header"><i class="ace-icon fa fa-check"></i>
-								4 Tasks to complete</li>
-
-							<li class="dropdown-content">
-								<ul class="dropdown-menu dropdown-navbar">
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Software Update</span> <span
-													class="pull-right">65%</span>
-											</div>
-
-											<div class="progress progress-mini">
-												<div style="width:65%" class="progress-bar"></div>
-											</div> </a></li>
-
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Hardware Upgrade</span> <span
-													class="pull-right">35%</span>
-											</div>
-
-											<div class="progress progress-mini">
-												<div style="width:35%"
-													class="progress-bar progress-bar-danger"></div>
-											</div> </a></li>
-
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Unit Testing</span> <span
-													class="pull-right">15%</span>
-											</div>
-
-											<div class="progress progress-mini">
-												<div style="width:15%"
-													class="progress-bar progress-bar-warning"></div>
-											</div> </a></li>
-
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Bug Fixes</span> <span
-													class="pull-right">90%</span>
-											</div>
-
-											<div class="progress progress-mini progress-striped active">
-												<div style="width:90%"
-													class="progress-bar progress-bar-success"></div>
-											</div> </a></li>
-								</ul></li>
-
-							<li class="dropdown-footer"><a href="#"> See tasks with
-									details <i class="ace-icon fa fa-arrow-right"></i> </a></li>
-						</ul></li>
-
-					<li class="purple"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"> <i
-							class="ace-icon fa fa-bell icon-animated-bell"></i> <span
-							class="badge badge-important">8</span> </a>
-
-						<ul
-							class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-							<li class="dropdown-header"><i
-								class="ace-icon fa fa-exclamation-triangle"></i> 8 Notifications
-							</li>
-
-							<li class="dropdown-content">
-								<ul class="dropdown-menu dropdown-navbar navbar-pink">
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left"> <i
-													class="btn btn-xs no-hover btn-pink fa fa-comment"></i> New
-													Comments </span> <span class="pull-right badge badge-info">+12</span>
-											</div> </a></li>
-
-									<li><a href="#"> <i
-											class="btn btn-xs btn-primary fa fa-user"></i> Bob just
-											signed up as an editor ... </a></li>
-
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left"> <i
-													class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-													New Orders </span> <span class="pull-right badge badge-success">+8</span>
-											</div> </a></li>
-
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left"> <i
-													class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
-													Followers </span> <span class="pull-right badge badge-info">+11</span>
-											</div> </a></li>
-								</ul></li>
-
-							<li class="dropdown-footer"><a href="#"> See all
-									notifications <i class="ace-icon fa fa-arrow-right"></i> </a></li>
-						</ul></li>
-
-					<li class="green"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"> <i
-							class="ace-icon fa fa-envelope icon-animated-vertical"></i> <span
-							class="badge badge-success">5</span> </a>
-
-						<ul
-							class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-							<li class="dropdown-header"><i
-								class="ace-icon fa fa-envelope-o"></i> 5 Messages</li>
-
-							<li class="dropdown-content">
-								<ul class="dropdown-menu dropdown-navbar">
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath}/assets/avatars/avatar.png"
-											class="msg-photo" alt="Alex's Avatar" /> <span
-											class="msg-body"> <span class="msg-title"> <span
-													class="blue">Alex:</span> Ciao sociis natoque penatibus et
-													auctor ... </span> <span class="msg-time"> <i
-													class="ace-icon fa fa-clock-o"></i> <span>a moment
-														ago</span> </span> </span> </a></li>
-
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath}/assets/avatars/avatar3.png"
-											class="msg-photo" alt="Susan's Avatar" /> <span
-											class="msg-body"> <span class="msg-title"> <span
-													class="blue">Susan:</span> Vestibulum id ligula porta felis
-													euismod ... </span> <span class="msg-time"> <i
-													class="ace-icon fa fa-clock-o"></i> <span>20 minutes
-														ago</span> </span> </span> </a></li>
-
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath}/assets/avatars/avatar4.png"
-											class="msg-photo" alt="Bob's Avatar" /> <span
-											class="msg-body"> <span class="msg-title"> <span
-													class="blue">Bob:</span> Nullam quis risus eget urna mollis
-													ornare ... </span> <span class="msg-time"> <i
-													class="ace-icon fa fa-clock-o"></i> <span>3:15 pm</span> </span> </span>
-									</a></li>
-
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath}/assets/avatars/avatar2.png"
-											class="msg-photo" alt="Kate's Avatar" /> <span
-											class="msg-body"> <span class="msg-title"> <span
-													class="blue">Kate:</span> Ciao sociis natoque eget urna
-													mollis ornare ... </span> <span class="msg-time"> <i
-													class="ace-icon fa fa-clock-o"></i> <span>1:33 pm</span> </span> </span>
-									</a></li>
-
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath}/assets/avatars/avatar5.png"
-											class="msg-photo" alt="Fred's Avatar" /> <span
-											class="msg-body"> <span class="msg-title"> <span
-													class="blue">Fred:</span> Vestibulum id penatibus et auctor
-													... </span> <span class="msg-time"> <i
-													class="ace-icon fa fa-clock-o"></i> <span>10:09 am</span> </span>
-										</span> </a></li>
-								</ul></li>
-
-							<li class="dropdown-footer"><a href="inbox.html"> See
-									all messages <i class="ace-icon fa fa-arrow-right"></i> </a></li>
-						</ul></li>
-
-					<!-- #section:basics/navbar.user_menu -->
-					<li class="light-blue"><a data-toggle="dropdown" href="#"
-						class="dropdown-toggle"> <img class="nav-user-photo"
-							src="${pageContext.request.contextPath}/assets/avatars/user.jpg"
-							alt="Jason's Photo" /> <span class="user-info"> <small>Welcome,</small>
-								Jason </span> <i class="ace-icon fa fa-caret-down"></i> </a>
-
-						<ul
-							class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-							<li><a href="#"> <i class="ace-icon fa fa-cog"></i>
-									Settings </a></li>
-
-							<li><a href="profile.html"> <i
-									class="ace-icon fa fa-user"></i> Profile </a></li>
-
-							<li class="divider"></li>
-
-							<li><a href="#"> <i class="ace-icon fa fa-power-off"></i>
-									Logout </a></li>
-						</ul></li>
-
-					<!-- /section:basics/navbar.user_menu -->
-				</ul>
-			</div>
-
-			<!-- /section:basics/navbar.dropdown -->
-		</div>
-		<!-- /.navbar-container -->
-	</div>
-
-	<!-- /section:basics/navbar.layout -->
-	<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
-	<!-- /section:basics/sidebar -->
-	<div class="main-content">
-		<div class="main-content-inner">
-			<!-- #section:basics/content.breadcrumbs -->
-			<div class="breadcrumbs" id="breadcrumbs">
-				<script type="text/javascript">
-					try {
-						ace.settings.check('breadcrumbs', 'fixed')
-					} catch (e) {
-					}
-				</script>
-
-				<ul class="breadcrumb">
-					<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
-					</li>
-
-					<li><a href="#">Other Pages</a></li>
-					<li class="active">Blank Page</li>
-				</ul>
-				<!-- /.breadcrumb -->
-
-				<!-- #section:basics/content.searchbox -->
-				<div class="nav-search" id="nav-search">
-					<form class="form-search">
-						<span class="input-icon"> <input type="text"
-							placeholder="Search ..." class="nav-search-input"
-							id="nav-search-input" autocomplete="off" /> <i
-							class="ace-icon fa fa-search nav-search-icon"></i> </span>
-					</form>
+		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
+		<!-- /section:basics/sidebar -->
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<script type="text/javascript">
+						try {
+							ace.settings.check('breadcrumbs', 'fixed')
+						} catch (e) {
+						}
+					</script>
+					<ul class="breadcrumb">
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
+						</li>
+						<li><a href="#">父功能</a></li>
+						<li class="active">子功能</li>
+					</ul>
+					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
-				<!-- /.nav-search -->
+				<div class="page-content">
+					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
+					<div class="row">
+						<div class="col-xs-12">
+							<!-- PAGE CONTENT BEGINS -->
+							<div class="page-header">
+								<h1>
+									创新管理 <small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 创新提案查询 </small>
+								</h1>
+							</div>
 
-				<!-- /section:basics/content.searchbox -->
-			</div>
+							<div class="clearfix">
+								<div class="pull-right tableTools-container"></div>
+							</div>
+							<div class="table-header">创新提案表</div>
+							<form action="" name="StuListForm">
+								<c:set var="count" value="0"></c:set>
+								<table id="dynamic-table"
+									class="table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th class="center"><label class="pos-rel"> <input
+													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
+											</th>
+											<th>工号</th>
+											<th>姓名</th>
+											<th>身份证号</th>
+											<th>营业厅编码</th>
+											<th>营业厅名称</th>
+											<th>创新方案</th>
+											<th>创新类型</th>
+											<th>评定时间</th>
+											<th>部门核定结果</th>
+											<th>层级</th>
+											<th>奖励方式</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${requestScope.innovations}"
+											var="innovation" varStatus="status">
+											<tr>
+												<td class="center"><label class="pos-rel"> <input
+														type="checkbox" class="ace" /> <span class="lbl"></span>
+												</label></td>
+												<td><c:if test="${innovation.tbEmployee!=null}">
+														<c:out value="${innovation.tbEmployee.employeecode}"></c:out>
+												</td>
+												</c:if>
+												<td><c:if test="${ innovation.tbEmployee!=null}">
+														<c:out value="${innovation.tbEmployee.employeename}"></c:out>
+													</c:if>
+												</td>
+												<td><c:if test="${ innovation.tbEmployee!=null}">
+														<c:out value="${innovation.tbEmployee.idnumber}"></c:out>
+													</c:if>
+												</td>
+												<td><c:out value="${innovation.organizationNj.orgid}"></c:out>
+												</td>
+												<td><c:out
+														value="${innovation.organizationNj.org_Name}"></c:out>
+												</td>
+												<td><c:out value="${innovation.innovationcontent}"></c:out>
+													<c:if test="${innovation.tbEmployee==null}">
+														<td><c:out value="团队创新"></c:out>
+													</c:if> <c:if test="${innovation.tbEmployee!=null}">
+														<td><c:out value="个人创新"></c:out>
+														</td>
+													</c:if>
+												<td>
+												<td><c:out
+														value="${fn:split(innovation.assessdate,'')[0]}"></c:out>
+												</td>
+												<td><c:forEach items="${requestScope.masters }"
+														var="master">
+														<c:if test="${innovation.assesslevel==master.key}">
+															<c:out value="${master.value }"></c:out>
+														</c:if>
+													</c:forEach></td>
+												<td><c:out value="${innovation.encouragement}"></c:out>
+												</td>
+												<td>
+													<div class="hidden-sm hidden-xs action-buttons">
+														<a class="green" href="javascript:void(0)" name=""
+															onclick="Modify(this)"> <i
+															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
+															href="ClassDelete?classId="> <i
+															class="fa fa-trash bigger-130">删除</i> </a>
+													</div>
+													<div class="hidden-md hidden-lg">
+														<div class="inline pos-rel">
+															<button class="btn btn-minier btn-yellow dropdown-toggle"
+																data-toggle="dropdown" data-position="auto">
+																<i
+																	class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+															</button>
 
-			<!-- /section:basics/content.breadcrumbs -->
-			<div class="page-header">
-				<h1>
-					创新提案管理 <small> <i
-						class="ace-icon fa fa-angle-double-right"></i> 创新提案查询 </small>
-				</h1>
-			</div>
+															<ul
+																class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+																<li><a href="javascript:void(0)" name=""
+																	onclick="GetDetail(this)" class="tooltip-info"
+																	data-rel="tooltip" title="View"> <span class="blue">
+																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
+																	</span> </a></li>
 
-			<div class="clearfix">
-				<div class="pull-right tableTools-container"></div>
-			</div>
-			<div class="table-header">已有角色表</div>
-			<form action="" name="StuListForm">
-				<table id="dynamic-table"
-					class="table table-striped table-bordered table-hover">
-					<thead>
-						<tr>
-							<th class="center"><label class="pos-rel"> <input
-									type="checkbox" class="ace" /> <span class="lbl"></span> </label></th>
-							<th>序号</th>
-							<th>工号</th>
-							<th>姓名</th>
-							<th>身份证号</th>
-							<th>营业厅编码</th>
-							<th>营业厅名称</th>
-							<th>创新方案</th>
-							<th>创新类型</th>
-							<th>评定时间</th>
-							<th>部门核定结果</th>
-							<th>层级</th>
-							<th>奖励方式</th>
-							<th>加分标准</th>
-						</tr>
-					</thead>
+																<li><a href="javascript:void(0)" name=""
+																	onclick="Modify(this)" class="tooltip-success"
+																	data-rel="tooltip" title="Edit"> <span
+																		class="green"> <i
+																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																	</span> </a>
+																</li>
 
-					<tbody>
-						<c:forEach items="${requestScope.innovations}" var="innovation"
-							varStatus="status">
-							<tr>
-								<td class="center"><label class="pos-rel"> <input
-										type="checkbox" class="ace" /> <span class="lbl"></span> </label>
-								</td>
+																<li><a href="ClassDelete?classId="
+																	class="tooltip-error" data-rel="tooltip" title="Delete">
+																		<span class="red"> <i
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
+															</ul>
+														</div>
+													</div></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+								<div class="clearfix form-actions">
+									<div class="col-md-offset-3 col-md-9">
+										<button class="btn btn-info" type="button"
+											onclick="getXlsFromTbl('dynamic-table',null)";>
+											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+										</button>
 
-								<td><c:out value="${innovation.tbEmployee.employeecode}"></c:out></td>
-								<td>${employee.idnumber}</td>
-								<td>${employee.employeename}</td>
-								<td><c:if test="${employee.sex==true}">
-										<c:out value="男"></c:out>
-									</c:if> <c:if test="${employee.sex==false}">
-										<c:out value="女"></c:out>
-									</c:if></td>
-								<td>${employee.birthday}</td>
-								<td>
-									<div class="hidden-sm hidden-xs action-buttons">
-										<a class="blue" href="javascript:void(0)" name=""
-											onclick="GetDetail(this)"> <i
-											class="fa fa-search-plus bigger-130">详细</i> </a> <a class="green"
-											href="javascript:void(0)" name="" onclick="Modify(this)">
-											<i class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-											href="ClassDelete?classId="> <i
-											class="fa fa-trash bigger-130">删除</i> </a>
+										&nbsp; &nbsp; &nbsp;
+										<button class="btn" type="reset">
+											<i class="ace-icon fa fa-undo bigger-110"></i> 重置
+										</button>
 									</div>
-									<div class="hidden-md hidden-lg">
-										<div class="inline pos-rel">
-											<button class="btn btn-minier btn-yellow dropdown-toggle"
-												data-toggle="dropdown" data-position="auto">
-												<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-											</button>
-
-											<ul
-												class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-												<li><a href="javascript:void(0)" name=""
-													onclick="GetDetail(this)" class="tooltip-info"
-													data-rel="tooltip" title="View"> <span class="blue">
-															<i class="ace-icon fa fa-search-plus bigger-120"></i> </span> </a></li>
-
-												<li><a href="javascript:void(0)" name=""
-													onclick="Modify(this)" class="tooltip-success"
-													data-rel="tooltip" title="Edit"> <span class="green">
-															<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-													</span> </a>
-												</li>
-
-												<li><a href="ClassDelete?classId="
-													class="tooltip-error" data-rel="tooltip" title="Delete">
-														<span class="red"> <i
-															class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
-												</li>
-											</ul>
-										</div>
-									</div></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</form>
-			<!-- PAGE CONTENT ENDS -->
+								</div>
+							</form>
+							<!-- PAGE CONTENT ENDS -->
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
+		<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="../assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+
+	<!-- Excel导出插件 -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/tableExport.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jquery.base64.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/html2canvas.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/libs/sprintf.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/jspdf.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/libs/base64.js"></script>
+
+
+
+	<script src="../assets/js/dataTables/jquery.dataTables.js">
+		
+	</script>
+	<script src="../assets/js/dataTables/jquery.dataTables.bootstrap.js"
+		chartset="utf8"></script>
 	<script
 		src="../assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
@@ -447,27 +378,29 @@
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
 			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-			.dataTable({
-				bAutoWidth : false,
-				"aoColumns" : [ {
-					"bSortable" : false
-				}, null, null, null, null, null, {
-					"bSortable" : false
-				} ],
-				"aaSorting" : [],
+			.dataTable(
+					{
+						bAutoWidth : false,
+						"aoColumns" : [ {
+							"bSortable" : false
+						}, null, null, null, null, null, null, null, null,
+								null, null, null, {
+									"bSortable" : false
+								} ],
+						"aaSorting" : [],
 
-			//,
-			//"sScrollY": "200px",
-			//"bPaginate": false,
+					//,
+					//"sScrollY": "200px",
+					//"bPaginate": false,
 
-			//"sScrollX": "100%",
-			//"sScrollXInner": "120%",
-			//"bScrollCollapse": true,
-			//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-			//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+					//"sScrollX": "100%",
+					//"sScrollXInner": "120%",
+					//"bScrollCollapse": true,
+					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 
-			//"iDisplayLength": 50
-			});
+					//"iDisplayLength": 50
+					});
 			//oTable1.fnAdjustColumnSizing();
 
 			//TableTools settings
@@ -505,7 +438,7 @@
 						"aButtons" : [
 								{
 									"sExtends" : "copy",
-									"sToolTip" : "Copy to clipboard",
+									"sToolTip" : "复制到剪贴板",
 									"sButtonClass" : "btn btn-white btn-primary btn-bold",
 									"sButtonText" : "<i class='fa fa-copy bigger-110 pink'></i>",
 									"fnComplete" : function() {
@@ -522,9 +455,10 @@
 								},
 
 								{
-									"sExtends" : "csv",
-									"sToolTip" : "Export to CSV",
+									"sExtends" : "xls",
+									"sToolTip" : "导出Excel",
 									"sButtonClass" : "btn btn-white btn-primary  btn-bold",
+									"sCharSet" : "utf8",
 									"sButtonText" : "<i class='fa fa-file-excel-o bigger-110 green'></i>"
 								},
 
@@ -591,7 +525,7 @@
 
 			//and append it to our table tools btn-group, also add tooltip
 			$(colvis.button()).prependTo('.tableTools-container .btn-group')
-					.attr('title', 'Show/hide columns').tooltip({
+					.attr('title', '选择要导出的数据列').tooltip({
 						container : 'body'
 					});
 
@@ -703,3 +637,4 @@
 	</script>
 </body>
 </html>
+<!-- http://localhost:8080/QQL1133Attend/index.jsp -->
