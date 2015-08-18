@@ -3,6 +3,8 @@ package ppms.daoimpl;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +75,25 @@ public class BaseDaoImp extends HibernateDaoSupport {
 		 return (List<T>)getHibernateTemplate().find(HQL);
 	}
 	
+	/**
+	 * 
+	 * @param t 要查找表的的bean实例
+	 * @param fields 是表实例类型的 成员变量名
+	 * @return
+	 */
+	public<T> List<T> getEntitiestNotLazy(T t,String [] fields){
+		
+		try {
+			Criteria criteria = getSession().createCriteria(t.getClass());
+			
+			for (String string : fields) {
+				criteria=criteria.setFetchMode(string, FetchMode.JOIN);
+			}
+			return criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	} 
 	
 }

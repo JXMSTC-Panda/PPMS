@@ -543,7 +543,7 @@
 							class="arrow"></b>
 						</li>
 						<li id="monthPerformanceSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceSearch.do">
+							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceSearch">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效查询 </a> <b
 							class="arrow"></b>
 						</li>

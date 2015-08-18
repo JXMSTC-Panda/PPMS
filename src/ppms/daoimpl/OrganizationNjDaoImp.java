@@ -36,8 +36,8 @@ import ppms.domain.OrganizationNj;
 public class OrganizationNjDaoImp  extends BaseDaoImp implements OrganizationNjDao {
 
 	
-	/* (non-Javadoc)
-	 * @see ppms.dao.OrganizationNjDao#getOrganizationNjs()
+	/* 
+	 * 
 	 */
 	@Override
 	public List<OrganizationNj> getOrganizationNjs() {
@@ -45,4 +45,5 @@ public class OrganizationNjDaoImp  extends BaseDaoImp implements OrganizationNjD
 		return getHibernateTemplate().findByExample(new OrganizationNj());
 	}
 
+	
 }

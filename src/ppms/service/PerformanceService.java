@@ -60,22 +60,9 @@ public interface PerformanceService {
 	* @throws 
 	
 	*/ 
-	public List<OrganizationNj> getOrganizationNjs();
+	public List<OrganizationNj> getOrganizationNjs(Integer orgid);
 	
-	/** 
-	
-	* @方法名: getEmployees 
-	
-	* @描述: 绩效表中员工表 service
-	
-	* @param @return    设定文件
-	
-	* @return List<TbEmployee>    返回类型
-	
-	* @throws 
-	
-	*/ 
-	public List<TbEmployee> getEmployees();
+
 	
 	/** 
 	
@@ -92,4 +79,20 @@ public interface PerformanceService {
 	
 	*/ 
 	public boolean addPerformance(TbPerformance performance);
+
+	/** 
+	
+	* @方法名: getEmployees 
+	
+	* @描述: TODO(这里用一句话描述这个方法的作用) 
+	
+	* @param @param employeeid
+	* @param @return    设定文件
+	
+	* @return List<TbEmployee>    返回类型
+	
+	* @throws 
+	
+	*/ 
+	List<TbEmployee> getEmployees(String employeeid);
 }
