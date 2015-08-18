@@ -61,6 +61,8 @@ public class userBaseInfoAction extends ActionSupport implements InitPage {
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String result() {
 		try {
+			
+			
 			service.adduserBaseInfo(tbEmployee);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -59,15 +59,15 @@ public class DownloadAction extends ActionSupport {
 
 					(fileName.getBytes("utf-8"), "iso-8859-1"));
 			byte[] buffer = new byte[1024];
-			int k=0;
-			while(k<file.length()){
+			int k = 0;
+			while (k < file.length()) {
 
-	            int j=fis.read(buffer,0,1024);
-	            k+=j;
-	            //将b中的数据写到客户端的内存
-	            outputStream.write(buffer,0,j);
+				int j = fis.read(buffer, 0, 1024);
+				k += j;
+				// 将b中的数据写到客户端的内存
+				outputStream.write(buffer, 0, j);
 
-	        }
+			}
 			outputStream.flush();
 		} catch (Exception e) {
 			e.printStackTrace();

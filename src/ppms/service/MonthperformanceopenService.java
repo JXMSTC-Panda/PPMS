@@ -11,6 +11,8 @@
 */ 
 package ppms.service;
 
+import java.util.List;
+
 import ppms.domain.TbMonthperformanceopen;
 
 /**   
@@ -45,4 +47,6 @@ public interface MonthperformanceopenService {
 	
 	*/ 
 	public boolean addMonthperformanceopen(TbMonthperformanceopen monthPerformanceopen);
+	
+	public List<TbMonthperformanceopen> getMonthperformanceopens();
 }
