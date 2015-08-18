@@ -171,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <td >${employeeInfo.employeecode}</td>
 						<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a></td>
 						<td>${employeeInfo.idnumber}</td>
-						<td></td>
+						<td>${employeeInfo.organizationNj.areadesc}</td>
 						<td>${employeeInfo.organizationNj.orgid}</td>
 						<td>${employeeInfo.organizationNj.org_Name}</td>
 						<td>

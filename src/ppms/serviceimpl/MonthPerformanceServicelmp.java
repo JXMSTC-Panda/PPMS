@@ -16,6 +16,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ppms.daoimpl.BaseDaoImp;
 import ppms.daoimpl.MonthPerformanceDaolmp;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbEmployee;
@@ -36,7 +37,7 @@ import ppms.service.PerformanceService;
 *    
 */ 
 @Service
-public class MonthPerformanceServicelmp implements PerformanceService {
+public class MonthPerformanceServicelmp extends BaseDaoImp implements PerformanceService {
 
 	/** 
 	
@@ -76,9 +77,17 @@ public class MonthPerformanceServicelmp implements PerformanceService {
 	 * @see ppms.service.PerformanceService#getOrganizationNjs()
 	 */
 	@Override
-	public List<OrganizationNj> getOrganizationNjs() {
-		// TODO Auto-generated method stub
-		return dao.getOrganizationNjs();
+	public List<OrganizationNj> getOrganizationNjs(Integer orgid) {
+		List results=null;
+		try{
+			String hql="from OrganizationNj where orgid='"+orgid+"'"; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		
+		return results;  
 	}
 
 
@@ -87,9 +96,9 @@ public class MonthPerformanceServicelmp implements PerformanceService {
 	 * @see ppms.service.PerformanceService#getEmployees()
 	 */
 	@Override
-	public List<TbEmployee> getEmployees() {
+	public List<TbEmployee> getEmployees(String employeeid) {
 		// TODO Auto-generated method stub
-		return dao.getEmployees();
+		return dao.getEmployees(employeeid);
 	}
 
 
