@@ -122,7 +122,7 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${requestScope.employeepraisecriticismsInfor}" var="employeepraisecriticismsInfor"
+										<c:forEach items="${requestScope.operationchecksInfor}" var="operationchecksInfor"
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
@@ -130,19 +130,20 @@
 												</label></td>
 
 												<td></td>
-												<td><a href="#">${employeepraisecriticismsInfor.tbEmployee.employeecode}</a></td>
-												<td>${employeepraisecriticismsInfor.tbEmployee.employeename}</td>
-												<td class="hidden-480">${employeepraisecriticismsInfor.tbEmployee.idnumber}</td>
-												<td>${employeepraisecriticismsInfor.organizationNj.orgid}</td>
-												<td>${employeepraisecriticismsInfor.organizationNj.org_Name}</td>
-												<td>${employeepraisecriticismsInfor.praisecriticismdate}</td>
-												<td>90</td>
-												
+												<td><a href="#">${operationchecksInfor.organizationNj.areadesc}</a></td>
+												<td>${operationchecksInfor.organizationNj.orgid}</td>
+												<td> ${operationchecksInfor.organizationNj.org_Name}</td>
+												<td> ${operationchecksInfor.tbEmployee.employeename}</td>
+												<td> ${operationchecksInfor.tbEmployee.employeecode}</td>
+												<td>${operationchecksInfor.operationdate}</td>
+												<td>${operationchecksInfor.customermobilenumber}</td>
+												<td>${operationchecksInfor.operationtype}</td>
+												<td>${operationchecksInfor.punishresult}</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="javascript:void(0)"
+														<%-- <a class="blue" href="javascript:void(0)"
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
+															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%> <a
 															class="green" href="javascript:void(0)"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"

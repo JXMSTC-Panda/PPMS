@@ -15,6 +15,16 @@ public class OrganizationNj implements java.io.Serializable {
 
 	private Integer orgid;
 	private String org_Name;
+	private String areadesc;
+	
+	public String getAreadesc() {
+		return areadesc;
+	}
+
+	public void setAreadesc(String areadesc) {
+		this.areadesc = areadesc;
+	}
+
 	private String address;
 	private Date expire_Time;
 	private Integer superior_Id;
@@ -403,6 +413,7 @@ public class OrganizationNj implements java.io.Serializable {
 	public void setOperatorNjs(Set operatorNjs) {
 		this.operatorNjs = operatorNjs;
 	}
+
 
 	// Property accessors
 

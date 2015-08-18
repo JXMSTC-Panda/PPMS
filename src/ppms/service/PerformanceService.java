@@ -95,4 +95,19 @@ public interface PerformanceService {
 	
 	*/ 
 	List<TbEmployee> getEmployees(String employeeid);
+
+	/** 
+	
+	* @方法名: deletePerformance 
+	
+	* @描述: TODO(这里用一句话描述这个方法的作用) 
+	
+	* @param @param performance    设定文件
+	
+	* @return void    返回类型
+	
+	* @throws 
+	
+	*/ 
+	void deletePerformance(String performanceid);
 }
