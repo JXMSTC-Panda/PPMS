@@ -7,13 +7,17 @@
 <hibernate-mapping>
     <class name="ppms.domain.TbRole" table="TB_ROLE" schema="PPMSUSER">
         <id name="roleid" type="java.lang.String">
-            <column name="ROLEID" length="6" />
+            <column name="ROLEID" length="6" >
+            	<comment>角色编码</comment>
+            </column>
             <generator class="sequence">
 				<param name="sequence">AutoID</param>
 			</generator>
         </id>
         <property name="rolename" type="java.lang.String">
-            <column name="ROLENAME" length="50" />
+            <column name="ROLENAME" length="50">
+            	<comment>角色类别</comment>
+            </column>
         </property>
         <property name="administratorflag" type="java.lang.Boolean">
             <column name="ADMINISTRATORFLAG" precision="1" scale="0" />

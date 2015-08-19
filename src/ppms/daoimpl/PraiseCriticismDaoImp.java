@@ -139,7 +139,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp implements PraiseCriticism
 		
 		List results=null;
 		try{
-			String hql="from TbMaster where type='EmployeePraiseCriticismType' and value='"+key+"'" ; 
+			String hql="from TbMaster where type='EmployeePraiseCriticismType' and key='"+key+"'" ; 
 			results=getHibernateTemplate().find(hql);//执行find方法
 			
 		}catch(Exception e){
@@ -354,10 +354,26 @@ public class PraiseCriticismDaoImp extends BaseDaoImp implements PraiseCriticism
 	 * 获取所有的营业厅奖惩信息
 	 * @return
 	 */
-	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(){
+	public List<TbOrgpraisecriticism> findAllOrgpraisecriticismInfor(){
 		List results=null;
 		try{
 			String hql="from TbOrgpraisecriticism"; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		return results; 
+	}
+	/**
+	 * 根据营业厅奖惩信息编号获取营业厅奖惩信息
+	 * @param praisecriticismid
+	 * @return
+	 */
+	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(String praisecriticismid){
+		List results=null;
+		try{
+			String hql="from TbOrgpraisecriticism where praisecriticismid='"+praisecriticismid+"'"; 
 			results=getHibernateTemplate().find(hql);
 			
 		}catch(Exception e){

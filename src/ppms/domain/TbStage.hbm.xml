@@ -7,7 +7,9 @@
 <hibernate-mapping>
     <class name="ppms.domain.TbStage" table="TB_STAGE" schema="PPMSUSER">
         <id name="stageid" type="java.lang.String">
-            <column name="STAGEID" length="6" />
+            <column name="STAGEID" length="6" >
+            	<comment>成长阶段编码</comment>
+            </column>
             <generator class="assigned" />
         </id>
         <property name="stagename" type="java.lang.String">
