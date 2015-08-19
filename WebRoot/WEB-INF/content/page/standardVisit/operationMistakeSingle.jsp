@@ -116,7 +116,7 @@
 								<div class="row">
 									<div class="col-xs-12">
 										<!-- PAGE CONTENT BEGINS -->
-										<form class="form-horizontal" role="form"
+										<form class="form-horizontal" role="form" method="post"
 											action="standardVisit.operationMistake.operationMistakeSingle.operationMistakeSingleStart.do?tbOperationcheck.tbEmployee.employeeid=<c:forEach items="${requestScope.employeeInfos}"
 												var="employeeInfo">${employeeInfo.employeeid}</c:forEach>">
 											<!-- #section:elements.form -->
@@ -255,7 +255,7 @@
 											</div>
 											<div class="clearfix form-actions">
 												<div class="col-md-offset-3 col-md-9">
-													<button class="btn btn-info" type="button">
+													<button class="btn btn-info" type="submit">
 														<i class="ace-icon fa fa-check bigger-110"></i> Submit
 													</button>
 

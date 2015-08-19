@@ -13,6 +13,8 @@ package ppms.daoimpl;
 
 import java.util.List;
 
+import javax.faces.context.Flash;
+
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -87,7 +89,7 @@ public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao
 	
 	* @方法名: deletePerformance 
 	
-	* @描述: 删除月度绩效表 
+	* @描述: 删除月度绩效表 (无效方法)
 	
 	* @param @return    设定文件
 	
@@ -97,10 +99,24 @@ public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao
 	
 	*/ 
 	@Override
-	public void  deletePerformance(String  performanceid){
+	public boolean  deletePerformance(String  performanceid){
+		List results=null;
+//		try{
+//			String hql="from TbPerformance where employeeid='"+performanceid+"'"; 
+//			results=getHibernateTemplate().find(hql);
+//			if(results!=null){
+//				String hqlDel="Delecte from TbPerformance where employeeid='"+performanceid+"'"; 
+//				
+//			}
+//			
+//			
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}finally{}
+		
+		return false;  
 		
 		
-		getHibernateTemplate().delete(performanceid);
 	}
 		
 }
