@@ -156,7 +156,7 @@
 														name="tbOrgpraisecriticism.organizationNj.org_Name" /> <span
 														class="help-inline col-xs-12 col-sm-7">
 														<button sclass="btn btn-info" type="button"
-															onClick="top.window.location='skipBusinessHallSelectSingle.do'">选择营业厅</button>
+															onClick="top.window.location='praiseCriticism.businessHall.businessHallPraiseCriticismSingle.skipBusinessHallSelectSingle.do'">选择营业厅</button>
 													</span>
 												</div>
 											</div>
