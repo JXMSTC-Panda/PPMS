@@ -28,7 +28,7 @@ public class MonthExamAction extends ActionSupport{
 	public void setTbMonthexam(TbMonthexam tbMonthexam) {
 		this.tbMonthexam = tbMonthexam;
 	}
-	@Action(value ="employeeTrainExam.null.MonthExamSingle.MonthExamAdd", results = {  
+	@Action(value ="employeeTrainExam.null.monthExamSingle.MonthExamAdd", results = {  
 	        @Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/monthExamSingleResult.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String MonthExamAdd(){

@@ -81,6 +81,7 @@ public class EmployeePraiseCriticismAction extends ActionSupport{
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleEmployee.jsp") })
 	// 返回值为error时跳转的页面路径
 	public String skipSelectSingle() {
+		System.out.println("ccz");
 		ActionContext actionContext = ActionContext.getContext();// 创建ActionContext的对象并调用getContext()方法
 		Map<String, Object> request = (Map) actionContext.get("request");// 获取出request对象
 		try {

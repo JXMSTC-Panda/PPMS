@@ -94,7 +94,7 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<!-- PAGE CONTENT BEGINS -->
-											<form class="form-horizontal" role="form" action="employeeTrainExam.null.MonthExamSingle.MonthExamAdd.do" method="post">
+											<form class="form-horizontal" role="form" action="employeeTrainExam.null.monthExamSingle.MonthExamAdd.do" method="post">
 												<!-- #section:elements.form -->
 
 												<div class="form-group">
@@ -121,7 +121,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅名称： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbMonthexam.organizationNj.orgName"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbMonthexam.organizationNj.org_Name"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -145,7 +145,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 工号： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbmonthexam.tbEmployee.employeecode"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbMonthexam.tbEmployee.employeecode"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -169,7 +169,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 考试时间： </label>
 
 													<div class="col-sm-9">
-														<input type="text" id="form-field-1" placeholder="考试时间" class="col-xs-10 col-sm-5" name="tbMonthexam.examdate"/>
+														<input type="text" id="form-field-1" placeholder="考试时间" class="col-xs-10 col-sm-5" />
 													</div>
 												</div>
 												<div class="form-group">
