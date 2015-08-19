@@ -8,9 +8,7 @@
     <class name="ppms.domain.TbPointdetail" table="TB_POINTDETAIL" schema="PPMSUSER">
         <id name="pointid" type="java.lang.String">
             <column name="POINTID" length="10" />
-            <generator class="sequence">
-				<param name="sequence">AutoID</param>
-			</generator>
+            <generator class="assigned" />
         </id>
         <many-to-one name="tbPoint" class="ppms.domain.TbPoint" update="false" insert="false" fetch="select">
             <column name="POINTID" length="10" not-null="true" unique="true" />
