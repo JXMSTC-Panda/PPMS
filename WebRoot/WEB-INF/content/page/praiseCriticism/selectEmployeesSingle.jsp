@@ -83,7 +83,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
+						<li><a href="#">父功能</a>
+						</li>
 						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -93,13 +94,13 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<h3 class="header smaller lighter blue">业务差错检查成绩管理</h3>
+							<h3 class="header smaller lighter blue">员工奖惩信息管理</h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">信息查询</div>
-							<form action="" name="StuListForm">
+							<form  name="StuListForm" action="praiseCriticism.employee.employeePraiseCriticismSingle.do" method="post" >
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -108,48 +109,57 @@
 													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
 											</th>
 											<th>序号</th>
+											<th>工号</th>
+											<th>姓名</th>
+											<th>身份证号</th>
 											<th>区域</th>
 											<th>营业厅编码</th>
 											<th>营业厅名称</th>
-											<th>操作名字</th>
-											<th>操作工号</th>
-											<th>操作日期</th>
-											<th>用户手机号码</th>
-											<th>业务类型</th>
-											<th>处罚结果</th>
+											<th>性别</th>
+											<th>出生年月</th>
+											<th>岗职</th>
+											<th>岗位</th>
 											<th></th>
 										</tr>
 									</thead>
 
 									<tbody>
-										<c:forEach items="${requestScope.operationchecksInfor}" var="operationchecksInfor"
-											varStatus="status">
+										<c:forEach items="${requestScope.employeeInfos}"
+											var="employeeInfo">
 											<tr>
-												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label></td>
-
+												<td><input type="radio" name="selectEmployee"
+													value="${employeeInfo.employeeid}" checked></td>
 												<td></td>
-												<td>${operationchecksInfor.organizationNj.areadesc}</td>
-												<td>${operationchecksInfor.organizationNj.orgid}</td>
-												<td> ${operationchecksInfor.organizationNj.org_Name}</td>
-												<td> ${operationchecksInfor.tbEmployee.employeename}</td>
-												<td> ${operationchecksInfor.tbEmployee.employeecode}</td>
-												<td>${operationchecksInfor.operationdate}</td>
-												<td>${operationchecksInfor.customermobilenumber}</td>
-												<td>${operationchecksInfor.operationtype}</td>
-												<td>${operationchecksInfor.punishresult}</td>
+												<td>${employeeInfo.employeecode}</td>
+												<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a>
+												</td>
+												<td>${employeeInfo.idnumber}</td>
+												<td>${employeeInfo.organizationNj.areadesc}</td>
+												<td>${employeeInfo.organizationNj.orgid}</td>
+												<td>${employeeInfo.organizationNj.org_Name}</td>
+												<td><c:if test="${employeeInfo.sex==true}">
+														<c:out value="女"></c:out>
+													</c:if> <c:if test="${employeeInfo.sex==false}">
+														<c:out value="男"></c:out>
+													</c:if>
+												</td>
+												<td>${employeeInfo.birthday}</td>
+												<td>${employeeInfo.tbPost.postname}</td>
+												<td>${employeeInfo.tbJob.jobname}</td>
+
+
 												<td>
-													<div class="hidden-sm hidden-xs action-buttons">
-														<%-- <a class="blue" href="javascript:void(0)"
+													<%-- <div class="hidden-sm hidden-xs action-buttons">
+														 <a class="blue" href="javascript:void(0)"
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%> <a
-															class="green" href="standardVisit.operationMistake.operationMistakeSearch.skip.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}"
+															<i class="fa fa-search-plus bigger-130">详细</i> </a> 
+														<a class="green"
+															href="praiseCriticism.employee.employeePraiseCriticismSearch.SkipUpdateEmployeeInfor.do"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="standardVisit.operationMistake.operationMistakeSearch.operationMistakeInforDelete.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
-													</div>
+															href="praiseCriticism.employee.employeePraiseCriticismSearch.deleteEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}">
+															<i class="fa fa-trash bigger-130">删除</i> </a>
+													</div> --%>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
 															<button class="btn btn-minier btn-yellow dropdown-toggle"
@@ -172,19 +182,29 @@
 																	class="tooltip-success" data-rel="tooltip" title="Edit">
 																		<span class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a
 																	href="ClassDelete?classId=${trl.getRoleid()}"
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
 															</ul>
 														</div>
-													</div>
-												</td>
+													</div></td>
 											</tr>
 										</c:forEach>
+										<table cellpadding="0" cellspacing="0" width="95%"
+											align="center">
+											<tr>
+												<td align="center"><input type="submit"
+													name="doSelectButton" value="确定" class="btn_2" /> <input
+													type="button" name="doCloseButton" value="关闭" class="btn_2"
+													onclick="window.close();" /></td>
+											</tr>
+										</table>
 									</tbody>
 								</table>
 							</form>
@@ -198,8 +218,10 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
@@ -210,27 +232,29 @@
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
 			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-			.dataTable({
-				bAutoWidth : false,
-				"aoColumns" : [ {
-					"bSortable" : false
-				}, null, null, null, null, null, null, null, null,null, null, {
-					"bSortable" : false
-				} ],
-				"aaSorting" : [],
+			.dataTable(
+					{
+						bAutoWidth : false,
+						"aoColumns" : [ {
+							"bSortable" : false
+						}, null, null, null, null, null, null, null, null,
+								null, null, null, {
+									"bSortable" : false
+								} ],
+						"aaSorting" : [],
 
-			//,
-			//"sScrollY": "200px",
-			//"bPaginate": false,
+					//,
+					//"sScrollY": "200px",
+					//"bPaginate": false,
 
-			//"sScrollX": "100%",
-			//"sScrollXInner": "120%",
-			//"bScrollCollapse": true,
-			//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-			//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+					//"sScrollX": "100%",
+					//"sScrollXInner": "120%",
+					//"bScrollCollapse": true,
+					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 
-			//"iDisplayLength": 50
-			});
+					//"iDisplayLength": 50
+					});
 			//oTable1.fnAdjustColumnSizing();
 
 			//TableTools settings
