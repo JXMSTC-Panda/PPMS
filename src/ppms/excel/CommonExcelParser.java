@@ -9,8 +9,10 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -23,6 +25,8 @@ import org.apache.poi.ss.format.CellTextFormatter;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.hibernate.Transaction;
+import org.hibernate.classic.Session;
 import org.hibernate.util.DTDEntityResolver;
 
 import ppms.action.interfaces.ListForCache;
@@ -32,10 +36,13 @@ import ppms.daoimpl.BaseDaoImp;
 import ppms.domain.TbInnovation;
 import ppms.domain.TbMaster;
 import ppms.domain.TbPerformance;
+import ppms.domain.TbPoint;
+import ppms.domain.TbPointdetail;
 import ppms.excel.template.BaseExcelObject;
 import ppms.excel.template.IExcelTemp;
 import ppms.exception.ErrorInfo;
 import ppms.exception.ExcelParserException;
+import ppms.util.TimeStringUtils;
 
 /**
  * 通用excel解析成对象和对象打包成excel文件的解析器
@@ -66,6 +73,8 @@ public class CommonExcelParser {
 
 	private ExcelParserException exception;
 	private HSSFCell cell;
+	private Transaction transaction;
+	private Session session;
 
 	public CommonExcelParser(BaseDaoImp dao, ExcelParserException exception) {
 
@@ -139,22 +148,22 @@ public class CommonExcelParser {
 					font.setFontHeightInPoints((short) 10);
 
 					String tmpClazzName;
-					
+
 					boolean isMonth = false;
-					if(fileName.equals("年度绩效批量导出.xls")){
-					
-						isMonth=true;
+					if (fileName.equals("年度绩效批量导出.xls")) {
+
+						isMonth = true;
 						HSSFCell cell2 = sh.getRow(0).getCell(6);
 						cell2.setCellStyle(style);
 						cell2.setCellValue("年份");
 					}
-					if(fileName.equals("月度绩效批量导出.xls")){
-						isMonth=false;
+					if (fileName.equals("月度绩效批量导出.xls")) {
+						isMonth = false;
 						HSSFCell cell2 = sh.getRow(0).getCell(6);
 						cell2.setCellStyle(style);
 						cell2.setCellValue("月份");
 					}
-					int index=i;
+					int index = i;
 					for (int j = i; j <= excelRecords.getList().size(); j++) {
 						// 创建第j行
 						ro = sh.createRow(index);
@@ -186,9 +195,12 @@ public class CommonExcelParser {
 								String[] split = fieldName.split("[?]");
 								// 重设成员变量名
 								fieldName = split[0];
-								TbPerformance performance = (TbPerformance) excelRecords.getList().get(j-i);
-								Boolean performancetype = performance.getPerformancetype();
-								if(performancetype!=null&&!performancetype.equals(isMonth)){
+								TbPerformance performance = (TbPerformance) excelRecords
+										.getList().get(j - i);
+								Boolean performancetype = performance
+										.getPerformancetype();
+								if (performancetype != null
+										&& !performancetype.equals(isMonth)) {
 									break;
 								}
 							}
@@ -413,7 +425,7 @@ public class CommonExcelParser {
 			throws Exception {
 
 		// 变量定义
-		int t = 2;
+		int t = 1;
 		// 保存封装好Excel对应实体类的集合
 		List<Object> objs = null;
 		// 文件输入流
@@ -580,7 +592,10 @@ public class CommonExcelParser {
 								break;
 							case "java.lang.Integer":
 								value = changeCellToString(cell);
-								value = eos.getKey(value);
+
+								if (eos.getKey(value) != Integer.MAX_VALUE)
+									value = eos.getKey(value);
+								value = Integer.valueOf((String) value);
 								break;
 							case "java.lang.Short":
 								value = Short.valueOf(changeCellToString(cell));
@@ -629,7 +644,8 @@ public class CommonExcelParser {
 																					.toUpperCase()))
 											.invoke(inCache);
 									if (!inCacheValue.equals(value)) {
-										System.out.println("信息不一致");
+										System.out.println("信息不一致" + value
+												+ " " + fieldName);
 										exception
 												.addErrorInfo(new ErrorInfo(
 														j,
@@ -679,16 +695,48 @@ public class CommonExcelParser {
 							}
 						}
 						if (object != null) {
-							objs.add(object);
-							System.out.println(object.toString());
+
+							if (clazz.getName().equals("ppms.domain.TbPoint")) {
+
+								session = dao.getSessionFactory().openSession();
+								transaction = session.beginTransaction();
+								TbPointdetail dPointdetail = null;
+								TbPoint point = (TbPoint) object;
+								point.setPointid(TimeStringUtils
+										.getTimeString());
+								for (int k = 12; ro.getCell(k) != null; k++) {
+
+									dPointdetail = new TbPointdetail();
+
+									dPointdetail
+											.setOperationname(changeCellToString(sh
+													.getRow(0).getCell(k)));
+									cell = ro.getCell(k);
+									dPointdetail
+											.setOperationscore(Double
+													.parseDouble(changeCellToString(cell)));
+									dPointdetail.setTbPoint(point);
+									dPointdetail.setPointid(point.getPointid());
+									object = dPointdetail;
+									objs.add(object);
+								}
+								dao.saveObject(point);
+								transaction.commit();
+							} else {
+								objs.add(object);
+								System.out.println(object.toString());
+							}
 						}
 					}
-
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println(fieldName);
 			} finally {
+
+				if (session != null) {
+					session.close();
+				}
 			}
 			return objs;
 		}
@@ -757,9 +805,12 @@ public class CommonExcelParser {
 				String str = doubleValue.toString();
 				if (str.contains(".0")) {
 					str = str.replace(".0", "");
+					Integer intValue = Integer.parseInt(str);
+					returnValue = intValue.toString();
+				} else {
+					return doubleValue.toString();
 				}
-				Integer intValue = Integer.parseInt(str);
-				returnValue = intValue.toString();
+
 				break;
 			case HSSFCell.CELL_TYPE_STRING: // 字符串
 
@@ -825,14 +876,13 @@ public class CommonExcelParser {
 					cell.setCellValue(result);
 					break;
 				case "java.lang.Boolean":
-					if((Boolean)value){
-						value=eos.getValue(1);
-					}else{
-						value=eos.getValue(0);
+					if ((Boolean) value) {
+						value = eos.getValue(1);
+					} else {
+						value = eos.getValue(0);
 					}
-					
 
-					cell.setCellValue((String)value);
+					cell.setCellValue((String) value);
 
 					break;
 				case "java.lang.Short":
