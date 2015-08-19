@@ -66,14 +66,14 @@ public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao
 		return getHibernateTemplate().findByExample(new OrganizationNj());
 	}
 
-	/* (non-Javadoc)
-	 * @see ppms.dao.PerformanceDao#getEmployees()
+	/**
+	 * 根据员工id查询员工
 	 */
 	@Override
 	public List<TbEmployee> getEmployees(String employeeid) {
 		List results=null;
 		try{
-			String hql="from TbEmployee where orgid='"+employeeid+"'"; 
+			String hql="from TbEmployee where employeeid='"+employeeid+"'"; 
 			results=getHibernateTemplate().find(hql);
 			
 		}catch(Exception e){
@@ -83,7 +83,25 @@ public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao
 		return results;  
     }
 
+	/** 
 	
+	* @方法名: deletePerformance 
+	
+	* @描述: 删除月度绩效表 
+	
+	* @param @return    设定文件
+	
+	* @return boolean    返回类型
+	
+	* @throws 
+	
+	*/ 
+	@Override
+	public void  deletePerformance(String  performanceid){
+		
+		
+		getHibernateTemplate().delete(performanceid);
+	}
 		
 }
 
