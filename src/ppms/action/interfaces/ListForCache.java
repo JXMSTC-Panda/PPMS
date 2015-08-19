@@ -2,8 +2,6 @@ package ppms.action.interfaces;
 
 import java.util.List;
 
-import com.sun.beans.util.Cache;
-
 public class ListForCache<T> {
 
 	private long beginCache;
