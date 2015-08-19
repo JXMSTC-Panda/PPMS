@@ -24,12 +24,13 @@
 	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/jquery-ui.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/datepicker.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/ui.jqgrid.css" />
+<style>
+html,body {
+	margin: 0;
+	padding: 0;
+	font-size: 75%;
+}
+</style>
 <!-- text fonts -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
@@ -83,7 +84,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">权限管理</a></li>
+						<li><a href="#">权限管理</a>
+						</li>
 						<li class="active">角色添加</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -116,14 +118,15 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${tbRoleslist}" var="trl"
-											varStatus="status">
+										<c:forEach items="${tbRoleslist}" var="trl" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
 														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label></td>
+												</label>
+												</td>
 
-												<td><a href="#">${trl.roleid}</a></td>
+												<td><a href="#">${trl.roleid}</a>
+												</td>
 												<td>${trl.rolename}</td>
 												<td class="hidden-480">${tbRolesList.administratorflag}</td>
 												<td>${trl.createdtime}</td>
@@ -160,17 +163,18 @@
 																	class="tooltip-success" data-rel="tooltip" title="Edit">
 																		<span class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a
 																	href="ClassDelete?classId=${trl.getRoleid()}"
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
 															</ul>
 														</div>
-													</div>
-												</td>
+													</div></td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -186,8 +190,10 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
@@ -202,24 +208,24 @@
 				bAutoWidth : false,
 				"aoColumns" : [ {
 					"bSortable" : false
-				}, null, null, null, null,  {
+				}, null, null, null, null, {
 					"bSortable" : false
 				} ],
 				"aaSorting" : [],
 
-			//,
-			//"sScrollY": "200px",
-			//"bPaginate": false,
+				//,
+				//"sScrollY": "200px",
+				"bPaginate" : false,
 
-			//"sScrollX": "100%",
-			//"sScrollXInner": "120%",
-			//"bScrollCollapse": true,
-			//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-			//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+				//"sScrollX": "100%",
+				//"sScrollXInner": "120%",
+				//"bScrollCollapse": true,
+				//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+				//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 
-			//"iDisplayLength": 50
+				"iDisplayLength" : 1
 			});
-			//oTable1.fnAdjustColumnSizing();
+			oTable1.fnAdjustColumnSizing();
 
 			//TableTools settings
 			TableTools.classes.container = "btn-group btn-overlap";
@@ -328,7 +334,7 @@
 				"buttonText" : "<i class='fa fa-search'></i>",
 				"aiExclude" : [ 0, 6 ],
 				"bShowAll" : true,
-				//"bRestore": true,
+				"bRestore": true,
 				"sAlign" : "right",
 				"fnLabel" : function(i, title, th) {
 					return $(th).text();//remove icons, etc
@@ -454,4 +460,3 @@
 	</script>
 </body>
 </html>
-<!-- http://localhost:8080/QQL1133Attend/index.jsp -->

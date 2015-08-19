@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -92,8 +93,20 @@
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
+							<div class="page-header">
+								<h1>
+									绩效管理 <small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 月度绩效查询 </small>
+								</h1>
+							</div>
 							<!-- PAGE CONTENT BEGINS -->
-							
+
+							<h3 class="header smaller lighter blue">月度绩效查询</h3>
+
+							<div class="clearfix">
+								<div class="pull-right tableTools-container"></div>
+							</div>
+							<div class="table-header">已有月度绩效表</div>
 							<form action="" name="StuListForm">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
@@ -112,7 +125,7 @@
 											<th>成绩（分）</th>
 											<th>备注</th>
 											<th>操作</th>
-											
+
 										</tr>
 									</thead>
 
@@ -124,27 +137,25 @@
 														type="checkbox" class="ace" /> <span class="lbl"></span>
 												</label></td>
 
-											   
-                                               <td>${pers.tbEmployee.employeeid}</td>
-                                               <td>${pers.tbEmployee.employeename}</td>
-                                               
-                                               <td>${pers.tbEmployee.idnumber}</td>
-                                               <td>${pers.organizationNj.orgid }</td>
-                                               <td>${pers.organizationNj.org_Name }</td>
-                                               <td>${pers.performancedate }</td>
-                                               <td>${pers.performancescore }</td>
-                                               <td>${pers.remark }</td>
-                                               <td></td>
-                                              
+												<!-- ${ status.index + 1} 序号自增 -->
+												<td>${ status.index + 1}</td>
+												<td>${pers.tbEmployee.employeecode}</td>
+												<td>${pers.tbEmployee.employeename}</td>
+
+												<td>${pers.tbEmployee.idnumber}</td>
+												<td>${pers.organizationNj.orgid }</td>
+												<td>${pers.organizationNj.org_Name }</td>
+												<td>${pers.performancedate }</td>
+												<td>${pers.performancescore }</td>
+												<td>${pers.remark }</td>
+
+
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="javascript:void(0)"
-															name="" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="javascript:void(0)"
-															name="" onclick="Modify(this)"> <i
+														<a class="green" href="javascript:void(0)" name=""
+															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId="> <i
+															href="performance.month.monthPerformanceSearch_Del.do?performanceid=${pers.performanceid}"> <i
 															class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
@@ -157,22 +168,21 @@
 
 															<ul
 																class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																<li><a href="javascript:void(0)"
-																	name="" onclick="GetDetail(this)"
-																	class="tooltip-info" data-rel="tooltip" title="View">
-																		<span class="blue"> <i
-																			class="ace-icon fa fa-search-plus bigger-120"></i> </span> </a>
+																<li><a href="javascript:void(0)" name=""
+																	onclick="GetDetail(this)" class="tooltip-info"
+																	data-rel="tooltip" title="View"> <span class="blue">
+																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
+																	</span> </a>
 																</li>
 
-																<li><a href="javascript:void(0)"
-																	name="" onclick="Modify(this)"
-																	class="tooltip-success" data-rel="tooltip" title="Edit">
-																		<span class="green"> <i
+																<li><a href="javascript:void(0)" name=""
+																	onclick="Modify(this)" class="tooltip-success"
+																	data-rel="tooltip" title="Edit"> <span
+																		class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																	</span> </a></li>
 
-																<li><a
-																	href="ClassDelete?classId="
+																<li><a href="ClassDelete?classId="
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
 																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
@@ -196,12 +206,13 @@
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
 	<script
-		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datepicker.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/jqGrid/jquery.jqGrid.src.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/jqGrid/i18n/grid.locale-en.js"></script>
-
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		jQuery(function($) {
@@ -212,7 +223,7 @@
 				bAutoWidth : false,
 				"aoColumns" : [ {
 					"bSortable" : false
-				}, null, null, null, null,null,null,null, {
+				}, null, null, null, null, null, null, null, null, null, {
 					"bSortable" : false
 				} ],
 				"aaSorting" : [],
@@ -243,7 +254,7 @@
 			var tableTools_obj = new $.fn.dataTable.TableTools(
 					oTable1,
 					{
-						"sSwfPath" : "../assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
+						"sSwfPath" : "${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
 
 						"sRowSelector" : "td:not(:last-child)",
 						"sRowSelect" : "multi",
@@ -462,7 +473,5 @@
 
 		})
 	</script>
-
-	
 </body>
 </html>

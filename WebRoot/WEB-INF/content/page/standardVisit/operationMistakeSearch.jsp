@@ -93,7 +93,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<h3 class="header smaller lighter blue">员工奖惩信息管理</h3>
+							<h3 class="header smaller lighter blue">业务差错检查成绩管理</h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
@@ -130,7 +130,7 @@
 												</label></td>
 
 												<td></td>
-												<td><a href="#">${operationchecksInfor.organizationNj.areadesc}</a></td>
+												<td>${operationchecksInfor.organizationNj.areadesc}</td>
 												<td>${operationchecksInfor.organizationNj.orgid}</td>
 												<td> ${operationchecksInfor.organizationNj.org_Name}</td>
 												<td> ${operationchecksInfor.tbEmployee.employeename}</td>
@@ -144,10 +144,10 @@
 														<%-- <a class="blue" href="javascript:void(0)"
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%> <a
-															class="green" href="javascript:void(0)"
+															class="green" href="standardVisit.operationMistake.operationMistakeSearch.skip.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId=${trl.getRoleid()}"> <i
+															href="standardVisit.operationMistake.operationMistakeSearch.operationMistakeInforDelete.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}"> <i
 															class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
