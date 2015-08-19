@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -93,48 +93,99 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<div class="page-header">
-										<h1>
-											人员基本信息管理
-										<small>
-											<i class="ace-icon fa fa-angle-double-right"></i>
-												人员基本信息查询
-										</small>
-										</h1>
-									</div>
+							<h3 class="header smaller lighter blue">员工奖惩信息管理</h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">已有角色表</div>
-							<form action="" name="StuListForm">
+							<div class="table-header">信息查询</div>
+							<form name="StuListForm"
+								action="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.SkipBusinessHallUpdate.do?tbOrgpraisecriticism.praisecriticismid=${requestScope.praisecriticismid}"
+								method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
-										<tr>							
+			${requestScope.praisecriticismid}
+										<tr>
+											<th class="center"><label class="pos-rel"> <input
+													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
+											</th>
 											<th>序号</th>
-											<th>工号</th>
-											<th>姓名</th>
-											<th>身份证号</th>
-											<th>时间</th>
-											<th>调出营业厅名称</th>
-											<th>调入营业厅名称</th>
+											<th>营业厅编码</th>
+											<th>营业厅名称</th>
+											<th>区域</th>
+											<th>片区</th>
+											<th></th>
 										</tr>
 									</thead>
 
 									<tbody>
-										<c:forEach items="${requestScope.tbChangeOrg}" var="tbchangeorg"
-											varStatus="status">
+										<c:forEach items="${requestScope.organizationNjInfor}"
+											var="organizationNj">
 											<tr>
-											   <td>1</td>
-											   <td>${tbchangeorg.tbEmployee.employeeid}</td>
-                                               <td>${tbchangeorg.tbEmployee.employeename}</td>
-                                               <td>${tbchangeorg.tbEmployee.idnumber}</td>
-                                               <td>${tbchangeorg.changedate}</td>
-                                               <td>${tbchangeorg.organizationNjByOutorgid.org_Name}</td>
-											   <td>${tbchangeorg.organizationNjByInorgid.org_Name}</td>
+												<td><input type="radio" name="selectBusinessHall"
+													value="${organizationNj.orgid}" checked>
+												</td>
+												<td>1</td>
+												<td>${organizationNj.orgid}</td>
+												<td>${organizationNj.org_Name}</td>
+												<td>${requestScope.areadesc}</td>
+												<td>${requestScope.subareaDesc}</td>
+											
+											<td>
+												<%-- <div class="hidden-sm hidden-xs action-buttons">
+														 <a class="blue" href="javascript:void(0)"
+															name="${trl.getRoleid()}" onclick="GetDetail(this)">
+															<i class="fa fa-search-plus bigger-130">详细</i> </a> 
+														<a class="green"
+															href="praiseCriticism.employee.employeePraiseCriticismSearch.SkipUpdateEmployeeInfor.do"
+															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
+															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
+															href="praiseCriticism.employee.employeePraiseCriticismSearch.deleteEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}">
+															<i class="fa fa-trash bigger-130">删除</i> </a>
+													</div> --%>
+												<div class="hidden-md hidden-lg">
+													<div class="inline pos-rel">
+														<button class="btn btn-minier btn-yellow dropdown-toggle"
+															data-toggle="dropdown" data-position="auto">
+															<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+														</button>
+
+														<ul
+															class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+															<li><a href="javascript:void(0)"
+																name="${trl.getRoleid()}" onclick="GetDetail(this)"
+																class="tooltip-info" data-rel="tooltip" title="View">
+																	<span class="blue"> <i
+																		class="ace-icon fa fa-search-plus bigger-120"></i> </span> </a></li>
+
+															<li><a href="javascript:void(0)"
+																name="${trl.getRoleid()}" onclick="Modify(this)"
+																class="tooltip-success" data-rel="tooltip" title="Edit">
+																	<span class="green"> <i
+																		class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																</span> </a></li>
+
+															<li><a href="ClassDelete?classId=${trl.getRoleid()}"
+																class="tooltip-error" data-rel="tooltip" title="Delete">
+																	<span class="red"> <i
+																		class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
+														</ul>
+													</div>
+												</div>
+											</td>
 											</tr>
 										</c:forEach>
+										<table cellpadding="0" cellspacing="0" width="95%"
+											align="center">
+											<tr>
+												<td align="center"><input type="submit"
+													name="doSelectButton" value="确定" class="btn_2" /> <input
+													type="button" name="doCloseButton" value="关闭" class="btn_2"
+													onclick="window.close();" />
+												</td>
+											</tr>
+										</table>
 									</tbody>
 								</table>
 							</form>
@@ -148,39 +199,42 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="../assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
-		src="../assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
 	<script
-		src="../assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
 			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-			.dataTable({
-				bAutoWidth : false,
-				"aoColumns" : [ {
-					"bSortable" : false
-				}, null, null, null, null,null, {
-					"bSortable" : false
-				} ],
-				"aaSorting" : [],
+			.dataTable(
+					{
+						bAutoWidth : false,
+						"aoColumns" : [ {
+							"bSortable" : false
+						}, null, null, null, null, null, {
+									"bSortable" : false
+								} ],
+						"aaSorting" : [],
 
-			//,
-			//"sScrollY": "200px",
-			//"bPaginate": false,
+					//,
+					//"sScrollY": "200px",
+					//"bPaginate": false,
 
-			//"sScrollX": "100%",
-			//"sScrollXInner": "120%",
-			//"bScrollCollapse": true,
-			//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-			//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+					//"sScrollX": "100%",
+					//"sScrollXInner": "120%",
+					//"bScrollCollapse": true,
+					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 
-			//"iDisplayLength": 50
-			});
+					//"iDisplayLength": 50
+					});
 			//oTable1.fnAdjustColumnSizing();
 
 			//TableTools settings
@@ -195,7 +249,7 @@
 			var tableTools_obj = new $.fn.dataTable.TableTools(
 					oTable1,
 					{
-						"sSwfPath" : "../assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
+						"sSwfPath" : "${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
 
 						"sRowSelector" : "td:not(:last-child)",
 						"sRowSelect" : "multi",

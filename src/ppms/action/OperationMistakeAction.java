@@ -53,35 +53,23 @@ public class OperationMistakeAction extends ActionSupport implements InitPage{
 	}
 
 
-	@Action(value = "operationMistakeSingleStart", results = {// action的名称为operationMistakeSingleStart
+	@Action(value = "standardVisit.operationMistake.operationMistakeSingle.operationMistakeSingleStart", results = {// action的名称为operationMistakeSingleStart
 			@Result(name = "success", location = "/WEB-INF/content/page/userinfo/Demo.jsp"),// 返回值为success时跳转的页面路径
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	// 返回值为error时跳转的页面路径
 	public String operationMistakeSingleStart() {
 		System.out.println("save infor");
-		/*try {
-			praiseCriticism.save(tbEmployeepraisecriticism);// 执行save方法，实现员工奖惩信息的单条录入
-
-			List<TbEmployeepraisecriticism> employeepraisecriticismInfor = praiseCriticism
-					.findEmployeepraisecriticismInfor();// 执行findEmployeepraisecriticismInfor方法，查询员工奖惩信息表中的所有数据
-			for (TbEmployeepraisecriticism employeepraisecriticism : employeepraisecriticismInfor) {// 遍历
-				System.out.println(employeepraisecriticism
-						.getPraisecriticismdate()// 添加员工奖惩信息时间
-						+ ":"
-						+ employeepraisecriticism.getCause()// 员工奖惩原因
-						+ ":"
-						+ employeepraisecriticism.getPraisecriticismtype()// 员工奖惩类型
-						+ ":"
-						+ employeepraisecriticism.getPraisecriticismlevel());// 员工奖惩级别
-			}// 打印出查询出的对象的部分字段
+		try {
+			praiseCriticism.save(tbOperationcheck);
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
-		}*/
-		return null;
+			return "error";
+		}	
 	}
 
-	@Action(value = "skipEmployeeSelectSingle", results = {// action的名称为skipEmployeeSelectSingle
-			@Result(name = "success", location = "/WEB-INF/content/page/selectSingleEmployee.jsp"),// 返回值为success时跳转的页面路径
+	@Action(value = "standardVisit.operationMistake.operationMistakeSingle.skipEmployeeSelectSingle", results = {// action的名称为skipEmployeeSelectSingle
+			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/operationSelectEmployee.jsp"),// 返回值为success时跳转的页面路径
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleEmployee.jsp") })
 	// 返回值为error时跳转的页面路径
 	public String skipSelectSingle() {
@@ -98,6 +86,26 @@ public class OperationMistakeAction extends ActionSupport implements InitPage{
 			List<TbEmployee> emploeesInfo = new ArrayList<TbEmployee>();
 			
 			for (TbEmployee tbEmployee : employeeResults) {// 遍历
+				List<COrganizationNj> cOrganizationNjInfor = praiseCriticism
+						.findCOrganizationNjInfor(tbEmployee
+								.getOrganizationNj().getOrgid());// 执行findCOrganizationNjInfor，根据营业厅编号获取营业厅区域关系表中的信息
+				for (COrganizationNj cOrganizationNj : cOrganizationNjInfor) {// 遍历
+					List<TbArea> areaInfor = praiseCriticism
+							.findAreaDesc(cOrganizationNj.getTbArea()
+									.getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
+					String areadesc = areaInfor.get(0).getAreadesc();
+
+					OrganizationNj organizationNj = tbEmployee
+							.getOrganizationNj();
+
+					Integer orgid = organizationNj.getOrgid();
+
+					List<OrganizationNj> organizationNjResults = praiseCriticism
+							.findOrganizationNjInfor(orgid);// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
+					organizationNjResults.get(0).setAreadesc(areadesc);
+					tbEmployee.setOrganizationNj(organizationNjResults.get(0));// 将同步营业厅信息set进对象organizationNj中
+				}
+				
 				OrganizationNj organizationNj = tbEmployee.getOrganizationNj();
 				Integer orgid = organizationNj.getOrgid();
 				List<OrganizationNj> organizationNjResults = praiseCriticism
@@ -121,8 +129,8 @@ public class OperationMistakeAction extends ActionSupport implements InitPage{
 
 	}
 
-	@Action(value = "selectEmployeeSkipSingle", results = {// action的名称为selectEmployeeSkipSingle
-			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismSingle.jsp"),
+	@Action(value = "standardVisit.operationMistake.operationMistakeSingle.selectEmployeeSkipSingle", results = {// action的名称为selectEmployeeSkipSingle
+			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/operationMistakeSingle.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	public String selectEmployeeSkipSingle() {
 		ActionContext actionContext = ActionContext.getContext(); // 创建ActionContext的对象并调用getContext()方法

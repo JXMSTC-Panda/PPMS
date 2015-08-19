@@ -22,7 +22,6 @@ public class IndividualGrowthFileServiceImp implements
 	@Autowired
 	public IndividualGrowthFileDaoImp dao;
 	
-	private BaseDaoImp baseDaoImp;
 
 	@Override
 	public List<TbChangejobhistory> getTbChangejobhistories(String employeeid) {
