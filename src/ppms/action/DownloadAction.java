@@ -170,9 +170,9 @@ public class DownloadAction extends ActionSupport {
 			// ListForCache<TbOperationcheck> list = new
 			// ListForCache<TbOperationcheck>();
 
-			List<Object> findAll = dao.getEntitiestNotLazy(
+			List<TbOrgpraisecriticism> findAll = dao.getEntitiestNotLazy(
 					new TbOrgpraisecriticism(), new String[] { "organizationNj"});
-			ListForCache<Object> list = new ListForCache<Object>();
+			ListForCache<TbOrgpraisecriticism> list = new ListForCache<TbOrgpraisecriticism>();
 			list.setList(findAll);
 			response = ServletActionContext.getResponse();
 			session.setAttribute(findAll.get(0).getClass().getName(), list);

@@ -1,37 +1,37 @@
 package ppms.action.interfaces;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Properties;
 
 import org.apache.struts2.ServletActionContext;
-
-import ppms.servlet.ServletURLDispecher;
-import sun.awt.SunHints.Value;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BaseInit extends ActionSupport{
+public class BaseInit extends ActionSupport {
 
-	protected Map<String,List<Object>> map;
-	public BaseInit(){
-		map=(Map<String, List<Object>>) ActionContext.getContext().get("request");
+	protected Map<String, Object> map;
+
+	public BaseInit() {
+		map = (Map<String, Object>) ActionContext.getContext().get("request");
 	}
-	
+
 	/**
 	 * 将查询数据库产生的数据缓存进session
 	 */
-	public void toCache(){
-		
-		List<Object> value=null;
-		for (Entry<String,List<Object>> entry : map.entrySet()) {
-			
-			value = entry.getValue();
+	public void toCache() {
+
+		List<Object> value = null;
+
+		if (map.size() > 0) {
+
+			for (Entry<String, Object> entry : map.entrySet()) {
+
+				value = (List<Object>) entry.getValue();
+			}
 		}
-		ServletActionContext.getRequest().getSession().setAttribute(value.get(0).getClass().getName(),value);
+		ServletActionContext.getRequest().getSession()
+				.setAttribute(value.get(0).getClass().getName(), value);
 	}
 }

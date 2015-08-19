@@ -24,7 +24,7 @@ import ppms.serviceimpl.InvocationServiceImp;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class InnovationAction extends BaseInit{
+public class InnovationAction extends BaseInit {
 
 	private TbInnovation innovation;
 
@@ -38,26 +38,22 @@ public class InnovationAction extends BaseInit{
 
 	@Autowired
 	private InvocationServiceImp service;
-	
+
 	@Autowired
 	private TbMasterDAO masterDAO;
 
-	public void setService(InvocationServiceImp service) {
-		this.service = service;
-	}
-
-	
 	@Action(value = "performance.innovation.innovationSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	public String firstIn(){
-		
-		List<Object> organizationNjs = getOrganizationNjs();
-		if(organizationNjs!=null&&organizationNjs.size()>0){
+	public String firstIn() {
+
+		List<OrganizationNj> organizationNjs = getOrganizationNjs();
+		if (organizationNjs != null && organizationNjs.size() > 0) {
 			map.put("orgs", organizationNjs);
 		}
 		return "success";
 	}
+
 	/**
 	 * 处理创新管理单条录入
 	 * 
@@ -79,33 +75,36 @@ public class InnovationAction extends BaseInit{
 	@Action(value = "performance.innovation.innovationSingle.innovationSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSearch.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
-	public String searchPage(){
-		
-		List<Object> innovations = getInnovations();
-		List<Object> masters=masterDAO.findByType("InnovationLevel");
-		if(innovations!=null&&innovations.size()>0){
+	public String searchPage() {
+
+		List<TbInnovation> innovations = getInnovations();
+		List<Object> masters = masterDAO.findByType("InnovationLevel");
+		if (innovations != null && innovations.size() > 0) {
 			map.put("innovations", innovations);
 			map.put("masters", masters);
 		}
 		toCache();
 		return "success";
-	}	
+	}
+
 	/**
 	 * 获取所有营业厅的信息
+	 * 
 	 * @param context
 	 * @return
 	 */
-	private List<Object> getOrganizationNjs(){
+	private List<OrganizationNj> getOrganizationNjs() {
 		return service.getOrganizations();
 	}
-	
+
 	/**
 	 * 获取所有的创新提案
+	 * 
 	 * @param context
 	 * @return
 	 */
-	private List<Object> getInnovations(){
-		
+	private List<TbInnovation> getInnovations() {
+
 		return service.findAllInnovations();
 	}
 

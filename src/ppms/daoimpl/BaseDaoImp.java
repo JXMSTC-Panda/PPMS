@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import ppms.domain.TbInnovation;
+
 /**
  * dao层的基本类
  * 
@@ -81,7 +83,7 @@ public class BaseDaoImp extends HibernateDaoSupport {
 	 * @param fields 是表实例类型的 成员变量名
 	 * @return
 	 */
-	public<T> List<Object> getEntitiestNotLazy(T t,String [] fields){
+	public<T> List<T> getEntitiestNotLazy(T t,String [] fields){
 		
 		try {
 			Criteria criteria = getSession().createCriteria(t.getClass());
