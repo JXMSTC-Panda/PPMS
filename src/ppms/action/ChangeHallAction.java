@@ -17,6 +17,7 @@ import ppms.domain.TbEmployee;
 import ppms.domain.TbJob;
 import ppms.domain.TbPost;
 import ppms.domain.TbRole;
+import ppms.domain.TbSubareaorgrelation;
 import ppms.serviceimpl.ChangeHallServiceImp;
 import ppms.serviceimpl.userBaseInfoServiceImp;
 
@@ -34,6 +35,21 @@ public class ChangeHallAction extends ActionSupport implements InitPage{
 	public void setTbChangeorghistory(TbChangeorghistory tbChangeorghistory) {
 		this.tbChangeorghistory = tbChangeorghistory;
 	}
+	
+	
+	@Autowired
+	private TbSubareaorgrelation tbSubareaorgrelation;
+		
+	
+	public TbSubareaorgrelation getTbSubareaorgrelation() {
+		return tbSubareaorgrelation;
+	}
+
+	public void setTbSubareaorgrelation(TbSubareaorgrelation tbSubareaorgrelation) {
+		this.tbSubareaorgrelation = tbSubareaorgrelation;
+	}
+	
+	
 	@Autowired
 	private ChangeHallServiceImp changeHallServiceImp;
 		
@@ -60,6 +76,9 @@ public class ChangeHallAction extends ActionSupport implements InitPage{
 			List<TbChangeorghistory> tbChangeorghistories=service.getTbChangeorghistories();
 			map.put("tbChangeOrg", tbChangeorghistories);
 			break;
+		case "userInfo.businessHallSearch":
+			List<TbSubareaorgrelation> tbSubareaorgrelations=service.getTbSubareaorgrelations();
+			map.put("tbSub", tbSubareaorgrelations);
 		default:
 			break;
 		}	
