@@ -26,7 +26,7 @@
         </many-to-one>
         <many-to-one name="tbRole" class="ppms.domain.TbRole" fetch="select">
             <column name="ROLEID" length="6">
-                <comment>角色编码</comment>
+                <comment>角色类别</comment>
             </column>
         </many-to-one>
         <many-to-one name="tbPost" class="ppms.domain.TbPost" fetch="select">
@@ -71,7 +71,7 @@
         </property>
         <property name="bankname" type="java.lang.String">
             <column name="BANKNAME" length="40">
-                <comment>银行卡所属银行</comment>
+                <comment>银行卡号所属银行</comment>
             </column>
         </property>
         <property name="banknumber" type="java.lang.String">
@@ -161,7 +161,7 @@
         </property>
         <property name="jobstartdate" type="java.util.Date">
             <column name="JOBSTARTDATE" length="7">
-                <comment>岗位开始时间</comment>
+                <comment>岗位开始时间(年月日)</comment>
             </column>
         </property>
         <property name="operatorpassdate" type="java.util.Date">
