@@ -299,17 +299,16 @@
 							title : '出错啦!',
 							text : '网络似乎有问题！',
 							sticky : true,
-							time: 1000,
+							time : 1000,
 							speed : 10,
 							position : 'center',
 							class_name : 'gritter-light'
 						});
 					},
 					success : function(data) {
-						if(data == "1"){
-							location.href = "index.tachometer.login.do";
-						}
-						else{
+						if (data == "1") {
+							location.href = "index.tachometer.do";
+						} else {
 							$.gritter.add({
 								title : '出错啦!',
 								text : '账号或密码错误，请重试！' + data,
@@ -319,7 +318,7 @@
 								position : 'center',
 								class_name : 'gritter-light'
 							});
-						}		 		
+						}
 					}
 				});
 				$("#gritter-notice-wrapper").mouseleave(function() {
@@ -327,7 +326,10 @@
 					$('#btnlogin').removeClass('disabled');
 					$('gritter-notice-wrapper').remove();
 				});
-			});		
+			});
+			$('#btnlogin span').change(function(){
+				alert("123");
+			});
 		});
 
 		jQuery(function($) {

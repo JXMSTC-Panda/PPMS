@@ -31,7 +31,7 @@ public interface EmployeeService {
 	 * @return 返回验证结果，成功为1，失败为0
  	 */
 
-	public String findEmployeeForLogin(String useracount,String password);
+	public String loginCheck(String useracount,String password);
 	/**
 	 * 
 	* @Title: employeeToJson 
@@ -41,5 +41,16 @@ public interface EmployeeService {
 	* String     
 	* @throws
 	 */
-	public String employeeToJson(TbEmployee tbEmployee);
+	public String employeeToJson(List<TbEmployee> tbEmployee);
+	
+	/** 
+	* @Title: findEmployeeID 
+	* @Description: 登录时得到员工ID
+	* @param useracount
+	* @param password
+	* @return     
+	* String     
+	* @throws 
+	*/
+	public String findEmployeeID(String useracount,String password);
 }

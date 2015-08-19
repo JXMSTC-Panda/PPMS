@@ -8,9 +8,7 @@
     <class name="ppms.domain.TbPoint" table="TB_POINT" schema="PPMSUSER">
         <id name="pointid" type="java.lang.String">
             <column name="POINTID" length="10" />
-            <generator class="sequence">
-				<param name="sequence">AutoID</param>
-			</generator>
+             <generator class="assigned" />
         </id>
         <many-to-one name="tbEmployee" class="ppms.domain.TbEmployee" fetch="select">
             <column name="EMPLOYEEID" length="6">
@@ -19,7 +17,7 @@
         </many-to-one>
         <many-to-one name="tbJob" class="ppms.domain.TbJob" fetch="select">
             <column name="JOBID" length="6">
-                <comment>岗位编码</comment>
+                <comment>岗位</comment>
             </column>
         </many-to-one>
         <property name="orgid" type="java.lang.Integer">
@@ -38,62 +36,62 @@
             </column>
         </property>
         <property name="employeepoint" type="java.lang.Double">
-            <column name="EMPLOYEEPOINT" precision="10">
+            <column name="EMPLOYEEPOINT" precision="10" scale="2">
                 <comment>积分</comment>
             </column>
         </property>
         <property name="employeeperformance" type="java.lang.Double">
-            <column name="EMPLOYEEPERFORMANCE" precision="7">
+            <column name="EMPLOYEEPERFORMANCE" precision="7" scale="2">
                 <comment>营业员绩效</comment>
             </column>
         </property>
         <property name="orgperformance" type="java.lang.Double">
-            <column name="ORGPERFORMANCE" precision="7">
+            <column name="ORGPERFORMANCE" precision="7" scale="2">
                 <comment>营业厅绩效</comment>
             </column>
         </property>
         <property name="regulatepoint" type="java.lang.Double">
-            <column name="REGULATEPOINT" precision="10">
+            <column name="REGULATEPOINT" precision="10" scale="2">
                 <comment>调整后的积分</comment>
             </column>
         </property>
         <property name="rankseq" type="java.lang.Integer">
-            <column name="RANKSEQ" precision="5" scale="0">
+            <column name="RANKSEQ" precision="5" scale="2">
                 <comment>排名</comment>
             </column>
         </property>
         <property name="encouragementmoney" type="java.lang.Double">
-            <column name="ENCOURAGEMENTMONEY" precision="10">
+            <column name="ENCOURAGEMENTMONEY" precision="10" scale="2">
                 <comment>奖励金额</comment>
             </column>
         </property>
         <property name="tax" type="java.lang.Double">
-            <column name="TAX" precision="8">
+            <column name="TAX" precision="8" scale="2">
                 <comment>税金</comment>
             </column>
         </property>
         <property name="netincome" type="java.lang.Double">
-            <column name="NETINCOME" precision="10">
+            <column name="NETINCOME" precision="10" scale="2">
                 <comment>税后金额</comment>
             </column>
         </property>
         <property name="orglevel" type="java.lang.Double">
-            <column name="ORGLEVEL" precision="6">
+            <column name="ORGLEVEL" precision="6" scale="2">
                 <comment>营业厅星级</comment>
             </column>
         </property>
         <property name="breachdeductpoint" type="java.lang.Double">
-            <column name="BREACHDEDUCTPOINT" precision="10">
+            <column name="BREACHDEDUCTPOINT" precision="10" scale="2">
                 <comment>违规扣分</comment>
             </column>
         </property>
         <property name="lastpoint" type="java.lang.Double">
-            <column name="LASTPOINT" precision="10">
+            <column name="LASTPOINT" precision="10" scale="2">
                 <comment>最终奖励积分</comment>
             </column>
         </property>
         <property name="deducttax" type="java.lang.Double">
-            <column name="DEDUCTTAX" precision="8">
+            <column name="DEDUCTTAX" precision="8" scale="2">
                 <comment>扣减税金</comment>
             </column>
         </property>

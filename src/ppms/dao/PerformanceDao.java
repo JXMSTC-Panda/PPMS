@@ -11,8 +11,10 @@
 */ 
 package ppms.dao;
 
-import java.util.*;
+import java.util.List;
 
+import ppms.domain.OrganizationNj;
+import ppms.domain.TbEmployee;
 import ppms.domain.TbPerformance;
 
 /**   
@@ -44,4 +46,54 @@ public interface PerformanceDao {
 	
 	*/ 
 	public List<TbPerformance>  getpPerformances();
+	
+	/** 
+	
+	* @方法名: getOrganizationNjs 
+	
+	* @描述: 在绩效表中查找营业厅表 
+	
+	* @param @return    设定文件
+	
+	* @return List<OrganizationNj>    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public List<OrganizationNj> getOrganizationNjs();
+	
+	
+	
+	/** 
+	
+	* @方法名: getEmployees 
+	
+	* @描述: 绩效表中员工表 
+	
+	* @param @return    设定文件
+	
+	* @return List<TbEmployee>    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public List<TbEmployee> getEmployees(String employeeid);
+
+	/** 
+	
+	* @方法名: deletePerformance 
+	
+	* @描述: 删除绩效表数据
+	
+	* @param @param performanceid    设定文件
+	
+	* @return void    返回类型
+	
+	* @throws 
+	
+	*/ 
+	void deletePerformance(String  performanceid);
+
+
+
 }

@@ -29,6 +29,7 @@ public class ServletURLDispecher extends HttpServlet {
 
 	// 页面初始化的配置对象
 	private static Properties initConfig;
+	private boolean isEnd;
 
 	static {
 

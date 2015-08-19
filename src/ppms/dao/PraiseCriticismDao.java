@@ -9,7 +9,11 @@ import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbJob;
+import ppms.domain.TbMaster;
+import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbPost;
+import ppms.domain.TbSubarea;
+import ppms.domain.TbSubareaorgrelation;
 
 public interface PraiseCriticismDao {
 
@@ -19,11 +23,52 @@ public interface PraiseCriticismDao {
 	 */
 	public void save(Object tbEmployeepraisecriticism);
 	/**
+	 * 单条录入营业厅奖惩信息
+	 * @param tbOrgpraisecriticism
+	 */
+	public void businessHallInforSave(Object tbOrgpraisecriticism);
+	/**
+	 * 更新数据
+	 * @param object
+	 */
+	public void update(Object object);
+	/**
+	 * 数据库完全删除数据
+	 * @param object
+	 */
+	public void delete(Object object);
+	/**
 	 * 动态下拉框，根据奖惩类型，动态变化奖惩级别
 	 * @param key
 	 * @return
 	 */
 	public List<TbEmployeepraisecriticism> findLevel(int key);
+	/**
+	 * 根据key值查询营业厅奖惩类型
+	 * @param key
+	 * @return
+	 */
+	public List<TbMaster> findOrgPraiseCriticismType(String key);
+	/**
+	 * 根据奖惩类型typeKey值和奖惩级别levelKey查询营业厅奖惩级别
+	 * @param typeKey
+	 * @param levelKey
+	 * @return
+	 */
+	public List<TbMaster> findOrgPraiseCriticismLevel(String typeKey,String levelKey);
+	/**
+	 * 根据key值查询员工奖惩类型
+	 * @param key
+	 * @return
+	 */
+	public List<TbMaster> findEmployeePraiseCriticismType(String key);
+	/**
+	 * 根据奖惩类型typeKey值和奖惩级别levelKey查询员工奖惩级别
+	 * @param typeKey
+	 * @param levelKey
+	 * @return
+	 */
+	public List<TbMaster> findEmployeePraiseCriticismLevel(String typeKey,String levelKey);
 	/*
 	 * 获取数据可中所有的员工信息
 	 * */
@@ -68,8 +113,43 @@ public interface PraiseCriticismDao {
 	 */
 	public List<OrganizationNj> findOrganizationNjInfor(int orgId);
 	/**
+	 * 获取所有同步营业厅的信息
+	 * @return
+	 */
+	 public List<OrganizationNj> findAllOrganizationNjInfor();
+	/**
 	 * 获取所有的员工奖惩信息
 	 * @return
 	 */
-	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor();
+	
+	 public List<TbEmployeepraisecriticism> findAllEmployeepraisecriticismInfor();
+	 /**
+		 * 根据员工奖惩信息编号查询员工奖惩信息
+		 * @param praisecriticismid
+		 * @return
+		 */
+		public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor(String praisecriticismid);
+	 /**
+	 * 获取所有的营业厅奖惩信息
+	 * @return
+	 */
+	public List<TbOrgpraisecriticism> findAllOrgpraisecriticismInfor();
+	/**
+	 * 根据营业厅奖惩信息编号获取营业厅奖惩信息
+	 * @param praisecriticismid
+	 * @return
+	 */
+	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(String praisecriticismid);
+	/**
+	 * 根据营业厅编号查询片区与营业厅关系
+	 * @param orgId
+	 * @return
+	 */
+	public List<TbSubareaorgrelation> findSubareaorgrelationInfor(int orgId);
+	/**
+	 * 根据片区编码查询片区名称
+	 * @param subareaId
+	 * @return
+	 */
+	public List<TbSubarea> findSubareaInfor(BigDecimal subareaId);
 }

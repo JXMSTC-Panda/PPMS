@@ -2,6 +2,8 @@ package ppms.domain;
 
 import java.util.Date;
 
+import ppms.annotation.ValueChange;
+
 /**
  * TbEmployeepraisecriticism entity. @author MyEclipse Persistence Tools
  */
@@ -15,9 +17,12 @@ public class TbEmployeepraisecriticism implements java.io.Serializable {
 	private String praisecriticismid;
 	private OrganizationNj organizationNj;
 	private TbEmployee tbEmployee;
+	
+	@ValueChange(key_type="EmployeePraiseCriticismType")
 	private String praisecriticismtype;
 	private String cause;
 	private Date praisecriticismdate;
+	@ValueChange(key_type="EmployeeCriticismLevel")
 	private String praisecriticismlevel;
 	private String orgpraisecriticmrelationid;
 	private String createdby;

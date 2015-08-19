@@ -61,6 +61,8 @@ public class userBaseInfoAction extends ActionSupport implements InitPage {
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String result() {
 		try {
+			
+			
 			service.adduserBaseInfo(tbEmployee);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,7 +120,9 @@ public class userBaseInfoAction extends ActionSupport implements InitPage {
 			map.put("jobs", tbJobs);
 			map.put("employees", tbEmployees);
 			break;
-		
+		case "userInfo.userBaseInfoSearch":
+			List<TbEmployee> employees =service.getTbEmployees();
+			map.put("employees", employees);
 		default:
 			break;
 		}	

@@ -44,6 +44,70 @@ public interface PerformanceService {
 	* @throws 
 	
 	*/ 
-	public List<TbPerformance> getTbPerformances();
+
+	public List<TbPerformance>  getPerformances();
 	
+	/** 
+	
+	* @方法名: getOrganizationNjs 
+	
+	* @描述: 在绩效表中查找营业厅表 service
+	
+	* @param @return    设定文件
+	
+	* @return List<OrganizationNj>    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public List<OrganizationNj> getOrganizationNjs(Integer orgid);
+	
+
+	
+	/** 
+	
+	* @方法名: addPerformance 
+	
+	* @描述: 添加Performance绩效记录，成功返回true否则返回false
+	
+	* @param @param tbPerformance
+	* @param @return    设定文件
+	
+	* @return boolean    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public boolean addPerformance(TbPerformance performance);
+
+	/** 
+	
+	* @方法名: getEmployees 
+	
+	* @描述: TODO(这里用一句话描述这个方法的作用) 
+	
+	* @param @param employeeid
+	* @param @return    设定文件
+	
+	* @return List<TbEmployee>    返回类型
+	
+	* @throws 
+	
+	*/ 
+	List<TbEmployee> getEmployees(String employeeid);
+
+	/** 
+	
+	* @方法名: deletePerformance 
+	
+	* @描述: TODO(这里用一句话描述这个方法的作用) 
+	
+	* @param @param performance    设定文件
+	
+	* @return void    返回类型
+	
+	* @throws 
+	
+	*/ 
+	void deletePerformance(String performanceid);
 }

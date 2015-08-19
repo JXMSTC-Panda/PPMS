@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.transaction.Transactional;
 
 import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.convention.annotation.Action;
@@ -16,6 +17,8 @@ import ppms.action.interfaces.InitPage;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbInnovation;
+import ppms.domain.TbMaster;
+import ppms.genericDao.TbMasterDAO;
 import ppms.serviceimpl.InvocationServiceImp;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -57,24 +60,41 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 
 	}
 
+	@Transactional
 	@Override
 	public Map<String, List<T>> initPage(ServletContext context, String url) {
 
 		// 实例化map
-		Map map = new HashMap<String, List<OrganizationNj>>();
+		Map map = new HashMap<String, List<Object>>();
 
-		InvocationServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(context).getBean(
-						InvocationServiceImp.class);
 
 		// 根据不同请求的url实现不同页面的页面初始化
 		switch (url) {
 		case "innovation.innovationSingle":
-			// 获取所有营业厅
-			List<OrganizationNj> organizations = service.getOrganizations();
-			map.put("orgs", organizations);
-			break;
 
+			// 获取所有营业厅
+			List<OrganizationNj> organizationNjs = getOrganizationNjs(context);
+			if(organizationNjs!=null&&organizationNjs.size()>0){
+				map.put("orgs", organizationNjs);
+			}
+		
+			break;
+		case "innovation.innovationSearch":
+			// 获取提案信息
+			
+			long beg=System.currentTimeMillis();
+			List<TbInnovation> innovations = getInnovations(context);
+			TbMasterDAO masterDAO = WebApplicationContextUtils
+					.getWebApplicationContext(context).getBean(
+							TbMasterDAO.class);
+			List<TbMaster> masters=masterDAO.findByType("InnovationLevel");
+			if(innovations!=null&&innovations.size()>0){
+				map.put("innovations", innovations);
+				map.put("masters", masters);
+			}
+			
+			System.out.println(System.currentTimeMillis()-beg);
+			break;
 		default:
 			break;
 		}
@@ -87,6 +107,7 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 
 		String orgid = request.getParameter("orgid");
 
+		System.out.println("sfasfs");
 		setHsql("from TbEmployee where orgid=" + orgid);
 		setKey("employees");
 		setFieldToJson(null, TbEmployee.class);
@@ -120,6 +141,34 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 		// } catch (Exception e) {
 		// e.printStackTrace();
 		// }
+	}
+	
+	/**
+	 * 获取所有营业厅的信息
+	 * @param context
+	 * @return
+	 */
+	private List<OrganizationNj> getOrganizationNjs(ServletContext context){
+		
+
+		InvocationServiceImp service = WebApplicationContextUtils
+				.getWebApplicationContext(context).getBean(
+						InvocationServiceImp.class);
+		return service.getOrganizations();
+	}
+	
+	/**
+	 * 获取所有的创新提案
+	 * @param context
+	 * @return
+	 */
+	private List<TbInnovation> getInnovations(ServletContext context){
+		
+		InvocationServiceImp service = WebApplicationContextUtils
+				.getWebApplicationContext(context).getBean(
+						InvocationServiceImp.class);
+		
+		return service.findAllInnovations();
 	}
 
 }

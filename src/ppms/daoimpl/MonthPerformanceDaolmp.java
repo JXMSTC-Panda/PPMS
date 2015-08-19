@@ -18,6 +18,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import ppms.domain.*;
 import ppms.dao.PerformanceDao;
 import ppms.domain.TbPerformance;
@@ -51,8 +53,61 @@ public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao
 		//cri.add(Restrictions.eq("performancetype", false));
 		
 		
-		return (List<TbPerformance>) getHibernateTemplate();
+		return getHibernateTemplate().findByExample(new TbPerformance());
 		//return cri.list();
 	}
 
+	/* (non-Javadoc)
+	 * @see ppms.dao.PerformanceDao#getOrganizationNjs()
+	 */
+	@Override
+	public List<OrganizationNj> getOrganizationNjs() {
+		// TODO Auto-generated method stub
+		return getHibernateTemplate().findByExample(new OrganizationNj());
+	}
+
+	/**
+	 * 根据员工id查询员工
+	 */
+	@Override
+	public List<TbEmployee> getEmployees(String employeeid) {
+		List results=null;
+		try{
+			String hql="from TbEmployee where employeeid='"+employeeid+"'"; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		
+		return results;  
+    }
+
+	/** 
+	
+	* @方法名: deletePerformance 
+	
+	* @描述: 删除月度绩效表 
+	
+	* @param @return    设定文件
+	
+	* @return boolean    返回类型
+	
+	* @throws 
+	
+	*/ 
+	@Override
+	public void  deletePerformance(String  performanceid){
+		
+		
+		getHibernateTemplate().delete(performanceid);
+	}
+		
 }
+
+	
+		
+	
+
+
+

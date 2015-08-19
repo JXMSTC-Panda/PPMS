@@ -18,18 +18,22 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/plugin/zTree/css/zTreeStyle/zTreeStyle.css"
 	type="text/css">
 <!-- text fonts -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
@@ -76,7 +80,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">权限管理</a></li>
+						<li><a href="#">权限管理</a>
+						</li>
 						<li class="active">角色添加</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -84,45 +89,51 @@
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
-						<!-- PAGE CONTENT BEGINS -->
-						<form class="form-horizontal" role="form" action="roleSingleResult.do">
+						<div class="col-xs-12">
+							<!-- PAGE CONTENT BEGINS -->
+							<form class="form-horizontal" role="form"
+								action="roleSingleResult.do">
 
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right"
-									for="form-field-1">权限角色：</label>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-field-1">权限角色：</label>
 
-								<div class="col-sm-9">
-									<input type="text" id="form-field-1" placeholder="UserName"
-										class="col-xs-10 col-sm-5" />
-								</div>
-								<label class="col-sm-3 control-label no-padding-right"
-									for="form-field-1">系统管理员：</label>
+									<div class="col-sm-9">
+										<input type="text" id="form-field-1" placeholder="UserName"
+											class="col-xs-10 col-sm-5" />
+									</div>
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-field-1">系统管理员：</label>
 
-								<div class="col-sm-9">
-									<div class="radio">
-										<label> <input name="form-field-radio" type="radio"
-											class="ace" /> <span class="lbl">是</span> </label> <label> <input
-											name="form-field-radio" type="radio" class="ace" /> <span
-											class="lbl">否</span> </label> <font color="red">[系统管理员可拥有所有操作权限]</font>
+									<div class="col-sm-9">
+										<div class="radio">
+											<label> <input name="form-field-radio" type="radio"
+												class="ace" /> <span class="lbl">是</span> </label> <label>
+												<input name="form-field-radio" type="radio" class="ace" />
+												<span class="lbl">否</span> </label> <font color="red">[系统管理员可拥有所有操作权限]</font>
+										</div>
+									</div>
+									<div class="col-lg-4" style="text-align: center;">
+										<ul id="treeDemo" class="ztree"></ul>
 									</div>
 								</div>
-								<div class="col-lg-4" style="text-align: center;">
-									<ul id="treeDemo" class="ztree"></ul>
+								<div class="clearfix form-actions">
+									<div class="col-md-offset-3 col-md-9">
+										<button class="btn btn-info" type="submit">
+											<i class="ace-icon fa fa-check bigger-110"></i>添加
+										</button>
+										&nbsp; &nbsp; &nbsp;
+										<button class="btn" type="reset">
+											<i class="ace-icon fa fa-undo bigger-110"></i>重置
+										</button>
+										<button id="btnTest" class="btn" type="button">
+											<i class="ace-icon fa fa-undo bigger-110"></i>测试
+										</button>
+									</div>
 								</div>
-							</div>
-							<div class="clearfix form-actions">
-								<div class="col-md-offset-3 col-md-9">
-									<button class="btn btn-info" type="submit">
-										<i class="ace-icon fa fa-check bigger-110"></i>添加
-									</button>
-									&nbsp; &nbsp; &nbsp;
-									<button class="btn" type="reset">
-										<i class="ace-icon fa fa-undo bigger-110"></i>重置
-									</button>
-								</div>
-							</div>
-						</form>
-						<!-- PAGE CONTENT ENDS -->
+							</form>
+							<!-- PAGE CONTENT ENDS -->
+						</div>
 					</div>
 				</div>
 			</div>
@@ -131,6 +142,8 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-2.0.3.min.js"></script>
+	
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/plugin/zTree/js/jquery.ztree.all-3.5.min.js"></script>
 	<!-- inline scripts related to this page -->
@@ -147,7 +160,7 @@
 				}
 			}
 		};
-		var zNodes = [ {
+		/* var zNodes = [ {
 			id : 1,
 			pId : 0,
 			name : "权限管理",
@@ -734,7 +747,7 @@
 			id : 912,
 			pId : 91,
 			name : "系统设定"
-		}, ];
+		}, ]; */
 
 		function disabledNode(e) {
 			var zTree = $.fn.zTree.getZTreeObj("treeDemo"), disabled = e.data.disabled, nodes = zTree
@@ -754,17 +767,47 @@
 						inheritChildren);
 			}
 		}
-		$(document).ready(function() {
-			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
-			$("#disabledTrue").bind("click", {
-				disabled : true
-			}, disabledNode);
-			$("#disabledFalse").bind("click", {
-				disabled : false
-			}, disabledNode);
+
+		$(document).ready(function(){
+		$("#btnTest").click(function(){		
+			$.get("authority.null.roleSingle.init.do", function (data) {
+				if (data.substr(0, 3) == "{\"p") {
+					var obj = JSON.parse(data);
+                    var sysfunctions= obj.ppms.TbSystemfunctions;
+                    /*for (var i = 0; i < sysfunctions.length; i++) {
+                    	var sysfunction = sysfunctions[i];
+                    }*/
+                    var zNodes = sysfunctions;
+                    $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+					$("#disabledTrue").bind("click", {disabled : true}, disabledNode);
+					$("#disabledFalse").bind("click", {disabled : false}, disabledNode);
+					alert(JSON.stringify(zNodes));
+                } else {
+                    alert("error");
+                }
+            });
+		});
+			/* $.ajax({
+				cache : false,
+				type : "POST",
+				url : "authority.null.roleSingle.init.do",
+				data : $('#form_login').serialize(),
+				async : false,
+				error : function(request) {
+					alert(request + "0");
+				},
+				success : function(zNodes) {
+					alert(JSON.stringify(zNodes) + "1");
+					$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+					$("#disabledTrue").bind("click", {disabled : true}, disabledNode);
+					$("#disabledFalse").bind("click", {disabled : false}, disabledNode);
+					//var treeObj = $.fn.zTree.getZTreeObj("treeDemo"),
+					//nodes = treeObj.getCheckedNodes(true);
+					alert(JSON.stringify(zNodes));
+				}
+			}); */
 		});
 	//-->
 	</script>
 </body>
 </html>
-<!-- http://localhost:8080/QQL1133Attend/index.jsp -->

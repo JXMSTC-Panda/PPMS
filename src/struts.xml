@@ -35,4 +35,6 @@
 	<!--  -->
 	<constant name="struts.action.extension" value="do"/>
     
+    
+    
 </struts>
