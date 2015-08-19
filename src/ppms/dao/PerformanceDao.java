@@ -79,7 +79,8 @@ public interface PerformanceDao {
 	*/ 
 	public List<TbEmployee> getEmployees(String employeeid);
 
-	/** 
+	/**
+	 * @return  
 	
 	* @方法名: deletePerformance 
 	
@@ -92,7 +93,7 @@ public interface PerformanceDao {
 	* @throws 
 	
 	*/ 
-	void deletePerformance(String  performanceid);
+	boolean deletePerformance(String  performanceid);
 
 
 
