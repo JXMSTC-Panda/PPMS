@@ -141,10 +141,10 @@
 														<%-- <a class="blue" href="javascript:void(0)"
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%> <a
-															class="green" href="javascript:void(0)"
+															class="green" href="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.skip.do?tbOrgpraisecriticism.praisecriticismid=${orgpraisecriticismsInfor.praisecriticismid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId=${trl.getRoleid()}"> <i
+															href="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.orgPCInforDelete.do?tbOrgpraisecriticism.praisecriticismid=${orgpraisecriticismsInfor.praisecriticismid}"> <i
 															class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">

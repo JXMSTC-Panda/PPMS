@@ -174,7 +174,7 @@
 														<span class="help-inline col-xs-12 col-sm-7">
 
 															<button class="btn btn-info" type="button"
-																onClick="top.window.location='skipEmployeeSelectSingle.do'">选择员工</button>
+																onClick="top.window.location='praiseCriticism.employee.employeePraiseCriticismSingle.skipEmployeeSelectSingle.do'">选择员工</button>
 
 
 														</span>

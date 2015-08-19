@@ -113,8 +113,11 @@
 											<th>身份证号</th>
 											<th>营业厅编码</th>
 											<th>营业厅名称</th>
+											<th>类型</th>
+											<th>奖惩原因</th>
+											<th>级别</th>
 											<th>年月</th>
-											<th>总分</th>
+											<th>分值</th>
 											<th></th>
 										</tr>
 									</thead>
@@ -133,15 +136,18 @@
 												<td class="hidden-480">${employeepraisecriticismsInfor.tbEmployee.idnumber}</td>
 												<td>${employeepraisecriticismsInfor.organizationNj.orgid}</td>
 												<td>${employeepraisecriticismsInfor.organizationNj.org_Name}</td>
+												<td>${employeepraisecriticismsInfor.praisecriticismtype}</td>
+											    <td>${employeepraisecriticismsInfor.cause}</td>
+											    <td>${employeepraisecriticismsInfor.praisecriticismlevel}</td>
 												<td>${employeepraisecriticismsInfor.praisecriticismdate}</td>
-												<td>90</td>
+												<td>+0.5</td>
 												
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="javascript:void(0)"
+														<%-- <a class="blue" href="javascript:void(0)"
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="praiseCriticism.employee.employeePraiseCriticismSearch.SkipUpdateEmployeeInfor.do"
+															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%> <a
+															class="green" href="praiseCriticism.employee.employeePraiseCriticismSearch.SkipUpdateEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
 															href="praiseCriticism.employee.employeePraiseCriticismSearch.deleteEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}"> <i
@@ -211,7 +217,7 @@
 				bAutoWidth : false,
 				"aoColumns" : [ {
 					"bSortable" : false
-				}, null, null, null, null, null, null, null, null, {
+				}, null, null, null, null, null, null, null, null, null, null, null, {
 					"bSortable" : false
 				} ],
 				"aaSorting" : [],

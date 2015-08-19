@@ -159,8 +159,17 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 		return dao.findEmployeepraisecriticismInfor(praisecriticismid);
 	}
 	@Override
-	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(){
-		return dao.findOrgpraisecriticismInfor();
+	public List<TbOrgpraisecriticism> findAllOrgpraisecriticismInfor(){
+		return dao.findAllOrgpraisecriticismInfor();
+	}
+	/**
+	 * 根据营业厅奖惩信息编号获取营业厅奖惩信息
+	 * @param praisecriticismid
+	 * @return
+	 */
+	@Override
+	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(String praisecriticismid){
+		return dao.findOrgpraisecriticismInfor(praisecriticismid);
 	}
 	@Override
 	public List<TbSubareaorgrelation> findSubareaorgrelationInfor(int orgId){
