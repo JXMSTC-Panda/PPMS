@@ -82,27 +82,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th>营业厅名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						<th>区域&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						<th>片区&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					</tr>	
-			<c:forEach items="${requestScope.i}">		
-					<tr>
-				<c:forEach items="${requestScope.organizationNj}"var="organizationNj">
-							<td><input type="radio" name="selectBusinessHall" value="${organizationNj.orgid}" checked></td>
-							<td>1</td>
-                        	<td>${organizationNj.orgid}</td>
-							<td>${organizationNj.org_Name}</td>
-					
-				</c:forEach>	
+					</tr>		
 				
-				<c:forEach items="${requestScope.areaResults}"var="areaResults">	
-						<td>${areaResults.areadesc}</td>
+				<c:forEach items="${requestScope.organizationNj}" var="OrganizationNj">
+					<tr>
+							<td><input type="radio" name="selectBusinessHall" value="${OrganizationNj.orgid}" checked></td>
+							<td>1</td>
+                        	<td>${OrganizationNj.orgid}</td>
+							<td>${OrganizationNj.org_Name}</td>
+							<td>${OrganizationNj.areadesc}</td>
+							<td>${OrganizationNj.subareadesc}</td>
+					</tr>	
 				</c:forEach>
-						
-				<c:forEach items="${requestScope.subAreaResults}" var="subAreaResults">	
-						<td>${subAreaResults.subareadesc}</td> 	
-				</c:forEach>
+				
 					
-				</tr>	
-			</c:forEach>	
 				</table>
 				<table style="width: 95%" cellspacing="0" cellpadding="0" align="center">
 					<tr>

@@ -55,5 +55,9 @@ public interface StandardCheckService{
 	 * 获取营业厅表
 	 * */
 	public List<OrganizationNj> findOrganizationInfo();
+	/**
+	 * 根据orgId查询营业厅表
+	 * */
+	public List<OrganizationNj> findOrganizationId(Integer orgId);
 	
 }

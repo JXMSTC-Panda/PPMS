@@ -85,6 +85,17 @@
 		</object>
 	</excel>
 	
+	<excel name="积分批量导入模板(合作厅).xls">
+		<object>
+			<class_name>ppms.domain.TbPoint</class_name>
+		</object>
+	</excel>
+	
+	<excel name="积分批量导入模板(主厅).xls">
+		<object>
+			<class_name>ppms.domain.TbPoint</class_name>
+		</object>
+	</excel>
 	<excel name="转正考核成绩批量导入模板.xls">
 		<object>
 			<class_name>ppms.domain.TbBecomeemployeeexam</class_name>
