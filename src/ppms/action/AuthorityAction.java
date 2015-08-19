@@ -67,6 +67,20 @@ public class AuthorityAction extends ActionSupport {
 		request.setAttribute("tbEmployeeIDSession", tbEmployeeID);
 	}
 
+	/** 
+	* @Title: roleSingle 
+	* @Description: TODO
+	* @return     
+	* String     
+	* @throws 
+	*/
+	@Action(value="authority.null.roleSingle", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/authority/roleSingle.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	public String roleSingle(){
+		
+		return "success";
+	}
 	/**
 	 * @throws IOException
 	 * @Title: roleSingleInit
