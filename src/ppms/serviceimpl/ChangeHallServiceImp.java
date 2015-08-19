@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 
 import ppms.daoimpl.ChangeHallDaoImp;
 import ppms.domain.OrganizationNj;
+import ppms.domain.TbArea;
 import ppms.domain.TbChangeorghistory;
 import ppms.domain.TbEmployee;
+import ppms.domain.TbSubarea;
+import ppms.domain.TbSubareaorgrelation;
 import ppms.service.ChangeHallService;
 @Service
 public class ChangeHallServiceImp implements ChangeHallService{
@@ -32,5 +35,25 @@ public class ChangeHallServiceImp implements ChangeHallService{
 			tbChangeorghistoriesNew.add(tbChangeorghistory);
 		}
 		return tbChangeorghistoriesNew;
+	}
+	
+	public List<TbSubareaorgrelation> getTbSubareaorgrelations(){
+		List<TbSubareaorgrelation> tbSubareaorgrelations=dao.getTbSubareaorgrelations();
+		
+		List<TbSubareaorgrelation> tbSubareaorgrelationsNew =new ArrayList<>();
+		
+		for(TbSubareaorgrelation tbSubareaorgrelation:tbSubareaorgrelations){
+			List<OrganizationNj> organizationNjs=dao.getOrganizationNjs(tbSubareaorgrelation.getOrganizationNj().getOrgid());
+			tbSubareaorgrelation.setOrganizationNj(organizationNjs.get(0));
+			if(tbSubareaorgrelation.getTbSubarea()!=null){
+				List<TbSubarea> tbSubareas=dao.getTbSubareas(tbSubareaorgrelation.getTbSubarea().getSubareaid());
+				List<TbArea> tbAreas=dao.getAreas(tbSubareas.get(0).getTbArea().getAreaid());
+				TbSubarea tbSubarea = tbSubareas.get(0);
+				tbSubarea.setTbArea(tbAreas.get(0));
+				tbSubareaorgrelation.setTbSubarea(tbSubareas.get(0));
+			}		
+			tbSubareaorgrelationsNew.add(tbSubareaorgrelation);
+		}
+		return tbSubareaorgrelationsNew;
 	}
 }
