@@ -53,6 +53,7 @@ import ppms.util.TimeStringUtils;
  */
 public class CommonExcelParser {
 
+	//遍历深度记录
 	private int parserCount;
 	// excel对应的文本对象
 	private HSSFWorkbook wb;
@@ -127,18 +128,22 @@ public class CommonExcelParser {
 
 				ro = sh.getRow(0);
 				Class clazz;
+				//判断要生成Excel的对象集合是否有数据
 				if (excelRecords.getList().size() > 0) {
 
+					//获取集合中对象的字节码
 					clazz = excelRecords.getList().get(0).getClass();
+					//获取对象成员变量和Excel表列名的映射
 					List<ExcelObjStruct> list = getFieldReflectToClomnName(
 							clazz.getName(), ro);
 
 					Class tmpClazz = clazz;
-					Class<?> type;
-					Method method;
-					Object value;
-					Field field;
+					Class<?> type=null;
+					Method method=null;
+					Object value=null;
+					Field field=null;
 
+					//设置单元格格式
 					HSSFCellStyle style = wb.createCellStyle();
 					style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
 					HSSFFont font = wb.createFont();
@@ -147,8 +152,9 @@ public class CommonExcelParser {
 					font.setFontName("宋体");
 					font.setFontHeightInPoints((short) 10);
 
-					String tmpClazzName;
+					String tmpClazzName=null;
 
+					//判断表头是月份还是年份的标记
 					boolean isMonth = false;
 					if (fileName.equals("年度绩效批量导出.xls")) {
 
@@ -163,22 +169,27 @@ public class CommonExcelParser {
 						cell2.setCellStyle(style);
 						cell2.setCellValue("月份");
 					}
+					//生成Excel的第几列的记录数
 					int index = i;
+					//遍历要生成Excel的集合
 					for (int j = i; j <= excelRecords.getList().size(); j++) {
 						// 创建第j行
 						ro = sh.createRow(index);
+						//偏大是否是创新提案
 						if (clazz.getName().equals("ppms.domain.TbInnovation")) {
 
 							TbInnovation innovation = (TbInnovation) excelRecords
 									.getList().get(j - i);
 							cell = ro.createCell(7);
 							cell.setCellStyle(style);
+							//根据数据判断是什么类型的创新
 							if (innovation.getTbEmployee() != null) {
 								cell.setCellValue("个人创新");
 							} else {
 								cell.setCellValue("团队创新");
 							}
 						}
+						//遍历保存对象和Excel列映射关系的集合
 						for (ExcelObjStruct eos : list) {
 
 							// 设置序号
@@ -234,7 +245,7 @@ public class CommonExcelParser {
 							// 获取成员变量上ValueChange注解
 							ValueChange vc = field
 									.getAnnotation(ValueChange.class);
-							// 如果该注解不为空，说明该成员bianlde值需要通过字典表转换
+							// 如果该注解不为空，说明该成员变量的值需要通过字典表转换
 							if (vc != null) {
 
 								// 查询字典表
@@ -254,6 +265,7 @@ public class CommonExcelParser {
 								}
 							} else {
 
+								//根据数据类型设置单元格数据
 								cell = setValueByType(type.getName(), value,
 										method, eos, cell);
 							}
@@ -525,6 +537,7 @@ public class CommonExcelParser {
 								}
 								eos.setFieldName(split[0]);
 
+								//设置绩效类型
 								tempClazz.getMethod("setPerformancetype",
 										Boolean.class).invoke(object,
 										performanceType);
@@ -838,6 +851,16 @@ public class CommonExcelParser {
 		return returnValue;
 	}
 
+	/**
+	 * 根据数据类型设置单元格的值
+	 * @param type_name
+	 * @param obj
+	 * @param method
+	 * @param eos
+	 * @param cell
+	 * @return
+	 * @throws Exception
+	 */
 	public HSSFCell setValueByType(String type_name, Object obj, Method method,
 			ExcelObjStruct eos, HSSFCell cell) throws Exception {
 
@@ -901,7 +924,7 @@ public class CommonExcelParser {
 	}
 
 	/**
-	 * 匹配成员变量和Excel列
+	 * 匹配成员变量和Excel列得映射关系
 	 * 
 	 * @param fileName
 	 *            文件名，类名
@@ -1053,7 +1076,6 @@ public class CommonExcelParser {
 										// 中断遍历
 										break;
 									}
-
 								}
 								// 遍历完了，没找到匹配
 								if (isNot) {
@@ -1061,7 +1083,6 @@ public class CommonExcelParser {
 									list.add(eos);
 								}
 							}
-
 						}
 					}
 					System.out.println(System.currentTimeMillis());
@@ -1074,16 +1095,14 @@ public class CommonExcelParser {
 	}
 
 	/**
-	 * 建议是否要用该值去查数据库
+	 * 检验是否要用该值去查数据库
 	 * 
 	 * @param clazz
 	 * @return
 	 */
 	private Object isInCache(Class clazz) {
 
-		int i = 0;
 		for (Object obj : cache) {
-
 			if (obj.getClass().getName().equals(clazz.getName())) {
 				return obj;
 			}
