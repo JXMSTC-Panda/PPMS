@@ -191,7 +191,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
+						<li><a href="#">父功能</a>
+						</li>
 						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -212,7 +213,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">创新提案表</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=创新提案批量导出.xls" name="StuListForm" method="post">
 								<c:set var="count" value="0"></c:set>
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
@@ -241,30 +242,27 @@
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
 														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label></td>
+												</label>
+												</td>
 												<td><c:if test="${innovation.tbEmployee!=null}">
 														<c:out value="${innovation.tbEmployee.employeecode}"></c:out>
 												</td>
 												</c:if>
 												<td><c:if test="${ innovation.tbEmployee!=null}">
 														<c:out value="${innovation.tbEmployee.employeename}"></c:out>
-													</c:if>
-												</td>
+													</c:if></td>
 												<td><c:if test="${ innovation.tbEmployee!=null}">
 														<c:out value="${innovation.tbEmployee.idnumber}"></c:out>
-													</c:if>
-												</td>
+													</c:if></td>
 												<td><c:out value="${innovation.organizationNj.orgid}"></c:out>
 												</td>
 												<td><c:out
-														value="${innovation.organizationNj.org_Name}"></c:out>
-												</td>
+														value="${innovation.organizationNj.org_Name}"></c:out></td>
 												<td><c:out value="${innovation.innovationcontent}"></c:out>
 													<c:if test="${innovation.tbEmployee==null}">
 														<td><c:out value="团队创新"></c:out>
 													</c:if> <c:if test="${innovation.tbEmployee!=null}">
-														<td><c:out value="个人创新"></c:out>
-														</td>
+														<td><c:out value="个人创新"></c:out></td>
 													</c:if>
 												<td>
 												<td><c:out
@@ -275,7 +273,8 @@
 														<c:if test="${innovation.assesslevel==master.key}">
 															<c:out value="${master.value }"></c:out>
 														</c:if>
-													</c:forEach></td>
+													</c:forEach>
+												</td>
 												<td><c:out value="${innovation.encouragement}"></c:out>
 												</td>
 												<td>
@@ -300,32 +299,31 @@
 																	onclick="GetDetail(this)" class="tooltip-info"
 																	data-rel="tooltip" title="View"> <span class="blue">
 																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a href="javascript:void(0)" name=""
 																	onclick="Modify(this)" class="tooltip-success"
 																	data-rel="tooltip" title="Edit"> <span
 																		class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a>
-																</li>
+																	</span> </a></li>
 
 																<li><a href="ClassDelete?classId="
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
-																</li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
 															</ul>
 														</div>
-													</div></td>
+													</div>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
 								<div class="clearfix form-actions">
 									<div class="col-md-offset-3 col-md-9">
-										<button class="btn btn-info" type="button"
-											onclick="getXlsFromTbl('dynamic-table',null)";>
+										<button class="btn btn-info" type="submit">
 											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
 										</button>
 
