@@ -24,6 +24,13 @@ import ppms.serviceimpl.InvocationServiceImp;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * 处理创新提案模块的请求
+ * @author shark
+ * @update 2015下午7:10:18
+ * @function
+ *
+ */
 public class InnovationAction extends BaseInit {
 
 	private TbInnovation innovation;
@@ -42,7 +49,7 @@ public class InnovationAction extends BaseInit {
 	@Autowired
 	private TbMasterDAO masterDAO;
 
-	@Action(value = "performance.innovation.innovationSingle", results = {
+	@Action(value = "innovation.null.innovationSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String firstIn() {
@@ -59,7 +66,7 @@ public class InnovationAction extends BaseInit {
 	 * 
 	 * @return
 	 */
-	@Action(value = "performance.innovation.innovationSingle.singleUpload", results = {
+	@Action(value = "innovation.null.innovationSingle.singleUpload", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSingleResult.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
 	public String singleUpload() {
@@ -72,7 +79,7 @@ public class InnovationAction extends BaseInit {
 
 	}
 
-	@Action(value = "performance.innovation.innovationSingle.innovationSearch", results = {
+	@Action(value = "innovation.null.innovationSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSearch.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
 	public String searchPage() {

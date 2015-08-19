@@ -13,11 +13,19 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest; 
 import javax.servlet.http.HttpServletRequestWrapper; 
  
- 
+/**
+ * 乱码过滤器
+ * @author shark
+ * @update 2015下午7:16:26
+ * @function
+ *
+ */
 public class EncodeFilter implements Filter { 
+	
 	@SuppressWarnings("unused") 
 	private FilterConfig config = null;
 	private ServletContext context = null;
+	//系统编码
 	private String encode = null;
 	public void destroy() { 
 		 
@@ -35,13 +43,23 @@ public class EncodeFilter implements Filter {
  
  
 	public void init(FilterConfig filterConfig) throws ServletException {
+		
 		this.config = filterConfig;
 		this.context = filterConfig.getServletContext();
+		//获取系统编码设置
 		this.encode = context.getInitParameter("encode");
 	} 
  
  
+	/**
+	 * HttpServletRequest包装类
+	 * @author shark
+	 * @update 2015下午7:19:41
+	 * @function
+	 *
+	 */
 	private class MyHttpServletRequest extends HttpServletRequestWrapper{ 
+		
 		private  HttpServletRequest request = null;
 		private boolean isNotEncode = true;
 		public MyHttpServletRequest(HttpServletRequest request) {
@@ -49,9 +67,11 @@ public class EncodeFilter implements Filter {
 			this.request = request;
 		} 
 		 
+		//重写方法
 		@Override 
 		public Map<String,String[]> getParameterMap() {
 			try{ 
+				//判断变淡提交类型
 				if(request.getMethod().equalsIgnoreCase("POST")){
 					request.setCharacterEncoding(encode);
 					return request.getParameterMap();
@@ -61,6 +81,7 @@ public class EncodeFilter implements Filter {
 						for(Map.Entry<String, String[]> entry : map.entrySet()){
 							String [] vs = entry.getValue();
 							for(int i=0;i<vs.length;i++){
+								//对request域里的参数进行硬解码
 								vs[i] = new String(vs[i].getBytes("iso8859-1"),encode);
 							} 
 						} 
@@ -76,11 +97,13 @@ public class EncodeFilter implements Filter {
 			} 
 		} 
 		 
+		//重写
 		@Override 
 		public String[] getParameterValues(String name) {
 			return getParameterMap().get(name);
 		} 
 		 
+		//重写
 		@Override 
 		public String getParameter(String name) {
 			return getParameterValues(name) == null ? null : getParameterValues(name)[0];
