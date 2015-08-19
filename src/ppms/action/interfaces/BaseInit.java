@@ -17,7 +17,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class BaseInit extends ActionSupport{
 
-	private Map<String,List<Object>> map;
+	protected Map<String,List<Object>> map;
 	public BaseInit(){
 		map=(Map<String, List<Object>>) ActionContext.getContext().get("request");
 	}

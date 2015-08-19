@@ -35,7 +35,7 @@ public class InvocationServiceImp implements InvocationService {
 	private BaseDaoImp baseDao;
 
 	@Override
-	public List<OrganizationNj> getOrganizations() {
+	public List<Object> getOrganizations() {
 
 		return orgDao.findAll();
 	}
@@ -53,7 +53,7 @@ public class InvocationServiceImp implements InvocationService {
 	}
 
 	@Override
-	public List<TbInnovation> findAllInnovations() {
+	public List<Object> findAllInnovations() {
 
 		// String hsql="from TbInnovation fetch all properties";
 		// return dao.findbyHsql(hsql);

@@ -81,7 +81,7 @@ public class BaseDaoImp extends HibernateDaoSupport {
 	 * @param fields 是表实例类型的 成员变量名
 	 * @return
 	 */
-	public<T> List<T> getEntitiestNotLazy(T t,String [] fields){
+	public<T> List<Object> getEntitiestNotLazy(T t,String [] fields){
 		
 		try {
 			Criteria criteria = getSession().createCriteria(t.getClass());

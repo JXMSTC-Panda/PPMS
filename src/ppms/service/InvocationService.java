@@ -12,7 +12,7 @@ public interface InvocationService {
 	 * 查找营业厅
 	 * @return
 	 */
-	public List<OrganizationNj> getOrganizations();
+	public List<Object> getOrganizations();
 
 	/**
 	 * 创新管理的单条录入
@@ -21,5 +21,5 @@ public interface InvocationService {
 	 */
 	public boolean addInnovation(TbInnovation innovation);
 	
-	public List<TbInnovation> findAllInnovations();
+	public List<Object> findAllInnovations();
 }
