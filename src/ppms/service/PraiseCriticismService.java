@@ -132,7 +132,13 @@ public interface PraiseCriticismService {
 	 * 获取所有的营业厅奖惩信息
 	 * @return
 	 */
-	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor();
+	public List<TbOrgpraisecriticism> findAllOrgpraisecriticismInfor();
+	/**
+	 * 根据营业厅奖惩信息编号获取营业厅奖惩信息
+	 * @param praisecriticismid
+	 * @return
+	 */
+	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(String praisecriticismid);
 	/**
 	 * 根据营业厅编号查询片区与营业厅关系
 	 * @param orgId

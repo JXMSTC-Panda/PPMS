@@ -114,6 +114,14 @@ public class MonthPerformanceServicelmp extends BaseDaoImp implements Performanc
 		return false;
 	}
 
+	/**
+	 * 删除绩效表数据
+	 */
+	@Override
+	public void deletePerformance(String  performanceid){
+		dao.deletePerformance(performanceid);
+		
+	}
 	
 	
 }
