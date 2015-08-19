@@ -16,7 +16,16 @@ public class OrganizationNj implements java.io.Serializable {
 	private Integer orgid;
 	private String org_Name;
 	private String areadesc;
+	private String subareadesc;
 	
+	public String getSubareadesc() {
+		return subareadesc;
+	}
+
+	public void setSubareadesc(String subareadesc) {
+		this.subareadesc = subareadesc;
+	}
+
 	public String getAreadesc() {
 		return areadesc;
 	}

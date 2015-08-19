@@ -72,12 +72,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</tr>
 					</table>
 				</form>
-				<form name="form1" action="praiseCriticism.businessHall.businessHallPraiseCriticismSingle.do" method="post">
+				<form name="form1" action="standardVisit.standard.standardSingle.do" method="post">
 				<br />
 				<table cellpadding="0" cellspacing="0" class="tablelist" align="center">
 					<tr>
 						<th>&nbsp;</th>
-						<th>序号&nbsp;</th>
 						<th>营业厅编码&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						<th>营业厅名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						<th>区域&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -87,7 +86,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<c:forEach items="${requestScope.organizationNj}" var="OrganizationNj">
 					<tr>
 							<td><input type="radio" name="selectBusinessHall" value="${OrganizationNj.orgid}" checked></td>
-							<td>1</td>
                         	<td>${OrganizationNj.orgid}</td>
 							<td>${OrganizationNj.org_Name}</td>
 							<td>${OrganizationNj.areadesc}</td>
