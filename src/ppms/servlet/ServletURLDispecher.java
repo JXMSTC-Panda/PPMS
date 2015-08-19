@@ -3,6 +3,7 @@ package ppms.servlet;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -27,24 +28,6 @@ import ppms.action.interfaces.InitPage;
  */
 public class ServletURLDispecher extends HttpServlet {
 
-	// 页面初始化的配置对象
-	private static Properties initConfig;
-	private boolean isEnd;
-
-	static {
-
-		initConfig = new Properties();
-		try {
-
-			// 获取配置信息
-			initConfig.load(new FileInputStream(new File(
-					ServletURLDispecher.class.getClassLoader()
-							.getResource("initPage.properties").getPath())));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -60,13 +43,9 @@ public class ServletURLDispecher extends HttpServlet {
 		url = split[split.length - 1];
 
 		// 判断格式是否准确
-		if (url.contains(".")) {
+		if (url.contains(".do")) {
 			String[] split2 = url.split("[.]");
-			url = split2[0] + "." + split2[2];
-			mark = url;
-			// 替换格式，转出标准请求格式
-			url = url.replace(".", "/");
-			url = url + ".jsp";
+			url = url.replace(".do", ".action");
 			Map<String, String[]> map = req.getParameterMap();
 			if (map.size() > 0) {
 				url = url + "?";
@@ -74,45 +53,16 @@ public class ServletURLDispecher extends HttpServlet {
 
 					String[] value = entry.getValue();
 					for (String string : value) {
-						url = url + entry.getKey() + "=" + string + "&";
+							url = url + entry.getKey() + "=" + URLEncoder.encode(string) + "&";
 					}
 				}
 				url = (String) url.subSequence(0, url.length() - 1);
 			}
-
-			// 拼接根目录
-			url = "WEB-INF/content/page/" + url;
 			url = url.trim();
+			System.out.println(url);
 			if (url != null) {
-
-				// 通过配置信息获取页面初始化实现数据获取的Action
-				String actionName = (String) initConfig.get(mark);
-				if (mark != null && !mark.equals("")) {
-					try {
-						// 实例化实现数据查找的Action
-						InitPage forName = (InitPage) Class.forName(actionName)
-								.newInstance();
-
-						// 获取查找到的数据
-						Map<String, List<T>> initPage = forName.initPage(req
-								.getServletContext(),mark);
-
-						if (initPage != null) {
-							// 遍历map存到request域
-							for (Entry<String, List<T>> entry : initPage
-									.entrySet()) {
-
-								req.setAttribute(entry.getKey(),
-										entry.getValue());
-							}
-						}
-					} catch (Exception e) {
-						e.printStackTrace();
-					} finally {
-
-					}
-				}
-				req.getRequestDispatcher("/" + url).forward(req, resp);
+				//req.getRequestDispatcher("/"+url).forward(req, resp);
+				resp.sendRedirect(url);
 			}
 		}
 	}

@@ -17,6 +17,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import ppms.serviceimpl.*;
+import ppms.shiro.MySubject;
 
 /**
 * <p>Title: MainAction</p>
@@ -71,6 +72,8 @@ public class MainAction extends ActionSupport{
 			//session记录员工ID
 			session.setAttribute("tbEmployeeIDSession", 
 					employeeServiceImp.findEmployeeID(userAccountString, userPasswordString));
+			MySubject mySubject = new MySubject();
+			mySubject.CreatMySubject(employeeServiceImp.loginHelp(userAccountString, userPasswordString).get(0));
 		}
 		System.out.println(request.getRequestURI());
 		response.getWriter().write(ajaxState);

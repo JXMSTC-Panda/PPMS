@@ -2,6 +2,7 @@
  
  
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.Map;
 import javax.servlet.Filter; 
 import javax.servlet.FilterChain; 
@@ -61,7 +62,8 @@ public class EncodeFilter implements Filter {
 						for(Map.Entry<String, String[]> entry : map.entrySet()){
 							String [] vs = entry.getValue();
 							for(int i=0;i<vs.length;i++){
-								vs[i] = new String(vs[i].getBytes("iso8859-1"),encode);
+								String keyValue = URLDecoder.decode(vs[i]);
+								vs[i] = new String(keyValue.getBytes("iso8859-1"),encode);
 							} 
 						} 
 						isNotEncode = false;

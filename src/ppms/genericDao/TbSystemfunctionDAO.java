@@ -19,7 +19,7 @@ import ppms.domain.TbSystemfunction;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see ppms.domain.TbSystemfunction
+ * @see ppms.TbSystemfunction
  * @author MyEclipse Persistence Tools
  */
 @Repository
@@ -59,7 +59,7 @@ public class TbSystemfunctionDAO extends BaseHibernateDAO {
 		log.debug("getting TbSystemfunction instance with id: " + id);
 		try {
 			TbSystemfunction instance = (TbSystemfunction) getSession().get(
-					"ppms.domain.TbSystemfunction", id);
+					"ppms.TbSystemfunction", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -70,8 +70,7 @@ public class TbSystemfunctionDAO extends BaseHibernateDAO {
 	public List findByExample(TbSystemfunction instance) {
 		log.debug("finding TbSystemfunction instance by example");
 		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbSystemfunction")
+			List results = getSession().createCriteria("ppms.TbSystemfunction")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

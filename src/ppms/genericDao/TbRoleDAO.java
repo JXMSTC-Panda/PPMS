@@ -1,7 +1,8 @@
 package ppms.genericDao;
 
+import java.util.Date;
 import java.util.List;
-
+import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
@@ -9,7 +10,7 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 import org.springframework.stereotype.Repository;
 
-import ppms.domain.TbRole;
+import ppms.domain.TbRole;;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -35,7 +36,8 @@ public class TbRoleDAO extends BaseHibernateDAO {
 	public void save(TbRole transientInstance) {
 		log.debug("saving TbRole instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
+			System.out.println("role save success");
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -46,7 +48,18 @@ public class TbRoleDAO extends BaseHibernateDAO {
 	public void delete(TbRole persistentInstance) {
 		log.debug("deleting TbRole instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
+			log.debug("delete successful");
+		} catch (RuntimeException re) {
+			log.error("delete failed", re);
+			throw re;
+		}
+	}
+	
+	public void update(TbRole persistentInstance) {
+		log.debug("deleting TbRole instance");
+		try {
+			getHibernateTemplate().update(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -57,8 +70,7 @@ public class TbRoleDAO extends BaseHibernateDAO {
 	public TbRole findById(java.lang.String id) {
 		log.debug("getting TbRole instance with id: " + id);
 		try {
-			TbRole instance = (TbRole) getSession().get("ppms.domain.TbRole",
-					id);
+			TbRole instance = (TbRole) getHibernateTemplate().get("ppms.domain.TbRole", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
