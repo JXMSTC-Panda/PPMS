@@ -113,5 +113,16 @@ public class StandardCheckDaoImp extends BaseDaoImp implements StandardCheckDao 
 		}
 		return result;
 	}
+	/**根据orgId来查询营业厅表中对应的行数据*/
+	public List<OrganizationNj> findOrganizationId(Integer orgId) {
+		List result = null;
+		try {
+			String hql = "from OrganizationNj where orgid = "+orgId ;
+			result = getHibernateTemplate().find(hql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 }
