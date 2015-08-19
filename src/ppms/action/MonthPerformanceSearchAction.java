@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.poi.ss.formula.functions.T;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
@@ -41,6 +42,7 @@ import ppms.serviceimpl.MonthPerformanceServicelmp;
 
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.util.logging.Logger;
 
 /**   
  *    
@@ -65,6 +67,8 @@ public class MonthPerformanceSearchAction extends ActionSupport implements InitP
 	*/ 
 	public TbPerformance tbPerformance;
 	
+	private HttpServletRequest request;
+	
 	/**
 	 * @return the tbPerformance
 	 */
@@ -86,23 +90,12 @@ public class MonthPerformanceSearchAction extends ActionSupport implements InitP
 	*/ 
 	@Autowired
 	public MonthPerformanceServicelmp service;
-	protected HttpServletRequest request;
-	
 
-	/**
-	 * @return the request
-	 */
-	public HttpServletRequest getRequest() {
-		return request;
+
+	public MonthPerformanceSearchAction(){
+		
+		request = ServletActionContext.getRequest();
 	}
-
-	/**
-	 * @param request the request to set
-	 */
-	public void setRequest(HttpServletRequest request) {
-		this.request = request;
-	}
-
 	/**
 	 * 点击菜单页面“月度绩效查询”数据删除
 	 * 
@@ -118,12 +111,16 @@ public class MonthPerformanceSearchAction extends ActionSupport implements InitP
 		
 		try {
 			
-			//String  performanceid =(String) request.getSession().getAttribute("performanceid");
+			//String  performanceid =(String) request.getAttribute("performances");
 			String performanceid= request.getParameter("performanceid");
 			System.out.println("-------------->>>"+performanceid);
+			java.util.logging.Logger.getGlobal().info("Logger------>>>"+performanceid);
+			
 			service.deletePerformance(performanceid);
+		
 		} catch (Exception e) {
-			// TODO: handle exception
+			
+			
 		}
 		
 			return "success";
