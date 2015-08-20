@@ -17,7 +17,7 @@ import ppms.serviceimpl.IndividualGrowthFileServiceImp;
 import sun.print.resources.serviceui;
 
 public class IndividualGrowthFileAction {
-	
+
 	private TbChangejobhistory tbChangejobhistory;
 
 	public TbChangejobhistory getTbChangejobhistory() {
@@ -27,18 +27,18 @@ public class IndividualGrowthFileAction {
 	public void setTbChangejobhistory(TbChangejobhistory tbChangejobhistory) {
 		this.tbChangejobhistory = tbChangejobhistory;
 	}
-	
-    protected HttpServletRequest request;
-	
+
+	protected HttpServletRequest request;
+
 	public IndividualGrowthFileAction() {
-		
+
 		request = ServletActionContext.getRequest();
-		
+
 	}
+
 	@Autowired
 	private IndividualGrowthFileServiceImp service;
-	
-	
+
 	public IndividualGrowthFileServiceImp getService() {
 		return service;
 	}
@@ -56,12 +56,17 @@ public class IndividualGrowthFileAction {
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String result() {
 		try {
-			List<TbChangejobhistory> tbChangejobhistories =service.getTbChangejobhistories(tbChangejobhistory.getTbEmployee().getEmployeeid());
-			request.setAttribute("tbChangejob", tbChangejobhistories);
+			List<TbChangejobhistory> tbChangejobhistories = service
+					.getTbChangejobhistories(tbChangejobhistory.getTbEmployee()
+							.getEmployeeid());
+
+			if (tbChangejobhistories.size() > 0) {
+				request.setAttribute("tbChangejobs", tbChangejobhistories);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
+
 		return "success";
 	}
 }
