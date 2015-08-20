@@ -106,12 +106,9 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">创新提案表</div>
-<<<<<<< HEAD
-							<form action="downData.do?fileName=创新提案批量导出.xls"
-								name="StuListForm" method="post">
-=======
+
 							<form action="downData.do?fileName=创新提案批量导出.xls" name="StuListForm" method="post">
->>>>>>> d62ceb83c67783e2a1d2a12ba74c0368c0bd9fdd
+
 								<c:set var="count" value="0"></c:set>
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
@@ -155,7 +152,6 @@
 												<td><c:out value="${innovation.organizationNj.orgid}"></c:out>
 												</td>
 												<td><c:out
-<<<<<<< HEAD
 														value="${innovation.organizationNj.org_Name}"></c:out>
 												</td>
 												<td><c:out value="${innovation.innovationcontent}"></c:out></td>
@@ -163,14 +159,7 @@
 														<c:out value="团队创新"></c:out>
 													</c:if> <c:if test="${innovation.tbEmployee!=null}">
 														<c:out value="个人创新"></c:out>
-=======
-														value="${innovation.organizationNj.org_Name}"></c:out></td>
-												<td><c:out value="${innovation.innovationcontent}"></c:out>
-													<c:if test="${innovation.tbEmployee==null}">
-														<td><c:out value="团队创新"></c:out>
-													</c:if> <c:if test="${innovation.tbEmployee!=null}">
-														<td><c:out value="个人创新"></c:out></td>
->>>>>>> d62ceb83c67783e2a1d2a12ba74c0368c0bd9fdd
+
 													</c:if>
 												</td>
 												<td><c:out
@@ -226,14 +215,9 @@
 																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
 															</ul>
 														</div>
-<<<<<<< HEAD
 														<input type="hidden" name="cols"
 															value="${innovation.innovationid} }">
 													</div></td>
-=======
-													</div>
-												</td>
->>>>>>> d62ceb83c67783e2a1d2a12ba74c0368c0bd9fdd
 											</tr>
 										</c:forEach>
 									</tbody>

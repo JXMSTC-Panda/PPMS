@@ -182,11 +182,14 @@ public class DownloadAction extends ActionSupport {
 			// response = ServletActionContext.getResponse();
 			// session.setAttribute(findAll.get(0).getClass().getName(), list);
 			// 请求文件名硬解码
+			int i=0;
 			fileName = new String(fileName.getBytes("iso8859-1"), "utf-8");
+			
+			String name = ExcelConfig.getObjectFromConfig(fileName)
+			.get(0);
 			// 获取存放在Session域中的缓冲数据
 			ListForCache<Object> list = (ListForCache<Object>) session
-					.getAttribute(ExcelConfig.getObjectFromConfig(fileName)
-							.get(0));
+					.getAttribute(name);
 			// 将数据生成Excel文件
 			HSSFWorkbook workbook = new CommonExcelParser(dao, exception)
 					.toExcel2(list, fileName);
