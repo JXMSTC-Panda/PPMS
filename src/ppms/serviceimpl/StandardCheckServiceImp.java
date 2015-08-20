@@ -103,6 +103,12 @@ public class StandardCheckServiceImp implements StandardCheckService {
 		return organizationNjResults;
 	}
 	
+	@Override
+	public void save(Object object){
+		
+		dao.save(object);
+	}
+	
 	
 	
 }

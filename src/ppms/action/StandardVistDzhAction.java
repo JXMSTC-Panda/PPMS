@@ -1,20 +1,21 @@
 package ppms.action;
 
-import java.awt.geom.Area;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.crypto.Data;
+import javax.servlet.ServletContext;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
-import org.hibernate.dialect.Oracle10gDialect;
-import org.jboss.weld.bean.NewBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
@@ -22,6 +23,7 @@ import ppms.domain.TbAreaorgrelation;
 import ppms.domain.TbStandardcheck;
 import ppms.domain.TbSubarea;
 import ppms.domain.TbSubareaorgrelation;
+import ppms.serviceimpl.PraiseCriticismServiceImp;
 import ppms.serviceimpl.StandardCheckServiceImp;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -37,6 +39,8 @@ public class  StandardVistDzhAction  extends ActionSupport{
 	//
 	@Autowired
 	private StandardCheckServiceImp service;
+	@Autowired
+	private StandardCheckServiceImp add;
 	
 
 	//get
@@ -178,7 +182,7 @@ public class  StandardVistDzhAction  extends ActionSupport{
 	
 	
 	/**
-	 * 功能：点击提交后，叫数据插入到
+	 * 功能：点击提交后，数据插入到标准化表中
 	 * 
 	 * 
 	 * */
@@ -186,13 +190,51 @@ public class  StandardVistDzhAction  extends ActionSupport{
 			@Result(name="success",location="/WEB-INF/content/page/standardVisit/sucess.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
 	public String StandardInsert(){
-		
-		Integer orgId  = Integer.valueOf(ServletActionContext.getRequest().getParameter("tbStandardcheck.organizationNj.orgid"));
-		Date checkdate = Date.valueOf(ServletActionContext.getRequest().getParameter("tbStandardcheck.organizationNj.checkdate"));
-		Double checkscore = Double.valueOf(ServletActionContext.getRequest().getParameter("tbStandardcheck.organizationNj.checkscore"));
-		System.out.println("orgId ="+orgId+"checkdate = "+checkdate+"checkscore = "+ checkscore);
-		return "";
+		//插入
+		add.save(tbStandardcheck);		
+		return "success";
 	}
+	/**
+	 * 
+	 * 初始化标准化页面*/
+	
+	public Map<String, List<T>> initPage(ServletContext servletContext,String url) {
+		// 实例化map
+		Map map = new HashMap<>();
+		StandardCheckServiceImp service = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext).getBean(StandardCheckServiceImp.class);
+		
+		List<OrganizationNj> organizationNjAll = service.findOrganizationInfo();
+		List<OrganizationNj> organizationNjList =new ArrayList<OrganizationNj>();
+		int i=0;
+		try {
+			for(OrganizationNj organizationNj : organizationNjAll){
+				
+				Integer orgId = organizationNjAll.get(i).getOrgid();//逐渐取值  
+				String orgName = organizationNjAll.get(i).getOrg_Name();
+				/**
+				 * 获取检查时间和检查成绩营业厅ID和营业厅名称
+				 * */
+				List<TbStandardcheck> tbStandardchecks = service.findStandardCheckInfo();
+				Date checkdate = tbStandardchecks.get(i).getCheckdate();
+				Double checkscore = tbStandardchecks.get(i).getCheckscore();
+				organizationNj.setCheckdate(checkdate);
+				organizationNj.setCheckscore(checkscore);	
+				organizationNj.setOrgid(orgId);
+				organizationNj.setOrg_Name(orgName);
+				organizationNjList.add(organizationNj);
+				i++;
+			}
+			map.put("OrganizationNj", organizationNjList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return map;
+	
+	}
+	
+	
+	
+	
 }
 
 
