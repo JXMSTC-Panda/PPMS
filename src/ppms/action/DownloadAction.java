@@ -190,12 +190,6 @@ public class DownloadAction extends ActionSupport {
 			// 将数据生成Excel文件
 			HSSFWorkbook workbook = new CommonExcelParser(dao, exception)
 					.toExcel2(list, fileName);
-			fileName=new String(fileName.getBytes("iso8859-1"),"utf-8");
-			ListForCache<Object> list=(ListForCache<Object>) session
-			.getAttribute(ExcelConfig.getObjectFromConfig(
-					fileName).get(0));
-			HSSFWorkbook workbook = new CommonExcelParser(dao, exception)
-			.toExcel2(list,fileName);
 			response.setHeader("Content-Disposition", "attachment;filename="
 					+ fileName);
 
