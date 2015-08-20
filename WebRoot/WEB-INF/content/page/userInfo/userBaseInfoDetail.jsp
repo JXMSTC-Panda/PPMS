@@ -173,7 +173,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 营业厅名称: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" value="">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5">
 													</div>
 												</div>
 												
@@ -369,7 +369,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 岗职: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbPost.postid}">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbPost.postname}">
 													</div>
 												</div>
 
@@ -377,7 +377,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 岗位: </label>
                                                                 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbJob.jobid}">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbJob.jobname}">
 													</div>
 												</div>
 
@@ -393,7 +393,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 角色类别: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbRole.roleid}">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbRole.rolename}">
 													</div>
 												</div>
 												

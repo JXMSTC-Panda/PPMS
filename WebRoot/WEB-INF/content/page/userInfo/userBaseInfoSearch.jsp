@@ -151,7 +151,7 @@
 															class="green" href="javascript:void(0)" name=""
 															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId="> <i
+															href="userInfo.userBase.userBaseInfoSearch.Delete.do?id=${employee.employeeid}"> <i
 															class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
@@ -209,12 +209,12 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="../assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
-		src="../assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
-		src="../assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
 	<script>
 		

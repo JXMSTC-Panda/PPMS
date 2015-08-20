@@ -100,7 +100,7 @@
 							</div>
 							<div class="table-header">信息查询</div>
 							<form name="StuListForm"
-								action="praiseCriticism.businessHall.businessHallPraiseCriticismSingle.do"
+								action="praiseCriticism.businessHall.businessHallPraiseCriticismSingle.selectSinglSkip.do"
 								method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
@@ -128,8 +128,8 @@
 												<td>1</td>
 												<td>${organizationNj.orgid}</td>
 												<td>${organizationNj.org_Name}</td>
-												<td>${requestScope.areadesc}</td>
-												<td>${requestScope.subareaDesc}</td>
+												<td>${organizationNj.areadesc}</td>
+												<td>${organizationNj.subareadesc}</td>
 											
 											<td>
 												<%-- <div class="hidden-sm hidden-xs action-buttons">

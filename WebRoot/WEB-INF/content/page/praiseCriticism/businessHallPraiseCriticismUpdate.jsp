@@ -118,7 +118,6 @@
 										<form class="form-horizontal" role="form" method="post"
 											action="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.orgPCInforUpdate.do?tbOrgpraisecriticism.praisecriticismid=${requestScope.praisecriticismid}">
 											<!-- #section:elements.form -->
-${requestScope.praisecriticismid}
 
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"
@@ -171,8 +170,8 @@ ${requestScope.praisecriticismid}
 												<div class="col-sm-9">
 													<select class="col-xs-10 col-sm-5" id="form-field-select-1"
 														name="tbOrgpraisecriticism.praisecriticismtype">
-														<option value="1">惩罚</option>
-														<option value="2">表彰</option>
+														<option value="2">惩罚</option>
+														<option value="1">表彰</option>
 													</select>
 												</div>
 											</div>

@@ -14,6 +14,35 @@ public class TbOrgpraisecriticism implements java.io.Serializable {
 
 	private String praisecriticismid;
 	private OrganizationNj organizationNj;
+	private String type;
+	private String level;
+	private String score;
+	
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
+	}
+
 	@ValueChange(key_type="EmployeePraiseCriticismType")
 	private String praisecriticismtype;
 	private String cause;
