@@ -27,7 +27,7 @@ public class ThreadToCache implements Runnable{
 			
 			System.out.println("扫描中");
 			try {
-				Thread.sleep(8000);
+				Thread.sleep(60*1000);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

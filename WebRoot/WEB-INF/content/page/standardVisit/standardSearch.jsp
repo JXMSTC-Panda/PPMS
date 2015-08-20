@@ -78,14 +78,15 @@
 									<th>月份&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 									<th>检查成绩&nbsp;&nbsp;&nbsp;&nbsp;</th>
 								</tr>	
+								<c:forEach items="${requestScope.TbStandardcheck}" var="tbStandardcheck">
 								<tr>
-								
-								
-								
-								</tr>
-								
-								
-								
+									<td><input type="radio" name="selectBusinessHall" value="${TbStandardcheck.orgid}" checked></td>
+                        			<td>${tbStandardcheck.orgid}</td>
+									<td>${tbStandardcheck.tbStandardcheck.org_Name}</td>
+									<td>${tbStandardcheck.checkdate}</td>
+									<td>${tbStandardcheck.checkscore}</td>
+								</tr>		
+								</c:forEach>
 								</table>
 								<table style="width: 95%" cellspacing="0" cellpadding="0" align="center">
 								<tr>

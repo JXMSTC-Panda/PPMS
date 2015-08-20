@@ -120,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</tr>
 					</table>
 				</form>
-				<form name="form1" action="standardVisit.standard.standardSingle.do" method="post">
+				<form name="form1" action="standardVisit.standard.standardSingle.Skip.do" method="post">
 				<br />
 				<table cellpadding="0" cellspacing="0" class="tablelist" align="center">
 					<tr>

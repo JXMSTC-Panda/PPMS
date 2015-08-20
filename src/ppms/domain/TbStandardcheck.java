@@ -20,8 +20,17 @@ public class TbStandardcheck extends BaseExcelObject implements java.io.Serializ
 	private Date createdtime;
 	private String modifiedby;
 	private Date modifiedtime;
+	private String org_Name;
 
 	// Constructors
+
+	public String getOrg_Name() {
+		return org_Name;
+	}
+
+	public void setOrg_Name(String org_Name) {
+		this.org_Name = org_Name;
+	}
 
 	/** default constructor */
 	public TbStandardcheck() {
