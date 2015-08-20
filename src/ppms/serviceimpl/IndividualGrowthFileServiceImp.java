@@ -29,13 +29,18 @@ public class IndividualGrowthFileServiceImp implements
 		
 		List<TbChangejobhistory> tbChangejobhistories = dao
 				.getTbChangejobhistories();
+		
 		List<TbChangejobhistory> tbChangejobhistoriesNew = new ArrayList<>();
 
 		
 		for (TbChangejobhistory tbChangejobhistory : tbChangejobhistories) {
+			
 			String ss=tbChangejobhistory.getTbEmployee().getEmployeeid();
+			
 			if (ss.equals(employeeid)) {
-				List<TbEmployee> tbEmployees=dao.getTbEmployee(tbChangejobhistory.getTbEmployee().getEmployeeid());
+				
+				List<TbEmployee> tbEmployees=dao.getTbEmployee(tbChangejobhistory.getTbEmployee().getEmployeeid());	
+				
 				List<OrganizationNj> organizationNjs=dao.getOrganizationNjs(tbEmployees.get(0).getOrganizationNj().getOrgid());
 				tbEmployees.get(0).setOrganizationNj(organizationNjs.get(0));
 				tbChangejobhistory.setTbEmployee(tbEmployees.get(0));

@@ -30,7 +30,7 @@ public interface userBaseInfoService {
 	 * 查找人员
 	 * @return
 	 */
-	public List<TbEmployee> getTbEmployees();
+
 	/**
 	 * 查找角色
 	 * @return
@@ -38,4 +38,7 @@ public interface userBaseInfoService {
 	public List<TbRole> getTbRoles();
 	
 	public void adduserBaseInfo(TbEmployee tbEmployee);
+	
+	public List<TbEmployee> getTbEmployees(String employeeid);
+	public List<TbEmployee> getTbEmployee();
 }

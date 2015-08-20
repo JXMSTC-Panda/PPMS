@@ -24,6 +24,13 @@ import ppms.serviceimpl.InvocationServiceImp;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * 处理创新提案模块的请求
+ * @author shark
+ * @update 2015下午7:10:18
+ * @function
+ *
+ */
 public class InnovationAction extends BaseInit {
 
 	private TbInnovation innovation;

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -76,7 +77,396 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							
+							<div class="page-header">
+										<h1>
+											人员综合信息管理
+										<small>
+											<i class="ace-icon fa fa-angle-double-right"></i>
+												人员基本信息单条录入
+										</small>
+										</h1>
+									</div>
+								<form class="form-horizontal" role="form" method="post" action="userInfo.userBase.userBaseInfoSingle.result.do">
+								
+								<div class="widget-box">
+										<div class="widget-header">
+											<h4 class="widget-title">基础信息</h4>
+										</div>
+
+										<div class="widget-body">
+											<div class="widget-main">
+												<div class="row">															
+													<div class="col-xs-12">
+															<div class="col-xs-6">
+																	<div class="form-group">
+																		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 姓名: </label>
+
+																		<div class="col-sm-9">
+																			<input id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" value="${requestScope.tbEmpl.employeename}">
+																		</div>
+																	</div>
+
+																	<div class="form-group">
+																		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 身份证号: </label>
+
+																		<div class="col-sm-9">
+																			<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.idnumber}">
+																		</div>
+																	</div>
+																</div>	
+																<div class="col-xs-6">
+
+																<div class="form-group">
+																	<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 性别: </label>
+																	<div class="col-sm-9">
+																		<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" '
+																		value="<c:if test="${requestScope.tbEmpl.sex==true}">
+								                                                    <c:out value="男"></c:out>                                               
+								                                                   </c:if>
+								                                                   <c:if test="${requestScope.tbEmpl.sex==false}">
+								                                                    <c:out value="女"></c:out>                                               
+								                                                   </c:if>">
+																	</div>
+																</div>
+																		<div class="form-group">
+																	<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 出生年月: </label>
+
+																	<div class="col-sm-9">
+																		<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.birthday}">
+																	</div>
+																</div>
+															</div>
+														</div>														
+												</div>
+											</div>
+										</div>
+								</div>
+								<div class="widget-box">
+												<div class="widget-header">
+													<h4 class="widget-title">请选择</h4>
+												</div>
+
+												<div class="widget-body">
+													<div class="widget-main">
+														<div class="row">
+															<div class="col-xs-12">
+																<div class="col-xs-6">
+																	<div class="form-group">
+																	<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 有无工号: </label>
+																		<div class="col-sm-9">
+																			<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="<c:if test="${requestScope.tbEmpl.sex==true}">
+								                                                    <c:out value="男"></c:out>                                               
+								                                                   </c:if>
+								                                                   <c:if test="${requestScope.tbEmpl.sex==false}">
+								                                                    <c:out value="女"></c:out>                                               
+								                                                   </c:if>">
+																		</div>
+																	</div>
+																	
+																	<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 是否已分厅: </label>
+													<div class="col-sm-9">
+														<div class="radio">
+															<label>
+																<input name="form-field-radio1" class="ace" type="radio">
+																<span class="lbl"> 已分厅</span>
+															</label>
+															<label>
+																<input name="form-field-radio1" class="ace" type="radio">
+																<span class="lbl"> 未分厅</span>
+															</label>
+														</div>
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 营业厅名称: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" value="">
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 区域: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+													</div>
+												</div>
+																	
+																	
+																</div>
+																<div class="col-xs-6">
+																	
+																	<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 工号: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.employeecode}">
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 营业厅类型: </label>
+
+													<div class="col-sm-9">
+														<select class="form-control" id="form-field-select-1" name="tbEmployee.orgtype">
+															<option value=""></option>
+															<c:forEach items="${requestScope.orgs}" var="org">
+																<option value="${org.orgid}">
+																	<c:out value="${org.type }"></c:out>
+																</option>
+															</c:forEach>
+														</select>
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 营业厅编碼: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="">
+													</div>
+												</div>																																
+																</div>																	
+															</div>
+
+														
+														</div>
+													</div>
+												</div>
+											</div>
+								
+								<div class="widget-box collapsed">
+												<div class="widget-header">
+													<h4 class="widget-title">详细信息录入</h4>
+
+													<div class="widget-toolbar">
+														<a href="#" data-action="collapse">
+															<i class="ace-icon fa fa-chevron-down"></i>
+														</a>
+
+														<a href="#" data-action="close">
+															<i class="ace-icon fa fa-times"></i>
+														</a>
+													</div>
+												</div>
+												<div class="widget-body" style="display: none;">
+													<div class="widget-main">
+														<div class="row">
+															<div class="col-xs-12">
+																<div class="col-xs-6">
+																	
+																	<div class="form-group">
+																		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 银行卡号: </label>
+
+																		<div class="col-sm-9">
+																		    <input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.banknumber}">
+																	    </div>
+																	</div>
+																	
+																	<div class="form-group">
+																		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 银行卡所属银行: </label>
+
+																		<div class="col-sm-9">
+																			<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.bankname}">
+																		</div>
+																	</div>
+																	
+																	<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 人员状态: </label>
+													<div class="col-sm-9">
+														<div class="radio">
+															<label>
+																<input name="form-field-radio" class="ace" type="radio" name="tbEmployee.status">
+																<span class="lbl"> 有效</span>
+															</label>
+															<label>
+																<input name="form-field-radio" class="ace" type="radio" name="tbEmployee.status">
+																<span class="lbl"> 无效</span>
+															</label>
+														</div>
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 居住所属区域: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.addressarea}">
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 现居住地址: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.address}">
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 学历: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.academicdegree}"> 
+													</div>
+												</div>
+													
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 长号: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.mobilenumber}">
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 短号: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.shortmobilenumber}">
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 毕业学校: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.schoolname}">
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 专业: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.specialization}">
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 移动营业技能鉴定水平: </label>
+
+													<div class="col-sm-9">
+														<select class="form-control" id="form-field-select-1" value="${requestScope.tbEmpl.mobilelevel}">
+															<option value=""></option>
+															<option value="AL">初级</option>
+															<option value="AK">中级</option>
+															<option value="AK">高级</option>
+														</select>
+													</div>
+												</div>
+						
+																	
+																</div>
+																<div class="col-xs-6">
+																	
+																	<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 联系电话: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.tel}">
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 进公司时间: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.entertime}">
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 后台岗位说明: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="">
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 前后台标识: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="">
+														<select class="form-control" id="form-field-select-1" >
+															<option value=""></option>
+															<option value="AL">前台</option>
+															<option value="AK">后台</option>
+														</select>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 电信业务营销员技能鉴赏水平: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.telecomlevel}">
+													</div>
+												</div>
+
+												
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 岗职: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.tbPost.postid}">
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 岗位: </label>
+                                                                
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.tbJob.Jobid}">
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 人员类别: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.employeetype}">
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 角色类别: </label>
+
+													<div class="col-sm-9">
+														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.tbRole.roleid}">
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 备注: </label>
+
+													<div class="col-sm-9">
+														<textarea class="form-control" id="form-field-8" placeholder="Default Text" value="${requestScope.tbEmpl.remark}"></textarea>
+													</div>
+												</div>
+																</div>
+															</div>
+												
+														</div>
+										<div class="clearfix form-actions">
+										<div class="col-md-offset-5 col-md-6">
+											<input class="btn btn-info" type="submit" value="确定">
+											&nbsp; &nbsp; &nbsp;
+											<input class="btn" type="reset" value="重置">											
+										</div>
+									</div>
+													</div>
+												</div>
+												
+								</div>
+								
+								
+								</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>

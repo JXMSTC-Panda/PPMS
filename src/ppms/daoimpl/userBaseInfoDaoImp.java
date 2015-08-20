@@ -35,12 +35,26 @@ public class userBaseInfoDaoImp extends BaseDaoImp implements userBaseInfoDao{
 		return getHibernateTemplate().findByExample(new TbJob());
 	}
 	@Override
-	public List<TbEmployee> getTbEmployees(){
-		return getHibernateTemplate().findByExample(new TbEmployee());
+	public List<TbEmployee> getTbEmployees(String employeeid) {
+		List results=null;
+		try{
+			String hql="from TbEmployee where employeeid='"+employeeid+"'"; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		
+		return results; 
 	}
 	@Override
 	public List<TbRole> getTbRoles(){
 		return getHibernateTemplate().findByExample(new TbRole());
+	}
+
+	public List<TbEmployee> getTbEmployees() {
+		// TODO Auto-generated method stub
+		return getHibernateTemplate().findByExample(new TbEmployee());
 	}
 
 }

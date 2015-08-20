@@ -2,15 +2,12 @@ package ppms.action;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -19,16 +16,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import ppms.action.interfaces.ListForCache;
 import ppms.daoimpl.BaseDaoImp;
-import ppms.domain.TbEmployeepraisecriticism;
-import ppms.domain.TbInnovation;
-import ppms.domain.TbMonitorcheck;
-import ppms.domain.TbMountguardexam;
-import ppms.domain.TbOperationcheck;
-import ppms.domain.TbOrgpraisecriticism;
-import ppms.domain.TbPerformance;
-import ppms.domain.TbPromotiontraining;
-import ppms.domain.TbStandardcheck;
-import ppms.domain.TbVisitcheck;
 import ppms.excel.CommonExcelParser;
 import ppms.excel.ExcelConfig;
 import ppms.exception.ExcelParserException;
@@ -36,6 +23,14 @@ import ppms.exception.ExcelParserException;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * 接收文件下载请求
+ * 
+ * @author shark
+ * @update 2015下午7:02:24
+ * @function
+ * 
+ */
 public class DownloadAction extends ActionSupport {
 
 	/**
@@ -66,13 +61,17 @@ public class DownloadAction extends ActionSupport {
 
 	private HttpServletResponse response;
 
+	/**
+	 * 接收Excel上传模板下载
+	 * 
+	 * @return
+	 */
 	@org.apache.struts2.convention.annotation.Action(value = "downloadAction")
 	public String downloadExcel() {
 
 		try {
 			ServletOutputStream outputStream = ServletActionContext
 					.getResponse().getOutputStream();
-			
 			response.setContentType("application/x-msdownload");
 
 			ServletContext servletContext = (ServletContext) ActionContext
@@ -102,7 +101,7 @@ public class DownloadAction extends ActionSupport {
 
 				int j = fis.read(buffer, 0, 1024);
 				k += j;
-				// 将b中的数据写到客户端的内存
+				// 将buffer中的数据写到客户端的内存
 				outputStream.write(buffer, 0, j);
 
 			}
@@ -113,6 +112,11 @@ public class DownloadAction extends ActionSupport {
 		return null;
 	}
 
+	/**
+	 * 接收数据以Excel文件导出
+	 * 
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	@Action("/downData")
 	public String downDataToExcel() {
@@ -168,20 +172,24 @@ public class DownloadAction extends ActionSupport {
 			// new TbOperationcheck(), new String[] { "organizationNj",
 			// "tbEmployee" });
 			// ListForCache<TbOperationcheck> list = new
-			// ListForCache<TbOperationcheck>();
-
-//			List<TbOrgpraisecriticism> findAll = dao.getEntitiestNotLazy(
-//					new TbOrgpraisecriticism(), new String[] { "organizationNj"});
-//			ListForCache<TbOrgpraisecriticism> list = new ListForCache<TbOrgpraisecriticism>();
-//			list.setList(findAll);
-//			response = ServletActionContext.getResponse();
-//			session.setAttribute(findAll.get(0).getClass().getName(), list);
-			fileName=new String(fileName.getBytes("iso8859-1"),"utf-8");
-			ListForCache<Object> list=(ListForCache<Object>) session
-			.getAttribute(ExcelConfig.getObjectFromConfig(
-					fileName).get(0));
+			// ListForCache<TbOperationcheck>()
+			
+			// List<TbOrgpraisecriticism> findAll = dao.getEntitiestNotLazy(
+			// new TbOrgpraisecriticism(), new String[] { "organizationNj"});
+			// ListForCache<TbOrgpraisecriticism> list = new
+			// ListForCache<TbOrgpraisecriticism>();
+			// list.setList(findAll);
+			// response = ServletActionContext.getResponse();
+			// session.setAttribute(findAll.get(0).getClass().getName(), list);
+			// 请求文件名硬解码
+			fileName = new String(fileName.getBytes("iso8859-1"), "utf-8");
+			// 获取存放在Session域中的缓冲数据
+			ListForCache<Object> list = (ListForCache<Object>) session
+					.getAttribute(ExcelConfig.getObjectFromConfig(fileName)
+							.get(0));
+			// 将数据生成Excel文件
 			HSSFWorkbook workbook = new CommonExcelParser(dao, exception)
-			.toExcel2(list,fileName);
+					.toExcel2(list, fileName);
 			response.setHeader("Content-Disposition", "attachment;filename="
 					+ fileName);
 
@@ -197,8 +205,8 @@ public class DownloadAction extends ActionSupport {
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return "error";
 		}
-		return null;
 	}
 
 }

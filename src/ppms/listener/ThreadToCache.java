@@ -6,6 +6,13 @@ import javax.servlet.http.HttpSession;
 
 import ppms.action.interfaces.ListForCache;
 
+/**
+ * 扫描session缓冲的线程类
+ * @author shark
+ * @update 2015下午7:23:37
+ * @function
+ *
+ */
 public class ThreadToCache implements Runnable{
 
 	private HttpSession session;
@@ -14,7 +21,6 @@ public class ThreadToCache implements Runnable{
 	}
 	@Override
 	public void run() {
-		
 		
 		ListForCache cache;
 		while (true) {
