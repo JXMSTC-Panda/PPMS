@@ -125,4 +125,15 @@ public class StandardCheckDaoImp extends BaseDaoImp implements StandardCheckDao 
 		return result;
 	}
 	
+	/**
+	 * 单条录入标准化表
+	 */
+	public void save(Object tbEmployeepraisecriticism){
+		try {
+			getHibernateTemplate().save(tbEmployeepraisecriticism);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	
 }

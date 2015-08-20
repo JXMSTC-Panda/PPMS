@@ -107,13 +107,13 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有角色表</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=人员基本信息批量导出.xls" name="StuListForm">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
 											<th class="center"><label class="pos-rel"> <input
-													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
+													type="checkbox" class="ace"  /> <span class="lbl"></span> </label>
 											</th>
 											<th>序号</th>
 											<th>身份证号</th>
@@ -129,7 +129,7 @@
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
+														type="checkbox" class="ace" name="cols" value=${employee.employeeid } /> <span class="lbl"></span>
 												</label></td>
 
 											   <td>${employee.employeecode}</td>
@@ -145,8 +145,8 @@
                                                <td>${employee.birthday}</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="javascript:void(0)"
-															name="" onclick="GetDetail(this)">
+														<a class="blue" href="userInfo.userBase.userBaseInfoSearch.Detail.do?id=${employee.employeeid}"
+															name="${employee.employeeid}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
 															class="green" href="javascript:void(0)"
 															name="" onclick="Modify(this)"> <i
@@ -192,6 +192,12 @@
 									</tbody>
 								</table>
 							</form>
+							
+							<div class="clearfix form-actions">
+												<div class="col-md-offset-5 col-md-6">
+														&nbsp; &nbsp; &nbsp;<input class="btn btn-info" type="submit" value="导出Excel">
+												</div>
+											</div>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
@@ -209,6 +215,9 @@
 	<script
 		src="../assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
+	<script>
+		
+	</script>
 	<script type="text/javascript">
 		jQuery(function($) {
 			//initiate dataTables plugin

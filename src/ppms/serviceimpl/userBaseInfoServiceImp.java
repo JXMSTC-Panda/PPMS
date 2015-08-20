@@ -41,13 +41,18 @@ public class userBaseInfoServiceImp implements userBaseInfoService{
 		return dao.getTbJobs();
 	}
     @Override
-	public List<TbEmployee> getTbEmployees() {
+	public List<TbEmployee> getTbEmployees(String employeeid) {
 		
-		return dao.getTbEmployees();
+		return dao.getTbEmployees(employeeid);
 	}
     @Override
     public List<TbRole> getTbRoles(){
     	return dao.getTbRoles();
-    }   
+    }
+    @Override
+	public List<TbEmployee> getTbEmployee() {
+		
+		return dao.getTbEmployees();
+	}   
 	
 }
