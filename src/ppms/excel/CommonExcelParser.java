@@ -864,62 +864,67 @@ public class CommonExcelParser {
 	public HSSFCell setValueByType(String type_name, Object obj, Method method,
 			ExcelObjStruct eos, HSSFCell cell) throws Exception {
 
-		if (obj != null) {
+		try {
+			if (obj != null) {
 
-			Object value = method.invoke(obj);
+				Object value = method.invoke(obj);
 
-			System.out.println(eos.getFieldName());
-			if (value != null) {
-				// 根据成员变量的类型获取单元格数据
-				switch (type_name) {
-				// 成员变量为String时
-				case "java.lang.String":
-					// 调用方法获取，并强转
-					cell.setCellValue((String) value);
-					break;
-				// 成员变量类型为int时
-				case "java.lang.Integer":
-					// 获取单元格中的数据，转为String
-					// 转为Integer
-					value = (Integer) value;
-					if (eos.getValue((Integer) value) != null) {
-						cell.setCellValue(eos.getValue((Integer) value));
-					} else {
-						cell.setCellValue((Integer) value);
+				System.out.println(eos.getFieldName());
+				if (value != null) {
+					// 根据成员变量的类型获取单元格数据
+					switch (type_name) {
+					// 成员变量为String时
+					case "java.lang.String":
+						// 调用方法获取，并强转
+						cell.setCellValue((String) value);
+						break;
+					// 成员变量类型为int时
+					case "java.lang.Integer":
+						// 获取单元格中的数据，转为String
+						// 转为Integer
+						value = (Integer) value;
+						if (eos.getValue((Integer) value) != null) {
+							cell.setCellValue(eos.getValue((Integer) value));
+						} else {
+							cell.setCellValue((Integer) value);
+						}
+						break;
+					case "java.util.Date":
+						value = (Date) value;
+
+						// 时间格式转换
+						String result = (((Date) value).getYear() + 1900) + "年"
+								+ (((Date) value).getMonth() + 1) + "月"
+								+ ((Date) value).getDate() + "日";
+						System.out.println(result);
+						cell.setCellValue(result);
+						break;
+					case "java.lang.Boolean":
+						if ((Boolean) value) {
+							value = eos.getValue(1);
+						} else {
+							value = eos.getValue(0);
+						}
+
+						cell.setCellValue((String) value);
+
+						break;
+					case "java.lang.Short":
+						cell.setCellValue((Short) value);
+						break;
+					case "java.lang.Double":
+						cell.setCellValue((Double) value);
+						break;
+					default:
+						cell.setCellValue((String) value);
+						break;
 					}
-					break;
-				case "java.util.Date":
-					value = (Date) value;
-
-					// 时间格式转换
-					String result = (((Date) value).getYear() + 1900) + "年"
-							+ (((Date) value).getMonth() + 1) + "月"
-							+ ((Date) value).getDate() + "日";
-					System.out.println(result);
-					cell.setCellValue(result);
-					break;
-				case "java.lang.Boolean":
-					if ((Boolean) value) {
-						value = eos.getValue(1);
-					} else {
-						value = eos.getValue(0);
-					}
-
-					cell.setCellValue((String) value);
-
-					break;
-				case "java.lang.Short":
-					cell.setCellValue((Short) value);
-					break;
-				case "java.lang.Double":
-					cell.setCellValue((Double) value);
-					break;
-				default:
-					cell.setCellValue((String) value);
-					break;
 				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
 		return cell;
 	}
 
