@@ -13,7 +13,7 @@ public class ListForCache<T> {
 	public ListForCache(){
 		
 		beginCache=System.currentTimeMillis();
-		cacheTime=10*1000;
+		cacheTime=5*60*1000;
 	}
 	public boolean checkTimeOut() {
 
