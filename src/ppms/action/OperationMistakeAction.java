@@ -58,18 +58,20 @@ public class OperationMistakeAction extends BaseInit{
 	 * @return
 	 */
 	@Action(value = "standardVisit.operationMistake.operationMistakeSingle.operationMistakeSingleStart", results = {// action的名称为operationMistakeSingleStart
-			@Result(name = "success", location = "/WEB-INF/content/page/userinfo/Demo.jsp"),// 返回值为success时跳转的页面路径
+			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/operationMistakeSingleResult.jsp"),// 返回值为success时跳转的页面路径
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	// 返回值为error时跳转的页面路径
 	public String operationMistakeSingleStart() {
-		System.out.println("save infor");
+		ActionContext actionContext = ActionContext.getContext();// 创建ActionContext的对象并调用getContext()方法
+		Map<String, Object> request = (Map) actionContext.get("request");// 获取出request对象
 		try {
 			praiseCriticism.save(tbOperationcheck);
-			return null;
+			request.put("results", "sucess!");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error";
+			request.put("results", "error!");
 		}	
+		return "success";
 	}
 
 	/**
@@ -198,12 +200,7 @@ public class OperationMistakeAction extends BaseInit{
 		try {
 			praiseCriticism.delete(tbOperationcheck);
 			ServletActionContext
-					.getRequest()
-					.getRequestDispatcher(
-							"/standardVisit.operationMistake.operationMistakeSearch")
-					.forward(ServletActionContext.getRequest(),
-							ServletActionContext.getResponse());
-
+			.getResponse().sendRedirect("standardVisit.operationMistake.operationMistakeSearch.do");
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -221,11 +218,7 @@ public class OperationMistakeAction extends BaseInit{
 		try {
 			praiseCriticism.update(tbOperationcheck);
 			ServletActionContext
-			.getRequest()
-			.getRequestDispatcher(
-					"/standardVisit.operationMistake.operationMistakeSearch")
-			.forward(ServletActionContext.getRequest(),
-					ServletActionContext.getResponse());
+			.getResponse().sendRedirect("standardVisit.operationMistake.operationMistakeSearch.do");
 			
 			return null;
 		} catch (Exception e) {
@@ -378,11 +371,7 @@ try {
 	
 		try {
 			ServletActionContext
-			.getRequest()
-			.getRequestDispatcher(
-					"/standardVisit.operationMistake.operationMistakeSearch")
-			.forward(ServletActionContext.getRequest(),
-					ServletActionContext.getResponse());
+			.getResponse().sendRedirect("standardVisit.operationMistake.operationMistakeSearch.do");
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -430,6 +419,20 @@ try {
 			e.printStackTrace();
 			return "error";
 		}
+		return "success";
+	}
+	
+	@Action(value = "standardVisit.operationMistake.operationMistakeSingle", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/operationMistakeSingle.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
+	public String single(){
+		return "success";
+	}
+	
+	@Action(value = "standardVisit.operationMistake.operationMistakeBatch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/operationMistakeBatch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
+	public String batch(){
 		return "success";
 	}
 }

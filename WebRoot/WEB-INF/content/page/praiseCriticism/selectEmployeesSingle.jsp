@@ -100,7 +100,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">信息查询</div>
-							<form  name="StuListForm" action="praiseCriticism.employee.employeePraiseCriticismSingle.do" method="post" >
+							<form  name="StuListForm" action="praiseCriticism.employee.employeePraiseCriticismSingle.selectEmployeeSkipSingle.do" method="post" >
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>

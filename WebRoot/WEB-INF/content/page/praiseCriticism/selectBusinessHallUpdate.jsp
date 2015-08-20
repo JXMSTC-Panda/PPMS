@@ -105,7 +105,7 @@
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
-			${requestScope.praisecriticismid}
+			
 										<tr>
 											<th class="center"><label class="pos-rel"> <input
 													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
@@ -129,8 +129,8 @@
 												<td>1</td>
 												<td>${organizationNj.orgid}</td>
 												<td>${organizationNj.org_Name}</td>
-												<td>${requestScope.areadesc}</td>
-												<td>${requestScope.subareaDesc}</td>
+												<td>${organizationNj.areadesc}</td>
+												<td>${organizationNj.subareadesc}</td>
 											
 											<td>
 												<%-- <div class="hidden-sm hidden-xs action-buttons">
