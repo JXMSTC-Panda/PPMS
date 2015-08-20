@@ -106,12 +106,8 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">创新提案表</div>
-<<<<<<< HEAD
-							<form action="downData.do?fileName=创新提案批量导出.xls"
-								name="StuListForm" method="post">
-=======
 							<form action="downData.do?fileName=创新提案批量导出.xls" name="StuListForm" method="post">
->>>>>>> d62ceb83c67783e2a1d2a12ba74c0368c0bd9fdd
+
 								<c:set var="count" value="0"></c:set>
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
