@@ -155,7 +155,6 @@
 												<td><c:out value="${innovation.organizationNj.orgid}"></c:out>
 												</td>
 												<td><c:out
-<<<<<<< HEAD
 														value="${innovation.organizationNj.org_Name}"></c:out>
 												</td>
 												<td><c:out value="${innovation.innovationcontent}"></c:out></td>
@@ -163,14 +162,7 @@
 														<c:out value="团队创新"></c:out>
 													</c:if> <c:if test="${innovation.tbEmployee!=null}">
 														<c:out value="个人创新"></c:out>
-=======
-														value="${innovation.organizationNj.org_Name}"></c:out></td>
-												<td><c:out value="${innovation.innovationcontent}"></c:out>
-													<c:if test="${innovation.tbEmployee==null}">
-														<td><c:out value="团队创新"></c:out>
-													</c:if> <c:if test="${innovation.tbEmployee!=null}">
-														<td><c:out value="个人创新"></c:out></td>
->>>>>>> d62ceb83c67783e2a1d2a12ba74c0368c0bd9fdd
+
 													</c:if>
 												</td>
 												<td><c:out
