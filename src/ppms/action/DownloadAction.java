@@ -72,11 +72,6 @@ public class DownloadAction extends ActionSupport {
 		try {
 			ServletOutputStream outputStream = ServletActionContext
 					.getResponse().getOutputStream();
-<<<<<<< HEAD
-
-=======
-			
->>>>>>> d62ceb83c67783e2a1d2a12ba74c0368c0bd9fdd
 			response.setContentType("application/x-msdownload");
 
 			ServletContext servletContext = (ServletContext) ActionContext
@@ -177,9 +172,8 @@ public class DownloadAction extends ActionSupport {
 			// new TbOperationcheck(), new String[] { "organizationNj",
 			// "tbEmployee" });
 			// ListForCache<TbOperationcheck> list = new
-			// ListForCache<TbOperationcheck>();
-
-<<<<<<< HEAD
+			// ListForCache<TbOperationcheck>()
+			
 			// List<TbOrgpraisecriticism> findAll = dao.getEntitiestNotLazy(
 			// new TbOrgpraisecriticism(), new String[] { "organizationNj"});
 			// ListForCache<TbOrgpraisecriticism> list = new
@@ -196,21 +190,12 @@ public class DownloadAction extends ActionSupport {
 			// 将数据生成Excel文件
 			HSSFWorkbook workbook = new CommonExcelParser(dao, exception)
 					.toExcel2(list, fileName);
-
-=======
-//			List<TbOrgpraisecriticism> findAll = dao.getEntitiestNotLazy(
-//					new TbOrgpraisecriticism(), new String[] { "organizationNj"});
-//			ListForCache<TbOrgpraisecriticism> list = new ListForCache<TbOrgpraisecriticism>();
-//			list.setList(findAll);
-//			response = ServletActionContext.getResponse();
-//			session.setAttribute(findAll.get(0).getClass().getName(), list);
 			fileName=new String(fileName.getBytes("iso8859-1"),"utf-8");
 			ListForCache<Object> list=(ListForCache<Object>) session
 			.getAttribute(ExcelConfig.getObjectFromConfig(
 					fileName).get(0));
 			HSSFWorkbook workbook = new CommonExcelParser(dao, exception)
 			.toExcel2(list,fileName);
->>>>>>> d62ceb83c67783e2a1d2a12ba74c0368c0bd9fdd
 			response.setHeader("Content-Disposition", "attachment;filename="
 					+ fileName);
 
