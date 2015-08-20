@@ -8,6 +8,13 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 
+/**
+ * 目标策略类
+ * @author shark
+ * @update 2015下午7:22:14
+ * @function
+ *
+ */
 public class TargetStrategy implements ExclusionStrategy {
 	private static Logger log = LoggerFactory.getLogger(TargetStrategy.class);
 	private Class<?> target;

@@ -1,5 +1,12 @@
 package ppms.exception;
 
+/**
+ * 保存Excel处理是出现的异常和错误
+ * @author shark
+ * @update 2015下午7:15:49
+ * @function
+ *
+ */
 public class ErrorInfo {
 
 	

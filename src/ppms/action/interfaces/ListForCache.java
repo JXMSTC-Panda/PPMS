@@ -2,8 +2,6 @@ package ppms.action.interfaces;
 
 import java.util.List;
 
-import com.sun.beans.util.Cache;
-
 public class ListForCache<T> {
 
 	private long beginCache;
@@ -15,7 +13,7 @@ public class ListForCache<T> {
 	public ListForCache(){
 		
 		beginCache=System.currentTimeMillis();
-		cacheTime=10*60*1000;
+		cacheTime=10*1000;
 	}
 	public boolean checkTimeOut() {
 

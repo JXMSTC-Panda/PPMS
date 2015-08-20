@@ -14,24 +14,20 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import ppms.action.interfaces.InitPage;
+import ppms.action.interfaces.BaseInit;
 import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbJob;
 import ppms.domain.TbOperationcheck;
-import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbPost;
-import ppms.domain.TbSubarea;
-import ppms.domain.TbSubareaorgrelation;
 import ppms.serviceimpl.OperationMistakeServiceImp;
 import ppms.serviceimpl.PraiseCriticismServiceImp;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
-public class OperationMistakeAction extends ActionSupport implements InitPage{
+public class OperationMistakeAction extends BaseInit{
 	
 	private TbOperationcheck tbOperationcheck;// 创建员工奖惩信息的对象tbOperationcheck
 
@@ -48,6 +44,7 @@ public class OperationMistakeAction extends ActionSupport implements InitPage{
 	@Autowired
 	private PraiseCriticismServiceImp praiseCriticism;// 创建Service的对象praiseCriticism
 
+	@Autowired
 	private OperationMistakeServiceImp operationMistake;
 
 	public OperationMistakeAction() {
@@ -203,7 +200,7 @@ public class OperationMistakeAction extends ActionSupport implements InitPage{
 			ServletActionContext
 					.getRequest()
 					.getRequestDispatcher(
-							"/resource/standardVisit.operationMistake.operationMistakeSearch")
+							"/standardVisit.operationMistake.operationMistakeSearch")
 					.forward(ServletActionContext.getRequest(),
 							ServletActionContext.getResponse());
 
@@ -226,7 +223,7 @@ public class OperationMistakeAction extends ActionSupport implements InitPage{
 			ServletActionContext
 			.getRequest()
 			.getRequestDispatcher(
-					"/resource/standardVisit.operationMistake.operationMistakeSearch")
+					"/standardVisit.operationMistake.operationMistakeSearch")
 			.forward(ServletActionContext.getRequest(),
 					ServletActionContext.getResponse());
 			
@@ -383,7 +380,7 @@ try {
 			ServletActionContext
 			.getRequest()
 			.getRequestDispatcher(
-					"/resource/standardVisit.operationMistake.operationMistakeSearch")
+					"/standardVisit.operationMistake.operationMistakeSearch")
 			.forward(ServletActionContext.getRequest(),
 					ServletActionContext.getResponse());
 			return null;
@@ -396,34 +393,27 @@ try {
 	/**
 	 * 业务差错信息查询管理页面的初始化。
 	 */
-	public Map<String, List<T>> initPage(ServletContext servletContext,String url) {
-		// 实例化map
-		Map map = new HashMap();
-
-		OperationMistakeServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(servletContext).getBean(
-						OperationMistakeServiceImp.class);
-
-		PraiseCriticismServiceImp serviceP = WebApplicationContextUtils
-				.getWebApplicationContext(servletContext).getBean(
-						PraiseCriticismServiceImp.class);
-		url= "standardVisit.operationMistakeSearch";
-			List<TbOperationcheck> operationcheckInfor=service.findOperationcheckInfor();
+	@Action(value = "standardVisit.operationMistake.operationMistakeSearch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/operationMistakeSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
+	public String initPage(){
+		try {
+			List<TbOperationcheck> operationcheckInfor=operationMistake.findOperationcheckInfor();
 			List<TbOperationcheck> operationchecksInfor=new ArrayList<TbOperationcheck>();
 			for (TbOperationcheck tbOperationcheck : operationcheckInfor) {
 			
-				List<TbEmployee> employeeInfor=serviceP.findEmployeeInfor(tbOperationcheck.getTbEmployee().getEmployeeid());
+				List<TbEmployee> employeeInfor=praiseCriticism.findEmployeeInfor(tbOperationcheck.getTbEmployee().getEmployeeid());
 				tbOperationcheck.setTbEmployee(employeeInfor.get(0));
 				
-				List<OrganizationNj> organizationNjInfor=serviceP.findOrganizationNjInfor(tbOperationcheck.getOrganizationNj().getOrgid());
+				List<OrganizationNj> organizationNjInfor=praiseCriticism.findOrganizationNjInfor(tbOperationcheck.getOrganizationNj().getOrgid());
 				for (OrganizationNj organizationNj : organizationNjInfor) {
 					
 				
-				List<COrganizationNj> cOrganizationNjInfor = serviceP
+				List<COrganizationNj> cOrganizationNjInfor = praiseCriticism
 						.findCOrganizationNjInfor(organizationNj.getOrgid());// 执行findCOrganizationNjInfor，根据营业厅编号获取营业厅区域关系表中的信息
 				for (COrganizationNj cOrganizationNj : cOrganizationNjInfor) {// 遍历
 					System.out.println(cOrganizationNj.getTbArea().getAreaid());// 打印区域的编号
-					List<TbArea> areaInfor = serviceP
+					List<TbArea> areaInfor = praiseCriticism
 							.findAreaDesc(cOrganizationNj.getTbArea()
 									.getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
 					String areadesc = areaInfor.get(0).getAreadesc();
@@ -433,10 +423,13 @@ try {
 				tbOperationcheck.setOrganizationNj(organizationNj);
 				}
 			  operationchecksInfor.add(tbOperationcheck);
-			}
-			
+			}	
 			map.put("operationchecksInfor",operationchecksInfor);
-			
-		return map;
+			toCache();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return "success";
 	}
 }
