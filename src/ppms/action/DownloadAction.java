@@ -55,7 +55,7 @@ public class DownloadAction extends ActionSupport {
 	}
 
 	public DownloadAction() {
-
+		response = ServletActionContext.getResponse();
 		this.session = ServletActionContext.getRequest().getSession();
 		exception = new ExcelParserException();
 	}
@@ -72,7 +72,7 @@ public class DownloadAction extends ActionSupport {
 		try {
 			ServletOutputStream outputStream = ServletActionContext
 					.getResponse().getOutputStream();
-			response = ServletActionContext.getResponse();
+			
 			response.setContentType("application/x-msdownload");
 
 			ServletContext servletContext = (ServletContext) ActionContext
@@ -170,16 +170,18 @@ public class DownloadAction extends ActionSupport {
 			// ListForCache<TbOperationcheck> list = new
 			// ListForCache<TbOperationcheck>();
 
-			List<TbOrgpraisecriticism> findAll = dao.getEntitiestNotLazy(
-					new TbOrgpraisecriticism(), new String[] { "organizationNj"});
-			ListForCache<TbOrgpraisecriticism> list = new ListForCache<TbOrgpraisecriticism>();
-			list.setList(findAll);
-			response = ServletActionContext.getResponse();
-			session.setAttribute(findAll.get(0).getClass().getName(), list);
+//			List<TbOrgpraisecriticism> findAll = dao.getEntitiestNotLazy(
+//					new TbOrgpraisecriticism(), new String[] { "organizationNj"});
+//			ListForCache<TbOrgpraisecriticism> list = new ListForCache<TbOrgpraisecriticism>();
+//			list.setList(findAll);
+//			response = ServletActionContext.getResponse();
+//			session.setAttribute(findAll.get(0).getClass().getName(), list);
+			fileName=new String(fileName.getBytes("iso8859-1"),"utf-8");
+			ListForCache<Object> list=(ListForCache<Object>) session
+			.getAttribute(ExcelConfig.getObjectFromConfig(
+					fileName).get(0));
 			HSSFWorkbook workbook = new CommonExcelParser(dao, exception)
-					.toExcel2((ListForCache<Object>) session
-							.getAttribute(ExcelConfig.getObjectFromConfig(
-									fileName).get(0)), fileName);
+			.toExcel2(list,fileName);
 			response.setHeader("Content-Disposition", "attachment;filename="
 					+ fileName);
 

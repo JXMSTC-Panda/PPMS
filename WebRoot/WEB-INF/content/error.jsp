@@ -4,25 +4,35 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'error.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 
-  </head>
-  
-  <body>
-    Error <br>
-  </body>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>0hh Website Template | Home :: W3layouts</title>
+		<meta name="keywords" content="404 iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+		<link href="${pageContext.request.contextPath}/plugin/Others/error.css" rel="stylesheet" type="text/css"  media="all" />
+	</head>
+	<body>
+		<!--start-wrap--->
+		<div class="wrap">
+			<!---start-header---->
+				<div class="header">
+					<div class="logo">
+						<h1><a href="#">Ohh</a></h1>
+					</div>
+				</div>
+			<!---End-header---->
+			<!--start-content------>
+			<div class="content">
+				<img src="${pageContext.request.contextPath}/plugin/Others/images/error-img.png" title="error" />
+				<p><span><label>O</label>hh.....</span>You Requested the page that is no longer There.</p>
+				<a href="#">Back To Home</a>
+				<div class="copy-right">
+					<p>&#169 All rights Reserved | Designed by <a href="http://chnn.com/">jxmstc.pandas</a></p>
+				</div>
+   			</div>
+			<!--End-Cotent------>
+		</div>
+		<!--End-wrap--->
+	</body>
 </html>

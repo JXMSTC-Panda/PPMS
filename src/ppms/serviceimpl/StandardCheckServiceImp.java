@@ -92,6 +92,16 @@ public class StandardCheckServiceImp implements StandardCheckService {
 		}
 		return organizationNjResults;
 	}
+	@Override
+	public List<OrganizationNj> findOrganizationId(Integer orgId) {
+		List<OrganizationNj> organizationNjResults = null;
+		try {
+			organizationNjResults = dao.findOrganizationId(orgId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return organizationNjResults;
+	}
 	
 	
 	
