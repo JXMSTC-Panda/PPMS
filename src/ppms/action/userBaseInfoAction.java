@@ -14,10 +14,12 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import ppms.action.interfaces.BaseInit;
 import ppms.action.interfaces.InitPage;
+import ppms.daoimpl.BaseDaoImp;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbJob;
@@ -32,7 +34,9 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 
 public class userBaseInfoAction extends BaseInit{
-
+	/**
+	 * 构建对象
+	 */
 	private TbEmployee tbEmployee;
 	
 
@@ -44,6 +48,9 @@ public class userBaseInfoAction extends BaseInit{
 		this.tbEmployee = tbEmployee;
 	}
 	
+	/**
+	 *声明request 
+	 */
 	protected HttpServletRequest request;
 
 	public userBaseInfoAction() {
@@ -53,7 +60,13 @@ public class userBaseInfoAction extends BaseInit{
 	}
 	@Autowired
 	private userBaseInfoServiceImp service;
-
+	
+	/**
+	 * 声明，调用API
+	 */
+	@Autowired
+	@Qualifier("baseDaoImp")
+	private BaseDaoImp dao;
 
 	public userBaseInfoServiceImp getService() {
 		return service;
@@ -63,9 +76,8 @@ public class userBaseInfoAction extends BaseInit{
 		this.service = service;
 	}
 
-	/*
-	 * 处理人员基本信息录入
-	 * 
+	/**
+	 * 人员基本信息录入
 	 * @return
 	 */
 	@Action(value = "userInfo.userBase.userBaseInfoSingle.result", results = {
@@ -79,14 +91,11 @@ public class userBaseInfoAction extends BaseInit{
 		}
 		return "success";
 	}
-
-	/*
-	 * 
-	 * 处理人员基本信息录入结果录入跳转
-	 * 
+	
+	/**
+	 * 转至录入页面
 	 * @return
 	 */
-
 	@Action(value = "userInfo.userBase.userBaseInfoSingle.resultBackSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
@@ -95,13 +104,10 @@ public class userBaseInfoAction extends BaseInit{
 		return "success";
 	}
 
-	/*
-	 * 
-	 * 处理人员基本信息录入结果查询跳转
-	 * 
+	/**
+	 * 转至查询页面
 	 * @return
 	 */
-
 	@Action(value = "userInfo.userBase.userBaseInfoSearch.resultBackSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSearch.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
@@ -109,6 +115,10 @@ public class userBaseInfoAction extends BaseInit{
 		return "success";
 	}
 	
+	/**
+	 * 详细查询人员信息
+	 * @return
+	 */
 	@Action(value = "userInfo.userBase.userBaseInfoSearch.Detail", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoDetail.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
@@ -118,9 +128,11 @@ public class userBaseInfoAction extends BaseInit{
 		request.setAttribute("tbEmpl", tbEmployees);
 		return "success";
 	}
-
 	
-	
+	/**
+	 * 实现人员信息查询页面初始化
+	 * @return
+	 */
 	@Action(value = "userInfo.userBase.userBaseInfoSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
@@ -133,9 +145,9 @@ public class userBaseInfoAction extends BaseInit{
 	}
 	
 	@Action(value = "userInfo.userBase.userBaseInfoSearch", results = {
-			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSingle.jsp"),
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSearch.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	private String search(){
+	public String search(){
 		
 		initPage("userInfo.userBaseInfoSearch");
 		toCache();
@@ -144,11 +156,11 @@ public class userBaseInfoAction extends BaseInit{
 	private void  initPage(String url) {
 		
 		try {
-			Map map = new HashMap<>();
-
 			// 获取所有营业厅
 			switch (url) {
 			case "userInfo.userBaseInfoSingle":
+				
+				
 				List<OrganizationNj> organizations = service.getOrganizations();
 				List<TbPost> tbPosts = service.getTbPosts();			
 				List<TbJob> tbJobs =service.getTbJobs();
@@ -161,7 +173,8 @@ public class userBaseInfoAction extends BaseInit{
 				map.put("employees", tbEmployees);
 				break;
 			case "userInfo.userBaseInfoSearch":
-				List<TbEmployee> employees =service.getTbEmployee();
+				
+				List<TbEmployee> employees=dao.getEntitiestNotLazy(new TbEmployee(), new String[]{"organizationNj","tbJob","tbRole","tbPost"});
 				map.put("employees", employees);
 			default:
 				break;
