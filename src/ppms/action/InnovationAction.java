@@ -13,6 +13,7 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import ppms.action.interfaces.BaseInit;
 import ppms.action.interfaces.InitPage;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbEmployee;
@@ -23,7 +24,14 @@ import ppms.serviceimpl.InvocationServiceImp;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class InnovationAction extends AjaxRequestAction implements InitPage {
+/**
+ * 处理创新提案模块的请求
+ * @author shark
+ * @update 2015下午7:10:18
+ * @function
+ *
+ */
+public class InnovationAction extends BaseInit {
 
 	private TbInnovation innovation;
 
@@ -38,8 +46,19 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 	@Autowired
 	private InvocationServiceImp service;
 
-	public void setService(InvocationServiceImp service) {
-		this.service = service;
+	@Autowired
+	private TbMasterDAO masterDAO;
+
+	@Action(value = "innovation.null.innovationSingle", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSingle.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	public String firstIn() {
+
+		List<OrganizationNj> organizationNjs = getOrganizationNjs();
+		if (organizationNjs != null && organizationNjs.size() > 0) {
+			map.put("orgs", organizationNjs);
+		}
+		return "success";
 	}
 
 	/**
@@ -47,7 +66,7 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 	 * 
 	 * @return
 	 */
-	@Action(value = "/singleUpload", results = {
+	@Action(value = "innovation.null.innovationSingle.singleUpload", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSingleResult.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
 	public String singleUpload() {
@@ -60,114 +79,39 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 
 	}
 
-	@Transactional
-	@Override
-	public Map<String, List<T>> initPage(ServletContext context, String url) {
+	@Action(value = "innovation.null.innovationSearch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String searchPage() {
 
-		// 实例化map
-		Map map = new HashMap<String, List<Object>>();
-
-
-		// 根据不同请求的url实现不同页面的页面初始化
-		switch (url) {
-		case "innovation.innovationSingle":
-
-			// 获取所有营业厅
-			List<OrganizationNj> organizationNjs = getOrganizationNjs(context);
-			if(organizationNjs!=null&&organizationNjs.size()>0){
-				map.put("orgs", organizationNjs);
-			}
-		
-			break;
-		case "innovation.innovationSearch":
-			// 获取提案信息
-			
-			long beg=System.currentTimeMillis();
-			List<TbInnovation> innovations = getInnovations(context);
-			TbMasterDAO masterDAO = WebApplicationContextUtils
-					.getWebApplicationContext(context).getBean(
-							TbMasterDAO.class);
-			List<TbMaster> masters=masterDAO.findByType("InnovationLevel");
-			if(innovations!=null&&innovations.size()>0){
-				map.put("innovations", innovations);
-				map.put("masters", masters);
-			}
-			
-			System.out.println(System.currentTimeMillis()-beg);
-			break;
-		default:
-			break;
+		List<TbInnovation> innovations = getInnovations();
+		List<Object> masters = masterDAO.findByType("InnovationLevel");
+		if (innovations != null && innovations.size() > 0) {
+			map.put("innovations", innovations);
+			map.put("masters", masters);
 		}
-		return map;
+		toCache();
+		return "success";
 	}
 
-	@Action("/getEmployees")
-	@Override
-	public String initProcess() {
-
-		String orgid = request.getParameter("orgid");
-
-		System.out.println("sfasfs");
-		setHsql("from TbEmployee where orgid=" + orgid);
-		setKey("employees");
-		setFieldToJson(null, TbEmployee.class);
-		excute();
-		return null;
-
-		// try {
-		// String orgid = request.getParameter("orgid");
-		//
-		// if (orgid.equals("") || orgid == null) {
-		// return null;
-		// }
-		//
-		// //查询数据库
-		// List<TbEmployee> employees = dao.findByHSQL(
-		// "from TbEmployee where orgid=" + orgid, new TbEmployee());
-		//
-		// //设置对TbEmployee的策略
-		// TargetStrategy ts = new TargetStrategy(TbEmployee.class);
-		// //表示仅转换TbEmployee中的employeename和employeeid属性
-		// ts.setFields(new String[] {"employeename", "employeeid"});
-		// ts.setReverse(true);
-		// Gson gson = new GsonBuilder().setExclusionStrategies(ts).create();
-		//
-		// Map<String, List<TbEmployee>> map = new HashMap<String,
-		// List<TbEmployee>>();
-		// map.put("employees", employees);
-		// String json = gson.toJson(map);
-		// response.getWriter().write(json);
-		// System.out.println(json);
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-	}
-	
 	/**
 	 * 获取所有营业厅的信息
+	 * 
 	 * @param context
 	 * @return
 	 */
-	private List<OrganizationNj> getOrganizationNjs(ServletContext context){
-		
-
-		InvocationServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(context).getBean(
-						InvocationServiceImp.class);
+	private List<OrganizationNj> getOrganizationNjs() {
 		return service.getOrganizations();
 	}
-	
+
 	/**
 	 * 获取所有的创新提案
+	 * 
 	 * @param context
 	 * @return
 	 */
-	private List<TbInnovation> getInnovations(ServletContext context){
-		
-		InvocationServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(context).getBean(
-						InvocationServiceImp.class);
-		
+	private List<TbInnovation> getInnovations() {
+
 		return service.findAllInnovations();
 	}
 

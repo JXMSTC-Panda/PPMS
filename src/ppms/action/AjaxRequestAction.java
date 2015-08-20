@@ -35,6 +35,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * Ajax请求处理
+ * @author shark
+ * @update 2015下午7:25:38
+ * @function
+ *
+ */
 public abstract class AjaxRequestAction extends ActionSupport {
 
 	protected HttpServletResponse response;
