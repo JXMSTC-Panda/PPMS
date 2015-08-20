@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import javax.transaction.Transactional;
 
 import org.apache.poi.ss.formula.functions.T;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class InnovationAction extends BaseInit {
 
 		List<OrganizationNj> organizationNjs = getOrganizationNjs();
 		if (organizationNjs != null && organizationNjs.size() > 0) {
-			map.put("orgs", organizationNjs);
+			ServletActionContext.getRequest().setAttribute("orgs",organizationNjs);
 		}
 		return "success";
 	}

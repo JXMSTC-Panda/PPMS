@@ -367,7 +367,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 			ServletActionContext
 					.getRequest()
 					.getRequestDispatcher(
-							"/resource/praiseCriticism.employee.employeePraiseCriticismSearch")
+							"/praiseCriticism.employee.employeePraiseCriticismSearch")
 					.forward(ServletActionContext.getRequest(),
 							ServletActionContext.getResponse());
 
@@ -393,7 +393,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 			ServletActionContext
 					.getRequest()
 					.getRequestDispatcher(
-							"/resource/praiseCriticism.employee.employeePraiseCriticismSearch")
+							"/praiseCriticism.employee.employeePraiseCriticismSearch")
 					.forward(ServletActionContext.getRequest(),
 							ServletActionContext.getResponse());
 
@@ -425,7 +425,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 			ServletActionContext
 					.getRequest()
 					.getRequestDispatcher(
-							"/resource/praiseCriticism.employee.employeePraiseCriticismSearch")
+							"/praiseCriticism.employee.employeePraiseCriticismSearch")
 					.forward(ServletActionContext.getRequest(),
 							ServletActionContext.getResponse());
 
@@ -450,7 +450,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 					.findAllEmployeepraisecriticismInfor();
 			List<TbEmployeepraisecriticism> employeepraisecriticismsInfor = new ArrayList<TbEmployeepraisecriticism>();
 			for (TbEmployeepraisecriticism tbEmployeepraisecriticism : employeepraisecriticismInfor) {
-				String a = tbEmployeepraisecriticism.getPraisecriticismtype();
+	/*			String a = tbEmployeepraisecriticism.getPraisecriticismtype();
 				List<TbMaster> type = praiseCriticism
 						.findEmployeePraiseCriticismType(a);
 				String employeeType = type.get(0).getValue();
@@ -464,7 +464,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 				String employeeLevel = level.get(0).getValue();
 				tbEmployeepraisecriticism
 						.setPraisecriticismlevel(employeeLevel);
-
+*/
 				List<OrganizationNj> organizationNjResults = praiseCriticism
 						.findOrganizationNjInfor(tbEmployeepraisecriticism
 								.getOrganizationNj().getOrgid());// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
@@ -477,11 +477,9 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 				tbEmployeepraisecriticism.setTbEmployee(tbEmployeeResults
 						.get(0));
 				employeepraisecriticismsInfor.add(tbEmployeepraisecriticism);
-			}
-			System.out.println(employeepraisecriticismInfor);
+			}	
 			map.put("employeepraisecriticismsInfor",
 					employeepraisecriticismsInfor);
-			
 			toCache();
 		} catch (Exception e) {
 			e.printStackTrace();

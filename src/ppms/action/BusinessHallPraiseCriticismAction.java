@@ -14,12 +14,10 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import ppms.action.interfaces.InitPage;
+import ppms.action.interfaces.BaseInit;
 import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
-import ppms.domain.TbEmployee;
-import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbMaster;
 import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbSubarea;
@@ -27,9 +25,8 @@ import ppms.domain.TbSubareaorgrelation;
 import ppms.serviceimpl.PraiseCriticismServiceImp;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
-public class BusinessHallPraiseCriticismAction extends ActionSupport implements InitPage{
+public class BusinessHallPraiseCriticismAction extends BaseInit {
 
 	@Autowired
 	private PraiseCriticismServiceImp praiseCriticism;
@@ -164,7 +161,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 			ServletActionContext
 					.getRequest()
 					.getRequestDispatcher(
-							"/resource/praiseCriticism.businessHall.businessHallPraiseCriticismSearch")
+							"/praiseCriticism.businessHall.businessHallPraiseCriticismSearch")
 					.forward(ServletActionContext.getRequest(),
 							ServletActionContext.getResponse());
 
@@ -194,7 +191,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 			ServletActionContext
 			.getRequest()
 			.getRequestDispatcher(
-					"/resource/praiseCriticism.businessHall.businessHallPraiseCriticismSearch")
+					"/praiseCriticism.businessHall.businessHallPraiseCriticismSearch")
 			.forward(ServletActionContext.getRequest(),
 					ServletActionContext.getResponse());
 			
@@ -319,7 +316,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 			ServletActionContext
 			.getRequest()
 			.getRequestDispatcher(
-					"/resource/praiseCriticism.businessHall.businessHallPraiseCriticismSearch")
+					"/praiseCriticism.businessHall.businessHallPraiseCriticismSearch")
 			.forward(ServletActionContext.getRequest(),
 					ServletActionContext.getResponse());
 			return null;
@@ -332,45 +329,47 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 	/**
 	 * 营业厅奖惩信息管理查询页面的初始化。
 	 */
-	public Map<String, List<T>> initPage(ServletContext servletContext,String url) {
-		// 实例化map
-		Map map = new HashMap();
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
+	public String initPage(){
 
-		PraiseCriticismServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(servletContext).getBean(
-						PraiseCriticismServiceImp.class);
-
-		url= "praiseCriticism.businessHallPraiseCriticismSearch";
-			List<TbOrgpraisecriticism> orgpraisecriticismInfor=service.findAllOrgpraisecriticismInfor();
+		try {
+			List<TbOrgpraisecriticism> orgpraisecriticismInfor=praiseCriticism.findAllOrgpraisecriticismInfor();
 			List<TbOrgpraisecriticism> orgpraisecriticismsInfor=new ArrayList<TbOrgpraisecriticism>();
 			
 			
 			for (TbOrgpraisecriticism tbOrgpraisecriticism : orgpraisecriticismInfor) {
-				
+				/*
 				String a=tbOrgpraisecriticism.getPraisecriticismtype();
 				
-				List<TbMaster> type=service.findOrgPraiseCriticismType(a);
+				List<TbMaster> type=praiseCriticism.findOrgPraiseCriticismType(a);
 				
 				String orgType= type.get(0).getValue();
 				
 				tbOrgpraisecriticism.setPraisecriticismtype(orgType);
 				String b=tbOrgpraisecriticism.getPraisecriticismlevel();
 				
-				List<TbMaster> level=service.findOrgPraiseCriticismLevel(a, b);
+				List<TbMaster> level=praiseCriticism.findOrgPraiseCriticismLevel(a, b);
 				
 				String orgLevel=level.get(0).getValue();
 				
-				tbOrgpraisecriticism.setPraisecriticismlevel(orgLevel);
+				tbOrgpraisecriticism.setPraisecriticismlevel(orgLevel);*/
 				
 				
 				
-				List<OrganizationNj> organizationNjInfor=service.findOrganizationNjInfor(tbOrgpraisecriticism.getOrganizationNj().getOrgid());
+				List<OrganizationNj> organizationNjInfor=praiseCriticism.findOrganizationNjInfor(tbOrgpraisecriticism.getOrganizationNj().getOrgid());
 				
 				tbOrgpraisecriticism.setOrganizationNj(organizationNjInfor.get(0));
 				orgpraisecriticismsInfor.add(tbOrgpraisecriticism);
 			}
 			System.out.println();
-			map.put("orgpraisecriticismsInfor",orgpraisecriticismsInfor);		
-		return map;
+			map.put("orgpraisecriticismsInfor",orgpraisecriticismsInfor);	
+			toCache();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return "success";
 	}
 }
