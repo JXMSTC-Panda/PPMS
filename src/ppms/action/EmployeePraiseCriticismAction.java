@@ -14,6 +14,7 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import ppms.action.interfaces.BaseInit;
 import ppms.action.interfaces.InitPage;
 import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
@@ -30,12 +31,10 @@ import ppms.serviceimpl.userBaseInfoServiceImp;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class EmployeePraiseCriticismAction extends ActionSupport implements
-		InitPage {
+public class EmployeePraiseCriticismAction extends BaseInit {
 
 	private TbEmployeepraisecriticism tbEmployeepraisecriticism; // 创建员工奖惩信息的对象tbEmployeepraisecriticism
 
-	
 	@Autowired
 	private PraiseCriticismServiceImp praiseCriticism;// 创建Service的对象praiseCriticism
 
@@ -147,6 +146,7 @@ public class EmployeePraiseCriticismAction extends ActionSupport implements
 
 	/**
 	 * 员工信息修改页面点击选择员工时跳进该action
+	 * 
 	 * @return
 	 */
 	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.skipEmployeeSelectUpdate", results = {// action的名称为skipEmployeeSelectSingle
@@ -199,7 +199,8 @@ public class EmployeePraiseCriticismAction extends ActionSupport implements
 				emploeesInfo.add(tbEmployee);// 设置对TbEmployee的策略
 			}
 			request.put("employeeInfos", emploeesInfo);
-			request.put("praisecriticismid", tbEmployeepraisecriticism.getPraisecriticismid());
+			request.put("praisecriticismid",
+					tbEmployeepraisecriticism.getPraisecriticismid());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -207,6 +208,7 @@ public class EmployeePraiseCriticismAction extends ActionSupport implements
 		return "success";
 
 	}
+
 	/**
 	 * 选定员工信息前的单选框后点击确认时跳转至该action，执行查询数据。
 	 * 
@@ -265,6 +267,7 @@ public class EmployeePraiseCriticismAction extends ActionSupport implements
 
 	/**
 	 * 员工奖惩信息修改选择员工完成后跳进该action
+	 * 
 	 * @return
 	 */
 	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch", results = {// action的名称为selectEmployeeSkipSingle
@@ -311,14 +314,15 @@ public class EmployeePraiseCriticismAction extends ActionSupport implements
 				// 设置对TbEmployee的策略
 			}
 			request.put("employeeInfos", emploeesInfo); // 将emploeesInfo用put方法存放
-			request.put("praisecriticismid",tbEmployeepraisecriticism.getPraisecriticismid());
+			request.put("praisecriticismid",
+					tbEmployeepraisecriticism.getPraisecriticismid());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		return "success";
 	}
-	
+
 	/**
 	 * 员工奖惩信息查询页面点击修改时跳进该action，执行跳转页面的功能。
 	 * 
@@ -331,7 +335,8 @@ public class EmployeePraiseCriticismAction extends ActionSupport implements
 
 		ActionContext actionContext = ActionContext.getContext(); // 创建ActionContext的对象并调用getContext()方法
 		Map<String, Object> request = (Map) actionContext.get("request"); // 获取出request对象
-		String praisecriticismid=tbEmployeepraisecriticism.getPraisecriticismid();
+		String praisecriticismid = tbEmployeepraisecriticism
+				.getPraisecriticismid();
 		request.put("praisecriticismid", praisecriticismid);
 		return "success";
 	}
@@ -357,24 +362,21 @@ public class EmployeePraiseCriticismAction extends ActionSupport implements
 					.setPraisecriticismlevel(praisecriticismlevel);
 			System.out.println(tbEmployeepraisecriticism.getTbEmployee()
 					.getEmployeeid());
-			
+
 			praiseCriticism.update(tbEmployeepraisecriticism);
 			ServletActionContext
-			.getRequest()
-			.getRequestDispatcher(
-					"/resource/praiseCriticism.employee.employeePraiseCriticismSearch")
-			.forward(ServletActionContext.getRequest(),
-					ServletActionContext.getResponse());
+					.getRequest()
+					.getRequestDispatcher(
+							"/resource/praiseCriticism.employee.employeePraiseCriticismSearch")
+					.forward(ServletActionContext.getRequest(),
+							ServletActionContext.getResponse());
 
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
 		}
-		
-		
-		
-		
+
 	}
 
 	/**
@@ -437,38 +439,37 @@ public class EmployeePraiseCriticismAction extends ActionSupport implements
 	/**
 	 * 员工奖惩信息查询页面的初始化，执行数据的查询并整合。
 	 */
-	public Map<String, List<T>> initPage(ServletContext servletContext,
-			String url) {
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch", results = {// action的名称为selectEmployeeSkipSingle
+			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism.employeePraiseCriticismSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
+	public String initPage
+			) {
 		// 实例化map
-		Map map = new HashMap();
+	
 
-		PraiseCriticismServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(servletContext).getBean(
-						PraiseCriticismServiceImp.class);
-
-		url = "praiseCriticism.employeePraiseCriticismSearch";
-		List<TbEmployeepraisecriticism> employeepraisecriticismInfor = service
+		
+		List<TbEmployeepraisecriticism> employeepraisecriticismInfor = praiseCriticism
 				.findAllEmployeepraisecriticismInfor();
 		List<TbEmployeepraisecriticism> employeepraisecriticismsInfor = new ArrayList<TbEmployeepraisecriticism>();
 		for (TbEmployeepraisecriticism tbEmployeepraisecriticism : employeepraisecriticismInfor) {
 			String a = tbEmployeepraisecriticism.getPraisecriticismtype();
-			List<TbMaster> type = service.findEmployeePraiseCriticismType(a);
+			List<TbMaster> type = praiseCriticism.findEmployeePraiseCriticismType(a);
 			String employeeType = type.get(0).getValue();
 			tbEmployeepraisecriticism.setPraisecriticismtype(employeeType);
 
-			List<TbMaster> level = service.findEmployeePraiseCriticismLevel(a,
+			List<TbMaster> level = praiseCriticism.findEmployeePraiseCriticismLevel(a,
 					tbEmployeepraisecriticism.getPraisecriticismlevel());
 
 			String employeeLevel = level.get(0).getValue();
 			tbEmployeepraisecriticism.setPraisecriticismlevel(employeeLevel);
 
-			List<OrganizationNj> organizationNjResults = service
+			List<OrganizationNj> organizationNjResults = praiseCriticism
 					.findOrganizationNjInfor(tbEmployeepraisecriticism
 							.getOrganizationNj().getOrgid());// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
 			tbEmployeepraisecriticism.setOrganizationNj(organizationNjResults
 					.get(0));// 将同步营业厅信息set进对象organizationNj中
 
-			List<TbEmployee> tbEmployeeResults = service
+			List<TbEmployee> tbEmployeeResults = praiseCriticism
 					.findEmployeeInfor(tbEmployeepraisecriticism
 							.getTbEmployee().getEmployeeid());
 			tbEmployeepraisecriticism.setTbEmployee(tbEmployeeResults.get(0));
@@ -477,7 +478,7 @@ public class EmployeePraiseCriticismAction extends ActionSupport implements
 		System.out.println(employeepraisecriticismInfor);
 		map.put("employeepraisecriticismsInfor", employeepraisecriticismsInfor);
 
-		return map;
+		return null;
 	}
 
 }
