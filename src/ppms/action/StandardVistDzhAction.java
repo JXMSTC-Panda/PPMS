@@ -201,8 +201,6 @@ public class  StandardVistDzhAction  extends BaseInit{
 			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSearch.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
 	public String initPage() {
-		// 实例化map
-		Map map = new HashMap<>();
 		List<TbStandardcheck> tbStandardcheckList = service.findStandardCheckInfo();
 		List<TbStandardcheck> tbStandardchecks = new ArrayList<TbStandardcheck>();
 		int i = 0;
@@ -232,7 +230,7 @@ public class  StandardVistDzhAction  extends BaseInit{
 		
 	
 	}
-	
+	//加的action
 	@Action(value = "standardVisit.standard.standardSingle", results={
 			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
@@ -241,6 +239,13 @@ public class  StandardVistDzhAction  extends BaseInit{
 		return "success";
 	}
 	
+	@Action(value = "standardVisit.standard.standardBatch", results={
+			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardBatch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public  String firstIn1(){
+		
+		return "success";
+	}
 }
 
 
