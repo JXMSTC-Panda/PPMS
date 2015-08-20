@@ -11,11 +11,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Language" content="en-us" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
-<base target="main" />
-<link rel="stylesheet" type="text/css" href="../css/frontmiddle.css" />
-<script language="javascript">
-</script>
-<script src="../js/Calendar.js" type="text/javascript"></script>
+
+<meta name="description" content="" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<!-- bootstrap & fontawesome -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
+
+<!-- page specific plugin styles -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/jquery-ui.custom.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/chosen.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/datepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap-timepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/daterangepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap-datetimepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/colorpicker.css" />
+<!-- text fonts -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
+
+<!-- ace styles -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace.css"
+	class="ace-main-stylesheet" id="main-ace-style" />
+
+<!--[if lte IE 9]>
+			<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-part2.css" class="ace-main-stylesheet" />
+		<![endif]-->
+
+<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-ie.css" />
+		<![endif]-->
+
+<!-- inline styles related to this page -->
+
+<!-- ace settings handler -->
+<script src="${pageContext.request.contextPath}/assets/js/ace-extra.js"></script>
+
+<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+<!--[if lte IE 8]>
+		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
+		<![endif]-->
 </head>
 
 <body>
@@ -72,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</tr>
 					</table>
 				</form>
-				<form name="form1" action="standardVisit.standard.standardSingle.do" method="post">
+				<form name="form1" action="standardVisit.standard.standardSingle.Skip.do" method="post">
 				<br />
 				<table cellpadding="0" cellspacing="0" class="tablelist" align="center">
 					<tr>

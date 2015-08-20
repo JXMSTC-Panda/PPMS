@@ -106,6 +106,10 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">创新提案表</div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> aeb7ae5a5fa1c1437f99ac2f10b945c52041d469
 							<form action="downData.do?fileName=创新提案批量导出.xls" name="StuListForm" method="post">
 
 								<c:set var="count" value="0"></c:set>
@@ -214,14 +218,9 @@
 																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
 															</ul>
 														</div>
-<<<<<<< HEAD
 														<input type="hidden" name="cols"
 															value="${innovation.innovationid} }">
 													</div></td>
-=======
-													</div>
-												</td>
->>>>>>> d62ceb83c67783e2a1d2a12ba74c0368c0bd9fdd
 											</tr>
 										</c:forEach>
 									</tbody>

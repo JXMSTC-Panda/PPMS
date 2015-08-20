@@ -70,7 +70,35 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-								<table id="grid-table"></table>
+								<table id="grid-table">
+								<tr>
+									<th>&nbsp;</th>
+									<th>营业厅编码&nbsp;&nbsp;&nbsp;&nbsp;</th>
+									<th>营业厅名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+									<th>月份&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+									<th>检查成绩&nbsp;&nbsp;&nbsp;&nbsp;</th>
+								</tr>	
+								<c:forEach items="${requestScope.TbStandardcheck}" var="tbStandardcheck">
+								<tr>
+									<td><input type="radio" name="selectBusinessHall" value="${TbStandardcheck.orgid}" checked></td>
+                        			<td>${tbStandardcheck.orgid}</td>
+									<td>${tbStandardcheck.tbStandardcheck.org_Name}</td>
+									<td>${tbStandardcheck.checkdate}</td>
+									<td>${tbStandardcheck.checkscore}</td>
+								</tr>		
+								</c:forEach>
+								</table>
+								<table style="width: 95%" cellspacing="0" cellpadding="0" align="center">
+								<tr>
+									<td  class="page" >
+										&nbsp;共5页 当前第1页 
+									<a href="#">首页</a> 
+									<a href="#">上一页</a> 
+									<a href="#">下一页</a> 
+									<a href="#">末页</a>
+									</td>
+								</tr>
+								</table>
 								<div id="grid-pager"></div>
 								<script type="text/javascript">
 									var $path_base = "..";//in Ace demo this will be used for editurl parameter

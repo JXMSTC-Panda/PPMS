@@ -248,12 +248,9 @@
 															<div class="col-sm-9">
 																<select class="form-control" id="form-field-select-1"
 																	name="tbEmployee.orgtype">
-																	<option value=""></option>
-																	<c:forEach items="${requestScope.orgs}" var="org">
-																		<option value="${org.orgid}">
-																			<c:out value="${org.type }"></c:out>
-																		</option>
-																	</c:forEach>
+																	<option value="0001">主厅</option>
+																	<option value="0002">合作厅</option>
+																	<option value="0003">置换厅</option>
 																</select>
 															</div>
 														</div>
@@ -415,9 +412,9 @@
 																<select class="form-control" id="form-field-select-1"
 																	name="tbEmployee.mobilelevel">
 																	<option value=""></option>
-																	<option value="AL">初级</option>
-																	<option value="AK">中级</option>
-																	<option value="AK">高级</option>
+																	<option value="-1">初级</option>
+																	<option value="0">中级</option>
+																	<option value="1">高级</option>
 																</select>
 															</div>
 														</div>
@@ -466,8 +463,8 @@
 																<select class="form-control" id="form-field-select-1"
 																	name="tbEmployee.frontbackflag">
 																	<option value=""></option>
-																	<option value="AL">前台</option>
-																	<option value="AK">后台</option>
+																	<option value="true">前台</option>
+																	<option value="false">后台</option>
 																</select>
 															</div>
 														</div>
@@ -480,9 +477,9 @@
 																<select class="form-control" id="form-field-select-1"
 																	name="tbEmployee.telecomlevel">
 																	<option value=""></option>
-																	<option value="AL">初级</option>
-																	<option value="AK">中级</option>
-																	<option value="AK">高级</option>
+																	<option value="-1">初级</option>
+																	<option value="0">中级</option>
+																	<option value="1">高级</option>
 																</select>
 															</div>
 														</div>

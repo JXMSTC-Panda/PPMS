@@ -59,7 +59,7 @@ public class InvocationServiceImp implements InvocationService {
 		// return dao.findbyHsql(hsql);
 
 		return baseDao.getEntitiestNotLazy(new TbInnovation(), new String[] {
-				"organizationNj", "tbEmployee" });
+				"organizationNj", "tbEmployee" },null);
 	}
 
 }

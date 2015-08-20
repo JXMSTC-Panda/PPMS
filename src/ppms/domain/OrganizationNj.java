@@ -17,7 +17,26 @@ public class OrganizationNj implements java.io.Serializable {
 	private String org_Name;
 	private String areadesc;
 	private String subareadesc;
+	private Date checkdate;
+	private Double checkscore;
 	
+	
+	public Date getCheckdate() {
+		return checkdate;
+	}
+
+	public void setCheckdate(Date checkdate) {
+		this.checkdate = checkdate;
+	}
+
+	public Double getCheckscore() {
+		return checkscore;
+	}
+
+	public void setCheckscore(Double checkscore) {
+		this.checkscore = checkscore;
+	}
+
 	public String getSubareadesc() {
 		return subareadesc;
 	}
