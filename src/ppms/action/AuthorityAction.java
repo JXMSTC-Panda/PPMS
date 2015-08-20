@@ -67,8 +67,6 @@ public class AuthorityAction extends ActionSupport {
 		request.setAttribute("tbEmployeeIDSession", tbEmployeeID);
 	}
 
-<<<<<<< HEAD
-=======
 	/** 
 	* @Title: roleSingle 
 	* @Description: TODO
@@ -83,7 +81,6 @@ public class AuthorityAction extends ActionSupport {
 		
 		return "success";
 	}
->>>>>>> de28e06a0b5459ca8fb27209c3b3022fd3fb923d
 	/**
 	 * @throws IOException
 	 * @Title: roleSingleInit
