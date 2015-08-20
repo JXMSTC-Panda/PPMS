@@ -270,7 +270,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 	 * 
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch", results = {// action的名称为selectEmployeeSkipSingle
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.selectEmployeeSkipUpdate", results = {// action的名称为selectEmployeeSkipSingle
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismUpdate.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	public String selectEmployeeSkipUpdate() {
@@ -440,45 +440,55 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 	 * 员工奖惩信息查询页面的初始化，执行数据的查询并整合。
 	 */
 	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch", results = {// action的名称为selectEmployeeSkipSingle
-			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism.employeePraiseCriticismSearch.jsp"),
+			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismSearch.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
-	public String initPage
-			) {
+	public String initPage() {
 		// 实例化map
-	
 
-		
-		List<TbEmployeepraisecriticism> employeepraisecriticismInfor = praiseCriticism
-				.findAllEmployeepraisecriticismInfor();
-		List<TbEmployeepraisecriticism> employeepraisecriticismsInfor = new ArrayList<TbEmployeepraisecriticism>();
-		for (TbEmployeepraisecriticism tbEmployeepraisecriticism : employeepraisecriticismInfor) {
-			String a = tbEmployeepraisecriticism.getPraisecriticismtype();
-			List<TbMaster> type = praiseCriticism.findEmployeePraiseCriticismType(a);
-			String employeeType = type.get(0).getValue();
-			tbEmployeepraisecriticism.setPraisecriticismtype(employeeType);
+		try {
+			List<TbEmployeepraisecriticism> employeepraisecriticismInfor = praiseCriticism
+					.findAllEmployeepraisecriticismInfor();
+			List<TbEmployeepraisecriticism> employeepraisecriticismsInfor = new ArrayList<TbEmployeepraisecriticism>();
+			for (TbEmployeepraisecriticism tbEmployeepraisecriticism : employeepraisecriticismInfor) {
+				String a = tbEmployeepraisecriticism.getPraisecriticismtype();
+				List<TbMaster> type = praiseCriticism
+						.findEmployeePraiseCriticismType(a);
+				String employeeType = type.get(0).getValue();
+				tbEmployeepraisecriticism.setPraisecriticismtype(employeeType);
 
-			List<TbMaster> level = praiseCriticism.findEmployeePraiseCriticismLevel(a,
-					tbEmployeepraisecriticism.getPraisecriticismlevel());
+				List<TbMaster> level = praiseCriticism
+						.findEmployeePraiseCriticismLevel(a,
+								tbEmployeepraisecriticism
+										.getPraisecriticismlevel());
 
-			String employeeLevel = level.get(0).getValue();
-			tbEmployeepraisecriticism.setPraisecriticismlevel(employeeLevel);
+				String employeeLevel = level.get(0).getValue();
+				tbEmployeepraisecriticism
+						.setPraisecriticismlevel(employeeLevel);
 
-			List<OrganizationNj> organizationNjResults = praiseCriticism
-					.findOrganizationNjInfor(tbEmployeepraisecriticism
-							.getOrganizationNj().getOrgid());// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
-			tbEmployeepraisecriticism.setOrganizationNj(organizationNjResults
-					.get(0));// 将同步营业厅信息set进对象organizationNj中
+				List<OrganizationNj> organizationNjResults = praiseCriticism
+						.findOrganizationNjInfor(tbEmployeepraisecriticism
+								.getOrganizationNj().getOrgid());// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
+				tbEmployeepraisecriticism
+						.setOrganizationNj(organizationNjResults.get(0));// 将同步营业厅信息set进对象organizationNj中
 
-			List<TbEmployee> tbEmployeeResults = praiseCriticism
-					.findEmployeeInfor(tbEmployeepraisecriticism
-							.getTbEmployee().getEmployeeid());
-			tbEmployeepraisecriticism.setTbEmployee(tbEmployeeResults.get(0));
-			employeepraisecriticismsInfor.add(tbEmployeepraisecriticism);
+				List<TbEmployee> tbEmployeeResults = praiseCriticism
+						.findEmployeeInfor(tbEmployeepraisecriticism
+								.getTbEmployee().getEmployeeid());
+				tbEmployeepraisecriticism.setTbEmployee(tbEmployeeResults
+						.get(0));
+				employeepraisecriticismsInfor.add(tbEmployeepraisecriticism);
+			}
+			System.out.println(employeepraisecriticismInfor);
+			map.put("employeepraisecriticismsInfor",
+					employeepraisecriticismsInfor);
+			
+			toCache();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
 		}
-		System.out.println(employeepraisecriticismInfor);
-		map.put("employeepraisecriticismsInfor", employeepraisecriticismsInfor);
 
-		return null;
+		return "success";
 	}
 
 }
