@@ -135,11 +135,11 @@
 												<td><a href="#">${orgpraisecriticismsInfor.organizationNj.orgid}</a>
 												</td>
 												<td>${orgpraisecriticismsInfor.organizationNj.org_Name}</td>
-												<td class="hidden-480">${orgpraisecriticismsInfor.praisecriticismtype}</td>
+												<td class="hidden-480">${orgpraisecriticismsInfor.type}</td>
 												<td>${orgpraisecriticismsInfor.cause}</td>
 												<td>${orgpraisecriticismsInfor.praisecriticismdate}</td>
-												<td>${orgpraisecriticismsInfor.praisecriticismlevel}</td>
-												<td>+1</td>
+												<td>${orgpraisecriticismsInfor.level}</td>
+												<td>${orgpraisecriticismsInfor.score}</td>
 
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ppms.daoimpl.BaseDaoImp;
 import ppms.daoimpl.userBaseInfoDaoImp;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbEmployee;
@@ -14,7 +15,7 @@ import ppms.domain.TbRole;
 import ppms.service.userBaseInfoService;
 
 @Service
-public class userBaseInfoServiceImp implements userBaseInfoService{
+public class userBaseInfoServiceImp extends BaseDaoImp implements userBaseInfoService{
 
 	/*
 	 * 创建一个员工dao
@@ -53,6 +54,10 @@ public class userBaseInfoServiceImp implements userBaseInfoService{
 	public List<TbEmployee> getTbEmployee() {
 		
 		return dao.getTbEmployees();
-	}   
+	}  
+    @Override
+    public void delete(Object object) {
+		getHibernateTemplate().delete(object);
+	}
 	
 }

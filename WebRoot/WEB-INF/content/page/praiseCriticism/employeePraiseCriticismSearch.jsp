@@ -141,11 +141,15 @@
 												<td class="hidden-480">${employeepraisecriticismsInfor.tbEmployee.idnumber}</td>
 												<td>${employeepraisecriticismsInfor.organizationNj.orgid}</td>
 												<td>${employeepraisecriticismsInfor.organizationNj.org_Name}</td>
-												<td>${employeepraisecriticismsInfor.praisecriticismtype}</td>
+												<td>
+												${employeepraisecriticismsInfor.type}
+												</td>
 												<td>${employeepraisecriticismsInfor.cause}</td>
-												<td>${employeepraisecriticismsInfor.praisecriticismlevel}</td>
+												<td>
+												${employeepraisecriticismsInfor.level}
+												</td>
 												<td>${employeepraisecriticismsInfor.praisecriticismdate}</td>
-												<td>+0.5</td>
+												<td>${employeepraisecriticismsInfor.score}</td>
 
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">

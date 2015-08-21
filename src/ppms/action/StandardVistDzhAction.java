@@ -13,25 +13,24 @@ import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
+import org.hibernate.dialect.Oracle10gDialect;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import ppms.action.interfaces.BaseInit;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbAreaorgrelation;
 import ppms.domain.TbStandardcheck;
 import ppms.domain.TbSubarea;
 import ppms.domain.TbSubareaorgrelation;
-import ppms.serviceimpl.PraiseCriticismServiceImp;
 import ppms.serviceimpl.StandardCheckServiceImp;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
 
 
-public class  StandardVistDzhAction  extends ActionSupport{
+public class  StandardVistDzhAction  extends BaseInit{
 
 	private TbStandardcheck tbStandardcheck;
 	private TbArea tbArea;
@@ -148,7 +147,7 @@ public class  StandardVistDzhAction  extends ActionSupport{
 	/**
 	 * 嵌入数据
 	 * */
-	@Action(value = "standardVisit.standard.standardSingle", results={
+	@Action(value = "standardVisit.standard.standardSingle.Skip", results={
 			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
 	public String selectSingleOrgSkip(){
@@ -197,44 +196,56 @@ public class  StandardVistDzhAction  extends ActionSupport{
 	/**
 	 * 
 	 * 初始化标准化页面*/
-	
-	public Map<String, List<T>> initPage(ServletContext servletContext,String url) {
-		// 实例化map
-		Map map = new HashMap<>();
-		StandardCheckServiceImp service = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext).getBean(StandardCheckServiceImp.class);
-		
-		List<OrganizationNj> organizationNjAll = service.findOrganizationInfo();
-		List<OrganizationNj> organizationNjList =new ArrayList<OrganizationNj>();
-		int i=0;
+
+	@Action(value = "standardVisit.standard.standardSearch", results={
+			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSearch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public String initPage() {
+		List<TbStandardcheck> tbStandardcheckList = service.findStandardCheckInfo();
+		List<TbStandardcheck> tbStandardchecks = new ArrayList<TbStandardcheck>();
+		int i = 0;
 		try {
-			for(OrganizationNj organizationNj : organizationNjAll){
-				
-				Integer orgId = organizationNjAll.get(i).getOrgid();//逐渐取值  
-				String orgName = organizationNjAll.get(i).getOrg_Name();
-				/**
-				 * 获取检查时间和检查成绩营业厅ID和营业厅名称
-				 * */
-				List<TbStandardcheck> tbStandardchecks = service.findStandardCheckInfo();
-				Date checkdate = tbStandardchecks.get(i).getCheckdate();
-				Double checkscore = tbStandardchecks.get(i).getCheckscore();
-				organizationNj.setCheckdate(checkdate);
-				organizationNj.setCheckscore(checkscore);	
-				organizationNj.setOrgid(orgId);
-				organizationNj.setOrg_Name(orgName);
-				organizationNjList.add(organizationNj);
+			for(TbStandardcheck tbStandardcheck : tbStandardcheckList){
+				Double checkscore = tbStandardcheckList.get(i).getCheckscore();//分数
+				Date checkdate = tbStandardcheckList.get(i).getCheckdate();//日期
+				Integer orgid = tbStandardcheckList.get(i).getOrganizationNj().getOrgid();//营业Id
+				List<OrganizationNj> organizationNjList = service.findOrganizationId(orgid);
+				OrganizationNj organizationNj = organizationNjList.get(0);
+			    tbStandardcheck.setOrg_Name(organizationNj.getOrg_Name());//set营业厅名称
+				tbStandardcheck.setCheckdate(checkdate);
+				tbStandardcheck.setCheckscore(checkscore);
+				tbStandardcheck.setOrganizationNj(organizationNj);
+			    
+				//System.out.println(checkscore+""+checkdate+" "+orgid+""+orgName);
+			    tbStandardchecks.add(tbStandardcheck);	
 				i++;
 			}
-			map.put("OrganizationNj", organizationNjList);
-		} catch (Exception e) {
-			e.printStackTrace();
+				map.put("TbStandardcheck", tbStandardchecks);
+				toCache();
+			} catch (Exception e) {
+				e.printStackTrace();
 		}
-		return map;
+		
+		return "success";
+		
 	
 	}
+	//加的action
+	@Action(value = "standardVisit.standard.standardSingle", results={
+			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public  String firstIn(){
+		
+		return "success";
+	}
 	
-	
-	
-	
+	@Action(value = "standardVisit.standard.standardBatch", results={
+			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardBatch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public  String firstIn1(){
+		
+		return "success";
+	}
 }
 
 
