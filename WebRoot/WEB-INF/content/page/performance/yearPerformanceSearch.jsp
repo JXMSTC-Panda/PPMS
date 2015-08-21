@@ -96,7 +96,7 @@
 							<div class="page-header">
 								<h1>
 									绩效管理 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 月度绩效查询 </small>
+										class="ace-icon fa fa-angle-double-right"></i>年度绩效查询 </small>
 								</h1>
 							</div>
 							<!-- PAGE CONTENT BEGINS -->
