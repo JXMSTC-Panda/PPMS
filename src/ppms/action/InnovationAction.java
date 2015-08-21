@@ -35,6 +35,17 @@ import com.opensymphony.xwork2.ActionSupport;
 public class InnovationAction extends BaseInit {
 
 	private TbInnovation innovation;
+	
+	private String id;
+
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public void setInnovation(TbInnovation innovation) {
 		this.innovation = innovation;
@@ -98,7 +109,66 @@ public class InnovationAction extends BaseInit {
 		toCache();
 		return "success";
 	}
+	
 
+	@Action(value = "innovation.null.innovationBatch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationBatch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String batchUpload(){
+		
+		return "success";
+	}
+	@Action(value = "innovation.null.innovationSearch.delete", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String delete(){
+		try {
+			if(id!=null){
+				
+				if(service.delete(id)){
+					ServletActionContext.getResponse().sendRedirect("innovation.null.innovationSearch.do");
+					return null;
+				}
+			}
+			return "error";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+	}
+	@Action(value = "innovation.null.innovationSearch.modify", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationUpdate.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String modify(){
+		if(id!=null){
+			
+			TbInnovation tbInnovation = service.find(id);
+			ServletActionContext.getRequest().setAttribute("tbInnovation", tbInnovation);
+			return "success";
+		}
+		return "error";
+	}
+	
+	@Action(value = "innovation.null.innovationSearch.update", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationUpdate.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String update(){
+		
+		try {
+			if(innovation!=null){
+				
+				innovation.setEncouragement(innovation.getEncouragement().replaceAll(", ", ""));
+				service.update(innovation);
+				ServletActionContext.getResponse().sendRedirect("innovation.null.innovationSearch.do");
+				return null;
+			}
+			return "error";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		
+	}
 	/**
 	 * 获取所有营业厅的信息
 	 * 
@@ -108,7 +178,6 @@ public class InnovationAction extends BaseInit {
 	private List<OrganizationNj> getOrganizationNjs() {
 		return service.getOrganizations();
 	}
-
 	/**
 	 * 获取所有的创新提案
 	 * 
