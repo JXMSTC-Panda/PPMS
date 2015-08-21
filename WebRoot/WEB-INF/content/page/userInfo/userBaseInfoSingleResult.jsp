@@ -96,7 +96,7 @@
 													</button>
 
 													&nbsp; &nbsp; &nbsp;
-													<button class="btn" onclick="top.window.location='userInfo.userBase.userBaseInfoSearch.resultBackSearch.do'">
+													<button class="btn" onclick="top.window.location='userInfo.userBase.userBaseInfoSearch.do'">
 														<i class="ace-icon fa fa-undo bigger-110"></i> 转至查询
 													</button>
 												</div>
