@@ -57,12 +57,13 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 	 * 
 	 * @return
 	 */
-	@Action(value = "employeePraiseCriticismSingleStart", results = {// action的名称为employeePraiseCriticismSingleStart
-			@Result(name = "success", location = "/WEB-INF/content/page/userinfo/Demo.jsp"),// 返回值为success时跳转的页面路径
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSingle.employeePraiseCriticismSingleSave", results = {// action的名称为employeePraiseCriticismSingleStart
+			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismSingleResult.jsp"),// 返回值为success时跳转的页面路径
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	// 返回值为error时跳转的页面路径
-	public String employeePraiseCriticismSingleStart() {
-		System.out.println("save infor");
+	public String save() {
+		ActionContext actionContext = ActionContext.getContext();// 创建ActionContext的对象并调用getContext()方法
+		Map<String, Object> request = (Map) actionContext.get("request");// 获取出request对象
 		try {
 			String type = tbEmployeepraisecriticism.getPraisecriticismtype();
 			String praisecriticismtype = "000" + type;
@@ -75,10 +76,12 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 			System.out.println(tbEmployeepraisecriticism.getTbEmployee()
 					.getEmployeeid());
 			praiseCriticism.save(tbEmployeepraisecriticism);// 执行save方法，实现员工奖惩信息的单条录入
+			request.put("results", "success!");
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.put("results", "error!");
 		}
-		return null;
+		return "success";
 	}
 
 	/**
@@ -214,7 +217,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 	 * 
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSingle", results = {// action的名称为selectEmployeeSkipSingle
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSingle.selectEmployeeSkipSingle", results = {// action的名称为selectEmployeeSkipSingle
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismSingle.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	public String selectEmployeeSkipSingle() {
@@ -365,11 +368,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 
 			praiseCriticism.update(tbEmployeepraisecriticism);
 			ServletActionContext
-					.getRequest()
-					.getRequestDispatcher(
-							"/praiseCriticism.employee.employeePraiseCriticismSearch")
-					.forward(ServletActionContext.getRequest(),
-							ServletActionContext.getResponse());
+			.getResponse().sendRedirect("praiseCriticism.employee.employeePraiseCriticismSearch.do");
 
 			return null;
 		} catch (Exception e) {
@@ -391,11 +390,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 
 		try {
 			ServletActionContext
-					.getRequest()
-					.getRequestDispatcher(
-							"/praiseCriticism.employee.employeePraiseCriticismSearch")
-					.forward(ServletActionContext.getRequest(),
-							ServletActionContext.getResponse());
+			.getResponse().sendRedirect("praiseCriticism.employee.employeePraiseCriticismSearch.do");
 
 			return null;
 		} catch (Exception e) {
@@ -423,12 +418,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 
 			praiseCriticism.delete(employeepraisecriticismInfor.get(0));
 			ServletActionContext
-					.getRequest()
-					.getRequestDispatcher(
-							"/praiseCriticism.employee.employeePraiseCriticismSearch")
-					.forward(ServletActionContext.getRequest(),
-							ServletActionContext.getResponse());
-
+					.getResponse().sendRedirect("praiseCriticism.employee.employeePraiseCriticismSearch.do");
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -450,21 +440,26 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 					.findAllEmployeepraisecriticismInfor();
 			List<TbEmployeepraisecriticism> employeepraisecriticismsInfor = new ArrayList<TbEmployeepraisecriticism>();
 			for (TbEmployeepraisecriticism tbEmployeepraisecriticism : employeepraisecriticismInfor) {
-	/*			String a = tbEmployeepraisecriticism.getPraisecriticismtype();
+				String a = tbEmployeepraisecriticism.getPraisecriticismtype();
 				List<TbMaster> type = praiseCriticism
 						.findEmployeePraiseCriticismType(a);
 				String employeeType = type.get(0).getValue();
-				tbEmployeepraisecriticism.setPraisecriticismtype(employeeType);
-
+				tbEmployeepraisecriticism.setType(employeeType);
+				String b=tbEmployeepraisecriticism.getPraisecriticismlevel();
 				List<TbMaster> level = praiseCriticism
 						.findEmployeePraiseCriticismLevel(a,
 								tbEmployeepraisecriticism
 										.getPraisecriticismlevel());
-
 				String employeeLevel = level.get(0).getValue();
-				tbEmployeepraisecriticism
-						.setPraisecriticismlevel(employeeLevel);
-*/
+				tbEmployeepraisecriticism.setLevel(employeeLevel);
+				String score=null;
+				if(a.equals("0001"))
+					{score="+"+Integer.parseInt(b)*0.5;}
+				else
+					if(a.equals("0002"))
+						{score="-"+Integer.parseInt(b)*0.5;}
+				tbEmployeepraisecriticism.setScore(score);
+				
 				List<OrganizationNj> organizationNjResults = praiseCriticism
 						.findOrganizationNjInfor(tbEmployeepraisecriticism
 								.getOrganizationNj().getOrgid());// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
@@ -486,6 +481,21 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 			return "error";
 		}
 
+		return "success";
+	}
+	
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismBatch", results = {// action的名称为selectEmployeeSkipSingle
+			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismBatch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
+	public String batch() {
+	
+		return "success";
+	}
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSingle", results = {// action的名称为selectEmployeeSkipSingle
+			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismSingle.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
+	public String single() {
+	
 		return "success";
 	}
 

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <html lang="en">
 <head>  
@@ -80,12 +81,12 @@
 								</tr>	
 								<c:forEach items="${requestScope.TbStandardcheck}" var="tbStandardcheck">
 								<tr>
-									<td><input type="radio" name="selectBusinessHall" value="${TbStandardcheck.orgid}" checked></td>
-                        			<td>${tbStandardcheck.orgid}</td>
-									<td>${tbStandardcheck.tbStandardcheck.org_Name}</td>
+									<td><input type="radio" name="selectBusinessHall" value="${tbStandardcheck.organizationNj.orgid}" checked></td>
+                        			<td>${tbStandardcheck.organizationNj.orgid}</td>
+									<td>${tbStandardcheck.org_Name}</td>
 									<td>${tbStandardcheck.checkdate}</td>
-									<td>${tbStandardcheck.checkscore}</td>
-								</tr>		
+										<td>${tbStandardcheck.checkscore}</td>
+									</tr>		
 								</c:forEach>
 								</table>
 								<table style="width: 95%" cellspacing="0" cellpadding="0" align="center">
