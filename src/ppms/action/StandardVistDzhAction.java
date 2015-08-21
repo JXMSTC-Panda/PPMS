@@ -1,21 +1,23 @@
 package ppms.action;
 
-import java.awt.geom.Area;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.crypto.Data;
+import javax.servlet.ServletContext;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.hibernate.dialect.Oracle10gDialect;
-import org.jboss.weld.bean.NewBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import ppms.action.interfaces.BaseInit;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbAreaorgrelation;
@@ -25,11 +27,10 @@ import ppms.domain.TbSubareaorgrelation;
 import ppms.serviceimpl.StandardCheckServiceImp;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
 
 
-public class  StandardVistDzhAction  extends ActionSupport{
+public class  StandardVistDzhAction  extends BaseInit{
 
 	private TbStandardcheck tbStandardcheck;
 	private TbArea tbArea;
@@ -37,6 +38,8 @@ public class  StandardVistDzhAction  extends ActionSupport{
 	//
 	@Autowired
 	private StandardCheckServiceImp service;
+	@Autowired
+	private StandardCheckServiceImp add;
 	
 
 	//get
@@ -144,7 +147,7 @@ public class  StandardVistDzhAction  extends ActionSupport{
 	/**
 	 * 嵌入数据
 	 * */
-	@Action(value = "standardVisit.standard.standardSingle", results={
+	@Action(value = "standardVisit.standard.standardSingle.Skip", results={
 			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
 	public String selectSingleOrgSkip(){
@@ -178,7 +181,7 @@ public class  StandardVistDzhAction  extends ActionSupport{
 	
 	
 	/**
-	 * 功能：点击提交后，叫数据插入到
+	 * 功能：点击提交后，数据插入到标准化表中
 	 * 
 	 * 
 	 * */
@@ -186,12 +189,62 @@ public class  StandardVistDzhAction  extends ActionSupport{
 			@Result(name="success",location="/WEB-INF/content/page/standardVisit/sucess.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
 	public String StandardInsert(){
+		//插入
+		add.save(tbStandardcheck);		
+		return "success";
+	}
+	/**
+	 * 
+	 * 初始化标准化页面*/
+
+	@Action(value = "standardVisit.standard.standardSearch", results={
+			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSearch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public String initPage() {
+		List<TbStandardcheck> tbStandardcheckList = service.findStandardCheckInfo();
+		List<TbStandardcheck> tbStandardchecks = new ArrayList<TbStandardcheck>();
+		int i = 0;
+		try {
+			for(TbStandardcheck tbStandardcheck : tbStandardcheckList){
+				Double checkscore = tbStandardcheckList.get(i).getCheckscore();//分数
+				Date checkdate = tbStandardcheckList.get(i).getCheckdate();//日期
+				Integer orgid = tbStandardcheckList.get(i).getOrganizationNj().getOrgid();//营业Id
+				List<OrganizationNj> organizationNjList = service.findOrganizationId(orgid);
+				OrganizationNj organizationNj = organizationNjList.get(0);
+			    tbStandardcheck.setOrg_Name(organizationNj.getOrg_Name());//set营业厅名称
+				tbStandardcheck.setCheckdate(checkdate);
+				tbStandardcheck.setCheckscore(checkscore);
+				tbStandardcheck.setOrganizationNj(organizationNj);
+			    
+				//System.out.println(checkscore+""+checkdate+" "+orgid+""+orgName);
+			    tbStandardchecks.add(tbStandardcheck);	
+				i++;
+			}
+				map.put("TbStandardcheck", tbStandardchecks);
+				toCache();
+			} catch (Exception e) {
+				e.printStackTrace();
+		}
 		
-		Integer orgId  = Integer.valueOf(ServletActionContext.getRequest().getParameter("tbStandardcheck.organizationNj.orgid"));
-		Date checkdate = Date.valueOf(ServletActionContext.getRequest().getParameter("tbStandardcheck.organizationNj.checkdate"));
-		Double checkscore = Double.valueOf(ServletActionContext.getRequest().getParameter("tbStandardcheck.organizationNj.checkscore"));
-		System.out.println("orgId ="+orgId+"checkdate = "+checkdate+"checkscore = "+ checkscore);
-		return "";
+		return "success";
+		
+	
+	}
+	//加的action
+	@Action(value = "standardVisit.standard.standardSingle", results={
+			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public  String firstIn(){
+		
+		return "success";
+	}
+	
+	@Action(value = "standardVisit.standard.standardBatch", results={
+			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardBatch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public  String firstIn1(){
+		
+		return "success";
 	}
 }
 

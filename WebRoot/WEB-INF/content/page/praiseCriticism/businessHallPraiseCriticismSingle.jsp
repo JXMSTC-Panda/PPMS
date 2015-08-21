@@ -116,7 +116,7 @@
 									<div class="col-xs-12">
 										<!-- PAGE CONTENT BEGINS -->
 										<form class="form-horizontal" role="form"
-											action="businessHallPraiseCriticismSingleStart.do">
+											action="praiseCriticism.businessHall.businessHallPraiseCriticismSingle.businessHallPraiseCriticismSingleSave.do" method="post">
 											<!-- #section:elements.form -->
 
 
@@ -171,8 +171,8 @@
 												<div class="col-sm-9">
 													<select class="col-xs-10 col-sm-5" id="form-field-select-1"
 														name="tbOrgpraisecriticism.praisecriticismtype">
-														<option value="1">惩罚</option>
-														<option value="2">表彰</option>
+														<option value="2">惩罚</option>
+														<option value="1">表彰</option>
 													</select>
 												</div>
 											</div>

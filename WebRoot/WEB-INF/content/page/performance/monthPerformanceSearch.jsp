@@ -83,8 +83,7 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a>
-						</li>
+						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -135,7 +134,8 @@
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
 														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label></td>
+												</label>
+												</td>
 
 												<!-- ${ status.index + 1} 序号自增 -->
 												<td>${ status.index + 1}</td>
@@ -155,8 +155,8 @@
 														<a class="green" href="javascript:void(0)" name=""
 															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="performance.month.monthPerformanceSearch_Del.do?performanceid=${pers.performanceid}"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+															href="performance.month.monthPerformanceSearch.Delete.do?performanceid=${pers.performanceid}">
+															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -172,24 +172,24 @@
 																	onclick="GetDetail(this)" class="tooltip-info"
 																	data-rel="tooltip" title="View"> <span class="blue">
 																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																	</span> </a>
-																</li>
+																	</span> </a></li>
 
 																<li><a href="javascript:void(0)" name=""
 																	onclick="Modify(this)" class="tooltip-success"
 																	data-rel="tooltip" title="Edit"> <span
 																		class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a href="ClassDelete?classId="
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
 															</ul>
 														</div>
-													</div>
-												</td>
+													</div></td>
 											</tr>
 										</c:forEach>
 									</tbody>

@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -94,13 +95,14 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<h3 class="header smaller lighter blue">员工奖惩信息管理</h3>
+							<h3 class="header smaller lighter blue">业务差错检查成绩管理</h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">信息查询</div>
-							<form action="downData.do?fileName=员工奖惩信息批量导出.xls" name="StuListForm" method="post">
+							<form  name="StuListForm" action="standardVisit.operationMistake.operationMistakeSearch.SkipOperationMistakeUpdate.do?tbOperationcheck.operationcheckid=${requestScope.operationcheckid}" method="post"
+ method="post" >
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -112,57 +114,54 @@
 											<th>工号</th>
 											<th>姓名</th>
 											<th>身份证号</th>
+											<th>区域</th>
 											<th>营业厅编码</th>
 											<th>营业厅名称</th>
-											<th>类型</th>
-											<th>奖惩原因</th>
-											<th>级别</th>
-											<th>年月</th>
-											<th>分值</th>
+											<th>性别</th>
+											<th>出生年月</th>
+											<th>岗职</th>
+											<th>岗位</th>
 											<th></th>
 										</tr>
 									</thead>
 
 									<tbody>
-										<c:forEach
-											items="${requestScope.employeepraisecriticismsInfor}"
-											var="employeepraisecriticismsInfor" varStatus="status">
+										<c:forEach items="${requestScope.employeeInfos}"
+											var="employeeInfo">
 											<tr>
-												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace"
-														value="${employeepraisecriticismsInfor.praisecriticismid}"
-														name="cols" /> <span class="lbl"></span> </label>
-												</td>
-
+												<td><input type="radio" name="selectEmployee"
+													value="${employeeInfo.employeeid}" checked></td>
 												<td></td>
-												<td><a href="#">${employeepraisecriticismsInfor.tbEmployee.employeecode}</a>
+												<td>${employeeInfo.employeecode}</td>
+												<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a>
 												</td>
-												<td>${employeepraisecriticismsInfor.tbEmployee.employeename}</td>
-												<td class="hidden-480">${employeepraisecriticismsInfor.tbEmployee.idnumber}</td>
-												<td>${employeepraisecriticismsInfor.organizationNj.orgid}</td>
-												<td>${employeepraisecriticismsInfor.organizationNj.org_Name}</td>
-												<td>
-												${employeepraisecriticismsInfor.type}
+												<td>${employeeInfo.idnumber}</td>
+												<td>${employeeInfo.organizationNj.areadesc}</td>
+												<td>${employeeInfo.organizationNj.orgid}</td>
+												<td>${employeeInfo.organizationNj.org_Name}</td>
+												<td><c:if test="${employeeInfo.sex==true}">
+														<c:out value="女"></c:out>
+													</c:if> <c:if test="${employeeInfo.sex==false}">
+														<c:out value="男"></c:out>
+													</c:if>
 												</td>
-												<td>${employeepraisecriticismsInfor.cause}</td>
-												<td>
-												${employeepraisecriticismsInfor.level}
-												</td>
-												<td>${employeepraisecriticismsInfor.praisecriticismdate}</td>
-												<td>${employeepraisecriticismsInfor.score}</td>
+												<td>${employeeInfo.birthday}</td>
+												<td>${employeeInfo.tbPost.postname}</td>
+												<td>${employeeInfo.tbJob.jobname}</td>
+
 
 												<td>
-													<div class="hidden-sm hidden-xs action-buttons">
-														<%-- <a class="blue" href="javascript:void(0)"
+													<%-- <div class="hidden-sm hidden-xs action-buttons">
+														 <a class="blue" href="javascript:void(0)"
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%>
+															<i class="fa fa-search-plus bigger-130">详细</i> </a> 
 														<a class="green"
-															href="praiseCriticism.employee.employeePraiseCriticismSearch.SkipUpdateEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}"
+															href="praiseCriticism.employee.employeePraiseCriticismSearch.SkipUpdateEmployeeInfor.do"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
 															href="praiseCriticism.employee.employeePraiseCriticismSearch.deleteEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}">
 															<i class="fa fa-trash bigger-130">删除</i> </a>
-													</div>
+													</div> --%>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
 															<button class="btn btn-minier btn-yellow dropdown-toggle"
@@ -199,14 +198,17 @@
 													</div></td>
 											</tr>
 										</c:forEach>
+										<table cellpadding="0" cellspacing="0" width="95%"
+											align="center">
+											<tr>
+												<td align="center"><input type="submit"
+													name="doSelectButton" value="确定" class="btn_2" /> <input
+													type="button" name="doCloseButton" value="关闭" class="btn_2"
+													onclick="window.close();" /></td>
+											</tr>
+										</table>
 									</tbody>
 								</table>
-								<div class="col-md-offset-3 col-md-9" align="center">
-									<button class="btn btn-info" type="submit" >
-										<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
-									</button>
-								</div>
-
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>

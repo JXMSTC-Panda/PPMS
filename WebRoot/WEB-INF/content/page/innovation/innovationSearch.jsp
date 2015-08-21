@@ -59,113 +59,6 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
-
-<script type="text/javascript">
-	function getXlsFromTbl(inTblId, inWindow) {
-		try {
-			var allStr = "";
-			var curStr = "";
-			//alert("getXlsFromTbl");
-			if (inTblId != null && inTblId != "" && inTblId != "null") {
-				curStr = getTblData(inTblId, inWindow);
-			}
-			if (curStr != null) {
-				allStr += curStr;
-			} else {
-				alert("你要导出的表不存在！");
-				return;
-			}
-			var fileName = getExcelFileName();
-			doFileExport(fileName, allStr);
-		} catch (e) {
-			alert("导出发生异常:" + e.name + "->" + e.description + "!");
-		}
-	}
-	function getTblData(inTbl, inWindow) {
-		var rows = 0;
-		//alert("getTblData is " + inWindow);
-		var tblDocument = document;
-		if (!!inWindow && inWindow != "") {
-			if (!document.all(inWindow)) {
-				return null;
-			} else {
-				tblDocument = eval(inWindow).document;
-			}
-		}
-		var curTbl = tblDocument.getElementById(inTbl);
-		var outStr = "";
-		if (curTbl != null) {
-			for ( var j = 0; j < curTbl.rows.length; j++) {
-				for ( var i = 0; i < curTbl.rows[j].cells.length; i++) {
-					if (i == 0 && rows > 0) {
-						outStr += " \t";
-						rows -= 1;
-					}
-					outStr += curTbl.rows[j].cells[i].innerText + "\t";
-					if (curTbl.rows[j].cells[i].colSpan > 1) {
-						for ( var k = 0; k < curTbl.rows[j].cells[i].colSpan - 1; k++) {
-							outStr += " \t";
-						}
-					}
-					if (i == 0) {
-						if (rows == 0 && curTbl.rows[j].cells[i].rowSpan > 1) {
-							rows = curTbl.rows[j].cells[i].rowSpan - 1;
-						}
-					}
-				}
-				outStr += "\r\n";
-			}
-		} else {
-			outStr = null;
-			alert(inTbl + "不存在!");
-		}
-		return outStr;
-	}
-	function getExcelFileName() {
-		var d = new Date();
-		var curYear = d.getYear();
-		var curMonth = "" + (d.getMonth() + 1);
-		var curDate = "" + d.getDate();
-		var curHour = "" + d.getHours();
-		var curMinute = "" + d.getMinutes();
-		var curSecond = "" + d.getSeconds();
-		if (curMonth.length == 1) {
-			curMonth = "0" + curMonth;
-		}
-		if (curDate.length == 1) {
-			curDate = "0" + curDate;
-		}
-		if (curHour.length == 1) {
-			curHour = "0" + curHour;
-		}
-		if (curMinute.length == 1) {
-			curMinute = "0" + curMinute;
-		}
-		if (curSecond.length == 1) {
-			curSecond = "0" + curSecond;
-		}
-		var fileName = "91zaojia" + "_" + curYear + curMonth + curDate + "_"
-				+ curHour + curMinute + curSecond + ".xls";
-		return fileName;
-	}
-	function doFileExport(inName, inStr) {
-		var xlsWin = null;
-		if (!!document.all("glbHideFrm")) {
-			xlsWin = glbHideFrm;
-		} else {
-			var width = 6;
-			var height = 4;
-			var openPara = "left=" + (window.screen.width / 2 - width / 2)
-					+ ",top=" + (window.screen.height / 2 - height / 2)
-					+ ",scrollbars=no,width=" + width + ",height=" + height;
-			xlsWin = window.open("", "_blank", openPara);
-		}
-		xlsWin.document.write(inStr);
-		xlsWin.document.close();
-		xlsWin.document.execCommand('Saveas', true, inName);
-		xlsWin.close();
-	}
-</script>
 </head>
 
 <body class="no-skin">
@@ -191,7 +84,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
+						<li><a href="#">父功能</a>
+						</li>
 						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -212,7 +106,8 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">创新提案表</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=创新提案批量导出.xls" name="StuListForm" method="post">
+
 								<c:set var="count" value="0"></c:set>
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
@@ -241,41 +136,44 @@
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
 														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label></td>
+												</label>
+												</td>
 												<td><c:if test="${innovation.tbEmployee!=null}">
 														<c:out value="${innovation.tbEmployee.employeecode}"></c:out>
 												</td>
 												</c:if>
 												<td><c:if test="${ innovation.tbEmployee!=null}">
 														<c:out value="${innovation.tbEmployee.employeename}"></c:out>
-													</c:if>
-												</td>
+													</c:if></td>
 												<td><c:if test="${ innovation.tbEmployee!=null}">
 														<c:out value="${innovation.tbEmployee.idnumber}"></c:out>
-													</c:if>
-												</td>
+													</c:if></td>
 												<td><c:out value="${innovation.organizationNj.orgid}"></c:out>
 												</td>
 												<td><c:out
 														value="${innovation.organizationNj.org_Name}"></c:out>
 												</td>
-												<td><c:out value="${innovation.innovationcontent}"></c:out>
-													<c:if test="${innovation.tbEmployee==null}">
-														<td><c:out value="团队创新"></c:out>
+												<td><c:out value="${innovation.innovationcontent}"></c:out></td>
+													<td><c:if test="${innovation.tbEmployee==null}">
+														<c:out value="团队创新"></c:out>
 													</c:if> <c:if test="${innovation.tbEmployee!=null}">
-														<td><c:out value="个人创新"></c:out>
-														</td>
+														<c:out value="个人创新"></c:out>
+
 													</c:if>
-												<td>
+												</td>
 												<td><c:out
-														value="${fn:split(innovation.assessdate,'')[0]}"></c:out>
+														value="${fn:split(innovation.assessdate,' ')[0]}"></c:out>
+												</td>
+												<td><c:out
+														value="${ innovation.assessresult}"></c:out>
 												</td>
 												<td><c:forEach items="${requestScope.masters }"
 														var="master">
 														<c:if test="${innovation.assesslevel==master.key}">
 															<c:out value="${master.value }"></c:out>
 														</c:if>
-													</c:forEach></td>
+													</c:forEach>
+												</td>
 												<td><c:out value="${innovation.encouragement}"></c:out>
 												</td>
 												<td>
@@ -300,23 +198,24 @@
 																	onclick="GetDetail(this)" class="tooltip-info"
 																	data-rel="tooltip" title="View"> <span class="blue">
 																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a href="javascript:void(0)" name=""
 																	onclick="Modify(this)" class="tooltip-success"
 																	data-rel="tooltip" title="Edit"> <span
 																		class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a>
-																</li>
+																	</span> </a></li>
 
 																<li><a href="ClassDelete?classId="
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
-																</li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
 															</ul>
 														</div>
+														<input type="hidden" name="cols"
+															value="${innovation.innovationid} }">
 													</div></td>
 											</tr>
 										</c:forEach>
@@ -324,8 +223,7 @@
 								</table>
 								<div class="clearfix form-actions">
 									<div class="col-md-offset-3 col-md-9">
-										<button class="btn btn-info" type="button"
-											onclick="getXlsFromTbl('dynamic-table',null)";>
+										<button class="btn btn-info" type="submit">
 											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
 										</button>
 
@@ -363,31 +261,29 @@
 
 
 
-	<script src="../assets/js/dataTables/jquery.dataTables.js">
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js">
 		
 	</script>
-	<script src="../assets/js/dataTables/jquery.dataTables.bootstrap.js"
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"
 		chartset="utf8"></script>
 	<script
-		src="../assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
-		src="../assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
 			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-			.dataTable(
-					{
-						bAutoWidth : false,
-						"aoColumns" : [ {
-							"bSortable" : false
-						}, null, null, null, null, null, null, null, null,
-								null, null, null, {
-									"bSortable" : false
-								} ],
-						"aaSorting" : [],
+			.dataTable({
+				bAutoWidth : false,
+				"aoColumns" : [ {
+					"bSortable" : false
+				}, null, null, null, null,null, null, null,null,null,null,null, {
+					"bSortable" : false
+				} ],
+				"aaSorting" : [],
 
 					//,
 					//"sScrollY": "200px",

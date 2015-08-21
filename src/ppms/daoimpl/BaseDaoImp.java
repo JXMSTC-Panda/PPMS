@@ -7,9 +7,13 @@ import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.SimpleExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
+
+import ppms.domain.TbInnovation;
 
 /**
  * dao层的基本类
@@ -81,13 +85,18 @@ public class BaseDaoImp extends HibernateDaoSupport {
 	 * @param fields 是表实例类型的 成员变量名
 	 * @return
 	 */
-	public<T> List<T> getEntitiestNotLazy(T t,String [] fields){
+	public<T> List<T> getEntitiestNotLazy(T t,String [] fields,SimpleExpression eq){
 		
 		try {
 			Criteria criteria = getSession().createCriteria(t.getClass());
 			
 			for (String string : fields) {
 				criteria=criteria.setFetchMode(string, FetchMode.JOIN);
+			}
+			
+			if(eq!=null){
+			
+				criteria.add(eq);
 			}
 			return criteria.list();
 		} catch (Exception e) {

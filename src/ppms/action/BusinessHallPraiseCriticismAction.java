@@ -14,12 +14,10 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import ppms.action.interfaces.InitPage;
+import ppms.action.interfaces.BaseInit;
 import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
-import ppms.domain.TbEmployee;
-import ppms.domain.TbEmployeepraisecriticism;
 import ppms.domain.TbMaster;
 import ppms.domain.TbOrgpraisecriticism;
 import ppms.domain.TbSubarea;
@@ -27,9 +25,8 @@ import ppms.domain.TbSubareaorgrelation;
 import ppms.serviceimpl.PraiseCriticismServiceImp;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
-public class BusinessHallPraiseCriticismAction extends ActionSupport implements InitPage{
+public class BusinessHallPraiseCriticismAction extends BaseInit {
 
 	@Autowired
 	private PraiseCriticismServiceImp praiseCriticism;
@@ -48,19 +45,26 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 	 * 营业厅单条录入点击submit按钮时跳进该action，执行插入操作。
 	 * @return
 	 */
-	@Action(value = "businessHallPraiseCriticismSingleStart", results = {
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSingle.businessHallPraiseCriticismSingleSave", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismSingleResult.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
-	public String businessHallPraiseCriticismSingleStart() {
+	public String save() {
+		ActionContext actionContext = ActionContext.getContext();// 创建ActionContext的对象并调用getContext()方法
+		Map<String, Object> request = (Map) actionContext.get("request");// 获取出request对象
+		try {
+			String type=tbOrgpraisecriticism.getPraisecriticismtype();
+			String praisecriticismtype="000"+type;
+			tbOrgpraisecriticism.setPraisecriticismtype(praisecriticismtype);
+			String level=tbOrgpraisecriticism.getPraisecriticismlevel();
+			String praisecriticismlevel="000"+level;
+			tbOrgpraisecriticism.setPraisecriticismlevel(praisecriticismlevel);
+			praiseCriticism.businessHallInforSave(tbOrgpraisecriticism);
+			request.put("results", "success!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.put("results", "error!");
+		}
 		
-		String type=tbOrgpraisecriticism.getPraisecriticismtype();
-		String praisecriticismtype="000"+type;
-		tbOrgpraisecriticism.setPraisecriticismtype(praisecriticismtype);
-		String level=tbOrgpraisecriticism.getPraisecriticismlevel();
-		String praisecriticismlevel="000"+level;
-		tbOrgpraisecriticism.setPraisecriticismlevel(praisecriticismlevel);
-		praiseCriticism.businessHallInforSave(tbOrgpraisecriticism);
-		System.out.println("businessHallPraiseCriticismSingleStart");
 		return "success";
 	}
 
@@ -77,6 +81,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 		System.out.println("create skipSelectSingle");
 		List<OrganizationNj> organizationNjInfor = praiseCriticism
 				.findAllOrganizationNjInfor();
+		List<OrganizationNj> organizationNjsInfor=new ArrayList<OrganizationNj>();
 		for (OrganizationNj organizationNj : organizationNjInfor) {
 			List<COrganizationNj> cOrganizationNjInfor = praiseCriticism
 					.findCOrganizationNjInfor(organizationNj.getOrgid());// 执行findCOrganizationNjInfor，根据营业厅编号获取营业厅区域关系表中的信息
@@ -86,8 +91,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 				List<TbArea> areaInfor = praiseCriticism
 						.findAreaDesc(cOrganizationNj.getTbArea().getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
 				String areadesc = areaInfor.get(0).getAreadesc();
-				request.put("areadesc", areadesc);
-				System.out.print(":" + areadesc);// 打印区域名称
+				organizationNj.setAreadesc(areadesc);
 			}
 
 			List<TbSubareaorgrelation> subareaorgrelationInfor = praiseCriticism
@@ -99,11 +103,11 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 						.findSubareaInfor(tbSubareaorgrelation.getTbSubarea()
 								.getSubareaid());
 				String subareaDesc = subareaInfor.get(0).getSubareadesc();
-				request.put("subareaDesc", subareaDesc);
-				System.out.println(":" + subareaDesc);
+				organizationNj.setSubareadesc(subareaDesc);
 			}
+			organizationNjsInfor.add(organizationNj);
 		}
-		request.put("organizationNjInfor", organizationNjInfor);
+		request.put("organizationNjInfor", organizationNjsInfor);
 		return "success";
 	}
 
@@ -111,7 +115,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 	 * 营业厅奖惩信息单条录入选择营业厅信息完成后跳进该action，执行查询数据并整合。
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSingle", results = {
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSingle.selectSinglSkip", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismSingle.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
 	public String selectSinglSkip() {
@@ -161,13 +165,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 			
 
 			praiseCriticism.delete(orgpraisecriticismInfor.get(0));
-			ServletActionContext
-					.getRequest()
-					.getRequestDispatcher(
-							"/resource/praiseCriticism.businessHall.businessHallPraiseCriticismSearch")
-					.forward(ServletActionContext.getRequest(),
-							ServletActionContext.getResponse());
-
+			ServletActionContext.getResponse().sendRedirect("praiseCriticism.businessHall.businessHallPraiseCriticismSearch.do");
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -192,11 +190,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 			
 			praiseCriticism.update(tbOrgpraisecriticism);
 			ServletActionContext
-			.getRequest()
-			.getRequestDispatcher(
-					"/resource/praiseCriticism.businessHall.businessHallPraiseCriticismSearch")
-			.forward(ServletActionContext.getRequest(),
-					ServletActionContext.getResponse());
+			.getResponse().sendRedirect("praiseCriticism.businessHall.businessHallPraiseCriticismSearch.do");
 			
 			return null;
 		} catch (Exception e) {
@@ -217,6 +211,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 		System.out.println("create skipSelectSingle");
 		List<OrganizationNj> organizationNjInfor = praiseCriticism
 				.findAllOrganizationNjInfor();
+		List<OrganizationNj> organizationNjsInfor=new ArrayList<OrganizationNj>();
 		for (OrganizationNj organizationNj : organizationNjInfor) {
 			List<COrganizationNj> cOrganizationNjInfor = praiseCriticism
 					.findCOrganizationNjInfor(organizationNj.getOrgid());// 执行findCOrganizationNjInfor，根据营业厅编号获取营业厅区域关系表中的信息
@@ -226,8 +221,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 				List<TbArea> areaInfor = praiseCriticism
 						.findAreaDesc(cOrganizationNj.getTbArea().getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
 				String areadesc = areaInfor.get(0).getAreadesc();
-				request.put("areadesc", areadesc);
-				System.out.print(":" + areadesc);// 打印区域名称
+				organizationNj.setAreadesc(areadesc);
 			}
 
 			List<TbSubareaorgrelation> subareaorgrelationInfor = praiseCriticism
@@ -239,7 +233,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 						.findSubareaInfor(tbSubareaorgrelation.getTbSubarea()
 								.getSubareaid());
 				String subareaDesc = subareaInfor.get(0).getSubareadesc();
-				request.put("subareaDesc", subareaDesc);
+				organizationNj.setSubareadesc(subareaDesc);
 				String praisecriticismid=tbOrgpraisecriticism.getPraisecriticismid();
 				request.put("praisecriticismid", praisecriticismid);
 				System.out.println(":" + subareaDesc);
@@ -317,11 +311,7 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 	
 		try {
 			ServletActionContext
-			.getRequest()
-			.getRequestDispatcher(
-					"/resource/praiseCriticism.businessHall.businessHallPraiseCriticismSearch")
-			.forward(ServletActionContext.getRequest(),
-					ServletActionContext.getResponse());
+			.getResponse().sendRedirect("praiseCriticism.businessHall.businessHallPraiseCriticismSearch.do");
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -332,16 +322,13 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 	/**
 	 * 营业厅奖惩信息管理查询页面的初始化。
 	 */
-	public Map<String, List<T>> initPage(ServletContext servletContext,String url) {
-		// 实例化map
-		Map map = new HashMap();
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
+	public String initPage(){
 
-		PraiseCriticismServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(servletContext).getBean(
-						PraiseCriticismServiceImp.class);
-
-		url= "praiseCriticism.businessHallPraiseCriticismSearch";
-			List<TbOrgpraisecriticism> orgpraisecriticismInfor=service.findAllOrgpraisecriticismInfor();
+		try {
+			List<TbOrgpraisecriticism> orgpraisecriticismInfor=praiseCriticism.findAllOrgpraisecriticismInfor();
 			List<TbOrgpraisecriticism> orgpraisecriticismsInfor=new ArrayList<TbOrgpraisecriticism>();
 			
 			
@@ -349,28 +336,54 @@ public class BusinessHallPraiseCriticismAction extends ActionSupport implements 
 				
 				String a=tbOrgpraisecriticism.getPraisecriticismtype();
 				
-				List<TbMaster> type=service.findOrgPraiseCriticismType(a);
+				List<TbMaster> type=praiseCriticism.findOrgPraiseCriticismType(a);
 				
 				String orgType= type.get(0).getValue();
 				
-				tbOrgpraisecriticism.setPraisecriticismtype(orgType);
+				tbOrgpraisecriticism.setType(orgType);
 				String b=tbOrgpraisecriticism.getPraisecriticismlevel();
 				
-				List<TbMaster> level=service.findOrgPraiseCriticismLevel(a, b);
+				List<TbMaster> level=praiseCriticism.findOrgPraiseCriticismLevel(a, b);
 				
 				String orgLevel=level.get(0).getValue();
 				
-				tbOrgpraisecriticism.setPraisecriticismlevel(orgLevel);
+				tbOrgpraisecriticism.setLevel(orgLevel);
 				
-				
-				
-				List<OrganizationNj> organizationNjInfor=service.findOrganizationNjInfor(tbOrgpraisecriticism.getOrganizationNj().getOrgid());
+				String score=null;
+				if(a.equals("0001"))
+					{score="+"+Integer.parseInt(b)*0.5;}
+				else
+					if(a.equals("0002"))
+						{score="-"+Integer.parseInt(b)*0.5;}
+				tbOrgpraisecriticism.setScore(score);
+				List<OrganizationNj> organizationNjInfor=praiseCriticism.findOrganizationNjInfor(tbOrgpraisecriticism.getOrganizationNj().getOrgid());
 				
 				tbOrgpraisecriticism.setOrganizationNj(organizationNjInfor.get(0));
 				orgpraisecriticismsInfor.add(tbOrgpraisecriticism);
 			}
 			System.out.println();
-			map.put("orgpraisecriticismsInfor",orgpraisecriticismsInfor);		
-		return map;
+			map.put("orgpraisecriticismsInfor",orgpraisecriticismsInfor);	
+			toCache();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return "success";
+	}
+	
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSingle", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismSingle.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
+	public String single(){
+
+		return "success";
+	}
+	
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismBatch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismBatch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
+	public String batch(){
+
+		return "success";
 	}
 }
