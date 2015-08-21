@@ -8,7 +8,6 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.criterion.SimpleExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -17,7 +16,6 @@ import ppms.daoimpl.BaseDaoImp;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbJob;
-import ppms.domain.TbMaster;
 import ppms.domain.TbPost;
 import ppms.domain.TbRole;
 import ppms.serviceimpl.userBaseInfoServiceImp;
@@ -84,6 +82,28 @@ public class userBaseInfoAction extends BaseInit{
 		}
 		return "success";
 	}
+	/**
+	 * 批量录入
+	 * @return
+	 */
+	@Action(value = "userInfo.userBase.userBaseInfoBatch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoBatch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	public String userBaseInfoBatchUpdateImport() {
+		
+		return "success";
+	}
+	/**
+	 * 批量修改
+	 * @return
+	 */
+	@Action(value = "userInfo.userBase.userBaseInfoBatchUpdateBySelectField", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoBatchUpdateBySelectField.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	public String userBaseInfoBatchUpdateBySelectField() {
+		
+		return "success";
+	}
 	
 	/**
 	 * 转至录入页面
@@ -97,16 +117,16 @@ public class userBaseInfoAction extends BaseInit{
 		return "success";
 	}
 
-	/**
-	 * 转至查询页面
-	 * @return
-	 */
-	@Action(value = "userInfo.userBase.userBaseInfoSearch.resultBackSearch", results = {
-			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSearch.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	public String resultBackSearch() {
-		return "success";
-	}
+//	/**
+//	 * 转至查询页面
+//	 * @return
+//	 */
+//	@Action(value = "userInfo.userBase.userBaseInfoSearch.resultBackSearch", results = {
+//			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSearch.jsp"),
+//			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+//	public String resultBackSearch() {
+//		return "success";
+//	}
 	
 	/**
 	 * 详细查询人员信息
@@ -131,10 +151,7 @@ public class userBaseInfoAction extends BaseInit{
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoUpdate.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String Update() {
-		String employeeid=request.getParameter("id");
 		
-		List<TbEmployee> employees=dao.getEntitiestNotLazy(new TbEmployee(), new String[]{"organizationNj","tbJob","tbRole","tbPost"},Restrictions.eq("employeeid", employeeid));
-		request.setAttribute("tbEmpl", employees);
 		return "success";
 	}
 	/**
@@ -189,7 +206,7 @@ public class userBaseInfoAction extends BaseInit{
 		return "success";
 	}
 	private void  initPage(String url) {
-		
+		  
 		try {
 			// 获取所有营业厅
 			switch (url) {

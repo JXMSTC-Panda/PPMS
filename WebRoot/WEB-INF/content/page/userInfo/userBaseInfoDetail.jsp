@@ -119,14 +119,14 @@
 																<div class="form-group">
 																	<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 性别: </label>
 																	<div class="col-sm-9">
-																		<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+																		<input id="form-field-1" class="col-xs-10 col-sm-5" type="text">
 																	</div>
 																</div>
 																		<div class="form-group">
 																	<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 出生年月: </label>
 
 																	<div class="col-sm-9">
-																		<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).birthday}">
+																		<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).birthday}">
 																	</div>
 																</div>
 															</div>
@@ -148,7 +148,7 @@
 																	<div class="form-group">
 																	<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 有无工号: </label>
 																		<div class="col-sm-9">
-																			<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+																			<input id="form-field-1" class="col-xs-10 col-sm-5" type="text">
 								                                                    
 																		</div>
 																	</div>
@@ -173,7 +173,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 营业厅名称: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5">
+														<input id="form-field-1" class="col-xs-10 col-sm-5">
 													</div>
 												</div>
 												
@@ -181,7 +181,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 区域: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text">
 													</div>
 												</div>
 																	
@@ -193,7 +193,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 工号: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).employeecode}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).employeecode}">
 													</div>
 												</div>
 												
@@ -201,7 +201,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 营业厅类型: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="">
 													</div>
 												</div>
 												
@@ -209,7 +209,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 营业厅编碼: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" name="">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" name="">
 													</div>
 												</div>																																
 																</div>																	
@@ -235,7 +235,7 @@
 																		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 银行卡号: </label>
 
 																		<div class="col-sm-9">
-																		    <input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).banknumber}">
+																		    <input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).banknumber}">
 																	    </div>
 																	</div>
 																	
@@ -243,14 +243,14 @@
 																		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 银行卡所属银行: </label>
 
 																		<div class="col-sm-9">
-																			<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).bankname}">
+																			<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).bankname}">
 																		</div>
 																	</div>
 																	
 																	<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 人员状态: </label>
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).status}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).status}">
 													</div>
 												</div>
 												
@@ -258,7 +258,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 居住所属区域: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).addressarea}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).addressarea}">
 													</div>
 												</div>
 												
@@ -266,7 +266,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 现居住地址: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).address}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).address}">
 													</div>
 												</div>
 												
@@ -274,7 +274,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 学历: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).academicdegree}"> 
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).academicdegree}"> 
 													</div>
 												</div>
 													
@@ -282,7 +282,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 长号: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).mobilenumber}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).mobilenumber}">
 													</div>
 												</div>
 												
@@ -290,7 +290,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 短号: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).shortmobilenumber}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).shortmobilenumber}">
 													</div>
 												</div>
 												
@@ -298,7 +298,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 毕业学校: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).schoolname}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).schoolname}">
 													</div>
 												</div>
 												
@@ -306,7 +306,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 专业: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).specialization}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).specialization}">
 													</div>
 												</div>
 												
@@ -314,7 +314,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 移动营业技能鉴定水平: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).mobilelevel}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).mobilelevel}">
 													</div>
 												</div>
 						
@@ -326,7 +326,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 联系电话: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tel}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tel}">
 													</div>
 												</div>
 												
@@ -334,7 +334,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 进公司时间: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).entertime}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).entertime}">
 													</div>
 												</div>
 
@@ -342,7 +342,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 后台岗位说明: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="">
 													</div>
 												</div>
 
@@ -350,7 +350,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 前后台标识: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).frontbackflag}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).frontbackflag}">
 														
 													</div>
 												</div>
@@ -359,7 +359,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 电信业务营销员技能鉴赏水平: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).telecomlevel}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).telecomlevel}">
 													</div>
 												</div>
 
@@ -369,7 +369,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 岗职: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbPost.postname}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbPost.postname}">
 													</div>
 												</div>
 
@@ -377,7 +377,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 岗位: </label>
                                                                 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbJob.jobname}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbJob.jobname}">
 													</div>
 												</div>
 
@@ -385,7 +385,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 人员类别: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).employeetype}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).employeetype}">
 													</div>
 												</div>
 
@@ -393,7 +393,7 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 角色类别: </label>
 
 													<div class="col-sm-9">
-														<input id="form-field-1" placeholder="Userid" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbRole.rolename}">
+														<input id="form-field-1" class="col-xs-10 col-sm-5" type="text" value="${requestScope.tbEmpl.get(0).tbRole.rolename}">
 													</div>
 												</div>
 												
@@ -410,9 +410,9 @@
 														</div>
 										<div class="clearfix form-actions">
 										<div class="col-md-offset-5 col-md-6">
-											<input class="btn btn-info" type="submit" value="确定">
+											<input class="btn btn-info" value="修改">
 											&nbsp; &nbsp; &nbsp;
-											<input class="btn" type="reset" value="重置">											
+											<input class="btn" value="返回">											
 										</div>
 									</div>
 													</div>

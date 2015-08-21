@@ -126,7 +126,7 @@
 	
 	<excel name="个人成长线路查询结果.xls">
 		<object>
-			<class_name>ppms.domain.TbStage</class_name>
+			<class_name>ppms.domain.TbEmployee</class_name>
 		</object>
 	</excel>
 	

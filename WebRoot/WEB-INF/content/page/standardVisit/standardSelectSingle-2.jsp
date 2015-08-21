@@ -67,59 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-	<table  cellspacing="0" cellpadding="0" class="tablewk" align="center">
-		<tr>
-			<td >
-				<br />
-				<table cellpadding="0" cellspacing="0" width="95%" style="height: 30px" align="center">
-					<tr>
-						<td class=" titlebold">营业厅查询</td>
-					</tr>
-				</table>
-				<table cellpadding="0" cellspacing="0" width="95%"  align="center">
-					<tr>
-						<td class="line"></td>
-					</tr>
-				</table>
-				<br />
-				<form name="form1">
-					<table cellpadding="0" cellspacing="0" width="95%"  align="center" class="tableserch">
-						<tr>
-							<td align="right">区域：</td>
-							<td align="left">
-								<select name="select" style="width:155px;">
-									<option value="0"></option>
-									<option value="1">城东</option>
-									<option value="2">城南</option>
-									<option value="3">城西</option>
-									<option value="4">城北</option>
-								</select>
-							</td>
-							<td align="right">片区：</td>
-							<td align="left">
-								<select name="select2" style="width:155px;">
-									<option value="0"></option>
-									<option value="1">鼓楼区</option>
-									<option value="2">白下区</option>
-									<option value="3">下关区</option>
-									<option value="4">鼓楼区</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td align="right">营业厅编码：</td>
-							<td align="left"><input type="text" name="businessHallCode" /></td>
-							<td align="right">营业厅名称：</td>
-							<td align="left"><input type="text" name="businessHallName" /></td>
-						</tr>
-						<tr>
-							<td colspan="4" align="center">
-								<input name="Button1" type="button" value="查询" class="btn_2" />
-								<input name="Button2" type="reset" value="重置" class="btn_2" />
-							</td>
-						</tr>
-					</table>
-				</form>
+	
 				<form name="form1" action="standardVisit.standard.standardSingle.Skip.do" method="post">
 				<br />
 				<table cellpadding="0" cellspacing="0" class="tablelist" align="center">

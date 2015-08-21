@@ -178,10 +178,10 @@
 												</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="javascript:void(0)" name=""
+														<a class="green" href="innovation.null.innovationSearch.modify.do?id=${innovation.innovationid }" name=""
 															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId="> <i
+															href="innovation.null.innovationSearch.delete.do?id=${innovation.innovationid }"> <i
 															class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
@@ -223,13 +223,8 @@
 								</table>
 								<div class="clearfix form-actions">
 									<div class="col-md-offset-3 col-md-9">
-										<button class="btn btn-info" type="submit">
+											&nbsp; &nbsp; &nbsp;<button class="btn btn-info" type="submit">
 											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
-										</button>
-
-										&nbsp; &nbsp; &nbsp;
-										<button class="btn" type="reset">
-											<i class="ace-icon fa fa-undo bigger-110"></i> 重置
 										</button>
 									</div>
 								</div>
@@ -286,10 +281,10 @@
 				"aaSorting" : [],
 
 					//,
-					//"sScrollY": "200px",
+					"sScrollY": "200px",
 					//"bPaginate": false,
 
-					//"sScrollX": "100%",
+					"sScrollX": "100%",
 					//"sScrollXInner": "120%",
 					//"bScrollCollapse": true,
 					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
