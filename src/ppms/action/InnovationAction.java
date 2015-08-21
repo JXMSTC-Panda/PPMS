@@ -50,6 +50,10 @@ public class InnovationAction extends BaseInit {
 	@Autowired
 	private TbMasterDAO masterDAO;
 
+	/**
+	 * 单条录入页面初始化
+	 * @return
+	 */
 	@Action(value = "innovation.null.innovationSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
