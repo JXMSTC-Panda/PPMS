@@ -96,7 +96,7 @@
 							<div class="page-header">
 								<h1>
 									绩效管理 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 月度绩效查询 </small>
+										class="ace-icon fa fa-angle-double-right"></i>年度绩效查询 </small>
 								</h1>
 							</div>
 							<!-- PAGE CONTENT BEGINS -->
@@ -155,7 +155,7 @@
 														<a class="green" href="javascript:void(0)" name=""
 															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="performance.month.monthPerformanceSearch_Del.do?performanceid=${pers.performanceid}"> <i
+															href="performance.year.yearPerformanceSearch.Delete.do?performanceid=${pers.performanceid}"> <i
 															class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">

@@ -112,7 +112,7 @@
 																for="form-field-1"> 姓名: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Username"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.employeename">
 															</div>
@@ -123,7 +123,7 @@
 																for="form-field-1"> 身份证号: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.idnumber">
 															</div>
@@ -137,10 +137,10 @@
 															<div class="col-sm-9">
 																<div class="radio">
 																	<label> <input name="form-field-radio"
-																		class="ace" type="radio" name="tbEmployee.sex">
+																		class="ace" type="radio" name="tbEmployee.sex" value="true">
 																		<span class="lbl"> 男</span> </label> <label> <input
 																		name="form-field-radio" class="ace" type="radio"
-																		name="tbEmployee.sex"> <span class="lbl">
+																		name="tbEmployee.sex" value="false"> <span class="lbl">
 																			女</span> </label>
 																</div>
 															</div>
@@ -150,7 +150,7 @@
 																for="form-field-1"> 出生年月: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.birthday">
 															</div>
@@ -221,7 +221,7 @@
 																for="form-field-1"> 区域: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text">
 															</div>
 														</div>
@@ -235,7 +235,7 @@
 																for="form-field-1"> 工号: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.employeecode">
 															</div>
@@ -248,6 +248,7 @@
 															<div class="col-sm-9">
 																<select class="form-control" id="form-field-select-1"
 																	name="tbEmployee.orgtype">
+																	<option value=""></option>
 																	<option value="0001">主厅</option>
 																	<option value="0002">合作厅</option>
 																	<option value="0003">置换厅</option>
@@ -260,7 +261,7 @@
 																for="form-field-1"> 营业厅编碼: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text" name="">
 															</div>
 														</div>
@@ -295,7 +296,7 @@
 																for="form-field-1"> 银行卡号: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.banknumber">
 															</div>
@@ -306,7 +307,7 @@
 																for="form-field-1"> 银行卡所属银行: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.bankname">
 															</div>
@@ -318,10 +319,10 @@
 															<div class="col-sm-9">
 																<div class="radio">
 																	<label> <input name="form-field-radio"
-																		class="ace" type="radio" name="tbEmployee.status">
+																		class="ace" type="radio" name="tbEmployee.status" value="true">
 																		<span class="lbl"> 有效</span> </label> <label> <input
 																		name="form-field-radio" class="ace" type="radio"
-																		name="tbEmployee.status"> <span class="lbl">
+																		name="tbEmployee.status" value="false"> <span class="lbl">
 																			无效</span> </label>
 																</div>
 															</div>
@@ -332,7 +333,7 @@
 																for="form-field-1"> 居住所属区域: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.addressarea">
 															</div>
@@ -343,7 +344,7 @@
 																for="form-field-1"> 现居住地址: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.address">
 															</div>
@@ -354,7 +355,7 @@
 																for="form-field-1"> 学历: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Username"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.academicdegree">
 															</div>
@@ -365,7 +366,7 @@
 																for="form-field-1"> 长号: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.mobilenumber">
 															</div>
@@ -376,7 +377,7 @@
 																for="form-field-1"> 短号: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.shortmobilenumber">
 															</div>
@@ -387,7 +388,7 @@
 																for="form-field-1"> 毕业学校: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.schoolname">
 															</div>
@@ -398,7 +399,7 @@
 																for="form-field-1"> 专业: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.specialization">
 															</div>
@@ -428,7 +429,7 @@
 																for="form-field-1"> 联系电话: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.tel">
 															</div>
@@ -439,7 +440,7 @@
 																for="form-field-1"> 进公司时间: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
+																<input id="form-field-1"
 																	class="col-xs-10 col-sm-5" type="text"
 																	name="tbEmployee.entertime">
 															</div>
@@ -450,8 +451,8 @@
 																for="form-field-1"> 后台岗位说明: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" placeholder="Userid"
-																	class="col-xs-10 col-sm-5" type="text">
+																<input id="form-field-1"
+																	class="col-xs-10 col-sm-5" type="text" name="tbEmployee.backjobcomment">
 															</div>
 														</div>
 
@@ -561,7 +562,7 @@
 
 															<div class="col-sm-9">
 																<textarea class="form-control" id="form-field-8"
-																	placeholder="Default Text" name="tbEmployee.remark"></textarea>
+																 name="tbEmployee.remark"></textarea>
 															</div>
 														</div>
 													</div>
@@ -595,7 +596,6 @@
 
 	<!-- inline scripts related to this page -->
 	<script>
-		
 	</script>
 </body>
 </html>

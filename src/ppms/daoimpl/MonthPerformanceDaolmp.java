@@ -25,6 +25,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 import ppms.domain.*;
 import ppms.dao.PerformanceDao;
 import ppms.domain.TbPerformance;
+import ppms.genericDao.TbPerformanceDAO;
 
 /**   
  *    
@@ -42,16 +43,19 @@ import ppms.domain.TbPerformance;
 @Repository
 public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao {
 
+	
+	
+
 	/**
 	 * 月度绩效查询所有记录
 	 */
 	@Override
 	public List<TbPerformance> getpPerformances() {
-	
-		Session session = getSession();
-		
-		Criteria cri = session.createCriteria(TbPerformance.class);
-		//条件查询当performancetype为false是为月度绩效
+//	
+//		Session session = getSession();
+//		
+//		Criteria cri = session.createCriteria(TbPerformance.class);
+//		//条件查询当performancetype为false是为月度绩效
 		//cri.add(Restrictions.eq("performancetype", false));
 		
 		
@@ -85,39 +89,23 @@ public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao
 		return results;  
     }
 
-	/** 
-	
-	* @方法名: deletePerformance 
-	
-	* @描述: 删除月度绩效表 (无效方法)
-	
-	* @param @return    设定文件
-	
-	* @return boolean    返回类型
-	
-	* @throws 
-	
-	*/ 
+	/* (non-Javadoc)
+	 * @see ppms.dao.PerformanceDao#deletePerformance(java.lang.Object)
+	 */
 	@Override
-	public boolean  deletePerformance(String  performanceid){
-		List results=null;
-//		try{
-//			String hql="from TbPerformance where employeeid='"+performanceid+"'"; 
-//			results=getHibernateTemplate().find(hql);
-//			if(results!=null){
-//				String hqlDel="Delecte from TbPerformance where employeeid='"+performanceid+"'"; 
-//				
-//			}
-//			
-//			
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}finally{}
+	public void  deletePerformance(Object performance) {
 		
-		return false;  
-		
-		
+		try {
+			getHibernateTemplate().delete(performance);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
+
+	
+
+	
+	
 		
 }
 

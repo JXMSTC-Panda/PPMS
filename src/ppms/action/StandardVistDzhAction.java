@@ -60,15 +60,15 @@ public class  StandardVistDzhAction  extends BaseInit{
 	}
 
 	
-	//功能：跳转到单条录入界面
+/*	//功能：跳转到单条录入界面
 	@Action(value ="show",results = {  
 		    @Result(name = "success", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String  show(){
 		System.out.println("ssss");
 		return "success";
-	}
-	
+	}*/
+/*	
 	//功能：在页面取值
 	@Action(value ="selectStandardSingle",results = {
 		@Result(name = "S", location = "/WEB-INF/content/page/standardSearch.jsp"),
@@ -76,9 +76,12 @@ public class  StandardVistDzhAction  extends BaseInit{
 	public String selectStandardSingle(){
 		System.out.println("success");
 		return "S";
-	}
+	}*/
 	
-	//处理、信息录入
+	/**
+	 * page:standardSingle.jsp
+	 * 功能：将页面的字段插入掉StandardCheck表中
+	 * */
 	@Action(value="insert",results={
 			@Result(name="success",location="/WEB-INF/content/page/standardSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
@@ -94,7 +97,8 @@ public class  StandardVistDzhAction  extends BaseInit{
 
 	
 	/**
-	 * 选择营业厅的跳转功能
+	 * page:standardSelectSingle-2
+	 * 功能：通过check按钮 ，取到相应的行信息，并将其封装。
 	 * */
 	@Action(value = "skipStandardCheckSingle", results={
 			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSelectSingle-2.jsp"),
@@ -145,7 +149,8 @@ public class  StandardVistDzhAction  extends BaseInit{
 	}
 	
 	/**
-	 * 嵌入数据
+	 * page:standardSingle.jsp
+	 * 功能：将standardSelectSingle-2中封装的值传到standardSingle页面相应的输入框中。
 	 * */
 	@Action(value = "standardVisit.standard.standardSingle.Skip", results={
 			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
@@ -182,8 +187,6 @@ public class  StandardVistDzhAction  extends BaseInit{
 	
 	/**
 	 * 功能：点击提交后，数据插入到标准化表中
-	 * 
-	 * 
 	 * */
 	@Action(value = "standardVisit.standard.standardSingle.Insert", results={
 			@Result(name="success",location="/WEB-INF/content/page/standardVisit/sucess.jsp"),
@@ -230,7 +233,29 @@ public class  StandardVistDzhAction  extends BaseInit{
 		
 	
 	}
-	//加的action
+	
+	
+	
+	/**
+	 * 
+	 * 功能：修改标准化分数
+	 * */
+	@Action(value = "standardVisit.standard.standardSearch.update", results={
+			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public  String update(){
+		System.out.println("进入update");
+		
+		
+		return "success";
+	}
+	
+	/**
+	 * 
+	 * 
+	 * 加的action
+	 * 
+	 * */
 	@Action(value = "standardVisit.standard.standardSingle", results={
 			@Result(name="success",location="/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
