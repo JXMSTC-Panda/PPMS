@@ -281,10 +281,10 @@
 				"aaSorting" : [],
 
 					//,
-					//"sScrollY": "200px",
+					"sScrollY": "200px",
 					//"bPaginate": false,
 
-					//"sScrollX": "100%",
+					"sScrollX": "100%",
 					//"sScrollXInner": "120%",
 					//"bScrollCollapse": true,
 					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"

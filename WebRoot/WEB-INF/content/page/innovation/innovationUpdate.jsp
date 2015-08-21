@@ -359,10 +359,7 @@
 												<label class="col-sm-3 control-label no-padding-right for="form-field-1">创新方案:</label>
 												<div class="col-sm-9">
 													<textarea id="form-field-11" class="col-xs-10 col-sm-5"
-														name="innovation.innovationcontent">
-														<c:out
-															value="${requestScope.tbInnovation.innovationcontent }"></c:out>
-														</textarea>
+														name="innovation.innovationcontent" >${requestScope.tbInnovation.innovationcontent }</textarea>
 												</div>
 											</div>
 											<div class="form-group">

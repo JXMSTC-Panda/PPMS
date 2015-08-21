@@ -14,12 +14,21 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class IntegralAction extends ActionSupport{
 
+	
+	
 	@Action(value = "integral.null.integralBatch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/integral/integralBatch.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
 	public String downLoad(){
 		
-		return "suceess";
+		return "success";
 	}
-	
+	@Action(value = "integral.null.integralSearch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/integral/integralSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String search(){
+		
+		
+		return "success";
+	}
 }
