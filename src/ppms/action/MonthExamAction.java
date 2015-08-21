@@ -170,20 +170,21 @@ public class MonthExamAction extends BaseInit{
 
 		
 		}
-	@Action(value ="employeeTrainExam.monthExam.monthExamSearch.MonthExamSearch", results = {  
-	        @Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/monthExamSingleResult.jsp"),  
+	@Action(value ="employeeTrainExam.monthExam.monthExamSearch", results = {  
+	        @Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/monthExamSearch.jsp"),  
 	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
 	public String first(){
-		MonthExamSearch("employeeTrainExam.monthExamSearch");
+		int i=0;
+		MonthExamSearch("employeeTrainExam.null.monthExamSearch");
 		toCache();
 		return "success";
 	}
 	public void MonthExamSearch(String url){
 		try {
 			switch (url) {
-			case "employeeTrainExam.monthExamSearch":
+			case "employeeTrainExam.null.monthExamSearch":
 				
-				List<TbMonthexam> tbMonthexams=daoImp.getEntitiestNotLazy(new TbMonthexam(),new String[]{"organizationNj","tbEmployee"});
+				List<TbMonthexam> tbMonthexams=daoImp.getEntitiestNotLazy(new TbMonthexam(),new String[]{"organizationNj","tbEmployee"},null);
 				map.put("tbMonthExam", tbMonthexams);
 				break;
 
@@ -191,8 +192,10 @@ public class MonthExamAction extends BaseInit{
 				break;
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		}
+	
+	
 }

@@ -95,10 +95,10 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 										<h1>
-											人员基本信息管理
+											月度考试
 										<small>
 											<i class="ace-icon fa fa-angle-double-right"></i>
-												人员基本信息查询
+												月度考试查询
 										</small>
 										</h1>
 									</div>

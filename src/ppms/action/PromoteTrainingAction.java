@@ -8,12 +8,16 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
+import ppms.action.interfaces.BaseInit;
+import ppms.daoimpl.BaseDaoImp;
 import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbJob;
+import ppms.domain.TbMonthexam;
 import ppms.domain.TbPost;
 import ppms.domain.TbPromotiontraining;
 import ppms.serviceimpl.PraiseCriticismServiceImp;
@@ -22,7 +26,7 @@ import ppms.util.TimeStringUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-	public class PromoteTrainingAction extends ActionSupport{
+	public class PromoteTrainingAction extends BaseInit{
 	private TbPromotiontraining tbPromotiontraining;
 	private TbArea tbArea;
 	@Autowired
@@ -157,4 +161,35 @@ import com.opensymphony.xwork2.ActionSupport;
 			return null;
 		}
 	}
+	
+	@Autowired
+	@Qualifier("baseDaoImp")
+	private BaseDaoImp daoImp;
+	@Action(value ="employeeTrainExam.promoteTrain.promoteTrainSearch", results = {  
+	        @Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSearch.jsp"),  
+	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
+	public String first(){
+		int i=0;
+		System.out.println("dasd");
+		promoteTrainSearch("employeeTrainExam.null.promoteTrainSearch");
+		toCache();
+		return "success";
+	}
+	public void promoteTrainSearch(String url){
+		try {
+			switch (url) {
+			case "employeeTrainExam.null.promoteTrainSearch":
+				
+				List<TbPromotiontraining> tbPromotiontrainings=daoImp.getEntitiestNotLazy(new TbPromotiontraining(),new String[]{"organizationNj","tbEmployee",},null);
+				map.put("tbPromotiontraining", tbPromotiontrainings);
+				break;
+
+			default:
+				break;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		}
 }
