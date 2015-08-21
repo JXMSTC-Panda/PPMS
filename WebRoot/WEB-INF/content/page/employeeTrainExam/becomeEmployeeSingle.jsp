@@ -82,23 +82,147 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<div class="page-content">
-									<!-- #section:settings.box -->
+											<form class="form-horizontal" role="form">
+												<!-- #section:elements.form -->
 
-									<!-- /section:settings.box -->
-									<div class="page-header">
-										<h1>
-								员工考核
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									转正职工考核单条录入
-								</small>
-							</h1>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 区域： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<span class="help-inline col-xs-12 col-sm-7">
+												
+											</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅编码： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<span class="help-inline col-xs-12 col-sm-7">
+												
+											</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅名称： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<span class="help-inline col-xs-12 col-sm-7">
+												
+											</span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 姓名： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<span class="help-inline col-xs-12 col-sm-7">
+												<button class="btn btn-info">选择员工</button>
+											</span>
+													</div>
+												</div>
+
+												<!-- /section:elements.form -->
+												<div class="space-4"></div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 工号： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<span class="help-inline col-xs-12 col-sm-7">
+												
+											</span>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 身份证号： </label>
+
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" />
+														<span class="help-inline col-xs-12 col-sm-7">
+												
+											</span>
+													</div>
+												</div>
+
+												<div class="space-4"></div>
+
+												
+												
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 考试分数： </label>
+
+													<div class="col-sm-9">
+														<input type="text" id="form-field-1" placeholder="Grade" class="col-xs-10 col-sm-5" />
+														<label class=" control-label no-padding-left" for="form-field-1"> 分 </label>
+													</div>
+
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 汉字： </label>
+
+													<div class="col-sm-9">
+														<input type="text" id="form-field-1" placeholder="Grade" class="col-xs-10 col-sm-5" />
+														<label class=" control-label no-padding-left" for="form-field-1"> 字/分钟 </label>
+													</div>
+
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 数字： </label>
+
+													<div class="col-sm-9">
+														<input type="text" id="form-field-1" placeholder="Grade" class="col-xs-10 col-sm-5" />
+														<label class=" control-label no-padding-left" for="form-field-1"> 字/分钟 </label>
+													</div>
+
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 日期： </label>
+
+													<div class="col-sm-9">
+														
+														<div class="input-group col-xs-10 col-sm-5">
+																	<input class="form-control date-picker " id="id-date-picker-1" type="text" data-date-format="yyyy-mm-dd" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-calendar bigger-110"></i>
+																	</span>
+																</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1">备注:</label>
+													<div class="col-sm-9">
+														<textarea id="form-field-11" class="col-xs-10 col-sm-5"></textarea>
+													</div>
+												</div>
+
+												<div class="clearfix form-actions">
+													<div class="col-md-offset-3 col-md-9">
+														<button class="btn btn-info" type="button">
+															<i class="ace-icon fa fa-check bigger-110"></i> Submit
+														</button>
+
+														&nbsp; &nbsp; &nbsp;
+														<button class="btn" type="reset">
+															<i class="ace-icon fa fa-undo bigger-110"></i> Reset
+														</button>
+													</div>
+												</div>
+
+											</form>
+
+										</div>
+										<!-- /.col -->
 									</div>
-									<!-- /.page-header -->
-
-									<div class="row">
-										<div class="col-xs-12">
+									<!-- /.row -->
+								</div>
+								<!-- /.page-content -->
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
