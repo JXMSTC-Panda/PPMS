@@ -97,16 +97,16 @@ public class userBaseInfoAction extends BaseInit{
 		return "success";
 	}
 
-	/**
-	 * 转至查询页面
-	 * @return
-	 */
-	@Action(value = "userInfo.userBase.userBaseInfoSearch.resultBackSearch", results = {
-			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSearch.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	public String resultBackSearch() {
-		return "success";
-	}
+//	/**
+//	 * 转至查询页面
+//	 * @return
+//	 */
+//	@Action(value = "userInfo.userBase.userBaseInfoSearch.resultBackSearch", results = {
+//			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSearch.jsp"),
+//			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+//	public String resultBackSearch() {
+//		return "success";
+//	}
 	
 	/**
 	 * 详细查询人员信息
@@ -189,7 +189,7 @@ public class userBaseInfoAction extends BaseInit{
 		return "success";
 	}
 	private void  initPage(String url) {
-		
+		  
 		try {
 			// 获取所有营业厅
 			switch (url) {
