@@ -150,10 +150,15 @@
 																for="form-field-1"> 出生年月: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.birthday">
-															</div>
+													<div class="input-group col-xs-10 col-sm-5">
+														<input class="form-control date-picker "
+															id="id-date-picker-1" type="text"
+															data-date-format="yyyy-mm-dd"
+															name="tbEmployee.birthday" /> <span
+															class="input-group-addon"> <i
+															class="fa fa-calendar bigger-110"></i> </span>
+													</div>
+												</div>
 														</div>
 													</div>
 												</div>
@@ -593,9 +598,63 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-
+	<script
+	    src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-timepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/moment.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/daterangepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datetimepicker.js"></script>
 	<!-- inline scripts related to this page -->
 	<script>
+	
+	//datepicker plugin
+			//link
+			$('.date-picker').datepicker({
+				autoclose : true,
+				todayHighlight : true
+			})
+			//show datepicker when clicking on the icon
+			.next().on(ace.click_event, function() {
+				$(this).prev().focus();
+			});
+
+			//or change it into a date range picker
+			$('.input-daterange').datepicker({
+				autoclose : true
+			});
+
+			//to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
+			$('input[name=date-range-picker]').daterangepicker({
+				'applyClass' : 'btn-sm btn-success',
+				'cancelClass' : 'btn-sm btn-default',
+				locale : {
+					applyLabel : 'Apply',
+					cancelLabel : 'Cancel',
+				}
+			}).prev().on(ace.click_event, function() {
+				$(this).next().focus();
+			});
+
+			$('#timepicker1').timepicker({
+				minuteStep : 1,
+				showSeconds : true,
+				showMeridian : false
+			}).next().on(ace.click_event, function() {
+				$(this).prev().focus();
+			});
+
+			$('#date-timepicker1').datetimepicker().next().on(ace.click_event,
+					function() {
+						$(this).prev().focus();
+					});
+
+			$('#colorpicker1').colorpicker();
+
+			$('#simple-colorpicker-1').ace_colorpicker();
 	</script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package ppms.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,13 +9,11 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ppms.action.interfaces.BaseInit;
 import ppms.domain.TbChangejobhistory;
-import ppms.domain.TbEmployee;
-import ppms.domain.TbJob;
 import ppms.serviceimpl.IndividualGrowthFileServiceImp;
-import sun.print.resources.serviceui;
 
-public class IndividualGrowthFileAction {
+public class IndividualGrowthFileAction  extends BaseInit{
 
 	private TbChangejobhistory tbChangejobhistory;
 
@@ -61,7 +58,8 @@ public class IndividualGrowthFileAction {
 							.getEmployeeid());
 
 			if (tbChangejobhistories.size() > 0) {
-				request.setAttribute("tbChangejobs", tbChangejobhistories);
+				map.put("tbChangejobs", tbChangejobhistories);
+				toCache();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

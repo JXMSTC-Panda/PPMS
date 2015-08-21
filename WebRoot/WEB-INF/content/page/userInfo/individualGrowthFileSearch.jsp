@@ -54,6 +54,15 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
+<script type="text/javascript">
+	function goToPage() {
+		var input = document
+				.getElementsByName("tbChangejobhistory.tbEmployee.employeeid")[0];
+		top.window.location = "userInfo.growthFile.individualGrowthFileSearch.do?tbChangejobhistory.tbEmployee.employeeid="
+				+ input.value;
+
+	}
+</script>
 </head>
 
 <body class="no-skin">
@@ -95,12 +104,11 @@
 								</h1>
 							</div>
 							<form class="form-horizontal" role="form" method="post"
-								action="userInfo.growthFile.individualGrowthFileSearch.do">
+								action="">
 								<table class="table table-striped table-bordered">
 									<thead>
 
 										<c:if test="${requestScope.tbChangejobs==null}">
-
 											<tr>
 												<td>工号: <input
 													name="tbChangejobhistory.tbEmployee.employeeid" value=""></input>
@@ -160,11 +168,12 @@
 									</tbody>
 								</table>
 								<div class="clearfix form-actions">
-									<div class="col-md-offset-5 col-md-6">
-										<button class="btn btn-info" type="button">
-											<i class="ace-icon fa fa-check bigger-110"></i> 导出全部查询结果
-										</button>
+									<!-- <div class="col-md-offset-5 col-md-6">
 										<button class="btn btn-info" type="submit">
+											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+										</button> -->
+										<button class="btn btn-info" type="button"
+											onclick="goToPage()">
 											<i class="ace-icon fa fa-check bigger-110"></i> 查询
 										</button>
 									</div>

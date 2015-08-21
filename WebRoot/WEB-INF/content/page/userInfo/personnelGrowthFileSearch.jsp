@@ -107,7 +107,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有角色表</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=个人成长线路查询结果.xls" name="StuListForm" method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -137,6 +137,14 @@
 										</c:forEach>
 									</tbody>
 								</table>
+								<div class="clearfix form-actions">
+									<div class="col-md-offset-5 col-md-6">
+										<button class="btn btn-info" type="submit">
+											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+										</button>
+										
+									</div>
+								</div>
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
