@@ -59,5 +59,9 @@ public interface StandardCheckService{
 	 * 根据orgId查询营业厅表
 	 * */
 	public List<OrganizationNj> findOrganizationId(Integer orgId);
+	/**
+	 * 插入方法
+	 * */
+	void save(Object object);
 	
 }

@@ -267,8 +267,8 @@
 												<div class="col-sm-9">
 													<select class="col-xs-10 col-sm-5" id="form-field-select-1"
 														name="tbEmployeepraisecriticism.praisecriticismtype">
-														<option value="1">惩罚</option>
-														<option value="2">表彰</option>
+														<option value="2">惩罚</option>
+														<option value="1">表彰</option>
 													</select>
 												</div>
 											</div>
@@ -308,8 +308,8 @@
 												<div class="col-sm-9">
 													<select class="col-xs-10 col-sm-5" id="form-field-select-1"
 														name="tbEmployeepraisecriticism.praisecriticismlevel">
-														<option value="1">中心通报</option>
-														<option value="2">公司发文</option>
+														<option value="1">公司发文</option>
+														<option value="2">中心通报</option>
 														<option value="3">区域通报</option>
 
 													</select>

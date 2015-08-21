@@ -135,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														<input class="form-control date-picker "
 															id="id-date-picker-1" type="text"
 															data-date-format="yyyy-mm-dd"
-															name="TbStandardcheck.checkdate" /> <span
+															name="tbStandardcheck.checkdate" /> <span
 															class="input-group-addon"> <i
 															class="fa fa-calendar bigger-110"></i> </span>
 													</div>

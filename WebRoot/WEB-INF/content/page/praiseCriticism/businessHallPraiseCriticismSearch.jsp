@@ -83,7 +83,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
+						<li><a href="#">父功能</a>
+						</li>
 						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -99,7 +100,8 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">信息查询</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=营业厅奖惩信息批量导出.xls"
+								name="StuListForm" method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -120,32 +122,36 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${requestScope.orgpraisecriticismsInfor}" var="orgpraisecriticismsInfor"
-											varStatus="status">
+										<c:forEach items="${requestScope.orgpraisecriticismsInfor}"
+											var="orgpraisecriticismsInfor" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label></td>
+														type="checkbox"
+														value="${orgpraisecriticismsInfor.praisecriticismid}"
+														name="cols" class="ace" /> <span class="lbl"></span> </label>
+												</td>
 
 												<td></td>
-												<td><a href="#">${orgpraisecriticismsInfor.organizationNj.orgid}</a></td>
+												<td><a href="#">${orgpraisecriticismsInfor.organizationNj.orgid}</a>
+												</td>
 												<td>${orgpraisecriticismsInfor.organizationNj.org_Name}</td>
-												<td class="hidden-480">${orgpraisecriticismsInfor.praisecriticismtype}</td>
+												<td class="hidden-480">${orgpraisecriticismsInfor.type}</td>
 												<td>${orgpraisecriticismsInfor.cause}</td>
 												<td>${orgpraisecriticismsInfor.praisecriticismdate}</td>
-												<td>${orgpraisecriticismsInfor.praisecriticismlevel}</td>
-												<td>+1</td>
-												
+												<td>${orgpraisecriticismsInfor.level}</td>
+												<td>${orgpraisecriticismsInfor.score}</td>
+
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
 														<%-- <a class="blue" href="javascript:void(0)"
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%> <a
-															class="green" href="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.skip.do?tbOrgpraisecriticism.praisecriticismid=${orgpraisecriticismsInfor.praisecriticismid}"
+															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%>
+														<a class="green"
+															href="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.skip.do?tbOrgpraisecriticism.praisecriticismid=${orgpraisecriticismsInfor.praisecriticismid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.orgPCInforDelete.do?tbOrgpraisecriticism.praisecriticismid=${orgpraisecriticismsInfor.praisecriticismid}"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+															href="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.orgPCInforDelete.do?tbOrgpraisecriticism.praisecriticismid=${orgpraisecriticismsInfor.praisecriticismid}">
+															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -169,21 +175,27 @@
 																	class="tooltip-success" data-rel="tooltip" title="Edit">
 																		<span class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a
 																	href="ClassDelete?classId=${trl.getRoleid()}"
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
 															</ul>
 														</div>
-													</div>
-												</td>
+													</div></td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+								<div class="col-md-offset-3 col-md-9" align="center">
+									<button class="btn btn-info" type="submit">
+										<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+									</button>
+								</div>
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
@@ -195,8 +207,10 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script

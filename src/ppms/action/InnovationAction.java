@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import javax.transaction.Transactional;
 
 import org.apache.poi.ss.formula.functions.T;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,13 @@ import ppms.serviceimpl.InvocationServiceImp;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * 处理创新提案模块的请求
+ * @author shark
+ * @update 2015下午7:10:18
+ * @function
+ *
+ */
 public class InnovationAction extends BaseInit {
 
 	private TbInnovation innovation;
@@ -42,6 +50,10 @@ public class InnovationAction extends BaseInit {
 	@Autowired
 	private TbMasterDAO masterDAO;
 
+	/**
+	 * 单条录入页面初始化
+	 * @return
+	 */
 	@Action(value = "innovation.null.innovationSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
@@ -49,7 +61,7 @@ public class InnovationAction extends BaseInit {
 
 		List<OrganizationNj> organizationNjs = getOrganizationNjs();
 		if (organizationNjs != null && organizationNjs.size() > 0) {
-			map.put("orgs", organizationNjs);
+			ServletActionContext.getRequest().setAttribute("orgs",organizationNjs);
 		}
 		return "success";
 	}
