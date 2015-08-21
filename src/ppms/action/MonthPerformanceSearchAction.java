@@ -37,6 +37,7 @@ import ppms.domain.TbEmployee;
 import ppms.domain.TbPerformance;
 
 import ppms.serviceimpl.MonthPerformanceServicelmp;
+import ppms.serviceimpl.PraiseCriticismServiceImp;
 
 
 
@@ -91,6 +92,8 @@ public class MonthPerformanceSearchAction extends ActionSupport{
 	@Autowired
 	public MonthPerformanceServicelmp service;
 
+	@Autowired
+	public PraiseCriticismServiceImp ccz;
 
 	public MonthPerformanceSearchAction(){
 		
@@ -169,6 +172,19 @@ public class MonthPerformanceSearchAction extends ActionSupport{
 		return "success";
 	}
 	
+	/** 
+	
+	* @方法名: yearPerformanceSearch 
+	
+	* @描述: 年度绩效查询数据初始化 
+	
+	* @param @return    设定文件
+	
+	* @return String    返回类型
+	
+	* @throws 
+	
+	*/ 
 	@Action(value="performance.year.yearPerformanceSearch",results={
 			@Result(name = "success", location = "/WEB-INF/content/page/performance/yearPerformanceSearch.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
@@ -234,11 +250,12 @@ public class MonthPerformanceSearchAction extends ActionSupport{
 	 * @return                                             
 	 * @throws IOException 
 	 */
-	@Action(value = "performance.month.monthPerformanceSearch_Del", results = {
+	@Action(value = "performance.month.monthPerformanceSearch.Delete", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/performance/monthPerformanceSearch.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
 	public String monthPerformanceSearch_Del() throws IOException {
 
+		int i=0;
 		System.out.println("-------------ok!");
 		
 		try {
@@ -248,15 +265,74 @@ public class MonthPerformanceSearchAction extends ActionSupport{
 			System.out.println("-------------->>>"+performanceid);
 			java.util.logging.Logger.getGlobal().info("Logger------>>>"+performanceid);
 			
-			service.deletePerformance(performanceid);
+			List<TbPerformance> tbPerformances=service.getPerformances();
+			for(TbPerformance tb:tbPerformances){
+				if(tb.getPerformanceid().equals(performanceid)){
+					service.delete(tb);
+					
+					//删除之后返回月度绩效查询页面并进行数据初始化
+					monthPerformanceSearch();
+					return "success";
+					
+				}
+				
+			}
+			//service.deletePerformance(performanceid);
 		
 		} catch (Exception e) {
 			
-			
+			e.printStackTrace();
+			return "error";
 		}
 		
 			return "success";
 		
 	}
+
+	/**
+	 * 点击菜单页面“年度绩效查询”数据删除
+	 * 
+	 * @return                                             
+	 * @throws IOException 
+	 */
+	@Action(value = "performance.year.yearPerformanceSearch.Delete", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/performance/yearPerformanceSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String yearPerformanceSearch_Del() throws IOException {
+
+		int i=0;
+		System.out.println("-------------ok!");
+		
+		try {
+			
+			//String  performanceid =(String) request.getAttribute("performances");
+			String performanceid= request.getParameter("performanceid");
+			System.out.println("-------------->>>"+performanceid);
+			java.util.logging.Logger.getGlobal().info("Logger------>>>"+performanceid);
+			
+			List<TbPerformance> tbPerformances=service.getPerformances();
+			for(TbPerformance tb:tbPerformances){
+				if(tb.getPerformanceid().equals(performanceid)){
+					service.delete(tb);
+					
+					////删除之后返回年度绩效查询页面并进行数据初始化
+					yearPerformanceSearch();
+					return "success";
+					
+				}
+				
+			}
+			//service.deletePerformance(performanceid);
+		
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return "error";
+		}
+		
+			return "success";
+		
+	}
+
 
 }

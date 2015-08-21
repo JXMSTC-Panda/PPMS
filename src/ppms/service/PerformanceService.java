@@ -110,4 +110,34 @@ public interface PerformanceService {
 	
 	*/ 
 	void deletePerformance(String performanceid);
+
+	/** 
+	
+	* @方法名: deletePerformance 
+	
+	* @描述: TODO(这里用一句话描述这个方法的作用) 
+	
+	* @param @param persistentInstance    设定文件
+	
+	* @return void    返回类型
+	
+	* @throws 
+	
+	*/ 
+	void deletePerformance(TbPerformance persistentInstance);
+
+	/** 
+	
+	* @方法名: delete 
+	
+	* @描述: TODO(这里用一句话描述这个方法的作用) 
+	
+	* @param @param object    设定文件
+	
+	* @return void    返回类型
+	
+	* @throws 
+	
+	*/ 
+	void delete(Object object);
 }

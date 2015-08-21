@@ -93,7 +93,7 @@ public interface PerformanceDao {
 	* @throws 
 	
 	*/ 
-	boolean deletePerformance(String  performanceid);
+	public void deletePerformance(Object performanceid);
 
 
 
