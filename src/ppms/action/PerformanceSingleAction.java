@@ -45,6 +45,19 @@ import com.opensymphony.xwork2.ActionSupport;
  * 
  * @version       
  */
+/**   
+*    
+* 项目名称：PPMS   
+* 类名称：PerformanceSingleAction   
+* 类描述：   
+* 创建人：SuperPcf 
+* 创建时间：2015-8-19 下午4:47:11   
+* 修改人：（修改人的名字） 
+* 修改时间：2015-8-19 下午4:47:11   
+* 修改备注：   
+* @version    
+*    
+*/ 
 public class PerformanceSingleAction extends ActionSupport {
 
 	/**
@@ -91,6 +104,89 @@ public class PerformanceSingleAction extends ActionSupport {
 	@Autowired
 	private MonthPerformanceServicelmp service;
 
+	
+	/** 
+	
+	* @方法名: monthPerformanceSingle 
+	
+	* @描述: menu.jsp菜单页跳转到monthPerformanceSingle.jsp月度绩效单条录入
+	
+	* @param @return    设定文件
+	
+	* @return String    返回类型
+	
+	* @throws 
+	
+	*/ 
+	@Action(value="performance.month.monthPerformanceSingle",results={
+			@Result(name = "success", location = "/WEB-INF/content/page/performance/monthPerformanceSingle.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public String monthPerformanceSingle(){
+		return "success";
+	}
+	
+	
+	
+	/** 
+	
+	* @方法名: yearPerformanceSingle 
+	
+	* @描述: menu.jsp菜单页跳转到yearPerformanceSingle.jsp年度绩效单条录入
+	
+	* @param @return    设定文件
+	
+	* @return String    返回类型
+	
+	* @throws 
+	
+	*/ 
+	@Action(value="performance.year.yearPerformanceSingle",results={
+			@Result(name = "success", location = "/WEB-INF/content/page/performance/yearPerformanceSingle.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public String yearPerformanceSingle(){
+		return "success";
+	}
+	
+	/** 
+	
+	* @方法名: monthPerformanceBatch 
+	
+	* @描述: menu.jsp菜单页跳转到monthPerformanceBatch.jsp 月度绩效批量导入
+	
+	* @param @return    设定文件
+	
+	* @return String    返回类型
+	
+	* @throws 
+	
+	*/ 
+	@Action(value="performance.month.monthPerformanceBatch",results={
+			@Result(name = "success", location = "/WEB-INF/content/page/performance/monthPerformanceBatch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public String monthPerformanceBatch(){
+		return "success";
+	}
+	
+	/** 
+	
+	* @方法名: yearPerformanceBatch 
+	
+	* @描述: menu.jsp菜单页跳转到yearPerformanceBatch.jsp年度绩效批量导入
+	
+	* @param @return    设定文件
+	
+	* @return String    返回类型
+	
+	* @throws 
+	
+	*/ 
+	@Action(value="performance.year.yearPerformanceBatch",results={
+			@Result(name = "success", location = "/WEB-INF/content/page/performance/yearPerformanceBatch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp")})
+	public String yearPerformanceBatch(){
+		return "success";
+	}
+	
 	/*
 	 * 处理“‘——月——’度绩效单条录入”
 	 * 
@@ -132,7 +228,7 @@ public class PerformanceSingleAction extends ActionSupport {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "faild";
+		return "success";
 	}
 	
 	/*
@@ -143,7 +239,7 @@ public class PerformanceSingleAction extends ActionSupport {
 	@Action(value = "performance.year.yearPerformance.add", results = {
 			
 			//****************************************---------->>>>>>跳转待修改
-			@Result(name = "success", location = "/WEB-INF/content/page/performance/monthPerformanceSingleResult.jsp"),
+			@Result(name = "success", location = "/WEB-INF/content/page/performance/yearPerformanceSingleResult.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String addYearPerformance() {
 
@@ -176,7 +272,7 @@ public class PerformanceSingleAction extends ActionSupport {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "faild";
+		return "success";
 	}
 
 

@@ -4,6 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * 实体表和Excel文件列映射关系对象
+ * @author shark
+ * @update 2015下午7:15:06
+ * @function
+ *
+ */
 public class ExcelObjStruct {
 
 	/**
@@ -55,7 +62,7 @@ public class ExcelObjStruct {
 	}
 	
 	/**
-	 * 根据value获取key值
+	 * 根据value获取key值7
 	 * @param value
 	 * @return
 	 */

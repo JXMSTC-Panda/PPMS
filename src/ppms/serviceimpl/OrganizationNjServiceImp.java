@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import ppms.daoimpl.OrganizationNjDaoImp;
 import ppms.domain.OrganizationNj;
+import ppms.genericDao.OrganizationNjDAO;
 import ppms.service.OrganizationNjService;
 
 /**   
@@ -37,13 +38,28 @@ public class OrganizationNjServiceImp implements OrganizationNjService {
 
 	@Autowired
 	private OrganizationNjDaoImp dao;
-	/* (non-Javadoc)
-	 * @see ppms.service.OrganizationNjService#getOrganizationNjs()
+	
+	//这条Dao是系统自动生成的
+	@Autowired
+	private OrganizationNjDAO org_AutoDao;
+	
+	
+	/**
+	 * 取所有的营业厅表的数据
 	 */
 	@Override
 	public List<OrganizationNj> getOrganizationNjs() {
 		// TODO Auto-generated method stub
 		return dao.getOrganizationNjs();
+	}
+	
+	/**
+	 * 根据营业厅的ID取值
+	 * @param 营业厅id
+	 * @return
+	 */
+	public OrganizationNj getAllOrgsById(int id){
+		return org_AutoDao.findById(id);
 	}
 
 }

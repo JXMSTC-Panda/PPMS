@@ -13,6 +13,8 @@ package ppms.daoimpl;
 
 import java.util.List;
 
+import javax.faces.context.Flash;
+
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -23,6 +25,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 import ppms.domain.*;
 import ppms.dao.PerformanceDao;
 import ppms.domain.TbPerformance;
+import ppms.genericDao.TbPerformanceDAO;
 
 /**   
  *    
@@ -40,16 +43,19 @@ import ppms.domain.TbPerformance;
 @Repository
 public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao {
 
+	
+	
+
 	/**
 	 * 月度绩效查询所有记录
 	 */
 	@Override
 	public List<TbPerformance> getpPerformances() {
-	
-		Session session = getSession();
-		
-		Criteria cri = session.createCriteria(TbPerformance.class);
-		//条件查询当performancetype为false是为月度绩效
+//	
+//		Session session = getSession();
+//		
+//		Criteria cri = session.createCriteria(TbPerformance.class);
+//		//条件查询当performancetype为false是为月度绩效
 		//cri.add(Restrictions.eq("performancetype", false));
 		
 		
@@ -66,19 +72,46 @@ public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao
 		return getHibernateTemplate().findByExample(new OrganizationNj());
 	}
 
-	/* (non-Javadoc)
-	 * @see ppms.dao.PerformanceDao#getEmployees()
+	/**
+	 * 根据员工id查询员工
 	 */
 	@Override
-	public List<TbEmployee> getEmployees() {
-		// TODO Auto-generated method stub
-		return getHibernateTemplate().findByExample(new TbEmployee());
+	public List<TbEmployee> getEmployees(String employeeid) {
+		List results=null;
+		try{
+			String hql="from TbEmployee where employeeid='"+employeeid+"'"; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
 		
+		return results;  
+    }
+
+	/* (non-Javadoc)
+	 * @see ppms.dao.PerformanceDao#deletePerformance(java.lang.Object)
+	 */
+	@Override
+	public void  deletePerformance(Object performance) {
+		
+		try {
+			getHibernateTemplate().delete(performance);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	
+
+	
+	
+		
+}
+
+	
 		
 	
 
 
-}
+

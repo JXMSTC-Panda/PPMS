@@ -1,13 +1,18 @@
 package ppms.service;
 
+import java.awt.geom.Area;
+import java.math.BigDecimal;
 import java.util.List;
 import ppms.domain.OrganizationNj;
+import ppms.domain.TbArea;
 import ppms.domain.TbAreaorgrelation;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbJob;
 import ppms.domain.TbPost;
 import ppms.domain.TbRole;
 import ppms.domain.TbStandardcheck;
+import ppms.domain.TbSubarea;
+import ppms.domain.TbSubareaorgrelation;
 
 public interface StandardCheckService{
 	/**
@@ -31,5 +36,32 @@ public interface StandardCheckService{
 	 * @return
 	 * */
 	public List<TbAreaorgrelation> findAreaorgrelation(int AreaId);
+	/**
+	 * 通过AreaId来获取Area表的信息
+	 * @return:List
+	 * */
+	public List<TbArea> findAreaId(BigDecimal areId);
+	/**
+	 * 通过OrgId来查找tb_SubAreaOrgRelation表中的SubAreaId
+	 * 
+	 * */
+	public List<TbSubareaorgrelation> findSubAreaId(Integer orgId);
+	/**
+	 * 通过subareaid来查找tb_SubArea表中的SubAreaDesc
+	 * 
+	 * */
+	public List<TbSubarea> findSubareaDesc(BigDecimal subareaid);
+	/**
+	 * 获取营业厅表
+	 * */
+	public List<OrganizationNj> findOrganizationInfo();
+	/**
+	 * 根据orgId查询营业厅表
+	 * */
+	public List<OrganizationNj> findOrganizationId(Integer orgId);
+	/**
+	 * 插入方法
+	 * */
+	void save(Object object);
 	
 }

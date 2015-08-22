@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 配置Excel文件与实体类的映射 -->
 <objects>
 	<excel name="暗访检查成绩批量导入模板.xls">
 		<object>
@@ -85,11 +86,101 @@
 		</object>
 	</excel>
 	
+	<excel name="积分批量导入模板(合作厅).xls">
+		<object>
+			<class_name>ppms.domain.TbPoint</class_name>
+		</object>
+	</excel>
+	
+	<excel name="积分批量导入模板(主厅).xls">
+		<object>
+			<class_name>ppms.domain.TbPoint</class_name>
+		</object>
+	</excel>
 	<excel name="转正考核成绩批量导入模板.xls">
 		<object>
 			<class_name>ppms.domain.TbBecomeemployeeexam</class_name>
 		</object>
 	</excel>
 	
+	<!-- 导出 -->
 	
+	<excel name="创新提案批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbInnovation</class_name>
+		</object>
+	</excel>
+	
+	<excel name="暗访检查成绩批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbVisitcheck</class_name>
+		</object>
+	</excel>
+	
+	
+	<excel name="标准化检查成绩批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbStandardcheck</class_name>
+		</object>
+	</excel>
+	
+	<excel name="个人成长线路查询结果.xls">
+		<object>
+			<class_name>ppms.domain.TbEmployee</class_name>
+		</object>
+	</excel>
+	
+	<excel name="合作厅上岗证批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbMountguardexam</class_name>
+		</object>
+	</excel>
+	
+	<excel name="人员基本信息批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbEmployee</class_name>
+		</object>
+	</excel>
+	
+	
+	<excel name="监控检查成绩批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbMonitorcheck</class_name>
+		</object>
+	</excel>
+	
+	<excel name="进阶培训管理批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbPromotiontraining</class_name>
+		</object>
+	</excel>
+	
+		<excel name="月度绩效批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbPerformance</class_name>
+		</object>
+	</excel>
+	<excel name="年度绩效批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbPerformance</class_name>
+		</object>
+	</excel>
+	
+	<excel name="员工奖惩信息批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbEmployeepraisecriticism</class_name>
+		</object>
+	</excel>
+	
+	
+	<excel name="业务差错检查成绩批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbOperationcheck</class_name>
+		</object>
+	</excel>
+	<excel name="营业厅奖惩信息批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbOrgpraisecriticism</class_name>
+		</object>
+	</excel>
 </objects>

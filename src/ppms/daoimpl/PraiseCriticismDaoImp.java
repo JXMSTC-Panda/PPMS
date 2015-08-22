@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import ppms.dao.PraiseCriticismDao;
 import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
@@ -19,7 +20,7 @@ import ppms.domain.TbSubareaorgrelation;
 @Repository
 /*
  * 奖惩管理的dao层*/
-public class PraiseCriticismDaoImp extends BaseDaoImp{
+public class PraiseCriticismDaoImp extends BaseDaoImp implements PraiseCriticismDao{
 	/**
 	 * 单条录入员工奖惩信息
 	 * @param tbEmployeepraisecriticism
@@ -38,6 +39,30 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	 */
 	public void businessHallInforSave(Object tbOrgpraisecriticism){
 		getHibernateTemplate().save(tbOrgpraisecriticism);
+	}
+	/**
+	 * 更新数据
+	 * @param object
+	 */
+	public void update(Object object){
+		try {
+			getHibernateTemplate().update(object);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	/**
+	 * 数据库完全删除数据
+	 * @param object
+	 */
+	public void delete(Object object){
+		try {
+			getHibernateTemplate().delete(object);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	/**
 	 * 动态下拉框，根据奖惩类型，动态变化奖惩级别
@@ -114,7 +139,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		
 		List results=null;
 		try{
-			String hql="from TbMaster where type='EmployeePraiseCriticismType' and value='"+key+"'" ; 
+			String hql="from TbMaster where type='EmployeePraiseCriticismType' and key='"+key+"'" ; 
 			results=getHibernateTemplate().find(hql);//执行find方法
 			
 		}catch(Exception e){
@@ -298,7 +323,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 	 * 获取所有的员工奖惩信息
 	 * @return
 	 */
-	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor(){
+	public List<TbEmployeepraisecriticism> findAllEmployeepraisecriticismInfor(){
 		List results=null;
 		try{
 			String hql="from TbEmployeepraisecriticism"; 
@@ -310,13 +335,45 @@ public class PraiseCriticismDaoImp extends BaseDaoImp{
 		return results; 
 	}
 	/**
+	 * 根据员工奖惩信息编号查询员工奖惩信息
+	 * @param praisecriticismid
+	 * @return
+	 */
+	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor(String praisecriticismid){
+		List results=null;
+		try{
+			String hql="from TbEmployeepraisecriticism where praisecriticismid='"+praisecriticismid+"'"; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		return results; 
+	}
+	/**
 	 * 获取所有的营业厅奖惩信息
 	 * @return
 	 */
-	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(){
+	public List<TbOrgpraisecriticism> findAllOrgpraisecriticismInfor(){
 		List results=null;
 		try{
 			String hql="from TbOrgpraisecriticism"; 
+			results=getHibernateTemplate().find(hql);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{}
+		return results; 
+	}
+	/**
+	 * 根据营业厅奖惩信息编号获取营业厅奖惩信息
+	 * @param praisecriticismid
+	 * @return
+	 */
+	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(String praisecriticismid){
+		List results=null;
+		try{
+			String hql="from TbOrgpraisecriticism where praisecriticismid='"+praisecriticismid+"'"; 
 			results=getHibernateTemplate().find(hql);
 			
 		}catch(Exception e){

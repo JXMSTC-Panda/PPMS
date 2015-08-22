@@ -37,7 +37,22 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 	public void businessHallInforSave(Object tbOrgpraisecriticism){
 		dao.businessHallInforSave(tbOrgpraisecriticism);
 	}
-	
+	/**
+	 * 更新数据
+	 * @param object
+	 */
+	@Override
+	public void update(Object object){
+		dao.update(object);
+	}
+	/**
+	 * 数据库完全删除数据
+	 * @param object
+	 */
+	@Override
+	public void delete(Object object){
+		dao.delete(object);
+	}
 	/*
 	 * 动态下拉框，根据奖惩类型，动态变化奖惩级别*/
 
@@ -131,12 +146,30 @@ public class PraiseCriticismServiceImp implements PraiseCriticismService {
 		return dao.findAllOrganizationNjInfor();
 	}
 	@Override
-	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor(){
-		return dao.findEmployeepraisecriticismInfor();
+	public List<TbEmployeepraisecriticism> findAllEmployeepraisecriticismInfor(){
+		return dao.findAllEmployeepraisecriticismInfor();
+	}
+	/**
+	 * 根据员工奖惩信息编号查询员工奖惩信息
+	 * @param praisecriticismid
+	 * @return
+	 */
+	@Override
+	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor(String praisecriticismid){
+		return dao.findEmployeepraisecriticismInfor(praisecriticismid);
 	}
 	@Override
-	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(){
-		return dao.findOrgpraisecriticismInfor();
+	public List<TbOrgpraisecriticism> findAllOrgpraisecriticismInfor(){
+		return dao.findAllOrgpraisecriticismInfor();
+	}
+	/**
+	 * 根据营业厅奖惩信息编号获取营业厅奖惩信息
+	 * @param praisecriticismid
+	 * @return
+	 */
+	@Override
+	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(String praisecriticismid){
+		return dao.findOrgpraisecriticismInfor(praisecriticismid);
 	}
 	@Override
 	public List<TbSubareaorgrelation> findSubareaorgrelationInfor(int orgId){

@@ -1,9 +1,16 @@
 package ppms.domain;
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import org.hibernate.criterion.Restrictions;
+
+import ppms.annotation.MarkSpecialField;
+import ppms.daoimpl.BaseDaoImp;
 
 /**
  * OrganizationNj entity. @author MyEclipse Persistence Tools
@@ -15,6 +22,44 @@ public class OrganizationNj implements java.io.Serializable {
 
 	private Integer orgid;
 	private String org_Name;
+	private String areadesc;
+	private String subareadesc;
+	private Date checkdate;
+	private Double checkscore;
+	
+	
+	public Date getCheckdate() {
+		return checkdate;
+	}
+
+	public void setCheckdate(Date checkdate) {
+		this.checkdate = checkdate;
+	}
+
+	public Double getCheckscore() {
+		return checkscore;
+	}
+
+	public void setCheckscore(Double checkscore) {
+		this.checkscore = checkscore;
+	}
+
+	public String getSubareadesc() {
+		return subareadesc;
+	}
+
+	public void setSubareadesc(String subareadesc) {
+		this.subareadesc = subareadesc;
+	}
+
+	public String getAreadesc() {
+		return areadesc;
+	}
+
+	public void setAreadesc(String areadesc) {
+		this.areadesc = areadesc;
+	}
+
 	private String address;
 	private Date expire_Time;
 	private Integer superior_Id;
@@ -25,6 +70,8 @@ public class OrganizationNj implements java.io.Serializable {
 	private Byte type;
 	private Integer region_Id;
 	private String channel_Type;
+	
+	private String regionName;
 	private Set tbChangeorghistoriesForOutorgid = new HashSet(0);
 	private Set tbChangeorghistoriesForInorgid = new HashSet(0);
 	private Set tbBecomeemployeeexams = new HashSet(0);
@@ -32,6 +79,7 @@ public class OrganizationNj implements java.io.Serializable {
 	private Set tbSubareaorgrelations = new HashSet(0);
 	private Set tbStandardchecks = new HashSet(0);
 	private Set tbOperationtrainings = new HashSet(0);
+	@MarkSpecialField(fieldName="regionName")
 	private Set tbAreaorgrelations = new HashSet(0);
 	private Set tbOperationchecks = new HashSet(0);
 	private Set tbFreshemployeeexams = new HashSet(0);
@@ -404,7 +452,26 @@ public class OrganizationNj implements java.io.Serializable {
 		this.operatorNjs = operatorNjs;
 	}
 
+
 	// Property accessors
 
+	/**
+	 * 将数据完整
+	 * @return
+	 */
+	public OrganizationNj toComplete(BaseDaoImp dao){
+	
+		TbAreaorgrelation areaorgrelation;
+		for (Object Tb : tbAreaorgrelations) {
+			
+			areaorgrelation=(TbAreaorgrelation) Tb;
+			
+			Integer areaorgid = areaorgrelation.getAreaorgid();
+			List<TbAreaorgrelation> list = dao.getEntitiestNotLazy(new TbAreaorgrelation(), new String[]{"organizationNj","tbArea"}, Restrictions.eq("areaorgid", areaorgid));
+			
+			setAreadesc(list.get(0).getTbArea().getAreadesc());
+		}
+		return this;
+	}
 
 }

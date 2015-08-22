@@ -99,13 +99,13 @@ public class FileAction extends ActionSupport {
 				
 				if(expect.equals(fileFileName)){
 					List<Object> objs = new CommonExcelParser(dao,exception).toObjs2(file,
-							expect);
+							fileFileName);
 					for (Object obj : objs) {
 						
 						dao.saveObject(obj);
 						
 						System.out.println(obj.toString());
-					}
+				}
 
 					System.out.println(fileFileName);
 				}else{
@@ -127,7 +127,7 @@ public class FileAction extends ActionSupport {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+ 		}
 
 		return Action.SUCCESS;
 	}

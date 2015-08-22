@@ -60,7 +60,7 @@
 
 			<ul class="submenu">
 				<li id="roleSingle" class=""><a
-					href="${pageContext.request.contextPath}/resource/authority.null.roleSingle">
+					href="authority.null.roleSingle.do">
 						<i class="menu-icon fa fa-caret-right"></i>角色增加 </a> <b class="arrow"></b>
 				</li>
 				<li id="roleSearch" class=""><a
@@ -80,22 +80,22 @@
 
 					<ul class="submenu">
 						<li id="userBaseInfoSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.userBase.userBaseInfoSingle">
+							href="userInfo.userBase.userBaseInfoSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>人员基本信息单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="userBaseInfoBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.userBase.userBaseInfoBatch">
+							href="userInfo.userBase.userBaseInfoBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>人员基本信息批量录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="userBaseInfoBatchUpdateBySelectField" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.userBase.userBaseInfoBatchUpdateBySelectField">
+							href="userInfo.userBase.userBaseInfoBatchUpdateBySelectField.do">
 								<i class="menu-icon fa fa-caret-right"></i>人员基本信息批量修改 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="userBaseInfoSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.userBase.userBaseInfoSearch">
+							href="userInfo.userBase.userBaseInfoSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>人员基本信息查詢 </a> <b
 							class="arrow"></b>
 						</li>
@@ -108,12 +108,12 @@
 
 					<ul class="submenu">
 						<li id="individualGrowthFileSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.growthFile.individualGrowthFileSearch">
+							href="userInfo.growthFile.individualGrowthFileSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>个人成长线路查询 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="personnelGrowthFileSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.growthFile.personnelGrowthFileSearch">
+							href="userInfo.growthFile.personnelGrowthFileSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>人员阶段查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -127,12 +127,12 @@
 
 					<ul class="submenu">
 						<li id="changeHallSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.changeHall.changeHallSearch">
+							href="userInfo.changeHall.changeHallSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>人员调厅记录查询 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="businessHallSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.changeHall.businessHallSearch">
+							href="userInfo.changeHall.businessHallSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>营业厅信息查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -146,12 +146,12 @@
 
 					<ul class="submenu">
 						<li id="hallKeeperExamSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.hallKeeperExam.hallKeeperExamSearch">
+							href="userInfo.hallKeeperExam.hallKeeperExamSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>店长测评查询 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="hallKeeperForwardSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.hallKeeperExam.hallKeeperForwardSearch">
+							href="userInfo.hallKeeperExam.hallKeeperForwardSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>店长进阶查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -165,12 +165,12 @@
 
 					<ul class="submenu">
 						<li id="managerExamSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.managerExam.managerExamSearch">
+							href="userInfo.managerExam.managerExamSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>值班经理测评查询 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="managerForwardSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.managerExam.managerForwardSearch">
+							href="userInfo.managerExam.managerForwardSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>值班经理进阶查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -184,17 +184,17 @@
 
 					<ul class="submenu">
 						<li id="mountGuardCardSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.mountGuardCard.mountGuardCardSingle">
+							href="userInfo.mountGuardCard.mountGuardCardSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>合作厅上岗证单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="mountGuardCardBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.mountGuardCard.mountGuardCardBatch">
+							href="userInfo.mountGuardCard.mountGuardCardBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>合作厅上岗批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="mountGuardCardSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/userInfo.mountGuardCard.mountGuardCardSearch">
+							href="userInfo.mountGuardCard.mountGuardCardSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>合作厅上岗证查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -215,17 +215,17 @@
 
 					<ul class="submenu">
 						<li id="monthExamSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.monthExam.monthExamSingle">
+							href="employeeTrainExam.monthExam.monthExamSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度考试单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="monthExamBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.monthExam.monthExamBatch">
+							href="employeeTrainExam.monthExam.monthExamBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度考试批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="monthExamSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.monthExam.monthExamSearch">
+							href="employeeTrainExam.monthExam.monthExamSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度考试查詢 </a> <b
 							class="arrow"></b>
 						</li>
@@ -238,17 +238,17 @@
 
 					<ul class="submenu">
 						<li id="operationTrainSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.operationTrain.operationTrainSingle">
+							href="employeeTrainExam.operationTrain.operationTrainSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>业务培训单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="operationTrainBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.operationTrain.operationTrainBatch">
+							href="employeeTrainExam.operationTrain.operationTrainBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>业务培训批量录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="operationTrainSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.operationTrain.operationTrainSearch">
+							href="employeeTrainExam.operationTrain.operationTrainSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>业务培训查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -262,17 +262,17 @@
 
 					<ul class="submenu">
 						<li id="promoteTrainSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.promoteTrain.promoteTrainSingle">
+							href="employeeTrainExam.promoteTrain.promoteTrainSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>进阶培训单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="promoteTrainBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.promoteTrain.promoteTrainBatch">
+							href="employeeTrainExam.promoteTrain.promoteTrainBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>进阶培训批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="promoteTrainSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.promoteTrain.promoteTrainSearch">
+							href="employeeTrainExam.promoteTrain.promoteTrainSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>进阶培训查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -285,32 +285,32 @@
 
 					<ul class="submenu">
 						<li id="freshEmployeeExamSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.freshEmployeeExam.freshEmployeeExamSingle">
+							href="employeeTrainExam.freshEmployeeExam.freshEmployeeExamSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>新员工考核成绩单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="freshEmployeeExamBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.freshEmployeeExam.freshEmployeeExamBatch">
+							href="employeeTrainExam.freshEmployeeExam.freshEmployeeExamBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>新员工考核成绩批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="freshEmployeeExamSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.freshEmployeeExam.freshEmployeeExamSearch">
+							href="employeeTrainExam.freshEmployeeExam.freshEmployeeExamSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>新员工考核成绩查询 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="becomeEmployeeSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.freshEmployeeExam.becomeEmployeeSingle">
+							href="employeeTrainExam.freshEmployeeExam.becomeEmployeeSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>转正考核成绩单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="becomeEmployeeBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.freshEmployeeExam.becomeEmployeeBatch">
+							href="employeeTrainExam.freshEmployeeExam.becomeEmployeeBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>转正考核成绩批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="becomeEmployeeSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/employeeTrainExam.freshEmployeeExam.becomeEmployeeSearch">
+							href="employeeTrainExam.freshEmployeeExam.becomeEmployeeSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>转正考核成绩查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -331,17 +331,17 @@
 
 					<ul class="submenu">
 						<li id="standardSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.standard.standardSingle">
+							href="standardVisit.standard.standardSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>标准化检查成绩单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="standardBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.standard.standardBatch">
+							href="standardVisit.standard.standardBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>标准化检查成绩批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="standardSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.standard.standardSearch">
+							href="standardVisit.standard.standardSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>标准化检查成绩查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -354,17 +354,17 @@
 
 					<ul class="submenu">
 						<li id="monitorSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.monitor.monitorSingle">
+							href="standardVisit.monitor.monitorSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>监控检查成绩单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="monitorBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.monitor.monitorBatch">
+							href="standardVisit.monitor.monitorBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>监控检查成绩批量录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="monitorSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.monitor.monitorSearch">
+							href="standardVisit.monitor.monitorSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>监控检查成绩查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -378,17 +378,17 @@
 
 					<ul class="submenu">
 						<li id="visitSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.visit.visitSingle">
+							href="standardVisit.visit.visitSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>暗访检查成绩单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="visitBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.visit.visitBatch">
+							href="standardVisit.visit.visitBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>暗访检查成绩批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="visitSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.visit.visitSearch">
+							href="standardVisit.visit.visitSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>暗访检查成绩查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -401,17 +401,17 @@
 
 					<ul class="submenu">
 						<li id="operationMistakeSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.operationMistake.operationMistakeSingle">
+							href="standardVisit.operationMistake.operationMistakeSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>业务差错检查成绩单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="operationMistakeBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.operationMistake.operationMistakeBatch">
+							href="standardVisit.operationMistake.operationMistakeBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>业务差错检查成绩批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="operationMistakeSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/standardVisit.operationMistake.operationMistakeSearch">
+							href="standardVisit.operationMistake.operationMistakeSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>业务差错检查成绩查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -427,12 +427,12 @@
 
 			<ul class="submenu">
 				<li id="integralBatch" class=""><a
-					href="${pageContext.request.contextPath}/resource/integral.null.integralBatch">
+					href="integral.null.integralBatch.do">
 						<i class="menu-icon fa fa-caret-right"></i>积分批量导入 </a> <b
 					class="arrow"></b>
 				</li>
 				<li id="integralSearch" class=""><a
-					href="${pageContext.request.contextPath}/resource/integral.null.integralSearch">
+					href="integral.null.integralSearch.do">
 						<i class="menu-icon fa fa-caret-right"></i>积分查询 </a> <b class="arrow"></b>
 				</li>
 			</ul>
@@ -444,17 +444,17 @@
 
 			<ul class="submenu">
 				<li id="innovationSingle" class=""><a
-					href="${pageContext.request.contextPath}/resource/innovation.null.innovationSingle">
+					href="innovation.null.innovationSingle.do">
 						<i class="menu-icon fa fa-caret-right"></i>创新提案单条录入 </a> <b
 					class="arrow"></b>
 				</li>
 				<li id="innovationBatch" class=""><a
-					href="${pageContext.request.contextPath}/resource/innovation.null.innovationBatch">
+					href="innovation.null.innovationBatch.do">
 						<i class="menu-icon fa fa-caret-right"></i>创新提案批量导入 </a> <b
 					class="arrow"></b>
 				</li>
 				<li id="innovationSearch" class=""><a
-					href="${pageContext.request.contextPath}/resource/innovation.null.innovationSearch">
+					href="innovation.null.innovationSearch.do">
 						<i class="menu-icon fa fa-caret-right"></i>创新提案查询 </a> <b
 					class="arrow"></b>
 				</li>
@@ -472,17 +472,17 @@
 
 					<ul class="submenu">
 						<li id="employeePraiseCriticismSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/praiseCriticism.employee.employeePraiseCriticismSingle">
+							href="praiseCriticism.employee.employeePraiseCriticismSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>员工奖惩信息管理单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="employeePraiseCriticismBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/praiseCriticism.employee.employeePraiseCriticismBatch">
+							href="praiseCriticism.employee.employeePraiseCriticismBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>员工奖惩信息管理批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="employeePraiseCriticismSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/praiseCriticism.employee.employeePraiseCriticismSearch">
+							href="praiseCriticism.employee.employeePraiseCriticismSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>员工奖惩信息管理查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -494,17 +494,17 @@
 
 					<ul class="submenu">
 						<li id="businessHallPraiseCriticismSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/praiseCriticism.businessHall.businessHallPraiseCriticismSingle">
+							href="praiseCriticism.businessHall.businessHallPraiseCriticismSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>营业厅奖惩信息单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="businessHallPraiseCriticismBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/praiseCriticism.businessHall.businessHallPraiseCriticismBatch">
+							href="praiseCriticism.businessHall.businessHallPraiseCriticismBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>营业厅奖惩信息批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="businessHallPraiseCriticismSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/praiseCriticism.businessHall.businessHallPraiseCriticismSearch">
+							href="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>营业厅奖惩信息查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -523,27 +523,27 @@
 
 					<ul class="submenu">
 						<li id="monthPerformanceRemind" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceRemind">
+							href="performance.month.monthPerformanceRemind.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效未提交事项提醒 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="monthPerformanceOpen" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceOpen.do">
+							href="performance.month.monthPerformanceOpen.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效上传功能开通 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="monthPerformanceSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceSingle">
+							href="performance.month.monthPerformanceSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="monthPerformanceBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceBatch">
+							href="performance.month.monthPerformanceBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="monthPerformanceSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.month.monthPerformanceSearch.do">
+							href="performance.month.monthPerformanceSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -555,17 +555,17 @@
 
 					<ul class="submenu">
 						<li id="yearPerformanceSingle" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.year.yearPerformanceSingle">
+							href="performance.year.yearPerformanceSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>年度绩效单条录入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="yearPerformanceBatch" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.year.yearPerformanceBatch">
+							href="performance.year.yearPerformanceBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>年度绩效批量导入 </a> <b
 							class="arrow"></b>
 						</li>
 						<li id="yearPerformanceSearch" class=""><a
-							href="${pageContext.request.contextPath}/resource/performance.year.yearPerformanceSearch">
+							href="performance.year.yearPerformanceSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>年度绩效查询 </a> <b
 							class="arrow"></b>
 						</li>
@@ -581,12 +581,12 @@
 
 			<ul class="submenu">
 				<li id="batchImportTempletList" class=""><a
-					href="${pageContext.request.contextPath}/resource/other.null.batchImportTempletList">
+					href="other.null.batchImportTempletList.do">
 						<i class="menu-icon fa fa-caret-right"></i>批量导入模板下载 </a> <b
 					class="arrow"></b>
 				</li>
 				<li id="otherSystemSetting" class=""><a
-					href="${pageContext.request.contextPath}/resource/other.null.otherSystemSetting">
+					href="other.null.otherSystemSetting.do">
 						<i class="menu-icon fa fa-caret-right"></i>系统设定 </a> <b class="arrow"></b>
 				</li>
 			</ul>

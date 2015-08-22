@@ -77,22 +77,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<table cellpadding="0" cellspacing="0" class="tablelist" align="center">
 					<tr>
 						<th>&nbsp;</th>
-						<th>序号</th>
-						<th>营业厅编码</th>
-						<th>营业厅名称</th>
-						<th>区域</th>
-						<th>片区</th>
-					</tr>	
-				<c:forEach items="${requestScope.organizationNjInfor}" var="organizationNj">
+						<th>序号&nbsp;</th>
+						<th>营业厅编码&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>营业厅名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>区域&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>片区&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					</tr>		
+				
+				<c:forEach items="${requestScope.organizationNj}" var="OrganizationNj">
 					<tr>
-							<td><input type="radio" name="selectBusinessHall" value="${organizationNj.orgid}" checked></td>
+							<td><input type="radio" name="selectBusinessHall" value="${OrganizationNj.orgid}" checked></td>
 							<td>1</td>
-                        	<td>${organizationNj.orgid}</td>
-							<td>${organizationNj.org_Name}</td>
-							<td>${requestScope.areadesc}</td>
-							<td>${requestScope.subareaDesc}</td>
+                        	<td>${OrganizationNj.orgid}</td>
+							<td>${OrganizationNj.org_Name}</td>
+							<td>${OrganizationNj.areadesc}</td>
+							<td>${OrganizationNj.subareadesc}</td>
 					</tr>	
 				</c:forEach>
+				
+					
 				</table>
 				<table style="width: 95%" cellspacing="0" cellpadding="0" align="center">
 					<tr>

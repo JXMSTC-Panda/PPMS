@@ -77,7 +77,24 @@ public interface PerformanceDao {
 	* @throws 
 	
 	*/ 
-	public List<TbEmployee> getEmployees();
+	public List<TbEmployee> getEmployees(String employeeid);
+
+	/**
+	 * @return  
 	
+	* @方法名: deletePerformance 
+	
+	* @描述: 删除绩效表数据
+	
+	* @param @param performanceid    设定文件
+	
+	* @return void    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public void deletePerformance(Object performanceid);
+
+
 
 }

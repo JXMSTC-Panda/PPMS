@@ -28,6 +28,16 @@ public interface PraiseCriticismDao {
 	 */
 	public void businessHallInforSave(Object tbOrgpraisecriticism);
 	/**
+	 * 更新数据
+	 * @param object
+	 */
+	public void update(Object object);
+	/**
+	 * 数据库完全删除数据
+	 * @param object
+	 */
+	public void delete(Object object);
+	/**
 	 * 动态下拉框，根据奖惩类型，动态变化奖惩级别
 	 * @param key
 	 * @return
@@ -111,12 +121,25 @@ public interface PraiseCriticismDao {
 	 * 获取所有的员工奖惩信息
 	 * @return
 	 */
-	public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor();
-	/**
+	
+	 public List<TbEmployeepraisecriticism> findAllEmployeepraisecriticismInfor();
+	 /**
+		 * 根据员工奖惩信息编号查询员工奖惩信息
+		 * @param praisecriticismid
+		 * @return
+		 */
+		public List<TbEmployeepraisecriticism> findEmployeepraisecriticismInfor(String praisecriticismid);
+	 /**
 	 * 获取所有的营业厅奖惩信息
 	 * @return
 	 */
-	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor();
+	public List<TbOrgpraisecriticism> findAllOrgpraisecriticismInfor();
+	/**
+	 * 根据营业厅奖惩信息编号获取营业厅奖惩信息
+	 * @param praisecriticismid
+	 * @return
+	 */
+	public List<TbOrgpraisecriticism> findOrgpraisecriticismInfor(String praisecriticismid);
 	/**
 	 * 根据营业厅编号查询片区与营业厅关系
 	 * @param orgId

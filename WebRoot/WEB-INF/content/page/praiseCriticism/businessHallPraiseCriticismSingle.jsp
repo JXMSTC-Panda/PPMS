@@ -116,7 +116,7 @@
 									<div class="col-xs-12">
 										<!-- PAGE CONTENT BEGINS -->
 										<form class="form-horizontal" role="form"
-											action="businessHallPraiseCriticismSingleStart.do">
+											action="praiseCriticism.businessHall.businessHallPraiseCriticismSingle.businessHallPraiseCriticismSingleSave.do" method="post">
 											<!-- #section:elements.form -->
 
 
@@ -156,7 +156,7 @@
 														name="tbOrgpraisecriticism.organizationNj.org_Name" /> <span
 														class="help-inline col-xs-12 col-sm-7">
 														<button sclass="btn btn-info" type="button"
-															onClick="top.window.location='skipBusinessHallSelectSingle.do'">选择营业厅</button>
+															onClick="top.window.location='praiseCriticism.businessHall.businessHallPraiseCriticismSingle.skipBusinessHallSelectSingle.do'">选择营业厅</button>
 													</span>
 												</div>
 											</div>
@@ -171,8 +171,8 @@
 												<div class="col-sm-9">
 													<select class="col-xs-10 col-sm-5" id="form-field-select-1"
 														name="tbOrgpraisecriticism.praisecriticismtype">
-														<option value="1">惩罚</option>
-														<option value="2">表彰</option>
+														<option value="2">惩罚</option>
+														<option value="1">表彰</option>
 													</select>
 												</div>
 											</div>
