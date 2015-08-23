@@ -97,15 +97,15 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									创新管理 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 创新提案查询 </small>
+									营业厅选择<small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 选择营业厅 </small>
 								</h1>
 							</div>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">创新提案表</div>
+							<div class="table-header">营业厅表表</div>
 								<form name="StuListForm"
 								action="orgback.do?backUrl=${backUrl }"
 								method="post">

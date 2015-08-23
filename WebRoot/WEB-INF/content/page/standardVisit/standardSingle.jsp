@@ -90,7 +90,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
+						<li><a href="#">Other Pages</a>
+						</li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -103,14 +104,14 @@
 							标准化成绩管理 <small> <c:if
 									test="${requestScope.tbStandardcheck==null }">
 									<i class="ace-icon fa fa-angle-double-right"></i> 标准化成绩单条录入： 
+							
 							</small>
 						</h1>
 						</c:if>
-						 <c:if
-									test="${requestScope.tbStandardcheck!=null }">
-									<i class="ace-icon fa fa-angle-double-right"></i> 标准化成绩修改： 
+						<c:if test="${requestScope.tbStandardcheck!=null }">
+							<i class="ace-icon fa fa-angle-double-right"></i> 标准化成绩修改： 
 							</small>
-						</h1>
+							</h1>
 						</c:if>
 					</div>
 					<div class="row">
@@ -127,15 +128,23 @@
 							</c:if>
 							<!-- #section:elements.form -->
 
+
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right"
 									for="form-input-readonly"> 区域： </label>
 								<div class="col-sm-9">
-									<input readonly="" type="text" class="col-xs-10 col-sm-5"
-										id="form-input-readonly"
-										value="${requestScope.tbStandardcheck.organizationNj.areadesc}"
-										name="tbStandardcheck.organizationNj.areadesc" /> <span
-										class="help-inline col-xs-12 col-sm-7"> </span>
+									<c:if test="${requestScope.tbStandardcheck!=null }">
+										<input readonly="" type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly"
+											value="${requestScope.tbStandardcheck.organizationNj.areadesc}"
+											name="tbStandardcheck.organizationNj.areadesc" />
+									</c:if>
+									<c:if test="${requestScope.tbStandardcheck==null }">
+										<input readonly="" type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly" value="${organizationNj.areadesc}"
+											name="tbStandardcheck.organizationNj.areadesc" />
+									</c:if>
+									<span class="help-inline col-xs-12 col-sm-7"> </span>
 								</div>
 							</div>
 							<div class="form-group">
@@ -143,30 +152,46 @@
 									for="form-input-readonly"> 营业厅编码： </label>
 
 								<div class="col-sm-9">
-									<input readonly="" type="text" class="col-xs-10 col-sm-5"
-										id="form-input-readonly"
-										value="${requestScope.tbStandardcheck.organizationNj.orgid}"
-										name="tbStandardcheck.organizationNj.orgid" /> <span
-										class="help-inline col-xs-12 col-sm-7"> </span>
+									<c:if test="${requestScope.tbStandardcheck!=null }">
+										<input readonly="" type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly"
+											value="${requestScope.tbStandardcheck.organizationNj.orgid}"
+											name="tbStandardcheck.organizationNj.orgid" />
+									</c:if>
+									<c:if test="${requestScope.tbStandardcheck==null }">
+										<input readonly="" type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly" value="${organizationNj.orgid}"
+											name="tbStandardcheck.organizationNj.orgid" />
+									</c:if>
+									<span class="help-inline col-xs-12 col-sm-7"> </span>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right"
 									for="form-input-readonly"> 营业厅名称： </label>
-
 								<div class="col-sm-9">
-									<input readonly=" " type="text" class="col-xs-10 col-sm-5"
-										id="form-input-readonly"
-										value="${requestScope.tbStandardcheck.organizationNj.org_Name}"
-										name="tbStandardcheck.organizationNj.org_Name" />
+									<c:if test="${requestScope.tbStandardcheck!=null }">
+										<input readonly=" " type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly"
+											value="${requestScope.tbStandardcheck.organizationNj.org_Name}"
+											name="tbStandardcheck.organizationNj.org_Name" />
+									</c:if>
+
+									<c:if test="${requestScope.tbStandardcheck==null }">
+										<input readonly=" " type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly" value="${organizationNj.org_Name}"
+											name="tbStandardcheck.organizationNj.org_Name" />
+									</c:if>
 									<c:if test="${requestScope.tbStandardcheck==null }">
 										<span class="help-inline col-xs-12 col-sm-7">
 											<button type="button"
-												onClick="top.window.location='skipStandardCheckSingle.do'"
+												onClick="top.window.location='chooseOrg.do?backUrl=standardVisit.standard.standardSingle.do'"
 												class="btn btn-info">选择营业厅</button> </span>
 									</c:if>
 								</div>
 							</div>
+
+
 							<!-- /section:elements.form -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right"

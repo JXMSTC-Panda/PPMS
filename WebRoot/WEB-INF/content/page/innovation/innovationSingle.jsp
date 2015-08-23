@@ -120,8 +120,7 @@
 						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
 						</li>
 
-						<li><a href="#">Other Pages</a>
-						</li>
+						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<!-- /.breadcrumb -->
@@ -283,7 +282,7 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="" name="" /> <span
+														id="form-input-readonly" value="${sessionScope.organizationNj.areadesc }" name="" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -293,7 +292,7 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value=""
+														id="form-input-readonly" value="${sessionScope.organizationNj.orgid }"
 														name="innovation.organizationNjByOrgid.orgid" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
@@ -303,23 +302,16 @@
 													for="form-input-readonly"> 营业厅名称： </label>
 
 												<div class="col-sm-9">
-													<div class="col-xs-10 col-sm-5">
-														<select onchange="ajaxForEmployee(this)"
-															class="chosen-select form-control "
-															id="form-field-select-3"
-															name="innovation.organizationNjByOrgid.orgid"
-															data-placeholder="选择营业厅">
-															<option value=""></option>
-															<c:forEach items="${ requestScope.orgs}" var="org">
-																<option value="${org.orgid }">
-																	<c:out value="${org.org_Name }"></c:out>
-																</option>
-															</c:forEach>
-														</select>
-													</div>
+													<input readonly="" type="text" class="col-xs-10 col-sm-5"
+														id="form-input-readonly"
+														value="${sessionScope.organizationNj.org_Name }"
+														name="innovation.organizationNj.org_Name" /> <span
+														class="help-inline col-xs-12 col-sm-7">
+														<button class="btn btn-info"
+															onclick="top.window.location='chooseOrg.do?backUrl=innovation.null.innovationSingle.do?need=1'"
+															type="button">选择营业厅</button> </span>
 												</div>
 											</div>
-
 
 											<!-- /section:elements.form -->
 											<div class="form-group">
@@ -329,14 +321,12 @@
 													<div class="col-xs-10 col-sm-5">
 														<select class="chosen-select form-control"
 															id="form-field-select-employee"
-															name="innovation.tbEmployee.employeeid"
+															name="innovation.tbEmployee.employeeid" 
+															onchange=""
 															data-placeholder="选择员工">
-
-
-															<option value=""></option>
-															<option value="WV">c</option>
-															<option value="WI">我</option>
-															<option value="WY">你</option>
+															<c:forEach items="${sessionScope.employees }" var="employee">
+																<option value="${employee.employeeid }" onclick="top.window.location='getEmployee.do?backUrl=innovation.null.innovationSingle.do?employeeid=${employee.employeeid }'">${employee.employeename }</option>
+															</c:forEach>
 														</select>
 													</div>
 
@@ -345,10 +335,9 @@
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"
 													for="form-input-readonly"> 工号： </label>
-
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value=""
+														id="form-input-readonly" value="${sessionScope.employee.employeecode }"
 														name="innovation.tbEmployee.employeecode" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
@@ -359,7 +348,7 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value=""
+														id="form-input-readonly" value="${sessionScope.employee.idnumber }"
 														name="innovation.tbEmployee.idnumber" />
 
 												</div>
