@@ -100,7 +100,7 @@ public class StandardVistDzhAction extends BaseInit {
 	/**
 	 * page:standardSelectSingle-2 功能：通过check按钮 ，取到相应的行信息，并将其封装。
 	 * */
-	@Action(value = "skipStandardCheckSingle", results = {
+	@Action(value = "standardVisit.standard.standardSingle.skipStandardCheckSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/standardSelectSingle-2.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	// 跳转并且显示数据库的数据

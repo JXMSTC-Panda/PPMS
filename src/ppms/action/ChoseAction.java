@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import ppms.daoimpl.BaseDaoImp;
 import ppms.domain.OrganizationNj;
+import ppms.domain.TbEmployee;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -19,6 +20,26 @@ public class ChoseAction extends ActionSupport {
 
 	private String backUrl;
 	private String orgId;
+	private String need;
+	
+	private String employeeid;
+	
+
+	public String getEmployeeid() {
+		return employeeid;
+	}
+
+	public void setEmployeeid(String employeeid) {
+		this.employeeid = employeeid;
+	}
+
+	public String getNeed() {
+		return need;
+	}
+
+	public void setNeed(String need) {
+		this.need = need;
+	}
 
 	private String selectedId;
 
@@ -86,6 +107,14 @@ public class ChoseAction extends ActionSupport {
 						Restrictions.eq("orgid", Integer.valueOf(selectedId)));
 
 				if (list.size() > 0) {
+					
+					if(need!=null&&need.equals("1")){
+						List<TbEmployee> employees = dao.getEntitiestNotLazy(new TbEmployee(), null, Restrictions.eq("organizationNj", list.get(0)));
+						if(employees.size()>0){
+							ServletActionContext.getRequest().getSession()
+							.setAttribute("employees", employees);
+						}
+					}
 					OrganizationNj organizationNj = list.get(0).toComplete(dao);
 					ServletActionContext.getRequest().getSession()
 							.setAttribute("organizationNj", organizationNj);
@@ -99,5 +128,31 @@ public class ChoseAction extends ActionSupport {
 			return "error";
 		}
 
+	}
+	@Action(value = "getEmployee", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/OrgChoose.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String getEmployee(){
+		
+		List<TbEmployee> attribute = (List<TbEmployee>) ServletActionContext.getRequest().getSession().getAttribute("employees");
+		
+		try {
+			if(attribute!=null){
+				
+				for (TbEmployee tbEmployee : attribute) {
+					
+					if(tbEmployee.getEmployeeid().equals(employeeid)){
+						
+						ServletActionContext.getRequest().getSession().setAttribute("employee", tbEmployee);
+						ServletActionContext.getResponse().sendRedirect(backUrl);
+					}
+				}
+			}
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		
 	}
 }
