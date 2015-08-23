@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -61,7 +62,7 @@
 </head>
 
 <body class="no-skin">
-	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
+	<jsp:include page="../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
 			try {
@@ -69,7 +70,7 @@
 			} catch (e) {
 			}
 		</script>
-		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
+		<jsp:include page="../WebPart/Menu.jsp"></jsp:include>
 		<!-- /section:basics/sidebar -->
 		<div class="main-content">
 			<div class="main-content-inner">
@@ -87,117 +88,63 @@
 						</li>
 						<li class="active">子功能</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					<jsp:include page="../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
-					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
+					<jsp:include page="../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<h3 class="header smaller lighter blue">业务差错检查成绩管理</h3>
+							<div class="page-header">
+								<h1>
+									创新管理 <small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 创新提案查询 </small>
+								</h1>
+							</div>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">信息查询</div>
-							<form action="downData.do?fileName=业务差错检查成绩批量导出.xls"
-								name="StuListForm" method="post">
+							<div class="table-header">创新提案表</div>
+								<form name="StuListForm"
+								action="orgback.do?backUrl=${backUrl }"
+								method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th class="center"><label class="pos-rel"> <input
-													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
-											</th>
-											<th>序号</th>
-											<th>区域</th>
+											<th></th>
 											<th>营业厅编码</th>
 											<th>营业厅名称</th>
-											<th>操作名字</th>
-											<th>操作工号</th>
-											<th>操作日期</th>
-											<th>用户手机号码</th>
-											<th>业务类型</th>
-											<th>处罚结果</th>
-											<th></th>
+											<th>区域</th>
 										</tr>
 									</thead>
-
 									<tbody>
-										<c:forEach items="${requestScope.operationchecksInfor}"
-											var="operationchecksInfor" varStatus="status">
+										<c:forEach items="${requestScope.orgs}"
+											var="organizationNj">
 											<tr>
-												<td class="center"><label class="pos-rel"> <input
-														type="checkbox"
-														value="${operationchecksInfor.operationcheckid}"
-														name="cols" class="ace" /> <span class="lbl"></span> </label>
+												<td><input type="radio" name="selectedId"
+													value="${organizationNj.orgid}" checked>
 												</td>
-
-												<td></td>
-												<td>${operationchecksInfor.organizationNj.areadesc}</td>
-												<td>${operationchecksInfor.organizationNj.orgid}</td>
-												<td>${operationchecksInfor.organizationNj.org_Name}</td>
-												<td>${operationchecksInfor.tbEmployee.employeename}</td>
-												<td>${operationchecksInfor.tbEmployee.employeecode}</td>
-												<td>${operationchecksInfor.operationdate}</td>
-												<td>${operationchecksInfor.customermobilenumber}</td>
-												<td>${operationchecksInfor.operationtype}</td>
-												<td>${operationchecksInfor.punishresult}</td>
-												<td>
-													<div class="hidden-sm hidden-xs action-buttons">
-														<%-- <a class="blue" href="javascript:void(0)"
-															name="${trl.getRoleid()}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%>
-														<a class="green"
-															href="standardVisit.operationMistake.operationMistakeSearch.skip.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}"
-															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="standardVisit.operationMistake.operationMistakeSearch.operationMistakeInforDelete.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}">
-															<i class="fa fa-trash bigger-130">删除</i> </a>
-													</div>
-													<div class="hidden-md hidden-lg">
-														<div class="inline pos-rel">
-															<button class="btn btn-minier btn-yellow dropdown-toggle"
-																data-toggle="dropdown" data-position="auto">
-																<i
-																	class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-															</button>
-
-															<ul
-																class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																<li><a href="javascript:void(0)"
-																	name="${trl.getRoleid()}" onclick="GetDetail(this)"
-																	class="tooltip-info" data-rel="tooltip" title="View">
-																		<span class="blue"> <i
-																			class="ace-icon fa fa-search-plus bigger-120"></i> </span> </a>
-																</li>
-
-																<li><a href="javascript:void(0)"
-																	name="${trl.getRoleid()}" onclick="Modify(this)"
-																	class="tooltip-success" data-rel="tooltip" title="Edit">
-																		<span class="green"> <i
-																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a>
-																</li>
-
-																<li><a
-																	href="ClassDelete?classId=${trl.getRoleid()}"
-																	class="tooltip-error" data-rel="tooltip" title="Delete">
-																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
-																</li>
-															</ul>
-														</div>
-													</div></td>
+												<td>${organizationNj.orgid}</td>
+												<td>${organizationNj.org_Name}</td>
+												<td>${organizationNj.areadesc}</td>
 											</tr>
 										</c:forEach>
+								
 									</tbody>
 								</table>
-								<div class="col-md-offset-3 col-md-9" align="center">
+										<div class="clearfix form-actions">
+								<div class="col-md-offset-3 col-md-9">
 									<button class="btn btn-info" type="submit">
-										<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+										<i class="ace-icon fa fa-check bigger-110"></i> 确定选中的
+									</button>
+									&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="button" onclick="top.window.location='${backUrl}'">
+										<i class="ace-icon fa fa-undo bigger-110"></i> 返回
 									</button>
 								</div>
+							</div>
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
@@ -205,14 +152,32 @@
 				</div>
 			</div>
 		</div>
-		<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
+		<jsp:include page="../WebPart/CopyRight.jsp"></jsp:include>
 	</div>
-	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
+	<jsp:include page="../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+
+	<!-- Excel导出插件 -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/tableExport.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jquery.base64.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/html2canvas.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/libs/sprintf.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/jspdf.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/libs/base64.js"></script>
+
+
+
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js">
+		
+	</script>
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"
+		chartset="utf8"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
@@ -223,22 +188,20 @@
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
 			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-			.dataTable(
-					{
-						bAutoWidth : false,
-						"aoColumns" : [ {
-							"bSortable" : false
-						}, null, null, null, null, null, null, null, null,
-								null, null, {
-									"bSortable" : false
-								} ],
-						"aaSorting" : [],
+			.dataTable({
+				bAutoWidth : false,
+				"aoColumns" : [ {
+					"bSortable" : false
+				}, null, null, null,{
+					"bSortable" : false
+				} ],
+				"aaSorting" : [],
 
 					//,
-					//"sScrollY": "200px",
+					"sScrollY": "200px",
 					//"bPaginate": false,
 
-					//"sScrollX": "100%",
+					"sScrollX": "100%",
 					//"sScrollXInner": "120%",
 					//"bScrollCollapse": true,
 					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
@@ -260,7 +223,7 @@
 			var tableTools_obj = new $.fn.dataTable.TableTools(
 					oTable1,
 					{
-						"sSwfPath" : "${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
+						"sSwfPath" : "../assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
 
 						"sRowSelector" : "td:not(:last-child)",
 						"sRowSelect" : "multi",
@@ -283,7 +246,7 @@
 						"aButtons" : [
 								{
 									"sExtends" : "copy",
-									"sToolTip" : "Copy to clipboard",
+									"sToolTip" : "复制到剪贴板",
 									"sButtonClass" : "btn btn-white btn-primary btn-bold",
 									"sButtonText" : "<i class='fa fa-copy bigger-110 pink'></i>",
 									"fnComplete" : function() {
@@ -300,9 +263,10 @@
 								},
 
 								{
-									"sExtends" : "csv",
-									"sToolTip" : "Export to CSV",
+									"sExtends" : "xls",
+									"sToolTip" : "导出Excel",
 									"sButtonClass" : "btn btn-white btn-primary  btn-bold",
+									"sCharSet" : "utf8",
 									"sButtonText" : "<i class='fa fa-file-excel-o bigger-110 green'></i>"
 								},
 
@@ -369,7 +333,7 @@
 
 			//and append it to our table tools btn-group, also add tooltip
 			$(colvis.button()).prependTo('.tableTools-container .btn-group')
-					.attr('title', 'Show/hide columns').tooltip({
+					.attr('title', '选择要导出的数据列').tooltip({
 						container : 'body'
 					});
 

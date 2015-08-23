@@ -96,15 +96,15 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									创新管理 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 创新提案查询 </small>
+									积分管理 <small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 积分查询查询 </small>
 								</h1>
 							</div>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">创新提案表</div>
+							<div class="table-header">积分（合作厅）表</div>
 							<form action="downData.do?fileName=创新提案批量导出.xls"
 								name="StuListForm" method="post">
 
@@ -116,7 +116,6 @@
 											<th class="center"><label class="pos-rel"> <input
 													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
 											</th>
-											<th>序号</th>
 											<th>区域</th>
 											<th>工号</th>
 											<th>姓名</th>
@@ -136,57 +135,47 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${requestScope.innovations}"
-											var="innovation" varStatus="status">
+										<c:forEach items="${requestScope.points}"
+											var="point" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
+														type="checkbox" class="ace" value="${point.pointid }"/> <span class="lbl"></span>
 												</label></td>
-												<td><c:if test="${innovation.tbEmployee!=null}">
-														<c:out value="${innovation.tbEmployee.employeecode}"></c:out>
+														<c:out value="${point.tbEmployee.employeecode}"></c:out>
 												</td>
-												</c:if>
-												<td><c:if test="${ innovation.tbEmployee!=null}">
-														<c:out value="${innovation.tbEmployee.employeename}"></c:out>
-													</c:if>
+												<td>
+														<c:out value="${point.tbEmployee.employeename}"></c:out>
 												</td>
-												<td><c:if test="${ innovation.tbEmployee!=null}">
-														<c:out value="${innovation.tbEmployee.idnumber}"></c:out>
-													</c:if>
-												</td>
-												<td><c:out value="${innovation.organizationNj.orgid}"></c:out>
+												<td><c:out value="${point.organizationNj.orgid}"></c:out>
 												</td>
 												<td><c:out
-														value="${innovation.organizationNj.org_Name}"></c:out></td>
-												<td><c:out value="${innovation.innovationcontent}"></c:out>
+														value="${point.organizationNj.org_Name}"></c:out></td>
+												<td><c:out value="${point.tbEmployee.tbJob.jobname}"></c:out>
 												</td>
-												<td><c:if test="${innovation.tbEmployee==null}">
-														<c:out value="团队创新"></c:out>
-													</c:if> <c:if test="${innovation.tbEmployee!=null}">
-														<c:out value="个人创新"></c:out>
-
-													</c:if></td>
+												
 												<td><c:out
-														value="${fn:split(innovation.assessdate,' ')[0]}"></c:out>
+														value="${fn:split(fn:split(point.pointmonth,' ')[0],'-')[0]}-${fn:split(fn:split(point.pointmonth,' ')[0],'-')[1]}"></c:out>
 												</td>
-												<td><c:out value="${ innovation.assessresult}"></c:out>
+												<td><c:out value="${point.employeepoint}"></c:out>
 												</td>
-												<td><c:forEach items="${requestScope.masters }"
-														var="master">
-														<c:if test="${innovation.assesslevel==master.key}">
-															<c:out value="${master.value }"></c:out>
-														</c:if>
-													</c:forEach></td>
-												<td><c:out value="${innovation.encouragement}"></c:out>
+												<td><c:out value="${point.employeeperformance}"></c:out>
+												</td>
+												<td><c:out value="${point.orgperformance}"></c:out>
+												</td>
+												<td><c:out value="${point.regulatepoint}"></c:out>
+												</td>
+												<td><c:out value="${point.rankseq}"></c:out>
+												</td>
+												<td><c:out value="${point.tax}"></c:out>
+												</td>
+												<td><c:out value="${point.netincome}"></c:out>
 												</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
 														<a class="green"
-															href="innovation.null.innovationSearch.modify.do?id=${innovation.innovationid }"
+															href="innovation.null.innovationSearch.modify.do?id=${point.pointid }"
 															name="" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="innovation.null.innovationSearch.delete.do?id=${innovation.innovationid }">
-															<i class="fa fa-trash bigger-130">删除</i> </a>
+															class="fa fa-pencil bigger-130">修改</i> </a> 
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -219,8 +208,6 @@
 																</li>
 															</ul>
 														</div>
-														<input type="hidden" name="cols"
-															value="${innovation.innovationid} }">
 													</div>
 												</td>
 											</tr>

@@ -103,10 +103,11 @@ public class BaseDaoImp extends HibernateDaoSupport {
 		try {
 			Criteria criteria = getSession().createCriteria(t.getClass());
 
-			for (String string : fields) {
-				criteria = criteria.setFetchMode(string, FetchMode.JOIN);
+			if (fields != null) {
+				for (String string : fields) {
+					criteria = criteria.setFetchMode(string, FetchMode.JOIN);
+				}
 			}
-
 			if (eq != null) {
 
 				criteria.add(eq);
