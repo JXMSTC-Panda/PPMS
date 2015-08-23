@@ -14,8 +14,8 @@ public class TbPoint implements java.io.Serializable {
 
 	private String pointid;
 	private TbEmployee tbEmployee;
+	private OrganizationNj organizationNj;
 	private TbJob tbJob;
-	private Integer orgid;
 	private Date pointmonth;
 	private String orgtype;
 	private Double employeepoint;
@@ -49,7 +49,7 @@ public class TbPoint implements java.io.Serializable {
 
 	/** full constructor */
 	public TbPoint(String pointid, TbEmployee tbEmployee, TbJob tbJob,
-			Integer orgid, Date pointmonth, String orgtype,
+			OrganizationNj organizationNj, Date pointmonth, String orgtype,
 			Double employeepoint, Double employeeperformance,
 			Double orgperformance, Double regulatepoint, Integer rankseq,
 			Double encouragementmoney, Double tax, Double netincome,
@@ -59,7 +59,7 @@ public class TbPoint implements java.io.Serializable {
 		this.pointid = pointid;
 		this.tbEmployee = tbEmployee;
 		this.tbJob = tbJob;
-		this.orgid = orgid;
+		this.organizationNj = organizationNj;
 		this.pointmonth = pointmonth;
 		this.orgtype = orgtype;
 		this.employeepoint = employeepoint;
@@ -99,20 +99,20 @@ public class TbPoint implements java.io.Serializable {
 		this.tbEmployee = tbEmployee;
 	}
 
+	public OrganizationNj getOrganizationNj() {
+		return organizationNj;
+	}
+
+	public void setOrganizationNj(OrganizationNj organizationNj) {
+		this.organizationNj = organizationNj;
+	}
+
 	public TbJob getTbJob() {
 		return this.tbJob;
 	}
 
 	public void setTbJob(TbJob tbJob) {
 		this.tbJob = tbJob;
-	}
-
-	public Integer getOrgid() {
-		return this.orgid;
-	}
-
-	public void setOrgid(Integer orgid) {
-		this.orgid = orgid;
 	}
 
 	public Date getPointmonth() {

@@ -62,7 +62,7 @@
 </head>
 
 <body class="no-skin">
-	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
+	<jsp:include page="../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
 			try {
@@ -70,7 +70,7 @@
 			} catch (e) {
 			}
 		</script>
-		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
+		<jsp:include page="../WebPart/Menu.jsp"></jsp:include>
 		<!-- /section:basics/sidebar -->
 		<div class="main-content">
 			<div class="main-content-inner">
@@ -88,84 +88,63 @@
 						</li>
 						<li class="active">子功能</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					<jsp:include page="../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
-					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
+					<jsp:include page="../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									标准化考试管理 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 标准化考试成绩查询 </small>
+									创新管理 <small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 创新提案查询 </small>
 								</h1>
 							</div>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">标准化考试成绩表</div>
-							<form action="downData.do?fileName=暗访检查成绩批量导出.xls"
-								name="StuListForm" method="post">
-
+							<div class="table-header">创新提案表</div>
+								<form name="StuListForm"
+								action="orgback.do?backUrl=${backUrl }"
+								method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th class="center"><label class="pos-rel"> <input
-													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
-											</th>
+											<th></th>
 											<th>营业厅编码</th>
 											<th>营业厅名称</th>
-											<th>检查时间</th>
-											<th>第一次成绩</th>
-											<th>第二次成绩</th>
-											<th>一致成绩</th>
-											<th>平均成绩</th>
-										<!-- 	<th>操作</th> -->
+											<th>区域</th>
 										</tr>
 									</thead>
-
 									<tbody>
-										<c:forEach items="${requestScope.visitchecks}"
-											var="visitcheck">
+										<c:forEach items="${requestScope.orgs}"
+											var="organizationNj">
 											<tr>
-												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" name="cols"
-														value="${visitcheck.visitcheckid }" /> <span class="lbl"></span>
-												</label>
+												<td><input type="radio" name="selectedId"
+													value="${organizationNj.orgid}" checked>
 												</td>
-												<td>${visitcheck.organizationNj.orgid}</td>
-												<td>${visitcheck.organizationNj.org_Name}</td>
-												<td>${fn:split(fn:split(visitcheck.checkdate,'
-													')[0],'-')[0]}-${fn:split(fn:split(visitcheck.checkdate,'
-													')[0],'-')[1]}</td>
-												<td>${visitcheck.firstscore}</td>
-												<td>${visitcheck.secondscore}</td>
-												<td>${visitcheck.consistencyscore}</td>
-												<td>${visitcheck.averagescore}</td>
-												<%-- <td>
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green"
-															href="standardVisit.visit.visitSearch.modify.do?id=${visitcheck.visitcheckid }"
-															name="" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="standardVisit.visit.visitSearch.delete.do?id=${visitcheck.visitcheckid }">
-															<i class="fa fa-trash bigger-130">删除</i> </a>
-													</div>
-												</td> --%>
+												<td>${organizationNj.orgid}</td>
+												<td>${organizationNj.org_Name}</td>
+												<td>${organizationNj.areadesc}</td>
 											</tr>
 										</c:forEach>
+								
+									</tbody>
 								</table>
-								<div class="clearfix form-actions">
-									<div class="col-md-offset-3 col-md-9">
-										&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-										<button class="btn btn-info" type="submit">
-											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
-										</button>
-									</div>
+										<div class="clearfix form-actions">
+								<div class="col-md-offset-3 col-md-9">
+									<button class="btn btn-info" type="submit">
+										<i class="ace-icon fa fa-check bigger-110"></i> 确定选中的
+									</button>
+									&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="button" onclick="top.window.location='${backUrl}'">
+										<i class="ace-icon fa fa-undo bigger-110"></i> 返回
+									</button>
 								</div>
+							</div>
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
@@ -173,9 +152,9 @@
 				</div>
 			</div>
 		</div>
-		<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
+		<jsp:include page="../WebPart/CopyRight.jsp"></jsp:include>
 	</div>
-	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
+	<jsp:include page="../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
 
 	<!-- Excel导出插件 -->
@@ -194,12 +173,10 @@
 
 
 
-	<script
-		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js">
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js">
 		
 	</script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"
 		chartset="utf8"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
@@ -215,23 +192,23 @@
 				bAutoWidth : false,
 				"aoColumns" : [ {
 					"bSortable" : false
-				}, null, null, null, null, null, null, null, {
+				}, null, null, null,{
 					"bSortable" : false
 				} ],
 				"aaSorting" : [],
 
-				//,
-				"sScrollY" : "200px",
-				//"bPaginate": false,
+					//,
+					"sScrollY": "200px",
+					//"bPaginate": false,
 
-				"sScrollX" : "100%",
-			//"sScrollXInner": "120%",
-			//"bScrollCollapse": true,
-			//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-			//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+					"sScrollX": "100%",
+					//"sScrollXInner": "120%",
+					//"bScrollCollapse": true,
+					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 
-			//"iDisplayLength": 50
-			});
+					//"iDisplayLength": 50
+					});
 			//oTable1.fnAdjustColumnSizing();
 
 			//TableTools settings

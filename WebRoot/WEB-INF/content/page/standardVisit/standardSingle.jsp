@@ -1,12 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 
 <html lang="en">
-<head>  
+<head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <title>人员成长档案管理系统</title>
@@ -69,14 +72,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
-			try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
 		</script>
 		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
 		<div class="main-content">
 			<div class="main-content-inner">
 				<div class="breadcrumbs" id="breadcrumbs">
 					<script type="text/javascript">
-						try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+						try {
+							ace.settings.check('breadcrumbs', 'fixed')
+						} catch (e) {
+						}
 					</script>
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
@@ -88,95 +97,132 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
+
+					<div class="page-header">
+						<h1>
+							标准化成绩管理 <small> <c:if
+									test="${requestScope.tbStandardcheck==null }">
+									<i class="ace-icon fa fa-angle-double-right"></i> 标准化成绩单条录入： 
+							</small>
+						</h1>
+						</c:if>
+						 <c:if
+									test="${requestScope.tbStandardcheck!=null }">
+									<i class="ace-icon fa fa-angle-double-right"></i> 标准化成绩修改： 
+							</small>
+						</h1>
+						</c:if>
+					</div>
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<form class="form-horizontal"  name ="form1" method="post" action="standardVisit.standard.standardSingle.Insert.do">
-												<!-- #section:elements.form -->
+							<c:if test="${requestScope.tbStandardcheck==null }">
+								<form class="form-horizontal" name="form1" method="post"
+									action="standardVisit.standard.standardSingle.Insert.do">
+							</c:if>
+							<c:if test="${requestScope.tbStandardcheck!=null }">
 
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 区域： </label>
-													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="<c:forEach items="${requestScope.organizationNj}"
-												var="OrganizationNj">${OrganizationNj.areadesc}</c:forEach>" name="tbArea.a0readesc" />
-														<span class="help-inline col-xs-12 col-sm-7">
-											</span>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly" > 营业厅编码： </label>
+								<form class="form-horizontal" name="form1" method="post"
+									action="standardVisit.standard.standardSingle.update.do">
+							</c:if>
+							<!-- #section:elements.form -->
 
-													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="<c:forEach items="${requestScope.organizationNj}"
-												var="OrganizationNj">${OrganizationNj.orgid}</c:forEach>"  name="tbStandardcheck.organizationNj.orgid"/>
-														<span class="help-inline col-xs-12 col-sm-7">
-												
-											</span>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅名称： </label>
-
-													<div class="col-sm-9">
-														<input readonly=" " type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="<c:forEach items="${requestScope.organizationNj}"
-												var="OrganizationNj">${OrganizationNj.org_Name}</c:forEach>" name="tbStandardcheck.organizationNj.orgName"/>
-														<span class="help-inline col-xs-12 col-sm-7">
-															<button type="button" onClick="top.window.location='skipStandardCheckSingle.do'" class="btn btn-info">选择营业厅</button>        
-														</span>
-													</div>
-												</div>
-												<!-- /section:elements.form -->	
-												<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-field-1">月份 </label>
-
-												<div class="col-sm-9">
-													<div class="input-group col-xs-10 col-sm-5">
-														<input class="form-control date-picker "
-															id="id-date-picker-1" type="text"
-															data-date-format="yyyy-mm-dd"
-															name="tbStandardcheck.checkdate" /> <span
-															class="input-group-addon"> <i
-															class="fa fa-calendar bigger-110"></i> </span>
-													</div>
-												</div>
-											</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1">标准化检查成绩</label>
-													<div class="col-sm-9">
-														<input  type="text" id="form-field-1" placeholder="Grade" class="col-xs-10 col-sm-5"  name="tbStandardcheck.checkscore" />
-														<label class=" control-label no-padding-left" for="form-field-1"> 分 </label>
-													</div>
-												</div>
-												<div class="clearfix form-actions">
-													<div class="col-md-offset-3 col-md-9">
-														<button class="btn btn-info" type="submit">
-															<i class="ace-icon fa fa-check bigger-110"></i> Submit
-														</button>
-														&nbsp; &nbsp; &nbsp;
-														<button class="btn" type="reset">
-															<i class="ace-icon fa fa-undo bigger-110"></i> Reset
-														</button>
-													</div>
-											</div>
-											</form>
-										</div>
-										<!-- /.col -->
-									</div>
-									<!-- /.row -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									for="form-input-readonly"> 区域： </label>
+								<div class="col-sm-9">
+									<input readonly="" type="text" class="col-xs-10 col-sm-5"
+										id="form-input-readonly"
+										value="${requestScope.tbStandardcheck.organizationNj.areadesc}"
+										name="tbStandardcheck.organizationNj.areadesc" /> <span
+										class="help-inline col-xs-12 col-sm-7"> </span>
 								</div>
-								<!-- /.page-content -->
-							<!-- PAGE CONTENT ENDS -->
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									for="form-input-readonly"> 营业厅编码： </label>
+
+								<div class="col-sm-9">
+									<input readonly="" type="text" class="col-xs-10 col-sm-5"
+										id="form-input-readonly"
+										value="${requestScope.tbStandardcheck.organizationNj.orgid}"
+										name="tbStandardcheck.organizationNj.orgid" /> <span
+										class="help-inline col-xs-12 col-sm-7"> </span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									for="form-input-readonly"> 营业厅名称： </label>
+
+								<div class="col-sm-9">
+									<input readonly=" " type="text" class="col-xs-10 col-sm-5"
+										id="form-input-readonly"
+										value="${requestScope.tbStandardcheck.organizationNj.org_Name}"
+										name="tbStandardcheck.organizationNj.org_Name" />
+									<c:if test="${requestScope.tbStandardcheck==null }">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<button type="button"
+												onClick="top.window.location='skipStandardCheckSingle.do'"
+												class="btn btn-info">选择营业厅</button> </span>
+									</c:if>
+								</div>
+							</div>
+							<!-- /section:elements.form -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									for="form-field-1">月份 </label>
+
+								<div class="col-sm-9">
+									<div class="input-group col-xs-10 col-sm-5">
+										<input class="form-control date-picker " id="id-date-picker-1"
+											type="text" data-date-format="yyyy-mm-dd"
+											value="${fn:split(fn:split(requestScope.tbStandardcheck.checkdate,' ')[0],'-')[0]}-${fn:split(fn:split(requestScope.tbStandardcheck.checkdate,' ')[0],'-')[1]}"
+											name="tbStandardcheck.checkdate" /> <span
+											class="input-group-addon"> <i
+											class="fa fa-calendar bigger-110"></i> </span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									for="form-field-1">标准化检查成绩</label>
+								<div class="col-sm-9">
+									<input type="text" id="form-field-1" placeholder="Grade"
+										value="${requestScope.tbStandardcheck.checkscore }"
+										class="col-xs-10 col-sm-5" name="tbStandardcheck.checkscore" />
+									<label class=" control-label no-padding-left"
+										for="form-field-1"> 分 </label>
+								</div>
+							</div>
+							<div class="clearfix form-actions">
+								<div class="col-md-offset-3 col-md-9">
+									<button class="btn btn-info" type="submit">
+										<i class="ace-icon fa fa-check bigger-110"></i> 添加
+									</button>
+									&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="reset">
+										<i class="ace-icon fa fa-undo bigger-110"></i> 重置
+									</button>
+								</div>
+							</div>
+							</form>
 						</div>
+						<!-- /.col -->
 					</div>
+					<!-- /.row -->
 				</div>
+				<!-- /.page-content -->
+				<!-- PAGE CONTENT ENDS -->
 			</div>
 		</div>
-		<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
+	</div>
+	</div>
+	</div>
+	<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	
+
 	<!-- inline scripts related to this page -->
 	<!-- page specific plugin scripts -->
 	<script

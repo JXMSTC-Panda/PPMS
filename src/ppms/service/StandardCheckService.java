@@ -64,4 +64,10 @@ public interface StandardCheckService{
 	 * */
 	void save(Object object);
 	
+	/**
+	 * 标准化成绩修改
+	 * @param tbStandardcheck
+	 * @return
+	 */
+	public boolean update(TbStandardcheck tbStandardcheck);
 }
