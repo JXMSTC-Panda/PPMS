@@ -107,7 +107,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有年度绩效表</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=年度绩效批量导出.xls" name="StuListForm">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -194,6 +194,13 @@
 										</c:forEach>
 									</tbody>
 								</table>
+								<div class="clearfix form-actions">
+									<div class="col-md-offset-3 col-md-9">
+											&nbsp; &nbsp; &nbsp;<button class="btn btn-info" type="submit">
+											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+										</button>
+									</div>
+								</div>
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>

@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.ss.formula.functions.T;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -225,9 +226,12 @@ public class PerformanceSingleAction extends ActionSupport {
 						+ tb.getCreatedtime());
 			}
 
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+			return"faild";
 		}
+		
 		return "success";
 	}
 	
@@ -268,8 +272,7 @@ public class PerformanceSingleAction extends ActionSupport {
 				System.out.println("--------------------------->>>>"
 						+ tb.getCreatedtime());
 			}
-
-		} catch (Exception e) {
+			} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "success";
