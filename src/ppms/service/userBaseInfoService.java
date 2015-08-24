@@ -42,4 +42,5 @@ public interface userBaseInfoService {
 	public List<TbEmployee> getTbEmployees(String employeeid);
 	public List<TbEmployee> getTbEmployee();
 	public void delete(Object object);
+	public void update(Object object);
 }

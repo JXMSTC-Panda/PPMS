@@ -11,13 +11,35 @@ import ppms.domain.OrganizationNj;
 import ppms.domain.TbChangejobhistory;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbJob;
+
+/**   
+ *    
+ * 项目名称：PPMS   
+ * 类名称：IndividualGrowthFileDaoImp   
+ * 类描述：   
+ * 创建人：SuperYWJ
+ * 创建时间：2015-8-14 上午8:51:51   
+ * 修改人：（修改人的名字） 
+ * 修改时间：2015-8-15 下午5:51:51   
+ * 修改备注：   
+ * @version    
+ *    
+ */
+
 @Repository
 public class IndividualGrowthFileDaoImp extends BaseDaoImp implements IndividualGrowthFileDao{
+	
+	/**
+	 * 查到TbChangejobhistory表中所有数据
+	 */
 	@Override
 	public List<TbChangejobhistory> getTbChangejobhistories(){
 		
 		return getHibernateTemplate().findByExample(new TbChangejobhistory());
 	}
+	/**
+	 * 通过jobid查到对应数据
+	 */
 	@Override
 	public List<TbJob> getTbJobs(String jobid){
 		List results=null;
@@ -31,6 +53,9 @@ public class IndividualGrowthFileDaoImp extends BaseDaoImp implements Individual
 		
 		return results; 
 	}
+	/**
+	 * 通过employeeid查到对应数据
+	 */
 	@Override
 	public List<TbEmployee> getTbEmployee(String employeeid) {
 		List results=null;
@@ -44,6 +69,9 @@ public class IndividualGrowthFileDaoImp extends BaseDaoImp implements Individual
 		
 		return results; 
 	}
+	/**
+	 * 通过orgid查到对应数据
+	 */
 	@Override
 	public List<OrganizationNj> getOrganizationNjs(Integer orgid) {
 		List results=null;
