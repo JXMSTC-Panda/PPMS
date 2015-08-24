@@ -80,6 +80,7 @@ public class userBaseInfoDaoImp extends BaseDaoImp implements userBaseInfoDao{
 	/**
 	 * hibernate操作，查询表TbEmployee的所有数据
 	 */
+	@Override
 	public List<TbEmployee> getTbEmployees() {
 		// TODO Auto-generated method stub
 		return getHibernateTemplate().findByExample(new TbEmployee());

@@ -168,13 +168,22 @@
 											<div class="row">
 												<div class="col-xs-12">
 													<div class="col-xs-6">									
+														
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right"
+																for="form-field-1"> 营业厅编码: </label>
 
+															<div class="col-sm-9">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" value="${requestScope.tbEmpl.get(0).organizationNj.orgid}">
+															</div>
+														</div>
 														<div class="form-group">
 															<label class="col-sm-3 control-label no-padding-right"
 																for="form-field-1"> 营业厅名称: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" class="col-xs-10 col-sm-5">
+																<input id="form-field-1" class="col-xs-10 col-sm-5" value="${requestScope.tbEmpl.get(0).organizationNj.org_Name}">
 															</div>
 														</div>
 
@@ -184,7 +193,7 @@
 
 															<div class="col-sm-9">
 																<input id="form-field-1" class="col-xs-10 col-sm-5"
-																	type="text">
+																	type="text" value="${requestScope.tbEmpl.get(0).organizationNj.areadesc}">
 															</div>
 														</div>
 
@@ -206,22 +215,27 @@
 														<div class="form-group">
 															<label class="col-sm-3 control-label no-padding-right"
 																for="form-field-1"> 营业厅类型: </label>
-
+															<c:if test="${requestScope.tbEmpl.get(0).organizationNj.type==1}">
 															<div class="col-sm-9">
 																<input id="form-field-1" class="col-xs-10 col-sm-5"
-																	type="text" value="">
+																	type="text" value="主厅">
 															</div>
-														</div>
-
-														<div class="form-group">
-															<label class="col-sm-3 control-label no-padding-right"
-																for="form-field-1"> 营业厅编碼: </label>
-
+															</c:if>
+															<c:if test="${requestScope.tbEmpl.get(0).organizationNj.type==2}">
 															<div class="col-sm-9">
 																<input id="form-field-1" class="col-xs-10 col-sm-5"
-																	type="text" name="">
+																	type="text" value="合作厅">
 															</div>
+															</c:if>
+															<c:if test="${requestScope.tbEmpl.get(0).organizationNj.type==3}">
+															<div class="col-sm-9">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" value="置换厅">
+															</div>
+															</c:if>
 														</div>
+
+														
 													</div>
 												</div>
 
@@ -518,8 +532,9 @@
 											</div>
 											<div class="clearfix form-actions">
 												<div class="col-md-offset-5 col-md-6">
-													<input class="btn btn-info" value="修改"> &nbsp;
-													&nbsp; &nbsp; <input class="btn" value="返回">
+													<!-- <input class="btn btn-info" value="修改"> &nbsp;
+													&nbsp; &nbsp; -->
+													 <input class="btn" value="返回" onclick="top.window.location='userInfo.userBase.userBaseInfoSearch.do'">
 												</div>
 											</div>
 										</div>
