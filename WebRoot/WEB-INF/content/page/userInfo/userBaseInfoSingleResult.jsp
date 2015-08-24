@@ -85,12 +85,12 @@
 										<div class="widget-body">
 											<div class="widget-main">
 												<div class="row">															
-													<div class="col-xs-12">
+													<div class="col-xs-12 center">
 													<div class="space">
-														信息录入成功！
 													</div>
-															<div class="clearfix form-actions">
-												<div class="col-md-offset-3 col-md-9">
+													<h5>恭喜，操作成功!</h5>
+											<div class="clearfix form-actions">
+												<div class="col-md-offset-3 col-md-6">
 													<button class="btn btn-info" onclick="top.window.location='userInfo.userBase.userBaseInfoSingle.resultBackSingle.do'">
 														<i class="ace-icon fa fa-check bigger-110"></i> 继续录入
 													</button>

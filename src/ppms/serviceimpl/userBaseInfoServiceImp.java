@@ -1,5 +1,7 @@
 package ppms.serviceimpl;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import ppms.domain.TbEmployee;
 import ppms.domain.TbJob;
 import ppms.domain.TbPost;
 import ppms.domain.TbRole;
+import ppms.genericDao.TbEmployeeDAO;
+import ppms.genericDao.TbRoleDAO;
 import ppms.service.userBaseInfoService;
 /**   
  *    
@@ -89,7 +93,10 @@ public class userBaseInfoServiceImp extends BaseDaoImp implements userBaseInfoSe
 	public List<TbEmployee> getTbEmployee() {
 		
 		return dao.getTbEmployees();
-	} 
+	}
+    @Autowired
+    private TbEmployeeDAO tbEmployeeDAO;
+    
     /**
      * hibernate操作，删除对象
      */
@@ -97,9 +104,41 @@ public class userBaseInfoServiceImp extends BaseDaoImp implements userBaseInfoSe
     public void delete(Object object) {
 		getHibernateTemplate().delete(object);
 	}
+    /*public void update(String employeecode,String employeeid,String employeename,
+    		String idnumber,Boolean sex,Date birthday,String bankname,
+    		String banknumber,Boolean status,String addressarea,String address,
+    		String mobilenumber,String shortmobilenumber,String academicdegree,
+    		String schoolname,String specialization,String tel,Date entertime,
+    		String backjobcomment,String remark){
+    	
+    	TbEmployee tbEmployees= tbEmployeeDAO.findById(employeeid);
+    	    	
+    	tbEmployees.setEmployeename(employeename);
+		tbEmployees.setEmployeecode(employeecode);
+		tbEmployees.setIdnumber(idnumber);
+		tbEmployees.setBirthday(birthday);
+		tbEmployees.setBankname(bankname);
+		tbEmployees.setBanknumber(banknumber);
+		tbEmployees.setStatus(status);
+		tbEmployees.setAddressarea(addressarea);
+		tbEmployees.setAddress(address);
+		tbEmployees.setMobilenumber(mobilenumber);
+		tbEmployees.setShortmobilenumber(shortmobilenumber);
+		tbEmployees.setAcademicdegree(academicdegree);
+		tbEmployees.setSchoolname(schoolname);
+		tbEmployees.setSpecialization(specialization);
+		tbEmployees.setTel(tel);
+		tbEmployees.setEntertime(entertime);
+		tbEmployees.setBackjobcomment(backjobcomment);
+		tbEmployees.setRemark(remark);
+		
+    	tbEmployeeDAO.update(tbEmployees);
+		
+    }*/
     @Override
-    public void update(Object object){
-    	getHibernateTemplate().update(object);
-    }
+	public void update(TbEmployee tbEmployee) {
+		// TODO Auto-generated method stub
+		tbEmployeeDAO.update(tbEmployee);
+	}
 	
 }

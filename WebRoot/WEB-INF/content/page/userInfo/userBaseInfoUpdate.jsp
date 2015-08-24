@@ -77,8 +77,7 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a>
-						</li>
+						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -95,8 +94,10 @@
 								</h1>
 							</div>
 							<form class="form-horizontal" role="form" method="post"
-								action="userInfo.userBase.userBaseInfoSingle.result.do">
-
+								action="userInfo.userBase.userBaseInfoSearch.modify.do">
+								<input type="hidden"
+									value="${requestScope.tbEmpl.get(0).employeeid }"
+									name="tbEmployee.employeeid">
 								<div class="widget-box">
 									<div class="widget-header">
 										<h4 class="widget-title">基础信息</h4>
@@ -112,9 +113,9 @@
 																for="form-field-1"> 姓名: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.employeename" value="${requestScope.tbEmpl.get(0).employeename}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.employeename"
+																	value="${requestScope.tbEmpl.get(0).employeename}">
 															</div>
 														</div>
 
@@ -123,9 +124,9 @@
 																for="form-field-1"> 身份证号: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.idnumber" value="${requestScope.tbEmpl.get(0).idnumber}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.idnumber"
+																	value="${requestScope.tbEmpl.get(0).idnumber}">
 															</div>
 														</div>
 													</div>
@@ -136,12 +137,11 @@
 																for="form-field-1"> 性别: </label>
 															<div class="col-sm-9">
 																<div class="radio">
-																	<label> <input name="form-field-radio"
-																		class="ace" type="radio" name="tbEmployee.sex" value="true">
-																		<span class="lbl"> 男</span> </label> <label> <input
-																		name="form-field-radio" class="ace" type="radio"
-																		name="tbEmployee.sex" value="false"> <span class="lbl">
-																			女</span> </label>
+																	<label> <input class="ace" type="radio"
+																		name="tbEmployee.sex" value="true"> <span
+																		class="lbl"> 男</span> </label> <label> <input
+																		class="ace" type="radio" name="tbEmployee.sex"
+																		value="false"> <span class="lbl"> 女</span> </label>
 																</div>
 															</div>
 														</div>
@@ -150,15 +150,16 @@
 																for="form-field-1"> 出生年月: </label>
 
 															<div class="col-sm-9">
-													<div class="input-group col-xs-10 col-sm-5">
-														<input class="form-control date-picker "
-															id="id-date-picker-1" type="text"
-															data-date-format="yyyy-mm-dd"
-															name="tbEmployee.birthday" value="${requestScope.tbEmpl.get(0).birthday}" /> <span
-															class="input-group-addon"> <i
-															class="fa fa-calendar bigger-110"></i> </span>
-													</div>
-												</div>
+																<div class="input-group col-xs-10 col-sm-5">
+																	<input class="form-control date-picker "
+																		id="id-date-picker-1" type="text"
+																		data-date-format="yyyy-mm-dd"
+																		name="tbEmployee.birthday"
+																		value="${requestScope.tbEmpl.get(0).birthday}" /> <span
+																		class="input-group-addon"> <i
+																		class="fa fa-calendar bigger-110"></i> </span>
+																</div>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -170,33 +171,33 @@
 								<div class="widget-box">
 									<div class="widget-header">
 										<h4 class="widget-title">详细信息</h4>
-								
+
 									</div>
 									<div class="widget-body">
 										<div class="widget-main">
 											<div class="row">
 												<div class="col-xs-12">
 													<div class="col-xs-6">
-														
+
 														<div class="form-group">
 															<label class="col-sm-3 control-label no-padding-right"
 																for="form-field-1"> 工号: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.employeecode" value="${requestScope.tbEmpl.get(0).employeecode}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.employeecode"
+																	value="${requestScope.tbEmpl.get(0).employeecode}">
 															</div>
 														</div>
-														
+
 														<div class="form-group">
 															<label class="col-sm-3 control-label no-padding-right"
 																for="form-field-1"> 银行卡号: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.banknumber" value="${requestScope.tbEmpl.get(0).banknumber}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.banknumber"
+																	value="${requestScope.tbEmpl.get(0).banknumber}">
 															</div>
 														</div>
 
@@ -205,9 +206,9 @@
 																for="form-field-1"> 银行卡所属银行: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.bankname" value="${requestScope.tbEmpl.get(0).bankname}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.bankname"
+																	value="${requestScope.tbEmpl.get(0).bankname}">
 															</div>
 														</div>
 
@@ -216,12 +217,11 @@
 																for="form-field-1"> 人员状态: </label>
 															<div class="col-sm-9">
 																<div class="radio">
-																	<label> <input name="form-field-radio"
-																		class="ace" type="radio" name="tbEmployee.status" value="true">
-																		<span class="lbl"> 有效</span> </label> <label> <input
-																		name="form-field-radio" class="ace" type="radio"
-																		name="tbEmployee.status" value="false"> <span class="lbl">
-																			无效</span> </label>
+																	<label> <input class="ace" type="radio"
+																		name="tbEmployee.status" value="true"> <span
+																		class="lbl"> 有效</span> </label> <label> <input
+																		class="ace" type="radio" name="tbEmployee.status"
+																		value="false"> <span class="lbl"> 无效</span> </label>
 																</div>
 															</div>
 														</div>
@@ -231,9 +231,9 @@
 																for="form-field-1"> 居住所属区域: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.addressarea" value="${requestScope.tbEmpl.get(0).addressarea}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.addressarea"
+																	value="${requestScope.tbEmpl.get(0).addressarea}">
 															</div>
 														</div>
 
@@ -242,13 +242,33 @@
 																for="form-field-1"> 现居住地址: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.address" value="${requestScope.tbEmpl.get(0).address}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.address"
+																	value="${requestScope.tbEmpl.get(0).address}">
 															</div>
 														</div>
 
-														
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right"
+																for="form-field-1"> 长号: </label>
+
+															<div class="col-sm-9">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.mobilenumber"
+																	value="${requestScope.tbEmpl.get(0).mobilenumber}">
+															</div>
+														</div>
+
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right"
+																for="form-field-1"> 短号: </label>
+
+															<div class="col-sm-9">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.shortmobilenumber"
+																	value="${requestScope.tbEmpl.get(0).shortmobilenumber}">
+															</div>
+														</div>
 
 														<!-- <div class="form-group">
 															<label class="col-sm-3 control-label no-padding-right"
@@ -268,48 +288,28 @@
 
 													</div>
 													<div class="col-xs-6">
-														
+
 														<div class="form-group">
 															<label class="col-sm-3 control-label no-padding-right"
 																for="form-field-1"> 学历: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.academicdegree" value="${requestScope.tbEmpl.get(0).academicdegree}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.academicdegree"
+																	value="${requestScope.tbEmpl.get(0).academicdegree}">
 															</div>
 														</div>
 
-														<div class="form-group">
-															<label class="col-sm-3 control-label no-padding-right"
-																for="form-field-1"> 长号: </label>
 
-															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.mobilenumber" value="${requestScope.tbEmpl.get(0).mobilenumber}">
-															</div>
-														</div>
-
-														<div class="form-group">
-															<label class="col-sm-3 control-label no-padding-right"
-																for="form-field-1"> 短号: </label>
-
-															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.shortmobilenumber" value="${requestScope.tbEmpl.get(0).shortmobilenumber}">
-															</div>
-														</div>
 
 														<div class="form-group">
 															<label class="col-sm-3 control-label no-padding-right"
 																for="form-field-1"> 毕业学校: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.schoolname" value="${requestScope.tbEmpl.get(0).schoolname}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.schoolname"
+																	value="${requestScope.tbEmpl.get(0).schoolname}">
 															</div>
 														</div>
 
@@ -318,20 +318,20 @@
 																for="form-field-1"> 专业: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.specialization" value="${requestScope.tbEmpl.get(0).specialization}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.specialization"
+																	value="${requestScope.tbEmpl.get(0).specialization}">
 															</div>
 														</div>
-														
+
 														<div class="form-group">
 															<label class="col-sm-3 control-label no-padding-right"
 																for="form-field-1"> 联系电话: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.tel" value="${requestScope.tbEmpl.get(0).tel}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.tel"
+																	value="${requestScope.tbEmpl.get(0).tel}">
 															</div>
 														</div>
 
@@ -340,9 +340,9 @@
 																for="form-field-1"> 进公司时间: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text"
-																	name="tbEmployee.entertime" value="${requestScope.tbEmpl.get(0).entertime}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.entertime"
+																	value="${requestScope.tbEmpl.get(0).entertime}">
 															</div>
 														</div>
 
@@ -351,8 +351,9 @@
 																for="form-field-1"> 后台岗位说明: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1"
-																	class="col-xs-10 col-sm-5" type="text" name="tbEmployee.backjobcomment" value="${requestScope.tbEmpl.get(0).backjobcomment}">
+																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.backjobcomment"
+																	value="${requestScope.tbEmpl.get(0).backjobcomment}">
 															</div>
 														</div>
 
@@ -462,7 +463,8 @@
 
 															<div class="col-sm-9">
 																<textarea class="form-control" id="form-field-8"
-																 name="tbEmployee.remark" value="${requestScope.tbEmpl.get(0).remark}"></textarea>
+																	name="tbEmployee.remark"
+																	value="${requestScope.tbEmpl.get(0).remark}"></textarea>
 															</div>
 														</div>
 													</div>
@@ -471,7 +473,7 @@
 											</div>
 											<div class="clearfix form-actions">
 												<div class="col-md-offset-5 col-md-6">
-													<input class="btn btn-info" type="submit" onclick="top.window.location='userInfo.userBase.userBaseInfoSearch.UpdateResult.do'" value="修改">
+													<input class="btn btn-info" type="submit" value="修改">
 													&nbsp; &nbsp; &nbsp; <input class="btn" type="reset"
 														value="重置">
 												</div>
@@ -494,7 +496,7 @@
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
 	<script
-	    src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datepicker.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datepicker.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-timepicker.js"></script>
 	<script
@@ -505,51 +507,50 @@
 		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datetimepicker.js"></script>
 	<!-- inline scripts related to this page -->
 	<script>
-	
-	//datepicker plugin
-			//link
-			$('.date-picker').datepicker({
-				autoclose : true,
-				todayHighlight : true
-			})
-			//show datepicker when clicking on the icon
-			.next().on(ace.click_event, function() {
-				$(this).prev().focus();
-			});
+		//datepicker plugin
+		//link
+		$('.date-picker').datepicker({
+			autoclose : true,
+			todayHighlight : true
+		})
+		//show datepicker when clicking on the icon
+		.next().on(ace.click_event, function() {
+			$(this).prev().focus();
+		});
 
-			//or change it into a date range picker
-			$('.input-daterange').datepicker({
-				autoclose : true
-			});
+		//or change it into a date range picker
+		$('.input-daterange').datepicker({
+			autoclose : true
+		});
 
-			//to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
-			$('input[name=date-range-picker]').daterangepicker({
-				'applyClass' : 'btn-sm btn-success',
-				'cancelClass' : 'btn-sm btn-default',
-				locale : {
-					applyLabel : 'Apply',
-					cancelLabel : 'Cancel',
-				}
-			}).prev().on(ace.click_event, function() {
-				$(this).next().focus();
-			});
+		//to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
+		$('input[name=date-range-picker]').daterangepicker({
+			'applyClass' : 'btn-sm btn-success',
+			'cancelClass' : 'btn-sm btn-default',
+			locale : {
+				applyLabel : 'Apply',
+				cancelLabel : 'Cancel',
+			}
+		}).prev().on(ace.click_event, function() {
+			$(this).next().focus();
+		});
 
-			$('#timepicker1').timepicker({
-				minuteStep : 1,
-				showSeconds : true,
-				showMeridian : false
-			}).next().on(ace.click_event, function() {
-				$(this).prev().focus();
-			});
+		$('#timepicker1').timepicker({
+			minuteStep : 1,
+			showSeconds : true,
+			showMeridian : false
+		}).next().on(ace.click_event, function() {
+			$(this).prev().focus();
+		});
 
-			$('#date-timepicker1').datetimepicker().next().on(ace.click_event,
-					function() {
-						$(this).prev().focus();
-					});
+		$('#date-timepicker1').datetimepicker().next().on(ace.click_event,
+				function() {
+					$(this).prev().focus();
+				});
 
-			$('#colorpicker1').colorpicker();
+		$('#colorpicker1').colorpicker();
 
-			$('#simple-colorpicker-1').ace_colorpicker();
+		$('#simple-colorpicker-1').ace_colorpicker();
 	</script>
 </body>
 </html>

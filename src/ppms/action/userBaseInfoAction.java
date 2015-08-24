@@ -81,10 +81,10 @@ public class userBaseInfoAction extends BaseInit{
 	 * 人员基本信息录入
 	 * @return
 	 */
-	@Action(value = "userInfo.userBase.userBaseInfoSingle.result", results = {
+	@Action(value = "userInfo.userBase.userBaseInfoSingle.Single", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSingleResult.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	public String result() {
+	public String Single() {
 		try {
 		service.adduserBaseInfo(tbEmployee);
 		} catch (Exception e) {
@@ -113,7 +113,7 @@ public class userBaseInfoAction extends BaseInit{
 	public String userBaseInfoBatchUpdateBySelectField() {
 		
 		return "success";
-	}
+	} 
 	
 	/**
 	 * 转至录入页面
@@ -122,8 +122,7 @@ public class userBaseInfoAction extends BaseInit{
 	@Action(value = "userInfo.userBase.userBaseInfoSingle.resultBackSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	public String resultBack() {
-		
+	public String resultBack() {		
 		return "success";
 	}
 
@@ -142,10 +141,10 @@ public class userBaseInfoAction extends BaseInit{
 	 * 详细查询人员信息
 	 * @return
 	 */
-	@Action(value = "userInfo.userBase.userBaseInfoSearch.Detail", results = {
+	@Action(value = "userInfo.userBase.userBaseInfoSearch.detail", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoDetail.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	public String Detail() {
+	public String detail() {
 		String employeeid=request.getParameter("id");
 		//调用API，查询对象所有数据，放到employees中
 		List<TbEmployee> employees=dao.getEntitiestNotLazy(new TbEmployee(), new String[]{"organizationNj","tbJob","tbRole","tbPost"},Restrictions.eq("employeeid", employeeid));
@@ -157,22 +156,25 @@ public class userBaseInfoAction extends BaseInit{
 	 * 修改人员信息
 	 * @return
 	 */
-	@Action(value = "userInfo.userBase.userBaseInfoSearch.Update", results = {
+	@Action(value = "userInfo.userBase.userBaseInfoSearch.modifyInitPage", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoUpdate.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	public String Update() {
+	public String updateInitPage() {
 		String employeeid=request.getParameter("id");
 		//调用API，查询对象所有数据，放到employees中
 		List<TbEmployee> employees=dao.getEntitiestNotLazy(new TbEmployee(), new String[]{"organizationNj","tbJob","tbRole","tbPost"},Restrictions.eq("employeeid", employeeid));
 		request.setAttribute("tbEmpl", employees);
 		return "success";
 	}
-	@Action(value = "userInfo.userBase.userBaseInfoSearch.UpdateResult", results = {
-			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSearch.jsp"),
+	@Action(value = "userInfo.userBase.userBaseInfoSearch.modify", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSingleResult.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	public String UpdateResult() {
+	public String update() {
 		try {
-			service.update(tbEmployee);
+			
+			System.out.println("sdas");
+			service.update(tbEmployee);	
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -183,10 +185,10 @@ public class userBaseInfoAction extends BaseInit{
 	 * 删除人员信息
 	 * @return
 	 */
-	@Action(value = "userInfo.userBase.userBaseInfoSearch.Delete", results = {
+	@Action(value = "userInfo.userBase.userBaseInfoSearch.delete", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSearch.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
-	public String Delete() { 
+	public String delete() { 
 		try {
 			String employeeid=request.getParameter("id");   //前台取到对应id,用一个string接受
 			/**

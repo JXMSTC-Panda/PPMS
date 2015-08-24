@@ -41,4 +41,7 @@ public interface userBaseInfoDao {
 	public List<TbRole> getTbRoles();
 
 	public List<TbEmployee> getTbEmployees(String employeeid);
+
+	public List<TbEmployee> getTbEmployees();
+
 }
