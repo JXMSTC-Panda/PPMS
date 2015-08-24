@@ -2,10 +2,14 @@ package ppms.service;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import antlr.collections.impl.LList;
 
 import ppms.domain.TbRole;
 import ppms.domain.TbRolefunction;
+=======
+import ppms.domain.TbRole;
+>>>>>>> 43af2ea6f1056bbb15a3ed5525d2d7120e2e603e
 import ppms.domain.TbSystemfunction;
 
 /**
@@ -28,6 +32,7 @@ public interface AuthorityService {
 	*/
 	public List<TbRole> findAllRole();
 	
+<<<<<<< HEAD
 	/** 
 	* @Title: findAllRolefunctions 
 	* @Description: TODO
@@ -36,6 +41,8 @@ public interface AuthorityService {
 	* @throws 
 	*/
 	public List<TbRolefunction> findAllRolefunctions();
+=======
+>>>>>>> 43af2ea6f1056bbb15a3ed5525d2d7120e2e603e
 	
 	/** 
 	* @Title: findSystemFunctionJson 
@@ -56,6 +63,7 @@ public interface AuthorityService {
 	* @throws 
 	*/
 	public List<TbSystemfunction> findAllSystemfunctions();
+<<<<<<< HEAD
 	
 	
 	/** 
@@ -113,4 +121,6 @@ public interface AuthorityService {
 	* @throws 
 	*/
 	public TbRole findRoleJson(String roleID);
+=======
+>>>>>>> 43af2ea6f1056bbb15a3ed5525d2d7120e2e603e
 }

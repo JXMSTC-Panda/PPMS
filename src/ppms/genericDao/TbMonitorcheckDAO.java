@@ -34,7 +34,7 @@ public class TbMonitorcheckDAO extends BaseHibernateDAO {
 	public void save(TbMonitorcheck transientInstance) {
 		log.debug("saving TbMonitorcheck instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);

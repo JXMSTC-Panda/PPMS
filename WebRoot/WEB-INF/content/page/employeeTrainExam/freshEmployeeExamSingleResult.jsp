@@ -77,6 +77,44 @@
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 							
+							
+									
+							<table  cellspacing="0" cellpadding="0" class="tablewk" align="center">
+		<tr>
+			<td >
+				<br />
+				<table cellpadding="0" cellspacing="0" width="95%" style="height: 30px" align="center">
+					<tr>
+						<td class=" titlebold">转正考核成绩单条录入结果</td>
+					</tr>
+				</table>
+				<table cellpadding="0" cellspacing="0" width="95%"  align="center">
+					<tr>
+						<td class="line"></td>
+					</tr>
+				</table>
+				<br />
+				<table cellpadding="0" cellspacing="0" width="95%"  align="center" class="tableserch">
+					<tr>
+						<td align="center" >
+							信息添加成功！
+
+						</td>
+					</tr>
+					<tr>
+						<td align="center" >
+							<input type="button" name="goContinueButton" value="继续录入" onclick="location.href='employeeTrainExam.freshEmployeeExam.freshEmployeeExamSingle.do'" class="btn_5">
+							<input type="button" name="goSearchButton" value="转至查询" onclick="location.href='employeeTrainExam.freshEmployeeExam.freshEmployeeExamSearch.do'" class="btn_5">
+						</td>
+					</tr>
+				</table>
+				<br />
+				<br />
+			</td>
+		</tr>
+	</table>
+							
+							
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>

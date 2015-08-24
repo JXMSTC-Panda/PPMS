@@ -23,6 +23,19 @@ import ppms.serviceimpl.OrganizationNjServiceImp;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+/**   
+*    
+* 项目名称：PPMS   
+* 类名称：MonthPerformanceOpenAction   
+* 类描述：   
+* 创建人：SuperPcf 
+* 创建时间：2015-8-19 下午4:04:05   
+* 修改人：（修改人的名字） 
+* 修改时间：2015-8-19 下午4:04:05   
+* 修改备注：   
+* @version    
+*    
+*/ 
 public class MonthPerformanceOpenAction extends ActionSupport {
 
 	/**

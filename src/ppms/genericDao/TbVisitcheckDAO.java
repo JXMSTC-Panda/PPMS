@@ -36,7 +36,7 @@ public class TbVisitcheckDAO extends BaseHibernateDAO {
 	public void save(TbVisitcheck transientInstance) {
 		log.debug("saving TbVisitcheck instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);

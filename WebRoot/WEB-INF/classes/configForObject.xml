@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 配置Excel文件与实体类的映射 -->
 <objects>
 	<excel name="暗访检查成绩批量导入模板.xls">
 		<object>
@@ -125,7 +126,7 @@
 	
 	<excel name="个人成长线路查询结果.xls">
 		<object>
-			<class_name>ppms.domain.TbStage</class_name>
+			<class_name>ppms.domain.TbEmployee</class_name>
 		</object>
 	</excel>
 	

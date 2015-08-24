@@ -83,7 +83,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
+						<li><a href="#">父功能</a>
+						</li>
 						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -94,27 +95,25 @@
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
-										<h1>
-											人员基本信息管理
-										<small>
-											<i class="ace-icon fa fa-angle-double-right"></i>
-												人员基本信息查询
-										</small>
-										</h1>
-									</div>
+								<h1>
+									人员基本信息管理 <small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 人员基本信息查询 </small>
+								</h1>
+							</div>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有角色表</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=人员基本信息批量导出.xls"
+								name="StuListForm" method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
 											<th class="center"><label class="pos-rel"> <input
-													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
-											</th>
+													type="checkbox" class="ace" /> <span class="lbl"></span>
+											</label></th>
 											<th>序号</th>
 											<th>身份证号</th>
 											<th>姓名</th>
@@ -129,29 +128,30 @@
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label></td>
+														type="checkbox" class="ace" name="cols"
+														/> <span class="lbl"></span>
+												</label>
+												</td>
 
-											   <td>${employee.employeecode}</td>
-                                               <td>${employee.idnumber}</td>
-                                               <td>${employee.employeename}</td>
-                                               <td><c:if test="${employee.sex==true}">
-                                                    <c:out value="男"></c:out>                                               
-                                                   </c:if>
-                                                   <c:if test="${employee.sex==false}">
-                                                    <c:out value="女"></c:out>                                               
-                                                   </c:if>
-                                               </td>
-                                               <td>${employee.birthday}</td>
+												<td>${status.index + 1}</td>
+												<td>${employee.idnumber}</td>
+												<td>${employee.employeename}</td>
+												<td><c:if test="${employee.sex==true}">
+														<c:out value="男"></c:out>
+													</c:if> <c:if test="${employee.sex==false}">
+														<c:out value="女"></c:out>
+													</c:if></td>
+												<td>${employee.birthday}</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="javascript:void(0)"
-															name="" onclick="GetDetail(this)">
+														<a class="blue"
+															href="userInfo.userBase.userBaseInfoSearch.detail.do?id=${employee.employeeid}"
+															name="${employee.employeeid}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="javascript:void(0)"
-															name="" onclick="Modify(this)"> <i
+															class="green" href="userInfo.userBase.userBaseInfoSearch.modifyInitPage.do?id=${employee.employeeid}" name=""
+															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId="> <i
+															href="userInfo.userBase.userBaseInfoSearch.delete.do?id=${employee.employeeid}"> <i
 															class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
@@ -164,34 +164,41 @@
 
 															<ul
 																class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																<li><a href="javascript:void(0)"
-																	name="" onclick="GetDetail(this)"
-																	class="tooltip-info" data-rel="tooltip" title="View">
-																		<span class="blue"> <i
-																			class="ace-icon fa fa-search-plus bigger-120"></i> </span> </a>
-																</li>
-
-																<li><a href="javascript:void(0)"
-																	name="" onclick="Modify(this)"
-																	class="tooltip-success" data-rel="tooltip" title="Edit">
-																		<span class="green"> <i
-																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																<li><a href="javascript:void(0)" name=""
+																	onclick="GetDetail(this)" class="tooltip-info"
+																	data-rel="tooltip" title="View"> <span class="blue">
+																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
 																	</span> </a></li>
 
-																<li><a
-																	href="ClassDelete?classId="
+																<li><a href="javascript:void(0)" name=""
+																	onclick="Modify(this)" class="tooltip-success"
+																	data-rel="tooltip" title="Edit"> <span
+																		class="green"> <i
+																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																	</span> </a>
+																</li>
+
+																<li><a href="ClassDelete?classId="
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
 															</ul>
 														</div>
-													</div>
-												</td>
+													</div></td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+
+								<div class="clearfix form-actions">
+									<div class="col-md-offset-5 col-md-6">
+										&nbsp; &nbsp; &nbsp;<input class="btn btn-info" type="submit"
+											value="导出Excel">
+									</div>
+								</div>
 							</form>
+
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
@@ -202,13 +209,16 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="../assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
-		src="../assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
-		src="../assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
+	<script>
+		
+	</script>
 	<script type="text/javascript">
 		jQuery(function($) {
 			//initiate dataTables plugin
@@ -218,7 +228,7 @@
 				bAutoWidth : false,
 				"aoColumns" : [ {
 					"bSortable" : false
-				}, null, null, null, null,null, {
+				}, null, null, null, null, null, {
 					"bSortable" : false
 				} ],
 				"aaSorting" : [],

@@ -59,5 +59,15 @@ public interface StandardCheckService{
 	 * 根据orgId查询营业厅表
 	 * */
 	public List<OrganizationNj> findOrganizationId(Integer orgId);
+	/**
+	 * 插入方法
+	 * */
+	void save(Object object);
 	
+	/**
+	 * 标准化成绩修改
+	 * @param tbStandardcheck
+	 * @return
+	 */
+	public boolean update(TbStandardcheck tbStandardcheck);
 }

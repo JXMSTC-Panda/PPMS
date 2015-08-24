@@ -1,12 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
-<head>  
+<head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <title>人员成长档案管理系统</title>
@@ -16,16 +19,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/jquery-ui.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/datepicker.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ui.jqgrid.css" />
 <!-- text fonts -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
@@ -53,20 +65,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
-			try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
 		</script>
 		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
+		<!-- /section:basics/sidebar -->
 		<div class="main-content">
 			<div class="main-content-inner">
 				<div class="breadcrumbs" id="breadcrumbs">
 					<script type="text/javascript">
-						try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+						try {
+							ace.settings.check('breadcrumbs', 'fixed')
+						} catch (e) {
+						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">父功能</a></li>
+						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -75,21 +94,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-						<div class="page-header">
-										<h1>
-											人员基本信息管理
-										<small>
-											<i class="ace-icon fa fa-angle-double-right"></i>
-												人员基本信息查询
-										</small>
-										</h1>
-									</div>
+							<div class="page-header">
+								<h1>
+									积分管理 <small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 积分查询查询 </small>
+								</h1>
+							</div>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">已有角色表</div>
-							<form action="" name="StuListForm">
+							<div class="table-header">积分（合作厅）表</div>
+							<form action="downData.do?fileName=创新提案批量导出.xls"
+								name="StuListForm" method="post">
+
+								<c:set var="count" value="0"></c:set>
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -97,44 +116,66 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<th class="center"><label class="pos-rel"> <input
 													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
 											</th>
-											<th>序号</th>
-											<th>身份证号</th>
+											<th>区域</th>
+											<th>工号</th>
 											<th>姓名</th>
-											<th>性别</th>
-											<th>出生年月</th>
+											<th>营业厅编码</th>
+											<th>营业厅名称</th>
+											<th>岗位</th>
+											<th>月份</th>
+											<th>积分</th>
+											<th>营业员绩效</th>
+											<th>营业厅绩效</th>
+											<th>调整后积分</th>
+											<th>排名</th>
+											<th>奖励金额</th>
+											<th>税金</th>
+											<th>税后金额</th>
 											<th>操作</th>
 										</tr>
 									</thead>
-
 									<tbody>
-										<c:forEach items="${requestScope.employees}" var="employee"
-											varStatus="status">
+										<c:forEach items="${requestScope.points}"
+											var="point" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
+														type="checkbox" class="ace" value="${point.pointid }"/> <span class="lbl"></span>
 												</label></td>
-
-											   <td>${employee.employeecode}</td>
-                                               <td>${employee.idnumber}</td>
-                                               <td>${employee.employeename}</td>
-                                               <td><c:if test="${employee.sex==true}">
-                                                    <c:out value="男"></c:out>                                               
-                                                   </c:if>
-                                                   <c:if test="${employee.sex==false}">
-                                                    <c:out value="女"></c:out>                                               
-                                                   </c:if>
-                                               </td>
-                                               <td>${employee.birthday}</td>
+														<c:out value="${point.tbEmployee.employeecode}"></c:out>
+												</td>
+												<td>
+														<c:out value="${point.tbEmployee.employeename}"></c:out>
+												</td>
+												<td><c:out value="${point.organizationNj.orgid}"></c:out>
+												</td>
+												<td><c:out
+														value="${point.organizationNj.org_Name}"></c:out></td>
+												<td><c:out value="${point.tbEmployee.tbJob.jobname}"></c:out>
+												</td>
+												
+												<td><c:out
+														value="${fn:split(fn:split(point.pointmonth,' ')[0],'-')[0]}-${fn:split(fn:split(point.pointmonth,' ')[0],'-')[1]}"></c:out>
+												</td>
+												<td><c:out value="${point.employeepoint}"></c:out>
+												</td>
+												<td><c:out value="${point.employeeperformance}"></c:out>
+												</td>
+												<td><c:out value="${point.orgperformance}"></c:out>
+												</td>
+												<td><c:out value="${point.regulatepoint}"></c:out>
+												</td>
+												<td><c:out value="${point.rankseq}"></c:out>
+												</td>
+												<td><c:out value="${point.tax}"></c:out>
+												</td>
+												<td><c:out value="${point.netincome}"></c:out>
+												</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="javascript:void(0)"
-															name="" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="javascript:void(0)"
+														<a class="green"
+															href="innovation.null.innovationSearch.modify.do?id=${point.pointid }"
 															name="" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId="> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+															class="fa fa-pencil bigger-130">修改</i> </a> 
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -146,25 +187,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 															<ul
 																class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																<li><a href="javascript:void(0)"
-																	name="" onclick="GetDetail(this)"
-																	class="tooltip-info" data-rel="tooltip" title="View">
-																		<span class="blue"> <i
-																			class="ace-icon fa fa-search-plus bigger-120"></i> </span> </a>
-																</li>
-
-																<li><a href="javascript:void(0)"
-																	name="" onclick="Modify(this)"
-																	class="tooltip-success" data-rel="tooltip" title="Edit">
-																		<span class="green"> <i
-																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																<li><a href="javascript:void(0)" name=""
+																	onclick="GetDetail(this)" class="tooltip-info"
+																	data-rel="tooltip" title="View"> <span class="blue">
+																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
 																	</span> </a></li>
 
-																<li><a
-																	href="ClassDelete?classId="
+																<li><a href="javascript:void(0)" name=""
+																	onclick="Modify(this)" class="tooltip-success"
+																	data-rel="tooltip" title="Edit"> <span
+																		class="green"> <i
+																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																	</span> </a>
+																</li>
+
+																<li><a href="ClassDelete?classId="
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
 															</ul>
 														</div>
 													</div>
@@ -173,6 +214,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</c:forEach>
 									</tbody>
 								</table>
+								<div class="clearfix form-actions">
+									<div class="col-md-offset-3 col-md-9">
+										&nbsp; &nbsp; &nbsp;
+										<button class="btn btn-info" type="submit">
+											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+										</button>
+									</div>
+								</div>
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
@@ -184,39 +233,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="../assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+
+	<!-- Excel导出插件 -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/tableExport.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jquery.base64.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/html2canvas.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/libs/sprintf.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/jspdf.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/libs/base64.js"></script>
+
+
+
 	<script
-		src="../assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js">
+		
+	</script>
 	<script
-		src="../assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"
+		chartset="utf8"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
 			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-			.dataTable({
-				bAutoWidth : false,
-				"aoColumns" : [ {
-					"bSortable" : false
-				}, null, null, null, null,null, {
-					"bSortable" : false
-				} ],
-				"aaSorting" : [],
+			.dataTable(
+					{
+						bAutoWidth : false,
+						"aoColumns" : [ {
+							"bSortable" : false
+						}, null, null, null, null, null, null, null, null,
+								null, null, null, {
+									"bSortable" : false
+								} ],
+						"aaSorting" : [],
 
-			//,
-			//"sScrollY": "200px",
-			//"bPaginate": false,
+						//,
+						"sScrollY" : "200px",
+						//"bPaginate": false,
 
-			//"sScrollX": "100%",
-			//"sScrollXInner": "120%",
-			//"bScrollCollapse": true,
-			//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-			//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+						"sScrollX" : "100%",
+					//"sScrollXInner": "120%",
+					//"bScrollCollapse": true,
+					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 
-			//"iDisplayLength": 50
-			});
+					//"iDisplayLength": 50
+					});
 			//oTable1.fnAdjustColumnSizing();
 
 			//TableTools settings
@@ -254,7 +327,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						"aButtons" : [
 								{
 									"sExtends" : "copy",
-									"sToolTip" : "Copy to clipboard",
+									"sToolTip" : "复制到剪贴板",
 									"sButtonClass" : "btn btn-white btn-primary btn-bold",
 									"sButtonText" : "<i class='fa fa-copy bigger-110 pink'></i>",
 									"fnComplete" : function() {
@@ -271,9 +344,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								},
 
 								{
-									"sExtends" : "csv",
-									"sToolTip" : "Export to CSV",
+									"sExtends" : "xls",
+									"sToolTip" : "导出Excel",
 									"sButtonClass" : "btn btn-white btn-primary  btn-bold",
+									"sCharSet" : "utf8",
 									"sButtonText" : "<i class='fa fa-file-excel-o bigger-110 green'></i>"
 								},
 
@@ -340,7 +414,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			//and append it to our table tools btn-group, also add tooltip
 			$(colvis.button()).prependTo('.tableTools-container .btn-group')
-					.attr('title', 'Show/hide columns').tooltip({
+					.attr('title', '选择要导出的数据列').tooltip({
 						container : 'body'
 					});
 
@@ -452,3 +526,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
 </body>
 </html>
+<!-- http://localhost:8080/QQL1133Attend/index.jsp -->

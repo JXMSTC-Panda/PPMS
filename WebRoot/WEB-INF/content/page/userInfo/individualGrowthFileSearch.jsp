@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -18,16 +19,20 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
 
 <!-- text fonts -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
@@ -49,20 +54,35 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
+<script type="text/javascript">
+	function goToPage() {
+		var input = document
+				.getElementsByName("tbChangejobhistory.tbEmployee.employeeid")[0];
+		top.window.location = "userInfo.growthFile.individualGrowthFileSearch.do?tbChangejobhistory.tbEmployee.employeeid="
+				+ input.value;
+
+	}
+</script>
 </head>
 
 <body class="no-skin">
 	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
-			try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
 		</script>
 		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
 		<div class="main-content">
 			<div class="main-content-inner">
 				<div class="breadcrumbs" id="breadcrumbs">
 					<script type="text/javascript">
-						try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+						try {
+							ace.settings.check('breadcrumbs', 'fixed')
+						} catch (e) {
+						}
 					</script>
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
@@ -77,72 +97,91 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-								<div class="page-header">
-										<h1>
-								员工成长档案管理
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									个人成长路线查询
-								</small>
-							</h1>
-									</div>
-									<form class="form-horizontal" role="form" method="post" action="userInfo.growthFile.individualGrowthFileSearch.do">
-									<table class="table table-striped table-bordered">
-										<thead>
+							<div class="page-header">
+								<h1>
+									员工成长档案管理 <small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 个人成长路线查询 </small>
+								</h1>
+							</div>
+							<form class="form-horizontal" role="form" method="post">
+								<table class="table table-striped table-bordered">
+									<thead>
+
+										<c:if test="${requestScope.tbChangejobs==null}">
 											<tr>
-												<td>
-													工号:
-													<input name="tbChangejobhistory.tbEmployee.employeeid" value="${requestScope.tbChangejob.get(0).tbEmployee.employeeid}"></input>
+												<td>工号: <input
+													name="tbChangejobhistory.tbEmployee.employeeid" value=""></input>
 												</td>
-												<td>
-													姓名:
-										            <input readonly="readonly" value="${requestScope.tbChangejob.get(0).tbEmployee.employeename}" />
+												<td>姓名: <input readonly="readonly" value="" /></td>
+												<td>身份证号: <input readonly="readonly" value="" /></td>
+												<td>所属营业厅: <input readonly="readonly" value="" /></td>
+											</tr>
+										</c:if>
+
+										<c:if test="${requestScope.tbChangejobs!=null}">
+
+											<tr>
+												<td>工号: <input
+													name="tbChangejobhistory.tbEmployee.employeeid"
+													value="${requestScope.tbChangejobs.get(0).tbEmployee.employeeid}"></input>
 												</td>
-												<td>
-													身份证号:
-													<input readonly="readonly" value="${requestScope.tbChangejob.get(0).tbEmployee.idnumber}" />
+												<td>姓名: <input readonly="readonly"
+													value="${requestScope.tbChangejobs.get(0).tbEmployee.employeename}" />
 												</td>
-												<td>
-													所属营业厅:
-													<input readonly="readonly" value="${requestScope.tbChangejob.get(0).tbEmployee.organizationNj.org_Name}" />
+												<td>身份证号: <input readonly="readonly"
+													value="${requestScope.tbChangejobs.get(0).tbEmployee.idnumber}" />
+												</td>
+												<td>所属营业厅: <input readonly="readonly"
+													value="${tbChangejob.tbEmployee.organizationNj.org_Name}" />
 												</td>
 											</tr>
-										</thead>
-									</table>
-									<div class="space"></div>																																		
-									<table class="table table-striped table-bordered">
-															<thead>
-																<tr>
-																	<th class="center">序号</th>
-																	
-																	<th style="text-align: center;">时间</th>
-																	<th style="text-align: center;">阶段</th>			
-																</tr>
-															</thead>
-															<tbody align="center">
-															<c:forEach items="${requestScope.tbChangejob}" var="tbChange"
-											                 varStatus="status">
-																<tr>
-																	<td>${tbChange.jobhistoryid}</td>
-                                               						<td>${tbChange.changedate}</td>
-                                               						<td>${tbChange.tbJobByOutjobid.jobname}</td>																	
-																</tr>	
-															</c:forEach>													
-															</tbody>
-														</table>														
-														<div class="clearfix form-actions">
-																<div class="col-md-offset-5 col-md-6">
-															<button class="btn btn-info" type="button">
-																<i class="ace-icon fa fa-check bigger-110"></i>
-																	导出全部查询结果
-															</button>
-															<button class="btn btn-info" type="submit">
-											                     <i class="ace-icon fa fa-check bigger-110"></i>
-											                     	查询   
-										                    </button>														
-															</div>
-														</div>
-														</form>
+										</c:if>
+
+
+									</thead>
+								</table>
+								<div class="space"></div>
+								<table class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th class="center">序号</th>
+
+											<th style="text-align: center;">时间</th>
+											<th style="text-align: center;">阶段</th>
+										</tr>
+									</thead>
+									<tbody align="center">
+										<c:if test="${requestScope.tbChangejobs==null}">
+											没有调厅记录
+										</c:if>
+										<c:if test="${requestScope.tbChangejobs!=null}">
+											<c:forEach items="${requestScope.tbChangejobs}"
+												var="tbChange" varStatus="status">
+												<tr>
+													<c:if test="${requestScope.tbChangejobs==null}">
+														没有调厅记录
+													</c:if>
+													<td>${status.index + 1}</td>
+													<td>${tbChange.changedate}</td>
+													<td>${tbChange.tbJobByOutjobid.jobname}</td>
+												</tr>
+											</c:forEach>
+										</c:if>
+									</tbody>
+								</table>
+								<div class="clearfix form-actions">
+									<!-- <div class="col-md-offset-5 col-md-6">
+										<button class="btn btn-info" type="submit">
+											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+										</button> -->
+										<div class="col-md-offset-5 col-md-6">
+										<button class="btn btn-info" type="button"
+											onclick="goToPage()">
+											<i class="ace-icon fa fa-check bigger-110"></i> 查询
+										</button>
+									</div>
+								</div>
+							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
@@ -153,7 +192,7 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	
+
 	<!-- inline scripts related to this page -->
 	<script>
 		

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -94,14 +95,15 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<!-- PAGE CONTENT BEGINS -->
-											<form class="form-horizontal" role="form" action="employeeTrainExam.null.operationTrainSingle.operationTrainAdd.do" method="post">
+											<form class="form-horizontal" role="form" action="employeeTrainExam.operationTrain.operationTrainSingle.operationTrainAdd.do?tbOperationtraining.tbEmployee.employeeid=<c:forEach items="${requestScope.employeeInfos}"
+												var="employeeInfo">${employeeInfo.employeeid}</c:forEach>" method="post">
 												<!-- #section:elements.form -->
 
 												<div class="form-group">
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 区域： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbOperationtraining.organizationNj.status"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="${requestScope.areadesc }" name="tbOperationtraining.organizationNj.status"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -111,7 +113,8 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅编码： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbOperationtraining.organizationNj.orgid"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="<c:forEach items="${requestScope.employeeInfos}"
+												var="employeeInfo">${employeeInfo.organizationNj.orgid}</c:forEach>" name="tbOperationtraining.organizationNj.orgid"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -121,7 +124,8 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 营业厅名称： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbOperationtraining.organizationNj.orgName"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="<c:forEach items="${requestScope.employeeInfos}"
+												var="employeeInfo">${employeeInfo.organizationNj.org_Name}</c:forEach>" name="tbOperationtraining.organizationNj.org_Name"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -131,9 +135,10 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 姓名： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbOperationtraining.tbEmployee.employeename" />
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="<c:forEach items="${requestScope.employeeInfos}"
+												var="employeeInfo">${employeeInfo.employeename}</c:forEach>" name="tbOperationtraining.tbEmployee.employeename" />
 														<span class="help-inline col-xs-12 col-sm-7">
-												<button class="btn btn-info">选择员工</button>
+												<button class="btn btn-info" type="button" onClick="top.window.location='employeeTrainExam.operationTrain.operationTrainSingle.skipSelectEmployeePages.do'">选择员工</button>
 											</span>
 													</div>
 												</div>
@@ -145,7 +150,8 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 工号： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbOperationtraining.tbEmployee.employeecode"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="<c:forEach items="${requestScope.employeeInfos}"
+												var="employeeInfo">${employeeInfo.employeecode}</c:forEach>" name="tbOperationtraining.tbEmployee.employeecode"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>
@@ -156,7 +162,8 @@
 													<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 身份证号： </label>
 
 													<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="" name="tbOperationtraining.tbEmployee.idnumber"/>
+														<input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="<c:forEach items="${requestScope.employeeInfos}"
+												var="employeeInfo">${employeeInfo.idnumber}</c:forEach>" name="tbOperationtraining.tbEmployee.idnumber"/>
 														<span class="help-inline col-xs-12 col-sm-7">
 												
 											</span>

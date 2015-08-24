@@ -53,7 +53,7 @@ import ppms.util.TimeStringUtils;
  */
 public class CommonExcelParser {
 
-	//遍历深度记录
+	// 遍历深度记录
 	private int parserCount;
 	// excel对应的文本对象
 	private HSSFWorkbook wb;
@@ -128,22 +128,22 @@ public class CommonExcelParser {
 
 				ro = sh.getRow(0);
 				Class clazz;
-				//判断要生成Excel的对象集合是否有数据
+				// 判断要生成Excel的对象集合是否有数据
 				if (excelRecords.getList().size() > 0) {
 
-					//获取集合中对象的字节码
+					// 获取集合中对象的字节码
 					clazz = excelRecords.getList().get(0).getClass();
-					//获取对象成员变量和Excel表列名的映射
+					// 获取对象成员变量和Excel表列名的映射
 					List<ExcelObjStruct> list = getFieldReflectToClomnName(
 							clazz.getName(), ro);
 
 					Class tmpClazz = clazz;
-					Class<?> type=null;
-					Method method=null;
-					Object value=null;
-					Field field=null;
+					Class<?> type = null;
+					Method method = null;
+					Object value = null;
+					Field field = null;
 
-					//设置单元格格式
+					// 设置单元格格式
 					HSSFCellStyle style = wb.createCellStyle();
 					style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
 					HSSFFont font = wb.createFont();
@@ -152,9 +152,9 @@ public class CommonExcelParser {
 					font.setFontName("宋体");
 					font.setFontHeightInPoints((short) 10);
 
-					String tmpClazzName=null;
+					String tmpClazzName = null;
 
-					//判断表头是月份还是年份的标记
+					// 判断表头是月份还是年份的标记
 					boolean isMonth = false;
 					if (fileName.equals("年度绩效批量导出.xls")) {
 
@@ -169,27 +169,27 @@ public class CommonExcelParser {
 						cell2.setCellStyle(style);
 						cell2.setCellValue("月份");
 					}
-					//生成Excel的第几列的记录数
+					// 生成Excel的第几列的记录数
 					int index = i;
-					//遍历要生成Excel的集合
+					// 遍历要生成Excel的集合
 					for (int j = i; j <= excelRecords.getList().size(); j++) {
 						// 创建第j行
 						ro = sh.createRow(index);
-						//偏大是否是创新提案
+						// 偏大是否是创新提案
 						if (clazz.getName().equals("ppms.domain.TbInnovation")) {
 
 							TbInnovation innovation = (TbInnovation) excelRecords
 									.getList().get(j - i);
 							cell = ro.createCell(7);
 							cell.setCellStyle(style);
-							//根据数据判断是什么类型的创新
+							// 根据数据判断是什么类型的创新
 							if (innovation.getTbEmployee() != null) {
 								cell.setCellValue("个人创新");
 							} else {
 								cell.setCellValue("团队创新");
 							}
 						}
-						//遍历保存对象和Excel列映射关系的集合
+						// 遍历保存对象和Excel列映射关系的集合
 						for (ExcelObjStruct eos : list) {
 
 							// 设置序号
@@ -265,7 +265,7 @@ public class CommonExcelParser {
 								}
 							} else {
 
-								//根据数据类型设置单元格数据
+								// 根据数据类型设置单元格数据
 								cell = setValueByType(type.getName(), value,
 										method, eos, cell);
 							}
@@ -437,7 +437,7 @@ public class CommonExcelParser {
 			throws Exception {
 
 		// 变量定义
-		int t = 1;
+		int t = 2;
 		// 保存封装好Excel对应实体类的集合
 		List<Object> objs = null;
 		// 文件输入流
@@ -500,23 +500,23 @@ public class CommonExcelParser {
 				}
 				Object value = null;
 				Object object = null;
-				// 从数据开始的位置开始遍历Excel文件中的数据
-				for (int j = ExcelConfig.getDataBegin(myFileFileName); (ro = sh
-						.getRow(j)) != null; j++) {
 
-					List<ExcelObjStruct> clazzList = null;
-					// 遍历配置对象
-					for (String clazzName : config) {
+				List<ExcelObjStruct> clazzList = null;
+				// 遍历配置对象
+				for (String clazzName : config) {
 
-						Field field;
-						Method method = null;
-						clazzList = map.get(clazzName);
-						Integer integer;
-						String type_name;
-						Boolean performanceType;
-						// 实例化一个Excel对应的对象
-						object = clazz.newInstance();
-						Class tempClazz = clazz;
+					Field field;
+					Method method = null;
+					clazzList = map.get(clazzName);
+					Integer integer;
+					String type_name;
+					Boolean performanceType;
+					// 实例化一个Excel对应的对象
+					object = clazz.newInstance();
+					Class tempClazz = clazz;
+					// 从数据开始的位置开始遍历Excel文件中的数据
+					for (int j = ExcelConfig.getDataBegin(myFileFileName); (ro = sh
+							.getRow(j)) != null; j++) {
 						// 遍历实体类成员变量和列下标的配置对象的集合
 						for (int m = clazzList.size() - 1; m >= 0; m--) {
 
@@ -537,7 +537,7 @@ public class CommonExcelParser {
 								}
 								eos.setFieldName(split[0]);
 
-								//设置绩效类型
+								// 设置绩效类型
 								tempClazz.getMethod("setPerformancetype",
 										Boolean.class).invoke(object,
 										performanceType);
@@ -740,6 +740,7 @@ public class CommonExcelParser {
 								System.out.println(object.toString());
 							}
 						}
+						cache.clear();
 					}
 				}
 			} catch (Exception e) {
@@ -853,6 +854,7 @@ public class CommonExcelParser {
 
 	/**
 	 * 根据数据类型设置单元格的值
+	 * 
 	 * @param type_name
 	 * @param obj
 	 * @param method
@@ -864,62 +866,67 @@ public class CommonExcelParser {
 	public HSSFCell setValueByType(String type_name, Object obj, Method method,
 			ExcelObjStruct eos, HSSFCell cell) throws Exception {
 
-		if (obj != null) {
+		try {
+			if (obj != null) {
 
-			Object value = method.invoke(obj);
+				Object value = method.invoke(obj);
 
-			System.out.println(eos.getFieldName());
-			if (value != null) {
-				// 根据成员变量的类型获取单元格数据
-				switch (type_name) {
-				// 成员变量为String时
-				case "java.lang.String":
-					// 调用方法获取，并强转
-					cell.setCellValue((String) value);
-					break;
-				// 成员变量类型为int时
-				case "java.lang.Integer":
-					// 获取单元格中的数据，转为String
-					// 转为Integer
-					value = (Integer) value;
-					if (eos.getValue((Integer) value) != null) {
-						cell.setCellValue(eos.getValue((Integer) value));
-					} else {
-						cell.setCellValue((Integer) value);
+				System.out.println(eos.getFieldName());
+				if (value != null) {
+					// 根据成员变量的类型获取单元格数据
+					switch (type_name) {
+					// 成员变量为String时
+					case "java.lang.String":
+						// 调用方法获取，并强转
+						cell.setCellValue((String) value);
+						break;
+					// 成员变量类型为int时
+					case "java.lang.Integer":
+						// 获取单元格中的数据，转为String
+						// 转为Integer
+						value = (Integer) value;
+						if (eos.getValue((Integer) value) != null) {
+							cell.setCellValue(eos.getValue((Integer) value));
+						} else {
+							cell.setCellValue((Integer) value);
+						}
+						break;
+					case "java.util.Date":
+						value = (Date) value;
+
+						// 时间格式转换
+						String result = (((Date) value).getYear() + 1900) + "年"
+								+ (((Date) value).getMonth() + 1) + "月"
+								+ ((Date) value).getDate() + "日";
+						System.out.println(result);
+						cell.setCellValue(result);
+						break;
+					case "java.lang.Boolean":
+						if ((Boolean) value) {
+							value = eos.getValue(1);
+						} else {
+							value = eos.getValue(0);
+						}
+
+						cell.setCellValue((String) value);
+
+						break;
+					case "java.lang.Short":
+						cell.setCellValue((Short) value);
+						break;
+					case "java.lang.Double":
+						cell.setCellValue((Double) value);
+						break;
+					default:
+						cell.setCellValue((String) value);
+						break;
 					}
-					break;
-				case "java.util.Date":
-					value = (Date) value;
-
-					// 时间格式转换
-					String result = (((Date) value).getYear() + 1900) + "年"
-							+ (((Date) value).getMonth() + 1) + "月"
-							+ ((Date) value).getDate() + "日";
-					System.out.println(result);
-					cell.setCellValue(result);
-					break;
-				case "java.lang.Boolean":
-					if ((Boolean) value) {
-						value = eos.getValue(1);
-					} else {
-						value = eos.getValue(0);
-					}
-
-					cell.setCellValue((String) value);
-
-					break;
-				case "java.lang.Short":
-					cell.setCellValue((Short) value);
-					break;
-				case "java.lang.Double":
-					cell.setCellValue((Double) value);
-					break;
-				default:
-					cell.setCellValue((String) value);
-					break;
 				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
 		return cell;
 	}
 

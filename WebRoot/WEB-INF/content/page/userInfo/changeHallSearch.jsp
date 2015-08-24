@@ -95,10 +95,10 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 										<h1>
-											人员基本信息管理
+											人员调厅记录查询
 										<small>
 											<i class="ace-icon fa fa-angle-double-right"></i>
-												人员基本信息查询
+												人员调厅记录查询
 										</small>
 										</h1>
 									</div>
@@ -106,7 +106,7 @@
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">已有角色表</div>
+							<div class="table-header"></div>
 							<form action="" name="StuListForm">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
@@ -126,7 +126,7 @@
 										<c:forEach items="${requestScope.tbChangeOrg}" var="tbchangeorg"
 											varStatus="status">
 											<tr>
-											   <td>1</td>
+											   <td>${status.index + 1}</td>
 											   <td>${tbchangeorg.tbEmployee.employeeid}</td>
                                                <td>${tbchangeorg.tbEmployee.employeename}</td>
                                                <td>${tbchangeorg.tbEmployee.idnumber}</td>

@@ -48,6 +48,7 @@ public class MonthPerformanceServicelmp extends BaseDaoImp implements Performanc
 	@Autowired
 	private MonthPerformanceDaolmp dao;
 	
+	@Autowired
 	private TbPerformanceDAO tb_dao;
 	
 	/**
@@ -127,10 +128,14 @@ public class MonthPerformanceServicelmp extends BaseDaoImp implements Performanc
 		
 	}
 	
+	@Override
+	public void deletePerformance(TbPerformance persistentInstance){
+		
+		tb_dao.delete(persistentInstance);
+	}
 	
-//	public void deletePerformance(TbPerformance persistentInstance){
-//		
-//		tb_dao.delete(persistentInstance);
-//	}
-	
+	@Override
+	public void delete(Object object){
+		getHibernateTemplate().delete(object);
+	}
 }

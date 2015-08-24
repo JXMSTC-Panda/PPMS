@@ -13,7 +13,7 @@ public class ListForCache<T> {
 	public ListForCache(){
 		
 		beginCache=System.currentTimeMillis();
-		cacheTime=10*60*1000;
+		cacheTime=5*60*1000;
 	}
 	public boolean checkTimeOut() {
 
@@ -24,27 +24,27 @@ public class ListForCache<T> {
 		return false;
 	}
 
-	public final long getBeginCache() {
+	public  long getBeginCache() {
 		return beginCache;
 	}
 
-	public final void setBeginCache(long beginCache) {
+	public  void setBeginCache(long beginCache) {
 		this.beginCache = beginCache;
 	}
 
-	public final long getCacheTime() {
+	public  long getCacheTime() {
 		return cacheTime;
 	}
 
-	public final void setCahceTime(long cacheTime) {
+	public  void setCahceTime(long cacheTime) {
 		this.cacheTime = cacheTime;
 	}
 
-	public final List<T> getList() {
+	public  List<T> getList() {
 		return list;
 	}
 
-	public final void setList(List<T> list) {
+	public  void setList(List<T> list) {
 		this.list = list;
 	}
 

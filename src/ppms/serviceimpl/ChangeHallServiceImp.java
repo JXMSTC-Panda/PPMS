@@ -14,17 +14,41 @@ import ppms.domain.TbEmployee;
 import ppms.domain.TbSubarea;
 import ppms.domain.TbSubareaorgrelation;
 import ppms.service.ChangeHallService;
+
+/**   
+ *    
+ * 项目名称：PPMS   
+ * 类名称：ChangeHallServiceImp   
+ * 类描述：   
+ * 创建人：SuperYWJ
+ * 创建时间：2015-8-19 下午3:51:51   
+ * 修改人：（修改人的名字） 
+ * 修改时间：2015-8-19 下午8:51:51   
+ * 修改备注：   
+ * @version    
+ *    
+ */
 @Service
 public class ChangeHallServiceImp implements ChangeHallService{
+	/**
+	 * 声明对应dao层
+	 */
 	@Autowired
 	public ChangeHallDaoImp dao;
 	
 	@Override
 	public List<TbChangeorghistory> getTbChangeorghistories(){
+		/**
+		 * 调用dao层，取到TbChangeorghistory中所有数据
+		 */
 		List<TbChangeorghistory> tbChangeorghistories =dao.getTbChangeorghistories();
-		
+		/**
+		 * 声明一个空的list
+		 */
 		List<TbChangeorghistory> tbChangeorghistoriesNew=new ArrayList<>();
-		
+		/**
+		 * 遍历，通过id取到数据，set到对应对象，add到空的list中
+		 */
 		for(TbChangeorghistory tbChangeorghistory:tbChangeorghistories){
 			List<TbEmployee> tbEmployees=dao.getTbEmployees(tbChangeorghistory.getTbEmployee().getEmployeeid());
 			tbChangeorghistory.setTbEmployee(tbEmployees.get(0));
@@ -38,10 +62,17 @@ public class ChangeHallServiceImp implements ChangeHallService{
 	}
 	
 	public List<TbSubareaorgrelation> getTbSubareaorgrelations(){
+		/**
+		 * 调用dao层，取到TbChangeorghistory中所有数据
+		 */
 		List<TbSubareaorgrelation> tbSubareaorgrelations=dao.getTbSubareaorgrelations();
-		
+		/**
+		 * 声明一个空的list
+		 */
 		List<TbSubareaorgrelation> tbSubareaorgrelationsNew =new ArrayList<>();
-		
+		/**
+		 * 遍历，通过id取到数据，set到对应对象，add到空的list中
+		 */
 		for(TbSubareaorgrelation tbSubareaorgrelation:tbSubareaorgrelations){
 			List<OrganizationNj> organizationNjs=dao.getOrganizationNjs(tbSubareaorgrelation.getOrganizationNj().getOrgid());
 			tbSubareaorgrelation.setOrganizationNj(organizationNjs.get(0));
