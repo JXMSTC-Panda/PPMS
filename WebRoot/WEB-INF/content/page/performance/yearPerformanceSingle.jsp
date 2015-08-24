@@ -261,6 +261,7 @@
 		<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
+
 	<!-- page specific plugin scripts -->
 	<script
 		src="${pageContext.request.contextPath}/assets/js/jquery-ui.custom.js"></script>
@@ -292,10 +293,8 @@
 		src="${pageContext.request.contextPath}/assets/js/jquery.maskedinput.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/bootstrap-tag.js"></script>
-
 	<!-- inline scripts related to this page -->
-	<script>
-		<script type="text/javascript">
+	<script type="text/javascript">
 		jQuery(function($) {
 			$('#id-disable-check').on('click', function() {
 				var inp = $('#form-input-readonly').get(0);
@@ -753,6 +752,6 @@
 
 		});
 	</script>
-	</script>
+	
 </body>
 </html>

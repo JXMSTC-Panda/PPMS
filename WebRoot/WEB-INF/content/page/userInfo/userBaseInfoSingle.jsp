@@ -9,6 +9,21 @@
 
 <html lang="en">
 <head>
+<script type="text/javascript">
+function check(){
+    		var x=document.getElementById("fname").value//获取用户名所填的内容    		
+ 
+        	if(x=="")
+      			{
+        			document.getElementById("ts").innerHTML="用户名不能为空"; 
+        			
+       			} 
+       		else(x!=""){
+       				document.getElementById("ts").innerHTML="";
+       		}   	
+ 
+     }
+</script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <title>人员成长档案管理系统</title>
@@ -186,8 +201,8 @@
 																for="form-field-1"> 姓名: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" class="col-xs-10 col-sm-5"
-																	type="text" name="tbEmployee.employeename">
+																<input id="fname" class="col-xs-10 col-sm-5"
+																	type="text" name="tbEmployee.employeename" onblur="check();"><span id="ts"></span>
 															</div>
 														</div>
 
@@ -551,6 +566,7 @@
 
 									</div>
 							</form>
+							<%request.getSession().removeAttribute("organizationNj"); %>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
@@ -617,6 +633,7 @@
 		$('#colorpicker1').colorpicker();
 
 		$('#simple-colorpicker-1').ace_colorpicker();
+		
 	</script>
 </body>
 </html>

@@ -93,21 +93,23 @@
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
-							<div class="page-header">
-								<h1>
-									绩效管理 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 月度绩效查询 </small>
-								</h1>
+								<div class="page-header">
+										<h1>
+								员工考核
+								<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									新员工考核
+								</small></h1>
 							</div>
 							<!-- PAGE CONTENT BEGINS -->
 
-							<h3 class="header smaller lighter blue">月度绩效查询</h3>
+							<h3 class="header smaller lighter blue">新员工考核成绩查询</h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">已有月度绩效表</div>
-							<form action="" name="StuListForm">
+							<div class="table-header">已有新员工考核成绩表</div>
+							<form action="downData.do?fileName=月度绩效批量导出.xls" name="StuListForm">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -156,7 +158,7 @@
 														<a class="green" href="javascript:void(0)" name=""
 															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="performance.month.monthPerformanceSearch.Delete.do?performanceid=${pers.performanceid}">
+															href="employeeTrainExam.freshEmployeeExam.freshEmployeeExamSearch.delete.do?examid=${freshs.examid}">
 															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
@@ -195,6 +197,9 @@
 										</c:forEach>
 									</tbody>
 								</table>
+								
+								
+								
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
@@ -224,7 +229,7 @@
 				bAutoWidth : false,
 				"aoColumns" : [ {
 					"bSortable" : false
-				}, null, null, null, null, null, null, null, null, null,null, {
+				}, null, null, null, null, null, null, null, null, null, {
 					"bSortable" : false
 				} ],
 				"aaSorting" : [],

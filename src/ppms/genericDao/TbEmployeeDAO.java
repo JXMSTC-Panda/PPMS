@@ -80,6 +80,7 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+	
 	public boolean update(TbEmployee tbEmployee){
 		Session openSession = null;
 		try {
@@ -113,6 +114,33 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 			
 			openSession.getTransaction().commit();
 			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			openSession.getTransaction().rollback();
+			return false;
+		}finally{
+			openSession.close();
+		}
+	
+	}
+	
+	public boolean detete(String id){
+		Session openSession = null;
+		try {
+			openSession= this.getSessionFactory().openSession();
+			
+			openSession.beginTransaction();
+			
+			TbEmployee load = (TbEmployee) openSession.load(TbEmployee.class,id);
+			
+			if(load.getStatus()){
+				load.setStatus(false);
+				openSession.update(load);
+				openSession.getTransaction().commit();
+			}else{
+				return false;
+			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

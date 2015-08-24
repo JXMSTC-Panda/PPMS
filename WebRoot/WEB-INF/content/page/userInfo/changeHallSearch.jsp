@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -130,7 +131,7 @@
 											   <td>${tbchangeorg.tbEmployee.employeeid}</td>
                                                <td>${tbchangeorg.tbEmployee.employeename}</td>
                                                <td>${tbchangeorg.tbEmployee.idnumber}</td>
-                                               <td>${tbchangeorg.changedate}</td>
+                                               <td>${fn:split(tbchangeorg.changedate,' ')[0]}</td>
                                                <td>${tbchangeorg.organizationNjByOutorgid.org_Name}</td>
 											   <td>${tbchangeorg.organizationNjByInorgid.org_Name}</td>
 											</tr>
