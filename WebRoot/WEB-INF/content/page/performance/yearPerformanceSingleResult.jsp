@@ -17,16 +17,20 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
 
 <!-- text fonts -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
@@ -54,19 +58,26 @@
 	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
-			try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
 		</script>
 		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
 		<div class="main-content">
 			<div class="main-content-inner">
 				<div class="breadcrumbs" id="breadcrumbs">
 					<script type="text/javascript">
-						try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+						try {
+							ace.settings.check('breadcrumbs', 'fixed')
+						} catch (e) {
+						}
 					</script>
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
+						<li><a href="#">Other Pages</a>
+						</li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -76,7 +87,40 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							
+
+							<table cellspacing="0" cellpadding="0" class="tablewk"
+								align="center">
+								<tr>
+									<td><br />
+										<table cellpadding="0" cellspacing="0" width="95%"
+											style="height: 30px" align="center">
+											<tr>
+												<td class=" titlebold">年度绩效单条录入结果</td>
+											</tr>
+										</table>
+										<table cellpadding="0" cellspacing="0" width="95%"
+											align="center">
+											<tr>
+												<td class="line"></td>
+											</tr>
+										</table> <br />
+										<table cellpadding="0" cellspacing="0" width="95%"
+											align="center" class="tableserch">
+											<tr>
+												<td align="center">信息添加成功！</td>
+											</tr>
+											<tr>
+												<td align="center"><input type="button"
+													name="goContinueButton" value="继续录入"
+													onclick="location.href='performance.year.yearPerformanceSingle.do'"
+													class="btn_5"> <input type="button"
+													name="goSearchButton" value="转至查询"
+													onclick="location.href='performance.year.yearPerformanceSearch.do'"
+													class="btn_5"></td>
+											</tr>
+										</table> <br /> <br /></td>
+								</tr>
+							</table>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
@@ -87,7 +131,7 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	
+
 	<!-- inline scripts related to this page -->
 	<script>
 		

@@ -30,6 +30,7 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import ppms.action.interfaces.BaseInit;
 import ppms.action.interfaces.InitPage;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbEmployee;
@@ -58,7 +59,7 @@ import com.opensymphony.xwork2.util.logging.Logger;
  * @version    
  *    
  */
-public class MonthPerformanceSearchAction extends ActionSupport{
+public class MonthPerformanceSearchAction extends BaseInit{
 	
 	
 	/** 
@@ -163,8 +164,8 @@ public class MonthPerformanceSearchAction extends ActionSupport{
 								
 						}
 					
-						//map.put("performances", tbPerformancesList);
-						request.setAttribute("performances", tbPerformancesList);
+						map.put("performances", tbPerformancesList);
+						toCache();
 					}catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -232,8 +233,8 @@ public class MonthPerformanceSearchAction extends ActionSupport{
 								
 						}
 					
-						//map.put("performances", tbPerformancesList);
-						request.setAttribute("performances", tbPerformancesList);
+						map.put("performances", tbPerformancesList);
+						toCache();
 					}catch (Exception e) {
 						e.printStackTrace();
 					}
