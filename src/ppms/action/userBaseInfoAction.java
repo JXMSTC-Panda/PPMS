@@ -20,8 +20,18 @@ import ppms.domain.TbPost;
 import ppms.domain.TbRole;
 import ppms.serviceimpl.userBaseInfoServiceImp;
 
-/*
- * 人员基本信息单条录入类
+/**   
+ *    
+ * 项目名称：PPMS   
+ * 类名称：userBaseInfoAction   
+ * 类描述：   
+ * 创建人：SuperYWJ
+ * 创建时间：2015-8-13 下午3:51:51   
+ * 修改人：（修改人的名字） 
+ * 修改时间：2015-8-14 下午8:51:51   
+ * 修改备注：   
+ * @version    
+ *    
  */
 
 public class userBaseInfoAction extends BaseInit{
@@ -137,7 +147,7 @@ public class userBaseInfoAction extends BaseInit{
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String Detail() {
 		String employeeid=request.getParameter("id");
-		
+		//调用API，查询对象所有数据，放到employees中
 		List<TbEmployee> employees=dao.getEntitiestNotLazy(new TbEmployee(), new String[]{"organizationNj","tbJob","tbRole","tbPost"},Restrictions.eq("employeeid", employeeid));
 		request.setAttribute("tbEmpl", employees);
 		return "success";
@@ -151,9 +161,24 @@ public class userBaseInfoAction extends BaseInit{
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoUpdate.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String Update() {
-		
+		String employeeid=request.getParameter("id");
+		//调用API，查询对象所有数据，放到employees中
+		List<TbEmployee> employees=dao.getEntitiestNotLazy(new TbEmployee(), new String[]{"organizationNj","tbJob","tbRole","tbPost"},Restrictions.eq("employeeid", employeeid));
+		request.setAttribute("tbEmpl", employees);
 		return "success";
 	}
+	@Action(value = "userInfo.userBase.userBaseInfoSearch.UpdateResult", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSearch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	public String UpdateResult() {
+		try {
+			service.update(tbEmployee);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "success";
+	}
+	
 	/**
 	 * 删除人员信息
 	 * @return
@@ -163,13 +188,22 @@ public class userBaseInfoAction extends BaseInit{
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String Delete() { 
 		try {
-			String employeeid=request.getParameter("id");
+			String employeeid=request.getParameter("id");   //前台取到对应id,用一个string接受
+			/**
+			 * service取到数据，封装
+			 */
 			List<TbEmployee> employees=service.getTbEmployee();
+			/**
+			 * 遍历，开始判断，如果id与表中employeeid相同，调用service层的delete方法删除信息
+			 */
 			for(TbEmployee tbEmployee:employees){				
 				if(tbEmployee.getEmployeeid().equals(employeeid)){
 					service.delete(tbEmployee);
 				}	
 			}
+			/**
+			 * 结束之后，转自查询页面（含初始化）
+			 */
 			ServletActionContext.getResponse().sendRedirect("userInfo.userBase.userBaseInfoSearch.do");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -188,6 +222,10 @@ public class userBaseInfoAction extends BaseInit{
 	@Action(value = "userInfo.userBase.userBaseInfoSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoSingle.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	/**
+	 * 通过url，初始化页面
+	 * @return
+	 */
 	public  String firstIn(){
 		
 		initPage("userInfo.userBaseInfoSingle");
@@ -211,13 +249,17 @@ public class userBaseInfoAction extends BaseInit{
 			// 获取所有营业厅
 			switch (url) {
 			case "userInfo.userBaseInfoSingle":
-				
-				
+				/**
+				 * 调用service层方法，取到数据，封装对象
+				 */
 				List<OrganizationNj> organizations = service.getOrganizations();
 				List<TbPost> tbPosts = service.getTbPosts();			
 				List<TbJob> tbJobs =service.getTbJobs();
 				List<TbEmployee> tbEmployees =service.getTbEmployee();
 				List<TbRole> tbRoles =service.getTbRoles();
+				/**
+				 * 调用map函数，将对象put到前台
+				 */
 				map.put("roles", tbRoles);
 				map.put("orgs", organizations);
 				map.put("posts", tbPosts);
@@ -225,7 +267,9 @@ public class userBaseInfoAction extends BaseInit{
 				map.put("employees", tbEmployees);
 				break;
 			case "userInfo.userBaseInfoSearch":
-				
+				/**
+				 * 调用API，查到tbEmployee中所有对应对象，封装，put到前台
+				 */
 				List<TbEmployee> employees=dao.getEntitiestNotLazy(new TbEmployee(), new String[]{"organizationNj","tbJob","tbRole","tbPost"},null);
 				map.put("employees", employees);
 			default:
@@ -234,7 +278,6 @@ public class userBaseInfoAction extends BaseInit{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// 实例化map
 	}
 
 }

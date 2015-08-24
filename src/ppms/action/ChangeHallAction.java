@@ -25,11 +25,28 @@ import ppms.serviceimpl.ChangeHallServiceImp;
 import ppms.serviceimpl.userBaseInfoServiceImp;
 
 import com.opensymphony.xwork2.ActionSupport;
-
+/**   
+ *    
+ * 项目名称：PPMS   
+ * 类名称：ChangeHallAction   
+ * 类描述：   
+ * 创建人：SuperYWJ
+ * 创建时间：2015-8-19 下午3:51:51   
+ * 修改人：（修改人的名字） 
+ * 修改时间：2015-8-19 下午8:51:51   
+ * 修改备注：   
+ * @version    
+ *    
+ */
 public class ChangeHallAction extends BaseInit{
-	
+	/**
+	 * 创建对象tbChangeorghistory
+	 */
 	private TbChangeorghistory tbChangeorghistory;
-
+	/**
+	 * 生成get,set方法
+	 * @return
+	 */
 	public TbChangeorghistory getTbChangeorghistory() {
 		return tbChangeorghistory;
 	}
@@ -38,7 +55,9 @@ public class ChangeHallAction extends BaseInit{
 		this.tbChangeorghistory = tbChangeorghistory;
 	}
 	
-	
+	/**
+	 * 声明tbSubareaorgrelation
+	 */
 	private TbSubareaorgrelation tbSubareaorgrelation;
 		
 	
@@ -50,7 +69,9 @@ public class ChangeHallAction extends BaseInit{
 		this.tbSubareaorgrelation = tbSubareaorgrelation;
 	}
 	
-	
+	/**
+	 * 声明service对象
+	 */
 	@Autowired
 	private ChangeHallServiceImp changeHallServiceImp;
 		
@@ -62,10 +83,17 @@ public class ChangeHallAction extends BaseInit{
 	public void setChangeHallServiceImp(ChangeHallServiceImp changeHallServiceImp) {
 		this.changeHallServiceImp = changeHallServiceImp;
 	}
-	
+	/**
+	 * 通过url，实现页面初始化
+	 * @return
+	 */
 	@Action(value = "userInfo.changeHall.changeHallSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/changeHallSearch.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	/**
+	 * 取到userInfo.changeHallSearch，调用initpage()方法，实现页面初始化
+	 * @return
+	 */
 	public String firstIn(){
 		
 		initPage("userInfo.changeHallSearch");
@@ -75,12 +103,20 @@ public class ChangeHallAction extends BaseInit{
 	@Action(value = "userInfo.changeHall.businessHallSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/businessHallSearch.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	/**
+	 * 取到userInfo.businessHallSearch，调用initpage()方法，实现页面初始化
+	 * @return
+	 */
 	public String search(){
 		
 		initPage("userInfo.businessHallSearch");
 		toCache();
 		return "success";
 	}
+	/**
+	 * 通过url实现对应页面初始化
+	 * @param url
+	 */
 	public void initPage(String url){
 		try {
 			switch (url) {

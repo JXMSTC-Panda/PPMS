@@ -106,7 +106,7 @@
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">已有角色表</div>
+							<div class="table-header"></div>
 							<form action="downData.do?fileName=个人成长线路查询结果.xls" name="StuListForm" method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
@@ -126,7 +126,7 @@
 										<c:forEach items="${requestScope.employee}" var="emp"
 											varStatus="status">
 											<tr>
-											   <td>1</td>
+											   <td>${status.index + 1}</td>
 											   <td>${emp.employeecode}</td>
 											   <td>${emp.employeename}</td>
                                                <td>${emp.idnumber}</td>                                               
