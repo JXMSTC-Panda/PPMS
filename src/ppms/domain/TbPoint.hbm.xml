@@ -15,16 +15,16 @@
                 <comment>员工编码</comment>
             </column>
         </many-to-one>
+         <many-to-one name="organizationNj" class="ppms.domain.OrganizationNj" fetch="select">
+            <column name="ORGID" length="6">
+                <comment>员工编码</comment>
+            </column>
+        </many-to-one>
         <many-to-one name="tbJob" class="ppms.domain.TbJob" fetch="select">
             <column name="JOBID" length="6">
                 <comment>岗位</comment>
             </column>
         </many-to-one>
-        <property name="orgid" type="java.lang.Integer">
-            <column name="ORGID" precision="8" scale="0">
-                <comment>营业厅编码</comment>
-            </column>
-        </property>
         <property name="pointmonth" type="java.util.Date">
             <column name="POINTMONTH" length="7">
                 <comment>月份</comment>

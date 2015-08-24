@@ -95,7 +95,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 										<h1>
-											人员基本信息管理
+											人员调厅记录查询
 										<small>
 											<i class="ace-icon fa fa-angle-double-right"></i>
 												营业厅信息查询
@@ -106,7 +106,7 @@
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">已有角色表</div>
+							<div class="table-header"></div>
 							<form action="" name="StuListForm">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
@@ -124,7 +124,7 @@
 										<c:forEach items="${requestScope.tbSub}" var="tbsub"
 											varStatus="status">
 											<tr>
-											   <td>1</td>
+											   <td>${status.index + 1}</td>
 											   <td>${tbsub.organizationNj.orgid}</td>
                                                <td>${tbsub.organizationNj.org_Name}</td>
                                                <td>${tbsub.tbSubarea.tbArea.areadesc}</td>

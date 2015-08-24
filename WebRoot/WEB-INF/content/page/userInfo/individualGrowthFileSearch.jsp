@@ -103,8 +103,7 @@
 										class="ace-icon fa fa-angle-double-right"></i> 个人成长路线查询 </small>
 								</h1>
 							</div>
-							<form class="form-horizontal" role="form" method="post"
-								action="">
+							<form class="form-horizontal" role="form" method="post">
 								<table class="table table-striped table-bordered">
 									<thead>
 
@@ -159,7 +158,10 @@
 											<c:forEach items="${requestScope.tbChangejobs}"
 												var="tbChange" varStatus="status">
 												<tr>
-													<td>${tbChange.jobhistoryid}</td>
+													<c:if test="${requestScope.tbChangejobs==null}">
+														没有调厅记录
+													</c:if>
+													<td>${status.index + 1}</td>
 													<td>${tbChange.changedate}</td>
 													<td>${tbChange.tbJobByOutjobid.jobname}</td>
 												</tr>
@@ -172,6 +174,7 @@
 										<button class="btn btn-info" type="submit">
 											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
 										</button> -->
+										<div class="col-md-offset-5 col-md-6">
 										<button class="btn btn-info" type="button"
 											onclick="goToPage()">
 											<i class="ace-icon fa fa-check bigger-110"></i> 查询
