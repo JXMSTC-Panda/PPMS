@@ -100,11 +100,22 @@
 										class="ace-icon fa fa-angle-double-right"></i> 积分查询查询 </small>
 								</h1>
 							</div>
+											<div class="clearfix form-actions">
+												<div class="col-md-offset-3 col-md-9">
+													<button class="btn btn-info" type="button" onclick="top.window.location='integral.null.integralSearch.do'">
+														<i class="ace-icon fa fa-check bigger-110"></i> 主厅
+													</button>
 
+													&nbsp; &nbsp; &nbsp;
+													<button class="btn btn-info" type="button" onclick="top.window.location='integral.null.integralSearch.do?type=合作厅'">
+														<i class="ace-icon fa fa-undo bigger-110"></i> 合作厅
+													</button>
+												</div>
+											</div>
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">积分（合作厅）表</div>
+							<div class="table-header">积分（主厅）表</div>
 							<form action="downData.do?fileName=创新提案批量导出.xls"
 								name="StuListForm" method="post">
 
@@ -116,7 +127,6 @@
 											<th class="center"><label class="pos-rel"> <input
 													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
 											</th>
-											<th>区域</th>
 											<th>工号</th>
 											<th>姓名</th>
 											<th>营业厅编码</th>
@@ -135,24 +145,23 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${requestScope.points}"
-											var="point" varStatus="status">
+										<c:forEach items="${requestScope.points}" var="point"
+											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" value="${point.pointid }"/> <span class="lbl"></span>
-												</label></td>
-														<c:out value="${point.tbEmployee.employeecode}"></c:out>
+														type="checkbox" class="ace" value="${point.pointid }" />
+														<span class="lbl"></span> </label></td>
+												<td><c:out value="${point.tbEmployee.employeecode}"></c:out>
 												</td>
-												<td>
-														<c:out value="${point.tbEmployee.employeename}"></c:out>
+												<td><c:out value="${point.tbEmployee.employeename}"></c:out>
 												</td>
 												<td><c:out value="${point.organizationNj.orgid}"></c:out>
 												</td>
-												<td><c:out
-														value="${point.organizationNj.org_Name}"></c:out></td>
+												<td><c:out value="${point.organizationNj.org_Name}"></c:out>
+												</td>
 												<td><c:out value="${point.tbEmployee.tbJob.jobname}"></c:out>
 												</td>
-												
+
 												<td><c:out
 														value="${fn:split(fn:split(point.pointmonth,' ')[0],'-')[0]}-${fn:split(fn:split(point.pointmonth,' ')[0],'-')[1]}"></c:out>
 												</td>
@@ -164,6 +173,8 @@
 												</td>
 												<td><c:out value="${point.regulatepoint}"></c:out>
 												</td>
+												<td><c:out value="${point.encouragementmoney}"></c:out>
+												</td>
 												<td><c:out value="${point.rankseq}"></c:out>
 												</td>
 												<td><c:out value="${point.tax}"></c:out>
@@ -173,9 +184,9 @@
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
 														<a class="green"
-															href="innovation.null.innovationSearch.modify.do?id=${point.pointid }"
-															name="" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> 
+															href="integral.null.integralSearch.delete.do?id=${point.pointid }"
+															 > <i
+															class="fa fa-pencil bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -273,7 +284,7 @@
 						"aoColumns" : [ {
 							"bSortable" : false
 						}, null, null, null, null, null, null, null, null,
-								null, null, null, {
+								null, null, null,null,null,null, {
 									"bSortable" : false
 								} ],
 						"aaSorting" : [],

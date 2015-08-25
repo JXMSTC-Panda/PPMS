@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.classic.Session;
 import org.hibernate.criterion.Example;
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +31,33 @@ public class TbMonthexamDAO extends BaseHibernateDAO {
 	public static final String CREATEDBY = "createdby";
 	public static final String MODIFIEDBY = "modifiedby";
 
+	
+	
+	public boolean update(TbMonthexam monthexam){
+		Session session = getSessionFactory().openSession();
+		
+		try {
+			
+			session.beginTransaction();
+			
+			TbMonthexam load = (TbMonthexam) session.load(TbMonthexam.class, monthexam.getExamid());
+			
+			load.setExamdate(monthexam.getExamdate());
+			load.setExamscore(monthexam.getExamscore());
+			
+			session.update(load);
+			
+			session.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
 	public void save(TbMonthexam transientInstance) {
 		log.debug("saving TbMonthexam instance");
 		try {

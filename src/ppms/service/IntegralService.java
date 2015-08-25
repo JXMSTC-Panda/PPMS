@@ -11,4 +11,11 @@ public interface IntegralService {
 	 * @return
 	 */
 	public List<TbPoint> getAllPoints(String pointType);
+	
+	/**
+	 * 根据id删除积分记录
+	 * @param id
+	 * @return
+	 */
+	public boolean delete(String id);
 }

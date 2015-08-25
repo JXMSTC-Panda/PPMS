@@ -92,7 +92,8 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 			load.setEmployeename(tbEmployee.getEmployeename());
 			load.setEmployeecode(tbEmployee.getEmployeecode());
 			load.setSex(tbEmployee.getSex());
-			load.setIdnumber(tbEmployee.getIdnumber());
+			load.
+			setIdnumber(tbEmployee.getIdnumber());
 			load.setBirthday(tbEmployee.getBirthday());
 			load.setBankname(tbEmployee.getBankname());
 			load.setBanknumber(tbEmployee.getBanknumber());

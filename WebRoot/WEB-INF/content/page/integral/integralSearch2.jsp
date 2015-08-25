@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -83,7 +84,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
+						<li><a href="#">父功能</a>
+						</li>
 						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -95,17 +97,34 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									进阶培训 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 进阶培训查询 </small>
+									积分管理 <small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 积分查询查询 </small>
 								</h1>
 							</div>
 
+
+							<div class="clearfix form-actions">
+								<div class="col-md-offset-3 col-md-9">
+									<button class="btn btn-info" type="button"
+										onclick="top.window.location='integral.null.integralSearch.do'">
+										<i class="ace-icon fa fa-check bigger-110"></i> 主厅
+									</button>
+
+									&nbsp; &nbsp; &nbsp;
+									<button class="btn btn-info" type="button"
+										onclick="top.window.location='integral.null.integralSearch.do?type=合作厅'">
+										<i class="ace-icon fa fa-undo bigger-110"></i> 合作厅
+									</button>
+								</div>
+							</div>
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">已有角色表</div>
-							<form action="downData.do?fileName=进阶培训管理批量导出.xls"
+							<div class="table-header">积分（合作厅）表</div>
+							<form action="downData.do?fileName=创新提案批量导出.xls"
 								name="StuListForm" method="post">
+
+								<c:set var="count" value="0"></c:set>
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -117,40 +136,54 @@
 											<th>姓名</th>
 											<th>营业厅编码</th>
 											<th>营业厅名称</th>
-											<th>岗职</th>
-											<th>进阶培训时间</th>
-											<th>进阶培训内容</th>
-											<th>成绩</th>
-											<th>进阶结果</th>
+											<th>月份</th>
+											<th>积分</th>
+											<th>营业厅星级</th>
+											<th>违规扣分</th>
+											<th>调整后积分</th>
+											<th>最终奖励积分</th>
+											<th>扣减税金</th>
+											<th>税后金额</th>
 											<th>操作</th>
 										</tr>
 									</thead>
-
 									<tbody>
-										<c:forEach items="${requestScope.tbPromotiontraining}"
-											var="TbPromotiontraining" varStatus="status">
+										<c:forEach items="${requestScope.points}" var="point"
+											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace"
-														value="${TbPromotiontraining.promotiontrainingid }" /> <span
-														class="lbl"></span> </label></td>
-												<td>${TbPromotiontraining.tbEmployee.employeecode}</td>
-												<td>${TbPromotiontraining.tbEmployee.employeename}</td>
-												<td>${TbPromotiontraining.organizationNj.orgid}</td>
-												<td>${TbPromotiontraining.organizationNj.org_Name}</td>
-												<td>${TbPromotiontraining.tbEmployee.tbPost.postname}</td>
-												<td>${TbPromotiontraining.promotiontrainingdate}</td>
-												<td>${TbPromotiontraining.promotioncontent}</td>
-												<td>${TbPromotiontraining.promotionscore}</td>
-
-												<td>进阶成功</td>
+														type="checkbox" class="ace" value="${point.pointid }" />
+														<span class="lbl"></span> </label>
+												</td>
+												<td><c:out value="${point.tbEmployee.employeecode}"></c:out>
+												</td>
+												<td><c:out value="${point.tbEmployee.employeename}"></c:out>
+												</td>
+												<td><c:out value="${point.organizationNj.orgid}"></c:out>
+												</td>
+												<td><c:out value="${point.organizationNj.org_Name}"></c:out>
+												</td>
+												<td><c:out
+														value="${fn:split(fn:split(point.pointmonth,' ')[0],'-')[0]}-${fn:split(fn:split(point.pointmonth,' ')[0],'-')[1]}"></c:out>
+												</td>
+												<td><c:out value="${point.employeepoint}"></c:out>
+												</td>
+												<td><c:out value="${point.orglevel}"></c:out></td>
+												<td><c:out value="${point.breachdeductpoint}"></c:out>
+												</td>
+												<td><c:out value="${point.regulatepoint}"></c:out>
+												</td>
+												<td><c:out value="${point.lastpoint}"></c:out></td>
+												<td><c:out value="${point.deducttax}"></c:out>
+												</td>
+												<td><c:out value="${point.netincome}"></c:out>
+												</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="employeeTrainExam.promoteTrain.promoteTrainSearch.modify.do?id=${TbPromotiontraining.promotiontrainingid }" name=""
-															onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="employeeTrainExam.promoteTrain.promoteTrainSearch.delete.do?id=${TbPromotiontraining.promotiontrainingid }"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+														<a class="green"
+															href="integral.null.integralSearch.delete.do?id=${point.pointid }"
+															name="" onclick="Modify(this)"> <i
+															class="fa fa-pencil bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -174,11 +207,14 @@
 																	data-rel="tooltip" title="Edit"> <span
 																		class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a href="ClassDelete?classId="
-																	class="tooltip-error" data-rel="tooltip" title="Delete"><span
-																		class="red"> </span> </a><br></li>
+																	class="tooltip-error" data-rel="tooltip" title="Delete">
+																		<span class="red"> <i
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
 															</ul>
 														</div>
 													</div>
@@ -206,10 +242,30 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
+
+	<!-- Excel导出插件 -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/tableExport.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jquery.base64.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/html2canvas.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/libs/sprintf.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/jspdf.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/libs/base64.js"></script>
+
+
+
 	<script
-		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js">
+		
+	</script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"
+		chartset="utf8"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
@@ -220,27 +276,29 @@
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
 			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-			.dataTable({
-				bAutoWidth : false,
-				"aoColumns" : [ {
-					"bSortable" : false
-				}, null, null, null, null, null, null, null, {
-					"bSortable" : false
-				} ],
-				"aaSorting" : [],
+			.dataTable(
+					{
+						bAutoWidth : false,
+						"aoColumns" : [ {
+							"bSortable" : false
+						}, null, null, null, null, null, null, null, null,
+								null, null, null,null, {
+									"bSortable" : false
+								} ],
+						"aaSorting" : [],
 
-			//,
-			//"sScrollY": "200px",
-			//"bPaginate": false,
+						//,
+						"sScrollY" : "200px",
+						//"bPaginate": false,
 
-			//"sScrollX": "100%",
-			//"sScrollXInner": "120%",
-			//"bScrollCollapse": true,
-			//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-			//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+						"sScrollX" : "100%",
+					//"sScrollXInner": "120%",
+					//"bScrollCollapse": true,
+					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 
-			//"iDisplayLength": 50
-			});
+					//"iDisplayLength": 50
+					});
 			//oTable1.fnAdjustColumnSizing();
 
 			//TableTools settings
@@ -278,7 +336,7 @@
 						"aButtons" : [
 								{
 									"sExtends" : "copy",
-									"sToolTip" : "Copy to clipboard",
+									"sToolTip" : "复制到剪贴板",
 									"sButtonClass" : "btn btn-white btn-primary btn-bold",
 									"sButtonText" : "<i class='fa fa-copy bigger-110 pink'></i>",
 									"fnComplete" : function() {
@@ -295,9 +353,10 @@
 								},
 
 								{
-									"sExtends" : "csv",
-									"sToolTip" : "Export to CSV",
+									"sExtends" : "xls",
+									"sToolTip" : "导出Excel",
 									"sButtonClass" : "btn btn-white btn-primary  btn-bold",
+									"sCharSet" : "utf8",
 									"sButtonText" : "<i class='fa fa-file-excel-o bigger-110 green'></i>"
 								},
 
@@ -364,7 +423,7 @@
 
 			//and append it to our table tools btn-group, also add tooltip
 			$(colvis.button()).prependTo('.tableTools-container .btn-group')
-					.attr('title', 'Show/hide columns').tooltip({
+					.attr('title', '选择要导出的数据列').tooltip({
 						container : 'body'
 					});
 

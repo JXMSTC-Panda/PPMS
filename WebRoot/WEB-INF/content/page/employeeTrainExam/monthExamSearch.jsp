@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -8,7 +9,7 @@
 %>
 
 <html lang="en">
-<head>
+<head> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <title>人员成长档案管理系统</title>
@@ -107,7 +108,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有角色表</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=月度考试批量导出.xls" name="StuListForm" method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -115,7 +116,6 @@
 											<th class="center"><label class="pos-rel"> <input
 													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
 											</th>
-											<th>序号</th>
 											<th>工号</th>
 											<th>姓名</th>
 											<th>营业厅编码</th>
@@ -132,26 +132,23 @@
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
+														type="checkbox" class="ace" value="${tbmonth.examid }" name="cols"/> <span class="lbl"></span>
 												</label></td>
 
-											   <td>1</td>
                                                <td>${tbmonth.tbEmployee.employeecode}</td>
                                                <td>${tbmonth.tbEmployee.employeename}</td>
                                                <td>${tbmonth.organizationNj.orgid}</td>
                                                <td>${tbmonth.organizationNj.org_Name}</td>
-                                                <td>${tbmonth.examdate}</td>
+                                                <td>${fn:split(tbmonth.examdate,' ')[0]}</td>
                                                  <td>${tbmonth.examscore}</td>
                                                   <td>通过</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="javascript:void(0)"
-															name="" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="javascript:void(0)"
+														<a
+															class="green" href="employeeTrainExam.monthExam.monthExamSearch.modify.do?id=${tbmonth.examid }"
 															name="" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId="> <i
+															href="employeeTrainExam.monthExam.monthExamSearch.delete.do?id=${tbmonth.examid}"> <i
 															class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
@@ -189,6 +186,13 @@
 										</c:forEach>
 									</tbody>
 								</table>
+								<div class="clearfix form-actions">
+									<div class="col-md-offset-3 col-md-9">
+											&nbsp; &nbsp; &nbsp;<button class="btn btn-info" type="submit">
+											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+										</button>
+									</div>
+								</div>
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
@@ -216,7 +220,7 @@
 				bAutoWidth : false,
 				"aoColumns" : [ {
 					"bSortable" : false
-				}, null, null, null, null,null,null,null,null, {
+				}, null, null, null,null,null,null,null, {
 					"bSortable" : false
 				} ],
 				"aaSorting" : [],
