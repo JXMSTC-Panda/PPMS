@@ -153,18 +153,17 @@
 															</td>
 															<td><%= ++i %></td>
 														
-															<td>${mgc.areadesc }</td>
-															<td>${mgc.employeecode }</td>
-															<td>${mgc.employeename }</td>
-															<td>${mgc.idnumber }</td>
-															<td>${mgc.orgid }</td>
+															<td>${mgc.organizationNj.areadesc }</td>
+															<td>${mgc.tbEmployee.employeecode }</td>
+															<td>${mgc.tbEmployee.employeename }</td>
+															<td>${mgc.tbEmployee.idnumber }</td>
+															<td>${mgc.organizationNj.orgid }</td>
 															
-															<td>${mgc.org_Name }</td>
-															<td>${mgc.value }</td>
+															<td>${mgc.organizationNj.org_Name }</td>
+															<td>${mgc.examtype }</td>
 															<td>${mgc.examdate }</td>
 															<td>${mgc.examexpire }</td>
 															<td>${mgc.examscore }</td>
-															
 															<td>
 																<c:if test="${mgc.examscore>=60}">
 																	<span class="label label-sm label-success">PASS</span>
@@ -178,11 +177,11 @@
 																	<%-- <a class="green" href="userInfo.mountGuardCard.mountGuardCardUpdate.update.do?id=${mgc.idnumber }&areadesc=${mgc.areadesc }&employeecode=${mgc.employeecode }&
 																	employeename=${mgc.employeename }&orgid=${mgc.orgid }&org_Name=${mgc.org_Name }&value=${mgc.value }&examdate=${mgc.examdate }&examexpire=${mgc.examexpire }&
 																	examscore=${mgc.examscore }" > --%>
-																	<a class="green" href="userInfo.mountGuardCard.mountGuardCardUpdate.jsp">
+																	<a class="green" href="userInfo.mountGuardCard.mountGuardCardUpdate.update.do?id=${mgc.examid }">
 																		<i class="ace-icon fa fa-pencil bigger-130">修改</i>
 																	</a>
 
-																	<a class="red" href="userInfo.mountGuardCard.mountGuardCardSingle.delete.do?id=${mgc.idnumber }" >
+																	<a class="red" href="userInfo.mountGuardCard.mountGuardCardSingle.delete.do?id=${mgc.examid }" >
 																		<i class="ace-icon fa fa-trash-o bigger-130">删除</i>
 																	</a>
 																</div>

@@ -148,7 +148,7 @@ public class MountGuardCardServiceImp extends BaseDaoImp implements MountGuardCa
 	*/
 	public List<TbMountguardexam> getTbMountguardexam() {
 		// TODO Auto-generated method stub
-		return dao.getTbMountguardexam();
+		return dao.getEntitiestNotLazy(new TbMountguardexam(), new String []{"organizationNj","tbEmployee"});
 	}
 
 	/**

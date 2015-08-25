@@ -147,8 +147,8 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="AreaName" value="2" name="tbMountguardexam.organizationNj.orgid"/> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
+														id="AreaName" value="" name="tbMountguardexam.organizationNj.orgid"/> <span
+														class="help-inline col-xs-12 col-sm-7" > </span>
 												</div>
 											</div>
 											<div class="form-group">

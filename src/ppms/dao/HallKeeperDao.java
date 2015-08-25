@@ -14,7 +14,6 @@ import ppms.domain.TbPromotiontraining;
 import ppms.domain.TbVisitcheck;
 
 public interface HallKeeperDao {
-	
 	/**
 	* @Title: getTbMaster
 	* @Description: 查询进阶类型为value的系统字典表
