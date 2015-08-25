@@ -42,7 +42,12 @@ public class RoleFilter implements Filter {
 			String[] urlArray = myUrlString.split(".do");
 			System.out.println(urlArray[0]);
 			if (urlArray[0].equals("index.tachometer")
-					|| urlArray[0].equals("login")) {
+					|| urlArray[0].equals("login")
+					|| urlArray[0].equals("upload")
+					|| urlArray[0].equals("chooseOrg")
+					|| urlArray[0].equals("getEmployee")
+					|| urlArray[0].equals("downData")
+					|| urlArray[0].equals("orgback")) {
 
 				chain.doFilter(request, response);
 

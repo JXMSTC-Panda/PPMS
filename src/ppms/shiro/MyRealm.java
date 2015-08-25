@@ -40,11 +40,11 @@ public class MyRealm {
 				// 子功能
 				if (urlArrayString[3].contains("modify")
 						|| urlArrayString[3].contains("delete")
-						|| urlArrayString[3].contains("detail")
+						//|| urlArrayString[3].contains("chooseOrg")
 						|| urlArrayString[3].contains("invalid")
 						|| urlArrayString[3].contains("input")) {
 
-					url = url + urlArrayString[3];
+					url = url + "." + urlArrayString[3];
 				}
 			}
 			

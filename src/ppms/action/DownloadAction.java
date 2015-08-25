@@ -66,7 +66,7 @@ public class DownloadAction extends ActionSupport {
 	 * 
 	 * @return
 	 */
-	@org.apache.struts2.convention.annotation.Action(value = "downloadAction")
+	@org.apache.struts2.convention.annotation.Action(value = "other.null.batchImportTempletList.downloadAction")
 	public String downloadExcel() {
 
 		try {
