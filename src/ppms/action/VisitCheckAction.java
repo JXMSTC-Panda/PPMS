@@ -70,6 +70,10 @@ public class VisitCheckAction extends BaseInit {
 	public String add() {
 		try {
 			if (visitcheck != null) {
+				
+				if(ServletActionContext.getRequest().getSession().getAttribute("organizationNj")!=null){
+					ServletActionContext.getRequest().getSession().removeAttribute("organizationNj");
+				}
 				double avg = (visitcheck.getFirstscore()
 						+ visitcheck.getSecondscore() + visitcheck
 						.getConsistencyscore()) / 3;

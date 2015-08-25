@@ -203,6 +203,10 @@ public class StandardVistDzhAction extends BaseInit {
 		// 插入
 
 		try {
+			
+			if(ServletActionContext.getRequest().getSession().getAttribute("organizationNj")!=null){
+				ServletActionContext.getRequest().getSession().removeAttribute("organizationNj");
+			}
 			service.save(tbStandardcheck);
 			ServletActionContext.getResponse().sendRedirect(
 					"standardVisit.standard.standardSearch.do");

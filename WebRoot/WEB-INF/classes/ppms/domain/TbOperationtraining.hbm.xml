@@ -24,7 +24,7 @@
         </many-to-one>
         <property name="trainingdate" type="java.util.Date">
             <column name="TRAININGDATE" length="7">
-                <comment>培训时间（年月日）</comment>
+                <comment>培训时间(年月日)</comment>
             </column>
         </property>
         <property name="traininglevel" type="java.lang.String">

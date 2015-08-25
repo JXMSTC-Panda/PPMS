@@ -2,12 +2,14 @@ package ppms.serviceimpl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import ppms.daoimpl.BaseDaoImp;
 import ppms.domain.TbPoint;
+import ppms.domain.TbPointdetail;
 import ppms.service.IntegralService;
 
 /**
@@ -37,6 +39,13 @@ public class IntegralServiceImp implements IntegralService{
 			return list;
 		}
 		return null;
+	}
+	@Override
+	public boolean delete(String id) {
+		
+		Query createQuery = dao.getSessionFactory().openSession().createQuery("delete from TbPointdetail where pointid="+id);
+		createQuery.executeUpdate();
+		return dao.delete(new TbPoint(), id);
 	}
 
 }
