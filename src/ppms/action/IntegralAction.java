@@ -11,8 +11,6 @@ import ppms.action.interfaces.BaseInit;
 import ppms.domain.TbPoint;
 import ppms.serviceimpl.IntegralServiceImp;
 
-import com.opensymphony.xwork2.ActionSupport;
-
 /**
  * 处理积分管理模块请求
  * 

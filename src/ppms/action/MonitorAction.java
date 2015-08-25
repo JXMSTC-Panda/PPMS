@@ -8,7 +8,6 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ppms.action.interfaces.BaseInit;
-import ppms.daoimpl.BaseDaoImp;
 import ppms.domain.TbMonitorcheck;
 import ppms.serviceimpl.MonitorcheckServiceImp;
 
