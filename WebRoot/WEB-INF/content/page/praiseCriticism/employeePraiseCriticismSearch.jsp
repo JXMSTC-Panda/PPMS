@@ -134,7 +134,7 @@
 														name="cols" /> <span class="lbl"></span> </label>
 												</td>
 
-												<td></td>
+												<td>${employeepraisecriticismsInfor.order}</td>
 												<td><a href="#">${employeepraisecriticismsInfor.tbEmployee.employeecode}</a>
 												</td>
 												<td>${employeepraisecriticismsInfor.tbEmployee.employeename}</td>

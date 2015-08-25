@@ -86,11 +86,9 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 			List<COrganizationNj> cOrganizationNjInfor = praiseCriticism
 					.findCOrganizationNjInfor(organizationNj.getOrgid());// 执行findCOrganizationNjInfor，根据营业厅编号获取营业厅区域关系表中的信息
 			for (COrganizationNj cOrganizationNj : cOrganizationNjInfor) {// 遍历
-				System.out.print(organizationNj.getOrgid());
-				System.out.print(":" + cOrganizationNj.getTbArea().getAreaid());// 打印区域的编号
+				if(cOrganizationNj.getTbArea()!=null){
 				List<TbArea> areaInfor = praiseCriticism
 						.findAreaDesc(cOrganizationNj.getTbArea().getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
-				if(areaInfor!=null){
 				String areadesc = areaInfor.get(0).getAreadesc();
 				organizationNj.setAreadesc(areadesc);
 				}
@@ -101,10 +99,11 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 			for (TbSubareaorgrelation tbSubareaorgrelation : subareaorgrelationInfor) {
 				System.out.print(tbSubareaorgrelation.getTbSubarea()
 						.getSubareaid());
+				if(tbSubareaorgrelation.getTbSubarea()!=null){
 				List<TbSubarea> subareaInfor = praiseCriticism
 						.findSubareaInfor(tbSubareaorgrelation.getTbSubarea()
 								.getSubareaid());
-				if(subareaInfor!=null){
+				
 				String subareaDesc = subareaInfor.get(0).getSubareadesc();
 				organizationNj.setSubareadesc(subareaDesc);
 				}
@@ -220,11 +219,10 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 			List<COrganizationNj> cOrganizationNjInfor = praiseCriticism
 					.findCOrganizationNjInfor(organizationNj.getOrgid());// 执行findCOrganizationNjInfor，根据营业厅编号获取营业厅区域关系表中的信息
 			for (COrganizationNj cOrganizationNj : cOrganizationNjInfor) {// 遍历
-				System.out.print(organizationNj.getOrgid());
-				System.out.print(":" + cOrganizationNj.getTbArea().getAreaid());// 打印区域的编号
+				if(cOrganizationNj.getTbArea()!=null){
 				List<TbArea> areaInfor = praiseCriticism
 						.findAreaDesc(cOrganizationNj.getTbArea().getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
-				if(areaInfor!=null){
+				
 				String areadesc = areaInfor.get(0).getAreadesc();
 				organizationNj.setAreadesc(areadesc);
 				}
@@ -233,12 +231,11 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 			List<TbSubareaorgrelation> subareaorgrelationInfor = praiseCriticism
 					.findSubareaorgrelationInfor(organizationNj.getOrgid());
 			for (TbSubareaorgrelation tbSubareaorgrelation : subareaorgrelationInfor) {
-				System.out.print(tbSubareaorgrelation.getTbSubarea()
-						.getSubareaid());
+				if(tbSubareaorgrelation.getTbSubarea()!=null){
 				List<TbSubarea> subareaInfor = praiseCriticism
 						.findSubareaInfor(tbSubareaorgrelation.getTbSubarea()
 								.getSubareaid());
-				if(subareaInfor!=null){
+				
 				String subareaDesc = subareaInfor.get(0).getSubareadesc();
 				organizationNj.setSubareadesc(subareaDesc);
 				}
@@ -338,9 +335,10 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 			List<TbOrgpraisecriticism> orgpraisecriticismInfor=praiseCriticism.findAllOrgpraisecriticismInfor();
 			List<TbOrgpraisecriticism> orgpraisecriticismsInfor=new ArrayList<TbOrgpraisecriticism>();
 			
-			
+			int i=0;
 			for (TbOrgpraisecriticism tbOrgpraisecriticism : orgpraisecriticismInfor) {
-				
+				i++;
+				tbOrgpraisecriticism.setOrder(i);
 				String a=tbOrgpraisecriticism.getPraisecriticismtype();
 				
 				List<TbMaster> type=praiseCriticism.findOrgPraiseCriticismType(a);
