@@ -87,40 +87,38 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
+	
+	<div class="widget-box">
+										<div class="widget-header">
+											<h4 class="widget-title"></h4>
+										</div>
 
-							<table cellspacing="0" cellpadding="0" class="tablewk"
-								align="center">
-								<tr>
-									<td><br />
-										<table cellpadding="0" cellspacing="0" width="95%"
-											style="height: 30px" align="center">
-											<tr>
-												<td class=" titlebold">年度绩效单条录入结果</td>
-											</tr>
-										</table>
-										<table cellpadding="0" cellspacing="0" width="95%"
-											align="center">
-											<tr>
-												<td class="line"></td>
-											</tr>
-										</table> <br />
-										<table cellpadding="0" cellspacing="0" width="95%"
-											align="center" class="tableserch">
-											<tr>
-												<td align="center">信息添加成功！</td>
-											</tr>
-											<tr>
-												<td align="center"><input type="button"
-													name="goContinueButton" value="继续录入"
-													onclick="location.href='performance.year.yearPerformanceSingle.do'"
-													class="btn_5"> <input type="button"
-													name="goSearchButton" value="转至查询"
-													onclick="location.href='performance.year.yearPerformanceSearch.do'"
-													class="btn_5"></td>
-											</tr>
-										</table> <br /> <br /></td>
-								</tr>
-							</table>
+										<div class="widget-body">
+											<div class="widget-main">
+												<div class="row">															
+													<div class="col-xs-12 center">
+													<div class="space">
+													</div>
+													<h5>恭喜，操作成功!</h5>
+											<div class="clearfix form-actions">
+												<div class="col-md-offset-3 col-md-6">
+													<button class="btn btn-info" onclick="top.window.location='performance.year.yearPerformanceSingle.do'">
+														<i class="ace-icon fa fa-check bigger-110"></i> 继续录入
+													</button>
+
+													&nbsp; &nbsp; &nbsp;
+													<button class="btn" onclick="top.window.location='performance.year.yearPerformanceSearch.do'">
+														<i class="ace-icon fa fa-undo bigger-110"></i> 转至查询
+													</button>
+												</div>
+											</div>
+														</div>														
+												</div>
+											</div>
+										</div>
+								</div>
+	
+	
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
