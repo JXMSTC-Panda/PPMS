@@ -22,6 +22,7 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import ppms.action.interfaces.BaseInit;
 import ppms.action.interfaces.InitPage;
 import ppms.domain.COrganizationNj;
 import ppms.domain.MountGuardCard;
@@ -36,12 +37,21 @@ import ppms.serviceimpl.MountGuardCardServiceImp;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class MountGuardCardAction extends ActionSupport implements InitPage {
+public class MountGuardCardAction extends BaseInit {
 
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
+	private String id;
 
 	// private String ajaxState;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	// 测试是否进入该函数
 	public MountGuardCardAction() {
@@ -76,14 +86,36 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 	// 自动装载MountGuardCardServiceImp service实现层
 	@Autowired
 	private MountGuardCardServiceImp mountguardcardserviceimp;
+	@Autowired
+	private InvocationServiceImp serviceOrg;
 
-	public MountGuardCardServiceImp getMountguardcardserviceimp() {
-		return mountguardcardserviceimp;
+	@Action(value = "userInfo.mountGuardCard.mountGuardCardSingle", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/mountGuardCardSingle.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String firstIn(){
+		
+		initPage("userInfo.mountGuardCardSingle");
+		toCache();
+		return "success";
+	}
+	@Action(value = "userInfo.mountGuardCard.mountGuardCardBatch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/mountGuardCardBatch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String batch(){
+		
+		initPage("userInfo.mountGuardCardSearch");
+		toCache();
+		return "success";
 	}
 
-	public void setMountguardcardserviceimp(
-			MountGuardCardServiceImp mountguardcardserviceimp) {
-		this.mountguardcardserviceimp = mountguardcardserviceimp;
+	@Action(value = "userInfo.mountGuardCard.mountGuardCardSearch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/mountGuardCardSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String search(){
+		
+		initPage("userInfo.mountGuardCardSearch");
+		toCache();
+		return "success";
 	}
 
 	// 0配置action
@@ -160,6 +192,7 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 
 		ServletActionContext.getResponse().sendRedirect(
 				"userInfo.mountGuardCard.mountGuardCardSearch");
+		toCache();
 
 		return null;
 
@@ -167,50 +200,35 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 
 	// 页面信息删除
 	@Action(value = "userInfo.mountGuardCard.mountGuardCardSingle.delete")
-	public void delete() throws IOException {
-		System.out.println("enter delete function");
-		// 获取身份证号
-		String idnumber = request.getParameter("id");
-		// 根据员工身份证号查询所有员工表集合
-		List<TbEmployee> tbEmployeeList = mountguardcardserviceimp
-				.getTbEmployee();
-		// 取员工id
-		String employeeId = null;
-		for (TbEmployee te : tbEmployeeList) {
-			if (te.getIdnumber().equals(idnumber)) {
-				employeeId = te.getEmployeeid();
+	public String delete() throws IOException {
+		
+		if(id!=null){
+			
+			if(mountguardcardserviceimp.delete(id)){
 			}
+			ServletActionContext.getResponse().sendRedirect(
+					"userInfo.mountGuardCard.mountGuardCardSearch.do");
+			return null;
 		}
-		// 创建对象
-		TbMountguardexam tbMountguardexam = new TbMountguardexam();
-		// 遍历数据集查找符合删除的对象，进行删除操作
-		List<TbMountguardexam> tmList = mountguardcardserviceimp
-				.getTbMountguardexam();
-		for (TbMountguardexam tm : tmList) {
-			if (tm.getTbEmployee().getEmployeeid().equals(employeeId)) {
-				mountguardcardserviceimp.deleteTbMountguardexam(tm);
-			}
-		}
-
-		ServletActionContext.getResponse().sendRedirect(
-				"userInfo.mountGuardCard.mountGuardCardSearch");
-
+		
+return "error";
 	}
 
 	// 页面信息修改
-	@Action(value = "userInfo.mountGuardCard.mountGuardCardUpdate.update", results = {
-			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/mountGuardCardUpdate.jsp"),
+	@Action(value = "userInfo.mountGuardCard.mountGuardCardUpdate.modify", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/mountGuardCardSingle.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
-	public String update() throws IOException {
+	public String modify() throws IOException {
 		System.out.println("enter update function");
 		
 		
-		
-		String id = request.getParameter("id");
-		List<TbMountguardexam> tmList = mountguardcardserviceimp.getTbMountguardexam();
-		for(TbMountguardexam tm: tmList){
-			if(tm.getTbEmployee().getIdnumber().equals(id)){
-				
+		if(id!=null){
+			
+			TbMountguardexam exam=mountguardcardserviceimp.getEntity(id);
+			
+			if(exam!=null){
+				ServletActionContext.getRequest().setAttribute("exam", exam);
+				return "success";
 			}
 		}
 		
@@ -260,20 +278,19 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 
 	}
 
-	@Override
-	public Map<String, List<T>> initPage(ServletContext servletContext,
-			String url) {
+	@Action(value = "userInfo.mountGuardCard.mountGuardCardUpdate.modify", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/mountGuardCardSingle.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String update(){
+		
+		if(tbMountguardexam!=null){
+			return "success";
+		}
+		return "error";
+	}
+	public void initPage(String url) {
 		System.out.println("调用了map方法！！！！！！！！！！！！！！！！！！！！！！！！！！！");
 		// 实例化map
-		Map map = new HashMap<String, List<OrganizationNj>>();
-
-		InvocationServiceImp serviceOrg = WebApplicationContextUtils
-				.getWebApplicationContext(servletContext).getBean(
-						InvocationServiceImp.class);
-
-		MountGuardCardServiceImp serviceEmp = WebApplicationContextUtils
-				.getWebApplicationContext(servletContext).getBean(
-						MountGuardCardServiceImp.class);
 
 		// 根据不同请求的url实现不同页面的页面初始化
 		switch (url) {
@@ -282,7 +299,7 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 			List<OrganizationNj> organizations = serviceOrg.getOrganizations();
 			map.put("orgs", organizations);
 
-			List<TbEmployee> employees = serviceEmp.getTbEmployee();
+			List<TbEmployee> employees = mountguardcardserviceimp.getTbEmployee();
 			map.put("employees", employees);
 			break;
 
@@ -291,7 +308,7 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 			System.out.println("进入了case1！！！");
 
 			// 查询所有的合作厅上岗证查询表
-			List<TbMountguardexam> tbMountguardexam = serviceEmp
+			List<TbMountguardexam> tbMountguardexam = mountguardcardserviceimp
 					.getTbMountguardexam();
 
 			map.put("mgcList", tbMountguardexam);
@@ -331,7 +348,6 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 		default:
 			break;
 		}
-		return map;
 	}
 
 	@Action(value = "userInfo.mountGuardCard.mountGuardCardSingle.ajaxSearchOrg")

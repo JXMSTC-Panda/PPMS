@@ -12,6 +12,16 @@ public class TbOperationcheck implements java.io.Serializable {
 
 	private String operationcheckid;
 	private OrganizationNj organizationNj;
+	private int order;
+	
+	public int getOrder() {
+		return order;
+	}
+
+	public void setOrder(int order) {
+		this.order = order;
+	}
+
 	private TbEmployee tbEmployee;
 	private Date operationdate;
 	private String customermobilenumber;

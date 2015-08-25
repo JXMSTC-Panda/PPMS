@@ -3,6 +3,7 @@ package ppms.serviceimpl;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -203,5 +204,25 @@ public class MountGuardCardServiceImp extends BaseDaoImp implements MountGuardCa
 	*/
 	public void deleteTbMountguardexam(TbMountguardexam tbMountguardexam){
 		getHibernateTemplate().delete(tbMountguardexam);
+	}
+
+	@Override
+	public boolean delete(String id) {
+		return dao.delete(new TbMountguardexam(), id);
+	}
+
+	@Override
+	public TbMountguardexam getEntity(String id) {
+		
+		
+		List<TbMountguardexam> list = dao.getEntitiestNotLazy(new TbMountguardexam(), new String[]{"organizationNj","tbEmployee"}, Restrictions.eq("examid", id));
+		
+		if(list.size()>0){
+			TbMountguardexam mountguardexam=list.get(0);
+			
+			mountguardexam.setOrganizationNj(mountguardexam.getOrganizationNj().toComplete(dao));
+			return mountguardexam;
+		}
+		return null;
 	}
 }

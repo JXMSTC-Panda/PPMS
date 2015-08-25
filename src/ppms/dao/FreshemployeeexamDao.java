@@ -39,4 +39,20 @@ public interface FreshemployeeexamDao {
 
 	List<TbEmployee> getTbEmployees();
 
+	/** 
+	
+	* @方法名: update 
+	
+	* @描述: TODO(这里用一句话描述这个方法的作用) 
+	
+	* @param @param tbFreshemployeeexam
+	* @param @return    设定文件
+	
+	* @return boolean    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public boolean update(TbFreshemployeeexam tbFreshemployeeexam);
+
 }

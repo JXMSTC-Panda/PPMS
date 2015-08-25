@@ -133,4 +133,28 @@ public interface MountGuardCardService {
 	* @date: 2015-8-24 下午4:02:46
 	*/
 	public void deleteTbMountguardexam(TbMountguardexam tbMountguardexam);
+	
+	/**
+	 * 根据id删除
+	* @Title: delete
+	* @Description: TODO
+	* @param: @param id
+	* @param: @return    
+	* @return:    
+	* @auther: CappuccinoH
+	* @date: 2015-8-25 下午3:18:16
+	 */
+	public boolean delete(String id);
+	
+	/**
+	 * 根据id查找记录
+	* @Title: getEntity
+	* @Description: TODO
+	* @param: @param id
+	* @param: @return    
+	* @return:    
+	* @auther: CappuccinoH
+	* @date: 2015-8-25 下午3:38:28
+	 */
+	public TbMountguardexam getEntity(String id);
 }

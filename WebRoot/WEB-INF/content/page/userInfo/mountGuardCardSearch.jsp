@@ -177,7 +177,7 @@
 																	<%-- <a class="green" href="userInfo.mountGuardCard.mountGuardCardUpdate.update.do?id=${mgc.idnumber }&areadesc=${mgc.areadesc }&employeecode=${mgc.employeecode }&
 																	employeename=${mgc.employeename }&orgid=${mgc.orgid }&org_Name=${mgc.org_Name }&value=${mgc.value }&examdate=${mgc.examdate }&examexpire=${mgc.examexpire }&
 																	examscore=${mgc.examscore }" > --%>
-																	<a class="green" href="userInfo.mountGuardCard.mountGuardCardUpdate.update.do?id=${mgc.examid }">
+																	<a class="green" href="userInfo.mountGuardCard.mountGuardCardUpdate.modify.do?id=${mgc.examid }">
 																		<i class="ace-icon fa fa-pencil bigger-130">修改</i>
 																	</a>
 
