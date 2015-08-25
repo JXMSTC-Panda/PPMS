@@ -7,11 +7,13 @@
 			+ path + "/";
 %>
 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
+
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
-<title>人员成长档案管理系统</title>
+<title>Blank Page - Ace Admin</title>
 
 <meta name="description" content="" />
 <meta name="viewport"
@@ -414,12 +416,11 @@
 													</c:if>
 													<c:if test="${requestScope.exam!=null }">
 
-
-														<option value="${requestScope.exam.examdate.examtype}">
+														<option value="${requestScope.exam.examtype}">
 															<c:if
-																test="${requestScope.exam.examdate.examtype=='0001' }">营业员上岗证</c:if>
+																test="${requestScope.exam.examtype=='0001' }">营业员上岗证</c:if>
 																<c:if
-																test="${requestScope.exam.examdate.examtype=='0002' }">帐务稽核人员上岗证</c:if>
+																test="${requestScope.exam.examtype=='0002' }">帐务稽核人员上岗证</c:if>
 														</option>
 													</c:if>
 
@@ -453,15 +454,16 @@
 													class=" control-label no-padding-left" for="form-field-1">
 													分 </label>
 											</div>
-											<label onclick="show()"> 取数据测试 </label>
-
 										</div>
 										<div class="clearfix form-actions">
 											<div class="col-md-offset-3 col-md-9">
 
-												<input class="btn btn-info" type="submit" value="Submit">
+												<input class="btn btn-info" type="submit" value="提交">
+												
+												<c:if test="${requestScope.exam==null }">
 												&nbsp; &nbsp; &nbsp; <input class="btn " type="reset"
 													value="Reset">
+													</c:if>
 											</div>
 										</div>
 
