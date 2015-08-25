@@ -127,7 +127,7 @@ public class AuthoritySrviceImp implements AuthorityService {
 	@Override
 	public TbRolefunction findTbRoleFunction(String roleID) {
 		// TODO Auto-generated method stub
-		// 得到角色功能json
+		// 得到角色功能
 		String roleFunctions="";		
 		List<TbRolefunction> tbRolefunctions = new ArrayList<TbRolefunction>();
 		tbRolefunctions = this.findAllRolefunctions();	
@@ -153,7 +153,7 @@ public class AuthoritySrviceImp implements AuthorityService {
 	}
 
 	@Override
-	public TbRole findRoleJson(String roleID) {
+	public TbRole findRoleByRoleID(String roleID) {
 		// TODO Auto-generated method stub
 		TbRole tbRole = tbRoleDAO.findById(roleID);
 		return tbRole;

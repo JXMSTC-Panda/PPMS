@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -34,10 +35,14 @@
 				src="${pageContext.request.contextPath}/plugin/Others/images/error-img.png"
 				title="error" />
 			<p>
-				<span><label>O</label>hh.....</span>
-				<span id="errorReason">You　Requested the page that is no longer There.</span>
+				<span><label>O</label>hh.....</span> <span id="errorReason">${errorInfo}</span>
 			</p>
-			<a　id="backUrl" href="#">返回</a>
+			<div>
+				<c:forEach items="${errorInfos}" var="eis" varStatus="status">
+					<span>${eis.index}${eis.info}</span><br>
+				</c:forEach>
+			</div>
+			<a id="backUrl" href="${backUrl}">返回</a>
 			<div class="copy-right">
 				<p>
 					&#169 All rights Reserved | Designed by <a href="http://chnn.com/">jxmstc.pandas</a>

@@ -217,7 +217,7 @@ public class AuthorityAction extends ActionSupport {
 			System.out.println("roleDetail");
 			String roleID = request.getParameter("roleID");
 			System.out.println(roleID);
-			TbRole tbRole = authoritySrviceImp.findRoleJson(roleID);
+			TbRole tbRole = authoritySrviceImp.findRoleByRoleID(roleID);
 			request.setAttribute("roleID", roleID);
 			request.setAttribute("roleName", tbRole.getRolename());
 			request.setAttribute("roleNodes", authoritySrviceImp.findTbRoleFunction(roleID).getFunctionids());
@@ -302,13 +302,22 @@ public class AuthorityAction extends ActionSupport {
 	 */
 	@Action(value = "index.tachometer", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/tachometer.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/paga/error.jsp") })
+			@Result(name = "faild", location = "/WEB-INF/content/page/authority/roleSingleResult.jsp") })
 	public String login() {
 		if (tbEmployeeID != null)
 			return "success";
 		else {
 			return "faild";
 		}
+	}
+	
+	@Action(value = "error", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/error.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })
+	public String error(){
+		
+		request.setAttribute("errorInfo", "出错了");
+		return "faild";
 	}
 
 }

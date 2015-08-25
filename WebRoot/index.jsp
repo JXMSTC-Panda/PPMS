@@ -285,6 +285,11 @@
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		$(document).ready(function() {
+			$("#gritter-notice-wrapper").mouseleave(function() {
+				$('#btnlogin span').html('登录');
+				$('#btnlogin').removeClass('disabled');
+				$('gritter-notice-wrapper').remove();
+			});
 			//登录点击
 			$('#btnlogin').click(function() {
 				$('#btnlogin span').html('登录...');
@@ -294,7 +299,7 @@
 					type : "POST",
 					url : "login.do",
 					data : $('#form_login').serialize(),
-					async : true,
+					async : false,
 					error : function(request) {
 						$.gritter.add({
 							title : '出错啦!',
@@ -323,15 +328,9 @@
 					}
 				});
 			});
-
 		});
 
 		jQuery(function($) {
-			$("#gritter-notice-wrapper").mouseleave(function() {
-				$('#btnlogin span').html('登录');
-				$('#btnlogin').removeClass('disabled');
-				$('gritter-notice-wrapper').remove();
-			});
 			$(document).on('click', '.toolbar a[data-target]', function(e) {
 				e.preventDefault();
 				var target = $(this).data('target');

@@ -3,10 +3,13 @@ package ppms.shiro;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import ppms.dao.userBaseInfoDao;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbRole;
 import ppms.domain.TbRolefunction;
+import ppms.domain.TbSystemfunction;
 import ppms.genericDao.TbRoleDAO;
 import ppms.genericDao.TbRolefunctionDAO;
 import ppms.serviceimpl.AuthoritySrviceImp;
@@ -18,24 +21,30 @@ public class MySubject {
 	AuthoritySrviceImp authoritySrviceImp;
 	@Autowired
 	EmployeeServiceImp employeeServiceImp;
+	@Autowired
+	userBaseInfoDao baseInfoDao;
+	
+	public static TbEmployee tbEmployee;
+	public static TbRole tbRole;
+	public static TbRolefunction tbRolefunction;
+	
+	public void CreatMySubject(TbEmployee tbEmployeeObject,TbRole tbRoleObject,TbRolefunction tbRolefunctionObjec) {
 
-	public TbEmployee tbEmployee = new TbEmployee();
-	public TbRole tbRole = new TbRole();
-	public TbRolefunction tbRolefunction = new TbRolefunction();
+		tbEmployee = tbEmployeeObject;
+		tbRole = tbRoleObject;
+		tbRolefunction = tbRolefunctionObjec;
+	}
 
-	public void CreatMySubject(TbEmployee tbEmployeeObject) {
+	public TbEmployee getTbEmployee() {
+		return tbEmployee;
+	}
 
-		String employeeID = tbEmployeeObject.getEmployeeid();
-		System.out.println(employeeID);
-		try {
-			tbEmployee = tbEmployeeObject;
-			tbRole = tbEmployee.getTbRole();
-			tbRolefunction = authoritySrviceImp.findTbRoleFunction(tbRole
-					.getRoleid());
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+	public TbRole getTbRole() {
+		return tbRole;
+	}
+
+	public TbRolefunction getTbRolefunction() {
+		return tbRolefunction;
 	}
 
 }

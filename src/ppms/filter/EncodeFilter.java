@@ -82,13 +82,9 @@ public class EncodeFilter implements Filter {
 						for(Map.Entry<String, String[]> entry : map.entrySet()){
 							String [] vs = entry.getValue();
 							for(int i=0;i<vs.length;i++){
-<<<<<<< HEAD
-								String keyValue = URLDecoder.decode(vs[i]);
-								vs[i] = new String(keyValue.getBytes("iso8859-1"),encode);
-=======
+								
 								//对request域里的参数进行硬解码
 								vs[i] = new String(vs[i].getBytes("iso8859-1"),encode);
->>>>>>> 43af2ea6f1056bbb15a3ed5525d2d7120e2e603e
 							} 
 						} 
 						isNotEncode = false;
