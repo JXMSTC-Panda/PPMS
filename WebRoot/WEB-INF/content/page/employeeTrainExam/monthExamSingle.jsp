@@ -179,7 +179,7 @@
 															id="form-field-select-employee"
 															name="tbMonthexam.tbEmployee.employeeid"
 															onchange="getEmployee(this)" data-placeholder="选择员工">
-															<option ></option>
+															<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
 															<c:forEach items="${sessionScope.employees }"
 																var="employee">
 																<option value="${employee.employeeid }">${employee.employeename}</option>

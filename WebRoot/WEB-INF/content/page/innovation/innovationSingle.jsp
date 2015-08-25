@@ -336,6 +336,7 @@
 																id="form-field-select-employee"
 																name="innovation.tbEmployee.employeeid"
 																onchange="getEmployee(this)" data-placeholder="选择员工">
+																<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
 																<c:forEach items="${sessionScope.employees }"
 																	var="employee">
 																	<option value="${employee.employeeid }">${employee.employeename
