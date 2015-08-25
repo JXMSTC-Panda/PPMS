@@ -149,10 +149,10 @@
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%>
 														<a class="green"
-															href="standardVisit.operationMistake.operationMistakeSearch.skip.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}"
+															href="standardVisit.operationMistake.operationMistakeSearch.modify.skip.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="standardVisit.operationMistake.operationMistakeSearch.operationMistakeInforDelete.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}">
+															href="standardVisit.operationMistake.operationMistakeSearch.delete.operationMistakeInforDelete.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}">
 															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">

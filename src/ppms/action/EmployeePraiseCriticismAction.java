@@ -117,6 +117,8 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 					List<TbArea> areaInfor = praiseCriticism
 							.findAreaDesc(cOrganizationNj.getTbArea()
 									.getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
+					if(areaInfor!=null)
+					{
 					String areadesc = areaInfor.get(0).getAreadesc();
 
 					OrganizationNj organizationNj = tbEmployee
@@ -128,14 +130,20 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 							.findOrganizationNjInfor(orgid);// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
 					organizationNjResults.get(0).setAreadesc(areadesc);
 					tbEmployee.setOrganizationNj(organizationNjResults.get(0));// 将同步营业厅信息set进对象organizationNj中
+					}
 				}
 				List<TbPost> posts = praiseCriticism.findPostName(tbEmployee
 						.getTbPost().getPostid());// 执行findPostName方法，根据岗职编号获取岗职信息
+				if(posts!=null){
 				TbPost tbPost = posts.get(0);
 				tbEmployee.setTbPost(tbPost);// 将岗职信息set进对象tbPost中
+				}
+				
 				List<TbJob> jobs = praiseCriticism.findJobName(tbEmployee
 						.getTbJob().getJobid());// 执行findJobName方法，根据岗位编号获取岗位信息
+				if(jobs!=null){
 				tbEmployee.setTbJob(jobs.get(0));// 将岗位信息set进对象tbJob中
+				}
 				emploeesInfo.add(tbEmployee);// 设置对TbEmployee的策略
 			}
 			request.put("employeeInfos", emploeesInfo);
@@ -152,7 +160,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 	 * 
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.skipEmployeeSelectUpdate", results = {// action的名称为skipEmployeeSelectSingle
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.modify.skipEmployeeSelectUpdate", results = {// action的名称为skipEmployeeSelectSingle
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/selectEmployeeUpdate.jsp"),// 返回值为success时跳转的页面路径
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleEmployee.jsp") })
 	// 返回值为error时跳转的页面路径
@@ -180,6 +188,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 					List<TbArea> areaInfor = praiseCriticism
 							.findAreaDesc(cOrganizationNj.getTbArea()
 									.getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
+					if(areaInfor!=null){
 					String areadesc = areaInfor.get(0).getAreadesc();
 
 					OrganizationNj organizationNj = tbEmployee
@@ -191,14 +200,19 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 							.findOrganizationNjInfor(orgid);// 执行findOrganizationNjInfor方法，根据营业厅编号查询同步营业厅信息
 					organizationNjResults.get(0).setAreadesc(areadesc);
 					tbEmployee.setOrganizationNj(organizationNjResults.get(0));// 将同步营业厅信息set进对象organizationNj中
+					}
 				}
 				List<TbPost> posts = praiseCriticism.findPostName(tbEmployee
 						.getTbPost().getPostid());// 执行findPostName方法，根据岗职编号获取岗职信息
+				if(posts!=null){
 				TbPost tbPost = posts.get(0);
 				tbEmployee.setTbPost(tbPost);// 将岗职信息set进对象tbPost中
+				}
 				List<TbJob> jobs = praiseCriticism.findJobName(tbEmployee
 						.getTbJob().getJobid());// 执行findJobName方法，根据岗位编号获取岗位信息
+				if(jobs!=null){
 				tbEmployee.setTbJob(jobs.get(0));// 将岗位信息set进对象tbJob中
+				}
 				emploeesInfo.add(tbEmployee);// 设置对TbEmployee的策略
 			}
 			request.put("employeeInfos", emploeesInfo);
@@ -273,7 +287,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 	 * 
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.selectEmployeeSkipUpdate", results = {// action的名称为selectEmployeeSkipSingle
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.modify.selectEmployeeSkipUpdate", results = {// action的名称为selectEmployeeSkipSingle
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismUpdate.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	public String selectEmployeeSkipUpdate() {
@@ -331,7 +345,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 	 * 
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.SkipUpdateEmployeeInfor", results = {// action的名称为selectEmployeeSkipSingle
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.modify.SkipUpdateEmployeeInfor", results = {// action的名称为selectEmployeeSkipSingle
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismUpdate.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	public String skipUpdateEmployeeInfor() {
@@ -349,7 +363,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 	 * 
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.updateEmployeeInfor", results = {// action的名称为selectEmployeeSkipSingle
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.modify.updateEmployeeInfor", results = {// action的名称为selectEmployeeSkipSingle
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismUpdate.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	public String updateEmployeeInfor() {
@@ -383,7 +397,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 	 * 
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.returnPages", results = {// action的名称为selectEmployeeSkipSingle
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.modify.returnPages", results = {// action的名称为selectEmployeeSkipSingle
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/employeePraiseCriticismUpdate.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	public String returnPages() {
@@ -405,7 +419,7 @@ public class EmployeePraiseCriticismAction extends BaseInit {
 	 * 
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.deleteEmployeeInfor", results = {// action的名称为selectEmployeeSkipSingle
+	@Action(value = "praiseCriticism.employee.employeePraiseCriticismSearch.delete.deleteEmployeeInfor", results = {// action的名称为selectEmployeeSkipSingle
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism.employeePraiseCriticismSearch.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/userinfo/Demo.jsp") })
 	public String deleteEmployeeInfor() {

@@ -157,10 +157,10 @@
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%>
 														<a class="green"
-															href="praiseCriticism.employee.employeePraiseCriticismSearch.SkipUpdateEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}"
+															href="praiseCriticism.employee.employeePraiseCriticismSearch.modify.SkipUpdateEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="praiseCriticism.employee.employeePraiseCriticismSearch.deleteEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}">
+															href="praiseCriticism.employee.employeePraiseCriticismSearch.delete.deleteEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}">
 															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">

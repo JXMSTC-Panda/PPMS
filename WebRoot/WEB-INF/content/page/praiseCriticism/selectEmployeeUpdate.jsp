@@ -100,7 +100,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">信息查询</div>
-							<form  name="StuListForm" action="praiseCriticism.employee.employeePraiseCriticismSearch.selectEmployeeSkipUpdate.do?tbEmployeepraisecriticism.praisecriticismid=${requestScope.praisecriticismid}" method="post" >
+							<form  name="StuListForm" action="praiseCriticism.employee.employeePraiseCriticismSearch.modify.selectEmployeeSkipUpdate.do?tbEmployeepraisecriticism.praisecriticismid=${requestScope.praisecriticismid}" method="post" >
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
