@@ -66,7 +66,7 @@ public class OperationMistakeAction extends BaseInit{
 		Map<String, Object> request = (Map) actionContext.get("request");// 获取出request对象
 		try {
 			praiseCriticism.save(tbOperationcheck);
-			request.put("results", "sucess!");
+			request.put("results", "success!");
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.put("results", "error!");
@@ -100,10 +100,11 @@ public class OperationMistakeAction extends BaseInit{
 						.findCOrganizationNjInfor(tbEmployee
 								.getOrganizationNj().getOrgid());// 执行findCOrganizationNjInfor，根据营业厅编号获取营业厅区域关系表中的信息
 				for (COrganizationNj cOrganizationNj : cOrganizationNjInfor) {// 遍历
+					if(cOrganizationNj.getTbArea()!=null){
 					List<TbArea> areaInfor = praiseCriticism
 							.findAreaDesc(cOrganizationNj.getTbArea()
 									.getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
-					if(areaInfor!=null){
+					
 					String areadesc = areaInfor.get(0).getAreadesc();
 
 					OrganizationNj organizationNj = tbEmployee
@@ -117,15 +118,15 @@ public class OperationMistakeAction extends BaseInit{
 					tbEmployee.setOrganizationNj(organizationNjResults.get(0));// 将同步营业厅信息set进对象organizationNj中
 					}
 				}
+				if(tbEmployee.getTbPost()!=null){
 				List<TbPost> posts = praiseCriticism.findPostName(tbEmployee
 						.getTbPost().getPostid());// 执行findPostName方法，根据岗职编号获取岗职信息
-				if(posts!=null){
 				TbPost tbPost = posts.get(0);
 				tbEmployee.setTbPost(tbPost);// 将岗职信息set进对象tbPost中
 				}
+				if(tbEmployee.getTbJob()!=null){
 				List<TbJob> jobs = praiseCriticism.findJobName(tbEmployee
 						.getTbJob().getJobid());// 执行findJobName方法，根据岗位编号获取岗位信息
-				if(jobs!=null){
 				tbEmployee.setTbJob(jobs.get(0));// 将岗位信息set进对象tbJob中
 				}
 				emploeesInfo.add(tbEmployee);// 设置对TbEmployee的策略
@@ -256,10 +257,10 @@ try {
 						.findCOrganizationNjInfor(tbEmployee
 								.getOrganizationNj().getOrgid());// 执行findCOrganizationNjInfor，根据营业厅编号获取营业厅区域关系表中的信息
 				for (COrganizationNj cOrganizationNj : cOrganizationNjInfor) {// 遍历
+					if(cOrganizationNj.getTbArea()!=null){
 					List<TbArea> areaInfor = praiseCriticism
 							.findAreaDesc(cOrganizationNj.getTbArea()
 									.getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
-					if(areaInfor!=null){
 					String areadesc = areaInfor.get(0).getAreadesc();
 
 					OrganizationNj organizationNj = tbEmployee
@@ -273,15 +274,15 @@ try {
 					tbEmployee.setOrganizationNj(organizationNjResults.get(0));// 将同步营业厅信息set进对象organizationNj中
 					}
 				}
+				if(tbEmployee.getTbPost()!=null){
 				List<TbPost> posts = praiseCriticism.findPostName(tbEmployee
 						.getTbPost().getPostid());// 执行findPostName方法，根据岗职编号获取岗职信息
-				if(posts!=null){
 				TbPost tbPost = posts.get(0);
 				tbEmployee.setTbPost(tbPost);// 将岗职信息set进对象tbPost中
 				}
+				if(tbEmployee.getTbJob()!=null){
 				List<TbJob> jobs = praiseCriticism.findJobName(tbEmployee
 						.getTbJob().getJobid());// 执行findJobName方法，根据岗位编号获取岗位信息
-				if(jobs!=null){
 				tbEmployee.setTbJob(jobs.get(0));// 将岗位信息set进对象tbJob中
 				}
 				emploeesInfo.add(tbEmployee);// 设置对TbEmployee的策略
@@ -290,7 +291,8 @@ try {
 			request.put("operationcheckid", operationcheckid);
 			request.put("employeeInfos", emploeesInfo);
 			return "success";
-		} catch (Exception e) {
+			
+			} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -401,8 +403,11 @@ try {
 		try {
 			List<TbOperationcheck> operationcheckInfor=operationMistake.findOperationcheckInfor();
 			List<TbOperationcheck> operationchecksInfor=new ArrayList<TbOperationcheck>();
+			int i=0;
 			for (TbOperationcheck tbOperationcheck : operationcheckInfor) {
 			
+				i++;
+				tbOperationcheck.setOrder(i);
 				List<TbEmployee> employeeInfor=praiseCriticism.findEmployeeInfor(tbOperationcheck.getTbEmployee().getEmployeeid());
 				tbOperationcheck.setTbEmployee(employeeInfor.get(0));
 				

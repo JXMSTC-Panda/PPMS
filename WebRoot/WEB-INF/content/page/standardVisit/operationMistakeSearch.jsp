@@ -133,7 +133,7 @@
 														name="cols" class="ace" /> <span class="lbl"></span> </label>
 												</td>
 
-												<td></td>
+												<td>${operationchecksInfor.order}</td>
 												<td>${operationchecksInfor.organizationNj.areadesc}</td>
 												<td>${operationchecksInfor.organizationNj.orgid}</td>
 												<td>${operationchecksInfor.organizationNj.org_Name}</td>
