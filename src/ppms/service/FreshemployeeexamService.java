@@ -47,4 +47,18 @@ public interface FreshemployeeexamService {
 	
 	*/ 
 	public void deleteFreshemployeeexam(TbFreshemployeeexam tb,String id);
+	/** 
+	
+	* @方法名: update 
+	
+	* @描述: TODO(这里用一句话描述这个方法的作用) 
+	
+	* @param @param tbFreshemployeeexam    设定文件
+	
+	* @return void    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public void update(TbFreshemployeeexam tbFreshemployeeexam);
 }
