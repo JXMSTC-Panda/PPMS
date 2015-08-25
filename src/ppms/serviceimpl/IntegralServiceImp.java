@@ -3,6 +3,7 @@ package ppms.serviceimpl;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -29,12 +30,20 @@ public class IntegralServiceImp implements IntegralService{
 		
 		
 		List<TbPoint> list = dao.getEntitiestNotLazy(new TbPoint(), new String []{"tbEmployee","tbJob","organizationNj"}, null);
-//		for (TbPoint tbPoint : list) {
-//			
-//			if(!tbPoint.getOrganizationNj().getType().equals(pointType)){
-//				list.remove(tbPoint);
-//			}
-//		}
+		for (int i=0;i<list.size();i++) {
+		String type=null;
+		if(list.get(i).getOrganizationNj().getType()==1){
+			type="1";
+		}else if(list.get(i).getOrganizationNj().getType()==0){
+			type="0";
+		}else{
+			type="0";
+		}
+		
+			if(!type.equals(pointType)){
+				list.remove(i);
+			}
+		}
 		if(list.size()>0){
 			return list;
 		}

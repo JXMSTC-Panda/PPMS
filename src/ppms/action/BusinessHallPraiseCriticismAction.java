@@ -90,8 +90,10 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 				System.out.print(":" + cOrganizationNj.getTbArea().getAreaid());// 打印区域的编号
 				List<TbArea> areaInfor = praiseCriticism
 						.findAreaDesc(cOrganizationNj.getTbArea().getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
+				if(areaInfor!=null){
 				String areadesc = areaInfor.get(0).getAreadesc();
 				organizationNj.setAreadesc(areadesc);
+				}
 			}
 
 			List<TbSubareaorgrelation> subareaorgrelationInfor = praiseCriticism
@@ -102,8 +104,10 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 				List<TbSubarea> subareaInfor = praiseCriticism
 						.findSubareaInfor(tbSubareaorgrelation.getTbSubarea()
 								.getSubareaid());
+				if(subareaInfor!=null){
 				String subareaDesc = subareaInfor.get(0).getSubareadesc();
 				organizationNj.setSubareadesc(subareaDesc);
+				}
 			}
 			organizationNjsInfor.add(organizationNj);
 		}
@@ -155,7 +159,7 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 	 * 营业厅奖惩信息管理查询页面选定后点击删除跳进该action，执行数据库完全删除数据。
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.orgPCInforDelete", results = {
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.delete.orgPCInforDelete", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismSingle.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
 	public String orgPCInforDelete() {
@@ -176,7 +180,7 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 	 * 营业厅奖惩信息单条修改页面点击submit按钮跳进该action，执行营业厅奖惩信息单条修改。
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.orgPCInforUpdate", results = {
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.modify.orgPCInforUpdate", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismSingle.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
 	public String orgPCInforUpdate() {
@@ -202,7 +206,7 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 	 * 营业厅奖惩信息单条修改页面点击选择营业厅跳进该action。
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.orgPCInforUpdateSkip", results = {
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.modify.orgPCInforUpdateSkip", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/selectBusinessHallUpdate.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
 	public String orgPCInforUpdateSkip() {
@@ -220,8 +224,10 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 				System.out.print(":" + cOrganizationNj.getTbArea().getAreaid());// 打印区域的编号
 				List<TbArea> areaInfor = praiseCriticism
 						.findAreaDesc(cOrganizationNj.getTbArea().getAreaid());// 执行findAreaDesc方法，根据区域编号获取区域名称
+				if(areaInfor!=null){
 				String areadesc = areaInfor.get(0).getAreadesc();
 				organizationNj.setAreadesc(areadesc);
+				}
 			}
 
 			List<TbSubareaorgrelation> subareaorgrelationInfor = praiseCriticism
@@ -232,11 +238,12 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 				List<TbSubarea> subareaInfor = praiseCriticism
 						.findSubareaInfor(tbSubareaorgrelation.getTbSubarea()
 								.getSubareaid());
+				if(subareaInfor!=null){
 				String subareaDesc = subareaInfor.get(0).getSubareadesc();
 				organizationNj.setSubareadesc(subareaDesc);
+				}
 				String praisecriticismid=tbOrgpraisecriticism.getPraisecriticismid();
 				request.put("praisecriticismid", praisecriticismid);
-				System.out.println(":" + subareaDesc);
 			}
 		}
 		request.put("organizationNjInfor", organizationNjInfor);
@@ -246,7 +253,7 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 	 * 营业厅奖惩信息单条修改选择营业厅完成后，跳进该action。
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.SkipBusinessHallUpdate", results = {
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.modify.SkipBusinessHallUpdate", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismUpdate.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
 	public String SkipBusinessHallUpdate() {
@@ -289,7 +296,7 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 	 * 营业厅奖惩信息管理查询点击修改跳入该action，执行页面跳转。
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.skip", results = {
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.modify.skip", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismUpdate.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
 	public String skip() {
@@ -304,7 +311,7 @@ public class BusinessHallPraiseCriticismAction extends BaseInit {
 	 * 营业厅奖惩信息单条修改点击return跳进该action，执行页面跳转。
 	 * @return
 	 */
-	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.returnPages", results = {
+	@Action(value = "praiseCriticism.businessHall.businessHallPraiseCriticismSearch.modify.returnPages", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/praiseCriticism/businessHallPraiseCriticismSingle.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/page/selectSingleBusinessHall.jsp") })
 	public String returnPages() {

@@ -116,7 +116,7 @@
 									<div class="col-xs-12">
 										<!-- PAGE CONTENT BEGINS -->
 										<form class="form-horizontal" role="form" method="post"
-											action="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.orgPCInforUpdate.do?tbOrgpraisecriticism.praisecriticismid=${requestScope.praisecriticismid}">
+											action="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.modify.orgPCInforUpdate.do?tbOrgpraisecriticism.praisecriticismid=${requestScope.praisecriticismid}">
 											<!-- #section:elements.form -->
 
 											<div class="form-group">
@@ -155,7 +155,7 @@
 														name="tbOrgpraisecriticism.organizationNj.org_Name" /> <span
 														class="help-inline col-xs-12 col-sm-7">
 														<button sclass="btn btn-info" type="button"
-															onClick="top.window.location='praiseCriticism.businessHall.businessHallPraiseCriticismSearch.orgPCInforUpdateSkip.do?tbOrgpraisecriticism.praisecriticismid=${requestScope.praisecriticismid}'">选择营业厅</button>
+															onClick="top.window.location='praiseCriticism.businessHall.businessHallPraiseCriticismSearch.modify.orgPCInforUpdateSkip.do?tbOrgpraisecriticism.praisecriticismid=${requestScope.praisecriticismid}'">选择营业厅</button>
 													</span>
 												</div>
 											</div>
@@ -233,7 +233,7 @@
 														<i class="ace-icon fa fa-undo bigger-110"></i> Reset
 													</button>
 													&nbsp; &nbsp; &nbsp;
-													<button class="btn" type="button" onClick="top.window.location='praiseCriticism.businessHall.businessHallPraiseCriticismSearch.returnPages.do'">
+													<button class="btn" type="button" onClick="top.window.location='praiseCriticism.businessHall.businessHallPraiseCriticismSearch.modify.returnPages.do'">
 														<i class="ace-icon fa fa-undo bigger-110"></i> Return
 													</button>
 												</div>
