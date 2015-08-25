@@ -27,6 +27,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.util.DTDEntityResolver;
 
 import ppms.action.interfaces.ListForCache;
@@ -273,6 +274,14 @@ public class CommonExcelParser {
 						}
 						index++;
 					}
+
+					if (fileName.equals("积分批量导出(主厅).xls")) {
+						complexExcel(15, excelRecords);
+					}
+
+					if (fileName.equals("积分批量导出(合作厅).xls")) {
+						complexExcel(13, excelRecords);
+					}
 				} else {
 					System.out.println("no data");
 				}
@@ -284,7 +293,9 @@ public class CommonExcelParser {
 			e.printStackTrace();
 		} finally {// 关闭流
 			try {
-				fis.close();
+				if (fis != null) {
+					fis.close();
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -292,6 +303,49 @@ public class CommonExcelParser {
 			}
 		}
 		return wb;
+	}
+
+	@SuppressWarnings("deprecation")
+	private void complexExcel(int colNum, ListForCache<Object> excelRecords) {
+
+		int t=0;
+		int i = 0;
+		HSSFRow ro;
+		TbPoint point;
+		int mark = colNum;
+		Session openSession = dao.getSessionFactory().openSession();
+		try {
+			for (Object obj : excelRecords.getList()) {
+				point = (TbPoint) obj;
+
+				openSession.beginTransaction();
+
+				List<TbPointdetail> pointdetails = openSession.createCriteria(TbPointdetail.class).add(Restrictions.eq("pointid", point.getPointid())).list();
+
+				
+				if (i == 0) {
+					ro = sh.getRow(i);
+					for (TbPointdetail tbPointdetail : pointdetails) {
+						ro.createCell(colNum).setCellValue(
+								tbPointdetail.getOperationname());
+						colNum++;
+					}
+					colNum = mark;
+					i++;
+				}
+				for (TbPointdetail tbPointdetail : pointdetails) {
+					ro=sh.createRow(i);
+					ro.createCell(colNum).setCellValue(
+							tbPointdetail.getOperationscore());
+				}
+				colNum = mark;
+			}
+			openSession.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			openSession.getTransaction().rollback();
+		}
+
 	}
 
 	/**

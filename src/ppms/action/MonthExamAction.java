@@ -141,6 +141,7 @@ public class MonthExamAction extends BaseInit {
 			request.put("employeeInfos", emploeesInfo); // 将emploeesInfo用put方法存放
 			return "success";
 		} catch (Exception e) {
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常");
 			e.printStackTrace();
 			return null;
 		}
@@ -204,6 +205,7 @@ public class MonthExamAction extends BaseInit {
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常");
 			return "error";
 		}
 		
@@ -220,9 +222,11 @@ public class MonthExamAction extends BaseInit {
 				ServletActionContext.getResponse().sendRedirect("employeeTrainExam.monthExam.monthExamSearch.do");
 				return null;
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "删除失败");
 			return "error";
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常");
 			return "error";
 		}
 	}
@@ -236,10 +240,12 @@ public class MonthExamAction extends BaseInit {
 				ServletActionContext.getResponse().sendRedirect("employeeTrainExam.monthExam.monthExamSearch.do");
 				return null;
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "修改失败");
 			return "error";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "删除失败，服务器异常");
 			return "error";
 		}
 	}

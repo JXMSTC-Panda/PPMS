@@ -65,7 +65,7 @@ public class StandardVistDzhAction extends BaseInit {
 	 * @Result(name = "success", location =
 	 * "/WEB-INF/content/page/selectSingleBusinessHall.jsp"),
 	 * 
-	 * @Result(name = "faild", location="/WEB-INF/content/error.jsp")}) public
+	 * @Result(name = "faild", location="/WEB-INF/content/page/error.jsp")}) public
 	 * String show(){ System.out.println("ssss"); return "success"; }
 	 */
 	/*
@@ -86,7 +86,7 @@ public class StandardVistDzhAction extends BaseInit {
 	 * */
 	@Action(value = "insert", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardSingle.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })
 	public String insert() {
 		// 加
 		try {
@@ -102,7 +102,7 @@ public class StandardVistDzhAction extends BaseInit {
 	 * */
 	@Action(value = "standardVisit.standard.standardSingle.skipStandardCheckSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/standardSelectSingle-2.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })
 	// 跳转并且显示数据库的数据
 	public String skipStandardCheckSingle() {
 		ActionContext actionContext = ActionContext.getContext(); // 创建ActionContext的对象并调用getContext()方法
@@ -159,7 +159,7 @@ public class StandardVistDzhAction extends BaseInit {
 	 * */
 	@Action(value = "standardVisit.standard.standardSingle.Skip", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })
 	public String selectSingleOrgSkip() {
 		ActionContext actionContext = ActionContext.getContext(); // 创建ActionContext的对象并调用getContext()方法
 		Map<String, Object> request = (Map) actionContext.get("request"); // 获取出request对象
@@ -198,7 +198,7 @@ public class StandardVistDzhAction extends BaseInit {
 	 * */
 	@Action(value = "standardVisit.standard.standardSingle.Insert", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/sucess.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })
 	public String StandardInsert() {
 		// 插入
 
@@ -210,9 +210,11 @@ public class StandardVistDzhAction extends BaseInit {
 			service.save(tbStandardcheck);
 			ServletActionContext.getResponse().sendRedirect(
 					"standardVisit.standard.standardSearch.do");
+			ServletActionContext.getRequest().setAttribute("errorInfo", "提交失败");
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，提交失败");
 			return "error";
 		}
 	}
@@ -224,7 +226,7 @@ public class StandardVistDzhAction extends BaseInit {
 
 	@Action(value = "standardVisit.standard.standardSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/standardSearch.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })
 	public String initPage() {
 		// List<TbStandardcheck> tbStandardcheckList =
 		// service.findStandardCheckInfo();
@@ -258,9 +260,11 @@ public class StandardVistDzhAction extends BaseInit {
 				map.put("TbStandardcheck", all);
 				toCache();
 			} else {
+				ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，请重试进入查询");
 				return "error";
 			}
 		} catch (Exception e) {
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，请重试进入查询");
 			e.printStackTrace();
 		}
 
@@ -274,7 +278,7 @@ public class StandardVistDzhAction extends BaseInit {
 	 * */
 	@Action(value = "standardVisit.standard.standardSearch.modify", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })
 	public String modify() {
 		List<TbStandardcheck> all;
 		try {
@@ -282,6 +286,7 @@ public class StandardVistDzhAction extends BaseInit {
 			if (id != null) {
 				all = service.getAll(id);
 			} else {
+				ServletActionContext.getRequest().setAttribute("errorInfo", "提交数据错误，请重试");
 				return "error";
 			}
 			if (all.size() > 0) {
@@ -290,10 +295,12 @@ public class StandardVistDzhAction extends BaseInit {
 				toCache();
 				return "success";
 			} else {
+				ServletActionContext.getRequest().setAttribute("errorInfo", "未找到要修改的数据");
 				return "error";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，请重试");
 			return "error";
 		} finally {
 
@@ -303,7 +310,7 @@ public class StandardVistDzhAction extends BaseInit {
 
 	@Action(value ="standardVisit.standard.standardSingle.update", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })
 	public String update() {
 
 		if(tbStandardcheck!=null){
@@ -315,6 +322,7 @@ public class StandardVistDzhAction extends BaseInit {
 					return null;
 				} catch (IOException e) {
 					e.printStackTrace();
+					ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，更新数据失败");
 					return "error";
 				}
 			}
@@ -330,7 +338,7 @@ public class StandardVistDzhAction extends BaseInit {
 	 * */
 	@Action(value = "standardVisit.standard.standardSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/standardSingle.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })
 	public String firstIn() {
 
 		return "success";
@@ -338,7 +346,7 @@ public class StandardVistDzhAction extends BaseInit {
 
 	@Action(value = "standardVisit.standard.standardBatch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/standardBatch.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })
 	public String firstIn1() {
 
 		return "success";

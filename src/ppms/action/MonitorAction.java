@@ -51,8 +51,10 @@ public class MonitorAction extends BaseInit{
 					return null;
 				}
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "提交失败，请重试");
 			return "error";
 		} catch (Exception e) {
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，请重试进入");
 			e.printStackTrace();
 			return "error";
 		}
@@ -71,9 +73,11 @@ public class MonitorAction extends BaseInit{
 				toCache();
 				return "success";
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "暂无数据");
 			return "error";
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，请重试");
 			return "error";
 		}
 	}
