@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -48,14 +49,11 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
-<script type="text/javascript">
-function ajax() {
-	alert("ajax");
-}
-</script>
+
+
 </head>
 
-<body class="no-skin" onload="ajax()">
+<body class="no-skin" >
 	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
@@ -105,7 +103,7 @@ function ajax() {
 											<div class="pull-right tableTools-container"></div>
 										</div>
 										<div class="table-header">
-											Results for "Latest Registered Domains"
+											详细信息
 										</div>
 
 										<!-- div.table-responsive -->
@@ -121,379 +119,205 @@ function ajax() {
 																<span class="lbl"></span>
 															</label>
 														</th>
-														<th>Domain</th>
-														<th>Price</th>
-														<th class="hidden-480">Clicks</th>
-
-														<th>
-															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-															Update
-														</th>
-														<th class="hidden-480">Status</th>
-
-														<th></th>
-													</tr>
-												</thead>
-
-												<tbody>
-													<tr>
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">app.com</a>
-														</td>
-														<td>$45</td>
-														<td class="hidden-480">3,330</td>
-														<td>Feb 12</td>
-
-														<td class="hidden-480">
-															<span class="label label-sm label-warning">Expiring</span>
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="ace-icon fa fa-search-plus bigger-130"></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
-
-													<tr>
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">base.com</a>
-														</td>
-														<td>$35</td>
-														<td class="hidden-480">2,595</td>
-														<td>Feb 18</td>
-
-														<td class="hidden-480">
-															<span class="label label-sm label-success">Registered</span>
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="ace-icon fa fa-search-plus bigger-130"></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
-										
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-								
-								
-								<!-- <div class="row">
-									<div class="col-xs-12">
-										
-
-										<div class="clearfix">
-											<div class="pull-right tableTools-container"></div>
-										</div>
-										<div class="table-header">
-											Results for "Latest Registered Domains"
-										</div>
-
-										div.table-responsive
-
-										div.dataTables_borderWrap
-										<div>
-											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-												<thead>
-													<tr>
-														<th class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</th>
-														
 														<th>序号</th>
 														<th>区域</th>
-														<th class="hidden-480">工号</th>
+														<th>工号</th>
 
 														<th>
-															
-															身份证号
+															姓名
 														</th>
-														<th class="hidden-480">营业厅编码</th>
+														<th>身份证号</th>
 
+														<th>营业厅编码</th>
+														
 														<th>营业厅名称</th>
-														<th>联系电话</th>
 														<th>考核类别</th>
 														<th>考核时间</th>
-														<th>考核有效时间(月)</th>
-														<th>成绩(分)</th>
+														<th>考核有效时间（月）</th>
+														<th>成绩</th>
 														<th>是否通过</th>
 														<th>操作</th>
-														<th></th>
 													</tr>
 												</thead>
 
 												<tbody>
-													<tr>
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">app.com</a>
-														</td>
-														<td>$45</td>
-														<td class="hidden-480">3,330</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-
-														<td class="hidden-480">
-															<span class="label label-sm label-warning">Expiring</span>
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="ace-icon fa fa-search-plus bigger-130"></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
-
-													<tr>
-														<td class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>
-															<a href="#">base.com</a>
-														</td>
-														<td>$35</td>
-														<td class="hidden-480">2,595</td>
-														<td>Feb 18</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-														<td>Feb 12</td>
-
-														<td class="hidden-480">
-															<span class="label label-sm label-success">Registered</span>
-														</td>
-
-														<td>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="ace-icon fa fa-search-plus bigger-130"></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="hidden-md hidden-lg">
-																<div class="inline pos-rel">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																		<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
-
+													<% int i = 0; %>
 													
+													<c:forEach items="${ requestScope.mgcList}" var="mgc">
+														<tr>
+															<td class="center">
+																<label class="pos-rel">
+																	<input type="checkbox" class="ace" />
+																	<span class="lbl"></span>
+																</label>
+															</td>
+															<td><%= ++i %></td>
+														
+															<td>${mgc.areadesc }</td>
+															<td>${mgc.employeecode }</td>
+															<td>${mgc.employeename }</td>
+															<td>${mgc.idnumber }</td>
+															<td>${mgc.orgid }</td>
+															
+															<td>${mgc.org_Name }</td>
+															<td>${mgc.value }</td>
+															<td>${mgc.examdate }</td>
+															<td>${mgc.examexpire }</td>
+															<td>${mgc.examscore }</td>
+															
+															<td>
+																<c:if test="${mgc.examscore>=60}">
+																	<span class="label label-sm label-success">PASS</span>
+																</c:if>
+																<c:if test="${mgc.examscore<60}">
+																	<span class="label label-sm label-warning">NOT PASS</span>
+																</c:if>
+															</td>
+															<td>
+																<div class="hidden-sm hidden-xs action-buttons">
+																	<%-- <a class="green" href="userInfo.mountGuardCard.mountGuardCardUpdate.update.do?id=${mgc.idnumber }&areadesc=${mgc.areadesc }&employeecode=${mgc.employeecode }&
+																	employeename=${mgc.employeename }&orgid=${mgc.orgid }&org_Name=${mgc.org_Name }&value=${mgc.value }&examdate=${mgc.examdate }&examexpire=${mgc.examexpire }&
+																	examscore=${mgc.examscore }" > --%>
+																	<a class="green" href="userInfo.mountGuardCard.mountGuardCardUpdate.jsp">
+																		<i class="ace-icon fa fa-pencil bigger-130">修改</i>
+																	</a>
 
+																	<a class="red" href="userInfo.mountGuardCard.mountGuardCardSingle.delete.do?id=${mgc.idnumber }" >
+																		<i class="ace-icon fa fa-trash-o bigger-130">删除</i>
+																	</a>
+																</div>
+
+																<div class="hidden-md hidden-lg">
+																	<div class="inline pos-rel">
+																		<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+																			<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+																		</button>
+
+																		<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+																			<li>
+																				<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+																					<span class="blue">
+																						<i class="ace-icon fa fa-search-plus bigger-120"></i>
+																					</span>
+																				</a>
+																			</li>
+	
+																			<li>
+																				<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+																					<span class="green">
+																						<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																					</span>
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+																					<span class="red">
+																						<i class="ace-icon fa fa-trash-o bigger-120"></i>
+																					</span>
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</td>
+														</tr>
+													</c:forEach>
 													
+													<%-- <c:forEach items="${ requestScope.tbMountguardexam }"
+														var="tmge" varStatus="status">
+														<tr>
+															<td class="center">
+																<label class="pos-rel">
+																	<input type="checkbox" class="ace" />
+																	<span class="lbl"></span>
+																</label>
+															</td>
+															<td><%= ++i %></td>
+															<td>111</td>
+															<c:forEach items="${ requestScope.tbEmployeeByTbEmployeeId }"
+																var="employee">
+																<td>${employee.employeecode}</td>
+																<td>${employee.employeename}</td>
+																<td>${employee.idnumber}</td>
+															</c:forEach>
+															<c:forEach items="${ requestScope.organizationNjByOrgId }"
+																var="org">
+																<td>${org.orgid}</td>
+																<td>${org.org_Name}</td>
+															</c:forEach>
+															<td>${tmge.examtype}</td>
+															<td>${tmge.examdate}</td>
+															<td>${tmge.examexpire }</td>
+															<td>${tmge.examscore}</td>
+															
+															<td>
+																<c:if test="${tmge.examscore>=60}">
+																	<span class="label label-sm label-success">PASS</span>
+																</c:if>
+																<c:if test="${tmge.examscore<60}">
+																	<span class="label label-sm label-warning">NOT PASS</span>
+																</c:if>
+															</td>
+															<td>
+																<div class="hidden-sm hidden-xs action-buttons">
+																	<a class="green" href="#">
+																		<i class="ace-icon fa fa-pencil bigger-130">修改</i>
+																	</a>
+
+																	<a class="red" href="#">
+																		<i class="ace-icon fa fa-trash-o bigger-130">删除</i>
+																	</a>
+																</div>
+
+																<div class="hidden-md hidden-lg">
+																	<div class="inline pos-rel">
+																		<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+																			<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+																		</button>
+
+																		<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+																			<li>
+																				<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+																					<span class="blue">
+																						<i class="ace-icon fa fa-search-plus bigger-120"></i>
+																					</span>
+																				</a>
+																			</li>
+	
+																			<li>
+																				<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+																					<span class="green">
+																						<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																					</span>
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+																					<span class="red">
+																						<i class="ace-icon fa fa-trash-o bigger-120"></i>
+																					</span>
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</td>
+														</tr>
+													</c:forEach> --%>
+													
+													
+													
+										
 												</tbody>
 											</table>
 										</div>
 									</div>
 								</div>
-								 -->
+								
+								
+								
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
@@ -520,7 +344,7 @@ function ajax() {
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, null,null, null, null,
+					  null, null,null, null, null,null, null,null, null,null, null,null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],

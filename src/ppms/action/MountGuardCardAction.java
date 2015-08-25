@@ -3,6 +3,10 @@ package ppms.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,9 +24,12 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import ppms.action.interfaces.InitPage;
 import ppms.domain.COrganizationNj;
+import ppms.domain.MountGuardCard;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
+import ppms.domain.TbMaster;
+import ppms.domain.TbMountguardexam;
 import ppms.serviceimpl.InvocationServiceImp;
 import ppms.serviceimpl.MountGuardCardServiceImp;
 
@@ -55,15 +62,33 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 	public void setTbemployee(TbEmployee tbemployee) {
 		this.tbemployee = tbemployee;
 	}
+	
+	private TbMountguardexam tbMountguardexam;
+	
+
+	public TbMountguardexam getTbMountguardexam() {
+		return tbMountguardexam;
+	}
+
+	public void setTbMountguardexam(TbMountguardexam tbMountguardexam) {
+		this.tbMountguardexam = tbMountguardexam;
+	}
 
 	// 自动装载MountGuardCardServiceImp service实现层
 	@Autowired
 	private MountGuardCardServiceImp mountguardcardserviceimp;
 
+	public MountGuardCardServiceImp getMountguardcardserviceimp() {
+		return mountguardcardserviceimp;
+	}
+
+	public void setMountguardcardserviceimp(
+			MountGuardCardServiceImp mountguardcardserviceimp) {
+		this.mountguardcardserviceimp = mountguardcardserviceimp;
+	}
+
 	// 0配置action
-	@Action(value = "userInfo.mountGuardCard.mountGuardCardSingle.mgcs", results = {
-			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/mountGuardCardSearch.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	@Action(value = "userInfo.mountGuardCard.mountGuardCardSingle.mgcs")
 	/**
 	 * 
 	
@@ -79,14 +104,146 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 	
 	 * @date: 2015-8-11 下午8:48:04
 	 */
-	public String mgcs() {
-		// 测试是否进入mgcs函数
-		System.out.println("enter mgcs()");
+	public String mgcs() throws IOException {
+		
+		mountguardcardserviceimp.addTbMountguardexam(tbMountguardexam);
+		
+		// // 测试是否进入mgcs函数
+		// System.out.println("enter mgcs()");
+		// //
+		// System.out.println("***********************************");
+		// //获取工号
+		// String EmployeeCode = request.getParameter("EmployeeCode");
+		// //获取考核时间
+		// String TrainTime = request.getParameter("TrainTime");
+		// //获取考核内容
+		// String SelectedDetail = request.getParameter("SelectedDetail");
 		//
-
-		return "success";
+		// //获取考核有效时间
+		// String VaildTime = request.getParameter("VaildTime");
+		// //获取考核分数
+		// String ExamGrade = request.getParameter("ExamGrade");
+		//
+		// //根据工号查询营业员id,营业厅id
+		// String EmployeeId = null;
+		// Integer orgid = null;
+		// List<TbEmployee> teList = mountguardcardserviceimp.getTbEmployee();
+		// for(TbEmployee te:teList){
+		// System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		// System.out.println(te.getEmployeecode());
+		// System.out.println(EmployeeCode);
+		// if(te.getEmployeecode().equals(EmployeeCode)){
+		// System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		// EmployeeId = te.getEmployeeid();
+		// orgid = te.getOrganizationNj().getOrgid();
+		// }
+		// }
+		//
+		// //字符串类型时间转换成date类型
+		// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		// Date date = null;
+		// try {
+		// date = sdf.parse(TrainTime);
+		// // System.out.println(date);
+		// } catch (ParseException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		//
+		
+		// System.out.println("EmployeeCode:"+EmployeeCode);
+		// System.out.println("TrainTime:"+TrainTime);
+		// System.out.println("SelectedDetail:"+SelectedDetail);
+		// System.out.println("VaildTime:"+VaildTime);
+		// System.out.println("ExamGrade:"+ExamGrade);
+		
+		//System.out.println("***********************************");
+		
+		ServletActionContext.getResponse().sendRedirect("userInfo.mountGuardCard.mountGuardCardSearch");
+		
+		return null;
 
 	}
+	
+	
+	//页面信息删除
+	@Action(value = "userInfo.mountGuardCard.mountGuardCardSingle.delete")
+	public void delete() throws IOException{
+		System.out.println("enter delete function");
+		//获取身份证号
+		String idnumber = request.getParameter("id");
+		//根据员工身份证号查询所有员工表集合
+		List<TbEmployee> tbEmployeeList = mountguardcardserviceimp.getTbEmployee();
+		//取员工id
+		String employeeId = null;
+		for(TbEmployee te:tbEmployeeList){
+			if(te.getIdnumber().equals(idnumber)){
+				employeeId = te.getEmployeeid();
+			}
+		}
+		//创建对象
+		TbMountguardexam tbMountguardexam = new TbMountguardexam();
+		//遍历数据集查找符合删除的对象，进行删除操作
+		List<TbMountguardexam> tmList = mountguardcardserviceimp.getTbMountguardexam();
+		for(TbMountguardexam tm:tmList){
+			if(tm.getTbEmployee().getEmployeeid().equals(employeeId)){
+				mountguardcardserviceimp.deleteTbMountguardexam(tm);
+			}
+		}
+		
+		ServletActionContext.getResponse().sendRedirect("userInfo.mountGuardCard.mountGuardCardSearch");
+		
+	}
+	
+	
+	//页面信息修改
+		@Action(value = "userInfo.mountGuardCard.mountGuardCardUpdate.update", results = {
+				@Result(name = "success", location = "/WEB-INF/content/page/userInfo/mountGuardCardUpdate.jsp"),
+				@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+		public void update() throws IOException{
+			System.out.println("enter update function");
+			
+//			Map map = new HashMap<String, MountGuardCard>();
+			
+			//获取身份证号
+			String idnumber = request.getParameter("id");
+			System.out.println(idnumber);
+			
+			
+			String areadesc = request.getParameter("areadesc");
+			System.out.println(areadesc);
+			String employeecode = request.getParameter("employeecode");
+			System.out.println(employeecode);
+			String employeename = request.getParameter("employeename");
+			System.out.println(employeename);
+			Integer orgid = Integer.parseInt(request.getParameter("orgid"));
+			System.out.println(orgid);
+			
+			String org_Name = request.getParameter("org_Name");
+			System.out.println(org_Name);
+			String value = request.getParameter("value");
+			System.out.println(value);
+			String examdate = request.getParameter("examdate");
+			System.out.println(examdate);
+			String ee = request.getParameter("examexpire");
+			Double examexpire = Double.valueOf(ee);
+			System.out.println(examexpire);
+			double es = Integer.parseInt(request.getParameter("examscore"));
+			Double examscore = Double.valueOf(es);
+			System.out.println(examscore);
+			
+			
+			
+//			MountGuardCard mountGuardCard = new MountGuardCard(areadesc, employeecode, employeename, idnumber, org_Name, value, examdate, examexpire, examscore, orgid);
+			
+//			List<MountGuardCard> mgcList = new ArrayList<MountGuardCard>();
+//			mgcList.add(mountGuardCard);
+			
+//			map.put("mountGuardCard", mountGuardCard);
+//			ServletActionContext.getResponse().sendRedirect("userInfo.mountGuardCard.mountGuardCardUpdate");
+			
+		}
+	
 
 	@Override
 	public Map<String, List<T>> initPage(ServletContext servletContext,
@@ -114,6 +271,122 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 					map.put("employees", employees);
 					break;
 
+				case "userInfo.mountGuardCardSearch":
+					
+					System.out.println("进入了case1！！！");
+					
+					//查询所有的合作厅上岗证查询表
+					List<TbMountguardexam> tbMountguardexam = serviceEmp.getTbMountguardexam();
+					
+					List<MountGuardCard> mgcList = new ArrayList<MountGuardCard>();
+					
+					for(TbMountguardexam mge:tbMountguardexam){
+						//获取当前对象的营业员id
+						String employeeid = mge.getTbEmployee().getEmployeeid();
+						
+						//获取相关上岗证中需求的数据
+						//考试类别
+						String examtype = mge.getExamtype();
+						//根据考试类别查询考试名称
+						List<TbMaster> tbMasterByExamtype = serviceEmp.getTbMasterByExamtype(examtype);
+						//考试的名称
+						String value = tbMasterByExamtype.get(0).getValue();
+						
+						
+						//考试时间
+						Date examdate = mge.getExamdate();
+						//截取字符串
+						String[] split = examdate.toString().split(" ");
+						String dateStr = split[0];
+						//有效时间
+						Double examexpire = mge.getExamexpire();
+						//成绩
+						Double examscore = mge.getExamscore();
+						
+						//按员工id获取员工表集合
+						List<TbEmployee> tbEmployeeByTbEmployeeId = serviceEmp.getTbEmployeeByTbEmployeeId(employeeid);
+						//员工工号
+						String employeecode = tbEmployeeByTbEmployeeId.get(0).getEmployeecode();
+						//员工姓名
+						String employeename = tbEmployeeByTbEmployeeId.get(0).getEmployeename();
+						//员工身份证号
+						String idnumber = tbEmployeeByTbEmployeeId.get(0).getIdnumber();
+						
+						//orgid
+						Integer orgid = tbEmployeeByTbEmployeeId.get(0).getOrganizationNj().getOrgid();
+						//按orgid查询营业厅表集合
+						List<OrganizationNj> organizationNjByOrgId = serviceEmp.getOrganizationNjByOrgId(orgid);
+						
+						//取营业厅名称
+						String org_Name = organizationNjByOrgId.get(0).getOrg_Name();
+						//取营业厅区域关系表
+						List<COrganizationNj> cOrganizationNjByOrgId = serviceEmp.getCOrganizationNjByOrgId(orgid);
+						//根据关系表查出areaid
+						BigDecimal areaid = cOrganizationNjByOrgId.get(0).getTbArea().getAreaid();
+					
+						//根据areaid查区域名称
+						List<TbArea> tbAreaByAreaId = serviceEmp.getTbAreaByAreaId(areaid);
+						//区域名称
+						String areadesc = tbAreaByAreaId.get(0).getAreadesc();
+						
+						System.out.println("=======================");
+						
+						System.out.println("areadesc:"+areadesc);
+						System.out.println("employeecode:"+employeecode);
+						System.out.println("employeename:"+employeename);
+						System.out.println("idnumber:"+idnumber);
+						System.out.println("orgid:"+orgid);
+						
+						System.out.println("org_Name:"+org_Name);
+						System.out.println("value:"+value);
+						System.out.println("examdate:"+dateStr);
+						System.out.println("examexpire:"+examexpire);
+						System.out.println("examscore:"+examscore);
+						
+						System.out.println("=======================");
+						
+						//封装对象
+						MountGuardCard mountGuardCard = new MountGuardCard(areadesc, employeecode, employeename, idnumber, org_Name, value, dateStr, examexpire, examscore, orgid);
+						mgcList.add(mountGuardCard);
+						
+					}
+					map.put("mgcList", mgcList);
+					
+					
+					//获取合作厅上岗考证表
+					/*List<TbMountguardexam> tbMountguardexam = serviceEmp.getTbMountguardexam();
+					map.put("tbMountguardexam", tbMountguardexam);
+					
+					//取需要查询的相关主键
+					Integer orgid=null;
+					String employeeid=null;
+					for(TbMountguardexam tm:tbMountguardexam){
+						orgid = tm.getOrganizationNj().getOrgid();
+						employeeid = tm.getTbEmployee().getEmployeeid();
+					}
+					
+					//查询营业员表
+					List<TbEmployee> tbEmployeeByTbEmployeeId = serviceEmp.getTbEmployeeByTbEmployeeId(employeeid);
+					map.put("tbEmployeeByTbEmployeeId", tbEmployeeByTbEmployeeId);
+					
+					//查询营业厅表
+					List<OrganizationNj> organizationNjByOrgId = serviceEmp.getOrganizationNjByOrgId(orgid);
+					map.put("organizationNjByOrgId", organizationNjByOrgId);
+					
+					
+					//按营业厅id查询区域id
+					List<COrganizationNj> cOrganizationNjByOrgId = serviceEmp.getCOrganizationNjByOrgId(orgid);
+					BigDecimal areaid = cOrganizationNjByOrgId.get(0).getTbArea().getAreaid();
+					
+					//更具区域id查询区域名称
+					List<TbArea> tbAreaByAreaId = serviceEmp.getTbAreaByAreaId(areaid);
+					map.put("tbAreaByAreaId", tbAreaByAreaId);*/
+					
+					
+					
+					System.out.println("进入了case2！！！");
+					break;
+					
 				default:
 					break;
 				}
@@ -130,9 +403,10 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 
 		// jsonTest拼接
 		jsonTest.append("{");
-
+		
+		
 		// 接收OrgName的传值OrgId
-		Integer OrgId = Integer.parseInt(request.getParameter("OrgName"));
+		Integer OrgId = Integer.parseInt(request.getParameter("tbMountguardexam.organizationNj.orgid"));
 		System.out.println("OrgId:" + OrgId);
 
 		// 查询所有区域-营业厅关系表
@@ -304,7 +578,7 @@ public class MountGuardCardAction extends ActionSupport implements InitPage {
 		StringBuilder jsonTest = new StringBuilder();
 			
 		// 接收OrgName的传值
-		String EmployeeNameSelect = request.getParameter("EmployeeNameSelect");
+		String EmployeeNameSelect = request.getParameter("tbMountguardexam.tbEmployee.employeeid");
 		System.out.println("EmployeeNameSelect:" + EmployeeNameSelect);
 
 		// jsonTest拼接

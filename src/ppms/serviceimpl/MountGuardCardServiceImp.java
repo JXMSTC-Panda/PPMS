@@ -6,15 +6,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ppms.daoimpl.BaseDaoImp;
 import ppms.daoimpl.MountGuardCardDapImp;
 import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
+import ppms.domain.TbMaster;
+import ppms.domain.TbMountguardexam;
 import ppms.service.MountGuardCardService;
 
 @Service
-public class MountGuardCardServiceImp implements MountGuardCardService {
+public class MountGuardCardServiceImp extends BaseDaoImp implements MountGuardCardService {
 
 	@Autowired
 	private MountGuardCardDapImp dao;
@@ -135,4 +138,70 @@ public class MountGuardCardServiceImp implements MountGuardCardService {
 		return dao.getTbEmployeeByTbEmployeeId(TbEmployeeId);
 	}
 
+	/**
+	* @Title: getTbMountguardexam
+	* @Description: 查询TbMountguardexam合作厅上岗考证数据集
+	* @param: 无    
+	* @return:  List<TbMountguardexam>  
+	* @auther: CappuccinoH
+	* @date: 2015-8-18 上午10:32:59
+	*/
+	public List<TbMountguardexam> getTbMountguardexam() {
+		// TODO Auto-generated method stub
+		return dao.getTbMountguardexam();
+	}
+
+	/**
+	* @Title: getCOrganizationNjByOrgId
+	* @Description: 按营业厅id查询区域营业厅集合
+	* @param: @param orgid   
+	* @return:    List<COrganizationNj>
+	* @auther: CappuccinoH
+	* @date: 2015-8-18 上午10:55:39
+	*/
+	@Override
+	public List<COrganizationNj> getCOrganizationNjByOrgId(Integer orgid) {
+		// TODO Auto-generated method stub
+		return dao.getCOrganizationNjByOrgId(orgid);
+	}
+	
+	/**
+	* @Title: getTbMasterByExamtype
+	* @Description: 按考核类型查询字典表
+	* @param: @param examtype
+	* @param: @return    
+	* @return:    List<TbMaster>
+	* @auther: CappuccinoH
+	* @date: 2015-8-24 上午5:44:41
+	*/
+	public List<TbMaster> getTbMasterByExamtype(String examtype){
+		return dao.getTbMasterByExamtype(examtype);
+	}
+	
+
+	/**
+	* @Title: addTbMountguardexam
+	* @Description: 合作厅上岗信息数据录入
+	* @param: @param tbMountguardexam
+	* @param: @return    
+	* @return:    boolean
+	* @auther: CappuccinoH
+	* @date: 2015-8-24 下午12:14:16
+	*/
+	public boolean addTbMountguardexam(TbMountguardexam tbMountguardexam){
+		boolean flag = dao.saveObject(tbMountguardexam);
+		return flag;
+	}
+
+	/**
+	* @Title: deleteTbMountguardexam
+	* @Description: TODO
+	* @param: @param tbMountguardexam    
+	* @return:    无
+	* @auther: CappuccinoH
+	* @date: 2015-8-24 下午4:02:46
+	*/
+	public void deleteTbMountguardexam(TbMountguardexam tbMountguardexam){
+		getHibernateTemplate().delete(tbMountguardexam);
+	}
 }
