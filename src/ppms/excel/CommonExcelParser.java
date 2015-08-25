@@ -716,7 +716,7 @@ public class CommonExcelParser {
 										exception
 												.addErrorInfo(new ErrorInfo(
 														j,
-														"行"
+														"行: "
 																+ value
 																+ "和对应的数据不一致，不存在，请仔细检查"));
 									}
@@ -742,7 +742,7 @@ public class CommonExcelParser {
 									if (value == null) {
 
 										exception.addErrorInfo(new ErrorInfo(j,
-												"行" + valueTemp + "不存在，请仔细检查"));
+												"行:" + valueTemp + "不存在，请仔细检查"));
 										System.out.println(valueTemp
 												+ " 不存在，请检查");
 									}

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Result;
+import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -82,6 +83,7 @@ public class FileAction extends ActionSupport {
 			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String upload() {
 
+		Session session =null;
 		// 基于myFile创建一个文件输入流
 		try {
 
@@ -98,16 +100,25 @@ public class FileAction extends ActionSupport {
 				if (expect.equals(fileFileName)) {
 					List<Object> objs = new CommonExcelParser(dao, exception)
 							.toObjs2(file, fileFileName);
-					for (Object obj : objs) {
+					
+					session= dao.getSessionFactory().openSession();
+					
+					session.beginTransaction();
+					for(int i=0;i<objs.size();i++){
 
-						dao.saveObject(obj);
-
-						System.out.println(obj.toString());
+						try {
+							session.save(objs.get(i));
+						} catch (Exception e) {
+							ErrorInfo error=new ErrorInfo(i,"行:"+e.getMessage());
+							exception.addErrorInfo(error);
+							e.printStackTrace();
+							
+						}
 					}
 
+					session.getTransaction().commit();
 					System.out.println(fileFileName);
 				} else {
-
 					exception.addErrorInfo(new ErrorInfo("该页面要求上传" + expect
 							+ "，你上传的是" + fileFileName + ",请检查"));
 					System.out.println(expect + "不是" + fileFileName + "请检查");
@@ -119,6 +130,9 @@ public class FileAction extends ActionSupport {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			if(session!=null){
+				session.close();
+			}
 			if (exception.getErrors().size() > 0) {
 				ServletActionContext.getRequest().setAttribute("errorInfos",
 						exception.getErrors());
