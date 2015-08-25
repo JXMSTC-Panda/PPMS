@@ -65,7 +65,7 @@ public class PromoteTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSingle.add", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSingleResult.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String roleSingleResult() {
 		System.out.println("0000");
 
@@ -96,7 +96,7 @@ public class PromoteTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSingle.skipSelectEmployeePages", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/selectSingleEmployee.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String skipSelectEmployeePages() {
 		ActionContext actionContext = ActionContext.getContext();// 创建ActionContext的对象并调用getContext()方法
 		Map<String, Object> request = (Map) actionContext.get("request");// 获取出request对象
@@ -149,7 +149,7 @@ public class PromoteTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSingle.skipPromoteTrainSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSingle.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String skipPromoteTrainSingle() {
 
 		ActionContext actionContext = ActionContext.getContext(); // 创建ActionContext的对象并调用getContext()方法
@@ -205,7 +205,7 @@ public class PromoteTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSearch.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String first() {
 		int i = 0;
 		System.out.println("dasd");
@@ -238,7 +238,7 @@ public class PromoteTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSearch.delete", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSingle.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String delete(){
 		
 		try {
@@ -247,16 +247,18 @@ public class PromoteTrainingAction extends BaseInit {
 				ServletActionContext.getResponse().sendRedirect("employeeTrainExam.promoteTrain.promoteTrainSearch.do");
 				return null;
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "删除失败");
 			return "error";
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，删除失败");
 			return "error";
 		}
 	}
 	
 	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSearch.modify", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainUpdate.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String modify(){
 		
 		try {
@@ -266,16 +268,18 @@ public class PromoteTrainingAction extends BaseInit {
 				ServletActionContext.getRequest().setAttribute("promotiontraining", promotiontraining);
 				return "success";
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "获取数据失败");
 			return "error";
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常");
 			return "error";
 		}
 	}
 	
 	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSingle.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String firstIn() {
 
 		return "success";
@@ -283,7 +287,7 @@ public class PromoteTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainBatch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainBatch.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String batch() {
 
 		return "success";
@@ -291,7 +295,7 @@ public class PromoteTrainingAction extends BaseInit {
 	
 	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSearch.update", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainUpdate.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String update(){
 		
 		try {
@@ -303,9 +307,11 @@ public class PromoteTrainingAction extends BaseInit {
 					return null;
 				}
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "修改失败");
 			return "error";
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，修改失败");
 			return "error";
 		}
 	}

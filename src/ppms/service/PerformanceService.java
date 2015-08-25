@@ -139,5 +139,5 @@ public interface PerformanceService {
 	* @throws 
 	
 	*/ 
-	void delete(Object object);
+	void delete(String object);
 }

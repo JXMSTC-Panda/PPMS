@@ -160,7 +160,7 @@
 
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="javascript:void(0)" name=""
+														<a class="green" href="employeeTrainExam.freshEmployeeExam.becomeEmployeeSearch.modify.toUpdate.do?examid=${becomes.examid}" name=""
 															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
 															href="employeeTrainExam.freshEmployeeExam.becomeEmployeeSearch.delete.do?examid=${becomes.examid}">

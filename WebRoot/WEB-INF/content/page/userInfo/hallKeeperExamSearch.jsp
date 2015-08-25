@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -17,38 +18,36 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="../../../../assets/css/bootstrap.css" />
-<link rel="stylesheet" href="../../../../assets/css/font-awesome.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-<link rel="stylesheet" href="../../../../assets/css/jquery-ui.css" />
-<link rel="stylesheet" href="../../../../assets/css/datepicker.css" />
-<link rel="stylesheet" href="../../../../assets/css/ui.jqgrid.css" />
+
 <!-- text fonts -->
-<link rel="stylesheet" href="../../../../assets/css/ace-fonts.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="../../../../assets/css/ace.css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
-			<link rel="stylesheet" href="../../../../assets/css/ace-part2.css" class="ace-main-stylesheet" />
+			<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-part2.css" class="ace-main-stylesheet" />
 		<![endif]-->
 
 <!--[if lte IE 9]>
-		  <link rel="stylesheet" href="../../../../assets/css/ace-ie.css" />
+		  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-ie.css" />
 		<![endif]-->
 
 <!-- inline styles related to this page -->
 
 <!-- ace settings handler -->
-<script src="../../../../assets/js/ace-extra.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/ace-extra.js"></script>
 
 <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 <!--[if lte IE 8]>
-		<script src="../../../../assets/js/html5shiv.js"></script>
-		<script src="../../../../assets/js/respond.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
 </head>
 
@@ -86,18 +85,337 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									值班经理测评、进阶查询 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 值班经理测评查询 </small>
+									店长测评、进阶查询<small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 店长测评查询 </small>
 								</h1>
 							</div>
 
-							<table id="grid-table"></table>
+							<div class="row">
+									<div class="col-xs-12">
+										
 
-							<div id="grid-pager"></div>
+										<div class="clearfix">
+											<div class="pull-right tableTools-container"></div>
+										</div>
+										<div class="table-header">
+											详细信息
+										</div>
 
-							<script type="text/javascript">
-								var $path_base = "..";//in Ace demo this will be used for editurl parameter
-							</script>
+										<!-- div.table-responsive -->
+
+										<!-- div.dataTables_borderWrap -->
+										<div>
+											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+												<thead>
+													<tr>
+														<th rowspan="2">
+															序号
+														</th>
+														<th rowspan="2">工号</th>
+														<th rowspan="2">姓名</th>
+														<th rowspan="2">区域</th>
+
+														<th rowspan="2">
+															营业厅名称
+														</th>
+														<th rowspan="2">岗职</th>
+
+														<th rowspan="2">学历</th>
+														
+														<th rowspan="1" colspan="2">
+															技能鉴定水平
+														</th>
+														<th rowspan="2">上一年绩效(分)</th>
+														
+														<th rowspan="2">进阶店长考试成绩(分)</th>
+														<th rowspan="2">专项报告成绩(分)</th>
+														<th rowspan="1" colspan="2">暗访成绩(分)</th>
+														
+														<th rowspan="2">暗访成绩均分(分)</th>
+														<th rowspan="2">业务考试成绩(分)</th>
+													</tr>
+													<tr>
+														
+														
+														<th>电信业务营销员</th>
+														<th>移动营业</th>
+														
+														<th>第一次暗访</th>
+														<th>第二次暗访</th>
+														
+														
+														
+														
+													</tr>
+												</thead>
+
+												<tbody>
+												<% int i = 0; %>
+												<%-- <c:forEach items="${ requestScope.tbPromotiontraining }"
+												var="tpt">
+													<tr>
+														<td><%= ++i %></td>
+														<c:forEach items="${ requestScope.tbEmployee }"
+														var="te">
+															<c:choose>
+																<c:when test="${te.employeecode!=null }">
+																	<td>${te.employeecode }</td>
+																</c:when>
+																<c:otherwise>
+																	<td>无数据</td>
+																</c:otherwise>
+															</c:choose>
+														
+															<c:choose>
+																<c:when test="${te.employeename!=null }">
+																	<td>${te.employeename }</td>
+																</c:when>
+																<c:otherwise>
+																	<td>无数据</td>
+																</c:otherwise>
+															</c:choose>
+														
+															<c:forEach items="${requestScope.tbArea }" var="ta">
+																<td>${ta.areadesc }</td>
+															</c:forEach>
+															
+															
+															<c:forEach items="${requestScope.organizationNj }" var="on">
+																<td>${on.org_Name }</td>
+															</c:forEach>
+															
+															<c:forEach items="${requestScope.tbPost }" var="tp">
+																<td>${tp.postname }</td>
+															</c:forEach>
+															
+															<c:choose>
+																<c:when test="${te.academicdegree!=null }">
+																	<td>${te.academicdegree }</td>
+																</c:when>
+																<c:otherwise>
+																	<td>无数据</td>
+																</c:otherwise>
+															</c:choose>
+															
+															<c:choose>
+																<c:when test="${te.telecomlevel!=null }">
+																	<c:if test="${te.telecomlevel==-1 }">
+																		<td>初级</td>
+																	</c:if>
+																	<c:if test="${te.telecomlevel==0 }">
+																		<td>初级</td>
+																	</c:if>
+																	<c:if test="${te.telecomlevel==1 }">
+																		<td>中级</td>
+																	</c:if>
+																	<c:if test="${te.telecomlevel==2 }">
+																		<td>高级</td>
+																	</c:if>
+																</c:when>
+																<c:otherwise>
+																	<td>无数据</td>
+																</c:otherwise>
+															</c:choose>
+															
+															<c:choose>
+																<c:when test="${te.mobilelevel!=null }">
+																	<c:if test="${te.mobilelevel==-1 }">
+																		<td>初级</td>
+																	</c:if>
+																	<c:if test="${te.mobilelevel==0 }">
+																		<td>初级</td>
+																	</c:if>
+																	<c:if test="${te.mobilelevel==1 }">
+																		<td>中级</td>
+																	</c:if>
+																	<c:if test="${te.mobilelevel==2 }">
+																		<td>高级</td>
+																	</c:if>
+																</c:when>
+																<c:otherwise>
+																	<td>无数据</td>
+																</c:otherwise>
+															</c:choose>
+															
+															
+														</c:forEach>
+														<td>${tpf.performancescore }</td>
+														
+														<td>${tpt.promotionscore }</td>
+														<td><input type="text" style="width: 40px"></td>
+														<td>${tbVisitcheck.firstscore }</td>
+														<td>${tbVisitcheck.secondscore }</td>
+														<td>${(tbVisitcheck.firstscore+tbVisitcheck.secondscore)/2 }</td>
+														
+														<td><input type="text" style="width: 40px"></td>
+													</tr>
+												</c:forEach>
+												<c:forEach items="${ requestScope.tbPromotiontraining }" var="tpt">
+													<tr>
+														<td><%= ++i %></td>
+														<td>${tpt.organizationNj.orgid}</td>
+														<td>${tbPromotiontraining.get(0).promotiontrainingid}</td>
+														<td>${tbEmployee.get(0).employeename }</td>
+														<td>0</td>
+														
+														<td>0</td>
+														<td>0</td>
+														<td>0</td>
+														<td>0</td>
+														<td>0</td>
+														
+														<td>0</td>
+														<td>0</td>
+														<td>0</td>
+														<td>0</td>
+														<td>0</td>
+														
+														<td>0</td>
+													</tr>
+												</c:forEach> --%>
+													<!-- <tr>
+														<td>1</td>
+														<td>2</td>
+														<td>3</td>
+														<td>4</td>
+														<td>5</td>
+														
+														<td>6</td>
+														<td>7</td>
+														<td>8</td>
+														<td>9</td>
+														<td>10</td>
+														
+														<td>11</td>
+														<td>12</td>
+														<td>13</td>
+														<td>14</td>
+														
+														<td>15</td>
+														<td>16</td>
+														
+													</tr> -->
+													<c:forEach items="${ requestScope.datas}" var="test">
+														<tr>
+															<td><%= ++i %></td>
+														
+															<td>${test.employeecode }</td>
+															<td>${test.employeename }</td>
+															<td>${test.areadesc }</td>
+															<td>${test.org_Name }</td>
+															<td>${test.postname }</td>
+															
+															<td>${test.academicdegree }</td>
+															<td>${test.strtelecomlevel }</td>
+															<td>${test.strmobilelevel }</td>
+															<td>${test.performancescore }</td>
+															<td>${test.promotionscore }</td>
+															
+															<td><input type="text" style="width: 40px"> </td>
+															
+															<td>${test.firstscore }</td>
+															<td>${test.secondscore }</td>
+															<td>${test.aver }</td>
+															<td><input type="text" style="width: 40px"></td>
+															
+															
+															
+														</tr>
+													</c:forEach>
+												
+													<%-- <% int i = 0; %>
+													<c:forEach items="${ requestScope.tbMountguardexam }"
+														var="tmge" varStatus="status">
+														<tr>
+															<td class="center">
+																<label class="pos-rel">
+																	<input type="checkbox" class="ace" />
+																	<span class="lbl"></span>
+																</label>
+															</td>
+															<td><%= ++i %></td>
+															<td>111</td>
+															<c:forEach items="${ requestScope.tbEmployeeByTbEmployeeId }"
+																var="employee">
+																<td>${employee.employeecode}</td>
+																<td>${employee.employeename}</td>
+																<td>${employee.idnumber}</td>
+															</c:forEach>
+															<c:forEach items="${ requestScope.organizationNjByOrgId }"
+																var="org">
+																<td>${org.orgid}</td>
+																<td>${org.org_Name}</td>
+															</c:forEach>
+															<td>${tmge.examtype}</td>
+															<td>${tmge.examdate}</td>
+															<td>${tmge.examexpire }</td>
+															<td>${tmge.examscore}</td>
+															
+															<td>
+																<c:if test="${tmge.examscore>=60}">
+																	<span class="label label-sm label-success">PASS</span>
+																</c:if>
+																<c:if test="${tmge.examscore<60}">
+																	<span class="label label-sm label-warning">NOT PASS</span>
+																</c:if>
+															</td>
+															<td>
+																<div class="hidden-sm hidden-xs action-buttons">
+																	<a class="green" href="#">
+																		<i class="ace-icon fa fa-pencil bigger-130">修改</i>
+																	</a>
+
+																	<a class="red" href="#">
+																		<i class="ace-icon fa fa-trash-o bigger-130">删除</i>
+																	</a>
+																</div>
+
+																<div class="hidden-md hidden-lg">
+																	<div class="inline pos-rel">
+																		<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+																			<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+																		</button>
+
+																		<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+																			<li>
+																				<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+																					<span class="blue">
+																						<i class="ace-icon fa fa-search-plus bigger-120"></i>
+																					</span>
+																				</a>
+																			</li>
+	
+																			<li>
+																				<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+																					<span class="green">
+																						<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																					</span>
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+																					<span class="red">
+																						<i class="ace-icon fa fa-trash-o bigger-120"></i>
+																					</span>
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</td>
+														</tr>
+													</c:forEach>  --%>
+													
+													
+													
+										
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
@@ -108,680 +426,231 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../../../../assets/js/date-time/bootstrap-datepicker.js"></script>
-	<script src="../../../../assets/js/jqGrid/jquery.jqGrid.src.js"></script>
-	<script src="../../../../assets/js/jqGrid/i18n/grid.locale-en.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+	
+	
 	<!-- inline scripts related to this page -->
-	<script>
-		var grid_data = [ {
-			id : "1",
-			name : "Desktop Computer",
-			note : "note",
-			stock : "Yes",
-			ship : "FedEx",
-			sdate : "2007-12-03"
-		}, {
-			id : "2",
-			name : "Laptop",
-			note : "Long text ",
-			stock : "Yes",
-			ship : "InTime",
-			sdate : "2007-12-03"
-		}, {
-			id : "3",
-			name : "LCD Monitor",
-			note : "note3",
-			stock : "Yes",
-			ship : "TNT",
-			sdate : "2007-12-03"
-		}, {
-			id : "4",
-			name : "Speakers",
-			note : "note",
-			stock : "No",
-			ship : "ARAMEX",
-			sdate : "2007-12-03"
-		}, {
-			id : "5",
-			name : "Laser Printer",
-			note : "note2",
-			stock : "Yes",
-			ship : "FedEx",
-			sdate : "2007-12-03"
-		}, {
-			id : "6",
-			name : "Play Station",
-			note : "note3",
-			stock : "No",
-			ship : "FedEx",
-			sdate : "2007-12-03"
-		}, {
-			id : "7",
-			name : "Mobile Telephone",
-			note : "note",
-			stock : "Yes",
-			ship : "ARAMEX",
-			sdate : "2007-12-03"
-		}, {
-			id : "8",
-			name : "Server",
-			note : "note2",
-			stock : "Yes",
-			ship : "TNT",
-			sdate : "2007-12-03"
-		}, {
-			id : "9",
-			name : "Matrix Printer",
-			note : "note3",
-			stock : "No",
-			ship : "FedEx",
-			sdate : "2007-12-03"
-		}, {
-			id : "10",
-			name : "Desktop Computer",
-			note : "note",
-			stock : "Yes",
-			ship : "FedEx",
-			sdate : "2007-12-03"
-		}, {
-			id : "11",
-			name : "Laptop",
-			note : "Long text ",
-			stock : "Yes",
-			ship : "InTime",
-			sdate : "2007-12-03"
-		}, {
-			id : "12",
-			name : "LCD Monitor",
-			note : "note3",
-			stock : "Yes",
-			ship : "TNT",
-			sdate : "2007-12-03"
-		}, {
-			id : "13",
-			name : "Speakers",
-			note : "note",
-			stock : "No",
-			ship : "ARAMEX",
-			sdate : "2007-12-03"
-		}, {
-			id : "14",
-			name : "Laser Printer",
-			note : "note2",
-			stock : "Yes",
-			ship : "FedEx",
-			sdate : "2007-12-03"
-		}, {
-			id : "15",
-			name : "Play Station",
-			note : "note3",
-			stock : "No",
-			ship : "FedEx",
-			sdate : "2007-12-03"
-		}, {
-			id : "16",
-			name : "Mobile Telephone",
-			note : "note",
-			stock : "Yes",
-			ship : "ARAMEX",
-			sdate : "2007-12-03"
-		}, {
-			id : "17",
-			name : "Server",
-			note : "note2",
-			stock : "Yes",
-			ship : "TNT",
-			sdate : "2007-12-03"
-		}, {
-			id : "18",
-			name : "Matrix Printer",
-			note : "note3",
-			stock : "No",
-			ship : "FedEx",
-			sdate : "2007-12-03"
-		}, {
-			id : "19",
-			name : "Matrix Printer",
-			note : "note3",
-			stock : "No",
-			ship : "FedEx",
-			sdate : "2007-12-03"
-		}, {
-			id : "20",
-			name : "Desktop Computer",
-			note : "note",
-			stock : "Yes",
-			ship : "FedEx",
-			sdate : "2007-12-03"
-		}, {
-			id : "21",
-			name : "Laptop",
-			note : "Long text ",
-			stock : "Yes",
-			ship : "InTime",
-			sdate : "2007-12-03"
-		}, {
-			id : "22",
-			name : "LCD Monitor",
-			note : "note3",
-			stock : "Yes",
-			ship : "TNT",
-			sdate : "2007-12-03"
-		}, {
-			id : "23",
-			name : "Speakers",
-			note : "note",
-			stock : "No",
-			ship : "ARAMEX",
-			sdate : "2007-12-03"
-		} ];
-
-		var subgrid_data = [ {
-			id : "1",
-			name : "sub grid item 1",
-			qty : 11
-		}, {
-			id : "2",
-			name : "sub grid item 2",
-			qty : 3
-		}, {
-			id : "3",
-			name : "sub grid item 3",
-			qty : 12
-		}, {
-			id : "4",
-			name : "sub grid item 4",
-			qty : 5
-		}, {
-			id : "5",
-			name : "sub grid item 5",
-			qty : 2
-		}, {
-			id : "6",
-			name : "sub grid item 6",
-			qty : 9
-		}, {
-			id : "7",
-			name : "sub grid item 7",
-			qty : 3
-		}, {
-			id : "8",
-			name : "sub grid item 8",
-			qty : 8
-		} ];
-
-		jQuery(function($) {
-			var grid_selector = "#grid-table";
-			var pager_selector = "#grid-pager";
-
-			//resize to fit page size
-			$(window).on(
-					'resize.jqGrid',
-					function() {
-						$(grid_selector).jqGrid('setGridWidth',
-								$(".page-content").width());
-					})
-			//resize on sidebar collapse/expand
-			var parent_column = $(grid_selector).closest('[class*="col-"]');
-			$(document).on(
-					'settings.ace.jqGrid',
-					function(ev, event_name, collapsed) {
-						if (event_name === 'sidebar_collapsed'
-								|| event_name === 'main_container_fixed') {
-							//setTimeout is for webkit only to give time for DOM changes and then redraw!!!
-							setTimeout(function() {
-								$(grid_selector).jqGrid('setGridWidth',
-										parent_column.width());
-							}, 0);
+	<script type="text/javascript">
+			jQuery(function($) {
+				//initiate dataTables plugin
+				var oTable1 = 
+				$('#dynamic-table')
+				//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+				.dataTable( {
+					bAutoWidth: false,
+					"aoColumns": [
+					  null,
+					  null, null,null, null, null,null, null,null, null,null, null,null,null, null,
+					  null
+					],
+					"aaSorting": [],
+			
+					//,
+					//"sScrollY": "200px",
+					//"bPaginate": false,
+			
+					//"sScrollX": "100%",
+					//"sScrollXInner": "120%",
+					//"bScrollCollapse": true,
+					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+			
+					//"iDisplayLength": 50
+			    } );
+				//oTable1.fnAdjustColumnSizing();
+			
+			
+				//TableTools settings
+				TableTools.classes.container = "btn-group btn-overlap";
+				TableTools.classes.print = {
+					"body": "DTTT_Print",
+					"info": "tableTools-alert gritter-item-wrapper gritter-info gritter-center white",
+					"message": "tableTools-print-navbar"
+				}
+			
+				//initiate TableTools extension
+				var tableTools_obj = new $.fn.dataTable.TableTools( oTable1, {
+					"sSwfPath": "../assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
+					
+					"sRowSelector": "td:not(:last-child)",
+					"sRowSelect": "multi",
+					"fnRowSelected": function(row) {
+						//check checkbox when row is selected
+						try { $(row).find('input[type=checkbox]').get(0).checked = true }
+						catch(e) {}
+					},
+					"fnRowDeselected": function(row) {
+						//uncheck checkbox
+						try { $(row).find('input[type=checkbox]').get(0).checked = false }
+						catch(e) {}
+					},
+			
+					"sSelectedClass": "success",
+			        "aButtons": [
+						{
+							"sExtends": "copy",
+							"sToolTip": "Copy to clipboard",
+							"sButtonClass": "btn btn-white btn-primary btn-bold",
+							"sButtonText": "<i class='fa fa-copy bigger-110 pink'></i>",
+							"fnComplete": function() {
+								this.fnInfo( '<h3 class="no-margin-top smaller">Table copied</h3>\
+									<p>Copied '+(oTable1.fnSettings().fnRecordsTotal())+' row(s) to the clipboard.</p>',
+									1500
+								);
+							}
+						},
+						
+						{
+							"sExtends": "csv",
+							"sToolTip": "Export to CSV",
+							"sButtonClass": "btn btn-white btn-primary  btn-bold",
+							"sButtonText": "<i class='fa fa-file-excel-o bigger-110 green'></i>"
+						},
+						
+						{
+							"sExtends": "pdf",
+							"sToolTip": "Export to PDF",
+							"sButtonClass": "btn btn-white btn-primary  btn-bold",
+							"sButtonText": "<i class='fa fa-file-pdf-o bigger-110 red'></i>"
+						},
+						
+						{
+							"sExtends": "print",
+							"sToolTip": "Print view",
+							"sButtonClass": "btn btn-white btn-primary  btn-bold",
+							"sButtonText": "<i class='fa fa-print bigger-110 grey'></i>",
+							
+							"sMessage": "<div class='navbar navbar-default'><div class='navbar-header pull-left'><a class='navbar-brand' href='#'><small>Optional Navbar &amp; Text</small></a></div></div>",
+							
+							"sInfo": "<h3 class='no-margin-top'>Print view</h3>\
+									  <p>Please use your browser's print function to\
+									  print this table.\
+									  <br />Press <b>escape</b> when finished.</p>",
 						}
-					})
-
-			//if your grid is inside another element, for example a tab pane, you should use its parent's width:
-			/**
-			$(window).on('resize.jqGrid', function () {
-				var parent_width = $(grid_selector).closest('.tab-pane').width();
-				$(grid_selector).jqGrid( 'setGridWidth', parent_width );
-			})
-			//and also set width when tab pane becomes visible
-			$('#myTab a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-			  if($(e.target).attr('href') == '#mygrid') {
-				var parent_width = $(grid_selector).closest('.tab-pane').width();
-				$(grid_selector).jqGrid( 'setGridWidth', parent_width );
-			  }
-			})
-			 */
-
-			jQuery(grid_selector)
-					.jqGrid(
-							{
-								//direction: "rtl",
-
-								//subgrid options
-								subGrid : true,
-								//subGridModel: [{ name : ['No','Item Name','Qty'], width : [55,200,80] }],
-								//datatype: "xml",
-								subGridOptions : {
-									plusicon : "ace-icon fa fa-plus center bigger-110 blue",
-									minusicon : "ace-icon fa fa-minus center bigger-110 blue",
-									openicon : "ace-icon fa fa-chevron-right center orange"
-								},
-								//for this example we are using local data
-								subGridRowExpanded : function(subgridDivId,
-										rowId) {
-									var subgridTableId = subgridDivId + "_t";
-									$("#" + subgridDivId)
-											.html(
-													"<table id='" + subgridTableId + "'></table>");
-									$("#" + subgridTableId).jqGrid(
-											{
-												datatype : 'local',
-												data : subgrid_data,
-												colNames : [ 'No', 'Item Name',
-														'Qty' ],
-												colModel : [ {
-													name : 'id',
-													width : 50
-												}, {
-													name : 'name',
-													width : 150
-												}, {
-													name : 'qty',
-													width : 50
-												} ]
-											});
-								},
-
-								data : grid_data,
-								datatype : "local",
-								height : 250,
-								colNames : [ ' ', 'ID', 'Last Sales', 'Name',
-										'Stock', 'Ship via', 'Notes' ],
-								colModel : [
-										{
-											name : 'myac',
-											index : '',
-											width : 80,
-											fixed : true,
-											sortable : false,
-											resize : false,
-											formatter : 'actions',
-											formatoptions : {
-												keys : true,
-												//delbutton: false,//disable delete button
-
-												delOptions : {
-													recreateForm : true,
-													beforeShowForm : beforeDeleteCallback
-												},
-											//editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
-											}
-										},
-										{
-											name : 'id',
-											index : 'id',
-											width : 60,
-											sorttype : "int",
-											editable : true
-										},
-										{
-											name : 'sdate',
-											index : 'sdate',
-											width : 90,
-											editable : true,
-											sorttype : "date",
-											unformat : pickDate
-										},
-										{
-											name : 'name',
-											index : 'name',
-											width : 150,
-											editable : true,
-											editoptions : {
-												size : "20",
-												maxlength : "30"
-											}
-										},
-										{
-											name : 'stock',
-											index : 'stock',
-											width : 70,
-											editable : true,
-											edittype : "checkbox",
-											editoptions : {
-												value : "Yes:No"
-											},
-											unformat : aceSwitch
-										},
-										{
-											name : 'ship',
-											index : 'ship',
-											width : 90,
-											editable : true,
-											edittype : "select",
-											editoptions : {
-												value : "FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"
-											}
-										}, {
-											name : 'note',
-											index : 'note',
-											width : 150,
-											sortable : false,
-											editable : true,
-											edittype : "textarea",
-											editoptions : {
-												rows : "2",
-												cols : "10"
-											}
-										} ],
-
-								viewrecords : true,
-								rowNum : 10,
-								rowList : [ 10, 20, 30 ],
-								pager : pager_selector,
-								altRows : true,
-								//toppager: true,
-
-								multiselect : true,
-								//multikey: "ctrlKey",
-								multiboxonly : true,
-
-								loadComplete : function() {
-									var table = this;
-									setTimeout(function() {
-										styleCheckbox(table);
-
-										updateActionIcons(table);
-										updatePagerIcons(table);
-										enableTooltips(table);
-									}, 0);
-								},
-
-								editurl : "/dummy.html",//nothing is saved
-								caption : "详细信息"
-
-							//,autowidth: true,
-
-							/**
-							,
-							grouping:true, 
-							groupingView : { 
-								 groupField : ['name'],
-								 groupDataSorted : true,
-								 plusicon : 'fa fa-chevron-down bigger-110',
-								 minusicon : 'fa fa-chevron-up bigger-110'
-							},
-							caption: "Grouping"
-							 */
-
-							});
-			$(window).triggerHandler('resize.jqGrid');//trigger window resize to make the grid get the correct size
-
-			//enable search/filter toolbar
-			//jQuery(grid_selector).jqGrid('filterToolbar',{defaultSearch:true,stringResult:true})
-			//jQuery(grid_selector).filterToolbar({});
-
-			//switch element when editing inline
-			function aceSwitch(cellvalue, options, cell) {
+			        ]
+			    } );
+				//we put a container before our table and append TableTools element to it
+			    $(tableTools_obj.fnContainer()).appendTo($('.tableTools-container'));
+				
+				//also add tooltips to table tools buttons
+				//addding tooltips directly to "A" buttons results in buttons disappearing (weired! don't know why!)
+				//so we add tooltips to the "DIV" child after it becomes inserted
+				//flash objects inside table tools buttons are inserted with some delay (100ms) (for some reason)
 				setTimeout(function() {
-					$(cell).find('input[type=checkbox]').addClass(
-							'ace ace-switch ace-switch-5').after(
-							'<span class="lbl"></span>');
-				}, 0);
-			}
-			//enable datepicker
-			function pickDate(cellvalue, options, cell) {
-				setTimeout(function() {
-					$(cell).find('input[type=text]').datepicker({
-						format : 'yyyy-mm-dd',
-						autoclose : true
+					$(tableTools_obj.fnContainer()).find('a.DTTT_button').each(function() {
+						var div = $(this).find('> div');
+						if(div.length > 0) div.tooltip({container: 'body'});
+						else $(this).tooltip({container: 'body'});
 					});
-				}, 0);
-			}
-
-			//navButtons
-			jQuery(grid_selector).jqGrid(
-					'navGrid',
-					pager_selector,
-					{ //navbar options
-						edit : true,
-						editicon : 'ace-icon fa fa-pencil blue',
-						add : true,
-						addicon : 'ace-icon fa fa-plus-circle purple',
-						del : true,
-						delicon : 'ace-icon fa fa-trash-o red',
-						search : true,
-						searchicon : 'ace-icon fa fa-search orange',
-						refresh : true,
-						refreshicon : 'ace-icon fa fa-refresh green',
-						view : true,
-						viewicon : 'ace-icon fa fa-search-plus grey',
-					},
-					{
-						//edit record form
-						//closeAfterEdit: true,
-						//width: 700,
-						recreateForm : true,
-						beforeShowForm : function(e) {
-							var form = $(e[0]);
-							form.closest('.ui-jqdialog').find(
-									'.ui-jqdialog-titlebar').wrapInner(
-									'<div class="widget-header" />')
-							style_edit_form(form);
-						}
-					},
-					{
-						//new record form
-						//width: 700,
-						closeAfterAdd : true,
-						recreateForm : true,
-						viewPagerButtons : false,
-						beforeShowForm : function(e) {
-							var form = $(e[0]);
-							form.closest('.ui-jqdialog').find(
-									'.ui-jqdialog-titlebar').wrapInner(
-									'<div class="widget-header" />')
-							style_edit_form(form);
-						}
-					},
-					{
-						//delete record form
-						recreateForm : true,
-						beforeShowForm : function(e) {
-							var form = $(e[0]);
-							if (form.data('styled'))
-								return false;
-
-							form.closest('.ui-jqdialog').find(
-									'.ui-jqdialog-titlebar').wrapInner(
-									'<div class="widget-header" />')
-							style_delete_form(form);
-
-							form.data('styled', true);
-						},
-						onClick : function(e) {
-							//alert(1);
-						}
-					},
-					{
-						//search form
-						recreateForm : true,
-						afterShowSearch : function(e) {
-							var form = $(e[0]);
-							form.closest('.ui-jqdialog').find(
-									'.ui-jqdialog-title').wrap(
-									'<div class="widget-header" />')
-							style_search_form(form);
-						},
-						afterRedraw : function() {
-							style_search_filters($(this));
-						},
-						multipleSearch : true,
-					/**
-					multipleGroup:true,
-					showQuery: true
-					 */
-					},
-					{
-						//view record form
-						recreateForm : true,
-						beforeShowForm : function(e) {
-							var form = $(e[0]);
-							form.closest('.ui-jqdialog').find(
-									'.ui-jqdialog-title').wrap(
-									'<div class="widget-header" />')
-						}
-					})
-
-			function style_edit_form(form) {
-				//enable datepicker on "sdate" field and switches for "stock" field
-				form.find('input[name=sdate]').datepicker({
-					format : 'yyyy-mm-dd',
-					autoclose : true
-				})
-
-				form.find('input[name=stock]').addClass(
-						'ace ace-switch ace-switch-5').after(
-						'<span class="lbl"></span>');
-				//don't wrap inside a label element, the checkbox value won't be submitted (POST'ed)
-				//.addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');
-
-				//update buttons classes
-				var buttons = form.next().find('.EditButton .fm-button');
-				buttons.addClass('btn btn-sm').find('[class*="-icon"]').hide();//ui-icon, s-icon
-				buttons.eq(0).addClass('btn-primary').prepend(
-						'<i class="ace-icon fa fa-check"></i>');
-				buttons.eq(1).prepend('<i class="ace-icon fa fa-times"></i>')
-
-				buttons = form.next().find('.navButton a');
-				buttons.find('.ui-icon').hide();
-				buttons.eq(0).append(
-						'<i class="ace-icon fa fa-chevron-left"></i>');
-				buttons.eq(1).append(
-						'<i class="ace-icon fa fa-chevron-right"></i>');
-			}
-
-			function style_delete_form(form) {
-				var buttons = form.next().find('.EditButton .fm-button');
-				buttons.addClass('btn btn-sm btn-white btn-round').find(
-						'[class*="-icon"]').hide();//ui-icon, s-icon
-				buttons.eq(0).addClass('btn-danger').prepend(
-						'<i class="ace-icon fa fa-trash-o"></i>');
-				buttons.eq(1).addClass('btn-default').prepend(
-						'<i class="ace-icon fa fa-times"></i>')
-			}
-
-			function style_search_filters(form) {
-				form.find('.delete-rule').val('X');
-				form.find('.add-rule').addClass('btn btn-xs btn-primary');
-				form.find('.add-group').addClass('btn btn-xs btn-success');
-				form.find('.delete-group').addClass('btn btn-xs btn-danger');
-			}
-			function style_search_form(form) {
-				var dialog = form.closest('.ui-jqdialog');
-				var buttons = dialog.find('.EditTable')
-				buttons.find('.EditButton a[id*="_reset"]').addClass(
-						'btn btn-sm btn-info').find('.ui-icon').attr('class',
-						'ace-icon fa fa-retweet');
-				buttons.find('.EditButton a[id*="_query"]').addClass(
-						'btn btn-sm btn-inverse').find('.ui-icon').attr(
-						'class', 'ace-icon fa fa-comment-o');
-				buttons.find('.EditButton a[id*="_search"]').addClass(
-						'btn btn-sm btn-purple').find('.ui-icon').attr('class',
-						'ace-icon fa fa-search');
-			}
-
-			function beforeDeleteCallback(e) {
-				var form = $(e[0]);
-				if (form.data('styled'))
-					return false;
-
-				form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar')
-						.wrapInner('<div class="widget-header" />')
-				style_delete_form(form);
-
-				form.data('styled', true);
-			}
-
-			function beforeEditCallback(e) {
-				var form = $(e[0]);
-				form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar')
-						.wrapInner('<div class="widget-header" />')
-				style_edit_form(form);
-			}
-
-			//it causes some flicker when reloading or navigating grid
-			//it may be possible to have some custom formatter to do this as the grid is being created to prevent this
-			//or go back to default browser checkbox styles for the grid
-			function styleCheckbox(table) {
-				/**
-					$(table).find('input:checkbox').addClass('ace')
-					.wrap('<label />')
-					.after('<span class="lbl align-top" />')
+				}, 200);
 				
 				
-					$('.ui-jqgrid-labels th[id*="_cb"]:first-child')
-					.find('input.cbox[type=checkbox]').addClass('ace')
-					.wrap('<label />').after('<span class="lbl align-top" />');
-				 */
-			}
-
-			//unlike navButtons icons, action icons in rows seem to be hard-coded
-			//you can change them like this in here if you want
-			function updateActionIcons(table) {
-				/**
-				var replacement = 
-				{
-					'ui-ace-icon fa fa-pencil' : 'ace-icon fa fa-pencil blue',
-					'ui-ace-icon fa fa-trash-o' : 'ace-icon fa fa-trash-o red',
-					'ui-icon-disk' : 'ace-icon fa fa-check green',
-					'ui-icon-cancel' : 'ace-icon fa fa-times red'
-				};
-				$(table).find('.ui-pg-div span.ui-icon').each(function(){
-					var icon = $(this);
-					var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
-					if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
-				})
-				 */
-			}
-
-			//replace icons with FontAwesome icons like above
-			function updatePagerIcons(table) {
-				var replacement = {
-					'ui-icon-seek-first' : 'ace-icon fa fa-angle-double-left bigger-140',
-					'ui-icon-seek-prev' : 'ace-icon fa fa-angle-left bigger-140',
-					'ui-icon-seek-next' : 'ace-icon fa fa-angle-right bigger-140',
-					'ui-icon-seek-end' : 'ace-icon fa fa-angle-double-right bigger-140'
-				};
-				$(
-						'.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon')
-						.each(
-								function() {
-									var icon = $(this);
-									var $class = $.trim(icon.attr('class')
-											.replace('ui-icon', ''));
-
-									if ($class in replacement)
-										icon.attr('class', 'ui-icon '
-												+ replacement[$class]);
-								})
-			}
-
-			function enableTooltips(table) {
-				$('.navtable .ui-pg-button').tooltip({
-					container : 'body'
+				
+				//ColVis extension
+				var colvis = new $.fn.dataTable.ColVis( oTable1, {
+					"buttonText": "<i class='fa fa-search'></i>",
+					"aiExclude": [0, 6],
+					"bShowAll": true,
+					//"bRestore": true,
+					"sAlign": "right",
+					"fnLabel": function(i, title, th) {
+						return $(th).text();//remove icons, etc
+					}
+					
+				}); 
+				
+				//style it
+				$(colvis.button()).addClass('btn-group').find('button').addClass('btn btn-white btn-info btn-bold')
+				
+				//and append it to our table tools btn-group, also add tooltip
+				$(colvis.button())
+				.prependTo('.tableTools-container .btn-group')
+				.attr('title', 'Show/hide columns').tooltip({container: 'body'});
+				
+				//and make the list, buttons and checkboxed Ace-like
+				$(colvis.dom.collection)
+				.addClass('dropdown-menu dropdown-light dropdown-caret dropdown-caret-right')
+				.find('li').wrapInner('<a href="javascript:void(0)" />') //'A' tag is required for better styling
+				.find('input[type=checkbox]').addClass('ace').next().addClass('lbl padding-8');
+			
+			
+				
+				/////////////////////////////////
+				//table checkboxes
+				$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+				
+				//select/deselect all rows according to table header checkbox
+				$('#dynamic-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
+					var th_checked = this.checked;//checkbox inside "TH" table header
+					
+					$(this).closest('table').find('tbody > tr').each(function(){
+						var row = this;
+						if(th_checked) tableTools_obj.fnSelect(row);
+						else tableTools_obj.fnDeselect(row);
+					});
 				});
-				$(table).find('.ui-pg-div').tooltip({
-					container : 'body'
+				
+				//select/deselect a row when the checkbox is checked/unchecked
+				$('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){
+					var row = $(this).closest('tr').get(0);
+					if(!this.checked) tableTools_obj.fnSelect(row);
+					else tableTools_obj.fnDeselect($(this).closest('tr').get(0));
 				});
-			}
-
-			//var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
-
-			$(document).one('ajaxloadstart.page', function(e) {
-				$(grid_selector).jqGrid('GridUnload');
-				$('.ui-jqdialog').remove();
-			});
-		});
-	</script>
+				
+			
+				
+				
+					$(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
+					e.stopImmediatePropagation();
+					e.stopPropagation();
+					e.preventDefault();
+				});
+				
+				
+				//And for the first simple table, which doesn't have TableTools or dataTables
+				//select/deselect all rows according to table header checkbox
+				var active_class = 'active';
+				$('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
+					var th_checked = this.checked;//checkbox inside "TH" table header
+					
+					$(this).closest('table').find('tbody > tr').each(function(){
+						var row = this;
+						if(th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+						else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+					});
+				});
+				
+				//select/deselect a row when the checkbox is checked/unchecked
+				$('#simple-table').on('click', 'td input[type=checkbox]' , function(){
+					var $row = $(this).closest('tr');
+					if(this.checked) $row.addClass(active_class);
+					else $row.removeClass(active_class);
+				});
+			
+				
+			
+				/********************************/
+				//add tooltip for small view action buttons in dropdown menu
+				$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+				
+				//tooltip placement on right or left
+				function tooltip_placement(context, source) {
+					var $source = $(source);
+					var $parent = $source.closest('table')
+					var off1 = $parent.offset();
+					var w1 = $parent.width();
+			
+					var off2 = $source.offset();
+					//var w2 = $source.width();
+			
+					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+					return 'left';
+				}
+			
+			})
+		</script>
 </body>
 </html>

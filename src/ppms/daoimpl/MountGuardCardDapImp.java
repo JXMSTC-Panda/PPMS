@@ -1,6 +1,7 @@
 package ppms.daoimpl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -10,6 +11,8 @@ import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
+import ppms.domain.TbMaster;
+import ppms.domain.TbMountguardexam;
 
 @Repository
 public class MountGuardCardDapImp extends BaseDaoImp implements
@@ -142,7 +145,8 @@ public class MountGuardCardDapImp extends BaseDaoImp implements
 	public List<TbEmployee> getTbEmployeeByOrgId(Integer OrgId) {
 		List<TbEmployee> taList = null;
 		try {
-			String HQL = "from TbEmployee where organizationNj = '" + OrgId + "'";
+			String HQL = "from TbEmployee where organizationNj = '" + OrgId
+					+ "'";
 			TbEmployee te = new TbEmployee();
 			taList = findByHSQL(HQL, te);
 		} catch (Exception e) {
@@ -153,13 +157,13 @@ public class MountGuardCardDapImp extends BaseDaoImp implements
 	}
 
 	/**
-	* @Title: getOrganizationNjByOrgId
-	* @Description: 按营业厅编号查询营业厅集合
-	* @param: @param OrgId    
-	* @return:    List<OrganizationNj>
-	* @auther: CappuccinoH
-	* @date: 2015-8-13 下午7:18:47
-	*/
+	 * @Title: getOrganizationNjByOrgId
+	 * @Description: 按营业厅编号查询营业厅集合
+	 * @param: @param OrgId
+	 * @return: List<OrganizationNj>
+	 * @auther: CappuccinoH
+	 * @date: 2015-8-13 下午7:18:47
+	 */
 	@Override
 	public List<OrganizationNj> getOrganizationNjByOrgId(Integer OrgId) {
 		List<OrganizationNj> onList = null;
@@ -175,18 +179,19 @@ public class MountGuardCardDapImp extends BaseDaoImp implements
 	}
 
 	/**
-	* @Title: getTbEmployeeByTbEmployeeId
-	* @Description: 按营业员号查询营业员集合
-	* @param: @param TbEmployeeId   
-	* @return:    List<TbEmployee>
-	* @auther: CappuccinoH
-	* @date: 2015-8-17 上午10:03:09
-	*/
+	 * @Title: getTbEmployeeByTbEmployeeId
+	 * @Description: 按营业员号查询营业员集合
+	 * @param: @param TbEmployeeId
+	 * @return: List<TbEmployee>
+	 * @auther: CappuccinoH
+	 * @date: 2015-8-17 上午10:03:09
+	 */
 	@Override
 	public List<TbEmployee> getTbEmployeeByTbEmployeeId(String TbEmployeeId) {
 		List<TbEmployee> teList = null;
 		try {
-			String HQL = "from TbEmployee where employeeid = '" + TbEmployeeId + "'";
+			String HQL = "from TbEmployee where employeeid = '" + TbEmployeeId
+					+ "'";
 			TbEmployee te = new TbEmployee();
 			teList = findByHSQL(HQL, te);
 		} catch (Exception e) {
@@ -194,6 +199,84 @@ public class MountGuardCardDapImp extends BaseDaoImp implements
 		}
 
 		return teList;
+	}
+
+	/**
+	 * @Title: getTbMountguardexam
+	 * @Description: 查询TbMountguardexam合作厅上岗考证数据集
+	 * @param: 无
+	 * @return: List<TbMountguardexam>
+	 * @auther: CappuccinoH
+	 * @date: 2015-8-18 上午10:32:59
+	 */
+	@Override
+	public List<TbMountguardexam> getTbMountguardexam() {
+		List<TbMountguardexam> tmList = null;
+		try {
+			String HQL = "from TbMountguardexam";
+			TbMountguardexam te = new TbMountguardexam();
+			tmList = findByHSQL(HQL, te);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return tmList;
+	}
+
+	/**
+	 * @Title: getCOrganizationNjByOrgId
+	 * @Description: 按营业厅id查询区域营业厅集合
+	 * @param: @param orgid
+	 * @return: List<COrganizationNj>
+	 * @auther: CappuccinoH
+	 * @date: 2015-8-18 上午10:55:39
+	 */
+	@Override
+	public List<COrganizationNj> getCOrganizationNjByOrgId(Integer orgid) {
+		List<COrganizationNj> conList = null;
+		try {
+			String HQL = "from COrganizationNj where orgid = '" + orgid + "'";
+			COrganizationNj con = new COrganizationNj();
+			conList = findByHSQL(HQL, con);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return conList;
+	}
+
+	/**
+	 * @Title: getTbMasterByExamtype
+	 * @Description: 按考核类型查询字典表
+	 * @param: @param examtype
+	 * @param: @return
+	 * @return: List<TbMaster>
+	 * @auther: CappuccinoH
+	 * @date: 2015-8-24 上午5:44:41
+	 */
+	public List<TbMaster> getTbMasterByExamtype(String examtype) {
+		List<TbMaster> tmList = null;
+		List<TbMaster> TbMasterList = new ArrayList<>();
+		try {
+			String HQL = "from TbMaster where type = 'MountGuardType'";
+			TbMaster tm = new TbMaster();
+			tmList = findByHSQL(HQL, tm);
+
+			// System.out.println(tmList.get(0).getType());
+			// System.out.println(tmList.get(1).getType());
+			// System.out.println(examtype);
+
+			for (TbMaster tmlist : tmList) {
+				if (tmlist.getKey().equals(examtype)) {
+					TbMasterList.add(tmlist);
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return TbMasterList;
 	}
 
 }

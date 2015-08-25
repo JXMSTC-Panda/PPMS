@@ -56,7 +56,7 @@ public class OperationTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.operationTrain.operationTrainSingle.add", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/operationTrainSingleResult.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String operationTrainingSingleResult() {
 
 		try {
@@ -86,7 +86,7 @@ public class OperationTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.operationTrain.operationTrainSingle.skipOperationTrainingSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/operationTrainSingle.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String skipOperationTrainingSingle() {
 
 		ActionContext actionContext = ActionContext.getContext(); // 创建ActionContext的对象并调用getContext()方法
@@ -143,7 +143,7 @@ public class OperationTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.operationTrain.operationTrainSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/operationTrainSearch.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String first() {
 		int i = 0;
 		System.out.println("dasd");
@@ -176,7 +176,7 @@ public class OperationTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.operationTrain.operationTrainSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/operationTrainSingle.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String firstIn() {
 
 		return "success";
@@ -184,7 +184,7 @@ public class OperationTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.operationTrain.operationTrainBatch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/operationTrainBatch.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String batch() {
 
 		return "success";
@@ -192,7 +192,7 @@ public class OperationTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.operationTrain.operationTrainSearch.delete", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/operationTrainSingle.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String delete() {
 
 		try {
@@ -203,9 +203,11 @@ public class OperationTrainingAction extends BaseInit {
 								"employeeTrainExam.operationTrain.operationTrainSearch.do");
 				return null;
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "删除失败");
 			return "error";
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，删除失败");
 			return "error";
 		}
 
@@ -221,7 +223,7 @@ public class OperationTrainingAction extends BaseInit {
 
 	@Action(value = "employeeTrainExam.operationTrain.operationTrainSearch.modify", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/operationTrainUpdate.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String modify() {
 
 		try {
@@ -241,7 +243,7 @@ public class OperationTrainingAction extends BaseInit {
 	
 	@Action(value = "employeeTrainExam.operationTrain.operationTrainSearch.update", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/operationTrainUpdate.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String update() {
 
 		try {
