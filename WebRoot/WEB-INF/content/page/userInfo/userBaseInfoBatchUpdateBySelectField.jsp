@@ -577,12 +577,6 @@
 																<i class="ace-icon fa fa-check bigger-110"></i>
 																下载批量修改模板
 															</button>
-
-															&nbsp; &nbsp; &nbsp;
-															<button class="btn" type="reset">
-																<i class="ace-icon fa fa-undo bigger-110"></i>
-																批量修改
-															</button>
 														</div>
 										</div>
 

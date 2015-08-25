@@ -8,11 +8,13 @@ import javax.servlet.ServletContext;
 import javax.transaction.Transactional;
 
 import org.apache.poi.ss.formula.functions.T;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import ppms.action.interfaces.BaseInit;
 import ppms.action.interfaces.InitPage;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbEmployee;
@@ -23,9 +25,27 @@ import ppms.serviceimpl.InvocationServiceImp;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class InnovationAction extends AjaxRequestAction implements InitPage {
+/**
+ * 处理创新提案模块的请求
+ * 
+ * @author shark
+ * @update 2015下午7:10:18
+ * @function
+ * 
+ */
+public class InnovationAction extends BaseInit {
 
 	private TbInnovation innovation;
+
+	private String id;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public void setInnovation(TbInnovation innovation) {
 		this.innovation = innovation;
@@ -38,8 +58,25 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 	@Autowired
 	private InvocationServiceImp service;
 
-	public void setService(InvocationServiceImp service) {
-		this.service = service;
+	@Autowired
+	private TbMasterDAO masterDAO;
+
+	/**
+	 * 单条录入页面初始化
+	 * 
+	 * @return
+	 */
+	@Action(value = "innovation.null.innovationSingle", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSingle.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String firstIn() {
+
+		List<OrganizationNj> organizationNjs = getOrganizationNjs();
+		if (organizationNjs != null && organizationNjs.size() > 0) {
+			ServletActionContext.getRequest().setAttribute("orgs",
+					organizationNjs);
+		}
+		return "success";
 	}
 
 	/**
@@ -47,127 +84,146 @@ public class InnovationAction extends AjaxRequestAction implements InitPage {
 	 * 
 	 * @return
 	 */
-	@Action(value = "/singleUpload", results = {
+	@Action(value = "innovation.null.innovationSingle.add", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSingleResult.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
-	public String singleUpload() {
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String add() {
 
-		if (service.addInnovation(innovation)) {
-			return "success";
-		} else {
+		try {
+			
+			innovation.setEncouragement(innovation.getEncouragement()
+					.replaceAll(", ", ""));
+			if (service.addInnovation(innovation)) {
+
+				if (ServletActionContext.getRequest().getSession()
+						.getAttribute("organizationNj") != null) {
+					
+					innovation.setOrganizationNj((OrganizationNj) ServletActionContext.getRequest().getSession()
+							.getAttribute("organizationNj"));
+					ServletActionContext.getRequest().getSession()
+							.removeAttribute("organizationNj");
+				}
+				if (ServletActionContext.getRequest().getSession()
+						.getAttribute("employee") != null) {
+					ServletActionContext.getRequest().getSession()
+							.removeAttribute("employee");
+				}
+
+				ServletActionContext.getResponse().sendRedirect(
+						"innovation.null.innovationSearch.do");
+				return "error";
+			} else {
+				return "error";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 			return "error";
 		}
 
 	}
 
-	@Transactional
-	@Override
-	public Map<String, List<T>> initPage(ServletContext context, String url) {
+	@Action(value = "innovation.null.innovationSearch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String searchPage() {
 
-		// 实例化map
-		Map map = new HashMap<String, List<Object>>();
-
-
-		// 根据不同请求的url实现不同页面的页面初始化
-		switch (url) {
-		case "innovation.innovationSingle":
-
-			// 获取所有营业厅
-			List<OrganizationNj> organizationNjs = getOrganizationNjs(context);
-			if(organizationNjs!=null&&organizationNjs.size()>0){
-				map.put("orgs", organizationNjs);
-			}
-		
-			break;
-		case "innovation.innovationSearch":
-			// 获取提案信息
-			
-			long beg=System.currentTimeMillis();
-			List<TbInnovation> innovations = getInnovations(context);
-			TbMasterDAO masterDAO = WebApplicationContextUtils
-					.getWebApplicationContext(context).getBean(
-							TbMasterDAO.class);
-			List<TbMaster> masters=masterDAO.findByType("InnovationLevel");
-			if(innovations!=null&&innovations.size()>0){
-				map.put("innovations", innovations);
-				map.put("masters", masters);
-			}
-			
-			System.out.println(System.currentTimeMillis()-beg);
-			break;
-		default:
-			break;
+		List<TbInnovation> innovations = getInnovations();
+		List<Object> masters = masterDAO.findByType("InnovationLevel");
+		if (innovations != null && innovations.size() > 0) {
+			map.put("innovations", innovations);
+			map.put("masters", masters);
 		}
-		return map;
+		toCache();
+		return "success";
 	}
 
-	@Action("/getEmployees")
-	@Override
-	public String initProcess() {
+	@Action(value = "innovation.null.innovationBatch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationBatch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String batchUpload() {
 
-		String orgid = request.getParameter("orgid");
-
-		System.out.println("sfasfs");
-		setHsql("from TbEmployee where orgid=" + orgid);
-		setKey("employees");
-		setFieldToJson(null, TbEmployee.class);
-		excute();
-		return null;
-
-		// try {
-		// String orgid = request.getParameter("orgid");
-		//
-		// if (orgid.equals("") || orgid == null) {
-		// return null;
-		// }
-		//
-		// //查询数据库
-		// List<TbEmployee> employees = dao.findByHSQL(
-		// "from TbEmployee where orgid=" + orgid, new TbEmployee());
-		//
-		// //设置对TbEmployee的策略
-		// TargetStrategy ts = new TargetStrategy(TbEmployee.class);
-		// //表示仅转换TbEmployee中的employeename和employeeid属性
-		// ts.setFields(new String[] {"employeename", "employeeid"});
-		// ts.setReverse(true);
-		// Gson gson = new GsonBuilder().setExclusionStrategies(ts).create();
-		//
-		// Map<String, List<TbEmployee>> map = new HashMap<String,
-		// List<TbEmployee>>();
-		// map.put("employees", employees);
-		// String json = gson.toJson(map);
-		// response.getWriter().write(json);
-		// System.out.println(json);
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
+		return "success";
 	}
-	
+
+	@Action(value = "innovation.null.innovationSearch.delete", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String delete() {
+		try {
+			if (id != null) {
+
+				if (service.delete(id)) {
+					ServletActionContext.getResponse().sendRedirect(
+							"innovation.null.innovationSearch.do");
+					return null;
+				}
+			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "删除失败");
+			return "error";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+	}
+
+	@Action(value = "innovation.null.innovationSearch.modify", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationUpdate.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String modify() {
+		if (id != null) {
+
+			TbInnovation tbInnovation = service.find(id);
+			ServletActionContext.getRequest().setAttribute("tbInnovation",
+					tbInnovation);
+			return "success";
+		}
+		ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，未获取到要修改的数据");
+		return "error";
+	}
+
+	@Action(value = "innovation.null.innovationSearch.update", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationUpdate.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String update() {
+
+		try {
+			if (innovation != null) {
+
+				innovation.setEncouragement(innovation.getEncouragement()
+						.replaceAll(", ", ""));
+				service.update(innovation);
+				ServletActionContext.getResponse().sendRedirect(
+						"innovation.null.innovationSearch.do");
+				return null;
+			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "暂无没有创新提案");
+			return "error";
+		} catch (Exception e) {
+			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常");
+			return "error";
+		}	
+
+	}
+
 	/**
 	 * 获取所有营业厅的信息
+	 * 
 	 * @param context
 	 * @return
 	 */
-	private List<OrganizationNj> getOrganizationNjs(ServletContext context){
-		
-
-		InvocationServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(context).getBean(
-						InvocationServiceImp.class);
+	private List<OrganizationNj> getOrganizationNjs() {
 		return service.getOrganizations();
 	}
-	
+
 	/**
 	 * 获取所有的创新提案
+	 * 
 	 * @param context
 	 * @return
 	 */
-	private List<TbInnovation> getInnovations(ServletContext context){
-		
-		InvocationServiceImp service = WebApplicationContextUtils
-				.getWebApplicationContext(context).getBean(
-						InvocationServiceImp.class);
-		
+	private List<TbInnovation> getInnovations() {
+
 		return service.findAllInnovations();
 	}
 

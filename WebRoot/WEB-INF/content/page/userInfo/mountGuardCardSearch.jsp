@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/dropzone.css" />
 <!-- text fonts -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 

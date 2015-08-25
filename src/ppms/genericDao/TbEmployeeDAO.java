@@ -6,10 +6,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.classic.Session;
 import org.hibernate.criterion.Example;
 import org.springframework.stereotype.Repository;
 
 import ppms.domain.TbEmployee;
+import ppms.domain.TbInnovation;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -78,7 +80,51 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
-
+	public boolean update(TbEmployee tbEmployee){
+		Session openSession = null;
+		try {
+			openSession= this.getSessionFactory().openSession();
+			
+			openSession.beginTransaction();
+			
+			TbEmployee load = (TbEmployee) openSession.load(TbEmployee.class,tbEmployee.getEmployeeid());
+			
+			load.setEmployeename(tbEmployee.getEmployeename());
+			load.setEmployeecode(tbEmployee.getEmployeecode());
+			load.setSex(tbEmployee.getSex());
+			load.
+			setIdnumber(tbEmployee.getIdnumber());
+			load.setBirthday(tbEmployee.getBirthday());
+			load.setBankname(tbEmployee.getBankname());
+			load.setBanknumber(tbEmployee.getBanknumber());
+			load.setStatus(tbEmployee.getStatus());
+			load.setAddressarea(tbEmployee.getAddressarea());
+			load.setAddress(tbEmployee.getAddress());
+			load.setMobilenumber(tbEmployee.getMobilenumber());
+			load.setShortmobilenumber(tbEmployee.getShortmobilenumber());
+			load.setAcademicdegree(tbEmployee.getAcademicdegree());
+			load.setSchoolname(tbEmployee.getSchoolname());
+			load.setSpecialization(tbEmployee.getSpecialization());
+			load.setTel(tbEmployee.getTel());
+			load.setEntertime(tbEmployee.getEntertime());
+			load.setBackjobcomment(tbEmployee.getBackjobcomment());
+			load.setRemark(tbEmployee.getRemark());
+			
+			openSession.update(load);
+			
+			openSession.getTransaction().commit();
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			openSession.getTransaction().rollback();
+			return false;
+		}finally{
+			openSession.close();
+		}
+	
+	}
+	
 	public TbEmployee findById(java.lang.String id) {
 		log.debug("getting TbEmployee instance with id: " + id);
 		try {

@@ -17,16 +17,20 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
 <link rel="stylesheet" href="../../../assets/css/dropzone.css" />
 <!-- text fonts -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
@@ -54,19 +58,26 @@
 	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
-			try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
 		</script>
 		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
 		<div class="main-content">
 			<div class="main-content-inner">
 				<div class="breadcrumbs" id="breadcrumbs">
 					<script type="text/javascript">
-						try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+						try {
+							ace.settings.check('breadcrumbs', 'fixed')
+						} catch (e) {
+						}
 					</script>
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
+						<li><a href="#">Other Pages</a>
+						</li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -77,36 +88,33 @@
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-content">
-									<!-- #section:settings.box -->
+								<!-- #section:settings.box -->
 
-									<!-- /section:settings.box -->
-									<div class="page-header">
-										<h1>
-								业务培训管理
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									业务培训管理批量录入
-								</small>
-							</h1>
-									</div>
-									<!-- /.page-header -->
-
-									<div class="row">
-										<div class="col-xs-12">
-											<div>
-												<form action="../dummy.html" class="dropzone" id="dropzone">
-													<div class="fallback">
-														<input name="file" type="file" multiple="" />
-													</div>
-												</form>
-											</div>
-
-										</div>
-										<!-- /.col -->
-									</div>
-									<!-- /.row -->
+								<!-- /section:settings.box -->
+								<div class="page-header">
+									<h1>
+										业务培训管理 <small> <i
+											class="ace-icon fa fa-angle-double-right"></i> 业务培训管理批量录入 </small>
+									</h1>
 								</div>
-								<!-- /.page-content -->
+								<!-- /.page-header -->
+
+								<div class="row">
+									<div class="col-xs-12">
+										<div>
+											<form action="../dummy.html" class="dropzone" id="dropzone">
+												<div class="fallback">
+													<input name="file" type="file" multiple="" />
+												</div>
+											</form>
+										</div>
+
+									</div>
+									<!-- /.col -->
+								</div>
+								<!-- /.row -->
+							</div>
+							<!-- /.page-content -->
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
@@ -120,29 +128,33 @@
 	<script src="../../../assets/js/dropzone.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
-			jQuery(function($) {
-				try {
-					Dropzone.autoDiscover = false;
-					var myDropzone = new Dropzone("#dropzone", {
-						paramName: "file", // The name that will be used to transfer the file
-						maxFilesize: 0.5, // MB
-						addRemoveLinks: true,
-						dictDefaultMessage: '<span class="bigger-150 bolder"><i class="ace-icon fa fa-caret-right red"></i> Drop files</span> to upload \
-				<span class="smaller-80 grey">(or click)</span> <br /> \
+		jQuery(function($) {
+			try {
+				Dropzone.autoDiscover = false;
+				var myDropzone = new Dropzone(
+						"#dropzone",
+						{
+							paramName : "file", // The name that will be used to transfer the file
+							maxFilesize : 1024, // MB
+							url : "upload.do?expect=业务培训批量导入模板.xls",
+							addRemoveLinks : true,
+							dictDefaultMessage : '<span class="bigger-150 bolder"><i class="ace-icon fa fa-caret-right red"></i> 拖拽文件</span> 上传 \
+				<span class="smaller-80 grey">(或点我)</span> <br /> \
 				<i class="upload-icon ace-icon fa fa-cloud-upload blue fa-3x"></i>',
-						dictResponseError: 'Error while uploading file!',
-						//change the previewTemplate to use Bootstrap progress bars
-						previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"progress progress-small progress-striped active\"><div class=\"progress-bar progress-bar-success\" data-dz-uploadprogress></div></div>\n  <div class=\"dz-success-mark\"><span></span></div>\n  <div class=\"dz-error-mark\"><span></span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
-					});
-					$(document).one('ajaxloadstart.page', function(e) {
-						try {
-							myDropzone.destroy();
-						} catch (e) {}
-					});
-				} catch (e) {
-					alert('Dropzone.js does not support older browsers!');
-				}
-			});
-		</script>
+							dictResponseError : '上传文件时出错!',
+							//change the previewTemplate to use Bootstrap progress bars
+							previewTemplate : "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"progress progress-small progress-striped active\"><div class=\"progress-bar progress-bar-success\" data-dz-uploadprogress></div></div>\n  <div class=\"dz-success-mark\"><span></span></div>\n  <div class=\"dz-error-mark\"><span></span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
+						});
+				$(document).one('ajaxloadstart.page', function(e) {
+					try {
+						myDropzone.destroy();
+					} catch (e) {
+					}
+				});
+			} catch (e) {
+				alert('Dropzone.js 不支持老版本的浏览器');
+			}
+		});
+	</script>
 </body>
 </html>

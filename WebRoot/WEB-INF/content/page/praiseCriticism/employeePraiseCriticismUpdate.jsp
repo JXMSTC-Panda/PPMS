@@ -163,7 +163,7 @@
 								<div class="page-header">
 									<h1>
 										员工奖惩信息管理 <small> <i
-											class="ace-icon fa fa-angle-double-right"></i> 信息单条录入 </small>
+											class="ace-icon fa fa-angle-double-right"></i> 信息单条次修改 </small>
 									</h1>
 								</div>
 								<!-- /.page-header -->
@@ -173,8 +173,8 @@
 										<!-- PAGE CONTENT BEGINS -->
 										<!-- <form class="form-horizontal" name="form1" role="form" method="post" action="skipSelectSingle.do"> -->
 										<form class="form-horizontal" name="form1" role="form"
-											method="post" action="praiseCriticism.employee.employeePraiseCriticismSearch.updateEmployeeInfor.do?tbEmployeepraisecriticism.tbEmployee.employeeid=<c:forEach items="${requestScope.employeeInfos}"
-												var="employeeInfo">${employeeInfo.employeeid}</c:forEach>">
+											method="post" action="praiseCriticism.employee.employeePraiseCriticismSearch.modify.updateEmployeeInfor.do?tbEmployeepraisecriticism.tbEmployee.employeeid=<c:forEach items="${requestScope.employeeInfos}"
+												var="employeeInfo">${employeeInfo.employeeid}</c:forEach>&tbEmployeepraisecriticism.praisecriticismid=${requestScope.praisecriticismid}">
 											<!-- #section:elements.form -->
 											
 												<div class="form-group">
@@ -229,7 +229,7 @@
 														<span class="help-inline col-xs-12 col-sm-7">
 
 															<button class="btn btn-info" type="button"
-																onClick="top.window.location='skipEmployeeSelectSingle.do'">选择员工</button>
+																onClick="top.window.location='praiseCriticism.employee.employeePraiseCriticismSearch.modify.skipEmployeeSelectUpdate.do?tbEmployeepraisecriticism.praisecriticismid=${requestScope.praisecriticismid}'">选择员工</button>
 
 
 														</span>
@@ -267,8 +267,8 @@
 												<div class="col-sm-9">
 													<select class="col-xs-10 col-sm-5" id="form-field-select-1"
 														name="tbEmployeepraisecriticism.praisecriticismtype">
-														<option value="1">惩罚</option>
-														<option value="2">表彰</option>
+														<option value="2">惩罚</option>
+														<option value="1">表彰</option>
 													</select>
 												</div>
 											</div>
@@ -308,8 +308,8 @@
 												<div class="col-sm-9">
 													<select class="col-xs-10 col-sm-5" id="form-field-select-1"
 														name="tbEmployeepraisecriticism.praisecriticismlevel">
-														<option value="1">中心通报</option>
-														<option value="2">公司发文</option>
+														<option value="1">公司发文</option>
+														<option value="2">中心通报</option>
 														<option value="3">区域通报</option>
 
 													</select>
@@ -328,7 +328,7 @@
 														<i class="ace-icon fa fa-undo bigger-110"></i> Reset
 													</button>
 													&nbsp; &nbsp; &nbsp;
-													<button class="btn btn-info" type="button">
+													<button class="btn btn-info" type="button" onClick="top.window.location='praiseCriticism.employee.employeePraiseCriticismSearch.modify.returnPages.do'">
 														<i class="ace-icon fa fa-undo bigger-110"></i> Return
 													</button>
 												</div>

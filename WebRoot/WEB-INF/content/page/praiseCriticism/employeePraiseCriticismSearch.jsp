@@ -83,7 +83,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
+						<li><a href="#">父功能</a>
+						</li>
 						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -99,7 +100,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">信息查询</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=员工奖惩信息批量导出.xls" name="StuListForm" method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -113,39 +114,54 @@
 											<th>身份证号</th>
 											<th>营业厅编码</th>
 											<th>营业厅名称</th>
+											<th>类型</th>
+											<th>奖惩原因</th>
+											<th>级别</th>
 											<th>年月</th>
-											<th>总分</th>
+											<th>分值</th>
 											<th></th>
 										</tr>
 									</thead>
 
 									<tbody>
-										<c:forEach items="${requestScope.employeepraisecriticismsInfor}" var="employeepraisecriticismsInfor"
-											varStatus="status">
+										<c:forEach
+											items="${requestScope.employeepraisecriticismsInfor}"
+											var="employeepraisecriticismsInfor" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label></td>
+														type="checkbox" class="ace"
+														value="${employeepraisecriticismsInfor.praisecriticismid}"
+														name="cols" /> <span class="lbl"></span> </label>
+												</td>
 
 												<td></td>
-												<td><a href="#">${employeepraisecriticismsInfor.tbEmployee.employeecode}</a></td>
+												<td><a href="#">${employeepraisecriticismsInfor.tbEmployee.employeecode}</a>
+												</td>
 												<td>${employeepraisecriticismsInfor.tbEmployee.employeename}</td>
 												<td class="hidden-480">${employeepraisecriticismsInfor.tbEmployee.idnumber}</td>
 												<td>${employeepraisecriticismsInfor.organizationNj.orgid}</td>
 												<td>${employeepraisecriticismsInfor.organizationNj.org_Name}</td>
+												<td>
+												${employeepraisecriticismsInfor.type}
+												</td>
+												<td>${employeepraisecriticismsInfor.cause}</td>
+												<td>
+												${employeepraisecriticismsInfor.level}
+												</td>
 												<td>${employeepraisecriticismsInfor.praisecriticismdate}</td>
-												<td>90</td>
-												
+												<td>${employeepraisecriticismsInfor.score}</td>
+
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="javascript:void(0)"
+														<%-- <a class="blue" href="javascript:void(0)"
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="praiseCriticism.employee.employeePraiseCriticismSearch.SkipUpdateEmployeeInfor.do"
+															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%>
+														<a class="green"
+															href="praiseCriticism.employee.employeePraiseCriticismSearch.modify.SkipUpdateEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="praiseCriticism.employee.employeePraiseCriticismSearch.deleteEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+															href="praiseCriticism.employee.employeePraiseCriticismSearch.delete.deleteEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}">
+															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -169,21 +185,28 @@
 																	class="tooltip-success" data-rel="tooltip" title="Edit">
 																		<span class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a
 																	href="ClassDelete?classId=${trl.getRoleid()}"
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
 															</ul>
 														</div>
-													</div>
-												</td>
+													</div></td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+								<div class="col-md-offset-3 col-md-9" align="center">
+									<button class="btn btn-info" type="submit" >
+										<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+									</button>
+								</div>
+
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
@@ -195,8 +218,10 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
@@ -207,27 +232,29 @@
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
 			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-			.dataTable({
-				bAutoWidth : false,
-				"aoColumns" : [ {
-					"bSortable" : false
-				}, null, null, null, null, null, null, null, null, {
-					"bSortable" : false
-				} ],
-				"aaSorting" : [],
+			.dataTable(
+					{
+						bAutoWidth : false,
+						"aoColumns" : [ {
+							"bSortable" : false
+						}, null, null, null, null, null, null, null, null,
+								null, null, null, {
+									"bSortable" : false
+								} ],
+						"aaSorting" : [],
 
-			//,
-			//"sScrollY": "200px",
-			//"bPaginate": false,
+					//,
+					//"sScrollY": "200px",
+					//"bPaginate": false,
 
-			//"sScrollX": "100%",
-			//"sScrollXInner": "120%",
-			//"bScrollCollapse": true,
-			//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-			//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+					//"sScrollX": "100%",
+					//"sScrollXInner": "120%",
+					//"bScrollCollapse": true,
+					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 
-			//"iDisplayLength": 50
-			});
+					//"iDisplayLength": 50
+					});
 			//oTable1.fnAdjustColumnSizing();
 
 			//TableTools settings

@@ -83,7 +83,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
+						<li><a href="#">父功能</a>
+						</li>
 						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -93,13 +94,14 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<h3 class="header smaller lighter blue">员工奖惩信息管理</h3>
+							<h3 class="header smaller lighter blue">业务差错检查成绩管理</h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">信息查询</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=业务差错检查成绩批量导出.xls"
+								name="StuListForm" method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -122,19 +124,21 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${requestScope.operationchecksInfor}" var="operationchecksInfor"
-											varStatus="status">
+										<c:forEach items="${requestScope.operationchecksInfor}"
+											var="operationchecksInfor" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label></td>
+														type="checkbox"
+														value="${operationchecksInfor.operationcheckid}"
+														name="cols" class="ace" /> <span class="lbl"></span> </label>
+												</td>
 
 												<td></td>
-												<td><a href="#">${operationchecksInfor.organizationNj.areadesc}</a></td>
+												<td>${operationchecksInfor.organizationNj.areadesc}</td>
 												<td>${operationchecksInfor.organizationNj.orgid}</td>
-												<td> ${operationchecksInfor.organizationNj.org_Name}</td>
-												<td> ${operationchecksInfor.tbEmployee.employeename}</td>
-												<td> ${operationchecksInfor.tbEmployee.employeecode}</td>
+												<td>${operationchecksInfor.organizationNj.org_Name}</td>
+												<td>${operationchecksInfor.tbEmployee.employeename}</td>
+												<td>${operationchecksInfor.tbEmployee.employeecode}</td>
 												<td>${operationchecksInfor.operationdate}</td>
 												<td>${operationchecksInfor.customermobilenumber}</td>
 												<td>${operationchecksInfor.operationtype}</td>
@@ -143,12 +147,13 @@
 													<div class="hidden-sm hidden-xs action-buttons">
 														<%-- <a class="blue" href="javascript:void(0)"
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%> <a
-															class="green" href="javascript:void(0)"
+															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%>
+														<a class="green"
+															href="standardVisit.operationMistake.operationMistakeSearch.modify.skip.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId=${trl.getRoleid()}"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+															href="standardVisit.operationMistake.operationMistakeSearch.delete.operationMistakeInforDelete.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}">
+															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -172,21 +177,27 @@
 																	class="tooltip-success" data-rel="tooltip" title="Edit">
 																		<span class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a
 																	href="ClassDelete?classId=${trl.getRoleid()}"
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
 															</ul>
 														</div>
-													</div>
-												</td>
+													</div></td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+								<div class="col-md-offset-3 col-md-9" align="center">
+									<button class="btn btn-info" type="submit">
+										<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+									</button>
+								</div>
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
@@ -198,8 +209,10 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
@@ -210,27 +223,29 @@
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
 			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-			.dataTable({
-				bAutoWidth : false,
-				"aoColumns" : [ {
-					"bSortable" : false
-				}, null, null, null, null, null, null, null, null,null, null, {
-					"bSortable" : false
-				} ],
-				"aaSorting" : [],
+			.dataTable(
+					{
+						bAutoWidth : false,
+						"aoColumns" : [ {
+							"bSortable" : false
+						}, null, null, null, null, null, null, null, null,
+								null, null, {
+									"bSortable" : false
+								} ],
+						"aaSorting" : [],
 
-			//,
-			//"sScrollY": "200px",
-			//"bPaginate": false,
+					//,
+					//"sScrollY": "200px",
+					//"bPaginate": false,
 
-			//"sScrollX": "100%",
-			//"sScrollXInner": "120%",
-			//"bScrollCollapse": true,
-			//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-			//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+					//"sScrollX": "100%",
+					//"sScrollXInner": "120%",
+					//"bScrollCollapse": true,
+					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 
-			//"iDisplayLength": 50
-			});
+					//"iDisplayLength": 50
+					});
 			//oTable1.fnAdjustColumnSizing();
 
 			//TableTools settings

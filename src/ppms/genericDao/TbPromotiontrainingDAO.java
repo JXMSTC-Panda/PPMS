@@ -6,9 +6,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.classic.Session;
 import org.hibernate.criterion.Example;
 import org.springframework.stereotype.Repository;
 
+import ppms.domain.TbInnovation;
 import ppms.domain.TbPromotiontraining;
 
 /**
@@ -157,5 +159,33 @@ public class TbPromotiontrainingDAO extends BaseHibernateDAO {
 			log.error("attach failed", re);
 			throw re;
 		}
+	}
+
+	public boolean update(TbPromotiontraining tbPromotiontraining) {
+		Session openSession = null;
+		try {
+			openSession= this.getSessionFactory().openSession();
+			
+			openSession.beginTransaction();
+			
+			TbPromotiontraining load = (TbPromotiontraining) openSession.load(TbPromotiontraining.class,tbPromotiontraining.getPromotiontrainingid());
+			
+			load.setPromotionscore(tbPromotiontraining.getPromotionscore());
+			load.setPromotiontrainingdate(tbPromotiontraining.getPromotiontrainingdate());
+			load.setPromotioncontent(tbPromotiontraining.getPromotioncontent());
+			
+			openSession.update(load);
+			
+			openSession.getTransaction().commit();
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			openSession.getTransaction().rollback();
+			return false;
+		}finally{
+			openSession.close();
+		}
+		
 	}
 }

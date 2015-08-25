@@ -4,6 +4,8 @@ package ppms.serviceimpl;
 import java.awt.geom.Area;
 import java.math.BigDecimal;
 import java.util.List;
+
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ppms.dao.StandardCheckDao;
@@ -92,7 +94,45 @@ public class StandardCheckServiceImp implements StandardCheckService {
 		}
 		return organizationNjResults;
 	}
+	@Override
+	public List<OrganizationNj> findOrganizationId(Integer orgId) {
+		List<OrganizationNj> organizationNjResults = null;
+		try {
+			organizationNjResults = dao.findOrganizationId(orgId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return organizationNjResults;
+	}
+	
+	@Override
+	public void save(Object object){
+		
+		dao.save(object);
+	}
 	
 	
+	public List<TbStandardcheck> getAll(String id){
+		List<TbStandardcheck> list;
+		if(id==null){
+			list= dao.getEntitiestNotLazy(new TbStandardcheck(), new String []{"organizationNj"},null);
+		}else{
+			list= dao.getEntitiestNotLazy(new TbStandardcheck(), new String []{"organizationNj"},Restrictions.eq("standardcheckid", id));
+			
+			TbStandardcheck tbStandardcheck2 = list.get(0);
+			tbStandardcheck2.setOrganizationNj(tbStandardcheck2.getOrganizationNj().toComplete(dao));
+			list.add(0, tbStandardcheck2);
+		}
+		if(list.size()>0){
+			return list;
+		}
+		return null;
+	}
+	
+	@Override
+	public boolean update(TbStandardcheck tbStandardcheck) {
+		
+		return dao.update(tbStandardcheck);
+	}
 	
 }

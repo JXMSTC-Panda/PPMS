@@ -32,11 +32,16 @@ public interface userBaseInfoDao {
 	 * 查找人员的信息
 	 * @return
 	 */
-	public List<TbEmployee> getTbEmployees();
+
 	
 	/**
 	 * 查找人员的信息
 	 * @return
 	 */
 	public List<TbRole> getTbRoles();
+
+	public List<TbEmployee> getTbEmployees(String employeeid);
+
+	public List<TbEmployee> getTbEmployees();
+
 }

@@ -21,6 +21,7 @@ import ppms.daoimpl.MonthPerformanceDaolmp;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbPerformance;
+import ppms.genericDao.TbPerformanceDAO;
 import ppms.service.PerformanceService;
 
 /**   
@@ -47,6 +48,8 @@ public class MonthPerformanceServicelmp extends BaseDaoImp implements Performanc
 	@Autowired
 	private MonthPerformanceDaolmp dao;
 	
+	@Autowired
+	private TbPerformanceDAO tb_dao;
 	
 	/**
 	 * 
@@ -114,6 +117,25 @@ public class MonthPerformanceServicelmp extends BaseDaoImp implements Performanc
 		return false;
 	}
 
+	/**
+	 * 删除绩效表数据
+	 */
+	@Override
+	public void deletePerformance(String  performanceid){
+		dao.deletePerformance(performanceid);
+		
+		
+		
+	}
 	
+	@Override
+	public void deletePerformance(TbPerformance persistentInstance){
+		
+		tb_dao.delete(persistentInstance);
+	}
 	
+	@Override
+	public void delete(Object object){
+		getHibernateTemplate().delete(object);
+	}
 }

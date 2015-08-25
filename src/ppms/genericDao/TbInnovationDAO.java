@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.classic.Session;
 import org.hibernate.criterion.Example;
 import org.springframework.stereotype.Repository;
 
@@ -34,6 +35,37 @@ public class TbInnovationDAO extends BaseHibernateDAO {
 	public static final String MODIFIEDBY = "modifiedby";
 
 	
+	
+	public boolean update(TbInnovation innovation){
+		Session openSession = null;
+		try {
+			openSession= this.getSessionFactory().openSession();
+			
+			openSession.beginTransaction();
+			
+			TbInnovation load = (TbInnovation) openSession.load(TbInnovation.class,innovation.getInnovationid());
+			
+			load.setAssessdate(innovation.getAssessdate());
+			load.setAssesslevel(innovation.getAssesslevel());
+			load.setEncouragement(innovation.getEncouragement());
+			load.setInnovationcontent(innovation.getInnovationcontent());
+			load.setAssessresult(innovation.getAssessresult());
+			
+			openSession.update(load);
+			
+			openSession.getTransaction().commit();
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			openSession.getTransaction().rollback();
+			return false;
+		}finally{
+			openSession.close();
+		}
+		
+		
+	}
 	public List<TbInnovation> findbyHsql(String hsql){
 		
 		log.debug("Hsql:"+hsql);
