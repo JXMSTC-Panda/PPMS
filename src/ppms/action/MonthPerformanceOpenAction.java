@@ -81,41 +81,7 @@ public class MonthPerformanceOpenAction extends ActionSupport {
 	 * @return the organizationNj
 	 */
 
-	/**
-	 * 营业厅 “月度绩效上传功能开通 ”页面数据初始化
-	 */
-	// @Override
-	// public Map<String, List<T>> initPage(ServletContext servletContext,String
-	// url) {
-	// // 实例化map
-	// Map map = new HashMap<>();
-	//
-	// OrganizationNjServiceImp service = WebApplicationContextUtils
-	// .getWebApplicationContext(servletContext).getBean(
-	// OrganizationNjServiceImp.class);
-	// // 获取所有营业厅
-	// switch (url) {
-	// case "userInfo.userBaseInfoSingle":
-	// List<OrganizationNj> organizations = service.getOrganizations();
-	// List<TbPost> tbPosts = service.getTbPosts();
-	// List<TbJob> tbJobs =service.getTbJobs();
-	// List<TbEmployee> tbEmployees =service.getTbEmployees();
-	// List<TbRole> tbRoles =service.getTbRoles();
-	// map.put("roles", tbRoles);
-	// map.put("orgs", organizations);
-	// map.put("posts", tbPosts);
-	// map.put("jobs", tbJobs);
-	// map.put("employees", tbEmployees);
-	// break;
-	// case "userInfo.userBaseInfoSearch":
-	// List<TbEmployee> employees =service.getTbEmployees();
-	// map.put("employees", employees);
-	// default:
-	// break;
-	// }
-	// return map;
-	// }
-
+	
 	/**
 	 * 
 	 * @方法名: monthPerformanceOpen

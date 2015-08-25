@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -72,6 +73,7 @@ public class FreshEmployeeExamAction extends BaseInit {
 
 	private HttpServletRequest request;
 
+	// 构造函数
 	public FreshEmployeeExamAction() {
 		request = ServletActionContext.getRequest();
 	}
@@ -425,7 +427,7 @@ public class FreshEmployeeExamAction extends BaseInit {
 								new TbBecomeemployeeexam(),
 								new String[] { "organizationNj", "tbEmployee" },
 								null);
-				map.put("tbBecomeemployeeexams", tbBecomeemployeeexams);
+				map.put("tbBecomeemployeeexam", tbBecomeemployeeexams);
 				break;
 			default:
 			}
@@ -435,4 +437,130 @@ public class FreshEmployeeExamAction extends BaseInit {
 		// 实例化map
 	}
 
+	/**
+	 * 
+	 * @方法名: becomeEmployeeToUpdate
+	 * 
+	 * @描述: 从转正考核成绩查询跳转到修改考核成绩
+	 * 
+	 * @param @return    设定文件
+	 * 
+	 * @return String    返回类型
+	 * 
+	 * @throws
+	 */
+	@Action(value = "employeeTrainExam.freshEmployeeExam.becomeEmployeeSearch.modify.toUpdate", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/becomeEmployeeUpdate.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	public String becomeEmployeeToUpdate() {
+
+		String examid = request.getParameter("examid");
+
+		try {
+			// 调用API，查询对象所有数据，放到TbBecomeemployeeexam中
+			List<TbBecomeemployeeexam> tbBecomeemployeeexams = dao
+					.getEntitiestNotLazy(new TbBecomeemployeeexam(),
+							new String[] { "organizationNj", "tbEmployee" },
+							Restrictions.eq("examid", examid));
+			request.setAttribute("tbBecomeemployeeexam", tbBecomeemployeeexams);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "faild";
+		}
+		return "success";
+	}
+
+	/**
+	 * 
+	 * @方法名: updateBecomeEmployee
+	 * 
+	 * @描述: 单条修改转正考核成绩
+	 * 
+	 * @param @return    设定文件
+	 * 
+	 * @return String    返回类型
+	 * 
+	 * @throws
+	 */
+	@Action(value = "employeeTrainExam.freshEmployeeExam.becomeEmployeeSearch.modify", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/becomeEmployeeSearch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	public String updateBecomeEmployee() {
+		// TbBecomeemployeeexam
+
+		try {
+
+			// 待修改
+			becomeService.update(tbBecomeemployeeexam);
+			// 初始化
+			becomeEmployeeSearch();
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			return "faild";
+
+		}
+		return "success";
+	}
+
+	/**
+	 * 
+	 * @方法名: freshEmployeeExaToUpdate
+	 * 
+	 * @描述: 新员工考核成绩查询 跳转到 新员工考核成绩单条修改页面
+	 * 
+	 * @param @return    设定文件
+	 * 
+	 * @return String    返回类型
+	 * 
+	 * @throws
+	 */
+	@Action(value = "employeeTrainExam.freshEmployeeExam.freshEmployeeSearch.modify.toUpdate", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/freshEmployeeExamUpdate.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	public String freshEmployeeExaToUpdate() {
+
+		String examid = request.getParameter("examid");
+		try {
+
+			// 调用API，查询对象所有数据，放到TbFreshemployeeexam中
+			List<TbFreshemployeeexam> tbFreshemployeeexams = dao
+					.getEntitiestNotLazy(new TbFreshemployeeexam(),
+							new String[] { "organizationNj", "tbEmployee" },
+							Restrictions.eq("examid", examid));
+			if(tbFreshemployeeexams.get(0).getExamstage().equals("入职期")){
+				request.setAttribute("examstage", 1);
+			}
+			else{
+				request.setAttribute("examstage",2);
+			}
+			
+			request.setAttribute("tbFreshemployeeexam", tbFreshemployeeexams);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "faild";
+		}
+
+		return "success";
+	}
+
+	@Action(value = "employeeTrainExam.freshEmployeeExam.freshEmployeeSearch.modifya", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/freshEmployeeExamSearch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	public String updateFreshEmployee() {
+		// TbFreshemployeeexam
+
+		try {
+			
+			freshService.update(tbFreshemployeeexam);
+			search();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "faild";
+		}
+
+		return "success";
+	}
 }

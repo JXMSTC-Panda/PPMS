@@ -15,4 +15,20 @@ public interface BecomeemployeeexamDao {
 	public List<OrganizationNj> getOrganizationNjs();
 	
 	public List<TbEmployee> getEmployees();
+
+	/** 
+	
+	* @方法名: update 
+	
+	* @描述: 修改转正成绩考核表
+	
+	* @param @param tb
+	* @param @return    设定文件
+	
+	* @return boolean    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public boolean update(TbBecomeemployeeexam tb);
 }

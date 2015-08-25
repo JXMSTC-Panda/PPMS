@@ -77,6 +77,167 @@
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 							
+							<div class="page-header">
+								<h1>
+									员工考核 <small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 新员工考核成绩单条修改 </small>
+								</h1>
+							</div>
+							<form class="form-horizontal" role="form" method="post"
+								action="employeeTrainExam.freshEmployeeExam.freshEmployeeExamSearch.modify.do">
+								
+								<input type="hidden"
+									value="${requestScope.tbFreshemployeeexam.get(0).examid}"
+									name="tbFreshemployeeexam.examid">
+								<!-- #section:elements.form -->
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-input-readonly"> 区域： </label>
+
+									<div class="col-sm-9">
+										<input readonly="" type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly" value="${requestScope.tbArea.get(0).areadesc}" name="tbArea.areadesc" />
+										<span class="help-inline col-xs-12 col-sm-7"> </span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-input-readonly"> 营业厅编码： </label>
+
+									<div class="col-sm-9">
+										<input readonly="" type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly" value="${requestScope.tbFreshemployeeexam.get(0).organizationNj.orgid }" name="tbFreshemployeeexam.organizationNj.orgid"/> <span
+											class="help-inline col-xs-12 col-sm-7"> </span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-input-readonly"> 营业厅名称： </label>
+
+									<div class="col-sm-9">
+										<input readonly="" type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly" value="${requestScope.tbFreshemployeeexam.get(0).organizationNj.org_Name }" 
+											name="tbFreshemployeeexam.organizationNj.org_Name"/> <span
+											class="help-inline col-xs-12 col-sm-7"> </span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-input-readonly"> 姓名： </label>
+
+									<div class="col-sm-9">
+										<input readonly="" type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly" value="${requestScope.tbFreshemployeeexam.get(0).tbEmployee.employeename}" 
+											name="tbFreshemployeeexam.tbEmployee.employeename"/> <span
+											class="help-inline col-xs-12 col-sm-7">
+											<button class="btn btn-info">选择员工</button> </span>
+									</div>
+								</div>
+
+								<!-- /section:elements.form -->
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-input-readonly"> 工号： </label>
+
+									<div class="col-sm-9">
+										<input readonly="" type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly" value="${requestScope.tbFreshemployeeexam.get(0).tbEmployee.employeeid}" 
+											name="tbFreshemployeeexam.tbEmployee.employeeid"/> <span
+											class="help-inline col-xs-12 col-sm-7"> </span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-input-readonly"> 身份证号： </label>
+
+									<div class="col-sm-9">
+										<input readonly="" type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly" value="${requestScope.tbFreshemployeeexam.get(0).tbEmployee.idnumber}"
+											name="tbFreshemployeeexam.tbEmployee.idnumber"  /> <span
+											class="help-inline col-xs-12 col-sm-7"> </span>
+									</div>
+								</div>
+
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-field-1"> 考试时间： </label>
+
+									<div class="col-sm-9">
+										<input type="text" id="form-field-1" placeholder="考试时间"
+											class="col-xs-10 col-sm-5" 
+											name="tbFreshemployeeexam.examdate"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-field-1"> 阶段： </label>
+
+									<div class="col-sm-9">
+										<select class="col-xs-10 col-sm-5" id="form-field-select-1"
+										name="examstage" value="${requestScope.examstage}"
+										>
+											<option value="1">入职期</option>
+											<option value="2">实习期</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-field-1"> 培养周次： </label>
+
+									<div class="col-sm-9">
+
+										<input type="text" id="form-field-1" placeholder="第几周"
+											class="col-xs-10 col-sm-5" value="${requestScope.tbFreshemployeeexam.get(0).week}"
+											
+											name="tbFreshemployeeexam.week" />
+
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-field-1"> 考试分数： </label>
+
+									<div class="col-sm-9">
+										<input type="text" id="form-field-1" placeholder="Grade"
+											class="col-xs-10 col-sm-5" 
+											value="${requestScope.tbFreshemployeeexam.get(0).examscore}"
+											
+										
+											name="tbFreshemployeeexam.examscore" /> <label
+											class=" control-label no-padding-left" for="form-field-1">
+											分 </label>
+									</div>
+
+								</div>
+
+								<div class="clearfix form-actions">
+									<div class="col-md-offset-3 col-md-9">
+										<button class="btn btn-info" type="submit">
+											<i class="ace-icon fa fa-check bigger-110"></i> 提交
+										</button>
+
+										&nbsp; &nbsp; &nbsp;
+										<button class="btn" type="reset">
+											<i class="ace-icon fa fa-undo bigger-110"></i> 重置
+										</button>
+									</div>
+								</div>
+
+							</form>
+
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.page-content -->
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
