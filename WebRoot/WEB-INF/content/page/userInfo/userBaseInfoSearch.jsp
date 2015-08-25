@@ -129,11 +129,11 @@
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
 														type="checkbox" class="ace" name="cols"
-														value=${employee.employeeid } /> <span class="lbl"></span>
+														/> <span class="lbl"></span>
 												</label>
 												</td>
 
-												<td>${employee.employeecode}</td>
+												<td>${status.index + 1}</td>
 												<td>${employee.idnumber}</td>
 												<td>${employee.employeename}</td>
 												<td><c:if test="${employee.sex==true}">
@@ -145,13 +145,13 @@
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
 														<a class="blue"
-															href="userInfo.userBase.userBaseInfoSearch.Detail.do?id=${employee.employeeid}"
+															href="userInfo.userBase.userBaseInfoSearch.detail.do?id=${employee.employeeid}"
 															name="${employee.employeeid}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="javascript:void(0)" name=""
+															class="green" href="userInfo.userBase.userBaseInfoSearch.modifyInitPage.do?id=${employee.employeeid}" name=""
 															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="userInfo.userBase.userBaseInfoSearch.Delete.do?id=${employee.employeeid}"> <i
+															href="userInfo.userBase.userBaseInfoSearch.delete.do?id=${employee.employeeid}"> <i
 															class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">

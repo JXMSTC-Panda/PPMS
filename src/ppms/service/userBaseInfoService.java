@@ -1,5 +1,6 @@
 package ppms.service;
 
+import java.util.Date;
 import java.util.List;
 
 import ppms.domain.OrganizationNj;
@@ -42,4 +43,13 @@ public interface userBaseInfoService {
 	public List<TbEmployee> getTbEmployees(String employeeid);
 	public List<TbEmployee> getTbEmployee();
 	public void delete(Object object);
+	/*public void update(Object object);*/
+	
+	/*public void update(String employeecode, String employeeid, String employeename,
+			String idnumber, Boolean sex, Date birthday, String bankname,
+			String banknumber, Boolean status, String addressarea,
+			String address, String mobilenumber, String shortmobilenumber,
+			String academicdegree, String schoolname, String specialization,
+			String tel, Date entertime, String backjobcomment, String remark);*/
+	public void update(TbEmployee tbEmployee);
 }
