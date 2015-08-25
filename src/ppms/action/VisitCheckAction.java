@@ -37,7 +37,7 @@ public class VisitCheckAction extends BaseInit {
 
 	@Action(value = "standardVisit.visit.visitSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/visitSingle.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String firstIn() {
 
 		return "success";
@@ -45,7 +45,7 @@ public class VisitCheckAction extends BaseInit {
 
 	@Action(value = "standardVisit.visit.visitSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/visitSearch.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String search() {
 
 		try {
@@ -56,8 +56,10 @@ public class VisitCheckAction extends BaseInit {
 				toCache();
 				return "success";
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "没有数据");
 			return "error";
 		} catch (Exception e) {
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，请重试进入查询");
 			e.printStackTrace();
 			return "error";
 		}
@@ -66,10 +68,14 @@ public class VisitCheckAction extends BaseInit {
 
 	@Action(value = "standardVisit.visit.visitSingle.add", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/visitBatch.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String add() {
 		try {
 			if (visitcheck != null) {
+				
+				if(ServletActionContext.getRequest().getSession().getAttribute("organizationNj")!=null){
+					ServletActionContext.getRequest().getSession().removeAttribute("organizationNj");
+				}
 				double avg = (visitcheck.getFirstscore()
 						+ visitcheck.getSecondscore() + visitcheck
 						.getConsistencyscore()) / 3;
@@ -80,6 +86,7 @@ public class VisitCheckAction extends BaseInit {
 				return null;
 			}
 		} catch (Exception e) {
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，请重试添加");
 			e.printStackTrace();
 			return "error";
 		}
@@ -88,7 +95,7 @@ public class VisitCheckAction extends BaseInit {
 
 	@Action(value = "standardVisit.visit.visitBatch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/visitBatch.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String batche() {
 
 		return "success";
@@ -102,9 +109,11 @@ public class VisitCheckAction extends BaseInit {
 					
 				}
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，提交数据失败，删除失败");
 			return "error";
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，删除失败");
 			return "error";
 		}
 	}

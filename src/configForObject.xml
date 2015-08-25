@@ -43,6 +43,11 @@
 			<class_name>ppms.domain.TbPromotiontraining</class_name>
 		</object>
 	</excel>
+	<excel name="业务培训批量导入模板.xls">
+		<object>
+			<class_name>ppms.domain.TbOperationtraining</class_name>
+		</object>
+	</excel>
 	
 		<excel name="月度绩效批量导入模板.xls">
 		<object>
@@ -178,9 +183,33 @@
 			<class_name>ppms.domain.TbOperationcheck</class_name>
 		</object>
 	</excel>
+	
+	
 	<excel name="营业厅奖惩信息批量导出.xls">
 		<object>
 			<class_name>ppms.domain.TbOrgpraisecriticism</class_name>
+		</object>
+	</excel>
+	
+	<excel name="月度考试批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbMonthexam</class_name>
+		</object>
+	</excel>
+	<excel name="业务培训批量导出.xls">
+		<object>
+			<class_name>ppms.domain.TbOperationtraining</class_name>
+		</object>
+	</excel>
+	<excel name="积分批量导出(合作厅).xls">
+		<object>
+			<class_name>ppms.domain.TbPoint</class_name>
+		</object>
+	</excel>
+	
+	<excel name="积分批量导出(主厅).xls">
+		<object>
+			<class_name>ppms.domain.TbPoint</class_name>
 		</object>
 	</excel>
 </objects>

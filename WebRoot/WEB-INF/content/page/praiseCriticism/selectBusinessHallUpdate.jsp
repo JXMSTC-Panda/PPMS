@@ -100,7 +100,7 @@
 							</div>
 							<div class="table-header">信息查询</div>
 							<form name="StuListForm"
-								action="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.SkipBusinessHallUpdate.do?tbOrgpraisecriticism.praisecriticismid=${requestScope.praisecriticismid}"
+								action="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.modify.SkipBusinessHallUpdate.do?tbOrgpraisecriticism.praisecriticismid=${requestScope.praisecriticismid}"
 								method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">

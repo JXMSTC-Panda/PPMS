@@ -173,7 +173,7 @@
 										<!-- PAGE CONTENT BEGINS -->
 										<!-- <form class="form-horizontal" name="form1" role="form" method="post" action="skipSelectSingle.do"> -->
 										<form class="form-horizontal" name="form1" role="form"
-											method="post" action="praiseCriticism.employee.employeePraiseCriticismSearch.updateEmployeeInfor.do?tbEmployeepraisecriticism.tbEmployee.employeeid=<c:forEach items="${requestScope.employeeInfos}"
+											method="post" action="praiseCriticism.employee.employeePraiseCriticismSearch.modify.updateEmployeeInfor.do?tbEmployeepraisecriticism.tbEmployee.employeeid=<c:forEach items="${requestScope.employeeInfos}"
 												var="employeeInfo">${employeeInfo.employeeid}</c:forEach>&tbEmployeepraisecriticism.praisecriticismid=${requestScope.praisecriticismid}">
 											<!-- #section:elements.form -->
 											
@@ -229,7 +229,7 @@
 														<span class="help-inline col-xs-12 col-sm-7">
 
 															<button class="btn btn-info" type="button"
-																onClick="top.window.location='praiseCriticism.employee.employeePraiseCriticismSearch.skipEmployeeSelectUpdate.do?tbEmployeepraisecriticism.praisecriticismid=${requestScope.praisecriticismid}'">选择员工</button>
+																onClick="top.window.location='praiseCriticism.employee.employeePraiseCriticismSearch.modify.skipEmployeeSelectUpdate.do?tbEmployeepraisecriticism.praisecriticismid=${requestScope.praisecriticismid}'">选择员工</button>
 
 
 														</span>
@@ -328,7 +328,7 @@
 														<i class="ace-icon fa fa-undo bigger-110"></i> Reset
 													</button>
 													&nbsp; &nbsp; &nbsp;
-													<button class="btn btn-info" type="button" onClick="top.window.location='praiseCriticism.employee.employeePraiseCriticismSearch.returnPages.do'">
+													<button class="btn btn-info" type="button" onClick="top.window.location='praiseCriticism.employee.employeePraiseCriticismSearch.modify.returnPages.do'">
 														<i class="ace-icon fa fa-undo bigger-110"></i> Return
 													</button>
 												</div>

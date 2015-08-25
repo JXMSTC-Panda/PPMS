@@ -117,7 +117,7 @@
 									<div class="col-xs-12">
 										<!-- PAGE CONTENT BEGINS -->
 										<form class="form-horizontal" role="form" method="post"
-											action="standardVisit.operationMistake.operationMistakeSearch.operationMistakeInforUpdate.do?tbOperationcheck.tbEmployee.employeeid=<c:forEach items="${requestScope.employeeInfos}"
+											action="standardVisit.operationMistake.operationMistakeSearch.modify.operationMistakeInforUpdate.do?tbOperationcheck.tbEmployee.employeeid=<c:forEach items="${requestScope.employeeInfos}"
 												var="employeeInfo">${employeeInfo.employeeid}</c:forEach>&tbOperationcheck.operationcheckid=${requestScope.operationcheckid}">
 											<!-- #section:elements.form -->
 
@@ -178,7 +178,7 @@
 												var="employeeInfo">${employeeInfo.employeename}</c:forEach>" />
 													<span class="help-inline col-xs-12 col-sm-7">
 														<button class="btn btn-info" type="button"
-															onClick="top.window.location='standardVisit.operationMistake.operationMistakeSearch.operationMistakeUpdateSkip.do?tbOperationcheck.operationcheckid=${requestScope.operationcheckid}'">选择员工</button>
+															onClick="top.window.location='standardVisit.operationMistake.operationMistakeSearch.modify.operationMistakeUpdateSkip.do?tbOperationcheck.operationcheckid=${requestScope.operationcheckid}'">选择员工</button>
 													</span>
 												</div>
 											</div>
@@ -264,7 +264,7 @@
 														<i class="ace-icon fa fa-undo bigger-110"></i> Reset
 													</button>
 													&nbsp; &nbsp; &nbsp;
-													<button class="btn" type="button" onClick="top.window.location='standardVisit.operationMistake.operationMistakeSearch.returnPages.do'">
+													<button class="btn" type="button" onClick="top.window.location='standardVisit.operationMistake.operationMistakeSearch.modify.returnPages.do'">
 														<i class="ace-icon fa fa-undo bigger-110"></i> Return
 													</button>
 												</div>

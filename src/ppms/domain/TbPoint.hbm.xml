@@ -52,7 +52,7 @@
         </property>
         <property name="regulatepoint" type="java.lang.Double">
             <column name="REGULATEPOINT" precision="10" scale="2">
-                <comment>调整后的积分</comment>
+                <comment>调整后积分</comment>
             </column>
         </property>
         <property name="rankseq" type="java.lang.Integer">

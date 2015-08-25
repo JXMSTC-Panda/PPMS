@@ -45,11 +45,13 @@ public class InvocationServiceImp implements InvocationService {
 
 		try {
 			dao.saveObject(innovation);
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 
-		return false;
+		
 	}
 
 	@Override
@@ -64,7 +66,7 @@ public class InvocationServiceImp implements InvocationService {
 
 	@Override
 	public boolean delete(String id) {
-		return dao.delete(TbInnovation.class, id);
+		return dao.delete(new TbInnovation(), id);
 	}
 
 	@Override

@@ -21,16 +21,32 @@ import ppms.domain.TbMonthexam;
 import ppms.domain.TbPost;
 import ppms.domain.TbPromotiontraining;
 import ppms.serviceimpl.PraiseCriticismServiceImp;
+import ppms.serviceimpl.PromoteTrainingServiceImp;
 import ppms.util.TimeStringUtils;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-	public class PromoteTrainingAction extends BaseInit{
+public class PromoteTrainingAction extends BaseInit {
+	
+	
 	private TbPromotiontraining tbPromotiontraining;
+	private String id;
+	
+	@Autowired
+	private PromoteTrainingServiceImp proService;
+	public final String getId() {
+		return id;
+	}
+
+	public final void setId(String id) {
+		this.id = id;
+	}
+
 	private TbArea tbArea;
 	@Autowired
 	private PraiseCriticismServiceImp service;
+
 	public TbArea getTbArea() {
 		return tbArea;
 	}
@@ -38,6 +54,7 @@ import com.opensymphony.xwork2.ActionSupport;
 	public void setTbArea(TbArea tbArea) {
 		this.tbArea = tbArea;
 	}
+
 	public TbPromotiontraining getTbPromotiontraining() {
 		return tbPromotiontraining;
 	}
@@ -46,21 +63,41 @@ import com.opensymphony.xwork2.ActionSupport;
 		this.tbPromotiontraining = tbPromotiontraining;
 	}
 
-	@Action(value ="employeeTrainExam.promoteTrain.promoteTrainSingle.promoteTrainAdd", results = {  
-	        @Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSingleResult.jsp"),  
-	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
-	public String roleSingleResult(){
+	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSingle.add", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSingleResult.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String roleSingleResult() {
 		System.out.println("0000");
-		
-		tbPromotiontraining.setPromotiontrainingid(TimeStringUtils.getTimeString());
-		service.save(tbPromotiontraining);
-		
+
+		try {
+			tbPromotiontraining.setPromotiontrainingid(TimeStringUtils
+					.getTimeString());
+			if (ServletActionContext.getRequest().getSession()
+					.getAttribute("organizationNj") != null) {
+
+				ServletActionContext.getRequest().getSession()
+						.removeAttribute("organizationNj");
+			}
+			if (ServletActionContext.getRequest().getSession()
+					.getAttribute("employee") != null) {
+				ServletActionContext.getRequest().getSession()
+						.removeAttribute("employee");
+			}
+			service.save(tbPromotiontraining);
+
+			ServletActionContext.getResponse().sendRedirect("employeeTrainExam.promoteTrain.promoteTrainSearch.do");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+
 		return "success";
 	}
-	@Action(value ="employeeTrainExam.promoteTrain.promoteTrainSingle.skipSelectEmployeePages", results = {  
-	        @Result(name = "success", location = "/WEB-INF/content/page/selectSingleEmployee.jsp"),  
-	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
-	public String skipSelectEmployeePages(){
+
+	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSingle.skipSelectEmployeePages", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/selectSingleEmployee.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String skipSelectEmployeePages() {
 		ActionContext actionContext = ActionContext.getContext();// 创建ActionContext的对象并调用getContext()方法
 		Map<String, Object> request = (Map) actionContext.get("request");// 获取出request对象
 		try {
@@ -68,8 +105,7 @@ import com.opensymphony.xwork2.ActionSupport;
 			System.out.println("create skipSelectSingle");
 
 			// 执行findAllEmployeeInfor方法，查询所有员工信息
-			List<TbEmployee> employeeResults = service
-					.findAllEmployeeInfor();
+			List<TbEmployee> employeeResults = service.findAllEmployeeInfor();
 
 			// 新建一个TbEmployee类型的空的list，名称为emploeesInfo
 			List<TbEmployee> emploeesInfo = new ArrayList<TbEmployee>();
@@ -98,8 +134,8 @@ import com.opensymphony.xwork2.ActionSupport;
 						.getTbPost().getPostid());// 执行findPostName方法，根据岗职编号获取岗职信息
 				TbPost tbPost = posts.get(0);
 				tbEmployee.setTbPost(tbPost);// 将岗职信息set进对象tbPost中
-				List<TbJob> jobs = service.findJobName(tbEmployee
-						.getTbJob().getJobid());// 执行findJobName方法，根据岗位编号获取岗位信息
+				List<TbJob> jobs = service.findJobName(tbEmployee.getTbJob()
+						.getJobid());// 执行findJobName方法，根据岗位编号获取岗位信息
 				tbEmployee.setTbJob(jobs.get(0));// 将岗位信息set进对象tbJob中
 				emploeesInfo.add(tbEmployee);// 设置对TbEmployee的策略
 			}
@@ -109,12 +145,13 @@ import com.opensymphony.xwork2.ActionSupport;
 			e.printStackTrace();
 			return null;
 		}
-		}
-	@Action(value ="employeeTrainExam.promoteTrain.promoteTrainSingle.skipPromoteTrainSingle", results = {  
-	        @Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSingle.jsp"),  
-	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
-	public String skipPromoteTrainSingle(){
-		
+	}
+
+	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSingle.skipPromoteTrainSingle", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSingle.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String skipPromoteTrainSingle() {
+
 		ActionContext actionContext = ActionContext.getContext(); // 创建ActionContext的对象并调用getContext()方法
 		Map<String, Object> request = (Map) actionContext.get("request"); // 获取出request对象
 		String employeeId = ServletActionContext.getRequest().getParameter(
@@ -148,8 +185,8 @@ import com.opensymphony.xwork2.ActionSupport;
 						.getTbPost().getPostid()); // 调用findPostName()方法
 				TbPost tbPost = posts.get(0); // 获取岗职集合中的第一个也是唯一一个值
 				tbEmployee.setTbPost(tbPost); // 将获取的值设置到tbEmployee中
-				List<TbJob> jobs = service.findJobName(tbEmployee
-						.getTbJob().getJobid()); // 调用findJobName()方法
+				List<TbJob> jobs = service.findJobName(tbEmployee.getTbJob()
+						.getJobid()); // 调用findJobName()方法
 				tbEmployee.setTbJob(jobs.get(0)); // 获取岗位集合中的第一个也是唯一一个值，并将获取的值设置到tbEmployee中
 				emploeesInfo.add(tbEmployee); // 将tbEmployee对象添加到emploeesInfo中
 				// 设置对TbEmployee的策略
@@ -161,26 +198,32 @@ import com.opensymphony.xwork2.ActionSupport;
 			return null;
 		}
 	}
-	
+
 	@Autowired
 	@Qualifier("baseDaoImp")
 	private BaseDaoImp daoImp;
-	@Action(value ="employeeTrainExam.promoteTrain.promoteTrainSearch", results = {  
-	        @Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSearch.jsp"),  
-	        @Result(name = "faild", location="/WEB-INF/content/error.jsp")})
-	public String first(){
-		int i=0;
+
+	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSearch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String first() {
+		int i = 0;
 		System.out.println("dasd");
 		promoteTrainSearch("employeeTrainExam.null.promoteTrainSearch");
 		toCache();
 		return "success";
 	}
-	public void promoteTrainSearch(String url){
+
+	public void promoteTrainSearch(String url) {
 		try {
 			switch (url) {
 			case "employeeTrainExam.null.promoteTrainSearch":
-				
-				List<TbPromotiontraining> tbPromotiontrainings=daoImp.getEntitiestNotLazy(new TbPromotiontraining(),new String[]{"organizationNj","tbEmployee",},null);
+
+				List<TbPromotiontraining> tbPromotiontrainings = daoImp
+						.getEntitiestNotLazy(
+								new TbPromotiontraining(),
+								new String[] { "organizationNj", "tbEmployee", },
+								null);
 				map.put("tbPromotiontraining", tbPromotiontrainings);
 				break;
 
@@ -190,6 +233,86 @@ import com.opensymphony.xwork2.ActionSupport;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+	}
+
+	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSearch.delete", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSingle.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String delete(){
 		
+		try {
+			if(id!=null){
+				proService.delete(id);
+				ServletActionContext.getResponse().sendRedirect("employeeTrainExam.promoteTrain.promoteTrainSearch.do");
+				return null;
+			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "删除失败");
+			return "error";
+		} catch (Exception e) {
+			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，删除失败");
+			return "error";
 		}
+	}
+	
+	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSearch.modify", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainUpdate.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String modify(){
+		
+		try {
+			if(id!=null){
+				
+				TbPromotiontraining promotiontraining=proService.getEntity(id);
+				ServletActionContext.getRequest().setAttribute("promotiontraining", promotiontraining);
+				return "success";
+			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "获取数据失败");
+			return "error";
+		} catch (Exception e) {
+			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常");
+			return "error";
+		}
+	}
+	
+	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSingle", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainSingle.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String firstIn() {
+
+		return "success";
+	}
+
+	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainBatch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainBatch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String batch() {
+
+		return "success";
+	}
+	
+	@Action(value = "employeeTrainExam.promoteTrain.promoteTrainSearch.update", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/employeeTrainExam/promoteTrainUpdate.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
+	public String update(){
+		
+		try {
+			if(tbPromotiontraining!=null){
+				
+				if(proService.update(tbPromotiontraining)){
+					
+					ServletActionContext.getResponse().sendRedirect("employeeTrainExam.promoteTrain.promoteTrainSearch.do");
+					return null;
+				}
+			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "修改失败");
+			return "error";
+		} catch (Exception e) {
+			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，修改失败");
+			return "error";
+		}
+	}
 }

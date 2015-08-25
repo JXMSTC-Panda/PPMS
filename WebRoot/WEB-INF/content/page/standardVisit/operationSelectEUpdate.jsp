@@ -101,7 +101,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">信息查询</div>
-							<form  name="StuListForm" action="standardVisit.operationMistake.operationMistakeSearch.SkipOperationMistakeUpdate.do?tbOperationcheck.operationcheckid=${requestScope.operationcheckid}" method="post"
+							<form  name="StuListForm" action="standardVisit.operationMistake.operationMistakeSearch.modify.SkipOperationMistakeUpdate.do?tbOperationcheck.operationcheckid=${requestScope.operationcheckid}" method="post"
  method="post" >
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">

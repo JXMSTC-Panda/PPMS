@@ -105,13 +105,7 @@
 
 
 <script src="${pageContext.request.contextPath}/assets/js/jquery-2.0.3.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#OrgNameLabel").mouseover(function(){
-			alert("aa");
-		});
-	});
-</script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#OrgName").change(function() {
@@ -268,7 +262,7 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="AreaName" value="" /> <span
+														id="AreaName" value="" name="tbMountguardexam.organizationNj.areadesc"/> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -278,7 +272,7 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="OrgId" value="" /> <span
+														id="OrgId" value="" name=""/> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -288,7 +282,7 @@
 
 												<div class="col-sm-9">
 													<div class="col-xs-10 col-sm-5">
-														<select onchange="ajaxForEmployee(this)" name="OrgName"
+														<select onchange="ajaxForEmployee(this)" name="tbMountguardexam.organizationNj.orgid"
 															class="chosen-select form-control " id="OrgName"
 															data-placeholder="选择营业厅">
 															<option value="0"></option>
@@ -306,7 +300,7 @@
 													for="form-input-readonly"> 选择员工： </label>
 												<div class="col-sm-9">
 													<div class="col-xs-10 col-sm-5">
-														<select class="chosen-select form-control" name="EmployeeNameSelect"
+														<select class="chosen-select form-control" name="tbMountguardexam.tbEmployee.employeeid"
 															id="EmployeeNameSelect" data-placeholder="选择员工">
 															<option value="0"></option>
 															<c:forEach items="${ requestScope.employees}" var="employees">
@@ -329,7 +323,7 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="EmployeeId" value="" /> <span
+														id="EmployeeId" value="" name="tbMountguardexam.tbEmployee.employeecode"/> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -340,7 +334,7 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="Id" value="" /> <span
+														id="Id" value="" name = "tbMountguardexam.tbEmployee.idnumber"/> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -349,12 +343,12 @@
 
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"
-													for="form-field-1"> 培训时间： </label>
+													for="form-field-1"> 考核时间： </label>
 
 												<div class="col-sm-9">
 													<div class="input-group col-xs-10 col-sm-5">
 														<input class="form-control date-picker " id="TrainTime"
-															type="text" data-date-format="yyyy-mm-dd" /> <span
+															type="text" data-date-format="yyyy-mm-dd" name="tbMountguardexam.examdate"/> <span
 															class="input-group-addon"> <i
 															class="fa fa-calendar bigger-110"></i> </span>
 													</div>
@@ -363,17 +357,14 @@
 
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"
-													for="form-field-1"> 进阶内容： </label>
+													for="form-field-1"> 考核内容： </label>
 
 												<div class="col-sm-9">
-													<select class="col-xs-10 col-sm-5" id="SelectedDetail">
+													<select class="col-xs-10 col-sm-5" id="SelectedDetail" name="tbMountguardexam.examtype">
 
-														<option value="1">进阶熟练营业员</option>
-														<option value="2">进阶账务稽核</option>
-														<option value="3">进阶实习值班经理</option>
-														<option value="4">进阶值班经理</option>
-														<option value="5">进阶店长</option>
-														<option value="6">其他</option>
+														<option value="0001">营业员上岗证</option>
+														<option value="0002">帐务稽核人员上岗证</option>
+														
 													</select>
 												</div>
 											</div>
@@ -384,7 +375,7 @@
 
 												<div class="col-sm-9">
 													<input type="text" id="VaildTime" placeholder="Grade"
-														class="col-xs-10 col-sm-5" /> <label
+														class="col-xs-10 col-sm-5" name="tbMountguardexam.examexpire"/> <label
 														class=" control-label no-padding-left" for="form-field-1">
 														个月 </label>
 												</div>
@@ -397,7 +388,7 @@
 
 												<div class="col-sm-9">
 													<input type="text" id="ExamGrade" placeholder="Grade"
-														class="col-xs-10 col-sm-5" /> <label
+														class="col-xs-10 col-sm-5" name="tbMountguardexam.examscore"/> <label
 														class=" control-label no-padding-left" for="form-field-1">
 														分 </label>
 												</div>
@@ -409,9 +400,8 @@
 
 													<input class="btn btn-info" type="submit" value="Submit">
 													&nbsp; &nbsp; &nbsp;
-													<button class="btn" type="reset">
-														<i class="ace-icon fa fa-undo bigger-110"></i> Reset
-													</button>
+													
+													<input class="btn " type="reset" value="Reset">
 												</div>
 											</div>
 
