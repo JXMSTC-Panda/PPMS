@@ -563,4 +563,7 @@ public class FreshEmployeeExamAction extends BaseInit {
 
 		return "success";
 	}
+	public void test（）{
+		
+	}
 }

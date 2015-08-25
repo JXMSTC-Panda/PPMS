@@ -97,17 +97,17 @@
 							<div class="page-header">
 								<h1>
 									积分管理 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 积分查询查询 </small>
+										class="ace-icon fa fa-angle-double-right"></i> 主厅积分查询 </small>
 								</h1>
 							</div>
 											<div class="clearfix form-actions">
 												<div class="col-md-offset-3 col-md-9">
-													<button class="btn btn-info" type="button" onclick="top.window.location='integral.null.integralSearch.do'">
+													<button class="btn btn-info" type="button" onclick="top.window.location='#'">
 														<i class="ace-icon fa fa-check bigger-110"></i> 主厅
 													</button>
 
 													&nbsp; &nbsp; &nbsp;
-													<button class="btn btn-info" type="button" onclick="top.window.location='integral.null.integralSearch.do?type=合作厅'">
+													<button class="btn btn-info" type="button" onclick="top.window.location='integral.null.integralSearch.do?type=1'">
 														<i class="ace-icon fa fa-undo bigger-110"></i> 合作厅
 													</button>
 												</div>
@@ -116,7 +116,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">积分（主厅）表</div>
-							<form action="downData.do?fileName=创新提案批量导出.xls"
+							<form action="downData.do?fileName=积分批量导出(主厅).xls"
 								name="StuListForm" method="post">
 
 								<c:set var="count" value="0"></c:set>

@@ -11,8 +11,6 @@ import ppms.action.interfaces.BaseInit;
 import ppms.domain.TbPoint;
 import ppms.serviceimpl.IntegralServiceImp;
 
-import com.opensymphony.xwork2.ActionSupport;
-
 /**
  * 处理积分管理模块请求
  * 
@@ -71,22 +69,25 @@ public class IntegralAction extends BaseInit {
 	public String search() {
 
 		try {
-			List<TbPoint> points = service.getAllPoints("01");
-			System.out.println("ss");
+			
+			
+			List<TbPoint> points = service.getAllPoints(type);
 
 			if (points.size() > 0) {
 				map.put("points", points);
 				toCache();
 			}
 
-			if(type!=null&&type.equals("合作厅")){
+			if(type!=null&&type.equals("1")){
 				return "success1";
 			}
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常");
+			return "error";
 		}
-		return "error";
+		
 	}
 
 	@Action(value = "integral.null.integralSearch.delete", results = {
@@ -102,9 +103,11 @@ public class IntegralAction extends BaseInit {
 					return null;
 				}
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "删除失败");
 			return "error";
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常");
 			return "error";
 		}
 	}

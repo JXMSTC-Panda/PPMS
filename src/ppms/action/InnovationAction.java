@@ -68,7 +68,7 @@ public class InnovationAction extends BaseInit {
 	 */
 	@Action(value = "innovation.null.innovationSingle", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSingle.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String firstIn() {
 
 		List<OrganizationNj> organizationNjs = getOrganizationNjs();
@@ -86,7 +86,7 @@ public class InnovationAction extends BaseInit {
 	 */
 	@Action(value = "innovation.null.innovationSingle.add", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSingleResult.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String add() {
 
 		try {
@@ -124,7 +124,7 @@ public class InnovationAction extends BaseInit {
 
 	@Action(value = "innovation.null.innovationSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSearch.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String searchPage() {
 
 		List<TbInnovation> innovations = getInnovations();
@@ -139,7 +139,7 @@ public class InnovationAction extends BaseInit {
 
 	@Action(value = "innovation.null.innovationBatch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationBatch.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String batchUpload() {
 
 		return "success";
@@ -147,7 +147,7 @@ public class InnovationAction extends BaseInit {
 
 	@Action(value = "innovation.null.innovationSearch.delete", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationSearch.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String delete() {
 		try {
 			if (id != null) {
@@ -158,6 +158,7 @@ public class InnovationAction extends BaseInit {
 					return null;
 				}
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "删除失败");
 			return "error";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -167,7 +168,7 @@ public class InnovationAction extends BaseInit {
 
 	@Action(value = "innovation.null.innovationSearch.modify", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationUpdate.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String modify() {
 		if (id != null) {
 
@@ -176,12 +177,13 @@ public class InnovationAction extends BaseInit {
 					tbInnovation);
 			return "success";
 		}
+		ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常，未获取到要修改的数据");
 		return "error";
 	}
 
 	@Action(value = "innovation.null.innovationSearch.update", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/innovation/innovationUpdate.jsp"),
-			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String update() {
 
 		try {
@@ -194,11 +196,13 @@ public class InnovationAction extends BaseInit {
 						"innovation.null.innovationSearch.do");
 				return null;
 			}
+			ServletActionContext.getRequest().setAttribute("errorInfo", "暂无没有创新提案");
 			return "error";
 		} catch (Exception e) {
 			e.printStackTrace();
+			ServletActionContext.getRequest().setAttribute("errorInfo", "服务器异常");
 			return "error";
-		}
+		}	
 
 	}
 

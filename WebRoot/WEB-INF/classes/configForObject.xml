@@ -201,4 +201,15 @@
 			<class_name>ppms.domain.TbOperationtraining</class_name>
 		</object>
 	</excel>
+	<excel name="积分批量导出(合作厅).xls">
+		<object>
+			<class_name>ppms.domain.TbPoint</class_name>
+		</object>
+	</excel>
+	
+	<excel name="积分批量导出(主厅).xls">
+		<object>
+			<class_name>ppms.domain.TbPoint</class_name>
+		</object>
+	</excel>
 </objects>
