@@ -200,6 +200,7 @@
 					</ul></li> -->
 
 				<!-- #section:basics/navbar.user_menu -->
+				<!-- <li><span id="timeShow"></span><i class="ace-icon fa fa-time"></i></li> -->
 				<li class="light-blue"><a data-toggle="dropdown" href="#"
 					class="dropdown-toggle"> <img class="nav-user-photo"
 						src="${pageContext.request.contextPath}/assets/avatars/user.jpg"
@@ -230,3 +231,17 @@
 	</div>
 	<!-- /.navbar-container -->
 </div>
+<!-- <script language="javascript">
+     var t = null;
+    t = setTimeout(time,1000);//开始执行
+    function time()
+    {
+       clearTimeout(t);//清除定时器
+       dt = new Date();
+       var h=dt.getHours();
+       var m=dt.getMinutes();
+       var s=dt.getSeconds();
+       document.getElementById("timeShow").innerHTML =  "现在的时间为："+h+" 时 "+m+" 分 "+s+" 秒  ";
+       t = setTimeout(time,1000); //设定定时器，循环执行             
+    } 
+  </script> -->

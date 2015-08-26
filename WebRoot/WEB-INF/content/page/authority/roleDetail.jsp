@@ -89,14 +89,14 @@
 						</li>
 						<li class="active">权限管理</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					<%-- <jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include> --%>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="page-header">
 						<h1>
 							权限管理 <small> <i class="ace-icon fa fa-angle-double-right"></i>
-								角色添加</small>
+								角色详情</small>
 						</h1>
 					</div>
 					<div class="row">
@@ -289,6 +289,10 @@
 			//修改角色按钮
 			$("#roleUpdataBtn").click(function() {
 
+				$("#alertDiv").show();
+				$("#alertDiv i").addClass("fa-spinner red");
+				$("#alertDiv strong").addClass("red");
+				$("#alertDiv strong").html("权限模块正在修改中......");
 				var roleID = $("#alertDiv input").val()
 				//角色名称
 				,roleName = $("#roleNameInput").val()
@@ -299,7 +303,7 @@
 				//被选中的节点
 				nodes = treeObj.getCheckedNodes(true), v = "";
 				
-				alert(roleID + roleName);
+				//alert(roleID + roleName);
 				for ( var i = 0; i < nodes.length; i++) {
 					if(i != nodes.length -1)
 						v += nodes[i].id + ",";
