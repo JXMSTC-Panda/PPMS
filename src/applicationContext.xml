@@ -35,7 +35,7 @@
 			<value>panda</value>
 		</property>
 		<property name="maxPoolSize">
-			<value>80</value>
+			<value>15</value>
 		</property>
 		<property name="minPoolSize">
 			<value>1</value>
