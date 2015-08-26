@@ -73,10 +73,10 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">人员综合信息管理</a></li>
+						<li class="active">值班经理评测</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -87,8 +87,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									值班经理测评、进阶查询 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 值班经理测评查询 </small>
+									值班经理测评查询
 								</h1>
 							</div>
 							
