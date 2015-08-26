@@ -84,8 +84,7 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a>
-						</li>
+						<li><a href="#">父功能</a></li>
 						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -97,8 +96,8 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									管理 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 创新提案查询 </small>
+									管理 <small> <i class="ace-icon fa fa-angle-double-right"></i>
+										创新提案查询 </small>
 								</h1>
 							</div>
 
@@ -106,7 +105,8 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">创新提案表</div>
-							<form action="downData.do?fileName=创新提案批量导出.xls" name="StuListForm" method="post">
+							<form action="downData.do?fileName=创新提案批量导出.xls"
+								name="StuListForm" method="post">
 
 								<c:set var="count" value="0"></c:set>
 								<table id="dynamic-table"
@@ -135,54 +135,59 @@
 											var="innovation" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" cols="${innovation.innovationid }" /> <span class="lbl"></span>
-												</label>
-												</td>
+														type="checkbox" class="ace"
+														cols="${innovation.innovationid }" /> <span class="lbl"></span>
+												</label></td>
 												<td><c:if test="${innovation.tbEmployee!=null}">
 														<c:out value="${innovation.tbEmployee.employeecode}"></c:out>
 												</td>
 												</c:if>
 												<td><c:if test="${ innovation.tbEmployee!=null}">
 														<c:out value="${innovation.tbEmployee.employeename}"></c:out>
-													</c:if></td>
+													</c:if>
+												</td>
 												<td><c:if test="${ innovation.tbEmployee!=null}">
 														<c:out value="${innovation.tbEmployee.idnumber}"></c:out>
-													</c:if></td>
+													</c:if>
+												</td>
 												<td><c:out value="${innovation.organizationNj.orgid}"></c:out>
 												</td>
 												<td><c:out
-														value="${innovation.organizationNj.org_Name}"></c:out>
+														value="${innovation.organizationNj.org_Name}"></c:out></td>
+												<td><c:out value="${innovation.innovationcontent}"></c:out>
 												</td>
-												<td><c:out value="${innovation.innovationcontent}"></c:out></td>
-													<td><c:if test="${innovation.tbEmployee==null}">
+												<td><c:if test="${innovation.tbEmployee==null}">
 														<c:out value="团队创新"></c:out>
 													</c:if> <c:if test="${innovation.tbEmployee!=null}">
 														<c:out value="个人创新"></c:out>
 
-													</c:if>
-												</td>
+													</c:if></td>
 												<td><c:out
 														value="${fn:split(innovation.assessdate,' ')[0]}"></c:out>
 												</td>
-												<td><c:out
-														value="${ innovation.assessresult}"></c:out>
+												<td><c:out value="${ innovation.assessresult}"></c:out>
 												</td>
 												<td><c:forEach items="${requestScope.masters }"
 														var="master">
 														<c:if test="${innovation.assesslevel==master.key}">
 															<c:out value="${master.value }"></c:out>
 														</c:if>
-													</c:forEach>
-												</td>
-												<td><c:out value="${innovation.encouragement}"></c:out>
+													</c:forEach></td>
+												<td><a name="longtext" href="javascript:void(0);"
+													data-container="body" data-toggle="popover"
+													data-placement="bottom"
+													data-content="${innovation.encouragement}"></a>
 												</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="innovation.null.innovationSearch.modify.do?id=${innovation.innovationid }" name=""
-															onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="innovation.null.innovationSearch.delete.do?id=${innovation.innovationid }"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+														<a class="green"
+															href="innovation.null.innovationSearch.modify.do?id=${innovation.innovationid }"
+															name="" onclick="Modify(this)"> <i
+															class="fa fa-pencil bigger-130"><small>修改</small> </i> </a> <a
+															class="red"
+															href="innovation.null.innovationSearch.delete.do?id=${innovation.innovationid }">
+															<i class="fa fa-trash bigger-130"><small>删除</small> </i>
+														</a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -198,30 +203,33 @@
 																	onclick="GetDetail(this)" class="tooltip-info"
 																	data-rel="tooltip" title="View"> <span class="blue">
 																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																	</span> </a>
-																</li>
+																	</span> </a></li>
 
 																<li><a href="javascript:void(0)" name=""
 																	onclick="Modify(this)" class="tooltip-success"
 																	data-rel="tooltip" title="Edit"> <span
 																		class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a href="ClassDelete?classId="
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
 															</ul>
 														</div>
-													</div></td>
+													</div>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
 								<div class="clearfix form-actions">
 									<div class="col-md-offset-3 col-md-9">
-											&nbsp; &nbsp; &nbsp;<button class="btn btn-info" type="submit">
+										&nbsp; &nbsp; &nbsp;
+										<button class="btn btn-info" type="submit">
 											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
 										</button>
 									</div>
@@ -237,7 +245,14 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("longtext", 0, 5);
+		});
+	</script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<!-- Excel导出插件 -->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/tableExport.js"></script>
@@ -252,39 +267,41 @@
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/libs/base64.js"></script>
 
-
-
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js">
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js">
 		
 	</script>
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"
 		chartset="utf8"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
+
 	<script type="text/javascript">
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
 			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-			.dataTable({
-				bAutoWidth : false,
-				"aoColumns" : [ {
-					"bSortable" : false
-				}, null, null, null, null,null, null, null,null,null,null,null, {
-					"bSortable" : false
-				} ],
-				"aaSorting" : [],
+			.dataTable(
+					{
+						bAutoWidth : false,
+						"aoColumns" : [ {
+							"bSortable" : false
+						}, null, null, null, null, null, null, null, null,
+								null, null, null, {
+									"bSortable" : false
+								} ],
+						"aaSorting" : [],
 
-					
-					"sScrollY": "200px",
-					//"bPaginate": false,
+						"sScrollY" : "200px",
+						//"bPaginate": false,
 
-					"sScrollX": "100%",
-					"sScrollXInner": "120%",
-					"bScrollCollapse": true,
+						"sScrollX" : "100%",
+						"sScrollXInner" : "120%",
+						"bScrollCollapse" : true,
 					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
 					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 
