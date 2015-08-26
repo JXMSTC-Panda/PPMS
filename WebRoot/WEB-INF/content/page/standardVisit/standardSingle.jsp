@@ -90,8 +90,7 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a>
-						</li>
+						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -104,6 +103,7 @@
 							标准化成绩管理 <small> <c:if
 									test="${requestScope.tbStandardcheck==null }">
 									<i class="ace-icon fa fa-angle-double-right"></i> 标准化成绩单条录入： 
+							
 							
 							</small>
 						</h1>
@@ -231,6 +231,12 @@
 								</div>
 							</div>
 							</form>
+							<%
+								if (request.getSession().getAttribute("organizationNj") != null) {
+
+									request.getSession().removeAttribute("organizationNj");
+								}
+							%>
 						</div>
 						<!-- /.col -->
 					</div>

@@ -3,6 +3,8 @@ package ppms.service;
 import java.util.List;
 
 import ppms.domain.TbRole;
+import ppms.domain.TbRolefunction;
+
 import ppms.domain.TbSystemfunction;
 
 /**
@@ -25,6 +27,14 @@ public interface AuthorityService {
 	*/
 	public List<TbRole> findAllRole();
 	
+	/** 
+	* @Title: findAllRolefunctions 
+	* @Description: TODO
+	* @return     
+	* List<TbRolefunction>     
+	* @throws 
+	*/
+	public List<TbRolefunction> findAllRolefunctions();
 	
 	/** 
 	* @Title: findSystemFunctionJson 
@@ -44,5 +54,61 @@ public interface AuthorityService {
 	* List<TbSystemfunction>     
 	* @throws 
 	*/
-	public List<TbSystemfunction> findAllSystemfunctions();
+	public List<TbSystemfunction> findAllSystemfunctions();	
+	
+	/** 
+	* @Title: saveRole 
+	* @Description: 保存角色信息
+	* @param roleID      角色ID
+	* @param roleName    角色名称
+	* @param roleType    系统管理员标识
+	* @param creatRoleID 创建人ID
+	* @param roleNodes   角色权限
+	* @return     
+	* Boolean     
+	* @throws 
+	*/
+	public Boolean saveRole(String roleID,String roleName,Boolean roleType,String creatRoleID,String roleNodes);
+	
+	/** 
+	* @Title: deleteRole 
+	* @Description: TODO
+	* @param roleID
+	* @return     
+	* Boolean     
+	* @throws 
+	*/
+	public Boolean deleteRole(String roleID);
+	
+	/** 
+	* @Title: findRoleJson 
+	* @Description: TODO
+	* @param roleID
+	* @return     
+	* String     
+	* @throws 
+	*/
+	public TbRolefunction findTbRoleFunction(String roleID);
+	/** 
+	* @Title: updateRole 
+	* @Description: TODO
+	* @param roleID
+	* @param roleName
+	* @param roleType
+	* @param creatRoleID
+	* @param roleNodes
+	* @return     
+	* Boolean     
+	* @throws 
+	*/
+	public Boolean updateRole(String roleID,String roleName,Boolean roleType,String creatRoleID,String roleNodes);
+	/** 
+	* @Title: findRoleJson 
+	* @Description: TODO
+	* @param roleID
+	* @return     
+	* String     
+	* @throws 
+	*/
+	public TbRole findRoleByRoleID(String roleID);
 }

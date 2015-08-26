@@ -6,20 +6,18 @@
 -->
 <hibernate-mapping>
     <class name="ppms.domain.TbRolefunction" table="TB_ROLEFUNCTION" schema="PPMSUSER">
-        <composite-id name="id" class="ppms.domain.TbRolefunctionId">
-            <key-property name="roleid" type="java.lang.String">
-                <column name="ROLEID" length="6" />
-            </key-property>
-            <key-property name="functionid" type="java.lang.String">
-                <column name="FUNCTIONID" length="30" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="tbSystemfunction" class="ppms.domain.TbSystemfunction" update="false" insert="false" fetch="select">
-            <column name="FUNCTIONID" length="30" not-null="true" />
+        <id name="rolefunctionid" type="java.lang.String">
+            <column name="ROLEFUNCTIONID" length="20" />
+             <generator class="sequence">
+				<param name="sequence">AutoID</param>
+			</generator>
+        </id>
+        <many-to-one name="tbRole" class="ppms.domain.TbRole" fetch="select">
+            <column name="ROLEID" length="20" not-null="true" />
         </many-to-one>
-        <many-to-one name="tbRole" class="ppms.domain.TbRole" update="false" insert="false" fetch="select">
-            <column name="ROLEID" length="6" not-null="true" />
-        </many-to-one>
+        <property name="functionids" type="java.lang.String">
+            <column name="FUNCTIONIDS" length="500" not-null="true" />
+        </property>
         <property name="employeesearchscope" type="java.lang.String">
             <column name="EMPLOYEESEARCHSCOPE" length="6" />
         </property>

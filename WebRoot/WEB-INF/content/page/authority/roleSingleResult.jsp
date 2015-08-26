@@ -17,16 +17,21 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-
+<link href="${pageContext.request.contextPath}/plugin/Others/error.css"
+	rel="stylesheet" type="text/css" media="all" />
 <!-- text fonts -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
@@ -73,7 +78,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="roleSingle.jsp">角色增加</a></li>
+						<li><a href="roleSingle.jsp">角色增加</a>
+						</li>
 						<li class="active">角色增加结果</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -83,62 +89,49 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<div class="widget-box">
-								<div class="widget-header widget-header-flat">
-									<h4 class="widget-title">角色增加结果</h4>
-								</div>
-
-								<div class="widget-body">
-									<div class="widget-main">
-										<div class="row">
-											<div class="col-xs-12">
-												<ul class="list-unstyled spaced">
-													<li class="center"><i
-														class="ace-icon fa fa-bell-o bigger-110 purple"></i>下列角色增加成功</li>
-
-													<li class="gray"><i
-														class="ace-icon fa fa-exclamation-triangle bigger-110 orange"></i>
-														请在权限配置文件中设定该角色的<span class="bigger-110 red">[人员基本信息查询、人员基本信息修改、人员基本信息批量修改]</span>功能的字段级权限属性（如不设定，默认为可操作全部字段）！
-													</li>
-													<li class="gray"><i
-														class="ace-icon fa fa-exclamation-triangle bigger-110 orange"></i>
-														若是<span class="bigger-110 red">[系统管理员]</span>角色，则无需设定，即使设定，也不生效！
-													</li>
-
-													<li class="center"><i
-														class="ace-icon fa fa-key bigger-110 blue"></i> 角色ID：1111
-													</li>
-													<li class="center"><i
-														class="ace-icon fa fa-user bigger-110 blue"></i> 角色名：管理员</li>
-
-												</ul>
-											</div>
-										</div>
+							<!--start-wrap--->
+							<div class="wrap">
+								<!---start-header---->
+								<div class="header">
+									<div class="logo">
+										<h1>
+											<a href="#">Ohh</a>
+										</h1>
 									</div>
 								</div>
-								<div class="clearfix form-actions">
-									<div class="col-md-offset-4 col-md-8">
-										<button class="btn btn-info" type="button"
-											onclick="top.window.location='/resource/authority.null.roleSingle'">
-											<i class="ace-icon fa fa-check bigger-110"></i>继续增加角色
-										</button>
-										&nbsp; &nbsp; &nbsp;
-										<button class="btn" type="button"
-											onclick="top.window.location='roleSearch.do'">
-											<i class="ace-icon fa fa-mail-forward bigger-110"></i> 转至查询
-										</button>
+								<!---End-header---->
+								<!--start-content------>
+								<div class="content">
+									<img
+										src="${pageContext.request.contextPath}/plugin/Others/images/error-img.png"
+										title="error" />
+									<p>
+										<span><label>O</label>hh.....</span> <span id="errorReason">${errorInfo}</span>
+									</p>
+									<div>
+										<c:forEach items="${errorInfos}" var="eis" varStatus="status">
+											<span>${eis.index}${eis.info}</span>
+											<br>
+										</c:forEach>
+									</div>
+									<a id="backUrl" href="${backUrl}">返回</a>
+									<div class="copy-right">
+										<p>
+											&#169 All rights Reserved | Designed by <a
+												href="http://chnn.com/">jxmstc.pandas</a>
+										</p>
 									</div>
 								</div>
+								<!--End-Cotent------>
 							</div>
-							<!-- /.col -->
+							<!--End-wrap--->
+							<!-- PAGE CONTENT ENDS -->
 						</div>
-						<!-- PAGE CONTENT ENDS -->
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
+		<jsp:include page="../../WebPart/CopyRight.jsp"></jsp:include>
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 

@@ -278,13 +278,13 @@
 				} ],
 				"aaSorting" : [],
 
-					//,
-					//"sScrollY": "200px",
+					
+					"sScrollY": "200px",
 					//"bPaginate": false,
 
 					"sScrollX": "100%",
-					//"sScrollXInner": "120%",
-					//"bScrollCollapse": true,
+					"sScrollXInner": "120%",
+					"bScrollCollapse": true,
 					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
 					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 

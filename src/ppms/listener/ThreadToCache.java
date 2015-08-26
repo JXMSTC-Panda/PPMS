@@ -1,6 +1,8 @@
 package ppms.listener;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,7 +29,7 @@ public class ThreadToCache implements Runnable{
 			
 			System.out.println("扫描中");
 			try {
-				Thread.sleep(8*60*1000);
+				Thread.sleep(60*5*1000);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

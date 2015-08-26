@@ -1,13 +1,3 @@
-/**  
- * @文件名: MonthPerformanceSearchAction.java 
- * @包名 ppms.action 
- * @描述: TODO 
- * @修改人：
- * @修改时间：2015-8-11 上午10:52:53 
- * @修改内容：
-
- * @version V1.0  
- */
 package ppms.action;
 
 import java.io.IOException;

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -117,7 +118,7 @@
 											<th>类型</th>
 											<th>奖惩原因</th>
 											<th>级别</th>
-											<th>年月</th>
+											<th>日期</th>
 											<th>分值</th>
 											<th></th>
 										</tr>
@@ -148,7 +149,9 @@
 												<td>
 												${employeepraisecriticismsInfor.level}
 												</td>
-												<td>${employeepraisecriticismsInfor.praisecriticismdate}</td>
+												<td>
+												${fn:split(employeepraisecriticismsInfor.praisecriticismdate,' ')[0]}
+												</td>
 												<td>${employeepraisecriticismsInfor.score}</td>
 
 												<td>
