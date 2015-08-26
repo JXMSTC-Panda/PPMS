@@ -16,6 +16,7 @@ import java.util.List;
 import javax.faces.context.Flash;
 
 import org.hibernate.*;
+import org.hibernate.classic.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -89,9 +90,7 @@ public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao
 		return results;  
     }
 
-	/* (non-Javadoc)
-	 * @see ppms.dao.PerformanceDao#deletePerformance(java.lang.Object)
-	 */
+
 	@Override
 	public void  deletePerformance(Object performance) {
 		
@@ -103,7 +102,48 @@ public class MonthPerformanceDaolmp extends BaseDaoImp implements PerformanceDao
 	}
 
 	
+	@Override
+	public boolean update(TbPerformance tbPerformance){
+		Session openSession = null;
+		int i=0;
+		try {
+			openSession= this.getSessionFactory().openSession();
+			
+			openSession.beginTransaction();
+			
+			TbPerformance load = (TbPerformance) openSession.load(TbPerformance.class,tbPerformance.getPerformanceid());
+			
+			
+			load.setPerformanceid(tbPerformance.getPerformanceid());
+			load.setOrganizationNj(tbPerformance.getOrganizationNj());
+			load.setTbEmployee(tbPerformance.getTbEmployee());
+			load.setPerformancetype(tbPerformance.getPerformancetype());
+			load.setPerformancedate(tbPerformance.getPerformancedate());
+			load.setPerformancescore(tbPerformance.getPerformancescore());
+			load.setRemark(tbPerformance.getRemark());
+			load.setGradestandardorgfilename(tbPerformance.getGradestandardorgfilename());
+			load.setGradestandardfilename(tbPerformance.getGradestandardfilename());
+			load.setCreatedby(tbPerformance.getCreatedby());
+			load.setCreatedtime(tbPerformance.getCreatedtime());
+			load.setModifiedby(tbPerformance.getModifiedby());
+			load.setModifiedtime(tbPerformance.getModifiedtime());
 
+			
+		
+			openSession.update(load);
+			
+			openSession.getTransaction().commit();
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			openSession.getTransaction().rollback();
+			return false;
+		}finally{
+			openSession.close();
+		}
+	
+	}
 	
 	
 		

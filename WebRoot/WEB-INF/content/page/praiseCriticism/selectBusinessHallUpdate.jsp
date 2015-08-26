@@ -83,17 +83,18 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
-						<li class="active">子功能</li>
+						<li><a href="#">营业厅奖惩信息管理</a></li>
+						<li><a href="#">营业厅奖惩信息单条修改</a></li>
+						<li class="active">选择营业厅</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<h3 class="header smaller lighter blue">员工奖惩信息管理</h3>
+							<h3 class="header smaller lighter blue">有效营业厅信息</h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
@@ -107,10 +108,9 @@
 									<thead>
 			
 										<tr>
-											<th class="center"><label class="pos-rel"> <input
-													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
-											</th>
 											
+											
+											<th></th>
 											<th>营业厅编码</th>
 											<th>营业厅名称</th>
 											<th>区域</th>
@@ -137,11 +137,12 @@
 										<table cellpadding="0" cellspacing="0" width="95%"
 											align="center">
 											<tr>
-												<td align="center"><input type="submit"
-													name="doSelectButton" value="确定" class="btn_2" /> <input
-													type="button" name="doCloseButton" value="关闭" class="btn_2"
-													onclick="window.close();" />
-												</td>
+												<div class="clearfix form-actions">
+												<div class="col-md-offset-3 col-md-9" style="padding-left:20%">
+													<button class="btn btn-info" type="submit" >
+														<i class="ace-icon fa fa-check bigger-110"></i> 确定
+													</button>
+												</div>
 											</tr>
 										</table>
 									</tbody>
@@ -177,7 +178,7 @@
 						"aoColumns" : [ {
 							"bSortable" : false
 						}, null, null, null, {
-									"bSortable" : false
+									"bSortable" : true
 								} ],
 						"aaSorting" : [],
 

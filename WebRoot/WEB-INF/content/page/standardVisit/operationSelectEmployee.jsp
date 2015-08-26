@@ -84,18 +84,19 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a>
+						<li><a href="#">业务差错检查成绩管理</a>
 						</li>
-						<li class="active">子功能</li>
+						<li ><a href="#">业务差错单条录入</a></li>
+						<li class="active">选择员工</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<h3 class="header smaller lighter blue">员工奖惩信息管理</h3>
+							<h3 class="header smaller lighter blue">有效员工信息</h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
@@ -106,10 +107,8 @@
 									class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th class="center"><label class="pos-rel"> <input
-													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
-											</th>
 											
+											<th></th>
 											<th>工号</th>
 											<th>姓名</th>
 											<th>身份证号</th>
@@ -132,9 +131,16 @@
 													value="${employeeInfo.employeeid}" checked></td>
 												
 												<td>${employeeInfo.employeecode}</td>
-												<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a>
+												<td>${employeeInfo.employeename}
 												</td>
-												<td>${employeeInfo.idnumber}</td>
+												<%-- <td>${employeeInfo.idnumber}</td> --%>
+												<td>
+													<a name="idnumber" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${employeeInfo.idnumber}">
+													</a>
+
+												</td>
 												<td>${employeeInfo.organizationNj.areadesc}</td>
 												<td>${employeeInfo.organizationNj.orgid}</td>
 												<td>${employeeInfo.organizationNj.org_Name}</td>
@@ -162,10 +168,12 @@
 										<table cellpadding="0" cellspacing="0" width="95%"
 											align="center">
 											<tr>
-												<td align="center"><input type="submit"
-													name="doSelectButton" value="确定" class="btn_2" /> <input
-													type="button" name="doCloseButton" value="关闭" class="btn_2"
-													onclick="window.close();" /></td>
+												<div class="clearfix form-actions">
+												<div class="col-md-offset-3 col-md-9" style="padding-left:20%">
+													<button class="btn btn-info" type="submit" >
+														<i class="ace-icon fa fa-check bigger-110"></i> 确定
+													</button>
+												</div>
 											</tr>
 										</table>
 									</tbody>
@@ -197,7 +205,9 @@
 	
 	$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
-			myEachPopover("birthday",0, 10);
+			myEachPopover("birthday",0, 7);
+			myEachPopover("idnumber",0, 8);
+			
 		});
 	
 		jQuery(function($) {
@@ -211,7 +221,7 @@
 							"bSortable" : false
 						}, null, null, null, null, null, null, null, null,
 								null,  {
-									"bSortable" : false
+									"bSortable" : true
 								} ],
 						"aaSorting" : [],
 

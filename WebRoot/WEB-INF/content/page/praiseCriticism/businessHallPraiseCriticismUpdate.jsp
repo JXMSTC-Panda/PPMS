@@ -90,10 +90,10 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">营业厅奖惩信息管理</a></li>
+						<li class="active">营业厅奖惩信息单条修改</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -224,17 +224,17 @@
 											<div class="clearfix form-actions">
 												<div class="col-md-offset-3 col-md-9">
 													<button class="btn btn-info" type="submit">
-														<i class="ace-icon fa fa-check bigger-110"></i> Submit
+														<i class="ace-icon fa fa-check bigger-110"></i> 确定
 													</button>
 
 
 													&nbsp; &nbsp; &nbsp;
 													<button class="btn" type="reset">
-														<i class="ace-icon fa fa-undo bigger-110"></i> Reset
+														<i class="ace-icon fa fa-undo bigger-110"></i> 重置
 													</button>
 													&nbsp; &nbsp; &nbsp;
 													<button class="btn" type="button" onClick="top.window.location='praiseCriticism.businessHall.businessHallPraiseCriticismSearch.modify.returnPages.do'">
-														<i class="ace-icon fa fa-undo bigger-110"></i> Return
+														<i class="ace-icon fa fa-undo bigger-110"></i> 返回
 													</button>
 												</div>
 											</div>

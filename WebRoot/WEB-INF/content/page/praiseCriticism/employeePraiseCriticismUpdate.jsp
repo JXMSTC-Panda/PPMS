@@ -145,11 +145,11 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">员工奖惩信息管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">员工奖惩信息单条修改</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -163,7 +163,7 @@
 								<div class="page-header">
 									<h1>
 										员工奖惩信息管理 <small> <i
-											class="ace-icon fa fa-angle-double-right"></i> 信息单条次修改 </small>
+											class="ace-icon fa fa-angle-double-right"></i> 信息单条修改 </small>
 									</h1>
 								</div>
 								<!-- /.page-header -->
@@ -321,15 +321,15 @@
 											<div class="clearfix form-actions">
 												<div class="col-md-offset-3 col-md-9">
 													<button class="btn btn-info" type="submit" onclick="javascript:doConfirm();">
-														<i class="ace-icon fa fa-check bigger-110"></i> Submit
+														<i class="ace-icon fa fa-check bigger-110"></i> 确定
 													</button>
 													&nbsp; &nbsp; &nbsp;
 													<button class="btn btn-info" type="reset" >
-														<i class="ace-icon fa fa-undo bigger-110"></i> Reset
+														<i class="ace-icon fa fa-undo bigger-110"></i>重置
 													</button>
 													&nbsp; &nbsp; &nbsp;
 													<button class="btn btn-info" type="button" onClick="top.window.location='praiseCriticism.employee.employeePraiseCriticismSearch.modify.returnPages.do'">
-														<i class="ace-icon fa fa-undo bigger-110"></i> Return
+														<i class="ace-icon fa fa-undo bigger-110"></i> 返回
 													</button>
 												</div>
 											</div>

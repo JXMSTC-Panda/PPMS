@@ -67,12 +67,18 @@ public class IndividualGrowthFileAction  extends BaseInit{
 	public void setService(IndividualGrowthFileServiceImp service) {
 		this.service = service;
 	}
-
+	
+	@Action(value = "userInfo.growthFile.individualGrowthFileSearch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/individualGrowthFileSearch.jsp"),
+			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
+	public String search() {
+		return "success";
+	}
 	/**
 	 * 实现individualGrowthFileSearch页面的初始化
 	 * @return
 	 */
-	@Action(value = "userInfo.growthFile.individualGrowthFileSearch", results = {
+	@Action(value = "userInfo.growthFile.individualGrowthFileSearch.Search", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/individualGrowthFileSearch.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String result() {

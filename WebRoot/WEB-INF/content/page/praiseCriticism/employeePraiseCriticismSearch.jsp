@@ -84,11 +84,11 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a>
+						<li><a href="#">员工奖惩信息管理</a>
 						</li>
-						<li class="active">子功能</li>
+						<li class="active">员工奖惩信息查询</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -136,16 +136,40 @@
 												</td>
 
 												<td>${employeepraisecriticismsInfor.order}</td>
-												<td><a href="#">${employeepraisecriticismsInfor.tbEmployee.employeecode}</a>
+												<td>${employeepraisecriticismsInfor.tbEmployee.employeecode}
 												</td>
 												<td>${employeepraisecriticismsInfor.tbEmployee.employeename}</td>
-												<td class="hidden-480">${employeepraisecriticismsInfor.tbEmployee.idnumber}</td>
+												<%-- <td class="hidden-480">${employeepraisecriticismsInfor.tbEmployee.idnumber}</td> --%>
+												<td>
+													<a name="idnumber" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${employeepraisecriticismsInfor.tbEmployee.idnumber}">
+													</a>
+
+												</td>
+												
 												<td>${employeepraisecriticismsInfor.organizationNj.orgid}</td>
-												<td>${employeepraisecriticismsInfor.organizationNj.org_Name}</td>
+												<%-- <td>${employeepraisecriticismsInfor.organizationNj.org_Name}</td> --%>
+												<td>
+													<a name="org_Name" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${employeepraisecriticismsInfor.organizationNj.org_Name}">
+													</a>
+
+												</td>
+												
 												<td>
 												${employeepraisecriticismsInfor.type}
 												</td>
-												<td>${employeepraisecriticismsInfor.cause}</td>
+												<%-- <td>${employeepraisecriticismsInfor.cause}</td> --%>
+												<td>
+													<a name="cause" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${employeepraisecriticismsInfor.cause}">
+													</a>
+
+												</td>
+												
 												<td>
 												${employeepraisecriticismsInfor.level}
 												</td>
@@ -211,7 +235,9 @@
 										</c:forEach>
 									</tbody>
 								</table>
-								<div class="col-md-offset-3 col-md-9" align="center">
+								
+								<div class="col-md-offset-3 col-md-9" style="padding-left:20%" >
+								
 									<button class="btn btn-info" type="submit" >
 										<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
 									</button>
@@ -246,6 +272,11 @@
 	$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
 			myEachPopover("praisecriticismdate",0, 10);
+			myEachPopover("idnumber",0, 8);
+			myEachPopover("org_Name",0, 3);
+			myEachPopover("cause",0, 4);
+			
+			
 		});
 	
 		jQuery(function($) {
