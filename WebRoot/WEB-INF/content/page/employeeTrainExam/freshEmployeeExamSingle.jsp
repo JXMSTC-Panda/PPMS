@@ -116,7 +116,8 @@
 
 									<div class="col-sm-9">
 										<input readonly="" type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly" value="" name="tbArea.areadesc" />
+											id="form-input-readonly"
+											value="${sessionScope.organizationNj.areadesc }" name="" />
 										<span class="help-inline col-xs-12 col-sm-7"> </span>
 									</div>
 								</div>
@@ -126,7 +127,9 @@
 
 									<div class="col-sm-9">
 										<input readonly="" type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly" value="" name="tbFreshemployeeexam.organizationNj.orgid"/> <span
+											id="form-input-readonly"
+											value="${sessionScope.organizationNj.orgid }"
+											name="innovation.organizationNj.orgid" /> <span
 											class="help-inline col-xs-12 col-sm-7"> </span>
 									</div>
 								</div>
@@ -136,51 +139,64 @@
 
 									<div class="col-sm-9">
 										<input readonly="" type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly" value="" 
-											name="tbFreshemployeeexam.organizationNj.org_Name"/> <span
-											class="help-inline col-xs-12 col-sm-7"> </span>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-input-readonly"> 姓名： </label>
-
-									<div class="col-sm-9">
-										<input readonly="" type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly" value="" 
-											name="tbFreshemployeeexam.tbEmployee.employeename"/> <span
+											id="form-input-readonly"
+											value="${sessionScope.organizationNj.org_Name }"
+											name="innovation.organizationNj.org_Name" /> <span
 											class="help-inline col-xs-12 col-sm-7">
-											<button class="btn btn-info">选择员工</button> </span>
+											<button class="btn btn-info"
+												onclick="top.window.location='chooseOrg.do?backUrl=employeeTrainExam.freshEmployeeExam.freshEmployeeExamSingle.do'"
+												type="button">选择营业厅</button> </span>
 									</div>
 								</div>
+
 
 								<!-- /section:elements.form -->
-								<div class="space-4"></div>
 
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-input-readonly"> 工号： </label>
+								<div id="panel">
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											for="form-input-readonly"> 选择员工： </label>
+										<div class="col-sm-9">
+											<div class="col-xs-10 col-sm-5">
+												<select class="chosen-select form-control"
+													id="form-field-select-employee"
+													name="innovation.tbEmployee.employeeid"
+													onchange="getEmployee(this)" data-placeholder="选择员工">
+													<c:forEach items="${sessionScope.employees }"
+														var="employee">
+														<option value="${employee.employeeid }">${employee.employeename
+															}</option>
+													</c:forEach>
+												</select>
+											</div>
 
-									<div class="col-sm-9">
-										<input readonly="" type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly" value="" 
-											name="tbFreshemployeeexam.tbEmployee.employeeid"/> <span
-											class="help-inline col-xs-12 col-sm-7"> </span>
+										</div>
 									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-input-readonly"> 身份证号： </label>
-
-									<div class="col-sm-9">
-										<input readonly="" type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly" value=""
-											name="tbFreshemployeeexam.tbEmployee.idnumber"  /> <span
-											class="help-inline col-xs-12 col-sm-7"> </span>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											for="form-input-readonly"> 工号： </label>
+										<div class="col-sm-9">
+											<input readonly="" type="text" class="col-xs-10 col-sm-5"
+												id="form-input-readonly"
+												value="${sessionScope.employee.employeecode }"
+												name="innovation.tbEmployee.employeecode" /> <span
+												class="help-inline col-xs-12 col-sm-7"> </span>
+										</div>
 									</div>
-								</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											for="form-input-readonly"> 身份证号： </label>
 
+										<div class="col-sm-9">
+											<input readonly="" type="text" class="col-xs-10 col-sm-5"
+												id="form-input-readonly"
+												value="${sessionScope.employee.idnumber }"
+												name="innovation.tbEmployee.idnumber" />
+
+										</div>
+									</div>
+
+								</div>
 								<div class="space-4"></div>
 
 								<div class="form-group">
@@ -189,8 +205,8 @@
 
 									<div class="col-sm-9">
 										<input type="text" id="form-field-1" placeholder="考试时间"
-											class="col-xs-10 col-sm-5" 
-											name="tbFreshemployeeexam.examdate"/>
+											class="col-xs-10 col-sm-5"
+											name="tbFreshemployeeexam.examdate" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -199,7 +215,7 @@
 
 									<div class="col-sm-9">
 										<select class="col-xs-10 col-sm-5" id="form-field-select-1"
-										name="examstage">
+											name="examstage">
 											<option value="1">入职期</option>
 											<option value="2">实习期</option>
 										</select>
@@ -212,8 +228,7 @@
 									<div class="col-sm-9">
 
 										<input type="text" id="form-field-1" placeholder="第几周"
-											class="col-xs-10 col-sm-5"
-											name="tbFreshemployeeexam.week" />
+											class="col-xs-10 col-sm-5" name="tbFreshemployeeexam.week" />
 
 									</div>
 								</div>
@@ -223,7 +238,7 @@
 
 									<div class="col-sm-9">
 										<input type="text" id="form-field-1" placeholder="Grade"
-											class="col-xs-10 col-sm-5" 
+											class="col-xs-10 col-sm-5"
 											name="tbFreshemployeeexam.examscore" /> <label
 											class=" control-label no-padding-left" for="form-field-1">
 											分 </label>
@@ -245,7 +260,19 @@
 								</div>
 
 							</form>
-
+							<%
+								if (request.getSession().getAttribute("employees") != null) {
+									request.getSession().removeAttribute("employees");
+								}
+								if (request.getSession().getAttribute("employee") != null) {
+									request.getSession().removeAttribute("employee");
+								}
+								if (request.getSession().getAttribute("mark") != null) {
+									if (request.getSession().getAttribute("organizationNj") != null) {
+										request.getSession().removeAttribute("organizationNj");
+									}
+								}
+							%>
 						</div>
 						<!-- /.col -->
 					</div>

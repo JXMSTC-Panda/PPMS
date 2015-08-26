@@ -263,7 +263,19 @@
 													</button>
 												</div>
 											</div>
-
+											<%
+												if (request.getSession().getAttribute("employees") != null) {
+													request.getSession().removeAttribute("employees");
+												}
+												if (request.getSession().getAttribute("employee") != null) {
+													request.getSession().removeAttribute("employee");
+												}
+												if (request.getSession().getAttribute("mark") != null) {
+													if (request.getSession().getAttribute("organizationNj") != null) {
+														request.getSession().removeAttribute("organizationNj");
+													}
+												}
+											%>
 										</form>
 									</div>
 									<!-- /.col -->
@@ -770,7 +782,6 @@
 							});
 
 		});
-			</script>
-		</body>
-		</html>
-	
+	</script>
+</body>
+</html>
