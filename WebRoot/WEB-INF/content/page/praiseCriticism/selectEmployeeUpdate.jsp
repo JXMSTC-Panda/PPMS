@@ -147,7 +147,7 @@
 												
 												<%-- <td>${fn:split(fn:split(employeeInfo.birthday,' ')[0],'-')[0]}-${fn:split(fn:split(employeeInfo.birthday,' ')[0],'-')[1]}</td> --%>
 												<td>
-													<a name="time" href="javascript:void(0);"
+													<a name="birthday" href="javascript:void(0);"
 														data-container="body" data-toggle="popover"
 														data-placement="bottom" data-content="${employeeInfo.birthday}">
 													</a>
@@ -197,7 +197,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
-			myEachPopover(Name,0, 7);
+			myEachPopover("birthday",0, 7);
 		});
 	
 	

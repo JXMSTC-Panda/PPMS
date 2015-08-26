@@ -143,7 +143,7 @@
 												<%-- <td>${fn:split(operationchecksInfor.operationdate,' ')[0]}
 												</td> --%>
 												<td>
-													<a name="time" href="javascript:void(0);"
+													<a name="operationdate" href="javascript:void(0);"
 														data-container="body" data-toggle="popover"
 														data-placement="bottom" data-content="${operationchecksInfor.operationdate}">
 													</a>
@@ -234,7 +234,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
-			myEachPopover(Name,0, 10);
+			myEachPopover("operationdate",0, 10);
 		});
 	
 	
