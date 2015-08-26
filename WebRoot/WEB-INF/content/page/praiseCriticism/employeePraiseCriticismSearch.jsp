@@ -149,8 +149,15 @@
 												<td>
 												${employeepraisecriticismsInfor.level}
 												</td>
-												<td>
+												<%-- <td>
 												${fn:split(employeepraisecriticismsInfor.praisecriticismdate,' ')[0]}
+												</td> --%>
+												<td>
+													<a name="praisecriticismdate" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${employeepraisecriticismsInfor.praisecriticismdate}">
+													</a>
+
 												</td>
 												<td>${employeepraisecriticismsInfor.score}</td>
 
@@ -162,9 +169,9 @@
 														<a class="green"
 															href="praiseCriticism.employee.employeePraiseCriticismSearch.modify.SkipUpdateEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
+															class="fa fa-pencil bigger-130"><small>修改</small></i> </a> <a class="red"
 															href="praiseCriticism.employee.employeePraiseCriticismSearch.delete.deleteEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}">
-															<i class="fa fa-trash bigger-130">删除</i> </a>
+															<i class="fa fa-trash bigger-130"><small>删除</small></i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -229,8 +236,18 @@
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+	
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+	
+	$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("praisecriticismdate",0, 10);
+		});
+	
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
