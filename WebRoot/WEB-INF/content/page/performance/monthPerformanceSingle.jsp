@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -91,7 +92,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
+						<li><a href="#">Other Pages</a>
+						</li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -129,8 +131,9 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" name="tbArea.areadesc" /> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
+														id="form-input-readonly"
+														value="${sessionScope.organizationNj.areadesc }" name="" />
+													<span class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
 											<div class="form-group">
@@ -140,6 +143,7 @@
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
 														id="form-input-readonly"
+														value="${sessionScope.organizationNj.orgid }"
 														name="performance.organizationNj.orgid" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
@@ -151,51 +155,68 @@
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
 														id="form-input-readonly"
-														name="performance.organizationNj.org_Name" />
-
+														value="${sessionScope.organizationNj.org_Name }"
+														name="performance.organizationNj.org_Name" /> <span
+														class="help-inline col-xs-12 col-sm-7">
+														<button class="btn btn-info"
+															onclick="top.window.location='chooseOrg.do?backUrl=performance.month.monthPerformanceSingle.do'"
+															type="button">选择营业厅</button> </span>
 												</div>
 											</div>
 
 
 											<!-- /section:elements.form -->
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 员工姓名： </label>
 
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly"
-														name="performance.tbEmployee.employeename" /> <span
-														class="help-inline col-xs-12 col-sm-7">
-														<button class="btn btn-info" type="button"
-															onClick="top.window.location='performacesEmployeeSelect.do'">选择员工</button>
-													</span>
+											<div id="panel">
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right"
+														for="form-input-readonly"> 选择员工： </label>
+													<div class="col-sm-9">
+														<div class="col-xs-10 col-sm-5">
+															<select class="chosen-select form-control"
+																id="form-field-select-employee"
+																name="performance.tbEmployee.employeeid"
+																onchange="getEmployee(this)" data-placeholder="选择员工">
+																<c:if test="${mark!=null }">
+																	<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
+																</c:if>
+																<c:if test="${mark==null }">
+																	<c:forEach items="${sessionScope.employees }"
+																		var="employee">
+																		<option value="${employee.employeeid }">${employee.employeename
+																			}</option>
+																	</c:forEach>
+																</c:if>
+															</select>
+														</div>
+
+													</div>
 												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 工号： </label>
-
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly"
-														name="performance.tbEmployee.employeeid" value="" /> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right"
+														for="form-input-readonly"> 工号： </label>
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5"
+															id="form-input-readonly"
+															value="${sessionScope.employee.employeecode }"
+															name="performance.tbEmployee.employeecode" /> <span
+															class="help-inline col-xs-12 col-sm-7"> </span>
+													</div>
 												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 身份证号： </label>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right"
+														for="form-input-readonly"> 身份证号： </label>
 
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly"
-														name="performance.tbEmployee.idnumber" />
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5"
+															id="form-input-readonly"
+															value="${sessionScope.employee.idnumber }"
+															name="performance.tbEmployee.idnumber" />
 
+													</div>
 												</div>
+
 											</div>
-
-
 
 
 											<div class="form-group">
@@ -249,9 +270,22 @@
 													</button>
 												</div>
 											</div>
+											<%
+												if (request.getSession().getAttribute("organizationNj") != null) {
 
+													request.getSession().removeAttribute("organizationNj");
+												}
+												if (request.getSession().getAttribute("employee") != null) {
+													request.getSession().removeAttribute("employee");
+												}
+												if (request.getSession().getAttribute("mark") != null) {
+													request.getSession().removeAttribute("mark");
+													if (request.getSession().getAttribute("employees") != null) {
+														request.getSession().removeAttribute("employees");
+													}
+												}
+											%>
 										</form>
-
 									</div>
 									<!-- /.col -->
 								</div>
@@ -757,7 +791,6 @@
 							});
 
 		});
-			</script>
-		</body>
-		</html>
-	
+	</script>
+</body>
+</html>
