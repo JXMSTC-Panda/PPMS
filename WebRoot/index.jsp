@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
+<link rel="stylesheet" href="assets/css/jquery-ui.custom.css" />
 <link rel="stylesheet" href="assets/css/jquery.gritter.css" />
 
 <!-- text fonts -->
@@ -54,10 +55,10 @@
 					<div class="login-container">
 						<div class="center">
 							<h1>
-								<i class="ace-icon fa fa-leaf green"></i> <span class="red">PPMS</span>
+								<i class="ace-icon fa fa-windows blue"></i> <span class="red"></span>
 								<span class="white" id="id-text2">人员成长档案管理系统</span>
 							</h1>
-							<h4 class="blue" id="id-company-text">&copy; java 一组</h4>
+							<h4 class="blue" id="id-company-text">&copy; NCHU java 一组</h4>
 						</div>
 
 						<div class="space-6"></div>
@@ -93,10 +94,17 @@
 
 													<button id="btnlogin" type="button"
 														class="width-35 pull-right btn btn-primary"
-														data-loading-text="Loading...">
+														data-loading-text="登录..." autocomplete="off">
 														<i class="ace-icon fa fa-key"></i> <span
 															class="bigger-110">登录 </span>
 													</button>
+													<a  class=""
+														data-container="body" data-toggle="popover"
+														data-placement="bottom"
+														data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus.">
+														Popover on 底部</a> <a href="#" rel="drevil"> <span
+														class="glyphicon glyphicon-shopping-cart"> </span> 购物车 </a>
 												</div>
 
 												<div class="space-4"></div>
@@ -125,7 +133,7 @@
 									</div>
 									<!-- /.widget-main -->
 
-									<div class="toolbar clearfix">
+									<!-- <div class="toolbar clearfix">
 										<div>
 											<a href="#" data-target="#forgot-box"
 												class="forgot-password-link"> <i
@@ -137,7 +145,7 @@
 												class="user-signup-link"> 注册 <i
 												class="ace-icon fa fa-arrow-right"></i> </a>
 										</div>
-									</div>
+									</div> -->
 								</div>
 								<!-- /.widget-body -->
 							</div>
@@ -245,10 +253,10 @@
 						<!-- /.position-relative -->
 
 						<div class="navbar-fixed-top align-right">
-							<br /> &nbsp; <a id="btn-login-dark" href="#">Dark</a> &nbsp; <span
-								class="blue">/</span> &nbsp; <a id="btn-login-blur" href="#">Blur</a>
+							<br /> &nbsp; <a id="btn-login-dark" href="#">黑色</a> &nbsp; <span
+								class="blue">/</span> &nbsp; <a id="btn-login-blur" href="#">蓝色</a>
 							&nbsp; <span class="blue">/</span> &nbsp; <a id="btn-login-light"
-								href="#">Light</a> &nbsp; &nbsp; &nbsp;
+								href="#">高亮</a> &nbsp; &nbsp; &nbsp;
 						</div>
 					</div>
 				</div>
@@ -282,9 +290,50 @@
 					+ "<"+"/script>");
 	</script>
 	<script type="text/javascript" src="assets/js/jquery.gritter.js"></script>
+	<script src="assets/js/jquery-ui.custom.js"></script>
+	<script src="assets/js/jquery.ui.touch-punch.js"></script>
+	<script src="assets/js/bootbox.js"></script>
+	<script src="assets/js/jquery.easypiechart.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+		$(function() {
+			$("[rel=drevil]")
+					.popover(
+							{
+								trigger : 'manual',
+								placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+								title : '<div style="text-align:center; color:red; text-decoration:underline; font-size:14px;"> Muah ha ha</div>', //this is the top title bar of the popover. add some basic css
+								html : 'true', //needed to show html of course
+								content : '<div id="popOverBox"><img src="http://www.hd-report.com/wp-content/uploads/2008/08/mr-evil.jpg" width="251" height="201" /></div>', //this is the content of the html box. add the image here or anything you want really.
+								animation : false
+							}).on(
+							"mouseenter",
+							function() {
+								var _this = this;
+								$(this).popover("show");
+								$(this).siblings(".popover").on("mouseleave",
+										function() {
+											$(_this).popover('hide');
+										});
+							}).on("mouseleave", function() {
+						var _this = this;
+						setTimeout(function() {
+							if (!$(".popover:hover").length) {
+								$(_this).popover("hide")
+							}
+						}, 100);
+					});
+		});
 		$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			$("#gritter-notice-wrapper").mouseleave(function() {
+				$('#btnlogin span').html('登录');
+				$('#btnlogin').removeClass('disabled');
+				$('gritter-notice-wrapper').remove();
+			});
+			//登录点击
+			$('[data-toggle="popover"]').popover();
 			$("#gritter-notice-wrapper").mouseleave(function() {
 				$('#btnlogin span').html('登录');
 				$('#btnlogin').removeClass('disabled');
@@ -292,15 +341,17 @@
 			});
 			//登录点击
 			$('#btnlogin').click(function() {
-				$('#btnlogin span').html('登录...');
-				$('#btnlogin').addClass('disabled');
+				var $btn = $(this).button('loading');
+				//$('#btnlogin span').html('登录...');
+				//$('#btnlogin').addClass('disabled');
 				$.ajax({
 					cache : false,
 					type : "POST",
 					url : "login.do",
 					data : $('#form_login').serialize(),
-					async : false,
+					async : true,
 					error : function(request) {
+						$btn.button('reset');
 						$.gritter.add({
 							title : '出错啦!',
 							text : '网络似乎有问题！',
@@ -313,8 +364,10 @@
 					},
 					success : function(data) {
 						if (data == "1") {
+							$btn.button('reset');
 							location.href = "index.tachometer.do";
 						} else {
+							$btn.button('reset');
 							$.gritter.add({
 								title : '出错啦!',
 								text : '账号或密码错误，请重试！' + data,
