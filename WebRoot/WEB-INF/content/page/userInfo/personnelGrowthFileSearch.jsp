@@ -81,6 +81,12 @@
 						} catch (e) {
 						}
 					</script>
+					<ul class="breadcrumb">
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员成长档案管理系统</a>
+						</li>
+						<li><a href="#">人员综合信息管理</a></li>
+						<li class="active">人员成长档案查询</li>
+					</ul>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -123,7 +129,11 @@
 											   <td>${status.index + 1}</td>
 											   <td>${emp.employeecode}</td>
 											   <td>${emp.employeename}</td>
-                                               <td>${emp.idnumber}</td>                                               
+                                               <td><a name="idnumber" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${emp.idnumber}">
+													</a>
+											  </td>                                              
                                                <td>${fn:split(emp.entertime,' ')[0]}</td>
                                                <td>${emp.tbJob.tbStage.stagename}</td>
 											   <td>${emp.organizationNj.org_Name}</td>
@@ -156,8 +166,14 @@
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("idnumber",0, 8);
+		});
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
