@@ -84,11 +84,10 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a>
+						<li><a href="#">积分管理</a>
 						</li>
-						<li class="active">子功能</li>
+						<li class="active">合作厅积分管理</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -183,7 +182,7 @@
 														<a class="green"
 															href="integral.null.integralSearch.delete.do?id=${point.pointid }"
 															name="" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">删除</i> </a>
+															class="fa fa-pencil bigger-130"><small>删除</small></i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">

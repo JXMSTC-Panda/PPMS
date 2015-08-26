@@ -79,7 +79,7 @@
 						</li>
 						<li class="active">控制台</li>
 					</ul>
-					<jsp:include page="../WebPart/SearchBox.jsp"></jsp:include>
+					<%-- <jsp:include page="../WebPart/SearchBox.jsp"></jsp:include> --%>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../WebPart/Skin.jsp"></jsp:include>

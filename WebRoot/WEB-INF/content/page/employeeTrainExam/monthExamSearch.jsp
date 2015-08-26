@@ -84,10 +84,9 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
-						<li class="active">子功能</li>
+						<li><a href="#">月度考试管理</a></li>
+						<li class="active">月度考试查询</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -147,9 +146,9 @@
 														<a
 															class="green" href="employeeTrainExam.monthExam.monthExamSearch.modify.do?id=${tbmonth.examid }"
 															name="" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
+															class="fa fa-pencil bigger-130"><small>修改</small></i> </a> <a class="red"
 															href="employeeTrainExam.monthExam.monthExamSearch.delete.do?id=${tbmonth.examid}"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+															class="fa fa-trash bigger-130"><small>删除</small></i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">

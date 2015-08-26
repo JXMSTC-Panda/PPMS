@@ -88,7 +88,7 @@
 						</li>
 						<li class="active">权限管理</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					<%-- <jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include> --%>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -256,6 +256,10 @@
 			//添加角色按钮
 			$("#roleAddBtn").click(function() {
 
+				$("#alertDiv").show();
+				$("#alertDiv i").addClass("fa-spinner red");
+				$("#alertDiv strong").addClass("red");
+				$("#alertDiv strong").html("角色正在添加......");
 				//角色名称
 				var roleName = $("#roleName").val()
 				//角色类型
@@ -293,17 +297,14 @@
 					},
 					success : function(data) {
 						if (data == "1") {
-							$.gritter.add({
-								title : 'success!',
-								text : '<a>',
-								sticky : true,
-								time : 1000,
-								speed : 10,
-								position : 'center',
-								class_name : 'gritter-light'
-							});
+							$("#alertDiv i").removeClass("fa-spinner red");
+							$("#alertDiv strong").removeClass("red");
+							$("#alertDiv i").addClass("fa-check green");
+							$("#alertDiv strong").addClass("green");
+							$("#alertDiv strong").html("角色添加成功！！！");
 							//location.href = "index.tachometer.do";
 						} else {
+							$("#alertDiv strong").html("角色添加失败！！！");
 							$.gritter.add({
 								title : '出错啦!',
 								text : data,

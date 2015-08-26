@@ -54,37 +54,37 @@
 			</a>
 			<b cite="arrow"></b>
 		</li>
-		<li id="authority" class=""><a href="#" class="dropdown-toggle">
+		<li id="authority" name="menu1" class=""><a href="#" class="dropdown-toggle">
 				<i class="menu-icon fa fa-unlock-alt"></i> <span class="menu-text">
 					权限管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
 
 			<ul class="submenu">
-				<li id="roleSingle" class=""><a
+				<li id="roleSingle" name="menu11" class=""><a
 					href="authority.null.roleSingle.do">
 						<i class="menu-icon fa fa-caret-right"></i>角色增加 </a> <b class="arrow"></b>
 				</li>
-				<li id="roleSearch" class=""><a
+				<li id="roleSearch" name="menu12" class=""><a
 					href="authority.null.roleSearch.do">
 						<i class="menu-icon fa fa-caret-right"></i>角色查询 </a> <b class="arrow"></b>
 				</li>
 			</ul></li>
 
-		<li id="userInfo" class=""><a href="#" class="dropdown-toggle">
+		<li id="userInfo" name="menu2" class=""><a href="#" class="dropdown-toggle">
 				<i class="menu-icon fa fa-users"></i> <span class="menu-text">
 					人员综合信息管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
 
 			<ul class="submenu">
-				<li id="userBase" class=""><a href="#" class="dropdown-toggle">
+				<li id="userBase" name="menu21" class=""><a href="#" class="dropdown-toggle">
 						<i class="menu-icon fa fa-caret-right"></i>人员基本信息管理 <b
 						class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
 
 					<ul class="submenu">
-						<li id="userBaseInfoSingle" class=""><a
+						<li id="userBaseInfoSingle" name="menu211" class=""><a
 							href="userInfo.userBase.userBaseInfoSingle.do">
 								<i class="menu-icon fa fa-caret-right"></i>人员基本信息单条录入 </a> <b
 							class="arrow"></b>
 						</li>
-						<li id="userBaseInfoBatch" class=""><a
+						<li id="userBaseInfoBatch" name="menu212" class=""><a
 							href="userInfo.userBase.userBaseInfoBatch.do">
 								<i class="menu-icon fa fa-caret-right"></i>人员基本信息批量录入 </a> <b
 							class="arrow"></b>
