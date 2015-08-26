@@ -155,7 +155,7 @@
 															href="userInfo.userBase.userBaseInfoSearch.detail.do?id=${employee.employeeid}"
 															name="${employee.employeeid}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="userInfo.userBase.userBaseInfoSearch.modifyInitPage.do?id=${employee.employeeid}" name=""
+															class="green" href="userInfo.userBase.userBaseInfoSearch.modify.InitPage.do?id=${employee.employeeid}" name=""
 															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> 
 															<c:if test="${employee.status==true}">
