@@ -83,7 +83,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
+						<li><a href="#">Other Pages</a>
+						</li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -106,7 +107,8 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有月度绩效表</div>
-							<form action="downData.do?fileName=月度绩效批量导出.xls" name="StuListForm" method="post">
+							<form action="downData.do?fileName=月度绩效批量导出.xls"
+								name="StuListForm" method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -129,13 +131,12 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${requestScope.performances}" var="pers"
+										<c:forEach items="${requestScope.tbPerformance}" var="pers"
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
 														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label>
-												</td>
+												</label></td>
 
 												<!-- ${ status.index + 1} 序号自增 -->
 												<td>${ status.index + 1}</td>
@@ -152,8 +153,9 @@
 
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="javascript:void(0)" name=""
-															onclick="Modify(this)"> <i
+														<a class="green"
+															href="performance.month.monthPerformanceSearch.modify.toUpdate.do?performanceid=${pers.performanceid}"
+															name="" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
 															href="performance.month.monthPerformanceSearch.delete.do?performanceid=${pers.performanceid}">
 															<i class="fa fa-trash bigger-130">删除</i> </a>
@@ -172,31 +174,32 @@
 																	onclick="GetDetail(this)" class="tooltip-info"
 																	data-rel="tooltip" title="View"> <span class="blue">
 																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a href="javascript:void(0)" name=""
 																	onclick="Modify(this)" class="tooltip-success"
 																	data-rel="tooltip" title="Edit"> <span
 																		class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a>
-																</li>
+																	</span> </a></li>
 
 																<li><a href="ClassDelete?classId="
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
-																</li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
 															</ul>
 														</div>
-													</div></td>
+													</div>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
 								<div class="clearfix form-actions">
 									<div class="col-md-offset-3 col-md-9">
-											&nbsp; &nbsp; &nbsp;<button class="btn btn-info" type="submit">
+										&nbsp; &nbsp; &nbsp;
+										<button class="btn btn-info" type="submit">
 											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
 										</button>
 									</div>

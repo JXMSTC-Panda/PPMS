@@ -95,6 +95,22 @@ public interface PerformanceDao {
 	*/ 
 	public void deletePerformance(Object performanceid);
 
+	/** 
+	
+	* @方法名: update 
+	
+	* @描述: TODO(这里用一句话描述这个方法的作用) 
+	
+	* @param @param tbPerformance
+	* @param @return    设定文件
+	
+	* @return boolean    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public boolean update(TbPerformance tbPerformance);
+
 
 
 }

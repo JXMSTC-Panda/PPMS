@@ -129,8 +129,9 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" name="tbArea.areadesc" /> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
+														id="form-input-readonly"
+														value="${sessionScope.organizationNj.areadesc }" name="" />
+													<span class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
 											<div class="form-group">
@@ -140,7 +141,8 @@
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
 														id="form-input-readonly"
-														name="performance.organizationNj.orgid" /> <span
+														value="${sessionScope.organizationNj.orgid }"
+														name="innovation.organizationNj.orgid" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -151,51 +153,63 @@
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
 														id="form-input-readonly"
-														name="performance.organizationNj.org_Name" />
-
+														value="${sessionScope.organizationNj.org_Name }"
+														name="innovation.organizationNj.org_Name" /> <span
+														class="help-inline col-xs-12 col-sm-7">
+														<button class="btn btn-info"
+															onclick="top.window.location='chooseOrg.do?backUrl=performance.month.monthPerformanceSingle.do'"
+															type="button">选择营业厅</button> </span>
 												</div>
 											</div>
 
 
 											<!-- /section:elements.form -->
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 员工姓名： </label>
 
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly"
-														name="performance.tbEmployee.employeename" /> <span
-														class="help-inline col-xs-12 col-sm-7">
-														<button class="btn btn-info" type="button"
-															onClick="top.window.location='performacesEmployeeSelect.do'">选择员工</button>
-													</span>
+											<div id="panel">
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right"
+														for="form-input-readonly"> 选择员工： </label>
+													<div class="col-sm-9">
+														<div class="col-xs-10 col-sm-5">
+															<select class="chosen-select form-control"
+																id="form-field-select-employee"
+																name="innovation.tbEmployee.employeeid"
+																onchange="getEmployee(this)" data-placeholder="选择员工">
+																<c:forEach items="${sessionScope.employees }"
+																	var="employee">
+																	<option value="${employee.employeeid }">${employee.employeename
+																		}</option>
+																</c:forEach>
+															</select>
+														</div>
+
+													</div>
 												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 工号： </label>
-
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly"
-														name="performance.tbEmployee.employeeid" value="" /> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right"
+														for="form-input-readonly"> 工号： </label>
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5"
+															id="form-input-readonly"
+															value="${sessionScope.employee.employeecode }"
+															name="innovation.tbEmployee.employeecode" /> <span
+															class="help-inline col-xs-12 col-sm-7"> </span>
+													</div>
 												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 身份证号： </label>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right"
+														for="form-input-readonly"> 身份证号： </label>
 
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly"
-														name="performance.tbEmployee.idnumber" />
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5"
+															id="form-input-readonly"
+															value="${sessionScope.employee.idnumber }"
+															name="innovation.tbEmployee.idnumber" />
 
+													</div>
 												</div>
+
 											</div>
-
-
 
 
 											<div class="form-group">
@@ -251,7 +265,6 @@
 											</div>
 
 										</form>
-
 									</div>
 									<!-- /.col -->
 								</div>
