@@ -130,7 +130,7 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${requestScope.performances}" var="pers"
+										<c:forEach items="${requestScope.tbPerformance}" var="pers"
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
@@ -152,7 +152,7 @@
 
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="javascript:void(0)" name=""
+														<a class="green" href="performance.year.yearPerformanceSearch.modify.toUpdate.do?performanceid=${pers.performanceid}" name=""
 															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
 															href="performance.year.yearPerformanceSearch.delete.do?performanceid=${pers.performanceid}"> <i

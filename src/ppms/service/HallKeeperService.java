@@ -8,6 +8,7 @@ import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbMaster;
+import ppms.domain.TbMountguardexam;
 import ppms.domain.TbPerformance;
 import ppms.domain.TbPost;
 import ppms.domain.TbPromotiontraining;
@@ -106,4 +107,15 @@ public interface HallKeeperService {
 	* @date: 2015-8-20 上午11:04:33
 	*/
 	public List<TbPost> getTbPost(String postid);
+	
+	/**
+	 * 
+	* @Title: getAll
+	* @Description: TODO
+	* @param: @param key    
+	* @return:    
+	* @auther: CappuccinoH
+	* @date: 2015-8-26 下午2:26:27
+	 */
+	public List<TbMountguardexam> getAll(String key);
 }

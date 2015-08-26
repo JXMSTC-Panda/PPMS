@@ -140,4 +140,19 @@ public interface PerformanceService {
 	
 	*/ 
 	void delete(String object);
+
+	/** 
+	
+	* @方法名: update 
+	
+	* @描述: TODO(这里用一句话描述这个方法的作用) 
+	
+	* @param @param tbPerformance    设定文件
+	
+	* @return void    返回类型
+	
+	* @throws 
+	
+	*/ 
+	public void update(TbPerformance tbPerformance);
 }

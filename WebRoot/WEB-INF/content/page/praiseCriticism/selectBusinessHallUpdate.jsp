@@ -86,7 +86,7 @@
 						<li><a href="#">父功能</a></li>
 						<li class="active">子功能</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
