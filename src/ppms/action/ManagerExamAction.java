@@ -4,14 +4,10 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.ServletContext;
-
-import org.apache.poi.ss.formula.functions.T;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
 
 import ppms.domain.COrganizationNj;
 import ppms.domain.HallKeeperData;
@@ -23,20 +19,35 @@ import ppms.domain.TbPerformance;
 import ppms.domain.TbPost;
 import ppms.domain.TbPromotiontraining;
 import ppms.domain.TbVisitcheck;
-import ppms.serviceimpl.HallKeeperServiceImp;
 
 public class ManagerExamAction extends HallKeeperAction {
 
-	@Override
-	public Map<String, List<T>> initPage(ServletContext servletContext,
-			String url){
+	
+	@Action(value = "userInfo.managerExam.managerExamSearch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/managerExamSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String managerForwardSearch(){
+		
+		initPage2("userInfo.managerExamSearch");
+		toCache();
+		return "success";
+	}
+	
+	@Action(value = "userInfo.managerExam.managerForwardSearch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/managerForwardSearch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String hallKeeperForwardSearch(){
+		
+		initPage2("userInfo.managerForwardSearch");
+		toCache();
+		return "success";
+	}
+
+	public void initPage2(String url){
 		System.out.println("调用了map方法！！！！！！！！！！！！！！！！！！！！！！！！！！！");
 		// 实例化map
-				Map map = new HashMap<String, List<TbEmployee>>();
+				
 
-				HallKeeperServiceImp serviceImp = WebApplicationContextUtils
-						.getWebApplicationContext(servletContext).getBean(
-								HallKeeperServiceImp.class);
 
 				// 根据不同请求的url实现不同页面的页面初始化
 				switch (url) {
@@ -45,16 +56,15 @@ public class ManagerExamAction extends HallKeeperAction {
 					System.out.println("进入case userInfo.hallKeeperForwardSearch 进行加载");
 					
 					
-					
 				case "userInfo.managerExamSearch":
 					System.out.println("进入url");
 					
 					//更具进阶内容查询进阶key
-					List<TbMaster> tbMaster = serviceImp.getTbMaster("进阶值班经理");
+					List<TbMaster> tbMaster = hallkeeperserviceimp.getTbMaster("进阶值班经理");
 					String key = tbMaster.get(0).getKey();
 					
 					//根据key查询进阶表的信息
-					List<TbPromotiontraining> tbPromotiontraining = serviceImp.getTbPromotiontraining(key);
+					List<TbPromotiontraining> tbPromotiontraining = hallkeeperserviceimp.getTbPromotiontraining(key);
 					
 					List<HallKeeperData> datas = new ArrayList<HallKeeperData>();
 					
@@ -66,7 +76,7 @@ public class ManagerExamAction extends HallKeeperAction {
 						
 						
 						//根据进阶表员工id查询员工信息
-						List<TbEmployee> tbEmployee = serviceImp.getTbEmployee(employeeid);
+						List<TbEmployee> tbEmployee = hallkeeperserviceimp.getTbEmployee(employeeid);
 						//取employeecode员工工号
 						String employeecode = tbEmployee.get(0).getEmployeecode();
 						//取employeename员工姓名
@@ -106,26 +116,26 @@ public class ManagerExamAction extends HallKeeperAction {
 						//区域id
 						Integer orgid = tbEmployee.get(0).getOrganizationNj().getOrgid();
 						//在区域营业厅关系表中查询地域id
-						List<COrganizationNj> cOrganizationNj = serviceImp.getCOrganizationNj(orgid);
+						List<COrganizationNj> cOrganizationNj = hallkeeperserviceimp.getCOrganizationNj(orgid);
 						BigDecimal areaid = cOrganizationNj.get(0).getTbArea().getAreaid();
 						//查询区域
-						List<TbArea> organizationNj = serviceImp.getOrganizationNj(areaid);
+						List<TbArea> organizationNj = hallkeeperserviceimp.getOrganizationNj(areaid);
 						
 						//地域名称areadesc
 						String areadesc = organizationNj.get(0).getAreadesc();
 						
 						//查询营业厅名称org_Name
-						List<OrganizationNj> org = serviceImp.getOrganizationNj(orgid);
+						List<OrganizationNj> org = hallkeeperserviceimp.getOrganizationNj(orgid);
 						String org_Name = org.get(0).getOrg_Name();
 						
 						//获取岗职信息
 						String postid = tbEmployee.get(0).getTbPost().getPostid();
-						List<TbPost> tbPost = serviceImp.getTbPost(postid);
+						List<TbPost> tbPost = hallkeeperserviceimp.getTbPost(postid);
 						//获取岗职名称postname
 						String postname = tbPost.get(0).getPostname();
 						
 						//获取绩效表信息
-						List<TbPerformance> tbPerformance = serviceImp.getTbPerformance(employeeid);
+						List<TbPerformance> tbPerformance = hallkeeperserviceimp.getTbPerformance(employeeid);
 
 						//上一年绩效分数performancescore
 						Double performancescore = null;
@@ -149,7 +159,7 @@ public class ManagerExamAction extends HallKeeperAction {
 						}
 						
 						//暗访查询
-						List<TbVisitcheck> tbVisitcheck = serviceImp.getTbVisitcheck(orgid);
+						List<TbVisitcheck> tbVisitcheck = hallkeeperserviceimp.getTbVisitcheck(orgid);
 						//第一次成绩
 						Double firstscore = tbVisitcheck.get(0).getFirstscore();
 						//第二次成绩
@@ -259,6 +269,5 @@ public class ManagerExamAction extends HallKeeperAction {
 				default:
 					break;
 				}
-				return map;
 	}
 }
