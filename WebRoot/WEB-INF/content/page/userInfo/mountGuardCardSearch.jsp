@@ -145,14 +145,24 @@
 													<c:forEach items="${ requestScope.mgcList}" var="mgc">
 														<tr>
 															<td class="center"><label class="pos-rel"> <input
-																	type="checkbox" class="ace" /> <span class="lbl"></span>
+																	type="checkbox" class="ace" name="cols" value="${mgc.examid }" /> <span class="lbl"></span>
 															</label></td>
 															<td>${mgc.tbEmployee.employeecode }</td>
 															<td>${mgc.tbEmployee.employeename }</td>
-															<td>${mgc.tbEmployee.idnumber }</td>
+															<td>
+															<a name="idnumber" href="javascript:void(0);"
+															data-container="body" data-toggle="popover"
+															data-placement="bottom" data-content="${mgc.tbEmployee.idnumber }">
+															</a>
+															</td>
 															<td>${mgc.organizationNj.orgid }</td>
 
-															<td>${mgc.organizationNj.org_Name }</td>
+															<td>
+															<a name="orgName" href="javascript:void(0);"
+															data-container="body" data-toggle="popover"
+															data-placement="bottom" data-content="${mgc.organizationNj.org_Name }">
+															</a>
+															</td>
 															<td>${mgc.examtype }</td>
 															<td>${fn:split(mgc.examdate,' ')[0] }</td>
 															<td>${mgc.examexpire }</td>
@@ -331,8 +341,17 @@
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("orgName", 0, 4);
+			myEachPopover("idnumber", 0, 6);
+		});
+	
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
