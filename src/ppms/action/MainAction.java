@@ -122,4 +122,8 @@ public class MainAction extends ActionSupport {
 		System.out.println(request.getRequestURI());
 		response.getWriter().write(ajaxState);
 	}
+	@Action(value = "menu")
+	public void menu() throws IOException {
+		
+	}
 }
