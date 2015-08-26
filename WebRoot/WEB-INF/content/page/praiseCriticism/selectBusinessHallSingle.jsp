@@ -106,10 +106,9 @@
 									class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th class="center"><label class="pos-rel"> <input
-													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
-											</th>
 											
+											
+											<th></th>
 											<th>营业厅编码</th>
 											<th>营业厅名称</th>
 											<th>区域</th>
@@ -131,17 +130,18 @@
 												<td>${organizationNj.areadesc}</td>
 												<td>${organizationNj.subareadesc}</td>
 											
-											
 											</tr>
 										</c:forEach>
 										<table cellpadding="0" cellspacing="0" width="95%"
 											align="center">
 											<tr>
-												<td align="center"><input type="submit"
-													name="doSelectButton" value="确定" class="btn_2" /> <input
-													type="button" name="doCloseButton" value="关闭" class="btn_2"
-													onclick="window.close();" />
-												</td>
+												<div class="clearfix form-actions">
+												<div class="col-md-offset-3 col-md-9" style="padding-left:20%">
+													<button class="btn btn-info" type="submit" >
+														<i class="ace-icon fa fa-check bigger-110"></i> 确定
+													</button>
+												</div>
+											</div>
 											</tr>
 										</table>
 									</tbody>
@@ -177,7 +177,7 @@
 						"aoColumns" : [ {
 							"bSortable" : false
 						}, null, null, null, {
-									"bSortable" : false
+									"bSortable" : true
 								} ],
 						"aaSorting" : [],
 
