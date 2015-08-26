@@ -144,7 +144,7 @@
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
 														id="form-input-readonly"
 														value="${sessionScope.organizationNj.orgid }"
-														name="innovation.organizationNj.orgid" /> <span
+														name="performance.organizationNj.orgid" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -156,7 +156,7 @@
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
 														id="form-input-readonly"
 														value="${sessionScope.organizationNj.org_Name }"
-														name="innovation.organizationNj.org_Name" /> <span
+														name="performance.organizationNj.org_Name" /> <span
 														class="help-inline col-xs-12 col-sm-7">
 														<button class="btn btn-info"
 															onclick="top.window.location='chooseOrg.do?backUrl=performance.month.monthPerformanceSingle.do'"
@@ -175,7 +175,7 @@
 														<div class="col-xs-10 col-sm-5">
 															<select class="chosen-select form-control"
 																id="form-field-select-employee"
-																name="innovation.tbEmployee.employeeid"
+																name="performance.tbEmployee.employeeid"
 																onchange="getEmployee(this)" data-placeholder="选择员工">
 																<c:if test="${mark!=null }">
 																	<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
@@ -199,7 +199,7 @@
 														<input readonly="" type="text" class="col-xs-10 col-sm-5"
 															id="form-input-readonly"
 															value="${sessionScope.employee.employeecode }"
-															name="innovation.tbEmployee.employeecode" /> <span
+															name="performance.tbEmployee.employeecode" /> <span
 															class="help-inline col-xs-12 col-sm-7"> </span>
 													</div>
 												</div>
@@ -211,7 +211,7 @@
 														<input readonly="" type="text" class="col-xs-10 col-sm-5"
 															id="form-input-readonly"
 															value="${sessionScope.employee.idnumber }"
-															name="innovation.tbEmployee.idnumber" />
+															name="performance.tbEmployee.idnumber" />
 
 													</div>
 												</div>
