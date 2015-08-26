@@ -445,8 +445,8 @@
 								<!-- /section:settings.box -->
 								<div class="page-header">
 									<h1>
-										创新管理 <small> <i
-											class="ace-icon fa fa-angle-double-right"></i> 创新批量录入 </small>
+										月度考试管理 <small> <i
+											class="ace-icon fa fa-angle-double-right"></i> 月度考试成绩批量录入 </small>
 									</h1>
 								</div>
 								<!-- /.page-header -->
@@ -519,6 +519,7 @@
  window.jQuery || document.write("<script src='${pageContext.request.contextPath}/assets/js/jquery1x.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
+<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<script type="text/javascript">
 		if ('ontouchstart' in document.documentElement)
 			document

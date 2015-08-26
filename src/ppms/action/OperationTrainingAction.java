@@ -71,6 +71,11 @@ public class OperationTrainingAction extends BaseInit {
 				ServletActionContext.getRequest().getSession()
 						.removeAttribute("employee");
 			}
+			if (ServletActionContext.getRequest().getSession()
+					.getAttribute("employees") != null) {
+				ServletActionContext.getRequest().getSession()
+						.removeAttribute("employees");
+			}
 			service.save(tbOperationtraining);
 			System.out.println("33333");
 			ServletActionContext.getResponse().sendRedirect(

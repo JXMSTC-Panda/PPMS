@@ -90,8 +90,7 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a>
-						</li>
+						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -104,6 +103,7 @@
 							监控成绩管理 <small> <c:if
 									test="${requestScope.tbStandardcheck==null }">
 									<i class="ace-icon fa fa-angle-double-right"></i> 监控成绩单条录入： 
+							
 							
 							
 							
@@ -122,7 +122,8 @@
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 							<form class="form-horizontal" role="form"
-								action="standardVisit.monitor.monitorSingle.add.do" method="post">
+								action="standardVisit.monitor.monitorSingle.add.do"
+								method="post">
 								<!-- #section:elements.form -->
 
 								<div class="form-group">
@@ -159,27 +160,27 @@
 											value="${sessionScope.organizationNj.org_Name }"
 											name="monitorcheck.organizationNj.org_Name" /> <span
 											class="help-inline col-xs-12 col-sm-7">
-											<button class="btn btn-info" 
-												onclick="top.window.location='chooseOrg.do?backUrl=standardVisit.monitor.monitorSingle.do'" type="button">选择营业厅</button>
-										</span>
+											<button class="btn btn-info"
+												onclick="top.window.location='chooseOrg.do?backUrl=standardVisit.monitor.monitorSingle.do'"
+												type="button">选择营业厅</button> </span>
 									</div>
 								</div>
-								
-								<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right"
-									for="form-field-1">时间</label>
 
-								<div class="col-sm-9">
-									<div class="input-group col-xs-10 col-sm-5">
-										<input class="form-control date-picker " id="id-date-picker-1"
-											type="text" data-date-format="yyyy-mm-dd"
-											value=""
-											name="monitorcheck.checkdate" /> <span
-											class="input-group-addon"> <i
-											class="fa fa-calendar bigger-110"></i> </span>
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-field-1">时间</label>
+
+									<div class="col-sm-9">
+										<div class="input-group col-xs-10 col-sm-5">
+											<input class="form-control date-picker "
+												id="id-date-picker-1" type="text"
+												data-date-format="yyyy-mm-dd" value=""
+												name="monitorcheck.checkdate" /> <span
+												class="input-group-addon"> <i
+												class="fa fa-calendar bigger-110"></i> </span>
+										</div>
 									</div>
 								</div>
-							</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
 										for="form-field-1"> 类别： </label>
@@ -202,8 +203,7 @@
 									<div class="col-sm-9">
 										<textarea id="form-field-11" class="col-xs-10 col-sm-5"
 											name="monitorcheck.detail"></textarea>
-										<span class="help-inline col-xs-12 col-sm-7">
-										</span>
+										<span class="help-inline col-xs-12 col-sm-7"> </span>
 									</div>
 								</div>
 
@@ -220,7 +220,12 @@
 										</button>
 									</div>
 								</div>
+								<%
+									if (request.getSession().getAttribute("organizationNj") != null) {
 
+										request.getSession().removeAttribute("organizationNj");
+									}
+								%>
 							</form>
 
 						</div>
