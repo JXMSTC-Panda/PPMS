@@ -27,7 +27,12 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/plugin/zTree/css/zTreeStyle/zTreeStyle.css"
 	type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jquery.gritter.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/jquery.gritter.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/jquery-ui.custom.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/chosen.css" />
 <!-- text fonts -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
@@ -102,28 +107,33 @@
 								</button>
 								<i class="ace-icon fa "></i> <strong id="alertText" 　class="red"></strong>.
 							</div>
-							<form class="form-horizontal" id="form_roleadd" method="post" role="form"
-								action="authority.null.roleSingle.roleAdd.do">
+							<form class="form-horizontal" id="form_roleadd" method="post"
+								role="form" action="authority.null.roleSingle.roleAdd.do">
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
 										for="form-field-1">权限角色：</label>
 
 									<div class="col-sm-9">
-										<input type="text" id="form-role-name" name="roleName"
-											placeholder="角色名" class="col-xs-10 col-sm-5" />
+										<input type="text" id="roleName" placeholder="角色名"
+											class="col-xs-10 col-sm-5" />
 									</div>
+								</div>
+
+								<div class="form-group">
+
 									<label class="col-sm-3 control-label no-padding-right"
 										for="form-field-1">系统管理员：</label>
 
 									<div class="col-sm-9">
-										<div class="radio">
-											<label> <input name="role1" type="radio" class="ace" />
-												<span class="lbl">是</span> </label> <label> <input
-												name="role0" type="radio" class="ace" /> <span class="lbl">否</span>
-											</label> <font color="red">[系统管理员可拥有所有操作权限]</font>
-										</div>
+										<input id="roleCheckBox" class="ace ace-switch ace-switch-5"
+											type="checkbox" value="0"/> <span class="lbl red">
+											[系统管理员可拥有所有操作权限]</span>
 									</div>
+								</div>
+
+								<div class="form-group">
+									<div class=col-lg-3></div>
 									<div class="col-lg-4" style="text-align: center;">
 										<ul id="treeDemo" class="ztree"></ul>
 									</div>
@@ -152,7 +162,8 @@
 	<!-- page specific plugin scripts -->
 	<script
 		src="${pageContext.request.contextPath}/assets/js/jquery-2.0.3.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery.gritter.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/js/jquery.gritter.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/plugin/zTree/js/jquery.ztree.all-3.5.min.js"></script>
 	<!-- inline scripts related to this page -->
@@ -170,11 +181,8 @@
 		};
 
 		function disabledNode(e) {
-			var zTree = $.fn.zTree.getZTreeObj("treeDemo"), 
-			disabled = e.data.disabled, 
-			nodes = zTree.getSelectedNodes(), 
-			inheritParent = false, 
-			inheritChildren = false;
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo"), disabled = e.data.disabled, nodes = zTree
+					.getSelectedNodes(), inheritParent = false, inheritChildren = false;
 			if (nodes.length == 0) {
 				$.gritter.add({
 					title : '提示!',
@@ -235,26 +243,43 @@
 					});
 				}
 			});
+			
+			$("#roleCheckBox").click(function(){
+				if($(this).val()=="1"){
+					$(this).removeAttr("value","1");
+					$(this).attr("value","0");
+				}else{
+					$(this).removeAttr("","0");
+					$(this).attr("value","1");
+				}
+			});
 			//添加角色按钮
 			$("#roleAddBtn").click(function() {
+
+				//角色名称
+				var roleName = $("#roleName").val()
+				//角色类型
+				,roleType = $("#roleCheckBox").attr("value")
 				//得到ZTree对象
-				var treeObj = $.fn.zTree.getZTreeObj("treeDemo"),
+				,treeObj = $.fn.zTree.getZTreeObj("treeDemo"),
 				//被选中的节点
-				nodes = treeObj.getCheckedNodes(true),
-				v = "";
-				alert(nodes);
+				nodes = treeObj.getCheckedNodes(true), v = "";
 				for ( var i = 0; i < nodes.length; i++) {
-					v += nodes[i].name + ",";
-					alert(nodes[i].id); //获取选中节点的值
+					if(i != nodes.length -1)
+						v += nodes[i].id + ",";
+					else
+					v += nodes[i].id;
 				}
-				alert(v);
-				alert(JSON.stringify(nodes));
+				//post到后台
 				$.ajax({
 					cache : false,
 					type : "POST",
 					url : "authority.null.roleSingle.roleAdd.do",
-					data : "{username:'" + "1" + "',pwd:'" + "2" + "'}",
-					async : false,
+					datatype:"json",
+					data : "roleName=" + roleName + 
+						   "&roleType=" + roleType + 
+						   "&roleNodes=" + v,
+					async : true ,
 					error : function(request) {
 						$.gritter.add({
 							title : '出错啦!',
@@ -270,9 +295,9 @@
 						if (data == "1") {
 							$.gritter.add({
 								title : 'success!',
-								text : '厉害' + data,
+								text : '<a>',
 								sticky : true,
-								time: 1000,
+								time : 1000,
 								speed : 10,
 								position : 'center',
 								class_name : 'gritter-light'
@@ -281,9 +306,9 @@
 						} else {
 							$.gritter.add({
 								title : '出错啦!',
-								text : '账号或密码错误，请重试！' + data,
+								text : data,
 								sticky : true,
-								time: 1000,
+								time : 1000,
 								speed : 10,
 								position : 'center',
 								class_name : 'gritter-light'

@@ -157,4 +157,16 @@ public interface MountGuardCardService {
 	* @date: 2015-8-25 下午3:38:28
 	 */
 	public TbMountguardexam getEntity(String id);
+	
+	/**
+	 * 更新记录
+	* @Title: update
+	* @Description: TODO
+	* @param: @param tbMountguardexam
+	* @param: @return    
+	* @return:    
+	* @auther: CappuccinoH
+	* @date: 2015-8-25 下午6:33:38
+	 */
+	public boolean update(TbMountguardexam tbMountguardexam);
 }

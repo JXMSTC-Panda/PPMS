@@ -53,4 +53,21 @@ public interface EmployeeService {
 	* @throws 
 	*/
 	public String findEmployeeID(String useracount,String password);
+	/** 
+	* @Title: findEmployee 
+	* @Description: TODO
+	* @return     
+	* TbEmployee     
+	* @throws 
+	*/
+	public TbEmployee findEmployee(String tbEmployeeID);
+	
+	/** 
+	* @Title: getEmployee 
+	* @Description: TODO
+	* @return     
+	* TbEmployee     
+	* @throws 
+	*/
+	public TbEmployee getEmployee();
 }

@@ -56,7 +56,7 @@
 		</li>
 		<li id="authority" class=""><a href="#" class="dropdown-toggle">
 				<i class="menu-icon fa fa-unlock-alt"></i> <span class="menu-text">
-					权限管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b cite="arrow"></b>
+					权限管理 </span> <b class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
 
 			<ul class="submenu">
 				<li id="roleSingle" class=""><a

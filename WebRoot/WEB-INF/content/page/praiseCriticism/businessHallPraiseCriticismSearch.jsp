@@ -131,8 +131,8 @@
 														name="cols" class="ace" /> <span class="lbl"></span> </label>
 												</td>
 
-												<td></td>
-												<td><a href="#">${orgpraisecriticismsInfor.organizationNj.orgid}</a>
+												<td>${orgpraisecriticismsInfor.order}</td>
+												<td>${orgpraisecriticismsInfor.organizationNj.orgid}
 												</td>
 												<td>${orgpraisecriticismsInfor.organizationNj.org_Name}</td>
 												<td class="hidden-480">${orgpraisecriticismsInfor.type}</td>

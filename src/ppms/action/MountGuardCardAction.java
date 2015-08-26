@@ -199,7 +199,7 @@ public class MountGuardCardAction extends BaseInit {
 	}
 
 	// 页面信息删除
-	@Action(value = "userInfo.mountGuardCard.mountGuardCardSingle.delete")
+	@Action(value = "userInfo.mountGuardCard.mountGuardCardSearch.delete")
 	public String delete() throws IOException {
 		
 		if(id!=null){
@@ -215,7 +215,7 @@ return "error";
 	}
 
 	// 页面信息修改
-	@Action(value = "userInfo.mountGuardCard.mountGuardCardUpdate.modify", results = {
+	@Action(value = "userInfo.mountGuardCard.mountGuardCardSearch.modify", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/mountGuardCardSingle.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
 	public String modify() throws IOException {
@@ -278,12 +278,24 @@ return "error";
 
 	}
 
-	@Action(value = "userInfo.mountGuardCard.mountGuardCardUpdate.modify", results = {
+	@Action(value = "userInfo.mountGuardCard.mountGuardCardSingle.update", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/mountGuardCardSingle.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
 	public String update(){
 		
 		if(tbMountguardexam!=null){
+			try {
+				if(mountguardcardserviceimp.update(tbMountguardexam)){
+					
+					ServletActionContext.getResponse().sendRedirect("userInfo.mountGuardCard.mountGuardCardSearch.do");
+					return null;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "error";
+			}
+			
+			
 			return "success";
 		}
 		return "error";

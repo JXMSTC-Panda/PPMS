@@ -1,6 +1,7 @@
 package ppms.action;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -16,20 +17,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import ppms.domain.TbEmployee;
+import ppms.domain.TbRole;
+import ppms.domain.TbRolefunction;
 import ppms.serviceimpl.*;
+import ppms.shiro.MySubject;
 
 /**
-* <p>Title: MainAction</p>
-* <p>Description: 主要实现登录验证</p>
-* <p>Company:（c）版权所有 2015 NCHU.QQL</p> 
-* <p>Version:</p>
-* @author TyurinTsien
-* @date 2015-8-13下午2:49:34
-*/
-public class MainAction extends ActionSupport{
+ * <p>
+ * Title: MainAction
+ * </p>
+ * <p>
+ * Description: 主要实现登录验证
+ * </p>
+ * <p>
+ * Company:（c）版权所有 2015 NCHU.QQL
+ * </p>
+ * <p>
+ * Version:
+ * </p>
+ * 
+ * @author TyurinTsien
+ * @date 2015-8-13下午2:49:34
+ */
+public class MainAction extends ActionSupport {
 
 	@Autowired
 	EmployeeServiceImp employeeServiceImp;
+	@Autowired
+	AuthoritySrviceImp authoritySrviceImp;
 
 	protected HttpServletResponse response;
 	protected HttpServletRequest request;
@@ -40,7 +56,7 @@ public class MainAction extends ActionSupport{
 	/**
 	 * MainAction构造函数
 	 */
-	public MainAction(){
+	public MainAction() {
 
 		response = ServletActionContext.getResponse();
 		request = ServletActionContext.getRequest();
@@ -58,22 +74,46 @@ public class MainAction extends ActionSupport{
 	 * @author QiuLinQian
 	 * @time 2015年8月11日16:23:57
 	 * @throws
-	 */ 
+	 */
 	@Action(value = "login")
 	public void loginCheck() throws IOException {
 
+		List<TbEmployee> employees = employeeServiceImp.loginHelp(
+				userAccountString, userPasswordString);
 		// 登录验证
-		ajaxState = employeeServiceImp.loginCheck(userAccountString,
-				userPasswordString);
+		ajaxState = String.valueOf(employees.size());
 		if (ajaxState.equals("1")) {
-			//验证通过记录session
+
+			TbEmployee tbEmployee = new TbEmployee();
+			TbRole tbRole = new TbRole();
+			TbRolefunction tbRolefunction = new TbRolefunction();
+
+			// 验证通过记录session
 			HttpSession session = request.getSession(true);
-			//session记录员工ID
-			session.setAttribute("tbEmployeeIDSession", 
-					employeeServiceImp.findEmployeeID(userAccountString, userPasswordString));
+			tbEmployee = employees.get(0);
+			// session记录员工ID
+			session.setAttribute("tbEmployeeIDSession",
+					tbEmployee.getEmployeeid());
+			// 得到当前的角色ID
+			String roleID = tbEmployee.getTbRole().getRoleid();
+			System.out.println(roleID);
+			// 角色信息
+			tbRole = authoritySrviceImp.findRoleByRoleID(roleID);
+			System.out.println(tbRole.getRoleid());
+			// 角色功能
+			tbRolefunction = authoritySrviceImp.findTbRoleFunction(roleID);
+			System.out.println(tbRolefunction.getFunctionids());
+
+			//创建当前登录对象
+			MySubject mySubject = new MySubject();
+			mySubject.CreatMySubject(tbEmployee, tbRole, tbRolefunction);
+
+			System.out.println(mySubject.getTbEmployee().getEmployeeid()
+					+ mySubject.getTbRole().getRoleid()
+					+ mySubject.tbRolefunction.getFunctionids()
+					+ "√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√");
 		}
 		System.out.println(request.getRequestURI());
 		response.getWriter().write(ajaxState);
 	}
-
 }
