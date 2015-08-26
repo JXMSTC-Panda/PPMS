@@ -522,11 +522,11 @@
 						class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
 
 					<ul class="submenu">
-						<li id="monthPerformanceRemind" class=""><a
+						<!-- <li id="monthPerformanceRemind" class=""><a
 							href="performance.month.monthPerformanceRemind.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效未提交事项提醒 </a> <b
 							class="arrow"></b>
-						</li>
+						</li> -->
 						<li id="monthPerformanceOpen" class=""><a
 							href="performance.month.monthPerformanceOpen.do">
 								<i class="menu-icon fa fa-caret-right"></i>月度绩效上传功能开通 </a> <b
