@@ -253,24 +253,6 @@
 	</script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-	<!-- Excel导出插件 -->
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/tableExport.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jquery.base64.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/html2canvas.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/libs/sprintf.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/jspdf.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/assets/tableExport.jquery.plugin/jspdf/libs/base64.js"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js">
-		
-	</script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"
 		chartset="utf8"></script>
