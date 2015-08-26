@@ -116,7 +116,7 @@
 						$("#OrgName")
 								.change(
 										function() {
-											alert("change");
+											//alert("change");
 
 											$
 													.ajax({
@@ -135,7 +135,7 @@
 
 															eval("json = "
 																	+ data);
-															alert(data);
+															//alert(data);
 															//把区域名写入把文本框
 															document
 																	.getElementById("AreaName").value = json.AreaName;
@@ -153,7 +153,7 @@
 																var name = json.Employees[i].name;
 																//select.appendChild(option);
 																//$("#EmployeeNameSelect").append("<option value=\"15\">Select</option>");
-																alert(name);
+																//alert(name);
 
 															}
 
@@ -163,7 +163,7 @@
 						$("#EmployeeNameSelect")
 								.change(
 										function() {
-											alert("change");
+											//alert("change");
 
 											$
 													.ajax({
@@ -183,7 +183,7 @@
 															eval("json = "
 																	+ data);
 															//alert(json.AreaName);					
-															alert(data);
+															//alert(data);
 															//把工号名写入把文本框
 															document
 																	.getElementById("EmployeeId").value = json.employeecode;
