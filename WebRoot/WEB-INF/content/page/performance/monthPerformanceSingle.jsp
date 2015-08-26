@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -91,7 +92,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
+						<li><a href="#">Other Pages</a>
+						</li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -176,14 +178,14 @@
 																name="innovation.tbEmployee.employeeid"
 																onchange="getEmployee(this)" data-placeholder="选择员工">
 																<c:if test="${mark!=null }">
-																<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
+																	<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
 																</c:if>
 																<c:if test="${mark==null }">
-																<c:forEach items="${sessionScope.employees }"
-																	var="employee">
-																	<option value="${employee.employeeid }">${employee.employeename
-																		}</option>
-																</c:forEach>
+																	<c:forEach items="${sessionScope.employees }"
+																		var="employee">
+																		<option value="${employee.employeeid }">${employee.employeename
+																			}</option>
+																	</c:forEach>
 																</c:if>
 															</select>
 														</div>
@@ -269,21 +271,19 @@
 												</div>
 											</div>
 											<%
-											out.write(request.getSession().getAttribute("employees").toString());
-											
 												if (request.getSession().getAttribute("organizationNj") != null) {
 
-												request.getSession().removeAttribute("organizationNj");
-											}
-											if (request.getSession().getAttribute("employee") != null) {
-												request.getSession().removeAttribute("employee");
-											}
-											if (request.getSession().getAttribute("mark") != null) {
-												request.getSession().removeAttribute("mark");
-												if (request.getSession().getAttribute("employees") != null) {
-													request.getSession().removeAttribute("employees");
+													request.getSession().removeAttribute("organizationNj");
 												}
-											}
+												if (request.getSession().getAttribute("employee") != null) {
+													request.getSession().removeAttribute("employee");
+												}
+												if (request.getSession().getAttribute("mark") != null) {
+													request.getSession().removeAttribute("mark");
+													if (request.getSession().getAttribute("employees") != null) {
+														request.getSession().removeAttribute("employees");
+													}
+												}
 											%>
 										</form>
 									</div>
