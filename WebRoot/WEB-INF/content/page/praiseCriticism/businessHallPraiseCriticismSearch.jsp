@@ -202,7 +202,7 @@
 										</c:forEach>
 									</tbody>
 								</table>
-								<div class="col-md-offset-3 col-md-9" align="center">
+								<div class="col-md-offset-3 col-md-9" style="padding-left:20%">
 									<button class="btn btn-info" type="submit">
 										<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
 									</button>

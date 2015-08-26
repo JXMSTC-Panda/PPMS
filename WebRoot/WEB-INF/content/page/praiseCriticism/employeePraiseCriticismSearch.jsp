@@ -139,7 +139,15 @@
 												<td><a href="#">${employeepraisecriticismsInfor.tbEmployee.employeecode}</a>
 												</td>
 												<td>${employeepraisecriticismsInfor.tbEmployee.employeename}</td>
-												<td class="hidden-480">${employeepraisecriticismsInfor.tbEmployee.idnumber}</td>
+												<%-- <td class="hidden-480">${employeepraisecriticismsInfor.tbEmployee.idnumber}</td> --%>
+												<td>
+													<a name="idnumber" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${employeepraisecriticismsInfor.tbEmployee.idnumber}">
+													</a>
+
+												</td>
+												
 												<td>${employeepraisecriticismsInfor.organizationNj.orgid}</td>
 												<td>${employeepraisecriticismsInfor.organizationNj.org_Name}</td>
 												<td>
@@ -211,7 +219,9 @@
 										</c:forEach>
 									</tbody>
 								</table>
-								<div class="col-md-offset-3 col-md-9" align="center">
+								
+								<div class="col-md-offset-3 col-md-9" style="padding-left:20%" >
+								
 									<button class="btn btn-info" type="submit" >
 										<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
 									</button>
@@ -246,6 +256,8 @@
 	$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
 			myEachPopover("praisecriticismdate",0, 10);
+			myEachPopover("idnumber",0, 8);
+			
 		});
 	
 		jQuery(function($) {

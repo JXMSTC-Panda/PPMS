@@ -115,8 +115,16 @@ public class ChoseAction extends ActionSupport {
 									|| backUrl
 											.equals("employeeTrainExam.monthExam.monthExamSingle.do")
 									|| backUrl
-											.equals("employeeTrainExam.operationTrain.operationTrainSingle.do") || backUrl
-										.equals("employeeTrainExam.promoteTrain.promoteTrainSingle.do"))) {
+											.equals("employeeTrainExam.operationTrain.operationTrainSingle.do")
+									|| backUrl
+											.equals("employeeTrainExam.promoteTrain.promoteTrainSingle.do")
+									|| backUrl
+											.equals("performance.month.monthPerformanceSingle.do")
+									|| backUrl
+											.equals("performance.year.yearPerformanceSingle.do")
+									|| backUrl
+											.equals("employeeTrainExam.freshEmployeeExam.becomeEmployeeSingle.do") || backUrl
+										.equals("employeeTrainExam.freshEmployeeExam.freshEmployeeExamSingle.do"))) {
 						List<TbEmployee> employees = dao.getEntitiestNotLazy(
 								new TbEmployee(), null,
 								Restrictions.eq("organizationNj", list.get(0)));
@@ -125,7 +133,7 @@ public class ChoseAction extends ActionSupport {
 									.setAttribute("employees", employees);
 						}
 					}
-					
+
 					OrganizationNj organizationNj = list.get(0).toComplete(dao);
 					ServletActionContext.getRequest().getSession()
 							.setAttribute("organizationNj", organizationNj);
@@ -159,9 +167,14 @@ public class ChoseAction extends ActionSupport {
 						ServletActionContext.getRequest().getSession()
 								.setAttribute("employee", tbEmployee);
 						ServletActionContext.getRequest().getSession()
-						.setAttribute("mark", "have");
-						ServletActionContext.getRequest().getSession()
-						.setAttribute("organizationNj", tbEmployee.getOrganizationNj().toComplete(dao));
+								.setAttribute("mark", "have");
+						ServletActionContext
+								.getRequest()
+								.getSession()
+								.setAttribute(
+										"organizationNj",
+										tbEmployee.getOrganizationNj()
+												.toComplete(dao));
 						ServletActionContext.getResponse()
 								.sendRedirect(backUrl);
 					}

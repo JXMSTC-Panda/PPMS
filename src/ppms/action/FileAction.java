@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -91,8 +93,6 @@ public class FileAction extends ActionSupport {
 
 				exception.addErrorInfo(new ErrorInfo("文件导入失败，文件名"
 						+ fileFileName + "不符合，请导入.xls格式文件"));
-				throw new ExcelParserException("文件导入失败，文件名" + fileFileName
-						+ "不符合，请导入.xls格式文件");
 			} else {
 
 				expect = new String(expect.getBytes("iso8859-1"), "utf-8");
@@ -122,8 +122,7 @@ public class FileAction extends ActionSupport {
 					exception.addErrorInfo(new ErrorInfo("该页面要求上传" + expect
 							+ "，你上传的是" + fileFileName + ",请检查"));
 					System.out.println(expect + "不是" + fileFileName + "请检查");
-					throw new ExcelParserException("该页面要求上传" + expect
-							+ "，你上传的是" + fileFileName + ",请检查");
+					return "error";
 				}
 
 			}
@@ -136,7 +135,13 @@ public class FileAction extends ActionSupport {
 			if (exception.getErrors().size() > 0) {
 				ServletActionContext.getRequest().setAttribute("errorInfos",
 						exception.getErrors());
-				return "error";
+				try {
+					ServletActionContext.getRequest().getInputStream().close();
+					ServletActionContext.getResponse().getWriter().write("sfasdf");
+				} catch (Exception e) {
+					e.printStackTrace();
+				} 
+				return null;
 			}
 			return null;
 		}
