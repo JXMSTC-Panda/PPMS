@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -108,7 +110,7 @@
 											<th class="center"><label class="pos-rel"> <input
 													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
 											</th>
-											<th>序号</th>
+											
 											<th>工号</th>
 											<th>姓名</th>
 											<th>身份证号</th>
@@ -129,7 +131,7 @@
 											<tr>
 												<td><input type="radio" name="selectEmployee"
 													value="${employeeInfo.employeeid}" checked></td>
-												<td></td>
+												
 												<td>${employeeInfo.employeecode}</td>
 												<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a>
 												</td>
@@ -143,7 +145,7 @@
 														<c:out value="男"></c:out>
 													</c:if>
 												</td>
-												<td>${employeeInfo.birthday}</td>
+												<td>${fn:split(fn:split(employeeInfo.birthday,' ')[0],'-')[0]}-${fn:split(fn:split(employeeInfo.birthday,' ')[0],'-')[1]}</td>
 												<td>${employeeInfo.tbPost.postname}</td>
 												<td>${employeeInfo.tbJob.jobname}</td>
 

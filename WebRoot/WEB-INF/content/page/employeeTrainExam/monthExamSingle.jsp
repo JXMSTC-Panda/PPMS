@@ -179,18 +179,23 @@
 															id="form-field-select-employee"
 															name="tbMonthexam.tbEmployee.employeeid"
 															onchange="getEmployee(this)" data-placeholder="选择员工">
-															<option ></option>
-															<c:forEach items="${sessionScope.employees }"
-																var="employee">
-																<option value="${employee.employeeid }">${employee.employeename}</option>
-															</c:forEach>
-														</select>
+															<c:if test="${mark!=null }">
+																<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
+															</c:if>
+															<c:if test="${mark==null }">
+																<c:forEach items="${sessionScope.employees }"
+																	var="employee">
+																	<option value="${employee.employeeid }">${employee.employeename
+																		}</option>
+																</c:forEach>
+															</c:if>
+															</select>
 													</div>
 
 												</div>
 											</div>
-											
-											
+
+
 
 											<!-- /section:elements.form -->
 											<div class="space-4"></div>
@@ -230,9 +235,8 @@
 													<div class="input-group col-xs-10 col-sm-5">
 														<input class="form-control date-picker "
 															id="id-date-picker-1" type="text"
-															data-date-format="yyyy-mm-dd"
-															name="tbMonthexam.examdate" /> <span
-															class="input-group-addon"> <i
+															data-date-format="yyyy-mm-dd" name="tbMonthexam.examdate" />
+														<span class="input-group-addon"> <i
 															class="fa fa-calendar bigger-110"></i> </span>
 													</div>
 												</div>
@@ -264,7 +268,22 @@
 											</div>
 
 										</form>
+										<%
+											if (request.getSession().getAttribute("organizationNj") != null) {
 
+												request.getSession().removeAttribute("organizationNj");
+											}
+
+											if (request.getSession().getAttribute("employee") != null) {
+												request.getSession().removeAttribute("employee");
+											}
+											if (request.getSession().getAttribute("mark") != null) {
+												request.getSession().removeAttribute("mark");
+												if (request.getSession().getAttribute("employees") != null) {
+													request.getSession().removeAttribute("employees");
+												}
+											}
+										%>
 									</div>
 									<!-- /.col -->
 								</div>

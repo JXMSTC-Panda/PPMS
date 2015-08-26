@@ -179,7 +179,7 @@
 				</li>
 
 				<li id="mountGuardCard" class=""><a href="#"
-					class="dropdown-toggle"> <i class="menu-icon fa fa-caret-right"></i>合作厅上岗证查询
+					class="dropdown-toggle"> <i class="menu-icon fa fa-caret-right"></i>合作厅上岗证管理
 						<b class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
 
 					<ul class="submenu">

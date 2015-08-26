@@ -140,5 +140,13 @@ public class userBaseInfoServiceImp extends BaseDaoImp implements userBaseInfoSe
 		// TODO Auto-generated method stub
 		tbEmployeeDAO.update(tbEmployee);
 	}
-	
+	@Override
+    public void delete(String employeeid){
+    	try {
+        	tbEmployeeDAO.detete(employeeid);   
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+   
+    }
 }

@@ -52,4 +52,5 @@ public interface userBaseInfoService {
 			String academicdegree, String schoolname, String specialization,
 			String tel, Date entertime, String backjobcomment, String remark);*/
 	public void update(TbEmployee tbEmployee);
+	public void delete(String employeeid);
 }

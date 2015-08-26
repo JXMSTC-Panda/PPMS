@@ -289,6 +289,7 @@
  window.jQuery || document.write("<script src='${pageContext.request.contextPath}/assets/js/jquery1x.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
+<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 		<script type="text/javascript">
 			if ('ontouchstart' in document.documentElement) document.write("<script src='${pageContext.request.contextPath}/assets/js/jquery.mobile.custom.js'>" + "<" + "/script>");
 		</script>
