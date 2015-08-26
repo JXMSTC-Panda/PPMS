@@ -311,11 +311,11 @@
 					</script>
 
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">人员成长管理系统</a>
 						</li>
 
-						<li><a href="#">Other Pages</a></li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">进阶培训管理</a></li>
+						<li class="active">进阶培训批量导入</li>
 					</ul>
 					<!-- /.breadcrumb -->
 
@@ -505,6 +505,7 @@
 	<!-- basic scripts -->
 
 	<!--[if !IE]> -->
+	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<script type="text/javascript">
 		window.jQuery
 				|| document

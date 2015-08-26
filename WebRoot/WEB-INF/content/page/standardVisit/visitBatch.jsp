@@ -314,8 +314,8 @@
 						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
 						</li>
 
-						<li><a href="#">Other Pages</a></li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">暗访成绩管理</a></li>
+						<li class="active">暗访成绩批量导入</li>
 					</ul>
 					<!-- /.breadcrumb -->
 
