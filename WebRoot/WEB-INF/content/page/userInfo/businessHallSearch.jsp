@@ -80,13 +80,6 @@
 						} catch (e) {
 						}
 					</script>
-					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
-						</li>
-						<li><a href="#">父功能</a></li>
-						<li class="active">子功能</li>
-					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -144,12 +137,12 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="../assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
-		src="../assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
-		src="../assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		jQuery(function($) {
