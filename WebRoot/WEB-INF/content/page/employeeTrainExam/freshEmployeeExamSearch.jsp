@@ -155,7 +155,7 @@
 
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="employeeTrainExam.freshEmployeeExam.freshEmployeeSearch.modify.toUpdate.do?examid=${freshs.examid} " name=""
+														<a class="green" href="employeeTrainExam.freshEmployeeExam.freshEmployeeSearch.modify.toUpdate.do?examid=${freshs.examid}" name=""
 															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
 															href="employeeTrainExam.freshEmployeeExam.freshEmployeeExamSearch.delete.do?examid=${freshs.examid}">

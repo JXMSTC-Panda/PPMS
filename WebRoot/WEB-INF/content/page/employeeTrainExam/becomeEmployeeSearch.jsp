@@ -135,7 +135,7 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${requestScope.tbBecomeemployeeexams}"
+										<c:forEach items="${requestScope.tbBecomeemployeeexam}"
 											var="becomes" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input

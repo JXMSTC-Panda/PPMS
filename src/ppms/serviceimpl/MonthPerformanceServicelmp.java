@@ -138,4 +138,9 @@ public class MonthPerformanceServicelmp extends BaseDaoImp implements Performanc
 	public void delete(String id){
 		dao.delete(new TbPerformance(), id);
 	}
+	
+	@Override
+	public void update(TbPerformance tbPerformance){
+		dao.update(tbPerformance);
+	}
 }

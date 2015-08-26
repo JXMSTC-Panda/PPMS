@@ -38,7 +38,7 @@ import ppms.serviceimpl.FreshemployeeexamServiceImp;
  * @author super-pcf
  * 
  */
-public class FreshEmployeeExamAction extends BaseInit {
+public class EmployeeExamAction extends BaseInit {
 
 	String examstage;
 
@@ -65,7 +65,7 @@ public class FreshEmployeeExamAction extends BaseInit {
 	private HttpServletRequest request;
 
 	// 构造函数
-	public FreshEmployeeExamAction() {
+	public EmployeeExamAction() {
 		request = ServletActionContext.getRequest();
 	}
 
@@ -214,9 +214,9 @@ public class FreshEmployeeExamAction extends BaseInit {
 		try {
 
 			// 调试用
-			System.out.println("=============>>>>>>" + examstage
-					+ "----------->>>>>" + tbArea);
-			tbFreshemployeeexam.setOrganizationNj(null);
+//			System.out.println("=============>>>>>>" + examstage
+//					+ "----------->>>>>" + tbArea);
+		tbFreshemployeeexam.setOrganizationNj(null);
 			tbFreshemployeeexam.setTbEmployee(null);
 
 			if (examstage.equals("1")) {
@@ -227,14 +227,14 @@ public class FreshEmployeeExamAction extends BaseInit {
 
 			freshService.addFreshemployeeexam(tbFreshemployeeexam);
 
-			// 测试开始
-			List<TbFreshemployeeexam> tbFreshemployeeexams = freshService
-					.geTbFreshemployeeexams();
-			for (TbFreshemployeeexam tb : tbFreshemployeeexams) {
-				System.out.println("=============>>>" + tb.getWeek());
-				System.out.println("------------->>>" + tb.getExamstage());
-				System.out.println("=============>>>" + tb.getExamscore());
-			}
+//			// 测试开始
+//			List<TbFreshemployeeexam> tbFreshemployeeexams = freshService
+//					.geTbFreshemployeeexams();
+//			for (TbFreshemployeeexam tb : tbFreshemployeeexams) {
+//				System.out.println("=============>>>" + tb.getWeek());
+//				System.out.println("------------->>>" + tb.getExamstage());
+//				System.out.println("=============>>>" + tb.getExamscore());
+//			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -264,23 +264,23 @@ public class FreshEmployeeExamAction extends BaseInit {
 		try {
 
 			// 调试用
-			System.out.println("=========>>" + tbBecomeemployeeexam);
+			//System.out.println("=========>>" + tbBecomeemployeeexam);
 			tbBecomeemployeeexam.setOrganizationNj(null);
 			tbBecomeemployeeexam.setTbEmployee(null);
 
 			//
 			becomeService.addBecomeemployeeexam(tbBecomeemployeeexam);
 
-			// 调试用
-			List<TbBecomeemployeeexam> tbBecomeemployeeexams = becomeService
-					.getBecomeemployeeexams();
-			for (TbBecomeemployeeexam tb : tbBecomeemployeeexams) {
-				System.out.println("==========>>>" + tb.getExamscore());
-				System.out.println("---------->>>" + tb.getChineseprintcount());
-				System.out.println("==========>>>" + tb.getNumberprintcount());
-				System.out.println("---------->>>>" + tb.getRemark());
-
-			}
+//			// 调试用
+//			List<TbBecomeemployeeexam> tbBecomeemployeeexams = becomeService
+//					.getBecomeemployeeexams();
+//			for (TbBecomeemployeeexam tb : tbBecomeemployeeexams) {
+//				System.out.println("==========>>>" + tb.getExamscore());
+//				System.out.println("---------->>>" + tb.getChineseprintcount());
+//				System.out.println("==========>>>" + tb.getNumberprintcount());
+//				System.out.println("---------->>>>" + tb.getRemark());
+//
+//			}
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -399,6 +399,7 @@ public class FreshEmployeeExamAction extends BaseInit {
 	}
 
 	private void initPage(String url) {
+		
 
 		try {
 			// 获取所有营业厅
@@ -554,4 +555,5 @@ public class FreshEmployeeExamAction extends BaseInit {
 
 		return "success";
 	}
+	
 }
