@@ -89,11 +89,11 @@
 								<i class="menu-icon fa fa-caret-right"></i>人员基本信息批量录入 </a> <b
 							class="arrow"></b>
 						</li>
-						<li id="userBaseInfoBatchUpdateBySelectField" class=""><a
+						<!-- <li id="userBaseInfoBatchUpdateBySelectField" class=""><a
 							href="userInfo.userBase.userBaseInfoBatchUpdateBySelectField.do">
 								<i class="menu-icon fa fa-caret-right"></i>人员基本信息批量修改 </a> <b
 							class="arrow"></b>
-						</li>
+						</li> -->
 						<li id="userBaseInfoSearch" class=""><a
 							href="userInfo.userBase.userBaseInfoSearch.do">
 								<i class="menu-icon fa fa-caret-right"></i>人员基本信息查詢 </a> <b
@@ -179,7 +179,7 @@
 				</li>
 
 				<li id="mountGuardCard" class=""><a href="#"
-					class="dropdown-toggle"> <i class="menu-icon fa fa-caret-right"></i>合作厅上岗证查询
+					class="dropdown-toggle"> <i class="menu-icon fa fa-caret-right"></i>合作厅上岗证管理
 						<b class="arrow fa fa-angle-down"></b> </a> <b class="arrow"></b>
 
 					<ul class="submenu">
@@ -585,10 +585,10 @@
 						<i class="menu-icon fa fa-caret-right"></i>批量导入模板下载 </a> <b
 					class="arrow"></b>
 				</li>
-				<li id="otherSystemSetting" class=""><a
+				<!-- <li id="otherSystemSetting" class=""><a
 					href="other.null.otherSystemSetting.do">
 						<i class="menu-icon fa fa-caret-right"></i>系统设定 </a> <b class="arrow"></b>
-				</li>
+				</li> -->
 			</ul>
 		</li>
 

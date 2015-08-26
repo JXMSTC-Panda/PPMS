@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -137,7 +138,17 @@
 												<td>${orgpraisecriticismsInfor.organizationNj.org_Name}</td>
 												<td class="hidden-480">${orgpraisecriticismsInfor.type}</td>
 												<td>${orgpraisecriticismsInfor.cause}</td>
-												<td>${orgpraisecriticismsInfor.praisecriticismdate}</td>
+												<%-- <td>${fn:split(orgpraisecriticismsInfor.praisecriticismdate,' ')[0]}
+												
+												</td> --%>
+												
+												<td>
+													<a name="praisecriticismdate" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${orgpraisecriticismsInfor.praisecriticismdate}">
+													</a>
+
+												</td>
 												<td>${orgpraisecriticismsInfor.level}</td>
 												<td>${orgpraisecriticismsInfor.score}</td>
 
@@ -215,8 +226,18 @@
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	
+	
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+	$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("praisecriticismdate",0, 10);
+		});
+	
+	
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')

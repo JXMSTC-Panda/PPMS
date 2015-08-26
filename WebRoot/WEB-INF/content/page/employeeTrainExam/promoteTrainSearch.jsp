@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -83,7 +84,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
+						<li><a href="#">父功能</a>
+						</li>
 						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -133,24 +135,40 @@
 												<td class="center"><label class="pos-rel"> <input
 														type="checkbox" class="ace"
 														value="${TbPromotiontraining.promotiontrainingid }" /> <span
-														class="lbl"></span> </label></td>
+														class="lbl"></span> </label>
+												</td>
 												<td>${TbPromotiontraining.tbEmployee.employeecode}</td>
 												<td>${TbPromotiontraining.tbEmployee.employeename}</td>
 												<td>${TbPromotiontraining.organizationNj.orgid}</td>
 												<td>${TbPromotiontraining.organizationNj.org_Name}</td>
 												<td>${TbPromotiontraining.tbEmployee.tbPost.postname}</td>
-												<td>${TbPromotiontraining.promotiontrainingdate}</td>
-												<td>${TbPromotiontraining.promotioncontent}</td>
+												<td>
+													${fn:split(TbPromotiontraining.promotiontrainingdate,' ')[0]}</td>
+												<td><c:if
+														test="${TbPromotiontraining.promotioncontent=='0001'}">进阶熟练营业员
+												</c:if> <c:if
+														test="${TbPromotiontraining.promotioncontent=='0002'}">进阶账务稽核
+												</c:if> <c:if
+														test="${TbPromotiontraining.promotioncontent=='0003'}">进阶实习值班经理
+												</c:if> <c:if
+														test="${TbPromotiontraining.promotioncontent=='0004'}">进阶值班经理
+												</c:if> <c:if
+														test="${TbPromotiontraining.promotioncontent=='0005'}">进阶店长
+												</c:if> <c:if
+														test="${TbPromotiontraining.promotioncontent=='0006'}">其他
+												</c:if>
+												</td>
 												<td>${TbPromotiontraining.promotionscore}</td>
 
 												<td>进阶成功</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="employeeTrainExam.promoteTrain.promoteTrainSearch.modify.do?id=${TbPromotiontraining.promotiontrainingid }" name=""
-															onclick="Modify(this)"> <i
+														<a class="green"
+															href="employeeTrainExam.promoteTrain.promoteTrainSearch.modify.do?id=${TbPromotiontraining.promotiontrainingid }"
+															name="" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="employeeTrainExam.promoteTrain.promoteTrainSearch.delete.do?id=${TbPromotiontraining.promotiontrainingid }"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+															href="employeeTrainExam.promoteTrain.promoteTrainSearch.delete.do?id=${TbPromotiontraining.promotiontrainingid }">
+															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -166,23 +184,23 @@
 																	onclick="GetDetail(this)" class="tooltip-info"
 																	data-rel="tooltip" title="View"> <span class="blue">
 																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																	</span> </a>
-																</li>
+																	</span> </a></li>
 
 																<li><a href="javascript:void(0)" name=""
 																	onclick="Modify(this)" class="tooltip-success"
 																	data-rel="tooltip" title="Edit"> <span
 																		class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a href="ClassDelete?classId="
 																	class="tooltip-error" data-rel="tooltip" title="Delete"><span
-																		class="red"> </span> </a><br></li>
+																		class="red"> </span> </a><br>
+																</li>
 															</ul>
 														</div>
-													</div>
-												</td>
+													</div></td>
 											</tr>
 										</c:forEach>
 									</tbody>

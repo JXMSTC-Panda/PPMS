@@ -156,7 +156,7 @@ public class userBaseInfoAction extends BaseInit{
 	 * 修改人员信息
 	 * @return
 	 */
-	@Action(value = "userInfo.userBase.userBaseInfoSearch.modifyInitPage", results = {
+	@Action(value = "userInfo.userBase.userBaseInfoSearch.modify.InitPage", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoUpdate.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String updateInitPage() {
@@ -191,18 +191,19 @@ public class userBaseInfoAction extends BaseInit{
 	public String delete() { 
 		try {
 			String employeeid=request.getParameter("id");   //前台取到对应id,用一个string接受
+			service.delete(employeeid);
 			/**
 			 * service取到数据，封装
-			 */
+			 *//*
 			List<TbEmployee> employees=service.getTbEmployee();
-			/**
+			*//**
 			 * 遍历，开始判断，如果id与表中employeeid相同，调用service层的delete方法删除信息
-			 */
+			 *//*
 			for(TbEmployee tbEmployee:employees){				
 				if(tbEmployee.getEmployeeid().equals(employeeid)){
 					service.delete(tbEmployee);
 				}	
-			}
+			}*/
 			/**
 			 * 结束之后，转自查询页面（含初始化）
 			 */

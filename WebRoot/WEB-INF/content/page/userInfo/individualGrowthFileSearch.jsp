@@ -162,7 +162,7 @@
 														没有调厅记录
 													</c:if>
 													<td>${status.index + 1}</td>
-													<td>${tbChange.changedate}</td>
+													<td>${fn:split(tbChange.changedate,' ')[0]}</td>
 													<td>${tbChange.tbJobByOutjobid.jobname}</td>
 												</tr>
 											</c:forEach>

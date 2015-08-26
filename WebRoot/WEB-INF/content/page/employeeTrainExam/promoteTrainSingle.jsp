@@ -179,10 +179,16 @@
 															id="form-field-select-employee"
 															name="tbPromotiontraining.tbEmployee.employeeid"
 															onchange="getEmployee(this)" data-placeholder="选择员工">
-															<c:forEach items="${sessionScope.employees}"
-																var="employee">
-																<option value="${employee.employeeid}">${employee.employeename}</option>
-															</c:forEach>
+															<c:if test="${mark!=null }">
+																<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
+															</c:if>
+															<c:if test="${mark==null }">
+																<c:forEach items="${sessionScope.employees }"
+																	var="employee">
+																	<option value="${employee.employeeid }">${employee.employeename
+																		}</option>
+																</c:forEach>
+															</c:if>
 														</select>
 													</div>
 
@@ -250,7 +256,7 @@
 													</select>
 												</div>
 											</div>
-											
+
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"
 													for="form-field-1"> 成绩： </label>
@@ -279,7 +285,21 @@
 
 										</form>
 
+										<%
+											if (request.getSession().getAttribute("organizationNj") != null) {
 
+												request.getSession().removeAttribute("organizationNj");
+											}
+											if (request.getSession().getAttribute("employee") != null) {
+												request.getSession().removeAttribute("employee");
+											}
+											if (request.getSession().getAttribute("mark") != null) {
+												request.getSession().removeAttribute("mark");
+												if (request.getSession().getAttribute("employees") != null) {
+													request.getSession().removeAttribute("employees");
+												}
+											}
+										%>
 									</div>
 									<!-- /.col -->
 								</div>

@@ -83,6 +83,11 @@ public class StandardVistDzhAction extends BaseInit {
 	public String insert() {
 		// 加
 		try {
+			if (ServletActionContext.getRequest().getSession()
+					.getAttribute("organizationNj") != null) {
+				ServletActionContext.getRequest().getSession()
+						.removeAttribute("organizationNj");
+			}
 			service.addStandardInfo(tbStandardcheck);
 		} catch (Exception e) {
 			e.printStackTrace();

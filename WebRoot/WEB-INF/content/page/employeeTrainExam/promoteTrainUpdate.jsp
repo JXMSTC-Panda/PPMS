@@ -94,8 +94,7 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a>
-						</li>
+						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -221,25 +220,34 @@
 									<div class="col-sm-9">
 										<select class="col-xs-10 col-sm-5" id="form-field-select-1"
 											name="tbPromotiontraining.promotioncontent">
+
+											<option
+												value="${requestScope.promotiontraining.promotioncontent}">
+												<c:if
+													test="${requestScope.promotiontraining.promotioncontent=='0001'}">进阶熟练营业员
+												</c:if>
+												<c:if
+													test="${requestScope.promotiontraining.promotioncontent=='0002'}">进阶账务稽核
+												</c:if>
+												<c:if
+													test="${requestScope.promotiontraining.promotioncontent=='0003'}">进阶实习值班经理
+												</c:if>
+												<c:if
+													test="${requestScope.promotiontraining.promotioncontent=='0004'}">进阶值班经理
+												</c:if>
+												<c:if
+													test="${requestScope.promotiontraining.promotioncontent=='0005'}">进阶店长
+												</c:if>
+												<c:if
+													test="${requestScope.promotiontraining.promotioncontent=='0006'}">其他
+												</c:if>
+												</option>
 											
-												<option value="${requestScope.promotiontraining.promotioncontent}">${requestScope.promotiontraining.promotioncontent}</option>
 												
 											
 										</select>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 培训内容： </label>
-
-									<div class="col-sm-9">
-										<input type="text" id="form-field-1" placeholder="培训内容"
-											class="col-xs-10 col-sm-5" value="${requestScope.promotiontraining.promotioncontent }"
-											name="tbPromotiontraining.promotioncontent" />
-									</div>
-								</div>
-
-
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
 										for="form-field-1"> 成绩： </label>
@@ -774,6 +782,7 @@
 							});
 		});
 	</script>
+
 </html>
 </body>
 </html>

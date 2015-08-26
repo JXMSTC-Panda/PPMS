@@ -1,6 +1,7 @@
 package ppms.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -20,7 +22,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbRole;
 import ppms.domain.TbRolefunction;
+import ppms.domain.TbSystemfunction;
 import ppms.serviceimpl.*;
+import ppms.shiro.MyRealm;
 import ppms.shiro.MySubject;
 
 /**
@@ -104,10 +108,12 @@ public class MainAction extends ActionSupport {
 			tbRolefunction = authoritySrviceImp.findTbRoleFunction(roleID);
 			System.out.println(tbRolefunction.getFunctionids());
 
-			//创建当前登录对象
+			// 创建当前登录对象
 			MySubject mySubject = new MySubject();
 			mySubject.CreatMySubject(tbEmployee, tbRole, tbRolefunction);
 
+			authoritySrviceImp.findAllSystemfunctions();
+			
 			System.out.println(mySubject.getTbEmployee().getEmployeeid()
 					+ mySubject.getTbRole().getRoleid()
 					+ mySubject.tbRolefunction.getFunctionids()
@@ -115,5 +121,9 @@ public class MainAction extends ActionSupport {
 		}
 		System.out.println(request.getRequestURI());
 		response.getWriter().write(ajaxState);
+	}
+	@Action(value = "menu")
+	public void menu() throws IOException {
+		
 	}
 }

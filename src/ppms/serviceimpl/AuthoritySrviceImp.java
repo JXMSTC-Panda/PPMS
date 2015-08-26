@@ -19,6 +19,7 @@ import ppms.genericDao.TbRoleDAO;
 import ppms.genericDao.TbRolefunctionDAO;
 import ppms.genericDao.TbSystemfunctionDAO;
 import ppms.service.AuthorityService;
+import ppms.shiro.MyRealm;
 import ppms.util.ToJsonUtil;
 
 /**
@@ -76,6 +77,7 @@ public class AuthoritySrviceImp implements AuthorityService {
 		// 查询系统功能list
 		List<TbSystemfunction> tbSystemfunctions = new ArrayList<TbSystemfunction>();
 		tbSystemfunctions = tbSystemfunctionDAO.findAll();
+		MyRealm.setTbSystemfunctions(tbSystemfunctions);
 		return tbSystemfunctions;
 	}
 
@@ -149,6 +151,7 @@ public class AuthoritySrviceImp implements AuthorityService {
 	public List<TbRolefunction> findAllRolefunctions() {
 		// TODO Auto-generated method stub
 		List<TbRolefunction> tbRolefunctions = tbRolefunctionDAO.findAll();
+		
 		return tbRolefunctions;
 	}
 

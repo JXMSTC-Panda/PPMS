@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -119,6 +120,7 @@
 											<th>姓名</th>
 											<th>性别</th>
 											<th>出生年月</th>
+											<th>人员状态</th>
 											<th>操作</th>
 										</tr>
 									</thead>
@@ -141,18 +143,25 @@
 													</c:if> <c:if test="${employee.sex==false}">
 														<c:out value="女"></c:out>
 													</c:if></td>
-												<td>${employee.birthday}</td>
+												<td>${fn:split(employee.birthday,' ')[0]}</td>
+												<td><c:if test="${employee.status==true}">
+														<c:out value="有效"></c:out>
+													</c:if> <c:if test="${employee.status==false}">
+														<c:out value="无效"></c:out>
+													</c:if></td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
 														<a class="blue"
 															href="userInfo.userBase.userBaseInfoSearch.detail.do?id=${employee.employeeid}"
 															name="${employee.employeeid}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="userInfo.userBase.userBaseInfoSearch.modifyInitPage.do?id=${employee.employeeid}" name=""
+															class="green" href="userInfo.userBase.userBaseInfoSearch.modify.InitPage.do?id=${employee.employeeid}" name=""
 															onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
+															class="fa fa-pencil bigger-130">修改</i> </a> 
+															<c:if test="${employee.status==true}">
+															<a class="red"
 															href="userInfo.userBase.userBaseInfoSearch.delete.do?id=${employee.employeeid}"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+															class="fa fa-trash bigger-130">删除</i> </a></c:if>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -228,7 +237,7 @@
 				bAutoWidth : false,
 				"aoColumns" : [ {
 					"bSortable" : false
-				}, null, null, null, null, null, {
+				}, null, null, null, null, null,null, {
 					"bSortable" : false
 				} ],
 				"aaSorting" : [],
