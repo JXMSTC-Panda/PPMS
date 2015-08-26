@@ -63,7 +63,6 @@
 						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
