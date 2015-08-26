@@ -1,13 +1,4 @@
-/**  
- * @文件名: FreshEmployeeExamAction.java 
- * @包名 ppms.action 
- * @描述: TODO 
- * @修改人：
- * @修改时间：2015-8-21 上午10:17:52 
- * @修改内容：
 
- * @version V1.0  
- */
 package ppms.action;
 
 import java.util.List;
@@ -562,8 +553,5 @@ public class FreshEmployeeExamAction extends BaseInit {
 		}
 
 		return "success";
-	}
-	public void test（）{
-		
 	}
 }

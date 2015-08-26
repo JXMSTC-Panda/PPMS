@@ -1,16 +1,12 @@
 package ppms.domain;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
-import ppms.excel.template.BaseExcelObject;
 
 /**
  * TbSystemfunction entity. @author MyEclipse Persistence Tools
  */
 
-public class TbSystemfunction extends BaseExcelObject implements java.io.Serializable {
+public class TbSystemfunction implements java.io.Serializable {
 
 	// Fields
 
@@ -22,7 +18,6 @@ public class TbSystemfunction extends BaseExcelObject implements java.io.Seriali
 	private Boolean scope;
 	private String seq;
 	private Date createdtime;
-	private Set tbRolefunctions = new HashSet(0);
 
 	// Constructors
 
@@ -38,7 +33,7 @@ public class TbSystemfunction extends BaseExcelObject implements java.io.Seriali
 	/** full constructor */
 	public TbSystemfunction(String functionid, String functionname,
 			Boolean functiontype, String functionurl, String parentfunctionid,
-			Boolean scope, String seq, Date createdtime, Set tbRolefunctions) {
+			Boolean scope, String seq, Date createdtime) {
 		this.functionid = functionid;
 		this.functionname = functionname;
 		this.functiontype = functiontype;
@@ -47,7 +42,6 @@ public class TbSystemfunction extends BaseExcelObject implements java.io.Seriali
 		this.scope = scope;
 		this.seq = seq;
 		this.createdtime = createdtime;
-		this.tbRolefunctions = tbRolefunctions;
 	}
 
 	// Property accessors
@@ -114,14 +108,6 @@ public class TbSystemfunction extends BaseExcelObject implements java.io.Seriali
 
 	public void setCreatedtime(Date createdtime) {
 		this.createdtime = createdtime;
-	}
-
-	public Set getTbRolefunctions() {
-		return this.tbRolefunctions;
-	}
-
-	public void setTbRolefunctions(Set tbRolefunctions) {
-		this.tbRolefunctions = tbRolefunctions;
 	}
 
 }

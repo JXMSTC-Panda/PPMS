@@ -2,6 +2,7 @@
  
  
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.Map;
 import javax.servlet.Filter; 
 import javax.servlet.FilterChain; 
@@ -81,6 +82,7 @@ public class EncodeFilter implements Filter {
 						for(Map.Entry<String, String[]> entry : map.entrySet()){
 							String [] vs = entry.getValue();
 							for(int i=0;i<vs.length;i++){
+								
 								//对request域里的参数进行硬解码
 								vs[i] = new String(vs[i].getBytes("iso8859-1"),encode);
 							} 

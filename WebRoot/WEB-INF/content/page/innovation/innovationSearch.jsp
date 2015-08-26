@@ -278,8 +278,8 @@
 				} ],
 				"aaSorting" : [],
 
-					//,
-					//"sScrollY": "200px",
+					
+					"sScrollY": "200px",
 					//"bPaginate": false,
 
 					"sScrollX": "100%",

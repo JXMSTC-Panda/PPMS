@@ -92,7 +92,8 @@
 														class="ace" /> <span class="lbl">记住我</span> </label>
 
 													<button id="btnlogin" type="button"
-														class="width-35 pull-right btn btn-primary">
+														class="width-35 pull-right btn btn-primary"
+														data-loading-text="Loading...">
 														<i class="ace-icon fa fa-key"></i> <span
 															class="bigger-110">登录 </span>
 													</button>
@@ -284,6 +285,11 @@
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		$(document).ready(function() {
+			$("#gritter-notice-wrapper").mouseleave(function() {
+				$('#btnlogin span').html('登录');
+				$('#btnlogin').removeClass('disabled');
+				$('gritter-notice-wrapper').remove();
+			});
 			//登录点击
 			$('#btnlogin').click(function() {
 				$('#btnlogin span').html('登录...');
@@ -299,7 +305,7 @@
 							title : '出错啦!',
 							text : '网络似乎有问题！',
 							sticky : true,
-							time : 1000,
+							//time : 1000,
 							speed : 10,
 							position : 'center',
 							class_name : 'gritter-light'
@@ -321,14 +327,6 @@
 						}
 					}
 				});
-				$("#gritter-notice-wrapper").mouseleave(function() {
-					$('#btnlogin span').html('登录');
-					$('#btnlogin').removeClass('disabled');
-					$('gritter-notice-wrapper').remove();
-				});
-			});
-			$('#btnlogin span').change(function(){
-				alert("123");
 			});
 		});
 

@@ -225,4 +225,10 @@ public class MountGuardCardServiceImp extends BaseDaoImp implements MountGuardCa
 		}
 		return null;
 	}
+
+	@Override
+	public boolean update(TbMountguardexam tbMountguardexam) {
+		
+		return dao.update(tbMountguardexam);
+	}
 }

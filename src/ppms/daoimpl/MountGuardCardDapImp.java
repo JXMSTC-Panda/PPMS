@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.classic.Session;
 import org.springframework.stereotype.Repository;
 
 import ppms.dao.MountGuardCardDao;
@@ -11,6 +12,7 @@ import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
+import ppms.domain.TbInnovation;
 import ppms.domain.TbMaster;
 import ppms.domain.TbMountguardexam;
 
@@ -18,6 +20,36 @@ import ppms.domain.TbMountguardexam;
 public class MountGuardCardDapImp extends BaseDaoImp implements
 		MountGuardCardDao {
 
+	
+	public boolean update(TbMountguardexam mountguardexam){
+		
+		Session openSession = null;
+		try {
+			openSession= this.getSessionFactory().openSession();
+			
+			openSession.beginTransaction();
+			
+			TbMountguardexam load = (TbMountguardexam) openSession.load(TbMountguardexam.class,mountguardexam.getExamid());
+			
+			load.setExamdate(mountguardexam.getExamdate());
+			load.setExamexpire(mountguardexam.getExamexpire());
+			load.setExamscore(mountguardexam.getExamscore());
+			load.setExamtype(mountguardexam.getExamtype());
+			
+			openSession.update(load);
+			
+			openSession.getTransaction().commit();
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			openSession.getTransaction().rollback();
+			return false;
+		}finally{
+			openSession.close();
+		}
+		
+	}
 	/**
 	 * 
 	 * 
