@@ -71,13 +71,13 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">人员综合信息管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">店长进阶</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -86,8 +86,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									店长测评、进阶查询 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 店长进阶查询 </small>
+									店长进阶查询 
 								</h1>
 							</div>
 							

@@ -88,7 +88,7 @@ public class GrowthFileAction extends BaseInit{
 					if(tbEmployee.getOrganizationNj()!=null){
 					List<OrganizationNj> organizationNjName=service.getOrganizationNjs(tbEmployee.getOrganizationNj().getOrgid());
 					tbEmployee.setOrganizationNj(organizationNjName.get(0));
-					//判空
+					}//判空
 					if(tbEmployee.getTbJob()!=null){
 						List<TbJob> jobsName=service.getTbJobs(tbEmployee.getTbJob().getJobid());
 						//判空
@@ -100,7 +100,7 @@ public class GrowthFileAction extends BaseInit{
 					    tbEmployeeNew.add(tbEmployee);
 						}
 						}
-					}		    
+							    
 				}			
 				map.put("employee", tbEmployeeNew);
 				break;
