@@ -84,9 +84,9 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a>
+						<li><a href="#">员工奖惩信息管理</a>
 						</li>
-						<li class="active">子功能</li>
+						<li class="active">营业厅奖惩信息查询</li>
 					</ul>
 					
 				</div>
@@ -135,9 +135,25 @@
 												<td>${orgpraisecriticismsInfor.order}</td>
 												<td>${orgpraisecriticismsInfor.organizationNj.orgid}
 												</td>
-												<td>${orgpraisecriticismsInfor.organizationNj.org_Name}</td>
-												<td class="hidden-480">${orgpraisecriticismsInfor.type}</td>
-												<td>${orgpraisecriticismsInfor.cause}</td>
+												<%-- <td>${orgpraisecriticismsInfor.organizationNj.org_Name}</td> --%>
+												
+												<td>
+													<a name="org_Name" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${orgpraisecriticismsInfor.organizationNj.org_Name}">
+													</a>
+
+												</td>
+												<td >${orgpraisecriticismsInfor.type}</td>
+												<%-- <td>${orgpraisecriticismsInfor.cause}</td> --%>
+												
+												<td>
+													<a name="cause" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${orgpraisecriticismsInfor.cause}">
+													</a>
+
+												</td>
 												<%-- <td>${fn:split(orgpraisecriticismsInfor.praisecriticismdate,' ')[0]}
 												
 												</td> --%>
@@ -235,6 +251,10 @@
 	$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
 			myEachPopover("praisecriticismdate",0, 10);
+			myEachPopover("cause",0, 4);
+			myEachPopover("org_Name",0, 3);
+			
+			
 		});
 	
 	

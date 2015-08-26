@@ -84,9 +84,10 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a>
+						<li><a href="#">业务差错检查成绩管理</a>
 						</li>
-						<li class="active">子功能</li>
+						<li ><a href="#">业务差错单条录入</a></li>
+						<li class="active">选择员工</li>
 					</ul>
 					
 				</div>
@@ -95,7 +96,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<h3 class="header smaller lighter blue">员工奖惩信息管理</h3>
+							<h3 class="header smaller lighter blue">有效员工信息</h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
@@ -130,7 +131,7 @@
 													value="${employeeInfo.employeeid}" checked></td>
 												
 												<td>${employeeInfo.employeecode}</td>
-												<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a>
+												<td>${employeeInfo.employeename}
 												</td>
 												<%-- <td>${employeeInfo.idnumber}</td> --%>
 												<td>

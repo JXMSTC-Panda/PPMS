@@ -67,8 +67,9 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">员工奖惩信息管理</a></li>
+						<li><a href="#">员工奖惩信息单条录入</a></li>
+						<li class="active">录入结果</li>
 					</ul>
 					
 				</div>

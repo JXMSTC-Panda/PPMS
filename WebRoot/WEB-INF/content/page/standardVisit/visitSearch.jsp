@@ -84,11 +84,10 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a>
+						<li><a href="#">暗访成绩管理</a>
 						</li>
-						<li class="active">子功能</li>
+						<li class="active">暗访成绩查询</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -97,7 +96,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									标准化考试管理 <small> <i
+									暗访成绩管理 <small> <i
 										class="ace-icon fa fa-angle-double-right"></i> 标准化考试成绩查询 </small>
 								</h1>
 							</div>
@@ -105,7 +104,7 @@
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
-							<div class="table-header">标准化考试成绩表</div>
+							<div class="table-header">暗访成绩查询</div>
 							<form action="downData.do?fileName=暗访检查成绩批量导出.xls"
 								name="StuListForm" method="post">
 

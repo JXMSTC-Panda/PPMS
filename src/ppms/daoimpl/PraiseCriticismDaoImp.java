@@ -311,7 +311,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp implements PraiseCriticism
 	 public List<OrganizationNj> findAllOrganizationNjInfor(){
 		 List results=null;
 			try{
-				String hql="from OrganizationNj"; 
+				String hql="from OrganizationNj where status!='0'"; 
 				results=getHibernateTemplate().find(hql);
 				
 			}catch(Exception e){

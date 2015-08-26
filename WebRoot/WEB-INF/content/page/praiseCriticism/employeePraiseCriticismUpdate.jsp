@@ -145,9 +145,9 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">员工奖惩信息管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">员工奖惩信息单条修改</li>
 					</ul>
 					
 				</div>
@@ -279,7 +279,7 @@
 
 												<div class="col-sm-9">
 													<textarea id="form-field-11" class="col-xs-10 col-sm-5"
-														name="tbEmployeepraisecriticism.cause"></textarea>
+														name="tbEmployeepraisecriticism.cause" maxlength="300"></textarea>
 
 												</div>
 											</div>
