@@ -108,10 +108,8 @@
 									class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th class="center"><label class="pos-rel"> <input
-													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
-											</th>
 											
+											<th></th>
 											<th>工号</th>
 											<th>姓名</th>
 											<th>身份证号</th>
@@ -136,7 +134,14 @@
 												<td>${employeeInfo.employeecode}</td>
 												<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a>
 												</td>
-												<td>${employeeInfo.idnumber}</td>
+												<%-- <td>${employeeInfo.idnumber}</td> --%>
+												<td>
+													<a name="idnumber" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${employeeInfo.idnumber}">
+													</a>
+
+												</td>
 												<td>${employeeInfo.organizationNj.areadesc}</td>
 												<td>${employeeInfo.organizationNj.orgid}</td>
 												<td>${employeeInfo.organizationNj.org_Name}</td>
@@ -164,10 +169,12 @@
 										<table cellpadding="0" cellspacing="0" width="95%"
 											align="center">
 											<tr>
-												<td align="center"><input type="submit"
-													name="doSelectButton" value="确定" class="btn_2" /> <input
-													type="button" name="doCloseButton" value="关闭" class="btn_2"
-													onclick="window.close();" /></td>
+												<div class="clearfix form-actions">
+												<div class="col-md-offset-3 col-md-9" style="padding-left:20%">
+													<button class="btn btn-info" type="submit" >
+														<i class="ace-icon fa fa-check bigger-110"></i> 确定
+													</button>
+												</div>
 											</tr>
 										</table>
 									</tbody>
@@ -198,7 +205,8 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
-			myEachPopover("birthday",0, 10);
+			myEachPopover("birthday",0, 7);
+			myEachPopover("idnumber",0, 8);
 		});
 	
 	
@@ -213,7 +221,7 @@
 							"bSortable" : false
 						}, null, null, null, null, null, null, null, null,
 								null,  {
-									"bSortable" : false
+									"bSortable" : true
 								} ],
 						"aaSorting" : [],
 
