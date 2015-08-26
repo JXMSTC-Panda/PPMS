@@ -52,6 +52,15 @@
 			}
 
 		});
+		function myEachPopover(Name,Start, End) {
+
+			$("a[name='"+Name+"']").each(
+					function() {
+						var info = $(this).attr("data-content").substring(
+								Start, End);
+						$(this).html(info);
+					});
+		}
 	</script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
 

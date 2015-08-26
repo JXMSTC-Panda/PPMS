@@ -69,7 +69,7 @@
 			} catch (e) {
 			}
 		</script>
-		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
+		
 		<!-- /section:basics/sidebar -->
 		<div class="main-content">
 			<div class="main-content-inner">
@@ -110,12 +110,12 @@
 											<th class="center"><label class="pos-rel"> <input
 													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
 											</th>
-											<th>序号</th>
+											
 											<th>营业厅编码</th>
 											<th>营业厅名称</th>
 											<th>区域</th>
 											<th>片区</th>
-											<th></th>
+											
 										</tr>
 									</thead>
 
@@ -126,54 +126,12 @@
 												<td><input type="radio" name="selectBusinessHall"
 													value="${organizationNj.orgid}" checked>
 												</td>
-												<td>1</td>
+												
 												<td>${organizationNj.orgid}</td>
 												<td>${organizationNj.org_Name}</td>
 												<td>${organizationNj.areadesc}</td>
 												<td>${organizationNj.subareadesc}</td>
 											
-											<td>
-												<%-- <div class="hidden-sm hidden-xs action-buttons">
-														 <a class="blue" href="javascript:void(0)"
-															name="${trl.getRoleid()}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> 
-														<a class="green"
-															href="praiseCriticism.employee.employeePraiseCriticismSearch.SkipUpdateEmployeeInfor.do"
-															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="praiseCriticism.employee.employeePraiseCriticismSearch.deleteEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}">
-															<i class="fa fa-trash bigger-130">删除</i> </a>
-													</div> --%>
-												<div class="hidden-md hidden-lg">
-													<div class="inline pos-rel">
-														<button class="btn btn-minier btn-yellow dropdown-toggle"
-															data-toggle="dropdown" data-position="auto">
-															<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-														</button>
-
-														<ul
-															class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-															<li><a href="javascript:void(0)"
-																name="${trl.getRoleid()}" onclick="GetDetail(this)"
-																class="tooltip-info" data-rel="tooltip" title="View">
-																	<span class="blue"> <i
-																		class="ace-icon fa fa-search-plus bigger-120"></i> </span> </a></li>
-
-															<li><a href="javascript:void(0)"
-																name="${trl.getRoleid()}" onclick="Modify(this)"
-																class="tooltip-success" data-rel="tooltip" title="Edit">
-																	<span class="green"> <i
-																		class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																</span> </a></li>
-
-															<li><a href="ClassDelete?classId=${trl.getRoleid()}"
-																class="tooltip-error" data-rel="tooltip" title="Delete">
-																	<span class="red"> <i
-																		class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
-														</ul>
-													</div>
-												</div>
-											</td>
 											</tr>
 										</c:forEach>
 										<table cellpadding="0" cellspacing="0" width="95%"
@@ -218,7 +176,7 @@
 						bAutoWidth : false,
 						"aoColumns" : [ {
 							"bSortable" : false
-						}, null, null, null, null, null, {
+						}, null, null, null, {
 									"bSortable" : false
 								} ],
 						"aaSorting" : [],
