@@ -68,23 +68,24 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
-
+<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 <script type="text/javascript">
-	function ajaxForEmployee(obj) {
-		alert(obj.innerHTML);
-		document.getElementsByName("innovation.organizationNjByOrgid.orgid")[0].value = obj.value;
-		if (window.XMLHttpRequest) {
-			xmlhttp = new XMLHttpRequest();
-		} else {
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	function getEmployee(obj) {
+		top.window.location = "getEmployee.do?backUrl=innovation.null.innovationSingle.do&employeeid="
+				+ obj.value;
+
+	}
+
+	function changePanel(obj) {
+
+		if (obj == 1) {
+			$("#panel").show();
 		}
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				document.getElementById("form-field-select-employee").innerHTML = xmlhttp.responseText;
-			}
+
+		if (obj == 2) {
+
+			$("#panel").hide();
 		}
-		xmlhttp.open("GET", "getEmployees.do?orgid=" + obj.value, true);
-		xmlhttp.send();
 	}
 </script>
 </head>
@@ -261,20 +262,27 @@
 									<div class="col-xs-12">
 										<!-- PAGE CONTENT BEGINS -->
 										<form class="form-horizontal" role="form"
-											action="singleUpload.do">
+											action="innovation.null.innovationSingle.add.do"
+											method="post">
 											<!-- #section:elements.form -->
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"
 													for="form-field-1"> 创新类型： </label>
 
 												<div class="col-sm-9">
-													<label> <input name="invocation_type" type="radio"
-														class="ace" /> <span class="lbl">个人创新</span> </label> <label>
-														<input name="invocation_type" type="radio" class="ace" />
-														<span class="lbl">团队创新</span> </label>
+													<label> <input id="invocation_type_person"
+														name="invocation_type" type="radio"
+														onclick="changePanel(1)" class="ace" checked="checked" />
+														<span class="lbl">个人创新</span> </label> <label> <input
+														id="invocation_type_team" type="radio"
+														name="invocation_type" class="ace"
+														onclick="changePanel(2)" /> <span class="lbl">团队创新</span>
+													</label>
 												</div>
 
 											</div>
+
+
 
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right"
@@ -282,8 +290,9 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="${sessionScope.organizationNj.areadesc }" name="" /> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
+														id="form-input-readonly"
+														value="${sessionScope.organizationNj.areadesc }" name="" />
+													<span class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
 											<div class="form-group">
@@ -292,8 +301,9 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="${sessionScope.organizationNj.orgid }"
-														name="innovation.organizationNjByOrgid.orgid" /> <span
+														id="form-input-readonly"
+														value="${sessionScope.organizationNj.orgid }"
+														name="innovation.organizationNj.orgid" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -308,53 +318,65 @@
 														name="innovation.organizationNj.org_Name" /> <span
 														class="help-inline col-xs-12 col-sm-7">
 														<button class="btn btn-info"
-															onclick="top.window.location='chooseOrg.do?backUrl=innovation.null.innovationSingle.do?need=1'"
+															onclick="top.window.location='chooseOrg.do?backUrl=innovation.null.innovationSingle.do'"
 															type="button">选择营业厅</button> </span>
 												</div>
 											</div>
 
+
 											<!-- /section:elements.form -->
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 选择员工： </label>
-												<div class="col-sm-9">
-													<div class="col-xs-10 col-sm-5">
-														<select class="chosen-select form-control"
-															id="form-field-select-employee"
-															name="innovation.tbEmployee.employeeid" 
-															onchange=""
-															data-placeholder="选择员工">
-															<c:forEach items="${sessionScope.employees }" var="employee">
-																<option value="${employee.employeeid }" onclick="top.window.location='getEmployee.do?backUrl=innovation.null.innovationSingle.do?employeeid=${employee.employeeid }'">${employee.employeename }</option>
-															</c:forEach>
-														</select>
+
+											<div id="panel">
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right"
+														for="form-input-readonly"> 选择员工： </label>
+													<div class="col-sm-9">
+														<div class="col-xs-10 col-sm-5">
+															<select class="chosen-select form-control"
+																id="form-field-select-employee"
+																name="innovation.tbEmployee.employeeid"
+																onchange="getEmployee(this)" data-placeholder="选择员工">
+																
+																<c:if test="${mark!=null }">
+																<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
+																</c:if>
+																<c:if test="${mark==null }">
+																<c:forEach items="${sessionScope.employees }"
+																	var="employee">
+																	<option value="${employee.employeeid }">${employee.employeename
+																		}</option>
+																</c:forEach>
+																</c:if>
+															</select>
+														</div>
+
 													</div>
-
 												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 工号： </label>
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="${sessionScope.employee.employeecode }"
-														name="innovation.tbEmployee.employeecode" /> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right"
+														for="form-input-readonly"> 工号： </label>
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5"
+															id="form-input-readonly"
+															value="${sessionScope.employee.employeecode }"
+															name="innovation.tbEmployee.employeecode" /> <span
+															class="help-inline col-xs-12 col-sm-7"> </span>
+													</div>
 												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 身份证号： </label>
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right"
+														for="form-input-readonly"> 身份证号： </label>
 
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="${sessionScope.employee.idnumber }"
-														name="innovation.tbEmployee.idnumber" />
+													<div class="col-sm-9">
+														<input readonly="" type="text" class="col-xs-10 col-sm-5"
+															id="form-input-readonly"
+															value="${sessionScope.employee.idnumber }"
+															name="innovation.tbEmployee.idnumber" />
 
+													</div>
 												</div>
+
 											</div>
-
-
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right for="form-field-1">创新方案:</label>
 												<div class="col-sm-9">
@@ -369,10 +391,10 @@
 													<div class="input-group col-xs-10 col-sm-5">
 														<input class="form-control date-picker "
 															id="id-date-picker-1" type="text"
-															data-date-format="yyyy-mm-dd" /> <span
+															data-date-format="yyyy-mm-dd"
+															name="innovation.assessdate" /> <span
 															class="input-group-addon"> <i
-															class="fa fa-calendar bigger-110"
-															name="innovation.assessdate"></i> </span>
+															class="fa fa-calendar bigger-110"></i> </span>
 													</div>
 												</div>
 											</div>
@@ -381,9 +403,10 @@
 													for="form-input-readonly"> 部门核定结果： </label>
 												<div class="col-sm-9">
 													<input type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="" /> <span
-														class="help-inline col-xs-12 col-sm-7"
-														name="innovation.assessresult"> </span>
+														id="form-input-readonly" value=""
+														name="innovation.assessresult" /> <span
+														class="help-inline col-xs-12 col-sm-7">
+													</span>
 												</div>
 											</div>
 											<div class="form-group">
@@ -401,11 +424,12 @@
 												<label class="col-sm-3 control-label no-padding-right for="form-field-1">奖励方式：</label>
 												<div class="col-sm-9">
 													<input name="innovation.encouragement" type="checkbox"
-														class="ace" /> <span class="lbl"> 个人成长档案加分</span> <br />
-													<input name="innovation.encouragement" type="checkbox"
-														class="ace" /> <span class="lbl"> 个人月度绩效</span> <br /> <input
+														class="ace" value="个人成长档案加分/" /> <span class="lbl">
+														个人成长档案加分</span> <br /> <input name="innovation.encouragement"
+														type="checkbox" class="ace" value="个人月度绩效/" /> <span
+														class="lbl"> 个人月度绩效</span> <br /> <input
 														name="innovation.encouragement" type="checkbox"
-														class="ace" /> <span class="lbl"> 经费奖励</span>
+														class="ace" value="经费奖励" /> <span class="lbl"> 经费奖励</span>
 												</div>
 											</div>
 											<div class="clearfix form-actions">
@@ -421,7 +445,21 @@
 												</div>
 											</div>
 										</form>
+										<%
+											if (request.getSession().getAttribute("organizationNj") != null) {
 
+												request.getSession().removeAttribute("organizationNj");
+											}
+											if (request.getSession().getAttribute("employee") != null) {
+												request.getSession().removeAttribute("employee");
+											}
+											if (request.getSession().getAttribute("mark") != null) {
+												request.getSession().removeAttribute("mark");
+												if (request.getSession().getAttribute("employees") != null) {
+													request.getSession().removeAttribute("employees");
+												}
+											}
+										%>
 									</div>
 									<!-- /.col -->
 								</div>
@@ -466,6 +504,7 @@
 	<!-- basic scripts -->
 
 	<!--[if !IE]> -->
+	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<script type="text/javascript">
 		window.jQuery
 				|| document

@@ -7,11 +7,13 @@
 			+ path + "/";
 %>
 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
+
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
-<title>人员成长档案管理系统</title>
+<title>Blank Page - Ace Admin</title>
 
 <meta name="description" content="" />
 <meta name="viewport"
@@ -104,107 +106,110 @@
 </script> -->
 
 
-<script src="${pageContext.request.contextPath}/assets/js/jquery-2.0.3.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/jquery-2.0.3.min.js"></script>
+
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#OrgNameLabel").mouseover(function(){
-			alert("aa");
-		});
-	});
+	$(document)
+			.ready(
+					function() {
+						$("#OrgName")
+								.change(
+										function() {
+											alert("change");
+
+											$
+													.ajax({
+														cache : false,
+														type : "GET",
+														url : "userInfo.mountGuardCard.mountGuardCardSingle.ajaxSearchOrg.do",
+														data : $('#form_Insert')
+																.serialize(),
+														async : false,
+														error : function(
+																request) {
+
+															alert("error");
+														},
+														success : function(data) {
+
+															eval("json = "
+																	+ data);
+															alert(data);
+															//把区域名写入把文本框
+															document
+																	.getElementById("AreaName").value = json.AreaName;
+															//把营业厅编码写入文本框
+															document
+																	.getElementById("OrgId").value = document
+																	.getElementById("OrgName").value;
+
+															//取员工name下拉框对象
+															var selectDemo = document
+																	.getElementById("EmployeeNameSelect");
+
+															for ( var i = 0; i < json.Employees.length; i++) {
+																//var id = json.Employees[i].id;
+																var name = json.Employees[i].name;
+																//select.appendChild(option);
+																//$("#EmployeeNameSelect").append("<option value=\"15\">Select</option>");
+																alert(name);
+
+															}
+
+														}
+													});
+										});
+						$("#EmployeeNameSelect")
+								.change(
+										function() {
+											alert("change");
+
+											$
+													.ajax({
+														cache : false,
+														type : "GET",
+														url : "userInfo.mountGuardCard.mountGuardCardSingle.ajaxSearchEmployee.do",
+														data : $('#form_Insert')
+																.serialize(),
+														async : false,
+														error : function(
+																request) {
+
+															alert("error");
+														},
+														success : function(data) {
+
+															eval("json = "
+																	+ data);
+															//alert(json.AreaName);					
+															alert(data);
+															//把工号名写入把文本框
+															document
+																	.getElementById("EmployeeId").value = json.employeecode;
+															//把身份证号写入文本框
+															document
+																	.getElementById("Id").value = json.idnumber;
+														}
+													});
+										});
+					});
 </script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#OrgName").change(function() {
-			alert("change");
-			
-			$.ajax({
-					cache : false,
-					type : "GET",
-					url : "userInfo.mountGuardCard.mountGuardCardSingle.ajaxSearchOrg.do",
-					data :  $('#form_Insert').serialize(),
-					async : false,
-					error : function(request) {
-						
-						alert("error");
-					},
-					success : function(data) {
-						
-						eval("json = " +data);
-						alert(data);
-						//把区域名写入把文本框
-						document.getElementById("AreaName").value=json.AreaName;
-						//把营业厅编码写入文本框
-						document.getElementById("OrgId").value=document.getElementById("OrgName").value;
-						
-						//取员工name下拉框对象
-						var selectDemo = document.getElementById("EmployeeNameSelect");
-						
-						for(var i =0 ;i < json.Employees.length; i++){
-							//var id = json.Employees[i].id;
-							var name = json.Employees[i].name;
-							//select.appendChild(option);
-							//$("#EmployeeNameSelect").append("<option value=\"15\">Select</option>");
-							alert(name);
-							
-							
-   							
-						}
-						
-					}
-			});
-		});
-		$("#EmployeeNameSelect").change(function() {
-			alert("change");
-			
-			$.ajax({
-					cache : false,
-					type : "GET",
-					url : "userInfo.mountGuardCard.mountGuardCardSingle.ajaxSearchEmployee.do",
-					data :  $('#form_Insert').serialize(),
-					async : false,
-					error : function(request) {
-						
-						alert("error");
-					},
-					success : function(data) {
-						
-						
-						eval("json = " +data);
-						//alert(json.AreaName);					
-						alert(data);
-						//把工号名写入把文本框
-						document.getElementById("EmployeeId").value=json.employeecode;
-						//把身份证号写入文本框
-						document.getElementById("Id").value=json.idnumber;
-					}
-			});
-		});
-	});
-</script>
-<script type="text/javascript">
-	function show(){
-	var AreaName =document.getElementById("AreaName").value;
-	var OrgId=document.getElementById("OrgId").value;
-	var OrgName =document.getElementById("OrgName").value;
-	var EmployeeName =document.getElementById("EmployeeNameSelect").value;
-	var EmployeeId =document.getElementById("EmployeeId").value;
-	var Id =document.getElementById("Id").value;
-	var TrainTime = document.getElementById("TrainTime").value;
-	var SelectedDetail =document.getElementById("SelectedDetail").value;
-	var VaildTime =document.getElementById("VaildTime").value;
-	var ExamGrade = document.getElementById("ExamGrade").value;
-	alert(
-		AreaName+"\n"+
-		OrgId+"\n"+
-		OrgName+"\n"+
-		EmployeeName+"\n"+
-		EmployeeId+"\n"+
-		Id+"\n"+
-		TrainTime+"\n"+
-		SelectedDetail+"\n"+
-		VaildTime+"\n"+
-		ExamGrade
-	);
+	function show() {
+		var AreaName = document.getElementById("AreaName").value;
+		var OrgId = document.getElementById("OrgId").value;
+		var OrgName = document.getElementById("OrgName").value;
+		var EmployeeName = document.getElementById("EmployeeNameSelect").value;
+		var EmployeeId = document.getElementById("EmployeeId").value;
+		var Id = document.getElementById("Id").value;
+		var TrainTime = document.getElementById("TrainTime").value;
+		var SelectedDetail = document.getElementById("SelectedDetail").value;
+		var VaildTime = document.getElementById("VaildTime").value;
+		var ExamGrade = document.getElementById("ExamGrade").value;
+		alert(AreaName + "\n" + OrgId + "\n" + OrgName + "\n" + EmployeeName
+				+ "\n" + EmployeeId + "\n" + Id + "\n" + TrainTime + "\n"
+				+ SelectedDetail + "\n" + VaildTime + "\n" + ExamGrade);
 	}
 </script>
 </head>
@@ -231,8 +236,7 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a>
-						</li>
+						<li><a href="#">Other Pages</a></li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -257,163 +261,211 @@
 								<div class="row">
 									<div class="col-xs-12">
 										<!-- PAGE CONTENT BEGINS -->
-										<form class="form-horizontal" role="form"
-											action="userInfo.mountGuardCard.mountGuardCardSingle.mgcs.do" id="form_Insert">
-											<!-- #section:elements.form -->
 
-										
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 区域： </label>
+										<c:if test="${requestScope.exam==null }">
+											<form class="form-horizontal" role="form"
+												action="userInfo.mountGuardCard.mountGuardCardSingle.mgcs.do"
+												id="form_Insert" method="post">
+										</c:if>
+										<c:if test="${requestScope.exam!=null }">
+											<form class="form-horizontal" role="form"
+												action="userInfo.mountGuardCard.mountGuardCardSingle.update.do"
+												id="form_Insert">
+											<input type="hidden" value="${requestScope.exam.examid}" name="tbMountguardexam.examid">
+										</c:if>
+										<!-- #section:elements.form -->
 
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="AreaName" value="" /> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
-												</div>
+
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right"
+												for="form-input-readonly"> 区域： </label>
+
+											<div class="col-sm-9">
+												<input readonly="" type="text" class="col-xs-10 col-sm-5"
+													id="AreaName"
+													value="${requestScope.exam.organizationNj.areadesc }"
+													name="tbMountguardexam.organizationNj.areadesc" /> <span
+													class="help-inline col-xs-12 col-sm-7"> </span>
 											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 营业厅编码： </label>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right"
+												for="form-input-readonly"> 营业厅编码： </label>
 
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="OrgId" value="" /> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
-												</div>
+											<div class="col-sm-9">
+												<input readonly="" type="text" class="col-xs-10 col-sm-5"
+													id="OrgId"
+													value="${requestScope.exam.organizationNj.orgid }" /> <span
+													class="help-inline col-xs-12 col-sm-7"> </span>
 											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly" id="OrgNameLabel"> 营业厅名称： </label>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right"
+												for="form-input-readonly" id="OrgNameLabel"> 营业厅名称：
+											</label>
 
-												<div class="col-sm-9">
-													<div class="col-xs-10 col-sm-5">
-														<select onchange="ajaxForEmployee(this)" name="OrgName"
-															class="chosen-select form-control " id="OrgName"
-															data-placeholder="选择营业厅">
+											<div class="col-sm-9">
+												<div class="col-xs-10 col-sm-5">
+													<select onchange="ajaxForEmployee(this)"
+														name="tbMountguardexam.organizationNj.orgid"
+														class="chosen-select form-control " id="OrgName"
+														data-placeholder="选择营业厅">
+
+														<c:if test="${requestScope.exam==null }">
 															<option value="0"></option>
 															<c:forEach items="${ requestScope.orgs}" var="org">
 																<option value="${org.orgid }">
 																	<c:out value="${org.org_Name }"></c:out>
 																</option>
 															</c:forEach>
-														</select>
-													</div>
+														</c:if>
+														<c:if test="${requestScope.exam!=null }">
+															<option
+																value="${requestScope.exam.organizationNj.orgid }">${requestScope.exam.organizationNj.org_Name
+																}</option>
+														</c:if>
+													</select>
 												</div>
 											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 选择员工： </label>
-												<div class="col-sm-9">
-													<div class="col-xs-10 col-sm-5">
-														<select class="chosen-select form-control" name="EmployeeNameSelect"
-															id="EmployeeNameSelect" data-placeholder="选择员工">
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right"
+												for="form-input-readonly"> 选择员工： </label>
+											<div class="col-sm-9">
+												<div class="col-xs-10 col-sm-5">
+													<select class="chosen-select form-control"
+														name="tbMountguardexam.tbEmployee.employeeid"
+														id="EmployeeNameSelect" data-placeholder="选择员工">
+														<c:if test="${requestScope.exam==null }">
 															<option value="0"></option>
-															<c:forEach items="${ requestScope.employees}" var="employees">
+															<c:forEach items="${ requestScope.employees}"
+																var="employees">
 																<option value="${employees.employeeid}">
 																	<c:out value="${employees.employeename}"></c:out>
 																</option>
 															</c:forEach>
-														</select>
-													</div>
-
-												</div>
-											</div>
-
-											<!-- /section:elements.form -->
-											<div class="space-4"></div>
-
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 工号： </label>
-
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="EmployeeId" value="" /> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-input-readonly"> 身份证号： </label>
-
-												<div class="col-sm-9">
-													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="Id" value="" /> <span
-														class="help-inline col-xs-12 col-sm-7"> </span>
-												</div>
-											</div>
-
-											<div class="space-4"></div>
-
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-field-1"> 培训时间： </label>
-
-												<div class="col-sm-9">
-													<div class="input-group col-xs-10 col-sm-5">
-														<input class="form-control date-picker " id="TrainTime"
-															type="text" data-date-format="yyyy-mm-dd" /> <span
-															class="input-group-addon"> <i
-															class="fa fa-calendar bigger-110"></i> </span>
-													</div>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-field-1"> 进阶内容： </label>
-
-												<div class="col-sm-9">
-													<select class="col-xs-10 col-sm-5" id="SelectedDetail">
-
-														<option value="1">进阶熟练营业员</option>
-														<option value="2">进阶账务稽核</option>
-														<option value="3">进阶实习值班经理</option>
-														<option value="4">进阶值班经理</option>
-														<option value="5">进阶店长</option>
-														<option value="6">其他</option>
+														</c:if>
+														<c:if test="${requestScope.exam!=null }">
+															<option
+																value="${requestScope.exam.tbEmployee.employeeid }">${requestScope.exam.tbEmployee.employeename
+																}</option>
+														</c:if>
 													</select>
 												</div>
+
 											</div>
+										</div>
 
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-field-1"> 考核有效时间： </label>
+										<!-- /section:elements.form -->
+										<div class="space-4"></div>
 
-												<div class="col-sm-9">
-													<input type="text" id="VaildTime" placeholder="Grade"
-														class="col-xs-10 col-sm-5" /> <label
-														class=" control-label no-padding-left" for="form-field-1">
-														个月 </label>
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right"
+												for="form-input-readonly"> 工号： </label>
+
+											<div class="col-sm-9">
+												<input readonly="" type="text" class="col-xs-10 col-sm-5"
+													id="EmployeeId"
+													value="${requestScope.exam.tbEmployee.employeecode }"
+													name="tbMountguardexam.tbEmployee.employeecode" /> <span
+													class="help-inline col-xs-12 col-sm-7"> </span>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right"
+												for="form-input-readonly"> 身份证号： </label>
+
+											<div class="col-sm-9">
+												<input readonly="" type="text" class="col-xs-10 col-sm-5"
+													id="Id" value="${requestScope.exam.tbEmployee.idnumber }"
+													name="tbMountguardexam.tbEmployee.idnumber" /> <span
+													class="help-inline col-xs-12 col-sm-7"> </span>
+											</div>
+										</div>
+
+										<div class="space-4"></div>
+
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right"
+												for="form-field-1"> 考核时间： </label>
+
+											<div class="col-sm-9">
+												<div class="input-group col-xs-10 col-sm-5">
+													<input class="form-control date-picker " id="TrainTime"
+														type="text" data-date-format="yyyy-mm-dd"
+														name="tbMountguardexam.examdate"
+														value="${requestScope.exam.examdate }" /> <span
+														class="input-group-addon"> <i
+														class="fa fa-calendar bigger-110"></i> </span>
 												</div>
+											</div>
+										</div>
 
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right"
+												for="form-field-1"> 考核内容： </label>
+
+											<div class="col-sm-9">
+												<select class="col-xs-10 col-sm-5" id="SelectedDetail"
+													name="tbMountguardexam.examtype">
+
+													<c:if test="${requestScope.exam==null }">
+														<option value="0001">营业员上岗证</option>
+														<option value="0002">帐务稽核人员上岗证</option>
+													</c:if>
+													<c:if test="${requestScope.exam!=null }">
+
+														<option value="${requestScope.exam.examtype}">
+															<c:if
+																test="${requestScope.exam.examtype=='0001' }">营业员上岗证</c:if>
+																<c:if
+																test="${requestScope.exam.examtype=='0002' }">帐务稽核人员上岗证</c:if>
+														</option>
+													</c:if>
+
+
+												</select>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right"
+												for="form-field-1"> 考核有效时间： </label>
+
+											<div class="col-sm-9">
+												<input type="text" id="VaildTime" placeholder="Grade"
+													class="col-xs-10 col-sm-5" value="${requestScope.exam.examexpire}"
+													name="tbMountguardexam.examexpire" /> <label
+													class=" control-label no-padding-left" for="form-field-1">
+													个月 </label>
 											</div>
 
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right"
-													for="form-field-1"> 考试分数： </label>
+										</div>
 
-												<div class="col-sm-9">
-													<input type="text" id="ExamGrade" placeholder="Grade"
-														class="col-xs-10 col-sm-5" /> <label
-														class=" control-label no-padding-left" for="form-field-1">
-														分 </label>
-												</div>
-												<label onclick="show()"> 取数据测试 </label>
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right"
+												for="form-field-1"> 考试分数： </label>
 
+											<div class="col-sm-9">
+												<input type="text" id="ExamGrade" placeholder="Grade"
+													class="col-xs-10 col-sm-5"
+													name="tbMountguardexam.examscore" value="${requestScope.exam.examscore}"/> <label
+													class=" control-label no-padding-left" for="form-field-1">
+													分 </label>
 											</div>
-											<div class="clearfix form-actions">
-												<div class="col-md-offset-3 col-md-9">
+										</div>
+										<div class="clearfix form-actions">
+											<div class="col-md-offset-3 col-md-9">
 
-													<input class="btn btn-info" type="submit" value="Submit">
-													&nbsp; &nbsp; &nbsp;
-													<button class="btn" type="reset">
-														<i class="ace-icon fa fa-undo bigger-110"></i> Reset
-													</button>
-												</div>
+												<input class="btn btn-info" type="submit" value="提交">
+												
+												<c:if test="${requestScope.exam==null }">
+												&nbsp; &nbsp; &nbsp; <input class="btn " type="reset"
+													value="Reset">
+													</c:if>
 											</div>
+										</div>
 
 										</form>
 

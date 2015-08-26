@@ -155,7 +155,7 @@
 														<a class="green" href="javascript:void(0)" name=""
 															onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="performance.month.monthPerformanceSearch.Delete.do?performanceid=${pers.performanceid}">
+															href="performance.month.monthPerformanceSearch.delete.do?performanceid=${pers.performanceid}">
 															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">

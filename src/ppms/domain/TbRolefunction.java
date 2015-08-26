@@ -1,18 +1,16 @@
 package ppms.domain;
 
-import ppms.excel.template.BaseExcelObject;
-
 /**
  * TbRolefunction entity. @author MyEclipse Persistence Tools
  */
 
-public class TbRolefunction extends BaseExcelObject implements java.io.Serializable {
+public class TbRolefunction implements java.io.Serializable {
 
 	// Fields
 
-	private TbRolefunctionId id;
-	private TbSystemfunction tbSystemfunction;
+	private String rolefunctionid;
 	private TbRole tbRole;
+	private String functionids;
 	private String employeesearchscope;
 	private String orgsearchscope;
 
@@ -23,40 +21,32 @@ public class TbRolefunction extends BaseExcelObject implements java.io.Serializa
 	}
 
 	/** minimal constructor */
-	public TbRolefunction(TbRolefunctionId id,
-			TbSystemfunction tbSystemfunction, TbRole tbRole) {
-		this.id = id;
-		this.tbSystemfunction = tbSystemfunction;
+	public TbRolefunction(String rolefunctionid, TbRole tbRole,
+			String functionids) {
+		this.rolefunctionid = rolefunctionid;
 		this.tbRole = tbRole;
+		this.functionids = functionids;
 	}
 
 	/** full constructor */
-	public TbRolefunction(TbRolefunctionId id,
-			TbSystemfunction tbSystemfunction, TbRole tbRole,
-			String employeesearchscope, String orgsearchscope) {
-		this.id = id;
-		this.tbSystemfunction = tbSystemfunction;
+	public TbRolefunction(String rolefunctionid, TbRole tbRole,
+			String functionids, String employeesearchscope,
+			String orgsearchscope) {
+		this.rolefunctionid = rolefunctionid;
 		this.tbRole = tbRole;
+		this.functionids = functionids;
 		this.employeesearchscope = employeesearchscope;
 		this.orgsearchscope = orgsearchscope;
 	}
 
 	// Property accessors
 
-	public TbRolefunctionId getId() {
-		return this.id;
+	public String getRolefunctionid() {
+		return this.rolefunctionid;
 	}
 
-	public void setId(TbRolefunctionId id) {
-		this.id = id;
-	}
-
-	public TbSystemfunction getTbSystemfunction() {
-		return this.tbSystemfunction;
-	}
-
-	public void setTbSystemfunction(TbSystemfunction tbSystemfunction) {
-		this.tbSystemfunction = tbSystemfunction;
+	public void setRolefunctionid(String rolefunctionid) {
+		this.rolefunctionid = rolefunctionid;
 	}
 
 	public TbRole getTbRole() {
@@ -65,6 +55,14 @@ public class TbRolefunction extends BaseExcelObject implements java.io.Serializa
 
 	public void setTbRole(TbRole tbRole) {
 		this.tbRole = tbRole;
+	}
+
+	public String getFunctionids() {
+		return this.functionids;
+	}
+
+	public void setFunctionids(String functionids) {
+		this.functionids = functionids;
 	}
 
 	public String getEmployeesearchscope() {

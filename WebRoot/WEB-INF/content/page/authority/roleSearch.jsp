@@ -24,8 +24,10 @@
 	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/jquery.gritter.css" />
 <style>
-html,body {
+form {
 	margin: 0;
 	padding: 0;
 	font-size: 75%;
@@ -101,7 +103,7 @@ html,body {
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有角色表</div>
-							<form action="" name="StuListForm">
+							<form name="StuListForm">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -113,6 +115,7 @@ html,body {
 											<th>角色名称</th>
 											<th>系统管理员</th>
 											<th>创建时间</th>
+											<th>状态</th>
 											<th>操作</th>
 										</tr>
 									</thead>
@@ -128,18 +131,23 @@ html,body {
 												<td><a href="#">${trl.roleid}</a>
 												</td>
 												<td>${trl.rolename}</td>
-												<td class="hidden-480">${tbRolesList.administratorflag}</td>
+												<td class="hidden-480">${trl.administratorflag}</td>
 												<td>${trl.createdtime}</td>
+												<td id="roleSeq${trl.getRoleid()}"><span
+													class="label label-sm " name="roleSeq${trl.seq}">${trl.seq}</span>
+												</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
 														<a class="blue" href="javascript:void(0)"
-															name="${trl.getRoleid()}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
+															name="${trl.getRoleid()}" id="roleDetail"> <i
+															class="fa fa-search-plus bigger-130">详细</i> </a> <a
 															class="green" href="javascript:void(0)"
-															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
+															name="${trl.getRoleid()}" id="roleModify"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId=${trl.getRoleid()}"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+															href="javascript:void(0)" name="${trl.getRoleid()}"
+															id="roleDelete"> <i id="roleSeqAction${trl.getRoleid()}" class="fa bigger-130"
+															name="roleSeqAction${trl.seq}">删除</i>
+														</a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -190,6 +198,8 @@ html,body {
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/js/jquery.gritter.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
 	<script
@@ -200,7 +210,115 @@ html,body {
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+		$(document).ready(function() {
+			myEach();
+		});
+		
+		function myEach() {
+
+			$("span[name='roleSeq1']").each(function() {
+				
+				try{
+					$(this).removeClass("label-warning");
+				}catch(e){
+					
+				}
+				$(this).addClass("label-success");
+				$(this).text("有效角色");
+			});
+			$("span[name='roleSeq0']").each(function() {
+				
+				try{
+					$(this).removeClass("label-success");
+				}catch(e){
+					
+				}
+				$(this).addClass("label-warning");
+				$(this).text("无效角色");
+			});
+			$("i[name='roleSeqAction1']").each(function() {
+				try{
+					$(this).removeClass("fa-toggle-off");
+				}catch(e){
+					
+				}
+				$(this).addClass("fa-toggle-on");
+				$(this).text("刪除");
+			});
+			$("i[name='roleSeqAction0']").each(function() {
+				try{
+					$(this).removeClass("fa-toggle-on");
+				}catch(e){
+					
+				}
+				$(this).addClass("fa-toggle-off");
+				$(this).text("激活");
+			});
+		}
+		
 		jQuery(function($) {
+			$("a[id='roleDetail']").click(function() {
+				location.href = "authority.null.roleSearch.detail.do?roleID=" + this.name;
+			});
+			$("a[id='roleModify']").click(function() {
+				location.href = "authority.null.roleSearch.modify.do?roleID=" + this.name;
+			});
+			$("a[id='roleDelete']").click(function() {
+				var roleID = this.name;
+				var roleState = $("#roleSeqAction" + roleID).attr("name");
+				$.gritter.add({
+							title : '进行中......',
+							text : roleState,
+							sticky : false,
+							time : 5000,
+							speed : 10,
+							position : 'center',
+							class_name : 'gritter-light'
+						});
+				$.ajax({
+					cache : false,
+					type : "POST",
+					url : "authority.null.roleSearch.delete.do",
+					datatype : "json",
+					data : "roleID=" + roleID,
+					async : true,
+					error : function(request) {
+						$.gritter.add({
+							title : '出错啦!',
+							text : '网络似乎有问题！',
+							sticky : true,
+							time : 1000,
+							speed : 10,
+							position : 'center',
+							class_name : 'gritter-light'
+						});
+					},
+					success : function(data) {
+						if (data == "1") {
+							if(roleState == "roleSeqAction1"){
+								$("td[id='roleSeq" + roleID + "'] span").attr("name","roleSeq0");
+								$("i[id='roleSeqAction" + roleID + "']").attr("name","roleSeqAction0");
+							}else{
+								$("td[id='roleSeq" + roleID + "'] span").attr("name","roleSeq1");
+								$("i[id='roleSeqAction" + roleID + "']").attr("name","roleSeqAction1");
+							}
+							myEach();
+						} else {
+							$.gritter.add({
+								title : '出错啦!',
+								text : '删除失败！！！',
+								sticky : true,
+								time : 1000,
+								speed : 10,
+								position : 'center',
+								class_name : 'gritter-light'
+							});
+						}
+					}
+				});
+				
+			});
+
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
 			//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
@@ -208,24 +326,24 @@ html,body {
 				bAutoWidth : false,
 				"aoColumns" : [ {
 					"bSortable" : false
-				}, null, null, null, null, {
+				}, null, null, null, null, null, {
 					"bSortable" : false
 				} ],
 				"aaSorting" : [],
 
-				//,
-				//"sScrollY": "200px",
-				"bPaginate" : false,
+			//,
+			//"sScrollY": "200px",
+			"bPaginate": true,
 
-				//"sScrollX": "100%",
-				//"sScrollXInner": "120%",
-				//"bScrollCollapse": true,
-				//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-				//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+			//"sScrollX": "100%",
+			//"sScrollXInner": "120%",
+			//"bScrollCollapse": true,
+			//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+			//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 
-				"iDisplayLength" : 1
+			//"iDisplayLength": 50
 			});
-			oTable1.fnAdjustColumnSizing();
+			//oTable1.fnAdjustColumnSizing();
 
 			//TableTools settings
 			TableTools.classes.container = "btn-group btn-overlap";
@@ -239,7 +357,7 @@ html,body {
 			var tableTools_obj = new $.fn.dataTable.TableTools(
 					oTable1,
 					{
-						"sSwfPath" : "${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
+						"sSwfPath" : "assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
 
 						"sRowSelector" : "td:not(:last-child)",
 						"sRowSelect" : "multi",
@@ -262,7 +380,7 @@ html,body {
 						"aButtons" : [
 								{
 									"sExtends" : "copy",
-									"sToolTip" : "Copy to clipboard",
+									"sToolTip" : "复制到剪贴板",
 									"sButtonClass" : "btn btn-white btn-primary btn-bold",
 									"sButtonText" : "<i class='fa fa-copy bigger-110 pink'></i>",
 									"fnComplete" : function() {
@@ -279,9 +397,10 @@ html,body {
 								},
 
 								{
-									"sExtends" : "csv",
-									"sToolTip" : "Export to CSV",
+									"sExtends" : "xls",
+									"sToolTip" : "导出Excel",
 									"sButtonClass" : "btn btn-white btn-primary  btn-bold",
+									"sCharSet" : "utf8",
 									"sButtonText" : "<i class='fa fa-file-excel-o bigger-110 green'></i>"
 								},
 
@@ -334,7 +453,7 @@ html,body {
 				"buttonText" : "<i class='fa fa-search'></i>",
 				"aiExclude" : [ 0, 6 ],
 				"bShowAll" : true,
-				"bRestore": true,
+				//"bRestore": true,
 				"sAlign" : "right",
 				"fnLabel" : function(i, title, th) {
 					return $(th).text();//remove icons, etc
@@ -348,7 +467,7 @@ html,body {
 
 			//and append it to our table tools btn-group, also add tooltip
 			$(colvis.button()).prependTo('.tableTools-container .btn-group')
-					.attr('title', 'Show/hide columns').tooltip({
+					.attr('title', '选择要导出的数据列').tooltip({
 						container : 'body'
 					});
 
@@ -456,7 +575,7 @@ html,body {
 				return 'left';
 			}
 
-		})
+		});
 	</script>
 </body>
 </html>

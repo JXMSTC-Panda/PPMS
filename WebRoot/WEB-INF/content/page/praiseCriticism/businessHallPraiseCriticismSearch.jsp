@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -131,13 +132,15 @@
 														name="cols" class="ace" /> <span class="lbl"></span> </label>
 												</td>
 
-												<td></td>
-												<td><a href="#">${orgpraisecriticismsInfor.organizationNj.orgid}</a>
+												<td>${orgpraisecriticismsInfor.order}</td>
+												<td>${orgpraisecriticismsInfor.organizationNj.orgid}
 												</td>
 												<td>${orgpraisecriticismsInfor.organizationNj.org_Name}</td>
 												<td class="hidden-480">${orgpraisecriticismsInfor.type}</td>
 												<td>${orgpraisecriticismsInfor.cause}</td>
-												<td>${orgpraisecriticismsInfor.praisecriticismdate}</td>
+												<td>${fn:split(orgpraisecriticismsInfor.praisecriticismdate,' ')[0]}
+												
+												</td>
 												<td>${orgpraisecriticismsInfor.level}</td>
 												<td>${orgpraisecriticismsInfor.score}</td>
 
@@ -147,10 +150,10 @@
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%>
 														<a class="green"
-															href="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.skip.do?tbOrgpraisecriticism.praisecriticismid=${orgpraisecriticismsInfor.praisecriticismid}"
+															href="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.modify.skip.do?tbOrgpraisecriticism.praisecriticismid=${orgpraisecriticismsInfor.praisecriticismid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.orgPCInforDelete.do?tbOrgpraisecriticism.praisecriticismid=${orgpraisecriticismsInfor.praisecriticismid}">
+															href="praiseCriticism.businessHall.businessHallPraiseCriticismSearch.delete.orgPCInforDelete.do?tbOrgpraisecriticism.praisecriticismid=${orgpraisecriticismsInfor.praisecriticismid}">
 															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -107,7 +108,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有角色表</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=业务培训批量导出.xls" name="StuListForm" method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -142,20 +143,18 @@
                                                <td>${tbOperationtraining.organizationNj.orgid}</td>
                                                <td>${tbOperationtraining.organizationNj.org_Name}</td>
                                                <td>${tbOperationtraining.traininglevel}</td>
-                                                <td>${tbOperationtraining.trainingdate}</td>
+                                                <td>${fn:split(tbOperationtraining.trainingdate,' ')[0]}</td>
                                                  <td>${tbOperationtraining.trainingcontent}</td>
                                                  <td>${tbOperationtraining.trainingscore}</td>
                                               
                                                  
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="javascript:void(0)"
-															name="" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="javascript:void(0)"
+														 <a
+															class="green" href="employeeTrainExam.operationTrain.operationTrainSearch.modify.do?id=${tbOperationtraining.trainingid }"
 															name="" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId="> <i
+															href="employeeTrainExam.operationTrain.operationTrainSearch.delete.do?id=${tbOperationtraining.trainingid }"> <i
 															class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
@@ -193,6 +192,13 @@
 										</c:forEach>
 									</tbody>
 								</table>
+								<div class="clearfix form-actions">
+									<div class="col-md-offset-3 col-md-9">
+											&nbsp; &nbsp; &nbsp;<button class="btn btn-info" type="submit">
+											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+										</button>
+									</div>
+								</div>
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>

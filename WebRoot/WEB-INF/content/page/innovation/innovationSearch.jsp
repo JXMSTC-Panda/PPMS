@@ -97,7 +97,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									创新管理 <small> <i
+									管理 <small> <i
 										class="ace-icon fa fa-angle-double-right"></i> 创新提案查询 </small>
 								</h1>
 							</div>
@@ -135,7 +135,7 @@
 											var="innovation" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
+														type="checkbox" class="ace" cols="${innovation.innovationid }" /> <span class="lbl"></span>
 												</label>
 												</td>
 												<td><c:if test="${innovation.tbEmployee!=null}">
@@ -214,8 +214,6 @@
 																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
 															</ul>
 														</div>
-														<input type="hidden" name="cols"
-															value="${innovation.innovationid} }">
 													</div></td>
 											</tr>
 										</c:forEach>
@@ -280,13 +278,13 @@
 				} ],
 				"aaSorting" : [],
 
-					//,
+					
 					"sScrollY": "200px",
 					//"bPaginate": false,
 
 					"sScrollX": "100%",
-					//"sScrollXInner": "120%",
-					//"bScrollCollapse": true,
+					"sScrollXInner": "120%",
+					"bScrollCollapse": true,
 					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
 					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 

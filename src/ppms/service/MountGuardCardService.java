@@ -7,6 +7,8 @@ import ppms.domain.COrganizationNj;
 import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
+import ppms.domain.TbMaster;
+import ppms.domain.TbMountguardexam;
 
 public interface MountGuardCardService {
 	/**
@@ -79,4 +81,92 @@ public interface MountGuardCardService {
 	* @date: 2015-8-17 上午10:03:09
 	*/
 	public List<TbEmployee> getTbEmployeeByTbEmployeeId(String TbEmployeeId);
+	
+	/**
+	* @Title: getTbMountguardexam
+	* @Description: 查询TbMountguardexam合作厅上岗考证数据集
+	* @param: 无    
+	* @return:  List<TbMountguardexam>  
+	* @auther: CappuccinoH
+	* @date: 2015-8-18 上午10:32:59
+	*/
+	public List<TbMountguardexam> getTbMountguardexam();
+	
+	/**
+	* @Title: getCOrganizationNjByOrgId
+	* @Description: 按营业厅id查询区域营业厅集合
+	* @param: @param orgid   
+	* @return:    List<COrganizationNj>
+	* @auther: CappuccinoH
+	* @date: 2015-8-18 上午10:55:39
+	*/
+	public List<COrganizationNj> getCOrganizationNjByOrgId(Integer orgid);
+	
+	/**
+	* @Title: getTbMasterByExamtype
+	* @Description: 按考核类型查询字典表
+	* @param: @param examtype
+	* @param: @return    
+	* @return:    List<TbMaster>
+	* @auther: CappuccinoH
+	* @date: 2015-8-24 上午5:44:41
+	*/
+	public List<TbMaster> getTbMasterByExamtype(String examtype);
+	
+	/**
+	* @Title: addTbMountguardexam
+	* @Description: 合作厅上岗信息数据录入
+	* @param: @param tbMountguardexam
+	* @param: @return    
+	* @return:    
+	* @auther: CappuccinoH
+	* @date: 2015-8-24 下午12:14:16
+	*/
+	public boolean addTbMountguardexam(TbMountguardexam tbMountguardexam);
+	
+	/**
+	* @Title: deleteTbMountguardexam
+	* @Description: TODO
+	* @param: @param idnumber    
+	* @return:    无
+	* @auther: CappuccinoH
+	* @date: 2015-8-24 下午4:02:46
+	*/
+	public void deleteTbMountguardexam(TbMountguardexam tbMountguardexam);
+	
+	/**
+	 * 根据id删除
+	* @Title: delete
+	* @Description: TODO
+	* @param: @param id
+	* @param: @return    
+	* @return:    
+	* @auther: CappuccinoH
+	* @date: 2015-8-25 下午3:18:16
+	 */
+	public boolean delete(String id);
+	
+	/**
+	 * 根据id查找记录
+	* @Title: getEntity
+	* @Description: TODO
+	* @param: @param id
+	* @param: @return    
+	* @return:    
+	* @auther: CappuccinoH
+	* @date: 2015-8-25 下午3:38:28
+	 */
+	public TbMountguardexam getEntity(String id);
+	
+	/**
+	 * 更新记录
+	* @Title: update
+	* @Description: TODO
+	* @param: @param tbMountguardexam
+	* @param: @return    
+	* @return:    
+	* @auther: CappuccinoH
+	* @date: 2015-8-25 下午6:33:38
+	 */
+	public boolean update(TbMountguardexam tbMountguardexam);
 }

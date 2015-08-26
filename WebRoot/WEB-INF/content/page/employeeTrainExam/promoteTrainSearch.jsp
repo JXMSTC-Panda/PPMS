@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -83,7 +84,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
+						<li><a href="#">父功能</a>
+						</li>
 						<li class="active">子功能</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -94,20 +96,18 @@
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
-										<h1>
-											进阶培训
-										<small>
-											<i class="ace-icon fa fa-angle-double-right"></i>
-												进阶培训查询
-										</small>
-										</h1>
-									</div>
+								<h1>
+									进阶培训 <small> <i
+										class="ace-icon fa fa-angle-double-right"></i> 进阶培训查询 </small>
+								</h1>
+							</div>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有角色表</div>
-							<form action="" name="StuListForm">
+							<form action="downData.do?fileName=进阶培训管理批量导出.xls"
+								name="StuListForm" method="post">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -115,7 +115,6 @@
 											<th class="center"><label class="pos-rel"> <input
 													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
 											</th>
-											<th>序号</th>
 											<th>工号</th>
 											<th>姓名</th>
 											<th>营业厅编码</th>
@@ -130,34 +129,46 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${requestScope.tbPromotiontraining}" var="TbPromotiontraining"
-											varStatus="status">
+										<c:forEach items="${requestScope.tbPromotiontraining}"
+											var="TbPromotiontraining" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label></td>
+														type="checkbox" class="ace"
+														value="${TbPromotiontraining.promotiontrainingid }" /> <span
+														class="lbl"></span> </label>
+												</td>
+												<td>${TbPromotiontraining.tbEmployee.employeecode}</td>
+												<td>${TbPromotiontraining.tbEmployee.employeename}</td>
+												<td>${TbPromotiontraining.organizationNj.orgid}</td>
+												<td>${TbPromotiontraining.organizationNj.org_Name}</td>
+												<td>${TbPromotiontraining.tbEmployee.tbPost.postname}</td>
+												<td>
+													${fn:split(TbPromotiontraining.promotiontrainingdate,' ')[0]}</td>
+												<td><c:if
+														test="${TbPromotiontraining.promotioncontent=='0001'}">进阶熟练营业员
+												</c:if> <c:if
+														test="${TbPromotiontraining.promotioncontent=='0002'}">进阶账务稽核
+												</c:if> <c:if
+														test="${TbPromotiontraining.promotioncontent=='0003'}">进阶实习值班经理
+												</c:if> <c:if
+														test="${TbPromotiontraining.promotioncontent=='0004'}">进阶值班经理
+												</c:if> <c:if
+														test="${TbPromotiontraining.promotioncontent=='0005'}">进阶店长
+												</c:if> <c:if
+														test="${TbPromotiontraining.promotioncontent=='0006'}">其他
+												</c:if>
+												</td>
+												<td>${TbPromotiontraining.promotionscore}</td>
 
-											   <td>1</td>
-                                               <td>${TbPromotiontraining.tbEmployee.employeecode}</td>
-                                               <td>${TbPromotiontraining.tbEmployee.employeename}</td>
-                                               <td>${TbPromotiontraining.organizationNj.orgid}</td>
-                                               <td>${TbPromotiontraining.organizationNj.org_Name}</td>
-                                               <td>${TbPromotiontraining.tbEmployee.tbPost.postname}</td>
-                                                <td>${TbPromotiontraining.promotiontrainingdate}</td>
-                                                 <td>${TbPromotiontraining.promotioncontent}</td>
-                                                 <td>${TbPromotiontraining.promotionscore}</td>
-                                              
-                                                  <td>进阶成功</td>
+												<td>进阶成功</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="javascript:void(0)"
-															name="" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="javascript:void(0)"
+														<a class="green"
+															href="employeeTrainExam.promoteTrain.promoteTrainSearch.modify.do?id=${TbPromotiontraining.promotiontrainingid }"
 															name="" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="ClassDelete?classId="> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+															href="employeeTrainExam.promoteTrain.promoteTrainSearch.delete.do?id=${TbPromotiontraining.promotiontrainingid }">
+															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -169,31 +180,39 @@
 
 															<ul
 																class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																<li><a href="javascript:void(0)"
-																	name="" onclick="GetDetail(this)"
-																	class="tooltip-info" data-rel="tooltip" title="View">
-																		<span class="blue"> <i
-																			class="ace-icon fa fa-search-plus bigger-120"></i> </span> </a>
-																</li>
-
-																<li><a href="javascript:void(0)"
-																	name="" onclick="Modify(this)"
-																	class="tooltip-success" data-rel="tooltip" title="Edit">
-																		<span class="green"> <i
-																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																<li><a href="javascript:void(0)" name=""
+																	onclick="GetDetail(this)" class="tooltip-info"
+																	data-rel="tooltip" title="View"> <span class="blue">
+																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
 																	</span> </a></li>
 
-																<li><a
-																	href="ClassDelete?classId="
-																	class="tooltip-error" data-rel="tooltip" title="Delete"><span class="red"> </span> </a><br></li>
+																<li><a href="javascript:void(0)" name=""
+																	onclick="Modify(this)" class="tooltip-success"
+																	data-rel="tooltip" title="Edit"> <span
+																		class="green"> <i
+																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																	</span> </a>
+																</li>
+
+																<li><a href="ClassDelete?classId="
+																	class="tooltip-error" data-rel="tooltip" title="Delete"><span
+																		class="red"> </span> </a><br>
+																</li>
 															</ul>
 														</div>
-													</div>
-												</td>
+													</div></td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+								<div class="clearfix form-actions">
+									<div class="col-md-offset-3 col-md-9">
+										&nbsp; &nbsp; &nbsp;
+										<button class="btn btn-info" type="submit">
+											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
+										</button>
+									</div>
+								</div>
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
@@ -205,8 +224,10 @@
 	</div>
 	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<!-- page specific plugin scripts -->
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
@@ -221,7 +242,7 @@
 				bAutoWidth : false,
 				"aoColumns" : [ {
 					"bSortable" : false
-				}, null, null, null, null,null,null,null,null, {
+				}, null, null, null, null, null, null, null, {
 					"bSortable" : false
 				} ],
 				"aaSorting" : [],

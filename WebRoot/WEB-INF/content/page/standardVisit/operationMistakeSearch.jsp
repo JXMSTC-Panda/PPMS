@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -133,13 +134,14 @@
 														name="cols" class="ace" /> <span class="lbl"></span> </label>
 												</td>
 
-												<td></td>
+												<td>${operationchecksInfor.order}</td>
 												<td>${operationchecksInfor.organizationNj.areadesc}</td>
 												<td>${operationchecksInfor.organizationNj.orgid}</td>
 												<td>${operationchecksInfor.organizationNj.org_Name}</td>
 												<td>${operationchecksInfor.tbEmployee.employeename}</td>
 												<td>${operationchecksInfor.tbEmployee.employeecode}</td>
-												<td>${operationchecksInfor.operationdate}</td>
+												<td>${fn:split(operationchecksInfor.operationdate,' ')[0]}
+												</td>
 												<td>${operationchecksInfor.customermobilenumber}</td>
 												<td>${operationchecksInfor.operationtype}</td>
 												<td>${operationchecksInfor.punishresult}</td>
@@ -149,10 +151,10 @@
 															name="${trl.getRoleid()}" onclick="GetDetail(this)">
 															<i class="fa fa-search-plus bigger-130">详细</i> </a> --%>
 														<a class="green"
-															href="standardVisit.operationMistake.operationMistakeSearch.skip.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}"
+															href="standardVisit.operationMistake.operationMistakeSearch.modify.skip.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
 															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="standardVisit.operationMistake.operationMistakeSearch.operationMistakeInforDelete.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}">
+															href="standardVisit.operationMistake.operationMistakeSearch.delete.operationMistakeInforDelete.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}">
 															<i class="fa fa-trash bigger-130">删除</i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">

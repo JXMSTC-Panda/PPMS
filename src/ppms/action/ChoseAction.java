@@ -21,9 +21,8 @@ public class ChoseAction extends ActionSupport {
 	private String backUrl;
 	private String orgId;
 	private String need;
-	
+
 	private String employeeid;
-	
 
 	public String getEmployeeid() {
 		return employeeid;
@@ -79,7 +78,8 @@ public class ChoseAction extends ActionSupport {
 		try {
 			List<OrganizationNj> orgs = new ArrayList<OrganizationNj>();
 			List<OrganizationNj> entitiestNotLazy = dao.getEntitiestNotLazy(
-					new OrganizationNj(),new String []{"tbAreaorgrelations"}, null);
+					new OrganizationNj(),
+					new String[] { "tbAreaorgrelations" }, null);
 
 			for (OrganizationNj organizationNj : entitiestNotLazy) {
 
@@ -103,18 +103,29 @@ public class ChoseAction extends ActionSupport {
 			if (selectedId != null) {
 
 				List<OrganizationNj> list = dao.getEntitiestNotLazy(
-						new OrganizationNj(),new String []{"tbAreaorgrelations"},
+						new OrganizationNj(),
+						new String[] { "tbAreaorgrelations" },
 						Restrictions.eq("orgid", Integer.valueOf(selectedId)));
 
 				if (list.size() > 0) {
-					
-					if(need!=null&&need.equals("1")){
-						List<TbEmployee> employees = dao.getEntitiestNotLazy(new TbEmployee(), null, Restrictions.eq("organizationNj", list.get(0)));
-						if(employees.size()>0){
+
+					if (backUrl != null
+							&& (backUrl
+									.equals("innovation.null.innovationSingle.do")
+									|| backUrl
+											.equals("employeeTrainExam.monthExam.monthExamSingle.do")
+									|| backUrl
+											.equals("employeeTrainExam.operationTrain.operationTrainSingle.do") || backUrl
+										.equals("employeeTrainExam.promoteTrain.promoteTrainSingle.do"))) {
+						List<TbEmployee> employees = dao.getEntitiestNotLazy(
+								new TbEmployee(), null,
+								Restrictions.eq("organizationNj", list.get(0)));
+						if (employees.size() > 0) {
 							ServletActionContext.getRequest().getSession()
-							.setAttribute("employees", employees);
+									.setAttribute("employees", employees);
 						}
 					}
+					
 					OrganizationNj organizationNj = list.get(0).toComplete(dao);
 					ServletActionContext.getRequest().getSession()
 							.setAttribute("organizationNj", organizationNj);
@@ -129,22 +140,30 @@ public class ChoseAction extends ActionSupport {
 		}
 
 	}
+
 	@Action(value = "getEmployee", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/OrgChoose.jsp"),
 			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
-	public String getEmployee(){
-		
-		List<TbEmployee> attribute = (List<TbEmployee>) ServletActionContext.getRequest().getSession().getAttribute("employees");
-		
+	public String getEmployee() {
+
+		List<TbEmployee> attribute = (List<TbEmployee>) ServletActionContext
+				.getRequest().getSession().getAttribute("employees");
+
 		try {
-			if(attribute!=null){
-				
+			if (attribute != null) {
+
 				for (TbEmployee tbEmployee : attribute) {
-					
-					if(tbEmployee.getEmployeeid().equals(employeeid)){
-						
-						ServletActionContext.getRequest().getSession().setAttribute("employee", tbEmployee);
-						ServletActionContext.getResponse().sendRedirect(backUrl);
+
+					if (tbEmployee.getEmployeeid().equals(employeeid)) {
+
+						ServletActionContext.getRequest().getSession()
+								.setAttribute("employee", tbEmployee);
+						ServletActionContext.getRequest().getSession()
+						.setAttribute("mark", "have");
+						ServletActionContext.getRequest().getSession()
+						.setAttribute("organizationNj", tbEmployee.getOrganizationNj().toComplete(dao));
+						ServletActionContext.getResponse()
+								.sendRedirect(backUrl);
 					}
 				}
 			}
@@ -153,6 +172,6 @@ public class ChoseAction extends ActionSupport {
 			e.printStackTrace();
 			return "error";
 		}
-		
+
 	}
 }

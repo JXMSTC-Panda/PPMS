@@ -127,7 +127,7 @@
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
 														id="form-input-readonly" value="${requestScope.areadesc}"
-														name="" /> <span
+														name="areadesc" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -157,6 +157,7 @@
 														class="help-inline col-xs-12 col-sm-7">
 														<button sclass="btn btn-info" type="button"
 															onClick="top.window.location='praiseCriticism.businessHall.businessHallPraiseCriticismSingle.skipBusinessHallSelectSingle.do'">选择营业厅</button>
+															<label id="validateBusinessHall"></label>
 													</span>
 												</div>
 											</div>
@@ -184,7 +185,7 @@
 												<div class="col-sm-9">
 													<textarea id="form-field-11" class="col-xs-10 col-sm-5"
 														name="tbOrgpraisecriticism.cause"></textarea>
-
+														<label id="validateCause"></label>
 												</div>
 											</div>
 											<div class="form-group">
@@ -196,9 +197,12 @@
 														<input class="form-control date-picker "
 															id="id-date-picker-1" type="text"
 															data-date-format="yyyy-mm-dd"
-															name="tbOrgpraisecriticism.praisecriticismdate" /> <span
+															name="tbOrgpraisecriticism.praisecriticismdate" /> 
+															<label id="validateDate"></label>
+															<span
 															class="input-group-addon"> <i
 															class="fa fa-calendar bigger-110"></i> </span>
+															
 													</div>
 												</div>
 											</div>
@@ -224,7 +228,7 @@
 
 											<div class="clearfix form-actions">
 												<div class="col-md-offset-3 col-md-9">
-													<button class="btn btn-info" type="submit">
+													<button class="btn btn-info" type="submit" >
 														<i class="ace-icon fa fa-check bigger-110"></i> Submit
 													</button>
 
@@ -286,6 +290,8 @@
 		src="${pageContext.request.contextPath}/assets/js/bootstrap-tag.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+
+	
 		jQuery(function($) {
 			$('#id-disable-check').on('click', function() {
 				var inp = $('#form-input-readonly').get(0);
@@ -742,6 +748,8 @@
 							});
 
 		});
+		
+		
 	</script>
 </body>
 </html>

@@ -135,7 +135,7 @@ public class MonthPerformanceServicelmp extends BaseDaoImp implements Performanc
 	}
 	
 	@Override
-	public void delete(Object object){
-		getHibernateTemplate().delete(object);
+	public void delete(String id){
+		dao.delete(new TbPerformance(), id);
 	}
 }

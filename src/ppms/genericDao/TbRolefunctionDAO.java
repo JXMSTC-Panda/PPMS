@@ -19,23 +19,26 @@ import ppms.domain.TbRolefunction;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see ppms.domain.TbRolefunction
+ * @see ppms.TbRolefunction
  * @author MyEclipse Persistence Tools
  */
 @Repository
 public class TbRolefunctionDAO extends BaseHibernateDAO {
 	private static final Log log = LogFactory.getLog(TbRolefunctionDAO.class);
 	// property constants
+	public static final String FUNCTIONIDS = "functionids";
 	public static final String EMPLOYEESEARCHSCOPE = "employeesearchscope";
 	public static final String ORGSEARCHSCOPE = "orgsearchscope";
 
 	public void save(TbRolefunction transientInstance) {
 		log.debug("saving TbRolefunction instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
+			System.out.println("rolefunction save success");
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
+			re.printStackTrace();
 			throw re;
 		}
 	}
@@ -51,11 +54,22 @@ public class TbRolefunctionDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public TbRolefunction findById(ppms.domain.TbRolefunctionId id) {
+	public void update(TbRolefunction persistentInstance) {
+		log.debug("deleting TbRolefunction instance");
+		try {
+			getHibernateTemplate().update(persistentInstance);
+			log.debug("delete successful");
+			System.out.println("rolefunction update success");
+		} catch (RuntimeException re) {
+			log.error("delete failed", re);
+			throw re;
+		}
+	}
+	public TbRolefunction findById(java.lang.String id) {
 		log.debug("getting TbRolefunction instance with id: " + id);
 		try {
 			TbRolefunction instance = (TbRolefunction) getSession().get(
-					"ppms.domain.TbRolefunction", id);
+					"ppms.TbRolefunction", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -66,8 +80,7 @@ public class TbRolefunctionDAO extends BaseHibernateDAO {
 	public List findByExample(TbRolefunction instance) {
 		log.debug("finding TbRolefunction instance by example");
 		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbRolefunction")
+			List results = getSession().createCriteria("ppms.TbRolefunction")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -91,6 +104,10 @@ public class TbRolefunctionDAO extends BaseHibernateDAO {
 			log.error("find by property name failed", re);
 			throw re;
 		}
+	}
+
+	public List findByFunctionids(Object functionids) {
+		return findByProperty(FUNCTIONIDS, functionids);
 	}
 
 	public List findByEmployeesearchscope(Object employeesearchscope) {

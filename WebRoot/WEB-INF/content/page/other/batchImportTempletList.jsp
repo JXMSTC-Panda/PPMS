@@ -144,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">1</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=人员基本信息批量导入模板.xls">人员基本信息批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=人员基本信息批量导入模板.xls">人员基本信息批量导入模板</a>
 																</td>
 
 																
@@ -154,7 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">2</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=合作厅上岗证批量导入模板.xls">合作厅上岗证批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=合作厅上岗证批量导入模板.xls">合作厅上岗证批量导入模板</a>
 																</td>
 
 																
@@ -164,7 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">3</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=月度考试批量导入模板.xls">月度考试批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=月度考试批量导入模板.xls">月度考试批量导入模板</a>
 																</td>
 
 																
@@ -174,7 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">4</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=业务培训批量导入模板.xls">业务培训批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=业务培训批量导入模板.xls">业务培训批量导入模板</a>
 																</td>
 
 																
@@ -184,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">5</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=进阶培训管理批量导入模板.xls">进阶培训管理批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=进阶培训管理批量导入模板.xls">进阶培训管理批量导入模板</a>
 																</td>
 
 																
@@ -193,7 +193,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">6</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=新员工考核成绩批量导入模板.xls">新员工考核成绩批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=新员工考核成绩批量导入模板.xls">新员工考核成绩批量导入模板</a>
 																</td>
 
 																
@@ -202,7 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">7</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=转正考核成绩批量导入模板.xls">转正考核成绩批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=转正考核成绩批量导入模板.xls">转正考核成绩批量导入模板</a>
 																</td>
 
 																
@@ -211,7 +211,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">8</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=标准化检查成绩批量导入模板.xls">标准化检查成绩批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=标准化检查成绩批量导入模板.xls">标准化检查成绩批量导入模板</a>
 																</td>
 
 																
@@ -220,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">9</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=监控检查成绩批量导入模板.xls">监控检查成绩批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=监控检查成绩批量导入模板.xls">监控检查成绩批量导入模板</a>
 																</td>
 
 																
@@ -229,7 +229,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">10</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=暗访检查成绩批量导入模板.xls">暗访检查成绩批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=暗访检查成绩批量导入模板.xls">暗访检查成绩批量导入模板</a>
 																</td>
 
 																
@@ -238,7 +238,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">11</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=业务差错检查成绩批量导入模板.xls">业务差错检查成绩批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=业务差错检查成绩批量导入模板.xls">业务差错检查成绩批量导入模板</a>
 																</td>
 
 																
@@ -247,7 +247,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">12</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=积分批量导入模板(合作厅).xls">积分批量导入模板(合作厅)</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=积分批量导入模板(合作厅).xls">积分批量导入模板(合作厅)</a>
 																</td>
 
 																
@@ -256,7 +256,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">13</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=积分批量导入模板(主厅).xls">积分批量导入模板(主厅)</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=积分批量导入模板(主厅).xls">积分批量导入模板(主厅)</a>
 																</td>
 
 																
@@ -265,7 +265,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">14</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=创新提案批量导入模板.xls">创新提案批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=创新提案批量导入模板.xls">创新提案批量导入模板</a>
 																</td>
 
 																
@@ -274,7 +274,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">15</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=员工奖惩信息批量导入模板.xls">员工奖惩信息批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=员工奖惩信息批量导入模板.xls">员工奖惩信息批量导入模板</a>
 																</td>
 
 																
@@ -283,7 +283,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">16</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=营业厅奖惩信息批量导入模板.xls">营业厅奖惩信息批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=营业厅奖惩信息批量导入模板.xls">营业厅奖惩信息批量导入模板</a>
 																</td>
 
 																
@@ -292,7 +292,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">17</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=月度绩效批量导入模板.xls">月度绩效批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=月度绩效批量导入模板.xls">月度绩效批量导入模板</a>
 																</td>
 
 																
@@ -301,7 +301,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																<td class="">18</td>
 
 																<td>
-																	<a href="downloadAction.do?fileName=年度绩效批量导入模板.xls">年度绩效批量导入模板</a>
+																	<a href="other.null.batchImportTempletList.downloadAction.do?fileName=年度绩效批量导入模板.xls">年度绩效批量导入模板</a>
 																</td>
 
 																

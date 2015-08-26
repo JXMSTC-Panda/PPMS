@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -100,7 +101,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">信息查询</div>
-							<form  name="StuListForm" action="praiseCriticism.employee.employeePraiseCriticismSearch.selectEmployeeSkipUpdate.do?tbEmployeepraisecriticism.praisecriticismid=${requestScope.praisecriticismid}" method="post" >
+							<form  name="StuListForm" action="praiseCriticism.employee.employeePraiseCriticismSearch.modify.selectEmployeeSkipUpdate.do?tbEmployeepraisecriticism.praisecriticismid=${requestScope.praisecriticismid}" method="post" >
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -143,7 +144,7 @@
 														<c:out value="男"></c:out>
 													</c:if>
 												</td>
-												<td>${employeeInfo.birthday}</td>
+												<td>${fn:split(fn:split(employeeInfo.birthday,' ')[0],'-')[0]}-${fn:split(fn:split(employeeInfo.birthday,' ')[0],'-')[1]}</td>
 												<td>${employeeInfo.tbPost.postname}</td>
 												<td>${employeeInfo.tbJob.jobname}</td>
 

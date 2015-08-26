@@ -90,7 +90,8 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
+						<li><a href="#">Other Pages</a>
+						</li>
 						<li class="active">Blank Page</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -108,8 +109,7 @@
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 							<form class="form-horizontal" role="form"
-								action="standardVisit.visit.visitSingle.add.do"
-								method="post">
+								action="standardVisit.visit.visitSingle.add.do" method="post">
 								<!-- #section:elements.form -->
 
 								<div class="form-group">
@@ -174,8 +174,7 @@
 
 									<div class="col-sm-9">
 										<input type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly"
-											value=""
+											id="form-input-readonly" value=""
 											name="visitcheck.firstscore" /> <span
 											class="help-inline col-xs-12 col-sm-7"> </span>
 									</div>
@@ -185,9 +184,8 @@
 										for="form-input-readonly"> 第二次成绩： </label>
 
 									<div class="col-sm-9">
-										<input  type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly"
-											value=""
+										<input type="text" class="col-xs-10 col-sm-5"
+											id="form-input-readonly" value=""
 											name="visitcheck.secondscore" /> <span
 											class="help-inline col-xs-12 col-sm-7"> </span>
 									</div>
@@ -199,8 +197,7 @@
 
 									<div class="col-sm-9">
 										<input type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly"
-											value=""
+											id="form-input-readonly" value=""
 											name="visitcheck.consistencyscore" /> <span
 											class="help-inline col-xs-12 col-sm-7"> </span>
 									</div>
@@ -220,7 +217,12 @@
 								</div>
 
 							</form>
+							<%
+								if (request.getSession().getAttribute("organizationNj") != null) {
 
+									request.getSession().removeAttribute("organizationNj");
+								}
+							%>
 						</div>
 						<!-- /.col -->
 					</div>
