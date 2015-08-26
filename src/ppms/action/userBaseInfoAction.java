@@ -156,7 +156,7 @@ public class userBaseInfoAction extends BaseInit{
 	 * 修改人员信息
 	 * @return
 	 */
-	@Action(value = "userInfo.userBase.userBaseInfoSearch.modifyInitPage", results = {
+	@Action(value = "userInfo.userBase.userBaseInfoSearch.modify.InitPage", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/userInfo/userBaseInfoUpdate.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/error.jsp") })
 	public String updateInitPage() {
