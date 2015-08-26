@@ -125,6 +125,7 @@ public class ChoseAction extends ActionSupport {
 									.setAttribute("employees", employees);
 						}
 					}
+					
 					OrganizationNj organizationNj = list.get(0).toComplete(dao);
 					ServletActionContext.getRequest().getSession()
 							.setAttribute("organizationNj", organizationNj);
@@ -157,6 +158,10 @@ public class ChoseAction extends ActionSupport {
 
 						ServletActionContext.getRequest().getSession()
 								.setAttribute("employee", tbEmployee);
+						ServletActionContext.getRequest().getSession()
+						.setAttribute("mark", "have");
+						ServletActionContext.getRequest().getSession()
+						.setAttribute("organizationNj", tbEmployee.getOrganizationNj().toComplete(dao));
 						ServletActionContext.getResponse()
 								.sendRedirect(backUrl);
 					}

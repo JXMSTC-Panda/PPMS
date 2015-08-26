@@ -445,8 +445,8 @@
 								<!-- /section:settings.box -->
 								<div class="page-header">
 									<h1>
-										创新管理 <small> <i
-											class="ace-icon fa fa-angle-double-right"></i> 创新批量录入 </small>
+										进阶培训管理 <small> <i
+											class="ace-icon fa fa-angle-double-right"></i> 进阶培训成绩批量录入 </small>
 									</h1>
 								</div>
 								<!-- /.page-header -->
