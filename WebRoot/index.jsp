@@ -98,13 +98,6 @@
 														<i class="ace-icon fa fa-key"></i> <span
 															class="bigger-110">登录 </span>
 													</button>
-													<a  class=""
-														data-container="body" data-toggle="popover"
-														data-placement="bottom"
-														data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus.">
-														Popover on 底部</a> <a href="#" rel="drevil"> <span
-														class="glyphicon glyphicon-shopping-cart"> </span> 购物车 </a>
 												</div>
 
 												<div class="space-4"></div>
