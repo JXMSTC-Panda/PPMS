@@ -136,6 +136,8 @@ public class MountGuardCardAction extends BaseInit {
 	 * @date: 2015-8-11 下午8:48:04
 	 */
 	public String mgcs() throws IOException {
+		
+		
 
 		mountguardcardserviceimp.addTbMountguardexam(tbMountguardexam);
 
@@ -191,7 +193,7 @@ public class MountGuardCardAction extends BaseInit {
 		// System.out.println("***********************************");
 
 		ServletActionContext.getResponse().sendRedirect(
-				"userInfo.mountGuardCard.mountGuardCardSearch");
+				"userInfo.mountGuardCard.mountGuardCardSearch.do");
 		toCache();
 
 		return null;
@@ -305,61 +307,67 @@ return "error";
 		// 实例化map
 
 		// 根据不同请求的url实现不同页面的页面初始化
-		switch (url) {
-		case "userInfo.mountGuardCardSingle":
-			// 获取所有营业厅
-			List<OrganizationNj> organizations = serviceOrg.getOrganizations();
-			map.put("orgs", organizations);
+		
+		try {
+			switch (url) {
+			case "userInfo.mountGuardCardSingle":
+				// 获取所有营业厅
+				List<OrganizationNj> organizations = serviceOrg.getOrganizations();
+				map.put("orgs", organizations);
 
-			List<TbEmployee> employees = mountguardcardserviceimp.getTbEmployee();
-			map.put("employees", employees);
-			break;
+				List<TbEmployee> employees = mountguardcardserviceimp.getTbEmployee();
+				map.put("employees", employees);
+				break;
 
-		case "userInfo.mountGuardCardSearch":
+			case "userInfo.mountGuardCardSearch":
 
-			System.out.println("进入了case1！！！");
+				System.out.println("进入了case1！！！");
 
-			// 查询所有的合作厅上岗证查询表
-			List<TbMountguardexam> tbMountguardexam = mountguardcardserviceimp
-					.getTbMountguardexam();
+				// 查询所有的合作厅上岗证查询表
+				List<TbMountguardexam> tbMountguardexam = mountguardcardserviceimp
+						.getTbMountguardexam();
 
-			map.put("mgcList", tbMountguardexam);
+				map.put("mgcList", tbMountguardexam);
 
-			// 获取合作厅上岗考证表
-			/*
-			 * List<TbMountguardexam> tbMountguardexam =
-			 * serviceEmp.getTbMountguardexam(); map.put("tbMountguardexam",
-			 * tbMountguardexam);
-			 * 
-			 * //取需要查询的相关主键 Integer orgid=null; String employeeid=null;
-			 * for(TbMountguardexam tm:tbMountguardexam){ orgid =
-			 * tm.getOrganizationNj().getOrgid(); employeeid =
-			 * tm.getTbEmployee().getEmployeeid(); }
-			 * 
-			 * //查询营业员表 List<TbEmployee> tbEmployeeByTbEmployeeId =
-			 * serviceEmp.getTbEmployeeByTbEmployeeId(employeeid);
-			 * map.put("tbEmployeeByTbEmployeeId", tbEmployeeByTbEmployeeId);
-			 * 
-			 * //查询营业厅表 List<OrganizationNj> organizationNjByOrgId =
-			 * serviceEmp.getOrganizationNjByOrgId(orgid);
-			 * map.put("organizationNjByOrgId", organizationNjByOrgId);
-			 * 
-			 * 
-			 * //按营业厅id查询区域id List<COrganizationNj> cOrganizationNjByOrgId =
-			 * serviceEmp.getCOrganizationNjByOrgId(orgid); BigDecimal areaid =
-			 * cOrganizationNjByOrgId.get(0).getTbArea().getAreaid();
-			 * 
-			 * //更具区域id查询区域名称 List<TbArea> tbAreaByAreaId =
-			 * serviceEmp.getTbAreaByAreaId(areaid); map.put("tbAreaByAreaId",
-			 * tbAreaByAreaId);
-			 */
+				// 获取合作厅上岗考证表
+				/*
+				 * List<TbMountguardexam> tbMountguardexam =
+				 * serviceEmp.getTbMountguardexam(); map.put("tbMountguardexam",
+				 * tbMountguardexam);
+				 * 
+				 * //取需要查询的相关主键 Integer orgid=null; String employeeid=null;
+				 * for(TbMountguardexam tm:tbMountguardexam){ orgid =
+				 * tm.getOrganizationNj().getOrgid(); employeeid =
+				 * tm.getTbEmployee().getEmployeeid(); }
+				 * 
+				 * //查询营业员表 List<TbEmployee> tbEmployeeByTbEmployeeId =
+				 * serviceEmp.getTbEmployeeByTbEmployeeId(employeeid);
+				 * map.put("tbEmployeeByTbEmployeeId", tbEmployeeByTbEmployeeId);
+				 * 
+				 * //查询营业厅表 List<OrganizationNj> organizationNjByOrgId =
+				 * serviceEmp.getOrganizationNjByOrgId(orgid);
+				 * map.put("organizationNjByOrgId", organizationNjByOrgId);
+				 * 
+				 * 
+				 * //按营业厅id查询区域id List<COrganizationNj> cOrganizationNjByOrgId =
+				 * serviceEmp.getCOrganizationNjByOrgId(orgid); BigDecimal areaid =
+				 * cOrganizationNjByOrgId.get(0).getTbArea().getAreaid();
+				 * 
+				 * //更具区域id查询区域名称 List<TbArea> tbAreaByAreaId =
+				 * serviceEmp.getTbAreaByAreaId(areaid); map.put("tbAreaByAreaId",
+				 * tbAreaByAreaId);
+				 */
 
-			System.out.println("进入了case2！！！");
-			break;
+				System.out.println("进入了case2！！！");
+				break;
 
-		default:
-			break;
+			default:
+				break;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
 	}
 
 	@Action(value = "userInfo.mountGuardCard.mountGuardCardSingle.ajaxSearchOrg")

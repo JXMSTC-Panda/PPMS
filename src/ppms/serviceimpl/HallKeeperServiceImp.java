@@ -3,6 +3,7 @@ package ppms.serviceimpl;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import ppms.domain.OrganizationNj;
 import ppms.domain.TbArea;
 import ppms.domain.TbEmployee;
 import ppms.domain.TbMaster;
+import ppms.domain.TbMountguardexam;
 import ppms.domain.TbPerformance;
 import ppms.domain.TbPost;
 import ppms.domain.TbPromotiontraining;
@@ -40,7 +42,7 @@ public class HallKeeperServiceImp implements HallKeeperService {
 	@Override
 	public List<TbEmployee> getTbEmployee(String employeeid) {
 		// TODO Auto-generated method stub
-		return dao.getTbEmployee(employeeid);
+		return dao.getEntitiestNotLazy(new TbEmployee(), new String[]{"organizationNj","tbJob","tbRole","tbPost"}, Restrictions.eq("employeeid", employeeid));
 	}
 
 	@Override
@@ -77,6 +79,12 @@ public class HallKeeperServiceImp implements HallKeeperService {
 	public List<TbPost> getTbPost(String postid) {
 		// TODO Auto-generated method stub
 		return dao.getTbPost(postid);
+	}
+
+	@Override
+	public List<TbMountguardexam> getAll(String key) {
+		List<TbMountguardexam> entitiestNotLazy = dao.getEntitiestNotLazy(new TbMountguardexam(), new String[]{"organizationNj","tbEmployee"}, Restrictions.eq("examtype", key));
+		return entitiestNotLazy;
 	}
 
 }
