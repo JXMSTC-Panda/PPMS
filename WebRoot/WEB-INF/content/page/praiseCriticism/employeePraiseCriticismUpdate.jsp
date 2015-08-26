@@ -279,7 +279,7 @@
 
 												<div class="col-sm-9">
 													<textarea id="form-field-11" class="col-xs-10 col-sm-5"
-														name="tbEmployeepraisecriticism.cause"></textarea>
+														name="tbEmployeepraisecriticism.cause" maxlength="300"></textarea>
 
 												</div>
 											</div>
