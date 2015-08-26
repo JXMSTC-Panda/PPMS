@@ -138,7 +138,7 @@
 																for="form-field-1"> 性别: </label>
 															<div class="col-sm-9">
 																<div class="radio">
-																	<c:if test="${requestScope.tbEmpl.get(0)==true}">
+																	<c:if test="${requestScope.tbEmpl.get(0).sex==true}">
 																		<label> <input class="ace" type="radio"
 																			checked="checked" name="tbEmployee.sex" value="true">
 																			<span class="lbl"> 男</span> </label>
@@ -146,7 +146,7 @@
 																			name="tbEmployee.sex" value="false"> <span
 																			class="lbl"> 女</span> </label>
 																	</c:if>
-																	<c:if test="${requestScope.tbEmpl.get(0)==false}">
+																	<c:if test="${requestScope.tbEmpl.get(0).sex==false}">
 																		<label> <input class="ace" type="radio"
 																			checked="checked" name="tbEmployee.sex" value="true">
 																			<span class="lbl"> 男</span> </label>
@@ -229,11 +229,20 @@
 																for="form-field-1"> 人员状态: </label>
 															<div class="col-sm-9">
 																<div class="radio">
+																<c:if test="${requestScope.tbEmpl.get(0).status==true}">
+																	<label> <input class="ace" type="radio"
+																		name="tbEmployee.status" value="true" checked="checked"> <span
+																		class="lbl"> 有效</span> </label> <label> <input
+																		class="ace" type="radio" name="tbEmployee.status"
+																		value="false"> <span class="lbl"> 无效</span> </label>
+																</c:if>
+																<c:if test="${requestScope.tbEmpl.get(0).status==false}">
 																	<label> <input class="ace" type="radio"
 																		name="tbEmployee.status" value="true"> <span
 																		class="lbl"> 有效</span> </label> <label> <input
 																		class="ace" type="radio" name="tbEmployee.status"
-																		value="false"> <span class="lbl"> 无效</span> </label>
+																		value="false"  checked="checked"> <span class="lbl"> 无效</span> </label>
+																</c:if>
 																</div>
 															</div>
 														</div>
