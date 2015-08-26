@@ -153,7 +153,7 @@
 												${fn:split(employeepraisecriticismsInfor.praisecriticismdate,' ')[0]}
 												</td> --%>
 												<td>
-													<a name="time" href="javascript:void(0);"
+													<a name="praisecriticismdate" href="javascript:void(0);"
 														data-container="body" data-toggle="popover"
 														data-placement="bottom" data-content="${employeepraisecriticismsInfor.praisecriticismdate}">
 													</a>
@@ -245,7 +245,7 @@
 	
 	$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
-			myEachPopover(Name,0, 10);
+			myEachPopover("praisecriticismdate",0, 10);
 		});
 	
 		jQuery(function($) {
