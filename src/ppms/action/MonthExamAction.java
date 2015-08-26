@@ -79,6 +79,12 @@ public class MonthExamAction extends BaseInit {
 						.removeAttribute("organizationNj");
 			}
 			if (ServletActionContext.getRequest().getSession()
+					.getAttribute("employees") != null) {
+				ServletActionContext.getRequest().getSession()
+						.removeAttribute("employees");
+			}
+
+			if (ServletActionContext.getRequest().getSession()
 					.getAttribute("employee") != null) {
 				ServletActionContext.getRequest().getSession()
 						.removeAttribute("employee");

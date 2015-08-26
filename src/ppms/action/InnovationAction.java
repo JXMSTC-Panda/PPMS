@@ -104,14 +104,19 @@ public class InnovationAction extends BaseInit {
 							.removeAttribute("organizationNj");
 				}
 				if (ServletActionContext.getRequest().getSession()
+						.getAttribute("employees") != null) {
+					ServletActionContext.getRequest().getSession()
+							.removeAttribute("employees");
+				}
+
+				if (ServletActionContext.getRequest().getSession()
 						.getAttribute("employee") != null) {
 					ServletActionContext.getRequest().getSession()
 							.removeAttribute("employee");
 				}
-
 				ServletActionContext.getResponse().sendRedirect(
 						"innovation.null.innovationSearch.do");
-				return "error";
+				return null;
 			} else {
 				return "error";
 			}

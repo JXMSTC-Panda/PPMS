@@ -508,6 +508,7 @@
 	<!-- basic scripts -->
 
 	<!--[if !IE]> -->
+	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<script type="text/javascript">
 		window.jQuery
 				|| document

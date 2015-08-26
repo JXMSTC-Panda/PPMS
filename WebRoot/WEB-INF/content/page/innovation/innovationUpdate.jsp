@@ -524,6 +524,7 @@
  window.jQuery || document.write("<script src='${pageContext.request.contextPath}/assets/js/jquery1x.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
+
 	<script type="text/javascript">
 		if ('ontouchstart' in document.documentElement)
 			document
