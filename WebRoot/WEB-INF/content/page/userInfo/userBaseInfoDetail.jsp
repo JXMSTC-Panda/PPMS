@@ -187,7 +187,7 @@
 															</div>
 														</div>
 
-														<div class="form-group">
+														<%-- <div class="form-group">
 															<label class="col-sm-3 control-label no-padding-right"
 																for="form-field-1"> 区域: </label>
 
@@ -195,7 +195,7 @@
 																<input id="form-field-1" class="col-xs-10 col-sm-5"
 																	type="text" value="${requestScope.tbEmpl.get(0).organizationNj.areadesc}">
 															</div>
-														</div>
+														</div> --%>
 
 
 													</div>

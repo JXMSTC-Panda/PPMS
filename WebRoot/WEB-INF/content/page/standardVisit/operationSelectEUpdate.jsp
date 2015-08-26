@@ -1,6 +1,7 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -70,7 +71,7 @@
 			} catch (e) {
 			}
 		</script>
-		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
+		
 		<!-- /section:basics/sidebar -->
 		<div class="main-content">
 			<div class="main-content-inner">
@@ -110,7 +111,7 @@
 											<th class="center"><label class="pos-rel"> <input
 													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
 											</th>
-											<th>序号</th>
+											
 											<th>工号</th>
 											<th>姓名</th>
 											<th>身份证号</th>
@@ -121,7 +122,7 @@
 											<th>出生年月</th>
 											<th>岗职</th>
 											<th>岗位</th>
-											<th></th>
+											
 										</tr>
 									</thead>
 
@@ -131,7 +132,7 @@
 											<tr>
 												<td><input type="radio" name="selectEmployee"
 													value="${employeeInfo.employeeid}" checked></td>
-												<td></td>
+												
 												<td>${employeeInfo.employeecode}</td>
 												<td><a href="javascript:doOpenDetail();">${employeeInfo.employeename}</a>
 												</td>
@@ -145,57 +146,19 @@
 														<c:out value="男"></c:out>
 													</c:if>
 												</td>
-												<td>${employeeInfo.birthday}</td>
+												<%-- <td>${fn:split(fn:split(employeeInfo.birthday,' ')[0],'-')[0]}-${fn:split(fn:split(employeeInfo.birthday,' ')[0],'-')[1]}</td> --%>
+												<td>
+													<a name="birthday" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${employeeInfo.birthday}">
+													</a>
+
+												</td>
 												<td>${employeeInfo.tbPost.postname}</td>
 												<td>${employeeInfo.tbJob.jobname}</td>
 
 
-												<td>
-													<%-- <div class="hidden-sm hidden-xs action-buttons">
-														 <a class="blue" href="javascript:void(0)"
-															name="${trl.getRoleid()}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> 
-														<a class="green"
-															href="praiseCriticism.employee.employeePraiseCriticismSearch.SkipUpdateEmployeeInfor.do"
-															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="praiseCriticism.employee.employeePraiseCriticismSearch.deleteEmployeeInfor.do?tbEmployeepraisecriticism.praisecriticismid=${employeepraisecriticismsInfor.praisecriticismid}">
-															<i class="fa fa-trash bigger-130">删除</i> </a>
-													</div> --%>
-													<div class="hidden-md hidden-lg">
-														<div class="inline pos-rel">
-															<button class="btn btn-minier btn-yellow dropdown-toggle"
-																data-toggle="dropdown" data-position="auto">
-																<i
-																	class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-															</button>
-
-															<ul
-																class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																<li><a href="javascript:void(0)"
-																	name="${trl.getRoleid()}" onclick="GetDetail(this)"
-																	class="tooltip-info" data-rel="tooltip" title="View">
-																		<span class="blue"> <i
-																			class="ace-icon fa fa-search-plus bigger-120"></i> </span> </a>
-																</li>
-
-																<li><a href="javascript:void(0)"
-																	name="${trl.getRoleid()}" onclick="Modify(this)"
-																	class="tooltip-success" data-rel="tooltip" title="Edit">
-																		<span class="green"> <i
-																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a>
-																</li>
-
-																<li><a
-																	href="ClassDelete?classId=${trl.getRoleid()}"
-																	class="tooltip-error" data-rel="tooltip" title="Delete">
-																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
-																</li>
-															</ul>
-														</div>
-													</div></td>
+												
 											</tr>
 										</c:forEach>
 										<table cellpadding="0" cellspacing="0" width="95%"
@@ -228,8 +191,17 @@
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+	$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("birthday",0, 10);
+		});
+	
+	
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
@@ -240,7 +212,7 @@
 						"aoColumns" : [ {
 							"bSortable" : false
 						}, null, null, null, null, null, null, null, null,
-								null, null, null, {
+								null,  {
 									"bSortable" : false
 								} ],
 						"aaSorting" : [],

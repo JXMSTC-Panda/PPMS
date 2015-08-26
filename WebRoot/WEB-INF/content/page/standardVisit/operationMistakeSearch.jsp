@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -139,7 +140,15 @@
 												<td>${operationchecksInfor.organizationNj.org_Name}</td>
 												<td>${operationchecksInfor.tbEmployee.employeename}</td>
 												<td>${operationchecksInfor.tbEmployee.employeecode}</td>
-												<td>${operationchecksInfor.operationdate}</td>
+												<%-- <td>${fn:split(operationchecksInfor.operationdate,' ')[0]}
+												</td> --%>
+												<td>
+													<a name="operationdate" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${operationchecksInfor.operationdate}">
+													</a>
+
+												</td>
 												<td>${operationchecksInfor.customermobilenumber}</td>
 												<td>${operationchecksInfor.operationtype}</td>
 												<td>${operationchecksInfor.punishresult}</td>
@@ -151,9 +160,9 @@
 														<a class="green"
 															href="standardVisit.operationMistake.operationMistakeSearch.modify.skip.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}"
 															name="${trl.getRoleid()}" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
+															class="fa fa-pencil bigger-130"><small>修改</small></i> </a> <a class="red"
 															href="standardVisit.operationMistake.operationMistakeSearch.delete.operationMistakeInforDelete.do?tbOperationcheck.operationcheckid=${operationchecksInfor.operationcheckid}">
-															<i class="fa fa-trash bigger-130">删除</i> </a>
+															<i class="fa fa-trash bigger-130"><small>删除</small></i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -217,8 +226,18 @@
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+	
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+	$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("operationdate",0, 10);
+		});
+	
+	
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')

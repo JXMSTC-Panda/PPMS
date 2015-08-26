@@ -86,8 +86,7 @@ form {
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">权限管理</a>
-						</li>
+						<li><a href="#">权限管理</a></li>
 						<li class="active">角色添加</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
@@ -111,12 +110,18 @@ form {
 											<th class="center"><label class="pos-rel"> <input
 													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
 											</th>
-											<th>角色ID</th>
-											<th>角色名称</th>
-											<th>系统管理员</th>
-											<th>创建时间</th>
-											<th>状态</th>
-											<th>操作</th>
+											<th><small>角色ID</small>
+											</th>
+											<th><small>角色名称</small>
+											</th>
+											<th><small>系统管理员</small>
+											</th>
+											<th><small>创建时间</small>
+											</th>
+											<th><small>状态</small>
+											</th>
+											<th><small>操作</small>
+											</th>
 										</tr>
 									</thead>
 
@@ -125,14 +130,15 @@ form {
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
 														type="checkbox" class="ace" /> <span class="lbl"></span>
-												</label>
-												</td>
+												</label></td>
 
-												<td><a href="#">${trl.roleid}</a>
-												</td>
+												<td><a href="">${trl.roleid}</a></td>
 												<td>${trl.rolename}</td>
 												<td class="hidden-480">${trl.administratorflag}</td>
-												<td>${trl.createdtime}</td>
+												<td><a name="time" href="javascript:void(0);"
+													data-container="body" data-toggle="popover"
+													data-placement="bottom" data-content="${trl.createdtime}">
+												</a></td>
 												<td id="roleSeq${trl.getRoleid()}"><span
 													class="label label-sm " name="roleSeq${trl.seq}">${trl.seq}</span>
 												</td>
@@ -140,13 +146,14 @@ form {
 													<div class="hidden-sm hidden-xs action-buttons">
 														<a class="blue" href="javascript:void(0)"
 															name="${trl.getRoleid()}" id="roleDetail"> <i
-															class="fa fa-search-plus bigger-130">详细</i> </a> <a
-															class="green" href="javascript:void(0)"
+															class="fa fa-search-plus bigger-130"><small>详细</small>
+														</i> </a> <a class="green" href="javascript:void(0)"
 															name="${trl.getRoleid()}" id="roleModify"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="javascript:void(0)" name="${trl.getRoleid()}"
-															id="roleDelete"> <i id="roleSeqAction${trl.getRoleid()}" class="fa bigger-130"
-															name="roleSeqAction${trl.seq}">删除</i>
+															class="fa fa-pencil bigger-130"><small>修改</small> </i> </a> <a
+															class="red" href="javascript:void(0)"
+															name="${trl.getRoleid()}" id="roleDelete"> <i
+															id="roleSeqAction${trl.getRoleid()}"
+															class="fa bigger-130" name="roleSeqAction${trl.seq}"></i>
 														</a>
 													</div>
 													<div class="hidden-md hidden-lg">
@@ -171,18 +178,17 @@ form {
 																	class="tooltip-success" data-rel="tooltip" title="Edit">
 																		<span class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a>
-																</li>
+																	</span> </a></li>
 
 																<li><a
 																	href="ClassDelete?classId=${trl.getRoleid()}"
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
-																</li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
 															</ul>
 														</div>
-													</div></td>
+													</div>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -205,119 +211,154 @@ form {
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
 			myEach();
+			myEachPopover("time", 0, 10);
 		});
-		
 		function myEach() {
 
 			$("span[name='roleSeq1']").each(function() {
-				
-				try{
+
+				try {
 					$(this).removeClass("label-warning");
-				}catch(e){
-					
+				} catch (e) {
+
 				}
 				$(this).addClass("label-success");
 				$(this).text("有效角色");
 			});
 			$("span[name='roleSeq0']").each(function() {
-				
-				try{
+
+				try {
 					$(this).removeClass("label-success");
-				}catch(e){
-					
+				} catch (e) {
+
 				}
 				$(this).addClass("label-warning");
 				$(this).text("无效角色");
 			});
 			$("i[name='roleSeqAction1']").each(function() {
-				try{
+				try {
 					$(this).removeClass("fa-toggle-off");
-				}catch(e){
-					
+				} catch (e) {
+
 				}
 				$(this).addClass("fa-toggle-on");
-				$(this).text("刪除");
+				//$(this).text("刪除");
 			});
 			$("i[name='roleSeqAction0']").each(function() {
-				try{
+				try {
 					$(this).removeClass("fa-toggle-on");
-				}catch(e){
-					
+				} catch (e) {
+
 				}
 				$(this).addClass("fa-toggle-off");
-				$(this).text("激活");
+				//$(this).text("激活");
 			});
 		}
-		
+
 		jQuery(function($) {
-			$("a[id='roleDetail']").click(function() {
-				location.href = "authority.null.roleSearch.detail.do?roleID=" + this.name;
-			});
-			$("a[id='roleModify']").click(function() {
-				location.href = "authority.null.roleSearch.modify.do?roleID=" + this.name;
-			});
-			$("a[id='roleDelete']").click(function() {
-				var roleID = this.name;
-				var roleState = $("#roleSeqAction" + roleID).attr("name");
-				$.gritter.add({
-							title : '进行中......',
-							text : roleState,
-							sticky : false,
-							time : 5000,
-							speed : 10,
-							position : 'center',
-							class_name : 'gritter-light'
-						});
-				$.ajax({
-					cache : false,
-					type : "POST",
-					url : "authority.null.roleSearch.delete.do",
-					datatype : "json",
-					data : "roleID=" + roleID,
-					async : true,
-					error : function(request) {
-						$.gritter.add({
-							title : '出错啦!',
-							text : '网络似乎有问题！',
-							sticky : true,
-							time : 1000,
-							speed : 10,
-							position : 'center',
-							class_name : 'gritter-light'
-						});
-					},
-					success : function(data) {
-						if (data == "1") {
-							if(roleState == "roleSeqAction1"){
-								$("td[id='roleSeq" + roleID + "'] span").attr("name","roleSeq0");
-								$("i[id='roleSeqAction" + roleID + "']").attr("name","roleSeqAction0");
-							}else{
-								$("td[id='roleSeq" + roleID + "'] span").attr("name","roleSeq1");
-								$("i[id='roleSeqAction" + roleID + "']").attr("name","roleSeqAction1");
-							}
-							myEach();
-						} else {
-							$.gritter.add({
-								title : '出错啦!',
-								text : '删除失败！！！',
-								sticky : true,
-								time : 1000,
-								speed : 10,
-								position : 'center',
-								class_name : 'gritter-light'
+			$("a[id='roleDetail']")
+					.click(
+							function() {
+								location.href = "authority.null.roleSearch.detail.do?roleID="
+										+ this.name;
 							});
-						}
-					}
-				});
-				
-			});
+			$("a[id='roleModify']")
+					.click(
+							function() {
+								location.href = "authority.null.roleSearch.modify.do?roleID="
+										+ this.name;
+							});
+			$("a[id='roleDelete']")
+					.click(
+							function() {
+								var roleID = this.name;
+								var roleState = $("#roleSeqAction" + roleID)
+										.attr("name");
+								$.gritter.add({
+									title : '进行中......',
+									text : roleState,
+									sticky : false,
+									time : 5000,
+									speed : 10,
+									position : 'center',
+									class_name : 'gritter-light'
+								});
+								$
+										.ajax({
+											cache : false,
+											type : "POST",
+											url : "authority.null.roleSearch.delete.do",
+											datatype : "json",
+											data : "roleID=" + roleID,
+											async : true,
+											error : function(request) {
+												$.gritter
+														.add({
+															title : '出错啦!',
+															text : '网络似乎有问题！',
+															sticky : true,
+															time : 1000,
+															speed : 10,
+															position : 'center',
+															class_name : 'gritter-light'
+														});
+											},
+											success : function(data) {
+												if (data == "1") {
+													if (roleState == "roleSeqAction1") {
+														$(
+																"td[id='roleSeq"
+																		+ roleID
+																		+ "'] span")
+																.attr("name",
+																		"roleSeq0");
+														$(
+																"i[id='roleSeqAction"
+																		+ roleID
+																		+ "']")
+																.attr("name",
+																		"roleSeqAction0");
+													} else {
+														$(
+																"td[id='roleSeq"
+																		+ roleID
+																		+ "'] span")
+																.attr("name",
+																		"roleSeq1");
+														$(
+																"i[id='roleSeqAction"
+																		+ roleID
+																		+ "']")
+																.attr("name",
+																		"roleSeqAction1");
+													}
+													myEach();
+												} else {
+													$.gritter
+															.add({
+																title : '出错啦!',
+																text : '删除失败！！！',
+																sticky : true,
+																time : 1000,
+																speed : 10,
+																position : 'center',
+																class_name : 'gritter-light'
+															});
+												}
+											}
+										});
+
+							});
 
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
@@ -331,9 +372,9 @@ form {
 				} ],
 				"aaSorting" : [],
 
-			//,
-			//"sScrollY": "200px",
-			"bPaginate": true,
+				//,
+				//"sScrollY": "200px",
+				"bPaginate" : true,
 
 			//"sScrollX": "100%",
 			//"sScrollXInner": "120%",
