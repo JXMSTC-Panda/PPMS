@@ -137,7 +137,7 @@
 											var="freshs" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
+														type="checkbox" class="ace" name="cols" value="${freshs.examid }" /> <span class="lbl"></span>
 												</label></td>
 
 												<!-- ${ status.index + 1} 序号自增 -->

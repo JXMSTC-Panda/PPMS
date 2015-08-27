@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -81,13 +82,13 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">绩效管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">月度绩效</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -135,7 +136,7 @@
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
+														type="checkbox" class="ace" name="cols" value="${pers.performanceid }" /> <span class="lbl"></span>
 												</label></td>
 
 												<!-- ${ status.index + 1} 序号自增 -->
@@ -143,10 +144,16 @@
 												<td>${pers.tbEmployee.employeecode}</td>
 												<td>${pers.tbEmployee.employeename}</td>
 
-												<td>${pers.tbEmployee.idnumber}</td>
+												<%-- <td>${pers.tbEmployee.idnumber}</td> --%>
+												<td>
+												<a name="idnumber" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${pers.tbEmployee.idnumber}">
+													</a>
+												</td>
 												<td>${pers.organizationNj.orgid }</td>
 												<td>${pers.organizationNj.org_Name }</td>
-												<td>${pers.performancedate }</td>
+												<td>${fn:split(fn:split(pers.performancedate,' ')[0],'-')[0]}-${fn:split(fn:split(pers.performancedate,' ')[0],'-')[1]}</td>
 												<td>${pers.performancescore }</td>
 												<td>${pers.remark }</td>
 
@@ -223,8 +230,17 @@
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+	$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover(idnumber,0, 8);
+		});
+	
+	
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')

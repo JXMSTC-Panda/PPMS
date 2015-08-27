@@ -11,6 +11,7 @@
 */ 
 package ppms.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import ppms.domain.TbMonthperformanceopen;
@@ -32,6 +33,8 @@ public interface MonthperformanceopenService {
 
 	
 
+
+
 	/** 
 	
 	* @方法名: addMonthperformanceopen 
@@ -39,6 +42,7 @@ public interface MonthperformanceopenService {
 	* @描述: TODO(这里用一句话描述这个方法的作用) 
 	
 	* @param @param monthPerformanceopen
+	* @param @param openMonth
 	* @param @return    设定文件
 	
 	* @return boolean    返回类型
@@ -46,7 +50,9 @@ public interface MonthperformanceopenService {
 	* @throws 
 	
 	*/ 
-	public boolean addMonthperformanceopen(TbMonthperformanceopen monthPerformanceopen);
+	boolean addMonthperformanceopen(
+			TbMonthperformanceopen monthPerformanceopen, Date openMonth);
+	
 	
 	public List<TbMonthperformanceopen> getMonthperformanceopens();
 }
