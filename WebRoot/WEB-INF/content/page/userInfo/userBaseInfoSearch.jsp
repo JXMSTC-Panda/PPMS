@@ -129,7 +129,7 @@
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
 														type="checkbox" class="ace" name="cols"
-														/> <span class="lbl"></span>
+														value="${employee.employeeid}" /> <span class="lbl"></span>
 												</label>
 												</td>
 

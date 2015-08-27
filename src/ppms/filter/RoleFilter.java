@@ -11,11 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-<<<<<<< HEAD
 import javax.servlet.http.HttpServletResponse;
-=======
->>>>>>> 5f969e657c11ac8174e24492f43c63acead1a483
-import javax.servlet.http.HttpSessionContext;
 
 import org.jboss.weld.servlet.HttpSessionBeanStore;
 
@@ -34,14 +30,11 @@ public class RoleFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
-
-<<<<<<< HEAD
-=======
 		
 		RequestDispatcher dispatch = request
 				.getRequestDispatcher("/content/page/error.jsp");
 
->>>>>>> 5f969e657c11ac8174e24492f43c63acead1a483
+
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		// 取的url相对地址，例如：/PPMS/index.jsp
@@ -49,11 +42,7 @@ public class RoleFilter implements Filter {
 		System.out.println(url);
 
 		try {
-<<<<<<< HEAD
 
-=======
-			
->>>>>>> 5f969e657c11ac8174e24492f43c63acead1a483
 			String myUrlString = url.substring(6);
 			String[] urlArray = myUrlString.split(".do");
 			System.out.println(urlArray[0]);
