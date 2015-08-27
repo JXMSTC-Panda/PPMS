@@ -66,6 +66,14 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
+		<script type="text/javascript">
+		function getEmployee(obj) {
+		top.window.location = "getEmployee.do?backUrl=employeeTrainExam.freshEmployeeExam.freshEmployeeExamSingle.do&employeeid="
+				+ obj.value;
+
+	}
+		
+		</script>
 </head>
 
 <body class="no-skin">
@@ -103,7 +111,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-								 新职工考核单条录入 
+								 新员工考核单条录入 
 								</h1>
 							</div>
 							<form class="form-horizontal" role="form" method="post"

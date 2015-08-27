@@ -102,7 +102,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有转正考核成绩表</div>
-							<form action="downData.do?fileName=月度绩效批量导出.xls" name="StuListForm">
+							
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -204,7 +204,7 @@
 								
 								
 								
-							</form>
+							
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>

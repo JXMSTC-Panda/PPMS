@@ -83,8 +83,7 @@
 									<div class="page-header">
 										<h1>
 								
-									转正员工多条录入
-								
+									转正考核成绩批量导入								
 							</h1>
 									</div>
 									<!-- /.page-header -->
