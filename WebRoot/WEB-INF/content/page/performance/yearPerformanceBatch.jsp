@@ -93,8 +93,7 @@
 								<!-- /section:settings.box -->
 								<div class="page-header">
 									<h1>
-										绩效管理 <small> <i
-											class="ace-icon fa fa-angle-double-right"></i> 年度绩效批量录入 </small>
+									 年度绩效批量录入 
 									</h1>
 								</div>
 								<!-- /.page-header -->

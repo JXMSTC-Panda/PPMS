@@ -103,8 +103,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									转正考核 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 转正成绩单条修改 </small>
+									 转正成绩单条修改
 								</h1>
 							</div>
 							<form class="form-horizontal" role="form" method="post"

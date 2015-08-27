@@ -89,8 +89,7 @@
 
 							<div class="page-header">
 								<h1>
-									员工考核 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 新员工考核成绩单条修改 </small>
+								 新员工考核成绩单条修改
 								</h1>
 							</div>
 							<form class="form-horizontal" role="form" method="post"

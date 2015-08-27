@@ -127,7 +127,7 @@
 														<div class="hr hr-16 hr-dotted"></div>
 														<div class="clearfix form-actions">
 															<label>开通月份:</label> <input disabled="disabled"
-																value="${requestScope.month}" name="month" />
+																value="${requestScope.openMonth}" name="openMonth" />
 														</div>
 													</div>
 													<div class="col-xs-3"></div>

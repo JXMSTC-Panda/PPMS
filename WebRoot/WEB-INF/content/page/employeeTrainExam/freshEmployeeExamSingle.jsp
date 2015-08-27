@@ -103,8 +103,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									员工考核 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 新职工考核单条录入 </small>
+								 新职工考核单条录入 
 								</h1>
 							</div>
 							<form class="form-horizontal" role="form" method="post"

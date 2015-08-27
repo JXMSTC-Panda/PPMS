@@ -106,29 +106,15 @@
 								<!-- /section:settings.box -->
 								<div class="page-header">
 									<h1>
-										绩效管理 <small> <i
-											class="ace-icon fa fa-angle-double-right"></i> 年度绩效单条录入 </small>
+									
+											 年度绩效单条录入 
 									</h1>
 								</div>
 								<!-- /.page-header -->
 
 								<div class="row">
 									<div class="col-xs-12">
-										<!-- PAGE CONTENT BEGINS -->
-										<div class="page-content">
-											<!-- #section:settings.box -->
-
-											<!-- /section:settings.box -->
-											<div class="page-header">
-												<h1>
-													绩效管理 <small> <i
-														class="ace-icon fa fa-angle-double-right"></i> 年度绩效单条录入 </small>
-												</h1>
-											</div>
-											<!-- /.page-header -->
-
-											<div class="row">
-												<div class="col-xs-12">
+										
 													<!-- PAGE CONTENT BEGINS -->
 													<form class="form-horizontal" role="form" method="post"
 														action="performance.month.monthPerformanceSearch.modify.do">

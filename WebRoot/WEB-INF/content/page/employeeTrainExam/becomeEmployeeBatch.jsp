@@ -82,11 +82,9 @@
 									<!-- /section:settings.box -->
 									<div class="page-header">
 										<h1>
-								员工考核
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
+								
 									转正员工多条录入
-								</small>
+								
 							</h1>
 									</div>
 									<!-- /.page-header -->
