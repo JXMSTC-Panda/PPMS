@@ -158,6 +158,7 @@ public class PerformanceSearchAction extends BaseInit {
 								new String[] { "organizationNj", "tbEmployee" },
 								null);
 				map.put("tbPerformance", yearPerformances);
+				System.out.println("year");
 				break;
 			default:
 			}

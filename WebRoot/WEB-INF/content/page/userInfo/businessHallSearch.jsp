@@ -80,6 +80,12 @@
 						} catch (e) {
 						}
 					</script>
+					<ul class="breadcrumb">
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员成长档案管理系统</a>
+						</li>
+						<li><a href="#">人员综合信息管理</a></li>
+						<li class="active">人员调厅记录查询</li>
+					</ul>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>

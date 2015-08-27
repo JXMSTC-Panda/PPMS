@@ -89,7 +89,7 @@ form {
 						<li><a href="#">权限管理</a></li>
 						<li class="active">角色添加</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					<%-- <jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include> --%>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -146,10 +146,10 @@ form {
 													<div class="hidden-sm hidden-xs action-buttons">
 														<a class="blue" href="javascript:void(0)"
 															name="${trl.getRoleid()}" id="roleDetail"> <i
-															class="fa fa-search-plus bigger-130"><small>详细</small>
+															class="fa fa-search-plus bigger-130"><small></small>
 														</i> </a> <a class="green" href="javascript:void(0)"
 															name="${trl.getRoleid()}" id="roleModify"> <i
-															class="fa fa-pencil bigger-130"><small>修改</small> </i> </a> <a
+															class="fa fa-pencil bigger-130"><small></small> </i> </a> <a
 															class="red" href="javascript:void(0)"
 															name="${trl.getRoleid()}" id="roleDelete"> <i
 															id="roleSeqAction${trl.getRoleid()}"

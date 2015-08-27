@@ -77,6 +77,33 @@
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 							
+							<div class="widget-box">
+								<div class="widget-header">
+									<h4 class="widget-title"></h4>
+								</div>
+
+								<div class="widget-body">
+									<div class="widget-main">
+										<div class="row">
+											<div class="col-xs-12 center">
+												<div class="space"></div>
+												<h5>恭喜，操作成功!</h5>
+												<div class="clearfix form-actions">
+													<div class="col-md-offset-3 col-md-6">
+														<button class="btn btn-info"
+															onclick="top.window.location='performance.month.monthPerformanceOpen.do'">
+															<i class="ace-icon fa fa-check bigger-110"></i> 继续开通
+														</button>
+
+														
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>

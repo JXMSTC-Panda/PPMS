@@ -69,8 +69,96 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
+<style type="text/css">
+.statu1 {
+	color: white;
+}
 
+.statu2 {
+	color: red;
+}
+
+.statu3 {
+	color: yellow;
+}
+
+.statue {
+	color: yellow;
+}
+
+#td1 {
+	color: red;
+	font-size: 19px;
+}
+</style>
 <script type="text/javascript">
+	function getSpan(obj) {
+		while (obj.nextSibling.nodeName != "SPAN") {
+			obj = obj.nextSibling;
+		}
+
+		return obj.nextSibling;
+	}
+	function check(obj, sentence, fun) {
+		var sp = getSpan(obj);
+		obj.onfocus = function() {
+			sp.innerHTML = sentence;
+			sp.className = "statu1";
+		}
+		obj.onblur = function() {
+
+			if (fun(this.value)) {
+				sp.className = "statu3";
+				sp.innerHTML = "输入正确";
+			} else {
+				sp.className = "statu2";
+				sp.innerHTML = sentence;
+			}
+		}
+	}
+	onload = function() {
+
+		var org = document
+				.getElementsByName("innovation.organizationNj.org_Name")[0];
+		var emp = document
+				.getElementsByName("innovation.tbEmployee.employeeid")[0];
+		var date = document.getElementsByName("innovation.assessdate")[0];
+		var result = document.getElementsByName("innovation.assessresult")[0];
+		var level = document.getElementsByName("innovation.assesslevel")[0];
+
+		check(org, "不能为空", function(val) {
+			if (length > 0)
+				return true;
+			else
+				return false;
+		});
+		check(emp, "不能为空", function(val) {
+			if (length > 0)
+				return true;
+			else
+				return false;
+		});
+		check(date, "不能为空", function(val) {
+			if (length > 0)
+				return true;
+			else
+				return false;
+		});
+		check(result, "不能为空", function(val) {
+			if (length > 0)
+				return true;
+			else
+				return false;
+		});
+		check(level, "不能为空", function(val) {
+			if (length > 0)
+				return true;
+			else
+				return false;
+		});
+
+	}
+
 	function ajaxForEmployee(obj) {
 		alert(obj.innerHTML);
 		document.getElementsByName("innovation.organizationNjByOrgid.orgid")[0].value = obj.value;
@@ -121,7 +209,8 @@
 						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">人员成长管理系统</a>
 						</li>
 
-						<li><a href="#">创新管理</a></li>
+						<li><a href="#">创新管理</a>
+						</li>
 						<li class="active">创新提案修改</li>
 					</ul>
 					<!-- /.breadcrumb -->
@@ -265,8 +354,10 @@
 											action="innovation.null.innovationSearch.update.do">
 											<!-- #section:elements.form -->
 											<div class="form-group">
-											<input type="hidden" value="${requestScope.tbInnovation.innovationid}" name="innovation.innovationid">
-												<label class="col-sm-3 control-label no-padding-right"
+												<input type="hidden"
+													value="${requestScope.tbInnovation.innovationid}"
+													name="innovation.innovationid"> <label
+													class="col-sm-3 control-label no-padding-right"
 													for="form-field-1"> 创新类型： </label>
 
 												<div class="col-sm-9">
@@ -274,7 +365,7 @@
 														<span class="lbl">团队创新</span>
 													</c:if>
 													<c:if test="${requestScope.tbInnovation.tbEmployee!=null }">
-															<span class="lbl">个人创新</span>
+														<span class="lbl">个人创新</span>
 													</c:if>
 												</div>
 
@@ -322,10 +413,10 @@
 												<label class="col-sm-3 control-label no-padding-right"
 													for="form-input-readonly"> 员工姓名： </label>
 												<div class="col-sm-9">
-														<input readonly="" type="text" class="col-xs-10 col-sm-5"
-															id="form-input-readonly"
-															value="${requestScope.tbInnovation.tbEmployee.employeename }"
-															class="help-inline col-xs-12 col-sm-7"> </span>
+													<input readonly="" type="text" class="col-xs-10 col-sm-5"
+														id="form-input-readonly"
+														value="${requestScope.tbInnovation.tbEmployee.employeename }"
+														class="help-inline col-xs-12 col-sm-7"> </span>
 
 												</div>
 											</div>
@@ -359,7 +450,7 @@
 												<label class="col-sm-3 control-label no-padding-right for="form-field-1">创新方案:</label>
 												<div class="col-sm-9">
 													<textarea id="form-field-11" class="col-xs-10 col-sm-5"
-														name="innovation.innovationcontent" >${requestScope.tbInnovation.innovationcontent }</textarea>
+														name="innovation.innovationcontent">${requestScope.tbInnovation.innovationcontent }</textarea>
 												</div>
 											</div>
 											<div class="form-group">
@@ -369,11 +460,11 @@
 													<div class="input-group col-xs-10 col-sm-5">
 														<input class="form-control date-picker "
 															id="id-date-picker-1" type="text"
-															value="${fn:split(requestScope.tbInnovation.assessdate,' ')[0]}" name="innovation.assessdate"
+															value="${fn:split(requestScope.tbInnovation.assessdate,' ')[0]}"
+															name="innovation.assessdate"
 															data-date-format="yyyy-mm-dd" /> <span
 															class="input-group-addon"> <i
-															class="fa fa-calendar bigger-110"
-															></i> </span>
+															class="fa fa-calendar bigger-110"></i> </span>
 													</div>
 												</div>
 											</div>
@@ -383,10 +474,10 @@
 												<div class="col-sm-9">
 													<input type="text" class="col-xs-10 col-sm-5"
 														id="form-input-readonly"
-														value="${requestScope.tbInnovation.assessresult }" name="innovation.assessresult"/> 
-														<span
-														class="help-inline col-xs-12 col-sm-7"
-														> </span>
+														value="${requestScope.tbInnovation.assessresult }"
+														name="innovation.assessresult" /> <span
+														class="help-inline col-xs-12 col-sm-7">
+													</span>
 												</div>
 											</div>
 											<div class="form-group">
@@ -418,38 +509,40 @@
 													</c:if>
 													<c:if
 														test="${!fn:contains(requestScope.tbInnovation.encouragement,'个人成长档案加分') }">
-														<input name="innovation.encouragement" type="checkbox" value="个人成长档案加分/" 
-															class="ace" />
+														<input name="innovation.encouragement" type="checkbox"
+															value="个人成长档案加分/" class="ace" />
 														<span class="lbl"> 个人成长档案加分</span>
 														<br />
 													</c:if>
 													<c:if
 														test="${fn:contains(requestScope.tbInnovation.encouragement,'个人月度绩效') }">
-														<input name="innovation.encouragement" type="checkbox" value="个人月度绩效/"
-															checked="checked" class="ace" />
-														<span class="lbl"> 个人月度绩效</span><br />
-														</c:if>
-														<c:if
-															test="${!fn:contains(requestScope.tbInnovation.encouragement,'个人月度绩效') }">
-															<input name="innovation.encouragement" type="checkbox" value="个人月度绩效/"
-																class="ace" />
-															<span class="lbl"> 个人月度绩效</span>
-															<br />
-														</c:if>
-														
+														<input name="innovation.encouragement" type="checkbox"
+															value="个人月度绩效/" checked="checked" class="ace" />
+														<span class="lbl"> 个人月度绩效</span>
+														<br />
+													</c:if>
+													<c:if
+														test="${!fn:contains(requestScope.tbInnovation.encouragement,'个人月度绩效') }">
+														<input name="innovation.encouragement" type="checkbox"
+															value="个人月度绩效/" class="ace" />
+														<span class="lbl"> 个人月度绩效</span>
+														<br />
+													</c:if>
+
 													<c:if
 														test="${fn:contains(requestScope.tbInnovation.encouragement,'经费奖励') }">
-														<input name="innovation.encouragement" type="checkbox" value="经费奖励"
-															checked="checked" class="ace" />
-														<span class="lbl"> 经费奖励</span><br />
-														</c:if>
-														<c:if
-															test="${fn:contains(requestScope.tbInnovation.encouragement,'经费奖励')==false }">
-															<input name="innovation.encouragement" type="checkbox" value="经费奖励"
-																 class="ace" />
-															<span class="lbl"> 经费奖励</span>
-															<br />
-														</c:if>
+														<input name="innovation.encouragement" type="checkbox"
+															value="经费奖励" checked="checked" class="ace" />
+														<span class="lbl"> 经费奖励</span>
+														<br />
+													</c:if>
+													<c:if
+														test="${fn:contains(requestScope.tbInnovation.encouragement,'经费奖励')==false }">
+														<input name="innovation.encouragement" type="checkbox"
+															value="经费奖励" class="ace" />
+														<span class="lbl"> 经费奖励</span>
+														<br />
+													</c:if>
 												</div>
 											</div>
 											<div class="clearfix form-actions">

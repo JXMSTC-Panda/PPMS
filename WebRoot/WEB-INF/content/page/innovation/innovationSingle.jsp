@@ -69,7 +69,56 @@
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
 <jsp:include page="../../WebPart/Script.jsp"></jsp:include>
+<style type="text/css">
+.statu1 {
+	color: white;
+}
+
+.statu2 {
+	color: red;
+}
+
+.statu3 {
+	color: yellow;
+}
+
+.statue {
+	color: yellow;
+}
+
+#td1 {
+	color: red;
+	font-size: 19px;
+}
+</style>
 <script type="text/javascript">
+	function check() {
+
+		var org = document
+				.getElementsByName("innovation.organizationNj.org_Name")[0];
+		var emp = document
+				.getElementsByName("innovation.tbEmployee.employeeid")[0];
+		var date = document.getElementsByName("innovation.assessdate")[0];
+		var result = document.getElementsByName("innovation.assessresult")[0];
+		var level = document.getElementsByName("innovation.assesslevel")[0];
+
+		if(emp.value.length<0){
+			alert("数据不能为空");
+		}
+		if(org.value.length<0){
+			alert("数据不能为空");
+		}
+		if(date.value.length<0){
+			alert("数据不能为空");
+		}
+		if(result.value.length<0){
+			alert("数据不能为空");
+		}
+		if(level.value.length<0){
+			alert("数据不能为空");
+		}
+	}
+
 	function getEmployee(obj) {
 		top.window.location = "getEmployee.do?backUrl=innovation.null.innovationSingle.do&employeeid="
 				+ obj.value;
@@ -315,7 +364,8 @@
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
 														id="form-input-readonly"
 														value="${sessionScope.organizationNj.org_Name }"
-														name="innovation.organizationNj.org_Name" /> <span
+														name="innovation.organizationNj.org_Name" /><span
+														class="help-inline col-xs-12 col-sm-7"></span> <span
 														class="help-inline col-xs-12 col-sm-7">
 														<button class="btn btn-info"
 															onclick="top.window.location='chooseOrg.do?backUrl=innovation.null.innovationSingle.do'"
@@ -336,18 +386,18 @@
 																id="form-field-select-employee"
 																name="innovation.tbEmployee.employeeid"
 																onchange="getEmployee(this)" data-placeholder="选择员工">
-																
+
 																<c:if test="${mark!=null }">
-																<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
+																	<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
 																</c:if>
 																<c:if test="${mark==null }">
-																<c:forEach items="${sessionScope.employees }"
-																	var="employee">
-																	<option value="${employee.employeeid }">${employee.employeename
-																		}</option>
-																</c:forEach>
+																	<c:forEach items="${sessionScope.employees }"
+																		var="employee">
+																		<option value="${employee.employeeid }">${employee.employeename
+																			}</option>
+																	</c:forEach>
 																</c:if>
-															</select>
+															</select><span class="help-inline col-xs-12 col-sm-7"></span>
 														</div>
 
 													</div>
@@ -405,8 +455,7 @@
 													<input type="text" class="col-xs-10 col-sm-5"
 														id="form-input-readonly" value=""
 														name="innovation.assessresult" /> <span
-														class="help-inline col-xs-12 col-sm-7">
-													</span>
+														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
 											<div class="form-group">
@@ -417,7 +466,7 @@
 														name="innovation.assesslevel">
 														<option value="1">部门</option>
 														<option value="2">区域</option>
-													</select>
+													</select> <span class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
 											<div class="form-group">
@@ -429,7 +478,8 @@
 														type="checkbox" class="ace" value="个人月度绩效/" /> <span
 														class="lbl"> 个人月度绩效</span> <br /> <input
 														name="innovation.encouragement" type="checkbox"
-														class="ace" value="经费奖励" /> <span class="lbl"> 经费奖励</span>
+														class="ace" value="经费奖励" /> <span class="lbl">
+														经费奖励</span>
 												</div>
 											</div>
 											<div class="clearfix form-actions">

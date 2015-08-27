@@ -66,6 +66,33 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
+		
+		<style type="text/css">
+.statu1 {
+	color: white;
+}
+
+.statu2 {
+	color: red;
+}
+
+.statu3 {
+	color: yellow;
+}
+
+.statue {
+	color: yellow;
+}
+
+#td1 {
+	color: red;
+	font-size: 19px;
+}
+</style>
+</style>
+<script type="text/javascript">
+	
+</script>
 </head>
 
 <body class="no-skin">
