@@ -388,7 +388,16 @@
 
 														</div>
 														<div class="col-xs-6">
+															<div class="form-group">
+																<label class="col-sm-3 control-label no-padding-right"
+																	for="form-field-1"> 密码: </label>
 
+																<div class="col-sm-9">
+																	<input id="form-field-1" class="col-xs-10 col-sm-5"
+																		type="text" name="tbEmployee.idpassword">
+																</div>
+															</div>
+															
 															<div class="form-group">
 																<label class="col-sm-3 control-label no-padding-right"
 																	for="form-field-1"> 联系电话: </label>
@@ -576,9 +585,9 @@
 	<!-- inline scripts related to this page -->
 	<script>
 	$.mask.definitions['1']='[1]';
-				$('.input-mask-idnumber').mask('999999-99999999-9999',{placeholder:" ",completed:function(){}});
-				$('.input-mask-phone').mask('199-9999-9999',{placeholder:" ",completed:function(){}});
-				$('.input-mask-bankid').mask('9999-9999-9999-9999-999',{placeholder:" ",completed:function(){}});
+				$('.input-mask-idnumber').mask('999999999999999999',{placeholder:" ",completed:function(){}});
+				$('.input-mask-phone').mask('19999999999',{placeholder:" ",completed:function(){}});
+				$('.input-mask-bankid').mask('9999999999999999999',{placeholder:" ",completed:function(){}});
 		//datepicker plugin
 		//link
 		$('.date-picker').datepicker({
