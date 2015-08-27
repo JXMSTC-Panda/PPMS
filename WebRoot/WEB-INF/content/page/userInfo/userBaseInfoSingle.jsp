@@ -9,21 +9,6 @@
 
 <html lang="en">
 <head>
-<script type="text/javascript">
-function check(){
-    		var x=document.getElementById("fname").value//获取用户名所填的内容    		
- 
-        	if(x=="")
-      			{
-        			document.getElementById("ts").innerHTML="用户名不能为空"; 
-        			
-       			} 
-       		else(x!=""){
-       				document.getElementById("ts").innerHTML="";
-       		}   	
- 
-     }
-</script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <title>人员成长档案管理系统</title>
@@ -39,7 +24,7 @@ function check(){
 	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/Plugin/artDialog4.1.7/skins/default.css" />
 <!-- text fonts -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
@@ -89,7 +74,12 @@ function check(){
 						} catch (e) {
 						}
 					</script>
-					
+					<ul class="breadcrumb">
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员成长档案管理系统</a>
+						</li>
+						<li><a href="#">人员综合信息管理</a></li>
+						<li class="active">人员基本信息管理</li>
+					</ul>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -98,7 +88,7 @@ function check(){
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									人员综合信息管理 <small> <i
+									人员基本信息管理<small> <i
 										class="ace-icon fa fa-angle-double-right"></i> 人员基本信息单条录入 </small>
 								</h1>
 							</div>
@@ -153,9 +143,9 @@ function check(){
 																	<select class="form-control" id="form-field-select-1"
 																		name="tbEmployee.orgtype" >
 																		<option value="${organizationNj.orgid }">
-																		<c:if test="${organizationNj.type=='0001' }">主厅</c:if>
-																		<c:if test="${organizationNj.type=='0002' }">合作厅</c:if>
-																		<c:if test="${organizationNj.type=='0003' }">置换厅</c:if>
+																		<c:if test="${organizationNj.type=='1' }">主厅</c:if>
+																		<c:if test="${organizationNj.type=='2' }">合作厅</c:if>
+																		<c:if test="${organizationNj.type=='3' }">置换厅</c:if>
 																		</option>
 																		
 																	</select>
@@ -196,7 +186,7 @@ function check(){
 
 															<div class="col-sm-9">
 																<input id="fname" class="col-xs-10 col-sm-5"
-																	type="text" name="tbEmployee.employeename" onblur="check();"><span id="ts"></span>
+																	type="text" name="tbEmployee.employeename" onblur="isEmail(this.value)" onclick="isEmail(this.value)"><span id="ts"></span>
 															</div>
 														</div>
 
@@ -205,7 +195,7 @@ function check(){
 																for="form-field-1"> 身份证号: </label>
 
 															<div class="col-sm-9">
-																<input id="form-field-1" class="col-xs-10 col-sm-5"
+																<input id="form-field-1" class="col-xs-10 col-sm-5 input-mask-idnumber"
 																	type="text" name="tbEmployee.idnumber">
 															</div>
 														</div>
@@ -280,7 +270,7 @@ function check(){
 																	for="form-field-1"> 银行卡号: </label>
 
 																<div class="col-sm-9">
-																	<input id="form-field-1" class="col-xs-10 col-sm-5"
+																	<input id="form-field-1" class="col-xs-10 col-sm-5 input-mask-bankid"
 																		type="text" name="tbEmployee.banknumber">
 																</div>
 															</div>
@@ -404,8 +394,8 @@ function check(){
 																	for="form-field-1"> 联系电话: </label>
 
 																<div class="col-sm-9">
-																	<input id="form-field-1" class="col-xs-10 col-sm-5"
-																		type="text" name="tbEmployee.tel">
+																	<input id="form-field-1" class="col-xs-10 col-sm-5 form-control input-mask-phone"
+																		type="text" name="tbEmployee.tel" >
 																</div>
 															</div>
 
@@ -581,8 +571,14 @@ function check(){
 		src="${pageContext.request.contextPath}/assets/js/date-time/daterangepicker.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/date-time/bootstrap-datetimepicker.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.maskedinput.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/Plugin/artDialog4.1.7/artDialog.js"></script>
 	<!-- inline scripts related to this page -->
 	<script>
+	$.mask.definitions['1']='[1]';
+				$('.input-mask-idnumber').mask('999999-99999999-9999',{placeholder:" ",completed:function(){}});
+				$('.input-mask-phone').mask('199-9999-9999',{placeholder:" ",completed:function(){}});
+				$('.input-mask-bankid').mask('9999-9999-9999-9999-999',{placeholder:" ",completed:function(){}});
 		//datepicker plugin
 		//link
 		$('.date-picker').datepicker({
