@@ -2,6 +2,9 @@ package ppms.action;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
@@ -60,6 +63,8 @@ public class DownloadAction extends ActionSupport {
 	private BaseDaoImp dao;
 
 	private HttpServletResponse response;
+
+	private String cachename;
 
 	/**
 	 * 接收Excel上传模板下载
@@ -173,7 +178,7 @@ public class DownloadAction extends ActionSupport {
 			// "tbEmployee" });
 			// ListForCache<TbOperationcheck> list = new
 			// ListForCache<TbOperationcheck>()
-			
+
 			// List<TbOrgpraisecriticism> findAll = dao.getEntitiestNotLazy(
 			// new TbOrgpraisecriticism(), new String[] { "organizationNj"});
 			// ListForCache<TbOrgpraisecriticism> list = new
@@ -182,17 +187,41 @@ public class DownloadAction extends ActionSupport {
 			// response = ServletActionContext.getResponse();
 			// session.setAttribute(findAll.get(0).getClass().getName(), list);
 			// 请求文件名硬解码
-			int i=0;
 			fileName = new String(fileName.getBytes("iso8859-1"), "utf-8");
-			
-			String name = ExcelConfig.getObjectFromConfig(fileName)
-			.get(0);
+
+			cachename = ExcelConfig.getObjectFromConfig(fileName).get(0);
 			// 获取存放在Session域中的缓冲数据
 			ListForCache<Object> list = (ListForCache<Object>) session
-					.getAttribute(name);
+					.getAttribute(cachename);
+
+			String[] parameterValues = ServletActionContext.getRequest()
+					.getParameterValues("cols");
+			ListForCache<Object> newlist;
+			if (parameterValues != null) {
+				Class clazz=list.getList().get(0).getClass();
+				String fieldname = clazz.getDeclaredFields()[0].getName();
+				fieldname=fieldname.replaceFirst(fieldname.substring(0, 1), fieldname.substring(0, 1).toUpperCase());
+				Method method=clazz.getMethod("get"+fieldname);
+				String id;
+				newlist=new ListForCache<Object>();
+				List<Object> child=new ArrayList<Object>();
+				for (String string : parameterValues) {
+
+					for (int i=0;i<list.getList().size();i++) {
+
+						id = (String) method.invoke(list.getList().get(i));
+						if(id.equals(string)){
+							child.add(list.getList().get(i));
+						}
+					}
+					newlist.setList(child);
+				}
+			}else{
+				newlist=list;
+			}
 			// 将数据生成Excel文件
 			HSSFWorkbook workbook = new CommonExcelParser(dao, exception)
-					.toExcel2(list, fileName);
+					.toExcel2(newlist, fileName);
 			response.setHeader("Content-Disposition", "attachment;filename="
 					+ fileName);
 
@@ -209,6 +238,8 @@ public class DownloadAction extends ActionSupport {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
+		}finally{
+			session.removeAttribute(cachename);
 		}
 	}
 

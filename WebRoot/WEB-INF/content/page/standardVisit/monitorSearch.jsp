@@ -112,6 +112,9 @@
 									class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
+										<th class="center"><label class="pos-rel"> <input
+													type="checkbox" class="ace" /> <span class="lbl"></span> </label>
+											</th>
 											<th>营业厅编码</th>
 											<th>营业厅名称</th>
 											<th>时间</th>
@@ -124,6 +127,11 @@
 										<c:forEach items="${requestScope.monitorchecks}"
 											var="monitorcheck">
 											<tr>
+											<td class="center"><label class="pos-rel"> <input
+														type="checkbox" class="ace"
+														value="${monitorcheck.monitorcheckid }" name="cols" /> <span
+														class="lbl"></span> </label>
+												</td>
 												<td>${monitorcheck.organizationNj.orgid}</td>
 												<td>${monitorcheck.organizationNj.org_Name}</td>
 												<td>${fn:split(monitorcheck.checkdate,' ')[0]}</td>
@@ -195,7 +203,7 @@
 				bAutoWidth : false,
 				"aoColumns" : [ {
 					"bSortable" : false
-				},null, null, null, null,null, {
+				},null, null, null,null, null,null, {
 					"bSortable" : false
 				} ],
 				"aaSorting" : [],

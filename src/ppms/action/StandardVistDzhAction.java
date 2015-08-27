@@ -221,7 +221,6 @@ public class StandardVistDzhAction extends BaseInit {
 	 * 
 	 * 初始化标准化页面
 	 */
-
 	@Action(value = "standardVisit.standard.standardSearch", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/standardSearch.jsp"),
 			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })

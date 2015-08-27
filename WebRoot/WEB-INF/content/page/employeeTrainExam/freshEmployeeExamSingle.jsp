@@ -66,6 +66,14 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
+		<script type="text/javascript">
+		function getEmployee(obj) {
+		top.window.location = "getEmployee.do?backUrl=employeeTrainExam.freshEmployeeExam.freshEmployeeExamSingle.do&employeeid="
+				+ obj.value;
+
+	}
+		
+		</script>
 </head>
 
 <body class="no-skin">
@@ -88,11 +96,11 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">员工培训/考试管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">新员工/转正考核 </li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -103,8 +111,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									员工考核 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 新职工考核单条录入 </small>
+								 新员工考核单条录入 
 								</h1>
 							</div>
 							<form class="form-horizontal" role="form" method="post"

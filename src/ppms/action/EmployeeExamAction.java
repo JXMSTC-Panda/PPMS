@@ -216,7 +216,7 @@ public class EmployeeExamAction extends BaseInit {
 			// 调试用
 //			System.out.println("=============>>>>>>" + examstage
 //					+ "----------->>>>>" + tbArea);
-		tbFreshemployeeexam.setOrganizationNj(null);
+			tbFreshemployeeexam.setOrganizationNj(null);
 			tbFreshemployeeexam.setTbEmployee(null);
 
 			if (examstage.equals("1")) {
@@ -405,13 +405,15 @@ public class EmployeeExamAction extends BaseInit {
 			// 获取所有营业厅
 			switch (url) {
 			case "employeeTrainExam.freshEmployeeExamSearch":
+				System.out.println("----------->>>>1");
 				List<TbFreshemployeeexam> tbFreshemployeeexams = dao
 						.getEntitiestNotLazy(
 								new TbFreshemployeeexam(),
 								new String[] { "organizationNj", "tbEmployee" },
 								null);
+				System.out.println("----------->>>>2");
 				map.put("freshemployeeexams", tbFreshemployeeexams);
-
+				System.out.println("----------->>>>3");
 				break;
 			case "employeeTrainExam.becomeEmployeeSearch":
 				List<TbBecomeemployeeexam> tbBecomeemployeeexams = dao

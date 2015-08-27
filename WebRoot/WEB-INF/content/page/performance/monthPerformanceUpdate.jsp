@@ -17,8 +17,10 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
 <link rel="stylesheet"
@@ -36,10 +38,12 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/colorpicker.css" />
 <!-- text fonts -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
 
 <!-- ace styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.css"
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/ace.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
 <!--[if lte IE 9]>
@@ -67,20 +71,27 @@
 	<jsp:include page="../../WebPart/Head.jsp"></jsp:include>
 	<div class="main-container" id="main-container">
 		<script type="text/javascript">
-			try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
 		</script>
 		<jsp:include page="../../WebPart/Menu.jsp"></jsp:include>
 		<div class="main-content">
 			<div class="main-content-inner">
 				<div class="breadcrumbs" id="breadcrumbs">
 					<script type="text/javascript">
-						try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+						try {
+							ace.settings.check('breadcrumbs', 'fixed')
+						} catch (e) {
+						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">绩效管理</a>
+						</li>
+						<li class="active">月度绩效管理</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -109,8 +120,8 @@
 										<form class="form-horizontal" role="form" method="post"
 											action="performance.month.monthPerformanceSearch.modify.do">
 											<input type="hidden"
-									value="${requestScope.tbPerformance.get(0).performanceid}"
-									name=performance.performanceid>
+												value="${requestScope.tbPerformance.get(0).performanceid}"
+												name=performance.performanceid>
 											<!-- #section:elements.form -->
 
 
@@ -120,8 +131,9 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="${requestScope.tbArea.get(0).areadesc}"
-														 name="tbArea.areadesc" /> <span
+														id="form-input-readonly"
+														value="${requestScope.tbArea.get(0).areadesc}"
+														name="tbArea.areadesc" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
 											</div>
@@ -131,8 +143,8 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="${requestScope.tbPerformance.get(0).organizationNj.orgid }"
-											
+														id="form-input-readonly"
+														value="${requestScope.tbPerformance.get(0).organizationNj.orgid }"
 														name="performance.organizationNj.orgid" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
@@ -143,8 +155,8 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="${requestScope.tbPerformance.get(0).organizationNj.org_Name }"
-										
+														id="form-input-readonly"
+														value="${requestScope.tbPerformance.get(0).organizationNj.org_Name }"
 														name="performance.organizationNj.org_Name" />
 
 												</div>
@@ -158,13 +170,9 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="${requestScope.tbPerformance.get(0).tbEmployee.employeename}"
-										
-														name="performance.tbEmployee.employeename" /> <span
-														class="help-inline col-xs-12 col-sm-7">
-														<button class="btn btn-info" type="button"
-															onClick="top.window.location='performacesEmployeeSelect.do'">选择员工</button>
-													</span>
+														id="form-input-readonly"
+														value="${requestScope.tbPerformance.get(0).tbEmployee.employeename}"
+														name="performance.tbEmployee.employeename" /> 
 												</div>
 											</div>
 											<div class="form-group">
@@ -173,8 +181,8 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly"  value="${requestScope.tbPerformance.get(0).tbEmployee.employeeid}"
-											
+														id="form-input-readonly"
+														value="${requestScope.tbPerformance.get(0).tbEmployee.employeeid}"
 														name="performance.tbEmployee.employeeid" value="" /> <span
 														class="help-inline col-xs-12 col-sm-7"> </span>
 												</div>
@@ -185,8 +193,8 @@
 
 												<div class="col-sm-9">
 													<input readonly="" type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly"  value="${requestScope.tbPerformance.get(0).tbEmployee.idnumber}"
-											
+														id="form-input-readonly"
+														value="${requestScope.tbPerformance.get(0).tbEmployee.idnumber}"
 														name="performance.tbEmployee.idnumber" />
 
 												</div>
@@ -202,11 +210,9 @@
 												<div class="col-sm-9">
 													<div class="input-group col-xs-10 col-sm-5">
 														<input class="form-control date-picker "
-															id="id-date-picker-1"  value="${requestScope.tbPerformance.get(0).performancedate}"
-											
-													
-															type="text"
-															data-date-format="yyyy-mm" /> <span
+															id="id-date-picker-1"
+															value="${requestScope.tbPerformance.get(0).performancedate}"
+															type="text" data-date-format="yyyy-mm" /> <span
 															class="input-group-addon"> <i
 															class="fa fa-calendar bigger-110"></i> </span>
 													</div>
@@ -218,8 +224,8 @@
 
 												<div class="col-sm-9">
 													<input type="text" class="col-xs-10 col-sm-5"
-														id="form-input-readonly" value="${requestScope.tbPerformance.get(0).performancescore}"
-											
+														id="form-input-readonly"
+														value="${requestScope.tbPerformance.get(0).performancescore}"
 														name="performance.performancescore" /> <span
 														class="help-inline col-xs-12 col-sm-7"> <label
 														class="control-label " for="form-input-readonly">
@@ -231,9 +237,9 @@
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right for="form-field-1">备注:</label>
 												<div class="col-sm-9">
-													<textarea id="form-field-11" value="${requestScope.tbPerformance.get(0).remark}"
-													name="performance.remark" 
-											 class="col-xs-10 col-sm-5"></textarea>
+													<textarea id="form-field-11"
+														value="${requestScope.tbPerformance.get(0).remark}"
+														name="performance.remark" class="col-xs-10 col-sm-5"></textarea>
 												</div>
 											</div>
 

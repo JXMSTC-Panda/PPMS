@@ -88,11 +88,11 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">员工培训/考试管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">新员工/转正考核 </li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -103,8 +103,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									转正考核 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 转正成绩单条修改 </small>
+									 转正成绩单条修改
 								</h1>
 							</div>
 							<form class="form-horizontal" role="form" method="post"
@@ -160,7 +159,7 @@
 											value="${requestScope.tbBecomeemployeeexam.get(0).tbEmployee.employeename}"
 											name="tbBecomeemployeeexam.tbEmployee.employeename" /> <span
 											class="help-inline col-xs-12 col-sm-7">
-											<button class="btn btn-info">选择员工</button> </span>
+											
 									</div>
 								</div>
 
@@ -187,8 +186,7 @@
 										<input readonly="" type="text" class="col-xs-10 col-sm-5"
 											id="form-input-readonly" value="${requestScope.tbBecomeemployeeexam.get(0).tbEmployee.idnumber}"
 											
-											name="tbBecomeemployeeexam.tbEmployee.idnumber" /> <span
-											class="help-inline col-xs-12 col-sm-7"> </span>
+											name="tbBecomeemployeeexam.tbEmployee.idnumber" /> 
 									</div>
 								</div>
 

@@ -81,24 +81,19 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">绩效管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">年度绩效</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
-							<div class="page-header">
-								<h1>
-									绩效管理 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i>年度绩效查询 </small>
-								</h1>
-							</div>
+
 							<!-- PAGE CONTENT BEGINS -->
 
 							<h3 class="header smaller lighter blue">年度绩效查询</h3>
@@ -107,7 +102,8 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有年度绩效表</div>
-							<form action="downData.do?fileName=年度绩效批量导出.xls" name="StuListForm">
+							<form action="downData.do?fileName=年度绩效批量导出.xls"
+								name="StuListForm">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -134,7 +130,7 @@
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
+														type="checkbox" class="ace" name="cols" value="${pers.performanceid }" /> <span class="lbl"></span>
 												</label></td>
 
 												<!-- ${ status.index + 1} 序号自增 -->
@@ -142,21 +138,32 @@
 												<td>${pers.tbEmployee.employeecode}</td>
 												<td>${pers.tbEmployee.employeename}</td>
 
-												<td>${pers.tbEmployee.idnumber}</td>
+												<td><a name="pIDNumber" href="javascript:void(0);"
+													data-container="body" data-toggle="popover"
+													data-placement="bottom"
+													data-content="${pers.tbEmployee.idnumber}"> </a></td>
 												<td>${pers.organizationNj.orgid }</td>
-												<td>${pers.organizationNj.org_Name }</td>
-												<td>${pers.performancedate }</td>
+												<td><a name="orgName" href="javascript:void(0);"
+													data-container="body" data-toggle="popover"
+													data-placement="bottom"
+													data-content="${pers.organizationNj.org_Name }"> </a>
+												</td>
+												<td><a name="pDate" href="javascript:void(0);"
+													data-container="body" data-toggle="popover"
+													data-placement="bottom"
+													data-content="${pers.performancedate }"> </a></td>
 												<td>${pers.performancescore }</td>
 												<td>${pers.remark }</td>
 
 
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="performance.year.yearPerformanceSearch.modify.toUpdate.do?performanceid=${pers.performanceid}" name=""
-															onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
-															href="performance.year.yearPerformanceSearch.delete.do?performanceid=${pers.performanceid}"> <i
-															class="fa fa-trash bigger-130">删除</i> </a>
+														<a class="green"
+															href="performance.year.yearPerformanceSearch.modify.toUpdate.do?performanceid=${pers.performanceid}"
+															name="" onclick="Modify(this)"> <i
+															class="fa fa-pencil bigger-130"><small>修改</small></i> </a> <a class="red"
+															href="performance.year.yearPerformanceSearch.delete.do?performanceid=${pers.performanceid}">
+															<i class="fa fa-trash bigger-130"><small>删除</small></i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -196,7 +203,8 @@
 								</table>
 								<div class="clearfix form-actions">
 									<div class="col-md-offset-3 col-md-9">
-											&nbsp; &nbsp; &nbsp;<button class="btn btn-info" type="submit">
+										&nbsp; &nbsp; &nbsp;
+										<button class="btn btn-info" type="submit">
 											<i class="ace-icon fa fa-check bigger-110"></i> 导出Excel
 										</button>
 									</div>
@@ -220,8 +228,17 @@
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("orgName", 0, 5);
+			myEachPopover("pIDNumber", 0, 6);
+			myEachPopover("pDate", 0, 10);
+		});
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')

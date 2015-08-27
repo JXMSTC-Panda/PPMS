@@ -388,7 +388,16 @@
 
 														</div>
 														<div class="col-xs-6">
+															<div class="form-group">
+																<label class="col-sm-3 control-label no-padding-right"
+																	for="form-field-1"> 密码: </label>
 
+																<div class="col-sm-9">
+																	<input id="form-field-1" class="col-xs-10 col-sm-5"
+																		type="text" name="tbEmployee.idpassword">
+																</div>
+															</div>
+															
 															<div class="form-group">
 																<label class="col-sm-3 control-label no-padding-right"
 																	for="form-field-1"> 联系电话: </label>
