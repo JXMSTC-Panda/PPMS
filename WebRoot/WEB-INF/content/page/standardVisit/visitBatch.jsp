@@ -311,7 +311,7 @@
 					</script>
 
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">人员成长管理系统</a>
 						</li>
 
 						<li><a href="#">暗访成绩管理</a></li>
@@ -444,14 +444,11 @@
 
 								<!-- /section:settings.box -->
 								<div class="page-header">
-										<h1>
-								暗访检查成绩管理
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									成绩批量录入
-								</small>
-							</h1>
-									</div>
+									<h1>
+										标准化检查管理 <small> <i
+											class="ace-icon fa fa-angle-double-right"></i> 标准化检查成绩批量录入 </small>
+									</h1>
+								</div>
 								<!-- /.page-header -->
 
 								<div class="row">
@@ -508,7 +505,6 @@
 	<!-- basic scripts -->
 
 	<!--[if !IE]> -->
-	<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<script type="text/javascript">
 		window.jQuery
 				|| document
@@ -523,6 +519,8 @@
  window.jQuery || document.write("<script src='${pageContext.request.contextPath}/assets/js/jquery1x.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
+
+<jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<script type="text/javascript">
 		if ('ontouchstart' in document.documentElement)
 			document
@@ -586,7 +584,7 @@
 						{
 							paramName : "file", // The name that will be used to transfer the file
 							maxFilesize : 1024, // MB
-							url : "upload.do?expect=暗访检查成绩批量导入模板.xls",
+							url : "upload.do?expect=标准化成绩批量导入模板.xls",
 							addRemoveLinks : true,
 							dictDefaultMessage : '<span class="bigger-150 bolder"><i class="ace-icon fa fa-caret-right red"></i> 拖拽文件</span> 上传 \
 				<span class="smaller-80 grey">(或点我)</span> <br /> \

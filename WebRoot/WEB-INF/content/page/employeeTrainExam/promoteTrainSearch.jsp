@@ -133,7 +133,7 @@
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
 														type="checkbox" class="ace"
-														value="${TbPromotiontraining.promotiontrainingid }" /> <span
+														value="${TbPromotiontraining.promotiontrainingid }" name="cols" /> <span
 														class="lbl"></span> </label>
 												</td>
 												<td>${TbPromotiontraining.tbEmployee.employeecode}</td>

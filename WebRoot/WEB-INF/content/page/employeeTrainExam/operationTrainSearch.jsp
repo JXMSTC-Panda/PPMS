@@ -133,7 +133,7 @@
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" /> <span class="lbl"></span>
+														type="checkbox" class="ace" value="${tbOperationtraining.trainingid }" name="cols"> <span class="lbl"></span>
 												</label></td>
 
 											   <td>1</td>
