@@ -90,11 +90,11 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">业务差错检查成绩管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">业务差错单条修改</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -231,7 +231,7 @@
 													for="form-field-1"> 电话号码： </label>
 
 												<div class="col-sm-9">
-													<input type="text" class="col-xs-10 col-sm-5"
+													<input type="text" class="col-xs-10 col-sm-5" maxlength="11"
 														id="form-input-readonly"
 														name="tbOperationcheck.customermobilenumber" value="" />
 
@@ -243,14 +243,14 @@
 												<label class="col-sm-3 control-label no-padding-right for="form-field-1">业务类型：</label>
 												<div class="col-sm-9">
 													<textarea id="form-field-11" class="col-xs-10 col-sm-5"
-														name="tbOperationcheck.operationtype"></textarea>
+														name="tbOperationcheck.operationtype" maxlength="100"></textarea>
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right for="form-field-1">处罚结果：</label>
 												<div class="col-sm-9">
 													<textarea id="form-field-11" class="col-xs-10 col-sm-5"
-														name="tbOperationcheck.punishresult"></textarea>
+														name="tbOperationcheck.punishresult" maxlength="100"></textarea>
 												</div>
 											</div>
 											<div class="clearfix form-actions">

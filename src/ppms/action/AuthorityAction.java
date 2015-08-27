@@ -302,7 +302,7 @@ public class AuthorityAction extends ActionSupport {
 	 */
 	@Action(value = "index.tachometer", results = {
 			@Result(name = "success", location = "/WEB-INF/content/page/tachometer.jsp"),
-			@Result(name = "faild", location = "/WEB-INF/content/page/authority/roleSingleResult.jsp") })
+			@Result(name = "faild", location = "/WEB-INF/content/page/error.jsp") })
 	public String login() {
 		if (tbEmployeeID != null)
 			return "success";

@@ -90,10 +90,10 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">营业厅奖惩信息管理</a></li>
+						<li class="active">营业厅奖惩信息单条录入</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -184,7 +184,7 @@
 
 												<div class="col-sm-9">
 													<textarea id="form-field-11" class="col-xs-10 col-sm-5"
-														name="tbOrgpraisecriticism.cause"></textarea>
+														name="tbOrgpraisecriticism.cause" maxlength="300"></textarea>
 														<label id="validateCause"></label>
 												</div>
 											</div>

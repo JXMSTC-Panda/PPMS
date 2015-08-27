@@ -11,6 +11,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSessionContext;
+
+import org.jboss.weld.servlet.HttpSessionBeanStore;
 
 import ppms.shiro.MyRealm;
 import ppms.shiro.MySubject;
@@ -28,6 +31,7 @@ public class RoleFilter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 
+		
 		RequestDispatcher dispatch = request
 				.getRequestDispatcher("/content/page/error.jsp");
 
@@ -37,7 +41,7 @@ public class RoleFilter implements Filter {
 		System.out.println(url);
 
 		try {
-			// 得到当前访问对象
+			
 			String myUrlString = url.substring(6);
 			String[] urlArray = myUrlString.split(".do");
 			System.out.println(urlArray[0]);

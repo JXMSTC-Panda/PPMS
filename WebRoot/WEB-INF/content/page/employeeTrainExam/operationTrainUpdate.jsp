@@ -92,13 +92,12 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员成长管理系统</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">业务培训管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">业务培训修改</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>

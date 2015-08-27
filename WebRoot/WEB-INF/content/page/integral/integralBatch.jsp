@@ -63,12 +63,11 @@
 						try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员成长管理系统</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">积分管理</a></li>
+						<li class="active">积分批量导入</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 					<!-- /section:basics/content.breadcrumbs -->
 					<div class="page-content">

@@ -83,17 +83,18 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a></li>
-						<li class="active">子功能</li>
+						<li><a href="#">营业厅检查信息管理</a></li>
+						<li ><a href="#">营业厅奖惩信息单条录入</a></li>
+						<li class="active">选择营业厅</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<h3 class="header smaller lighter blue">员工奖惩信息管理</h3>
+							<h3 class="header smaller lighter blue">有效营业厅信息</h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>

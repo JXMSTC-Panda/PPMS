@@ -73,10 +73,10 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">人员综合信息管理</a></li>
+						<li class="active">值班经理评测</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -87,8 +87,7 @@
 							<!-- PAGE CONTENT BEGINS -->
 							<div class="page-header">
 								<h1>
-									值班经理测评、进阶查询 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 值班经理测评查询 </small>
+									值班经理测评查询
 								</h1>
 							</div>
 							
@@ -128,14 +127,14 @@
 														<th rowspan="1" colspan="2">
 															技能鉴定水平
 														</th>
-														<th rowspan="2">上一年绩效(分)</th>
-														
+														<!-- <th rowspan="2">上一年绩效(分)</th>
+														 -->
 														<th rowspan="2">进阶值班经理考试成绩(分)</th>
-														<th rowspan="2">专项报告成绩(分)</th>
-														<th rowspan="1" colspan="2">暗访成绩(分)</th>
+														<!-- <th rowspan="2">专项报告成绩(分)</th> -->
+														<!-- <th rowspan="1" colspan="2">暗访成绩(分)</th> -->
 														
 														<th rowspan="2">暗访成绩均分(分)</th>
-														<th rowspan="2">业务考试成绩(分)</th>
+														<!-- <th rowspan="2">业务考试成绩(分)</th> -->
 													</tr>
 													<tr>
 														
@@ -143,8 +142,8 @@
 														<th>电信业务营销员</th>
 														<th>移动营业</th>
 														
-														<th>第一次暗访	</th>
-														<th>第二次暗访</th>
+														<!-- <th>第一次暗访	</th>
+														<th>第二次暗访</th> -->
 														
 														
 														
@@ -161,21 +160,26 @@
 															<td>${test.employeecode }</td>
 															<td>${test.employeename }</td>
 															<td>${test.areadesc }</td>
-															<td>${test.org_Name }</td>
+															<td>
+															<a name="orgName" href="javascript:void(0);"
+															data-container="body" data-toggle="popover"
+															data-placement="bottom" data-content="${test.org_Name }">
+															</a>
+															</td>
 															<td>${test.postname }</td>
 															
 															<td>${test.academicdegree }</td>
 															<td>${test.strtelecomlevel }</td>
 															<td>${test.strmobilelevel }</td>
-															<td>${test.performancescore }</td>
+															<%-- <td>${test.performancescore }</td> --%>
 															<td>${test.promotionscore }</td>
 															
-															<td><input type="text" style="width: 40px"> </td>
+															<!-- <td><input type="text" style="width: 40px"> </td> -->
 															
-															<td>${test.firstscore }</td>
-															<td>${test.secondscore }</td>
+															<%-- <td>${test.firstscore }</td>
+															<td>${test.secondscore }</td> --%>
 															<td>${test.aver }</td>
-															<td><input type="text" style="width: 40px"></td>
+															<!-- <td><input type="text" style="width: 40px"></td> -->
 															
 															
 															
@@ -411,9 +415,14 @@
 		<script src="${pageContext.request.contextPath}/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
-	
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("orgName", 0, 4);
+		});
 			jQuery(function($) {
 				//initiate dataTables plugin
 				var oTable1 = 
@@ -423,7 +432,7 @@
 					bAutoWidth: false,
 					"aoColumns": [
 					  null,
-					  null, null,null, null, null,null, null,null, null,null, null,null,null, null,
+					   null, null,null, null,null, null,null, null,null,
 					  null
 					],
 					"aaSorting": [],

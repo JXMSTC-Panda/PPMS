@@ -179,7 +179,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp implements PraiseCriticism
 	public List<TbEmployee> findAllEmployeeInfor(){
 		List results=null;
 		try{
-			String hql="from TbEmployee where employeeid!='000000'"; //定义hql语句,获取TbEployee表中所有的数据
+			String hql="from TbEmployee where employeeid!='000000' and status!='0'"; //定义hql语句,获取TbEployee表中所有的数据
 			results=getHibernateTemplate().find(hql);//执行find方法
 			
 		}catch(Exception e){
@@ -311,7 +311,7 @@ public class PraiseCriticismDaoImp extends BaseDaoImp implements PraiseCriticism
 	 public List<OrganizationNj> findAllOrganizationNjInfor(){
 		 List results=null;
 			try{
-				String hql="from OrganizationNj"; 
+				String hql="from OrganizationNj where status!='0'"; 
 				results=getHibernateTemplate().find(hql);
 				
 			}catch(Exception e){

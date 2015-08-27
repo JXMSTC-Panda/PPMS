@@ -82,13 +82,11 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员成长档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a>
-						</li>
-						<li class="active">子功能</li>
+						<li><a href="#">人员综合信息管理</a></li>
+						<li class="active">人员基本信息管理</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -136,7 +134,13 @@
 												</td>
 
 												<td>${status.index + 1}</td>
-												<td>${employee.idnumber}</td>
+												<%-- <td>${employee.idnumber}</td> --%>
+												
+												<td><a name="idnumber" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${employee.idnumber}">
+													</a>
+												</td>
 												<td>${employee.employeename}</td>
 												<td><c:if test="${employee.sex==true}">
 														<c:out value="男"></c:out>
@@ -154,14 +158,14 @@
 														<a class="blue"
 															href="userInfo.userBase.userBaseInfoSearch.detail.do?id=${employee.employeeid}"
 															name="${employee.employeeid}" onclick="GetDetail(this)">
-															<i class="fa fa-search-plus bigger-130">详细</i> </a> <a
+															<i class="fa fa-search-plus bigger-130"><small>详细</small></i> </a> <a
 															class="green" href="userInfo.userBase.userBaseInfoSearch.modify.InitPage.do?id=${employee.employeeid}" name=""
 															onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> 
+															class="fa fa-pencil bigger-130"><small>修改</small></i> </a> 
 															<c:if test="${employee.status==true}">
 															<a class="red"
 															href="userInfo.userBase.userBaseInfoSearch.delete.do?id=${employee.employeeid}"> <i
-															class="fa fa-trash bigger-130">删除</i> </a></c:if>
+															class="fa fa-trash bigger-130"><small>删除</small></i> </a></c:if>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -224,11 +228,20 @@
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	
 	<!-- inline scripts related to this page -->
 	<script>
 		
 	</script>
 	<script type="text/javascript">
+	$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("idnumber",0, 8);
+		});
+	
+	
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')

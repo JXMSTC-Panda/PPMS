@@ -84,11 +84,11 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">人员档案管理系统</a>
 						</li>
-						<li><a href="#">父功能</a>
+						<li><a href="#">业务差错检查成绩管理</a>
 						</li>
-						<li class="active">子功能</li>
+						<li class="active">业务差错查询</li>
 					</ul>
-					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
+					
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
@@ -137,7 +137,15 @@
 												<td>${operationchecksInfor.order}</td>
 												<td>${operationchecksInfor.organizationNj.areadesc}</td>
 												<td>${operationchecksInfor.organizationNj.orgid}</td>
-												<td>${operationchecksInfor.organizationNj.org_Name}</td>
+												<%-- <td>${operationchecksInfor.organizationNj.org_Name}</td> --%>
+												<td>
+													<a name="org_Name" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${operationchecksInfor.organizationNj.org_Name}">
+													</a>
+
+												</td>
+												
 												<td>${operationchecksInfor.tbEmployee.employeename}</td>
 												<td>${operationchecksInfor.tbEmployee.employeecode}</td>
 												<%-- <td>${fn:split(operationchecksInfor.operationdate,' ')[0]}
@@ -150,7 +158,15 @@
 
 												</td>
 												<td>${operationchecksInfor.customermobilenumber}</td>
-												<td>${operationchecksInfor.operationtype}</td>
+												<%-- <td>${operationchecksInfor.operationtype}</td> --%>
+												<td>
+													<a name="operationtype" href="javascript:void(0);"
+														data-container="body" data-toggle="popover"
+														data-placement="bottom" data-content="${operationchecksInfor.operationtype}">
+													</a>
+
+												</td>
+												
 												<td>${operationchecksInfor.punishresult}</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
@@ -235,6 +251,9 @@
 	$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
 			myEachPopover("operationdate",0, 10);
+			myEachPopover("org_Name",0, 3);
+			myEachPopover("operationtype",0, 4);
+			
 		});
 	
 	
