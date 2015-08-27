@@ -86,10 +86,24 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-							<p>
-								<span>这是控制台，作为登录后的首页！</span>
-								<span>${sessionScope.tbEmployeeIDSession}</span>
-							</p>
+
+							<div class="col-xs-3">
+								<span>这是控制台</span> <span>${sessionScope.tbEmployeeIDSession}</span>
+								<h3>欢迎使用人员成长管理系统</h3>
+							</div>
+							<div class="col-xs-6">
+								<div style="height: 100px"></div>
+								<h2 align="center">
+									<b>人员成长管理系统简介：</b>
+								</h2>
+								<br>
+								<p class="lead">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;人员成长管理系统替代人工录入人员管理信息，该系统包括包括权限管理、人员综合信息管理、员工培训/考试管理、标准化和暗访管理、积分管理、创新管理、奖惩信息管理、绩效管理八大功能模块，通过这些功能模块，可以实现对人员的基本信息、考核成绩、进阶成绩、积分、创新信息、奖惩、绩效等信息的管理，包括录入、修改、删除、查询、批量导出等功能，并且支持单条录入和批量导入两种录入方式，提高管理人员成长信息的效率，节约管理成本。
+								</p>
+							</div>
+
+							<div class="col-xs-3" style="text-align: left;"></div>
+
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>
