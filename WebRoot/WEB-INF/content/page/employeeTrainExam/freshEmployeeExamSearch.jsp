@@ -81,11 +81,11 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">员工培训/考试管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">新员工/转正考核</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -93,14 +93,7 @@
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
-								<div class="page-header">
-										<h1>
-								员工考核
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									新员工考核
-								</small></h1>
-							</div>
+
 							<!-- PAGE CONTENT BEGINS -->
 
 							<h3 class="header smaller lighter blue">新员工考核成绩查询</h3>
@@ -109,7 +102,8 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">已有新员工考核成绩表</div>
-							<form action="downData.do?fileName=月度绩效批量导出.xls" name="StuListForm">
+							<form action="downData.do?fileName=月度绩效批量导出.xls"
+								name="StuListForm">
 								<table id="dynamic-table"
 									class="table table-striped table-bordered table-hover">
 									<thead>
@@ -137,8 +131,8 @@
 											var="freshs" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" name="cols" value="${freshs.examid }" /> <span class="lbl"></span>
-												</label></td>
+														type="checkbox" class="ace" name="cols"
+														value="${freshs.examid }" /> <span class="lbl"></span> </label></td>
 
 												<!-- ${ status.index + 1} 序号自增 -->
 												<td>${ status.index + 1}</td>
@@ -146,7 +140,15 @@
 												<td>${freshs.tbEmployee.employeename}</td>
 
 												<td>${freshs.organizationNj.orgid}</td>
-												<td>${freshs.organizationNj.org_Name }</td>
+
+												<td><a name="orgName" href="javascript:void(0);"
+													data-container="body" data-toggle="popover"
+													data-placement="bottom"
+													data-content="${freshs.organizationNj.org_Name }"> </a>
+												</td>
+
+
+
 												<td>${freshs.examdate }</td>
 												<td>${freshs.examstage }</td>
 												<td>${freshs.week}</td>
@@ -155,11 +157,14 @@
 
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="employeeTrainExam.freshEmployeeExam.freshEmployeeSearch.modify.toUpdate.do?examid=${freshs.examid}" name=""
-															onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
+														<a class="green"
+															href="employeeTrainExam.freshEmployeeExam.freshEmployeeSearch.modify.toUpdate.do?examid=${freshs.examid}"
+															name="" onclick="Modify(this)"> <i
+															class="fa fa-pencil bigger-130"><small>修改</small> </i> </a> <a
+															class="red"
 															href="employeeTrainExam.freshEmployeeExam.freshEmployeeExamSearch.delete.do?examid=${freshs.examid}">
-															<i class="fa fa-trash bigger-130">删除</i> </a>
+															<i class="fa fa-trash bigger-130"><small>删除</small> </i>
+														</a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -197,9 +202,9 @@
 										</c:forEach>
 									</tbody>
 								</table>
-								
-								
-								
+
+
+
 							</form>
 							<!-- PAGE CONTENT ENDS -->
 						</div>
@@ -219,8 +224,20 @@
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+
+
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+	
+	$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("orgName", 0, 5);
+			
+		});
+	
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')

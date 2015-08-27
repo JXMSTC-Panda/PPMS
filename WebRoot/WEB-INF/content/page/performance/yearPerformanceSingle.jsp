@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -89,10 +89,11 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a></li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">绩效管理</a>
+						</li>
+						<li class="active">月度绩效管理</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -107,8 +108,8 @@
 								<!-- /section:settings.box -->
 								<div class="page-header">
 									<h1>
-										绩效管理 <small> <i
-											class="ace-icon fa fa-angle-double-right"></i> 年度绩效单条录入 </small>
+										
+											 年度绩效单条录入
 									</h1>
 								</div>
 								<!-- /.page-header -->
@@ -174,14 +175,14 @@
 																name="performance.tbEmployee.employeeid"
 																onchange="getEmployee(this)" data-placeholder="选择员工">
 																<c:if test="${mark!=null }">
-																<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
+																	<option value="${sessionScope.employee.employeeid}">${sessionScope.employee.employeename}</option>
 																</c:if>
 																<c:if test="${mark==null }">
-																<c:forEach items="${sessionScope.employees }"
-																	var="employee">
-																	<option value="${employee.employeeid }">${employee.employeename
-																		}</option>
-																</c:forEach>
+																	<c:forEach items="${sessionScope.employees }"
+																		var="employee">
+																		<option value="${employee.employeeid }">${employee.employeename
+																			}</option>
+																	</c:forEach>
 																</c:if>
 															</select>
 														</div>

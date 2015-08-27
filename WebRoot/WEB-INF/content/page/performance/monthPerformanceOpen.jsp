@@ -82,11 +82,11 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">绩效管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">月度绩效管理</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -101,54 +101,55 @@
 							</div>
 							<form role="form" method="post"
 								action="performance.month.monthPerformanceOpen.add.do">
-							<div class="widget-box">
-								<div class="widget-header center">
-									<h4 class="widget-title">选择营业厅</h4>
-								</div>
+								<div class="widget-box">
+									<div class="widget-header center">
+										<h4 class="widget-title">选择营业厅</h4>
+									</div>
 
-								<div class="widget-body">
-									<div class="widget-main">
-										<div class="row">
-											<div class="form-group">
-												<div class="col-xs-3"></div>
-												<div class="col-xs-6">
-													<!-- #section:plugins/input.duallist -->
-													<select multiple="multiple" size="10" name="organizationNjs"
-														id="duallist">
+									<div class="widget-body">
+										<div class="widget-main">
+											<div class="row">
+												<div class="form-group">
+													<div class="col-xs-3"></div>
+													<div class="col-xs-6">
+														<!-- #section:plugins/input.duallist -->
+														<select multiple="multiple" size="10"
+															name="organizationNjs" id="duallist">
 
-														<c:forEach items="${ requestScope.orgs}" var="org">
-															<option value="${org.orgid}">
-																<c:out value="${org.org_Name }"></c:out>
-															</option>
-														</c:forEach>
-													</select>
+															<c:forEach items="${ requestScope.orgs}" var="org">
+																<option value="${org.orgid}">
+																	<c:out value="${org.org_Name }"></c:out>
+																</option>
+															</c:forEach>
+														</select>
 
-													<!-- /section:plugins/input.duallist -->
-													<div class="hr hr-16 hr-dotted"></div>
-													<div class="clearfix form-actions">
-														<label>开通月份:</label> <input disabled="disabled" value="${requestScope.month}" name="month" />
+														<!-- /section:plugins/input.duallist -->
+														<div class="hr hr-16 hr-dotted"></div>
+														<div class="clearfix form-actions">
+															<label>开通月份:</label> <input disabled="disabled"
+																value="${requestScope.openMonth}" name="openMonth" />
+														</div>
 													</div>
+													<div class="col-xs-3"></div>
 												</div>
-												<div class="col-xs-3"></div>
 											</div>
-										</div>
 
-										<div class="clearfix form-actions">
-											<div class="col-md-offset-5 col-md-6">
-												<button class="btn btn-info" type="submit"  >
-													<i class="ace-icon fa fa-check bigger-110"></i> 开通
-												</button>
+											<div class="clearfix form-actions">
+												<div class="col-md-offset-5 col-md-6">
+													<button class="btn btn-info" type="submit">
+														<i class="ace-icon fa fa-check bigger-110"></i> 开通
+													</button>
 
-												&nbsp; &nbsp; &nbsp;
-												<button class="btn" type="reset">
-													<i class="ace-icon fa fa-undo bigger-110"></i> 重置
-												</button>
+													&nbsp; &nbsp; &nbsp;
+													<button class="btn" type="reset">
+														<i class="ace-icon fa fa-undo bigger-110"></i> 重置
+													</button>
+												</div>
 											</div>
-										</div>
 
+										</div>
 									</div>
 								</div>
-							</div>
 							</form>
 
 							<!-- PAGE CONTENT ENDS -->
@@ -182,7 +183,7 @@
 							});
 			var container1 = demo1.bootstrapDualListbox('getContainer');
 			container1.find('.btn').addClass('btn-white btn-info btn-bold');
-       		
+
 			/**var setRatingColors = function() {
 				$(this).find('.star-on-png,.star-half-png').addClass('orange2').removeClass('grey');
 				$(this).find('.star-off-png').removeClass('orange2').addClass('grey');
@@ -223,26 +224,22 @@
 			///////////////////
 
 		});
-	
 	</script>
-	
+
 	<!-- 获取select的选项 -->
 	<script type="text/javascript">
-	function t(){
-	
-	var select = document.getElementById("duallist");
-	//获取select标签
-   var index = select.selectedIndex;
-   var text = select.options[index].text;
-   var value = select.options[index].value;
-	//提交form表单
-   //document.formkk.submit();
-	}
-	
-	
-	
+		function t() {
+
+			var select = document.getElementById("duallist");
+			//获取select标签
+			var index = select.selectedIndex;
+			var text = select.options[index].text;
+			var value = select.options[index].value;
+			//提交form表单
+			//document.formkk.submit();
+		}
 	</script>
-	
-	
+
+
 </body>
 </html>
