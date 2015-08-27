@@ -23,7 +23,8 @@
 	href="${pageContext.request.contextPath}/assets/css/font-awesome.css" />
 
 <!-- page specific plugin styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/dropzone.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/dropzone.css" />
 <!-- text fonts -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/ace-fonts.css" />
@@ -74,11 +75,10 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a>
-						</li>
-						<li class="active">Blank Page</li>
+						<li><a href="#">绩效管理</a></li>
+						<li class="active">月度绩效管理</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -128,7 +128,7 @@
 	<script src="${pageContext.request.contextPath}/assets/js/dropzone.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
-	jQuery(function($) {
+		jQuery(function($) {
 			try {
 				Dropzone.autoDiscover = false;
 				var myDropzone = new Dropzone(
@@ -155,7 +155,6 @@
 				alert('Dropzone.js 不支持老版本的浏览器');
 			}
 		});
-
 	</script>
 </body>
 </html>

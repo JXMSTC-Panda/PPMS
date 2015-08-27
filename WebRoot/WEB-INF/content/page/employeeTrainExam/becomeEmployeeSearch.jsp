@@ -81,11 +81,11 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">员工培训/考试管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">新员工/转正考核 </li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -93,14 +93,7 @@
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
-								<div class="page-header">
-										<h1>
-								员工考核
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									转正考核
-								</small></h1>
-							</div>
+								
 							<!-- PAGE CONTENT BEGINS -->
 
 							<h3 class="header smaller lighter blue">转正考核成绩查询</h3>
@@ -148,7 +141,13 @@
 												<td>${becomes.tbEmployee.employeename}</td>
 
 												<td>${becomes.organizationNj.orgid}</td>
-												<td>${becomes.organizationNj.org_Name }</td>
+												<td><a name="orgName" href="javascript:void(0);"
+													data-container="body" data-toggle="popover"
+													data-placement="bottom"
+													data-content="${becomes.organizationNj.org_Name }"> </a>
+												</td>
+												
+												
 												<td>${becomes.examscore }</td>
 												<td>${becomes.chineseprintcount }</td>
 												<td>${becomes.numberprintcount}</td>
@@ -162,9 +161,9 @@
 													<div class="hidden-sm hidden-xs action-buttons">
 														<a class="green" href="employeeTrainExam.freshEmployeeExam.becomeEmployeeSearch.modify.toUpdate.do?examid=${becomes.examid}" name=""
 															onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
+															class="fa fa-pencil bigger-130"><small>修改</small></i> </a> <a class="red"
 															href="employeeTrainExam.freshEmployeeExam.becomeEmployeeSearch.delete.do?examid=${becomes.examid}">
-															<i class="fa fa-trash bigger-130">删除</i> </a>
+															<i class="fa fa-trash bigger-130"><small>删除</small></i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -224,8 +223,17 @@
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+			myEachPopover("orgName", 0, 5);
+		
+		});
+	
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')

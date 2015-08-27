@@ -74,11 +74,11 @@
 						}
 					</script>
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">Other Pages</a>
+						<li><a href="#">绩效管理</a>
 						</li>
-						<li class="active">Blank Page</li>
+						<li class="active">月度绩效管理</li>
 					</ul>
 					<jsp:include page="../../WebPart/SearchBox.jsp"></jsp:include>
 				</div>
@@ -87,38 +87,39 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
-	
-	<div class="widget-box">
-										<div class="widget-header">
-											<h4 class="widget-title"></h4>
-										</div>
 
-										<div class="widget-body">
-											<div class="widget-main">
-												<div class="row">															
-													<div class="col-xs-12 center">
-													<div class="space">
-													</div>
-													<h5>恭喜，操作成功!</h5>
-											<div class="clearfix form-actions">
-												<div class="col-md-offset-3 col-md-6">
-													<button class="btn btn-info" onclick="top.window.location='performance.year.yearPerformanceSingle.do'">
-														<i class="ace-icon fa fa-check bigger-110"></i> 继续录入
-													</button>
-
-													&nbsp; &nbsp; &nbsp;
-													<button class="btn" onclick="top.window.location='performance.year.yearPerformanceSearch.do'">
-														<i class="ace-icon fa fa-undo bigger-110"></i> 转至查询
-													</button>
-												</div>
-											</div>
-														</div>														
-												</div>
-											</div>
-										</div>
+							<div class="widget-box">
+								<div class="widget-header">
+									<h4 class="widget-title"></h4>
 								</div>
-	
-	
+
+								<div class="widget-body">
+									<div class="widget-main">
+										<div class="row">
+											<div class="col-xs-12 center">
+												<div class="space"></div>
+												<h5>恭喜，操作成功!</h5>
+												<div class="clearfix form-actions">
+													<div class="col-md-offset-3 col-md-6">
+														<button class="btn btn-info"
+															onclick="top.window.location='performance.year.yearPerformanceSingle.do'">
+															<i class="ace-icon fa fa-check bigger-110"></i> 继续录入
+														</button>
+
+														&nbsp; &nbsp; &nbsp;
+														<button class="btn"
+															onclick="top.window.location='performance.year.yearPerformanceSearch.do'">
+															<i class="ace-icon fa fa-undo bigger-110"></i> 转至查询
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 					</div>

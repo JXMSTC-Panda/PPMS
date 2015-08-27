@@ -84,21 +84,17 @@
 					<ul class="breadcrumb">
 						<li><i class="ace-icon fa fa-home home-icon"></i><a href="#">PPMS</a>
 						</li>
-						<li><a href="#">绩效管理</a>
-						</li>
+						<li><a href="#">绩效管理</a></li>
 						<li class="active">月度绩效</li>
 					</ul>
-					
+
 				</div>
 				<div class="page-content">
 					<jsp:include page="../../WebPart/Skin.jsp"></jsp:include>
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="page-header">
-								<h1>
-									绩效管理 <small> <i
-										class="ace-icon fa fa-angle-double-right"></i> 月度绩效查询 </small>
-								</h1>
+								
 							</div>
 							<!-- PAGE CONTENT BEGINS -->
 
@@ -136,8 +132,10 @@
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" name="cols" value="${pers.performanceid }" /> <span class="lbl"></span>
-												</label></td>
+														type="checkbox" class="ace" name="cols"
+														value="${pers.performanceid }" /> <span class="lbl"></span>
+												</label>
+												</td>
 
 												<!-- ${ status.index + 1} 序号自增 -->
 												<td>${ status.index + 1}</td>
@@ -145,17 +143,46 @@
 												<td>${pers.tbEmployee.employeename}</td>
 
 												<%-- <td>${pers.tbEmployee.idnumber}</td> --%>
-												<td>
-												<a name="idnumber" href="javascript:void(0);"
-														data-container="body" data-toggle="popover"
-														data-placement="bottom" data-content="${pers.tbEmployee.idnumber}">
-													</a>
-												</td>
-												<td>${pers.organizationNj.orgid }</td>
+
+												<%-- 	<td>${pers.organizationNj.orgid }</td>
 												<td>${pers.organizationNj.org_Name }</td>
 												<td>${fn:split(fn:split(pers.performancedate,' ')[0],'-')[0]}-${fn:split(fn:split(pers.performancedate,' ')[0],'-')[1]}</td>
 												<td>${pers.performancescore }</td>
 												<td>${pers.remark }</td>
+												--%>
+
+
+
+
+
+												<td><a name="pIDNumber" href="javascript:void(0);"
+													data-container="body" data-toggle="popover"
+													data-placement="bottom"
+													data-content="${pers.tbEmployee.idnumber}"> </a>
+												</td>
+												<td>${pers.organizationNj.orgid }</td>
+												<td><a name="orgName" href="javascript:void(0);"
+													data-container="body" data-toggle="popover"
+													data-placement="bottom"
+													data-content="${pers.organizationNj.org_Name }"> </a></td>
+												<td><a name="pDate" href="javascript:void(0);"
+													data-container="body" data-toggle="popover"
+													data-placement="bottom"
+													data-content="${pers.performancedate }"> </a>
+												</td>
+												<td>${pers.performancescore }</td>
+												<td>${pers.remark }</td>
+
+
+
+
+
+
+
+
+
+
+
 
 
 												<td>
@@ -163,9 +190,9 @@
 														<a class="green"
 															href="performance.month.monthPerformanceSearch.modify.toUpdate.do?performanceid=${pers.performanceid}"
 															name="" onclick="Modify(this)"> <i
-															class="fa fa-pencil bigger-130">修改</i> </a> <a class="red"
+															class="fa fa-pencil bigger-130"><small>修改</small></i> </a> <a class="red"
 															href="performance.month.monthPerformanceSearch.delete.do?performanceid=${pers.performanceid}">
-															<i class="fa fa-trash bigger-130">删除</i> </a>
+															<i class="fa fa-trash bigger-130"><small>删除</small></i> </a>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -181,24 +208,24 @@
 																	onclick="GetDetail(this)" class="tooltip-info"
 																	data-rel="tooltip" title="View"> <span class="blue">
 																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																	</span> </a>
-																</li>
+																	</span> </a></li>
 
 																<li><a href="javascript:void(0)" name=""
 																	onclick="Modify(this)" class="tooltip-success"
 																	data-rel="tooltip" title="Edit"> <span
 																		class="green"> <i
 																			class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span> </a></li>
+																	</span> </a>
+																</li>
 
 																<li><a href="ClassDelete?classId="
 																	class="tooltip-error" data-rel="tooltip" title="Delete">
 																		<span class="red"> <i
-																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a></li>
+																			class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a>
+																</li>
 															</ul>
 														</div>
-													</div>
-												</td>
+													</div></td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -232,15 +259,17 @@
 		src="${pageContext.request.contextPath}/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-	
+
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
-	$(document).ready(function() {
+	<script type="text/javascript">
+		$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
-			myEachPopover(idnumber,0, 8);
+			myEachPopover("orgName", 0, 5);
+			myEachPopover("pIDNumber", 0, 6);
+			myEachPopover("pDate", 0, 10);
 		});
-	
-	
+
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')
