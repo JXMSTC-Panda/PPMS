@@ -151,7 +151,7 @@
 											varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace" value="${point.pointid }" />
+														type="checkbox" class="ace" value="${point.pointid }" name="cols" />
 														<span class="lbl"></span> </label>
 												</td>
 												<td><c:out value="${point.tbEmployee.employeecode}"></c:out>

@@ -26,7 +26,7 @@
 			<value>oracle.jdbc.driver.OracleDriver</value>
 		</property>
 		<property name="jdbcUrl">
-			<value>jdbc:oracle:thin:@210.35.32.11:1521:orcl</value>
+			<value>jdbc:oracle:thin:@192.168.50.2:1521:orcl</value>
 		</property>
 		<property name="user">
 			<value>ppmsuser</value>

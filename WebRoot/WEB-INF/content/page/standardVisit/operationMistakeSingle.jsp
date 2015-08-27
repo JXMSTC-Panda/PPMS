@@ -235,7 +235,7 @@
 													<input type="text" maxlength="11"
 													style="width:408px"
 														id="form-field-mask-2"
-														name="tbOperationcheck.customermobilenumber" value="" />
+														name="tbOperationcheck.customermobilenumber" value=""  onblur="validate()"/>
 
 												</div>
 											
@@ -362,6 +362,23 @@
 		src="${pageContext.request.contextPath}/assets/js/ace/ace.searchbox-autocomplete.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+	function validate(){
+       	var number=document.getElementById("form-field-mask-2").value;
+  		var _emp=/^\s*|\s*$/g;
+        number= number.replace(_emp, "");
+        var _d = /^1[3578][01379]\d{8}$/g;
+        var _l = /^1[34578][01256]\d{8}$/g;
+        var _y = /^(134[012345678]\d{7}|1[34578][012356789]\d{8})$/g;
+        if (_d.test(number)||_l.test(number)||_y.test(number)) {
+      		return;
+        }
+        else
+        	{alert("手机号码格式不正确！");}
+        
+	}
+        
+	
+	
 		jQuery(function($) {
 			$('#id-disable-check').on('click', function() {
 				var inp = $('#form-input-readonly').get(0);

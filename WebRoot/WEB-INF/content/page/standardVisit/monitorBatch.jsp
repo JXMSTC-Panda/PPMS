@@ -1,7 +1,3 @@
-
-
-
-
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 	String path = request.getContextPath();
@@ -315,11 +311,11 @@
 					</script>
 
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
+						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">人员成长管理系统</a>
 						</li>
 
-						<li><a href="#">监控成绩管理</a></li>
-						<li class="active">监控成绩批量导入</li>
+						<li><a href="#">Other Pages</a></li>
+						<li class="active">Blank Page</li>
 					</ul>
 					<!-- /.breadcrumb -->
 
@@ -449,11 +445,8 @@
 								<!-- /section:settings.box -->
 								<div class="page-header">
 									<h1>
-											监控检查成绩管理
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									成绩批量录入
-								</small>
+										创新管理 <small> <i
+											class="ace-icon fa fa-angle-double-right"></i> 创新批量录入 </small>
 									</h1>
 								</div>
 								<!-- /.page-header -->
@@ -526,6 +519,7 @@
  window.jQuery || document.write("<script src='${pageContext.request.contextPath}/assets/js/jquery1x.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
+
 <jsp:include page="../../WebPart/Script.jsp"></jsp:include>
 	<script type="text/javascript">
 		if ('ontouchstart' in document.documentElement)
@@ -590,7 +584,7 @@
 						{
 							paramName : "file", // The name that will be used to transfer the file
 							maxFilesize : 1024, // MB
-							url : "upload.do?expect=监控检查成绩批量导入模板.xls",
+							url : "upload.do?expect=监控检查成绩导入模板.xls",
 							addRemoveLinks : true,
 							dictDefaultMessage : '<span class="bigger-150 bolder"><i class="ace-icon fa fa-caret-right red"></i> 拖拽文件</span> 上传 \
 				<span class="smaller-80 grey">(或点我)</span> <br /> \

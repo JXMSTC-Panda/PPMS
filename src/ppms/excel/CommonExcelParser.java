@@ -36,9 +36,11 @@ import ppms.annotation.ValueChange;
 import ppms.daoimpl.BaseDaoImp;
 import ppms.domain.TbInnovation;
 import ppms.domain.TbMaster;
+import ppms.domain.TbMonitorcheck;
 import ppms.domain.TbPerformance;
 import ppms.domain.TbPoint;
 import ppms.domain.TbPointdetail;
+import ppms.domain.TbVisitcheck;
 import ppms.excel.template.BaseExcelObject;
 import ppms.excel.template.IExcelTemp;
 import ppms.exception.ErrorInfo;
@@ -790,6 +792,13 @@ public class CommonExcelParser {
 								dao.saveObject(point);
 								transaction.commit();
 							} else {
+								
+								if(fieldName.equals("暗访检查成绩批量导入模板.xls")){
+									
+									TbVisitcheck tbVisitcheck=(TbVisitcheck) object;
+									tbVisitcheck.setAveragescore((tbVisitcheck.getFirstscore()+tbVisitcheck.getSecondscore()+tbVisitcheck.getConsistencyscore())/3);
+									object=tbVisitcheck;
+								}
 								objs.add(object);
 								System.out.println(object.toString());
 							}

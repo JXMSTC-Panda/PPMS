@@ -134,8 +134,8 @@
 											var="innovation" varStatus="status">
 											<tr>
 												<td class="center"><label class="pos-rel"> <input
-														type="checkbox" class="ace"
-														cols="${innovation.innovationid }" /> <span class="lbl"></span>
+														type="checkbox" class="ace" value="${innovation.innovationid }"
+														name="cols" /> <span class="lbl"></span>
 												</label></td>
 												<td><c:if test="${innovation.tbEmployee!=null}">
 														<c:out value="${innovation.tbEmployee.employeecode}"></c:out>
