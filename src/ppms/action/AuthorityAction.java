@@ -65,8 +65,7 @@ public class AuthorityAction extends ActionSupport {
 		request = ServletActionContext.getRequest();
 
 		sessionAuthority = request.getSession(true);
-		tbEmployeeID = (String) sessionAuthority
-				.getAttribute("tbEmployeeIDSession");
+		tbEmployeeID = (String) sessionAuthority.getAttribute("tbEmployeeIDSession");
 		request.setAttribute("tbEmployeeIDSession", tbEmployeeID);
 	}
 
