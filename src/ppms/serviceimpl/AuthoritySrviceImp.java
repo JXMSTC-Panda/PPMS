@@ -23,18 +23,10 @@ import ppms.shiro.MyRealm;
 import ppms.util.ToJsonUtil;
 
 /**
- * <p>
- * Title: AuthoritySrviceImp
- * </p>
- * <p>
- * Description:
- * </p>
- * <p>
- * Company:（c）版权所有 2015 NCHU.QQL
- * </p>
- * <p>
- * Version:
- * </p>
+ * <p>Title: AuthoritySrviceImp</p>
+ * <p>Description:</p>
+ * <p>Company:（c）版权所有 2015 NCHU.QQL</p>
+ * <p>Version:</p>
  * 
  * @author TyurinTsien
  * @date 2015-8-12下午3:36:04
