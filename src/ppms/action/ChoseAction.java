@@ -86,7 +86,9 @@ public class ChoseAction extends ActionSupport {
 				orgs.add(organizationNj.toComplete(dao));
 			}
 			ServletActionContext.getRequest().setAttribute("backUrl", backUrl);
-			ServletActionContext.getRequest().setAttribute("orgs", orgs);
+			ServletActionContext.getRequest().getSession()
+					.setAttribute("organizationNjs", orgs);
+			dao=null;
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -102,12 +104,17 @@ public class ChoseAction extends ActionSupport {
 		try {
 			if (selectedId != null) {
 
-				List<OrganizationNj> list = dao.getEntitiestNotLazy(
-						new OrganizationNj(),
-						new String[] { "tbAreaorgrelations" },
-						Restrictions.eq("orgid", Integer.valueOf(selectedId)));
-
-				if (list.size() > 0) {
+				List<OrganizationNj> list = (List<OrganizationNj>) ServletActionContext
+						.getRequest().getSession()
+						.getAttribute("organizationNjs");
+				OrganizationNj organizationNj = null;
+				for (int i = 0; i < list.size(); i++) {
+					if(list.get(i).getOrgid().toString().equals(selectedId)){
+						organizationNj=list.get(i);
+						break;
+					}
+				}
+				if (list != null && list.size() > 0) {
 
 					if (backUrl != null
 							&& (backUrl
@@ -125,19 +132,24 @@ public class ChoseAction extends ActionSupport {
 									|| backUrl
 											.equals("employeeTrainExam.freshEmployeeExam.becomeEmployeeSingle.do") || backUrl
 										.equals("employeeTrainExam.freshEmployeeExam.freshEmployeeExamSingle.do"))) {
-						List<TbEmployee> employees = dao.getEntitiestNotLazy(
-								new TbEmployee(), null,
-								Restrictions.eq("organizationNj", list.get(0)));
+						List<TbEmployee> employees = dao.findByHSQL("from TbEmployee where orgid="+selectedId, new TbEmployee());
 						if (employees.size() > 0) {
 							ServletActionContext.getRequest().getSession()
 									.setAttribute("employees", employees);
 						}
 					}
 
-					OrganizationNj organizationNj = list.get(0).toComplete(dao);
 					ServletActionContext.getRequest().getSession()
-							.setAttribute("organizationNj", organizationNj);
-					ServletActionContext.getResponse().sendRedirect(backUrl);
+							.setAttribute("organizationNj", organizationNj.toComplete(dao));
+					String[] split = backUrl.split("[.]");
+					backUrl = "/WEB-INF/content/page/" + split[0] + "/"
+							+ split[2] + ".jsp";
+					ServletActionContext
+							.getRequest()
+							.getRequestDispatcher(backUrl)
+							.forward(ServletActionContext.getRequest(),
+									ServletActionContext.getResponse());
+					dao=null;
 					return null;
 				}
 			}
@@ -168,15 +180,16 @@ public class ChoseAction extends ActionSupport {
 								.setAttribute("employee", tbEmployee);
 						ServletActionContext.getRequest().getSession()
 								.setAttribute("mark", "have");
+						String[] split = backUrl.split("[.]");
+						backUrl = "/WEB-INF/content/page/" + split[0] + "/"
+								+ split[2] + ".jsp";
 						ServletActionContext
 								.getRequest()
-								.getSession()
-								.setAttribute(
-										"organizationNj",
-										tbEmployee.getOrganizationNj()
-												.toComplete(dao));
-						ServletActionContext.getResponse()
-								.sendRedirect(backUrl);
+								.getRequestDispatcher(backUrl)
+								.forward(ServletActionContext.getRequest(),
+										ServletActionContext.getResponse());
+						;
+						return null;
 					}
 				}
 			}

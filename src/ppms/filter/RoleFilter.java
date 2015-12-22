@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSessionContext;
 
 import org.jboss.weld.servlet.HttpSessionBeanStore;
@@ -57,7 +58,7 @@ public class RoleFilter implements Filter {
 
 			} else if (MyRealm.AuthorityCheck(MySubject.tbRolefunction,urlArray[0])) {
 
-				chain.doFilter(request, response);
+				chain.doFilter(request,response);
 
 			} else {
 

@@ -102,19 +102,19 @@
 		var result = document.getElementsByName("innovation.assessresult")[0];
 		var level = document.getElementsByName("innovation.assesslevel")[0];
 
-		if(emp.value.length<0){
+		if (emp.value.length < 0) {
 			alert("数据不能为空");
 		}
-		if(org.value.length<0){
+		if (org.value.length < 0) {
 			alert("数据不能为空");
 		}
-		if(date.value.length<0){
+		if (date.value.length < 0) {
 			alert("数据不能为空");
 		}
-		if(result.value.length<0){
+		if (result.value.length < 0) {
 			alert("数据不能为空");
 		}
-		if(level.value.length<0){
+		if (level.value.length < 0) {
 			alert("数据不能为空");
 		}
 	}
@@ -170,7 +170,8 @@
 						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">人员成长管理系统</a>
 						</li>
 
-						<li><a href="#">创新管理</a></li>
+						<li><a href="#">创新管理</a>
+						</li>
 						<li class="active">创新提案单条录入</li>
 					</ul>
 					<!-- /.breadcrumb -->
@@ -496,10 +497,6 @@
 											</div>
 										</form>
 										<%
-											if (request.getSession().getAttribute("organizationNj") != null) {
-
-												request.getSession().removeAttribute("organizationNj");
-											}
 											if (request.getSession().getAttribute("employee") != null) {
 												request.getSession().removeAttribute("employee");
 											}
@@ -507,6 +504,10 @@
 												request.getSession().removeAttribute("mark");
 												if (request.getSession().getAttribute("employees") != null) {
 													request.getSession().removeAttribute("employees");
+												}
+												if (request.getSession().getAttribute("organizationNj") != null) {
+
+													request.getSession().removeAttribute("organizationNj");
 												}
 											}
 										%>

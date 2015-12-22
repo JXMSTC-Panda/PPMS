@@ -246,12 +246,12 @@
 										</button>
 									</div>
 								</div>
-								<%
+							<%-- 	<%
 									if (request.getSession().getAttribute("organizationNj") != null) {
 
 										request.getSession().removeAttribute("organizationNj");
 									}
-								%>
+								%> --%>
 							</form>
 
 						</div>

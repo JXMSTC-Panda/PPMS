@@ -118,7 +118,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${requestScope.orgs}"
+										<c:forEach items="${sessionScope.organizationNjs}"
 											var="organizationNj">
 											<tr>
 												<td><input type="radio" name="selectedId"
