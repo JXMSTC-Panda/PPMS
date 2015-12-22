@@ -3,6 +3,7 @@ package ppms.action;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -278,11 +279,12 @@ public class userBaseInfoAction extends BaseInit {
 				/**
 				 * 调用map函数，将对象put到前台
 				 */
-				map.put("roles", tbRoles);
-				map.put("orgs", organizations);
-				map.put("posts", tbPosts);
-				map.put("jobs", tbJobs);
-				map.put("employees", tbEmployees);
+				HttpSession session = ServletActionContext.getRequest().getSession();
+				session.setAttribute("roles", tbRoles);
+				session.setAttribute("orgs", organizations);
+				session.setAttribute("posts", tbPosts);
+				session.setAttribute("jobs", tbJobs);
+				session.setAttribute("employees", tbEmployees);
 				break;
 			case "userInfo.userBaseInfoSearch":
 				/**

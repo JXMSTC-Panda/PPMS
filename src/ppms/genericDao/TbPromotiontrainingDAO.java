@@ -37,7 +37,7 @@ public class TbPromotiontrainingDAO extends BaseHibernateDAO {
 	public void save(TbPromotiontraining transientInstance) {
 		log.debug("saving TbPromotiontraining instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -48,7 +48,7 @@ public class TbPromotiontrainingDAO extends BaseHibernateDAO {
 	public void delete(TbPromotiontraining persistentInstance) {
 		log.debug("deleting TbPromotiontraining instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -59,7 +59,7 @@ public class TbPromotiontrainingDAO extends BaseHibernateDAO {
 	public TbPromotiontraining findById(java.lang.String id) {
 		log.debug("getting TbPromotiontraining instance with id: " + id);
 		try {
-			TbPromotiontraining instance = (TbPromotiontraining) getSession()
+			TbPromotiontraining instance = (TbPromotiontraining) getHibernateTemplate()
 					.get("ppms.domain.TbPromotiontraining", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -68,68 +68,11 @@ public class TbPromotiontrainingDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbPromotiontraining instance) {
-		log.debug("finding TbPromotiontraining instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbPromotiontraining")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbPromotiontraining instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbPromotiontraining as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByPromotioncontent(Object promotioncontent) {
-		return findByProperty(PROMOTIONCONTENT, promotioncontent);
-	}
-
-	public List findByPromotionscore(Object promotionscore) {
-		return findByProperty(PROMOTIONSCORE, promotionscore);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbPromotiontraining instances");
-		try {
-			String queryString = "from TbPromotiontraining";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbPromotiontraining merge(TbPromotiontraining detachedInstance) {
 		log.debug("merging TbPromotiontraining instance");
 		try {
-			TbPromotiontraining result = (TbPromotiontraining) getSession()
+			TbPromotiontraining result = (TbPromotiontraining) getHibernateTemplate()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -142,7 +85,7 @@ public class TbPromotiontrainingDAO extends BaseHibernateDAO {
 	public void attachDirty(TbPromotiontraining instance) {
 		log.debug("attaching dirty TbPromotiontraining instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -153,7 +96,7 @@ public class TbPromotiontrainingDAO extends BaseHibernateDAO {
 	public void attachClean(TbPromotiontraining instance) {
 		log.debug("attaching clean TbPromotiontraining instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

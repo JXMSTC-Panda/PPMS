@@ -62,7 +62,7 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 	public void save(TbEmployee transientInstance) {
 		log.debug("saving TbEmployee instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -73,7 +73,7 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 	public void delete(TbEmployee persistentInstance) {
 		log.debug("deleting TbEmployee instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -156,7 +156,7 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 	public TbEmployee findById(java.lang.String id) {
 		log.debug("getting TbEmployee instance with id: " + id);
 		try {
-			TbEmployee instance = (TbEmployee) getSession().get(
+			TbEmployee instance = (TbEmployee) getHibernateTemplate().get(
 					"ppms.domain.TbEmployee", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -165,172 +165,11 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbEmployee instance) {
-		log.debug("finding TbEmployee instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbEmployee")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbEmployee instance with property: " + propertyName
-				+ ", value: " + value);
-		try {
-			String queryString = "from TbEmployee as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByEmployeename(Object employeename) {
-		return findByProperty(EMPLOYEENAME, employeename);
-	}
-
-	public List findByEmployeecode(Object employeecode) {
-		return findByProperty(EMPLOYEECODE, employeecode);
-	}
-
-	public List findByIdnumber(Object idnumber) {
-		return findByProperty(IDNUMBER, idnumber);
-	}
-
-	public List findByIdpassword(Object idpassword) {
-		return findByProperty(IDPASSWORD, idpassword);
-	}
-
-	public List findByOrgtype(Object orgtype) {
-		return findByProperty(ORGTYPE, orgtype);
-	}
-
-	public List findBySex(Object sex) {
-		return findByProperty(SEX, sex);
-	}
-
-	public List findByBankname(Object bankname) {
-		return findByProperty(BANKNAME, bankname);
-	}
-
-	public List findByBanknumber(Object banknumber) {
-		return findByProperty(BANKNUMBER, banknumber);
-	}
-
-	public List findByStatus(Object status) {
-		return findByProperty(STATUS, status);
-	}
-
-	public List findByAcademicdegree(Object academicdegree) {
-		return findByProperty(ACADEMICDEGREE, academicdegree);
-	}
-
-	public List findByAddressarea(Object addressarea) {
-		return findByProperty(ADDRESSAREA, addressarea);
-	}
-
-	public List findByAddress(Object address) {
-		return findByProperty(ADDRESS, address);
-	}
-
-	public List findByMobilenumber(Object mobilenumber) {
-		return findByProperty(MOBILENUMBER, mobilenumber);
-	}
-
-	public List findByShortmobilenumber(Object shortmobilenumber) {
-		return findByProperty(SHORTMOBILENUMBER, shortmobilenumber);
-	}
-
-	public List findBySchoolname(Object schoolname) {
-		return findByProperty(SCHOOLNAME, schoolname);
-	}
-
-	public List findBySpecialization(Object specialization) {
-		return findByProperty(SPECIALIZATION, specialization);
-	}
-
-	public List findByTel(Object tel) {
-		return findByProperty(TEL, tel);
-	}
-
-	public List findByFrontbackflag(Object frontbackflag) {
-		return findByProperty(FRONTBACKFLAG, frontbackflag);
-	}
-
-	public List findByBackjobcomment(Object backjobcomment) {
-		return findByProperty(BACKJOBCOMMENT, backjobcomment);
-	}
-
-	public List findByTelecomlevel(Object telecomlevel) {
-		return findByProperty(TELECOMLEVEL, telecomlevel);
-	}
-
-	public List findByMobilelevel(Object mobilelevel) {
-		return findByProperty(MOBILELEVEL, mobilelevel);
-	}
-
-	public List findByEmployeetype(Object employeetype) {
-		return findByProperty(EMPLOYEETYPE, employeetype);
-	}
-
-	public List findByQualification(Object qualification) {
-		return findByProperty(QUALIFICATION, qualification);
-	}
-
-	public List findByOperatorexpire(Object operatorexpire) {
-		return findByProperty(OPERATOREXPIRE, operatorexpire);
-	}
-
-	public List findByOperatorvalidflag(Object operatorvalidflag) {
-		return findByProperty(OPERATORVALIDFLAG, operatorvalidflag);
-	}
-
-	public List findByAuditexpire(Object auditexpire) {
-		return findByProperty(AUDITEXPIRE, auditexpire);
-	}
-
-	public List findByAuditvalidflag(Object auditvalidflag) {
-		return findByProperty(AUDITVALIDFLAG, auditvalidflag);
-	}
-
-	public List findByRemark(Object remark) {
-		return findByProperty(REMARK, remark);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbEmployee instances");
-		try {
-			String queryString = "from TbEmployee";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbEmployee merge(TbEmployee detachedInstance) {
 		log.debug("merging TbEmployee instance");
 		try {
-			TbEmployee result = (TbEmployee) getSession().merge(
+			TbEmployee result = (TbEmployee) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -343,7 +182,7 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 	public void attachDirty(TbEmployee instance) {
 		log.debug("attaching dirty TbEmployee instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -354,11 +193,21 @@ public class TbEmployeeDAO extends BaseHibernateDAO {
 	public void attachClean(TbEmployee instance) {
 		log.debug("attaching clean TbEmployee instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
 			throw re;
 		}
+	}
+
+	public List<TbEmployee> findByEmployeecode(String useracount) {
+		String sql ="from TbEmployee where employeecode="+useracount;
+		return getHibernateTemplate().find(sql);
+	}
+
+	public List<TbEmployee> findByIdnumber(String useracount) {
+		String sql ="from TbEmployee where idnumber="+useracount;
+		return getHibernateTemplate().find(sql);
 	}
 }

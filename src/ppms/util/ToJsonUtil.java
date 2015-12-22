@@ -1,27 +1,17 @@
 package ppms.util;
 
-import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.net.JarURLConnection;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 import javax.transaction.Transactional;
 
-import ppms.daoimpl.BaseDaoImp;
 import ppms.gason.adapter.TargetStrategy;
+import ppms.genericDao.BaseHibernateDAO;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -80,7 +70,7 @@ public class ToJsonUtil {
 	 * @return
 	 */
 	@Transactional
-	public <T> String toJson(Map<String, List<T>> map ,BaseDaoImp dao) {
+	public <T> String toJson(Map<String, List<T>> map ,BaseHibernateDAO dao) {
 
 		try {
 			List<T> list=null;

@@ -39,7 +39,7 @@ public class OrganizationNjDAO extends BaseHibernateDAO {
 	public void save(OrganizationNj transientInstance) {
 		log.debug("saving OrganizationNj instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -50,7 +50,7 @@ public class OrganizationNjDAO extends BaseHibernateDAO {
 	public void delete(OrganizationNj persistentInstance) {
 		log.debug("deleting OrganizationNj instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -61,7 +61,7 @@ public class OrganizationNjDAO extends BaseHibernateDAO {
 	public OrganizationNj findById(java.lang.Integer id) {
 		log.debug("getting OrganizationNj instance with id: " + id);
 		try {
-			OrganizationNj instance = (OrganizationNj) getSession().get(
+			OrganizationNj instance = (OrganizationNj) getHibernateTemplate().get(
 					"ppms.domain.OrganizationNj", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -70,88 +70,10 @@ public class OrganizationNjDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(OrganizationNj instance) {
-		log.debug("finding OrganizationNj instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.OrganizationNj")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding OrganizationNj instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from OrganizationNj as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByOrgName(Object orgName) {
-		return findByProperty(ORG_NAME, orgName);
-	}
-
-	public List findByAddress(Object address) {
-		return findByProperty(ADDRESS, address);
-	}
-
-	public List findBySuperiorId(Object superiorId) {
-		return findByProperty(SUPERIOR_ID, superiorId);
-	}
-
-	public List findByStatus(Object status) {
-		return findByProperty(STATUS, status);
-	}
-
-	public List findByContactName(Object contactName) {
-		return findByProperty(CONTACT_NAME, contactName);
-	}
-
-	public List findByContactTel(Object contactTel) {
-		return findByProperty(CONTACT_TEL, contactTel);
-	}
-
-	public List findByType(Object type) {
-		return findByProperty(TYPE, type);
-	}
-
-	public List findByRegionId(Object regionId) {
-		return findByProperty(REGION_ID, regionId);
-	}
-
-	public List findByChannelType(Object channelType) {
-		return findByProperty(CHANNEL_TYPE, channelType);
-	}
-
-	public List findAll() {
-		log.debug("finding all OrganizationNj instances");
-		try {
-			String queryString = "from OrganizationNj";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
-
 	public OrganizationNj merge(OrganizationNj detachedInstance) {
 		log.debug("merging OrganizationNj instance");
 		try {
-			OrganizationNj result = (OrganizationNj) getSession().merge(
+			OrganizationNj result = (OrganizationNj) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -164,7 +86,7 @@ public class OrganizationNjDAO extends BaseHibernateDAO {
 	public void attachDirty(OrganizationNj instance) {
 		log.debug("attaching dirty OrganizationNj instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -175,7 +97,7 @@ public class OrganizationNjDAO extends BaseHibernateDAO {
 	public void attachClean(OrganizationNj instance) {
 		log.debug("attaching clean OrganizationNj instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

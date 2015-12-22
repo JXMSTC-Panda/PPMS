@@ -1,7 +1,6 @@
 package ppms.filter;
 
 import java.io.IOException;
-import java.net.URLDecoder;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -11,15 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-<<<<<<< .mine
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSessionContext;
-=======
-import javax.servlet.http.HttpServletResponse;
-
->>>>>>> .theirs
-
-import org.jboss.weld.servlet.HttpSessionBeanStore;
 
 import ppms.shiro.MyRealm;
 import ppms.shiro.MySubject;

@@ -35,7 +35,7 @@ public class TbPointdetailDAO extends BaseHibernateDAO {
 	public void save(TbPointdetail transientInstance) {
 		log.debug("saving TbPointdetail instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -46,7 +46,7 @@ public class TbPointdetailDAO extends BaseHibernateDAO {
 	public void delete(TbPointdetail persistentInstance) {
 		log.debug("deleting TbPointdetail instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -57,7 +57,7 @@ public class TbPointdetailDAO extends BaseHibernateDAO {
 	public TbPointdetail findById(java.lang.String id) {
 		log.debug("getting TbPointdetail instance with id: " + id);
 		try {
-			TbPointdetail instance = (TbPointdetail) getSession().get(
+			TbPointdetail instance = (TbPointdetail) getHibernateTemplate().get(
 					"ppms.domain.TbPointdetail", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -66,72 +66,11 @@ public class TbPointdetailDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbPointdetail instance) {
-		log.debug("finding TbPointdetail instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbPointdetail")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbPointdetail instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbPointdetail as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByOperationname(Object operationname) {
-		return findByProperty(OPERATIONNAME, operationname);
-	}
-
-	public List findByOperationscore(Object operationscore) {
-		return findByProperty(OPERATIONSCORE, operationscore);
-	}
-
-	public List findBySeq(Object seq) {
-		return findByProperty(SEQ, seq);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbPointdetail instances");
-		try {
-			String queryString = "from TbPointdetail";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbPointdetail merge(TbPointdetail detachedInstance) {
 		log.debug("merging TbPointdetail instance");
 		try {
-			TbPointdetail result = (TbPointdetail) getSession().merge(
+			TbPointdetail result = (TbPointdetail) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -144,7 +83,7 @@ public class TbPointdetailDAO extends BaseHibernateDAO {
 	public void attachDirty(TbPointdetail instance) {
 		log.debug("attaching dirty TbPointdetail instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -155,7 +94,7 @@ public class TbPointdetailDAO extends BaseHibernateDAO {
 	public void attachClean(TbPointdetail instance) {
 		log.debug("attaching clean TbPointdetail instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

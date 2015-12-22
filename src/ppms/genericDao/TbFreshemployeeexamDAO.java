@@ -36,7 +36,7 @@ public class TbFreshemployeeexamDAO extends BaseHibernateDAO {
 	public void save(TbFreshemployeeexam transientInstance) {
 		log.debug("saving TbFreshemployeeexam instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -47,7 +47,7 @@ public class TbFreshemployeeexamDAO extends BaseHibernateDAO {
 	public void delete(TbFreshemployeeexam persistentInstance) {
 		log.debug("deleting TbFreshemployeeexam instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -58,7 +58,7 @@ public class TbFreshemployeeexamDAO extends BaseHibernateDAO {
 	public TbFreshemployeeexam findById(java.lang.String id) {
 		log.debug("getting TbFreshemployeeexam instance with id: " + id);
 		try {
-			TbFreshemployeeexam instance = (TbFreshemployeeexam) getSession()
+			TbFreshemployeeexam instance = (TbFreshemployeeexam) getHibernateTemplate()
 					.get("ppms.domain.TbFreshemployeeexam", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -67,72 +67,11 @@ public class TbFreshemployeeexamDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbFreshemployeeexam instance) {
-		log.debug("finding TbFreshemployeeexam instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbFreshemployeeexam")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbFreshemployeeexam instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbFreshemployeeexam as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByExamstage(Object examstage) {
-		return findByProperty(EXAMSTAGE, examstage);
-	}
-
-	public List findByWeek(Object week) {
-		return findByProperty(WEEK, week);
-	}
-
-	public List findByExamscore(Object examscore) {
-		return findByProperty(EXAMSCORE, examscore);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbFreshemployeeexam instances");
-		try {
-			String queryString = "from TbFreshemployeeexam";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbFreshemployeeexam merge(TbFreshemployeeexam detachedInstance) {
 		log.debug("merging TbFreshemployeeexam instance");
 		try {
-			TbFreshemployeeexam result = (TbFreshemployeeexam) getSession()
+			TbFreshemployeeexam result = (TbFreshemployeeexam) getHibernateTemplate()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -145,7 +84,7 @@ public class TbFreshemployeeexamDAO extends BaseHibernateDAO {
 	public void attachDirty(TbFreshemployeeexam instance) {
 		log.debug("attaching dirty TbFreshemployeeexam instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -156,7 +95,7 @@ public class TbFreshemployeeexamDAO extends BaseHibernateDAO {
 	public void attachClean(TbFreshemployeeexam instance) {
 		log.debug("attaching clean TbFreshemployeeexam instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

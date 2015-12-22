@@ -26,7 +26,8 @@
 			<value>oracle.jdbc.driver.OracleDriver</value>
 		</property>
 		<property name="jdbcUrl">
-			<value>jdbc:oracle:thin:@192.168.50.2:1521:orcl</value>		</property>
+			<value>jdbc:oracle:thin:@192.168.50.25:1521:orcl</value>		
+		</property>
 		<property name="user">
 			<value>ppmsuser</value>
 		</property>
@@ -37,10 +38,10 @@
 			<value>15</value>
 		</property>
 		<property name="minPoolSize">
-			<value>1</value>
+			<value>5</value>
 		</property>
 		<property name="initialPoolSize">
-			<value>1</value>
+			<value>5</value>
 		</property>
 		<property name="maxIdleTime">
 			<value>20</value>
@@ -115,18 +116,16 @@
 		</property>
 	</bean>
 
-	<!--开启注解方式 -->
-	<context:annotation-config />
-	<!-- 使用注解注入配置自动装箱配置 -->
-	<bean
-		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
-
-	<!-- 配置事务管理器 -->
+	
+	<!-- 定义事务管理器 -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="baseHibernateDAO" class="ppms.genericDao.BaseHibernateDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<!-- 配置事务的方式，注解 -->
+	<!-- 支持 @Transactional 标记 -->
 	<tx:annotation-driven transaction-manager="transactionManager"
 		proxy-target-class="true" />
 </beans>

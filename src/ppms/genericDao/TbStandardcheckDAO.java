@@ -33,7 +33,7 @@ public class TbStandardcheckDAO extends BaseHibernateDAO {
 	public void save(TbStandardcheck transientInstance) {
 		log.debug("saving TbStandardcheck instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -44,7 +44,7 @@ public class TbStandardcheckDAO extends BaseHibernateDAO {
 	public void delete(TbStandardcheck persistentInstance) {
 		log.debug("deleting TbStandardcheck instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -55,7 +55,7 @@ public class TbStandardcheckDAO extends BaseHibernateDAO {
 	public TbStandardcheck findById(java.lang.String id) {
 		log.debug("getting TbStandardcheck instance with id: " + id);
 		try {
-			TbStandardcheck instance = (TbStandardcheck) getSession().get(
+			TbStandardcheck instance = (TbStandardcheck) getHibernateTemplate().get(
 					"ppms.domain.TbStandardcheck", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -64,64 +64,11 @@ public class TbStandardcheckDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbStandardcheck instance) {
-		log.debug("finding TbStandardcheck instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbStandardcheck")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbStandardcheck instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbStandardcheck as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByCheckscore(Object checkscore) {
-		return findByProperty(CHECKSCORE, checkscore);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbStandardcheck instances");
-		try {
-			String queryString = "from TbStandardcheck";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbStandardcheck merge(TbStandardcheck detachedInstance) {
 		log.debug("merging TbStandardcheck instance");
 		try {
-			TbStandardcheck result = (TbStandardcheck) getSession().merge(
+			TbStandardcheck result = (TbStandardcheck) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -134,7 +81,7 @@ public class TbStandardcheckDAO extends BaseHibernateDAO {
 	public void attachDirty(TbStandardcheck instance) {
 		log.debug("attaching dirty TbStandardcheck instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -145,7 +92,7 @@ public class TbStandardcheckDAO extends BaseHibernateDAO {
 	public void attachClean(TbStandardcheck instance) {
 		log.debug("attaching clean TbStandardcheck instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

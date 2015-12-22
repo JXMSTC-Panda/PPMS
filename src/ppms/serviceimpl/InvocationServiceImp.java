@@ -37,7 +37,7 @@ public class InvocationServiceImp implements InvocationService {
 	@Override
 	public List<OrganizationNj> getOrganizations() {
 
-		return orgDao.findAll();
+		return orgDao.findAll(new OrganizationNj());
 	}
 
 	@Override

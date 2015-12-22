@@ -41,7 +41,7 @@ public class OperatorNjDAO extends BaseHibernateDAO {
 	public void save(OperatorNj transientInstance) {
 		log.debug("saving OperatorNj instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -52,7 +52,7 @@ public class OperatorNjDAO extends BaseHibernateDAO {
 	public void delete(OperatorNj persistentInstance) {
 		log.debug("deleting OperatorNj instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -63,7 +63,7 @@ public class OperatorNjDAO extends BaseHibernateDAO {
 	public OperatorNj findById(java.lang.Integer id) {
 		log.debug("getting OperatorNj instance with id: " + id);
 		try {
-			OperatorNj instance = (OperatorNj) getSession().get(
+			OperatorNj instance = (OperatorNj) getHibernateTemplate().get(
 					"ppms.domain.OperatorNj", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -72,124 +72,4 @@ public class OperatorNjDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(OperatorNj instance) {
-		log.debug("finding OperatorNj instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.OperatorNj")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding OperatorNj instance with property: " + propertyName
-				+ ", value: " + value);
-		try {
-			String queryString = "from OperatorNj as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByName(Object name) {
-		return findByProperty(NAME, name);
-	}
-
-	public List findBySex(Object sex) {
-		return findByProperty(SEX, sex);
-	}
-
-	public List findByAddr(Object addr) {
-		return findByProperty(ADDR, addr);
-	}
-
-	public List findByTelephone(Object telephone) {
-		return findByProperty(TELEPHONE, telephone);
-	}
-
-	public List findByOffice(Object office) {
-		return findByProperty(OFFICE, office);
-	}
-
-	public List findByStatusid(Object statusid) {
-		return findByProperty(STATUSID, statusid);
-	}
-
-	public List findByMaxlogintimes(Object maxlogintimes) {
-		return findByProperty(MAXLOGINTIMES, maxlogintimes);
-	}
-
-	public List findByCurrlogintimes(Object currlogintimes) {
-		return findByProperty(CURRLOGINTIMES, currlogintimes);
-	}
-
-	public List findByEmpno(Object empno) {
-		return findByProperty(EMPNO, empno);
-	}
-
-	public List findByType(Object type) {
-		return findByProperty(TYPE, type);
-	}
-
-	public List findByMobile(Object mobile) {
-		return findByProperty(MOBILE, mobile);
-	}
-
-	public List findAll() {
-		log.debug("finding all OperatorNj instances");
-		try {
-			String queryString = "from OperatorNj";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
-
-	public OperatorNj merge(OperatorNj detachedInstance) {
-		log.debug("merging OperatorNj instance");
-		try {
-			OperatorNj result = (OperatorNj) getSession().merge(
-					detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public void attachDirty(OperatorNj instance) {
-		log.debug("attaching dirty OperatorNj instance");
-		try {
-			getSession().saveOrUpdate(instance);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
-	public void attachClean(OperatorNj instance) {
-		log.debug("attaching clean OperatorNj instance");
-		try {
-			getSession().lock(instance, LockMode.NONE);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
 }
