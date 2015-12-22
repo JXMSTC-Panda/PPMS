@@ -18,8 +18,6 @@ import ppms.serviceimpl.EmployeeServiceImp;
 public class MySubject {
 
 	@Autowired
-	AuthoritySrviceImp authoritySrviceImp;
-	@Autowired
 	EmployeeServiceImp employeeServiceImp;
 	@Autowired
 	userBaseInfoDao baseInfoDao;

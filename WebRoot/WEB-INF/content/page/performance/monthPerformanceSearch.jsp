@@ -173,18 +173,6 @@
 												<td>${pers.performancescore }</td>
 												<td>${pers.remark }</td>
 
-
-
-
-
-
-
-
-
-
-
-
-
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
 														<a class="green"
@@ -262,14 +250,12 @@
 
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
-	<script type="text/javascript">
 		$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
 			myEachPopover("orgName", 0, 5);
 			myEachPopover("pIDNumber", 0, 6);
 			myEachPopover("pDate", 0, 10);
 		});
-
 		jQuery(function($) {
 			//initiate dataTables plugin
 			var oTable1 = $('#dynamic-table')

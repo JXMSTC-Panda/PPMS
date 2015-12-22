@@ -67,6 +67,16 @@
 		<script src="${pageContext.request.contextPath}/assets/js/html5shiv.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/respond.js"></script>
 		<![endif]-->
+		
+		
+		<script type="text/javascript">
+		function getEmployee(obj) {
+		top.window.location = "getEmployee.do?backUrl=performance.year.yearPerformanceSingle.do&employeeid="
+				+ obj.value;
+
+	}
+		
+		</script>
 </head>
 
 <body class="no-skin">

@@ -171,11 +171,7 @@
 																<input readonly="" type="text"
 																	class="col-xs-10 col-sm-5" id="form-input-readonly"
 																	value="${requestScope.tbPerformance.get(0).tbEmployee.employeename}"
-																	name="performance.tbEmployee.employeename" /> <span
-																	class="help-inline col-xs-12 col-sm-7">
-																	<button class="btn btn-info" type="button"
-																		onClick="top.window.location='performacesEmployeeSelect.do'">选择员工</button>
-																</span>
+																	name="performance.tbEmployee.employeename" />
 															</div>
 														</div>
 														<div class="form-group">
