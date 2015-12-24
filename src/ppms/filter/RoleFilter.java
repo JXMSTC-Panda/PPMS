@@ -57,14 +57,13 @@ public class RoleFilter implements Filter {
 					urlArray[0])) {
 				try {
 					
-					System.out.println("不放行。。。。。。。。。。。。。。。。。。。。。。。");
 					chain.doFilter(httpRequest, httpResponse);
 					System.out.println("放行。。。。。。。。。。。。。。。。。。。。。。。");
 				} catch (Exception e) { // TODO: handle exception
 					e.printStackTrace();
 				}
 			} else {
-
+				System.out.println("不放行。。。。。。。。。。。。。。。。。。。。。。。");
 				request.getRequestDispatcher("WEB-INF/content/page/error.jsp")
 						.forward(httpRequest, httpResponse);
 				return;

@@ -81,4 +81,11 @@ public class MonitorAction extends BaseInit{
 			return "error";
 		}
 	}
+	@Action(value ="standardVisit.monitor.monitorBatch", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/standardVisit/monitorBatch.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String batch(){
+		
+		return "success";
+	}
 }

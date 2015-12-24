@@ -229,7 +229,7 @@ public class DownloadAction extends ActionSupport {
 				newlist=list;
 			}
 			// 将数据生成Excel文件
-			HSSFWorkbook workbook = new CommonExcelParser(dao, exception)
+			HSSFWorkbook workbook = new CommonExcelParser(dao)
 					.toExcel2(newlist, fileName);
 			response.setHeader("Content-Disposition", "attachment;filename="
 					+ fileName);

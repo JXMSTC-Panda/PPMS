@@ -586,7 +586,7 @@
 						{
 							paramName : "file", // The name that will be used to transfer the file
 							maxFilesize : 1024, // MB
-							url : "upload.do?expect=标准化成绩批量导入模板.xls",
+							url : "upload.do?expect=暗访检查成绩批量导入模板.xls",
 							addRemoveLinks : true,
 							dictDefaultMessage : '<span class="bigger-150 bolder"><i class="ace-icon fa fa-caret-right red"></i> 拖拽文件</span> 上传 \
 				<span class="smaller-80 grey">(或点我)</span> <br /> \

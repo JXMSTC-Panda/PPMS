@@ -101,7 +101,7 @@ public class TbMasterDAO extends BaseHibernateDAO {
 	}
 
 	public List<Object> findByType(String string) {
-		String sql="from TbMaster where type="+string;
+		String sql="from TbMaster where type='"+string+"'";
 		return getHibernateTemplate().find(sql);
 	}
 }
