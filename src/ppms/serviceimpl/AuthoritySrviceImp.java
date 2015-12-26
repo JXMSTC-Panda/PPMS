@@ -47,7 +47,7 @@ public class AuthoritySrviceImp implements AuthorityService {
 	@Override
 	public List<TbRole> findAllRole() {
 		// 查询所有角色List
-		List<TbRole> tbRoles = tbRoleDAO.findAll();
+		List<TbRole> tbRoles = tbRoleDAO.findAll(new TbRole());
 		return tbRoles;
 	}
 
@@ -68,7 +68,7 @@ public class AuthoritySrviceImp implements AuthorityService {
 	public List<TbSystemfunction> findAllSystemfunctions() {
 		// 查询系统功能list
 		List<TbSystemfunction> tbSystemfunctions = new ArrayList<TbSystemfunction>();
-		tbSystemfunctions = tbSystemfunctionDAO.findAll();
+		tbSystemfunctions = tbSystemfunctionDAO.findAll(new TbSystemfunction());
 		MyRealm.setTbSystemfunctions(tbSystemfunctions);
 		return tbSystemfunctions;
 	}
@@ -142,7 +142,7 @@ public class AuthoritySrviceImp implements AuthorityService {
 	@Override
 	public List<TbRolefunction> findAllRolefunctions() {
 		// TODO Auto-generated method stub
-		List<TbRolefunction> tbRolefunctions = tbRolefunctionDAO.findAll();
+		List<TbRolefunction> tbRolefunctions = tbRolefunctionDAO.findAll(new TbRolefunction());
 		
 		return tbRolefunctions;
 	}

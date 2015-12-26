@@ -4,20 +4,19 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.SimpleExpression;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import ppms.domain.TbInnovation;
+import ppms.genericDao.BaseHibernateDAO;
 
 /**
  * dao层的基本类
@@ -27,21 +26,15 @@ import ppms.domain.TbInnovation;
  * @function sessionFactory实例注入
  * 
  */
-@Repository
-public class BaseDaoImp extends HibernateDaoSupport {
+@Component
+public class BaseDaoImp extends BaseHibernateDAO{
 
+	
 	public BaseDaoImp() {
 
+		
 		System.out.println(this.getClass().getName());
 	}
-
-	@Autowired
-	public void setMySessionFactory(SessionFactory sessionFactory) {
-
-		Map map = sessionFactory.getAllClassMetadata();
-		super.setSessionFactory(sessionFactory);
-	}
-
 	/**
 	 * 将对象插入数据库
 	 * 
@@ -72,7 +65,8 @@ public class BaseDaoImp extends HibernateDaoSupport {
 	 */
 	public <T> List<T> findAll(T obj) {
 
-		return (List<T>) getHibernateTemplate().findByExample(obj);
+		String sql="from "+obj.getClass().getSimpleName();
+		return (List<T>) getHibernateTemplate().find(sql);
 	}
 
 	/**
@@ -99,9 +93,9 @@ public class BaseDaoImp extends HibernateDaoSupport {
 	 */
 	public <T> List<T> getEntitiestNotLazy(T t, String[] fields,
 			SimpleExpression eq) {
-
+		org.hibernate.Session session = getSession();
 		try {
-			Criteria criteria = getSession().createCriteria(t.getClass());
+			Criteria criteria = session.createCriteria(t.getClass());
 
 			if (fields != null) {
 				for (String string : fields) {
@@ -115,6 +109,8 @@ public class BaseDaoImp extends HibernateDaoSupport {
 			return criteria.list();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			session.close();
 		}
 		return null;
 	}

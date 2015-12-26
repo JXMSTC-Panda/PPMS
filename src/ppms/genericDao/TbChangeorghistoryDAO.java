@@ -33,7 +33,7 @@ public class TbChangeorghistoryDAO extends BaseHibernateDAO {
 	public void save(TbChangeorghistory transientInstance) {
 		log.debug("saving TbChangeorghistory instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -44,7 +44,7 @@ public class TbChangeorghistoryDAO extends BaseHibernateDAO {
 	public void delete(TbChangeorghistory persistentInstance) {
 		log.debug("deleting TbChangeorghistory instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -55,7 +55,7 @@ public class TbChangeorghistoryDAO extends BaseHibernateDAO {
 	public TbChangeorghistory findById(java.lang.String id) {
 		log.debug("getting TbChangeorghistory instance with id: " + id);
 		try {
-			TbChangeorghistory instance = (TbChangeorghistory) getSession()
+			TbChangeorghistory instance = (TbChangeorghistory) getHibernateTemplate()
 					.get("ppms.domain.TbChangeorghistory", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -64,60 +64,11 @@ public class TbChangeorghistoryDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbChangeorghistory instance) {
-		log.debug("finding TbChangeorghistory instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbChangeorghistory")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbChangeorghistory instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbChangeorghistory as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbChangeorghistory instances");
-		try {
-			String queryString = "from TbChangeorghistory";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbChangeorghistory merge(TbChangeorghistory detachedInstance) {
 		log.debug("merging TbChangeorghistory instance");
 		try {
-			TbChangeorghistory result = (TbChangeorghistory) getSession()
+			TbChangeorghistory result = (TbChangeorghistory) getHibernateTemplate()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -130,7 +81,7 @@ public class TbChangeorghistoryDAO extends BaseHibernateDAO {
 	public void attachDirty(TbChangeorghistory instance) {
 		log.debug("attaching dirty TbChangeorghistory instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -141,7 +92,7 @@ public class TbChangeorghistoryDAO extends BaseHibernateDAO {
 	public void attachClean(TbChangeorghistory instance) {
 		log.debug("attaching clean TbChangeorghistory instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

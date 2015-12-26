@@ -61,7 +61,7 @@ public class TbMonthexamDAO extends BaseHibernateDAO {
 	public void save(TbMonthexam transientInstance) {
 		log.debug("saving TbMonthexam instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -72,7 +72,7 @@ public class TbMonthexamDAO extends BaseHibernateDAO {
 	public void delete(TbMonthexam persistentInstance) {
 		log.debug("deleting TbMonthexam instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -83,7 +83,7 @@ public class TbMonthexamDAO extends BaseHibernateDAO {
 	public TbMonthexam findById(java.lang.String id) {
 		log.debug("getting TbMonthexam instance with id: " + id);
 		try {
-			TbMonthexam instance = (TbMonthexam) getSession().get(
+			TbMonthexam instance = (TbMonthexam) getHibernateTemplate().get(
 					"ppms.domain.TbMonthexam", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -92,64 +92,11 @@ public class TbMonthexamDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbMonthexam instance) {
-		log.debug("finding TbMonthexam instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbMonthexam")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbMonthexam instance with property: " + propertyName
-				+ ", value: " + value);
-		try {
-			String queryString = "from TbMonthexam as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByExamscore(Object examscore) {
-		return findByProperty(EXAMSCORE, examscore);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbMonthexam instances");
-		try {
-			String queryString = "from TbMonthexam";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbMonthexam merge(TbMonthexam detachedInstance) {
 		log.debug("merging TbMonthexam instance");
 		try {
-			TbMonthexam result = (TbMonthexam) getSession().merge(
+			TbMonthexam result = (TbMonthexam) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -162,7 +109,7 @@ public class TbMonthexamDAO extends BaseHibernateDAO {
 	public void attachDirty(TbMonthexam instance) {
 		log.debug("attaching dirty TbMonthexam instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -173,7 +120,7 @@ public class TbMonthexamDAO extends BaseHibernateDAO {
 	public void attachClean(TbMonthexam instance) {
 		log.debug("attaching clean TbMonthexam instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

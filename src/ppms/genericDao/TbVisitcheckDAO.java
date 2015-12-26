@@ -47,7 +47,7 @@ public class TbVisitcheckDAO extends BaseHibernateDAO {
 	public void delete(TbVisitcheck persistentInstance) {
 		log.debug("deleting TbVisitcheck instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -58,7 +58,7 @@ public class TbVisitcheckDAO extends BaseHibernateDAO {
 	public TbVisitcheck findById(java.lang.String id) {
 		log.debug("getting TbVisitcheck instance with id: " + id);
 		try {
-			TbVisitcheck instance = (TbVisitcheck) getSession().get(
+			TbVisitcheck instance = (TbVisitcheck) getHibernateTemplate().get(
 					"ppms.domain.TbVisitcheck", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -67,76 +67,11 @@ public class TbVisitcheckDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbVisitcheck instance) {
-		log.debug("finding TbVisitcheck instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbVisitcheck")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbVisitcheck instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbVisitcheck as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByFirstscore(Object firstscore) {
-		return findByProperty(FIRSTSCORE, firstscore);
-	}
-
-	public List findBySecondscore(Object secondscore) {
-		return findByProperty(SECONDSCORE, secondscore);
-	}
-
-	public List findByConsistencyscore(Object consistencyscore) {
-		return findByProperty(CONSISTENCYSCORE, consistencyscore);
-	}
-
-	public List findByAveragescore(Object averagescore) {
-		return findByProperty(AVERAGESCORE, averagescore);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbVisitcheck instances");
-		try {
-			String queryString = "from TbVisitcheck";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbVisitcheck merge(TbVisitcheck detachedInstance) {
 		log.debug("merging TbVisitcheck instance");
 		try {
-			TbVisitcheck result = (TbVisitcheck) getSession().merge(
+			TbVisitcheck result = (TbVisitcheck) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -149,7 +84,7 @@ public class TbVisitcheckDAO extends BaseHibernateDAO {
 	public void attachDirty(TbVisitcheck instance) {
 		log.debug("attaching dirty TbVisitcheck instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -160,7 +95,7 @@ public class TbVisitcheckDAO extends BaseHibernateDAO {
 	public void attachClean(TbVisitcheck instance) {
 		log.debug("attaching clean TbVisitcheck instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

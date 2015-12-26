@@ -46,7 +46,7 @@ public class TbPointDAO extends BaseHibernateDAO {
 	public void save(TbPoint transientInstance) {
 		log.debug("saving TbPoint instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -57,7 +57,7 @@ public class TbPointDAO extends BaseHibernateDAO {
 	public void delete(TbPoint persistentInstance) {
 		log.debug("deleting TbPoint instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -68,7 +68,7 @@ public class TbPointDAO extends BaseHibernateDAO {
 	public TbPoint findById(java.lang.String id) {
 		log.debug("getting TbPoint instance with id: " + id);
 		try {
-			TbPoint instance = (TbPoint) getSession().get(
+			TbPoint instance = (TbPoint) getHibernateTemplate().get(
 					"ppms.domain.TbPoint", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -77,115 +77,11 @@ public class TbPointDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbPoint instance) {
-		log.debug("finding TbPoint instance by example");
-		try {
-			List results = getSession().createCriteria("ppms.domain.TbPoint")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbPoint instance with property: " + propertyName
-				+ ", value: " + value);
-		try {
-			String queryString = "from TbPoint as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByOrgid(Object orgid) {
-		return findByProperty(ORGID, orgid);
-	}
-
-	public List findByOrgtype(Object orgtype) {
-		return findByProperty(ORGTYPE, orgtype);
-	}
-
-	public List findByEmployeepoint(Object employeepoint) {
-		return findByProperty(EMPLOYEEPOINT, employeepoint);
-	}
-
-	public List findByEmployeeperformance(Object employeeperformance) {
-		return findByProperty(EMPLOYEEPERFORMANCE, employeeperformance);
-	}
-
-	public List findByOrgperformance(Object orgperformance) {
-		return findByProperty(ORGPERFORMANCE, orgperformance);
-	}
-
-	public List findByRegulatepoint(Object regulatepoint) {
-		return findByProperty(REGULATEPOINT, regulatepoint);
-	}
-
-	public List findByRankseq(Object rankseq) {
-		return findByProperty(RANKSEQ, rankseq);
-	}
-
-	public List findByEncouragementmoney(Object encouragementmoney) {
-		return findByProperty(ENCOURAGEMENTMONEY, encouragementmoney);
-	}
-
-	public List findByTax(Object tax) {
-		return findByProperty(TAX, tax);
-	}
-
-	public List findByNetincome(Object netincome) {
-		return findByProperty(NETINCOME, netincome);
-	}
-
-	public List findByOrglevel(Object orglevel) {
-		return findByProperty(ORGLEVEL, orglevel);
-	}
-
-	public List findByBreachdeductpoint(Object breachdeductpoint) {
-		return findByProperty(BREACHDEDUCTPOINT, breachdeductpoint);
-	}
-
-	public List findByLastpoint(Object lastpoint) {
-		return findByProperty(LASTPOINT, lastpoint);
-	}
-
-	public List findByDeducttax(Object deducttax) {
-		return findByProperty(DEDUCTTAX, deducttax);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbPoint instances");
-		try {
-			String queryString = "from TbPoint";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbPoint merge(TbPoint detachedInstance) {
 		log.debug("merging TbPoint instance");
 		try {
-			TbPoint result = (TbPoint) getSession().merge(detachedInstance);
+			TbPoint result = (TbPoint) getHibernateTemplate().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -197,7 +93,7 @@ public class TbPointDAO extends BaseHibernateDAO {
 	public void attachDirty(TbPoint instance) {
 		log.debug("attaching dirty TbPoint instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -208,7 +104,7 @@ public class TbPointDAO extends BaseHibernateDAO {
 	public void attachClean(TbPoint instance) {
 		log.debug("attaching clean TbPoint instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

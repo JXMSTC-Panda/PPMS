@@ -36,7 +36,7 @@ public class TbSystemfunctionDAO extends BaseHibernateDAO {
 	public void save(TbSystemfunction transientInstance) {
 		log.debug("saving TbSystemfunction instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -47,7 +47,7 @@ public class TbSystemfunctionDAO extends BaseHibernateDAO {
 	public void delete(TbSystemfunction persistentInstance) {
 		log.debug("deleting TbSystemfunction instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -58,7 +58,7 @@ public class TbSystemfunctionDAO extends BaseHibernateDAO {
 	public TbSystemfunction findById(java.lang.String id) {
 		log.debug("getting TbSystemfunction instance with id: " + id);
 		try {
-			TbSystemfunction instance = (TbSystemfunction) getSession().get(
+			TbSystemfunction instance = (TbSystemfunction) getHibernateTemplate().get(
 					"ppms.TbSystemfunction", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -67,75 +67,11 @@ public class TbSystemfunctionDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbSystemfunction instance) {
-		log.debug("finding TbSystemfunction instance by example");
-		try {
-			List results = getSession().createCriteria("ppms.TbSystemfunction")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbSystemfunction instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbSystemfunction as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByFunctionname(Object functionname) {
-		return findByProperty(FUNCTIONNAME, functionname);
-	}
-
-	public List findByFunctiontype(Object functiontype) {
-		return findByProperty(FUNCTIONTYPE, functiontype);
-	}
-
-	public List findByFunctionurl(Object functionurl) {
-		return findByProperty(FUNCTIONURL, functionurl);
-	}
-
-	public List findByParentfunctionid(Object parentfunctionid) {
-		return findByProperty(PARENTFUNCTIONID, parentfunctionid);
-	}
-
-	public List findByScope(Object scope) {
-		return findByProperty(SCOPE, scope);
-	}
-
-	public List findBySeq(Object seq) {
-		return findByProperty(SEQ, seq);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbSystemfunction instances");
-		try {
-			String queryString = "from TbSystemfunction";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbSystemfunction merge(TbSystemfunction detachedInstance) {
 		log.debug("merging TbSystemfunction instance");
 		try {
-			TbSystemfunction result = (TbSystemfunction) getSession().merge(
+			TbSystemfunction result = (TbSystemfunction) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -148,7 +84,7 @@ public class TbSystemfunctionDAO extends BaseHibernateDAO {
 	public void attachDirty(TbSystemfunction instance) {
 		log.debug("attaching dirty TbSystemfunction instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -159,7 +95,7 @@ public class TbSystemfunctionDAO extends BaseHibernateDAO {
 	public void attachClean(TbSystemfunction instance) {
 		log.debug("attaching clean TbSystemfunction instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

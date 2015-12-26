@@ -62,7 +62,7 @@ public class MonthperformanceopenServiceImp implements
 	@Override
 	public List<TbMonthperformanceopen> getMonthperformanceopens() {
 		// TODO Auto-generated method stub
-		return dao.findAll();
+		return dao.findAll(new TbMonthperformanceopen());
 	}
 
 }

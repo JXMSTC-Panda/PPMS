@@ -34,7 +34,7 @@ public class CUserInfoDAO extends BaseHibernateDAO {
 	public void save(CUserInfo transientInstance) {
 		log.debug("saving CUserInfo instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -45,7 +45,7 @@ public class CUserInfoDAO extends BaseHibernateDAO {
 	public void delete(CUserInfo persistentInstance) {
 		log.debug("deleting CUserInfo instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -56,102 +56,11 @@ public class CUserInfoDAO extends BaseHibernateDAO {
 	public CUserInfo findById(java.math.BigDecimal id) {
 		log.debug("getting CUserInfo instance with id: " + id);
 		try {
-			CUserInfo instance = (CUserInfo) getSession().get(
+			CUserInfo instance = (CUserInfo) getHibernateTemplate().get(
 					"ppms.domain.CUserInfo", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
-			throw re;
-		}
-	}
-
-	public List findByExample(CUserInfo instance) {
-		log.debug("finding CUserInfo instance by example");
-		try {
-			List results = getSession().createCriteria("ppms.domain.CUserInfo")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding CUserInfo instance with property: " + propertyName
-				+ ", value: " + value);
-		try {
-			String queryString = "from CUserInfo as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByOpername(Object opername) {
-		return findByProperty(OPERNAME, opername);
-	}
-
-	public List findByOperpass(Object operpass) {
-		return findByProperty(OPERPASS, operpass);
-	}
-
-	public List findByRoleid(Object roleid) {
-		return findByProperty(ROLEID, roleid);
-	}
-
-	public List findByZwid(Object zwid) {
-		return findByProperty(ZWID, zwid);
-	}
-
-	public List findAll() {
-		log.debug("finding all CUserInfo instances");
-		try {
-			String queryString = "from CUserInfo";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
-
-	public CUserInfo merge(CUserInfo detachedInstance) {
-		log.debug("merging CUserInfo instance");
-		try {
-			CUserInfo result = (CUserInfo) getSession().merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public void attachDirty(CUserInfo instance) {
-		log.debug("attaching dirty CUserInfo instance");
-		try {
-			getSession().saveOrUpdate(instance);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
-	public void attachClean(CUserInfo instance) {
-		log.debug("attaching clean CUserInfo instance");
-		try {
-			getSession().lock(instance, LockMode.NONE);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
 			throw re;
 		}
 	}

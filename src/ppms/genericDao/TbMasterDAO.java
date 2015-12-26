@@ -34,7 +34,7 @@ public class TbMasterDAO extends BaseHibernateDAO {
 	public void save(TbMaster transientInstance) {
 		log.debug("saving TbMaster instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -45,7 +45,7 @@ public class TbMasterDAO extends BaseHibernateDAO {
 	public void delete(TbMaster persistentInstance) {
 		log.debug("deleting TbMaster instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -56,7 +56,7 @@ public class TbMasterDAO extends BaseHibernateDAO {
 	public TbMaster findById(java.lang.String id) {
 		log.debug("getting TbMaster instance with id: " + id);
 		try {
-			TbMaster instance = (TbMaster) getSession().get(
+			TbMaster instance = (TbMaster) getHibernateTemplate().get(
 					"ppms.domain.TbMaster", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -65,67 +65,11 @@ public class TbMasterDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbMaster instance) {
-		log.debug("finding TbMaster instance by example");
-		try {
-			List results = getSession().createCriteria("ppms.domain.TbMaster")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbMaster instance with property: " + propertyName
-				+ ", value: " + value);
-		try {
-			String queryString = "from TbMaster as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByType(Object type) {
-		return findByProperty(TYPE, type);
-	}
-
-	public List findByKey(Object key) {
-		return findByProperty(KEY, key);
-	}
-
-	public List findByValue(Object value) {
-		return findByProperty(VALUE, value);
-	}
-
-	public List findBySeq(Object seq) {
-		return findByProperty(SEQ, seq);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbMaster instances");
-		try {
-			String queryString = "from TbMaster";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbMaster merge(TbMaster detachedInstance) {
 		log.debug("merging TbMaster instance");
 		try {
-			TbMaster result = (TbMaster) getSession().merge(detachedInstance);
+			TbMaster result = (TbMaster) getHibernateTemplate().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -137,7 +81,7 @@ public class TbMasterDAO extends BaseHibernateDAO {
 	public void attachDirty(TbMaster instance) {
 		log.debug("attaching dirty TbMaster instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -148,11 +92,16 @@ public class TbMasterDAO extends BaseHibernateDAO {
 	public void attachClean(TbMaster instance) {
 		log.debug("attaching clean TbMaster instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
 			throw re;
 		}
+	}
+
+	public List<Object> findByType(String string) {
+		String sql="from TbMaster where type='"+string+"'";
+		return getHibernateTemplate().find(sql);
 	}
 }

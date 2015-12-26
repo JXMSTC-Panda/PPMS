@@ -473,7 +473,7 @@
 																	<select class="form-control" id="form-field-select-1"
 																		name="tbEmployee.tbPost.postid">
 																		<option value=""></option>
-																		<c:forEach items="${requestScope.posts}" var="post">
+																		<c:forEach items="${sessionScope.posts}" var="post">
 																			<option value="${post.postid}">
 																				<c:out value="${post.postname }"></c:out>
 																			</option>
@@ -490,7 +490,7 @@
 																	<select class="form-control" id="form-field-select-1"
 																		name="tbEmployee.tbJob.jobid">
 																		<option value=""></option>
-																		<c:forEach items="${requestScope.jobs}" var="job">
+																		<c:forEach items="${sessionScope.jobs}" var="job">
 																			<option value="${job.jobid}">
 																				<c:out value="${job.jobname }"></c:out>
 																			</option>
@@ -507,7 +507,7 @@
 																	<select class="form-control" id="form-field-select-1"
 																		name="tbEmployee.employeetype">
 																		<option value=""></option>
-																		<c:forEach items="${requestScope.employees}"
+																		<c:forEach items="${sessionScope.employees}"
 																			var="employee">
 																			<option value="${employee.employeeid}">
 																				<c:out value="${employee.employeetype}"></c:out>
@@ -525,7 +525,7 @@
 																	<select class="form-control" id="form-field-select-1"
 																		name="tbEmployee.tbRole.roleid">
 																		<option value=""></option>
-																		<c:forEach items="${requestScope.roles}" var="role">
+																		<c:forEach items="${sessionScope.roles}" var="role">
 																			<option value="${role.roleid}">
 																				<c:out value="${role.rolename}"></c:out>
 																			</option>

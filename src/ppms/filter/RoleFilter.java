@@ -1,7 +1,6 @@
 package ppms.filter;
 
 import java.io.IOException;
-import java.net.URLDecoder;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -12,8 +11,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.jboss.weld.servlet.HttpSessionBeanStore;
 
 import ppms.shiro.MyRealm;
 import ppms.shiro.MySubject;
@@ -60,14 +57,13 @@ public class RoleFilter implements Filter {
 					urlArray[0])) {
 				try {
 					
-					System.out.println("不放行。。。。。。。。。。。。。。。。。。。。。。。");
 					chain.doFilter(httpRequest, httpResponse);
 					System.out.println("放行。。。。。。。。。。。。。。。。。。。。。。。");
 				} catch (Exception e) { // TODO: handle exception
 					e.printStackTrace();
 				}
 			} else {
-
+				System.out.println("不放行。。。。。。。。。。。。。。。。。。。。。。。");
 				request.getRequestDispatcher("WEB-INF/content/page/error.jsp")
 						.forward(httpRequest, httpResponse);
 				return;

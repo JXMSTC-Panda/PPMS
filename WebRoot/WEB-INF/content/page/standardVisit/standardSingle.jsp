@@ -230,12 +230,12 @@
 								</div>
 							</div>
 							</form>
-							<%
+						 <%
 								if (request.getSession().getAttribute("organizationNj") != null) {
 
 									request.getSession().removeAttribute("organizationNj");
 								}
-							%>
+							%> 
 						</div>
 						<!-- /.col -->
 					</div>

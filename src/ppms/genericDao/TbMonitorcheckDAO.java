@@ -45,7 +45,7 @@ public class TbMonitorcheckDAO extends BaseHibernateDAO {
 	public void delete(TbMonitorcheck persistentInstance) {
 		log.debug("deleting TbMonitorcheck instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -56,7 +56,7 @@ public class TbMonitorcheckDAO extends BaseHibernateDAO {
 	public TbMonitorcheck findById(java.lang.String id) {
 		log.debug("getting TbMonitorcheck instance with id: " + id);
 		try {
-			TbMonitorcheck instance = (TbMonitorcheck) getSession().get(
+			TbMonitorcheck instance = (TbMonitorcheck) getHibernateTemplate().get(
 					"ppms.domain.TbMonitorcheck", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -65,68 +65,11 @@ public class TbMonitorcheckDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbMonitorcheck instance) {
-		log.debug("finding TbMonitorcheck instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbMonitorcheck")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbMonitorcheck instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbMonitorcheck as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByChecktype(Object checktype) {
-		return findByProperty(CHECKTYPE, checktype);
-	}
-
-	public List findByDetail(Object detail) {
-		return findByProperty(DETAIL, detail);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbMonitorcheck instances");
-		try {
-			String queryString = "from TbMonitorcheck";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbMonitorcheck merge(TbMonitorcheck detachedInstance) {
 		log.debug("merging TbMonitorcheck instance");
 		try {
-			TbMonitorcheck result = (TbMonitorcheck) getSession().merge(
+			TbMonitorcheck result = (TbMonitorcheck) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -139,7 +82,7 @@ public class TbMonitorcheckDAO extends BaseHibernateDAO {
 	public void attachDirty(TbMonitorcheck instance) {
 		log.debug("attaching dirty TbMonitorcheck instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -150,7 +93,7 @@ public class TbMonitorcheckDAO extends BaseHibernateDAO {
 	public void attachClean(TbMonitorcheck instance) {
 		log.debug("attaching clean TbMonitorcheck instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

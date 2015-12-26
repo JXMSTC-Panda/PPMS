@@ -71,11 +71,6 @@ public class InnovationAction extends BaseInit {
 			@Result(name = "error", location = "/WEB-INF/content/page/error.jsp") })
 	public String firstIn() {
 
-		List<OrganizationNj> organizationNjs = getOrganizationNjs();
-		if (organizationNjs != null && organizationNjs.size() > 0) {
-			ServletActionContext.getRequest().setAttribute("orgs",
-					organizationNjs);
-		}
 		return "success";
 	}
 

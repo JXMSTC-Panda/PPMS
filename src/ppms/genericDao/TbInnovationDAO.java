@@ -74,7 +74,7 @@ public class TbInnovationDAO extends BaseHibernateDAO {
 	public void save(TbInnovation transientInstance) {
 		log.debug("saving TbInnovation instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -85,7 +85,7 @@ public class TbInnovationDAO extends BaseHibernateDAO {
 	public void delete(TbInnovation persistentInstance) {
 		log.debug("deleting TbInnovation instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -96,7 +96,7 @@ public class TbInnovationDAO extends BaseHibernateDAO {
 	public TbInnovation findById(java.lang.String id) {
 		log.debug("getting TbInnovation instance with id: " + id);
 		try {
-			TbInnovation instance = (TbInnovation) getSession().get(
+			TbInnovation instance = (TbInnovation) getHibernateTemplate().get(
 					"ppms.domain.TbInnovation", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -105,76 +105,11 @@ public class TbInnovationDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbInnovation instance) {
-		log.debug("finding TbInnovation instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbInnovation")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbInnovation instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbInnovation as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByInnovationcontent(Object innovationcontent) {
-		return findByProperty(INNOVATIONCONTENT, innovationcontent);
-	}
-
-	public List findByAssessresult(Object assessresult) {
-		return findByProperty(ASSESSRESULT, assessresult);
-	}
-
-	public List findByAssesslevel(Object assesslevel) {
-		return findByProperty(ASSESSLEVEL, assesslevel);
-	}
-
-	public List findByEncouragement(Object encouragement) {
-		return findByProperty(ENCOURAGEMENT, encouragement);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbInnovation instances");
-		try {
-			String queryString = "from TbInnovation";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbInnovation merge(TbInnovation detachedInstance) {
 		log.debug("merging TbInnovation instance");
 		try {
-			TbInnovation result = (TbInnovation) getSession().merge(
+			TbInnovation result = (TbInnovation) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -187,7 +122,7 @@ public class TbInnovationDAO extends BaseHibernateDAO {
 	public void attachDirty(TbInnovation instance) {
 		log.debug("attaching dirty TbInnovation instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -198,7 +133,7 @@ public class TbInnovationDAO extends BaseHibernateDAO {
 	public void attachClean(TbInnovation instance) {
 		log.debug("attaching clean TbInnovation instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

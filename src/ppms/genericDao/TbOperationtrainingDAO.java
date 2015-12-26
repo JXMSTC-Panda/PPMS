@@ -38,7 +38,7 @@ public class TbOperationtrainingDAO extends BaseHibernateDAO {
 	public void save(TbOperationtraining transientInstance) {
 		log.debug("saving TbOperationtraining instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -49,7 +49,7 @@ public class TbOperationtrainingDAO extends BaseHibernateDAO {
 	public void delete(TbOperationtraining persistentInstance) {
 		log.debug("deleting TbOperationtraining instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -60,7 +60,7 @@ public class TbOperationtrainingDAO extends BaseHibernateDAO {
 	public TbOperationtraining findById(java.lang.String id) {
 		log.debug("getting TbOperationtraining instance with id: " + id);
 		try {
-			TbOperationtraining instance = (TbOperationtraining) getSession()
+			TbOperationtraining instance = (TbOperationtraining) getHibernateTemplate()
 					.get("ppms.domain.TbOperationtraining", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -69,72 +69,11 @@ public class TbOperationtrainingDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbOperationtraining instance) {
-		log.debug("finding TbOperationtraining instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbOperationtraining")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbOperationtraining instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbOperationtraining as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByTraininglevel(Object traininglevel) {
-		return findByProperty(TRAININGLEVEL, traininglevel);
-	}
-
-	public List findByTrainingcontent(Object trainingcontent) {
-		return findByProperty(TRAININGCONTENT, trainingcontent);
-	}
-
-	public List findByTrainingscore(Object trainingscore) {
-		return findByProperty(TRAININGSCORE, trainingscore);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbOperationtraining instances");
-		try {
-			String queryString = "from TbOperationtraining";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbOperationtraining merge(TbOperationtraining detachedInstance) {
 		log.debug("merging TbOperationtraining instance");
 		try {
-			TbOperationtraining result = (TbOperationtraining) getSession()
+			TbOperationtraining result = (TbOperationtraining) getHibernateTemplate()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -147,7 +86,7 @@ public class TbOperationtrainingDAO extends BaseHibernateDAO {
 	public void attachDirty(TbOperationtraining instance) {
 		log.debug("attaching dirty TbOperationtraining instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -158,7 +97,7 @@ public class TbOperationtrainingDAO extends BaseHibernateDAO {
 	public void attachClean(TbOperationtraining instance) {
 		log.debug("attaching clean TbOperationtraining instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

@@ -1,6 +1,5 @@
 package ppms.domain;
 
-import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
@@ -10,7 +9,7 @@ import java.util.Set;
 import org.hibernate.criterion.Restrictions;
 
 import ppms.annotation.MarkSpecialField;
-import ppms.daoimpl.BaseDaoImp;
+import ppms.genericDao.BaseHibernateDAO;
 
 /**
  * OrganizationNj entity. @author MyEclipse Persistence Tools
@@ -459,7 +458,7 @@ public class OrganizationNj implements java.io.Serializable {
 	 * 将数据完整
 	 * @return
 	 */
-	public OrganizationNj toComplete(BaseDaoImp dao){
+	public OrganizationNj toComplete(BaseHibernateDAO dao){
 	
 		TbAreaorgrelation areaorgrelation;
 		for (Object Tb : tbAreaorgrelations) {

@@ -2,13 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-                     http://www.springframework.org/schema/beans/spring-beans.xsd 
-                     http://www.springframework.org/schema/tx 
-                     http://www.springframework.org/schema/tx/spring-tx.xsd 
-                     http://www.springframework.org/schema/aop 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                     http://www.springframework.org/schema/beans/spring-beans.xsd
+                     http://www.springframework.org/schema/tx
+                     http://www.springframework.org/schema/tx/spring-tx.xsd
+                     http://www.springframework.org/schema/aop
                      http://www.springframework.org/schema/aop/spring-aop.xsd
-                     http://www.springframework.org/schema/context 
+                     http://www.springframework.org/schema/context
                      http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 	<context:component-scan base-package="ppms">
 	<context:include-filter type="regex"
@@ -26,7 +26,7 @@
 			<value>oracle.jdbc.driver.OracleDriver</value>
 		</property>
 		<property name="jdbcUrl">
-			<value>jdbc:oracle:thin:@localhost:1521:orcl</value>
+			<value>jdbc:oracle:thin:@192.168.50.25:1521:orcl</value>		
 		</property>
 		<property name="user">
 			<value>ppmsuser</value>
@@ -38,10 +38,10 @@
 			<value>15</value>
 		</property>
 		<property name="minPoolSize">
-			<value>1</value>
+			<value>5</value>
 		</property>
 		<property name="initialPoolSize">
-			<value>1</value>
+			<value>5</value>
 		</property>
 		<property name="maxIdleTime">
 			<value>20</value>
@@ -116,18 +116,16 @@
 		</property>
 	</bean>
 
-	<!--开启注解方式 -->
-	<context:annotation-config />
-	<!-- 使用注解注入配置自动装箱配置 -->
-	<bean
-		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
-
-	<!-- 配置事务管理器 -->
+	
+	<!-- 定义事务管理器 -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="baseHibernateDAO" class="ppms.genericDao.BaseHibernateDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<!-- 配置事务的方式，注解 -->
+	<!-- 支持 @Transactional 标记 -->
 	<tx:annotation-driven transaction-manager="transactionManager"
 		proxy-target-class="true" />
-</beans>  
+</beans>

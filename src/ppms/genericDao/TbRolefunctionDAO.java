@@ -46,7 +46,7 @@ public class TbRolefunctionDAO extends BaseHibernateDAO {
 	public void delete(TbRolefunction persistentInstance) {
 		log.debug("deleting TbRolefunction instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -68,7 +68,7 @@ public class TbRolefunctionDAO extends BaseHibernateDAO {
 	public TbRolefunction findById(java.lang.String id) {
 		log.debug("getting TbRolefunction instance with id: " + id);
 		try {
-			TbRolefunction instance = (TbRolefunction) getSession().get(
+			TbRolefunction instance = (TbRolefunction) getHibernateTemplate().get(
 					"ppms.TbRolefunction", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -77,63 +77,11 @@ public class TbRolefunctionDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbRolefunction instance) {
-		log.debug("finding TbRolefunction instance by example");
-		try {
-			List results = getSession().createCriteria("ppms.TbRolefunction")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbRolefunction instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbRolefunction as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByFunctionids(Object functionids) {
-		return findByProperty(FUNCTIONIDS, functionids);
-	}
-
-	public List findByEmployeesearchscope(Object employeesearchscope) {
-		return findByProperty(EMPLOYEESEARCHSCOPE, employeesearchscope);
-	}
-
-	public List findByOrgsearchscope(Object orgsearchscope) {
-		return findByProperty(ORGSEARCHSCOPE, orgsearchscope);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbRolefunction instances");
-		try {
-			String queryString = "from TbRolefunction";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbRolefunction merge(TbRolefunction detachedInstance) {
 		log.debug("merging TbRolefunction instance");
 		try {
-			TbRolefunction result = (TbRolefunction) getSession().merge(
+			TbRolefunction result = (TbRolefunction) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -146,7 +94,7 @@ public class TbRolefunctionDAO extends BaseHibernateDAO {
 	public void attachDirty(TbRolefunction instance) {
 		log.debug("attaching dirty TbRolefunction instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -157,7 +105,7 @@ public class TbRolefunctionDAO extends BaseHibernateDAO {
 	public void attachClean(TbRolefunction instance) {
 		log.debug("attaching clean TbRolefunction instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

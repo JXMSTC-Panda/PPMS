@@ -36,7 +36,7 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 	public void save(TbOrgpraisecriticism transientInstance) {
 		log.debug("saving TbOrgpraisecriticism instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -47,7 +47,7 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 	public void delete(TbOrgpraisecriticism persistentInstance) {
 		log.debug("deleting TbOrgpraisecriticism instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -58,7 +58,7 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 	public TbOrgpraisecriticism findById(java.lang.String id) {
 		log.debug("getting TbOrgpraisecriticism instance with id: " + id);
 		try {
-			TbOrgpraisecriticism instance = (TbOrgpraisecriticism) getSession()
+			TbOrgpraisecriticism instance = (TbOrgpraisecriticism) getHibernateTemplate()
 					.get("ppms.domain.TbOrgpraisecriticism", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -67,72 +67,11 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbOrgpraisecriticism instance) {
-		log.debug("finding TbOrgpraisecriticism instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbOrgpraisecriticism")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbOrgpraisecriticism instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbOrgpraisecriticism as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByPraisecriticismtype(Object praisecriticismtype) {
-		return findByProperty(PRAISECRITICISMTYPE, praisecriticismtype);
-	}
-
-	public List findByCause(Object cause) {
-		return findByProperty(CAUSE, cause);
-	}
-
-	public List findByPraisecriticismlevel(Object praisecriticismlevel) {
-		return findByProperty(PRAISECRITICISMLEVEL, praisecriticismlevel);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbOrgpraisecriticism instances");
-		try {
-			String queryString = "from TbOrgpraisecriticism";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbOrgpraisecriticism merge(TbOrgpraisecriticism detachedInstance) {
 		log.debug("merging TbOrgpraisecriticism instance");
 		try {
-			TbOrgpraisecriticism result = (TbOrgpraisecriticism) getSession()
+			TbOrgpraisecriticism result = (TbOrgpraisecriticism) getHibernateTemplate()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -145,7 +84,7 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 	public void attachDirty(TbOrgpraisecriticism instance) {
 		log.debug("attaching dirty TbOrgpraisecriticism instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -156,7 +95,7 @@ public class TbOrgpraisecriticismDAO extends BaseHibernateDAO {
 	public void attachClean(TbOrgpraisecriticism instance) {
 		log.debug("attaching clean TbOrgpraisecriticism instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

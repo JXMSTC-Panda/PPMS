@@ -35,7 +35,7 @@ public class TbMountguardexamDAO extends BaseHibernateDAO {
 	public void save(TbMountguardexam transientInstance) {
 		log.debug("saving TbMountguardexam instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -46,7 +46,7 @@ public class TbMountguardexamDAO extends BaseHibernateDAO {
 	public void delete(TbMountguardexam persistentInstance) {
 		log.debug("deleting TbMountguardexam instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -57,7 +57,7 @@ public class TbMountguardexamDAO extends BaseHibernateDAO {
 	public TbMountguardexam findById(java.lang.String id) {
 		log.debug("getting TbMountguardexam instance with id: " + id);
 		try {
-			TbMountguardexam instance = (TbMountguardexam) getSession().get(
+			TbMountguardexam instance = (TbMountguardexam) getHibernateTemplate().get(
 					"ppms.domain.TbMountguardexam", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -66,72 +66,11 @@ public class TbMountguardexamDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbMountguardexam instance) {
-		log.debug("finding TbMountguardexam instance by example");
-		try {
-			List results = getSession()
-					.createCriteria("ppms.domain.TbMountguardexam")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbMountguardexam instance with property: "
-				+ propertyName + ", value: " + value);
-		try {
-			String queryString = "from TbMountguardexam as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByExamtype(Object examtype) {
-		return findByProperty(EXAMTYPE, examtype);
-	}
-
-	public List findByExamexpire(Object examexpire) {
-		return findByProperty(EXAMEXPIRE, examexpire);
-	}
-
-	public List findByExamscore(Object examscore) {
-		return findByProperty(EXAMSCORE, examscore);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbMountguardexam instances");
-		try {
-			String queryString = "from TbMountguardexam";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbMountguardexam merge(TbMountguardexam detachedInstance) {
 		log.debug("merging TbMountguardexam instance");
 		try {
-			TbMountguardexam result = (TbMountguardexam) getSession().merge(
+			TbMountguardexam result = (TbMountguardexam) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -144,7 +83,7 @@ public class TbMountguardexamDAO extends BaseHibernateDAO {
 	public void attachDirty(TbMountguardexam instance) {
 		log.debug("attaching dirty TbMountguardexam instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -155,7 +94,7 @@ public class TbMountguardexamDAO extends BaseHibernateDAO {
 	public void attachClean(TbMountguardexam instance) {
 		log.debug("attaching clean TbMountguardexam instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

@@ -35,7 +35,7 @@ public class TbStageDAO extends BaseHibernateDAO {
 	public void save(TbStage transientInstance) {
 		log.debug("saving TbStage instance");
 		try {
-			getSession().save(transientInstance);
+			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -46,7 +46,7 @@ public class TbStageDAO extends BaseHibernateDAO {
 	public void delete(TbStage persistentInstance) {
 		log.debug("deleting TbStage instance");
 		try {
-			getSession().delete(persistentInstance);
+			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -57,7 +57,7 @@ public class TbStageDAO extends BaseHibernateDAO {
 	public TbStage findById(java.lang.String id) {
 		log.debug("getting TbStage instance with id: " + id);
 		try {
-			TbStage instance = (TbStage) getSession().get(
+			TbStage instance = (TbStage) getHibernateTemplate().get(
 					"ppms.domain.TbStage", id);
 			return instance;
 		} catch (RuntimeException re) {
@@ -66,71 +66,11 @@ public class TbStageDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(TbStage instance) {
-		log.debug("finding TbStage instance by example");
-		try {
-			List results = getSession().createCriteria("ppms.domain.TbStage")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TbStage instance with property: " + propertyName
-				+ ", value: " + value);
-		try {
-			String queryString = "from TbStage as model where model."
-					+ propertyName + "= ?";
-			Query queryObject = getSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	public List findByStagename(Object stagename) {
-		return findByProperty(STAGENAME, stagename);
-	}
-
-	public List findByStagecomment(Object stagecomment) {
-		return findByProperty(STAGECOMMENT, stagecomment);
-	}
-
-	public List findBySeq(Object seq) {
-		return findByProperty(SEQ, seq);
-	}
-
-	public List findByCreatedby(Object createdby) {
-		return findByProperty(CREATEDBY, createdby);
-	}
-
-	public List findByModifiedby(Object modifiedby) {
-		return findByProperty(MODIFIEDBY, modifiedby);
-	}
-
-	public List findAll() {
-		log.debug("finding all TbStage instances");
-		try {
-			String queryString = "from TbStage";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
 
 	public TbStage merge(TbStage detachedInstance) {
 		log.debug("merging TbStage instance");
 		try {
-			TbStage result = (TbStage) getSession().merge(detachedInstance);
+			TbStage result = (TbStage) getHibernateTemplate().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -142,7 +82,7 @@ public class TbStageDAO extends BaseHibernateDAO {
 	public void attachDirty(TbStage instance) {
 		log.debug("attaching dirty TbStage instance");
 		try {
-			getSession().saveOrUpdate(instance);
+			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -153,7 +93,7 @@ public class TbStageDAO extends BaseHibernateDAO {
 	public void attachClean(TbStage instance) {
 		log.debug("attaching clean TbStage instance");
 		try {
-			getSession().lock(instance, LockMode.NONE);
+			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

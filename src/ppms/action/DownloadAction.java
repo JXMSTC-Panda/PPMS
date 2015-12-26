@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -66,6 +67,14 @@ public class DownloadAction extends ActionSupport {
 
 	private String cachename;
 
+	@Action(value = "other.null.batchImportTempletList", results = {
+			@Result(name = "success", location = "/WEB-INF/content/page/other/batchImportTempletList.jsp"),
+			@Result(name = "error", location = "/WEB-INF/content/error.jsp") })
+	public String firstIn() {
+
+		System.out.println("nihao");
+		return "success";
+	}
 	/**
 	 * 接收Excel上传模板下载
 	 * 
@@ -220,7 +229,7 @@ public class DownloadAction extends ActionSupport {
 				newlist=list;
 			}
 			// 将数据生成Excel文件
-			HSSFWorkbook workbook = new CommonExcelParser(dao, exception)
+			HSSFWorkbook workbook = new CommonExcelParser(dao)
 					.toExcel2(newlist, fileName);
 			response.setHeader("Content-Disposition", "attachment;filename="
 					+ fileName);
