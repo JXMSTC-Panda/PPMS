@@ -42,7 +42,8 @@
 					<span>${eis.index}${eis.info}</span><br>
 				</c:forEach>
 			</div>
-			<a id="backUrl" href="${backUrl}">返回</a><a id="backUrl" href="${pageContext.request.contextPath}/PPMS/">登录</a>
+			<a id="backUrl" href="${backUrl}">返回</a>
+			<a id="backUrl" href="${pageContext.request.contextPath}/PPMS/">登录</a>
 			<div class="copy-right">
 				<p>
 					&#169 All rights Reserved | Designed by <a href="http://chnn.com/">jxmstc.pandas</a>

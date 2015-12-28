@@ -201,11 +201,17 @@
 
 				<!-- #section:basics/navbar.user_menu -->
 				<!-- <li><span id="timeShow"></span><i class="ace-icon fa fa-time"></i></li> -->
-				<li class="light-blue"><a data-toggle="dropdown" href="#"
-					class="dropdown-toggle"> <img class="nav-user-photo"
+				<li class="light-blue">
+				<a data-toggle="dropdown" href="#"
+					class="dropdown-toggle"> 
+					<img class="nav-user-photo"
 						src="${pageContext.request.contextPath}/assets/avatars/user.jpg"
-						alt="Jason's Photo" /> <span class="user-info"> <small>欢迎,</small>
-							${sessionScope.tbEmployeeIDSession}</span> <i class="ace-icon fa fa-caret-down"></i> </a>
+						alt="Jason's Photo" /> 
+						<span class="user-info"> 
+							<small>欢迎,</small>
+							<small id="sessionuserid">${sessionScope.tbEmployeeIDSession}</small>
+						</span> 
+						<i class="ace-icon fa fa-caret-down"></i> </a>
 
 					<ul
 						class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">

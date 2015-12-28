@@ -117,7 +117,9 @@ public class MainAction extends ActionSupport {
 			System.out.println(mySubject.getTbEmployee().getEmployeeid()
 					+ mySubject.getTbRole().getRoleid()
 					+ mySubject.tbRolefunction.getFunctionids()
-					+ "√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√");
+					+"\n"
+					+"√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√√");
+			
 		}
 		System.out.println(request.getRequestURI());
 		response.getWriter().write(ajaxState);

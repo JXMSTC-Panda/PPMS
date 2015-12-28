@@ -47,7 +47,7 @@
 		<![endif]-->
 </head>
 
-<body class="login-layout">
+<body class="login-layout blur-login">
 	<div class="main-container">
 		<div class="main-content">
 			<div class="row">
@@ -79,7 +79,7 @@
 												<label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
 														type="text" class="form-control required" name="userAccount"
-														placeholder="身份证号/工号" /> <i class="ace-icon fa fa-user"></i>
+														placeholder="工号" /> <i class="ace-icon fa fa-user"></i>
 												</span> </label> <label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
 														type="password" class="form-control" name="passWord"

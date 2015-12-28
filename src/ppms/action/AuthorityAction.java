@@ -241,7 +241,7 @@ public class AuthorityAction extends ActionSupport {
 	@Action(value = "authority.null.roleSearch.detail.init")
 	public void roleDetailInit() throws IOException {
 
-		String[] fieldNames = new String[] { "functionid", "parentfunctionid",
+		String[] fieldNames = new String[] { "functionid","functiontype","functionurl","parentfunctionid",
 				"functionname" };
 		System.out.println("roleDetail.init");
 		String roleID = request.getParameter("roleID");

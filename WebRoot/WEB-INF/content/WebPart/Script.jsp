@@ -61,6 +61,62 @@
 						$(this).html(info);
 					});
 		}
+		
+	</script>
+	<script>
+		$(document).ready(function() {
+			sessionuserid = $("#sessionuserid").text();
+			$.get("authority.null.roleSearch.detail.init.do?roleID="+sessionuserid, function(data) {
+				if (data.substr(0, 3) == "{\"p") {
+					var obj = JSON.parse(data);
+					var sysfunctions = obj.ppms.TbSystemfunctions;
+					syslen = sysfunctions.length;
+					for(i = 0;i<syslen;i++){
+						idlength = sysfunctions[i].id.length;
+						if(idlength == 1){
+							url = sysfunctions[i].functionurl;
+							console.log("1:" + url);
+							try{
+								$("#"+url).removeClass("hidden");
+							}
+							catch(e){
+								console.log(e);
+							}
+						}
+						else if(idlength == 2){
+							url = sysfunctions[i].functionurl;
+							if(url.indexOf("null") != -1){
+								console.log("2null:" + url.split(".")[2]);
+								try{
+									$("#"+url.split(".")[2]).removeClass("hidden");
+								}
+								catch(e){
+									console.log(e);
+								}
+							}
+							else{
+								try{
+									$("#"+url).removeClass("hidden");
+								}
+								catch(e){
+									console.log(e);
+								}
+							}
+						}
+						else if(idlength == 3){
+							url = sysfunctions[i].functionurl;
+							console.log("3:" + url);
+							try{
+								$("#"+url.split(".")[2]).removeClass("hidden");
+							}
+							catch(e){
+								console.log(e);
+							}
+						}
+					};
+				};
+			});
+		});
 	</script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
 
